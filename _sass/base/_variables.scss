@@ -1,17 +1,17 @@
 // Typography
-$font-family-main: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-$font-family-headings: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+$font-family-main: 'PT Sans', Helvetica, Arial, sans-serif;
+$font-family-headings: 'Dosis', Helvetica, Arial, sans-serif;
 $font-size: 1.25em;
 
 
 // Padding
 $padding-large: 20%;
-$padding-small: 5%;
-$padding-x-small: 3%;
+$padding-small: 3%;
+$padding-x-small: 2%;
 
 // Brand colours
-$theme-color: #507492;
-$brand-color: #fff;
+$theme-color: rgb(0, 0, 0);
+$brand-color: rgb(3, 101, 100);
 $background-color: #fff;
 $border-color: rgba(0, 0, 0, 0.1); // rgba recommended if using feature images
 
@@ -27,7 +27,7 @@ $text-shadow: #3f3f3f;
 $search-color: #999;
 
 // Header colours
-$header-link-color: #383838;
+$header-link-color: #fff;
 $navbar-separator-opacity: 0;
 
 // Feature image for articles

@@ -8,16 +8,14 @@ description: "A personal blog of things I ramble about"
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
   # Meta
-  title: Blog - BinHong Lee # blog's title
-  avatar: assets/logo.png
   favicon: assets/logo.png
   gravatar: # Email MD5 hash
 
   # Header and footer text
   header_text: > #two or three lines to describe your site
-     <p>Welcome to a space where I rambles about things~</p>
+    <p><h2>Blog - BinHong Lee</h2>Just another guy messing around on the internet.</p>
   footer_text: >
-   Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+    Powered by <a href="https://jekyllrb.com/">Jekyll</a> with (customized) <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
   # Icons
   rss: true  # Make sure you created a feed.xml with feed.xml layout
@@ -65,7 +63,7 @@ theme_settings:
 
   # Colours, typography and padding
   # Open the "_sass > base" folder, and open "_variables.scss"
-  google_fonts: "Share+Tech+Mono,Source+Sans+Pro:400,700,700italic,400italic"
+  google_fonts: "Fira+Sans,Share+Tech+Mono,PT+Sans:400,700,700italic,400italic,Dosis:400,600,700"
 
   # Post navigation
   post_navigation: true

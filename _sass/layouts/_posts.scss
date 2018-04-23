@@ -61,9 +61,11 @@ code.highlighter-rouge {
 /* --- Feature image --- */
 .feature-image {
     padding: 0;
+    /*
     .post-link {
         color: $feature-image-text-color;
     }
+    */
     header {
         color: $feature-image-text-color;
         background-size: $feature-image-size;
@@ -82,14 +84,14 @@ code.highlighter-rouge {
         padding-top: 0;
     }
 }
-
+/*
 // Responsive scrolling
 .feature-image header {
     @media screen and (max-width: $break) {
         padding: $padding-small $padding-small;
     }
 }
-
+*/
 /* --- Post navigation --- */
 #post-nav {
     width: 100%;

@@ -8,8 +8,6 @@ tags: [Windows10, Linux, Terminal, Shell]
 excerpt_separator: <!--more-->
 ---
 
-### Windows [Linux Shell (Powerline + Hyper)]
-
 When the Linux Shell in Windows was first released, I used it and didn’t quite like it. Fast forward a year later, I heard it is a lot better now (also the fact that my familiarity with terminal commands improved helped) so I decided to give it another try. It is a really fun experience so far.
 <!--more-->
 In case you haven’t install the Windows Subsystem for Linux (WSL), follow this [step-by-step guide](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) by Microsoft to get started. Then, install Hyper for Windows from [here](https://releases.hyper.is/download/win). If you didn’t already, you will also need node.js for the package management for plugins of Hyper.
@@ -131,16 +129,19 @@ lxrun /uninstall /full
 lxrun /install
 ```
 
-Other useful links
+## Other useful links
 
 - [Installing Oracle Java for development](http://www.webupd8.org/2015/02/install-oracle-java-9-in-ubuntu-linux.html)
 - [First time Git setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
 - Setting up ssh access for GitHub ([Creating key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#platform-linux), [Adding key to account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/#platform-linux))
 - [Making Terminal Great Again](https://blog.ronakshah.net/Making-Terminal-Great-Again/) (My inspiration to write this)
 
-Afterthoughts
+## Afterthoughts
 
 Initially, I did this with [zsh](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) (since I personally uses [Powerlevel9k](https://github.com/bhilburn/powerlevel9k) on my Mac and I love it) but zsh doesn’t seems to play well with Hyper (specifically with the plugins) causing a lot of weird configuration behaviors. Even without Hyper, the alignments for Powerlevel9k specifically goes way off causing the input line to be on the next line instead. I speculate this is due to zsh not being built with Windows in mind and does not have such compatibility.
-About author
+
+## About author
 
 BinHong recently graduated from Arizona State University with B.Sc. in Software Engineering. He currently spends most of his time experimenting with technologies he had never explored in order to widen his area of expertise while he continues on his job searching journey.
+
+> _This article was originally published on [my personal Medium publication](https://blog.binhong.me/use-terminal-in-windows-with-style-45158e0c2f50)._
