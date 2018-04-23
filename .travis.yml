@@ -13,10 +13,4 @@ branches:
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $github_token
-  on:
-    branch: master
 sudo: false
