@@ -2,8 +2,6 @@
 baseurl: "/blog"
 url: "https://binhonglee.github.io"
 title: Blog - BinHong Lee
-description: "A personal blog of things I ramble about"
-
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
@@ -13,7 +11,7 @@ theme_settings:
 
   # Header and footer text
   header_text: > #two or three lines to describe your site
-    <p><h2>Blog - BinHong Lee</h2>Just another guy messing around on the internet.</p>
+    <p><h2>Blog - BinHong Lee</h2>Just some guy randomly bashing the keyboard.</p>
   footer_text: >
     Powered by <a href="https://jekyllrb.com/">Jekyll</a> with (customized) <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
@@ -25,11 +23,11 @@ theme_settings:
   dribbble:
   facebook: "binhonglee"
   flickr:
-  gitlab:
+  gitlab: "binhonglee"
   github: "binhonglee"
   google_plus:
   instagram: "binhonglee"
-  keybase:
+  keybase: "binhonglee"
   linkedin: "https://linkedin.com/in/binhonglee" # Full URL
   pinterest:
   reddit:
@@ -70,7 +68,7 @@ theme_settings:
   
 
 # PAGINATION
-paginate: 5
+paginate: 10
 paginate_path: "blog/page:num"
 
 
