@@ -9,7 +9,6 @@ excerpt_separator: <!--more-->
 ---
 
 <!--more-->
-
 ## Backstory
 
 I lied, but maybe someone else could. If you didn’t know already, [Malaysia just suffered possibly its largest data breach ever](https://www.lowyat.net/2017/145654/personal-data-millions-malaysians-sale-source-breach-still-unknown/) with personal data of millions of Malaysians (including your full name, IC number, phone number and home address) up for grabs as long as the price is right. If you are not freaked out yet, you should be and I’ll tell you why. I don’t think many people understand how dangerous these data can be. I’m also honestly mildly infuriated about this. No, not about the creator of [sayakenahack.com](https://sayakenahack.com/) (hereafter referred as Keith) but rather how this whole thing panned out. I’ve mentioned before in private conversations with friends about my concerns on cybersecurity in Malaysia but never really gave it too much thoughts. Not until I discovered this whole fiasco.

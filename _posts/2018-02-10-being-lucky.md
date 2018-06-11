@@ -8,10 +8,10 @@ tags: [Career, International Student, Engineering, Job]
 excerpt_separator: <!--more-->
 ---
 
+<!--more-->
 Ah, you’ve graduated. Now what? Oh right, still no job offer! _\*panics\*_
 
 As an international student, I have come across hundreds of guides on “how to land an interview”, “how to get a job”, “how to solve DSA questions” etc but almost none of them were specifically written with an international student in mind. I’m not here to dismiss the quality of such guides but rather, to be an add-on (or plugin if you will), to help international students understand their challenges better.
-<!--more-->
 
 ## You’ve got a lot more to prove
 
