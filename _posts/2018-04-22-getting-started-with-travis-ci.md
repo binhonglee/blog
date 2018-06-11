@@ -7,12 +7,13 @@ thumbnail: "assets/img/traviscover.png"
 tags: [Travis-CI, Continuous Integration, Testing, Automated Deployment, Devops]
 excerpt_separator: <!--more-->
 ---
+
+<!--more-->
 ## What is CI and why should I care about it?
 
 CI stands for Continuous Integration which as the name suggests, is an integrated tests that runs continuously on every time when someone pushes a commit (or mostly when opening a [Pull Request](https://help.github.com/articles/about-pull-requests/)).
 
 As for why is it important, it automates the whole testing modules. Ideally, you would still want to test your changes locally before pushing them to remote but in some occasion where you forgot or the program requires a lot more resources than your current machine can handle, CI comes in very handy. That aside, if your project happen to have people wanting to contribute code, a properly written test with CI will help you in reviewing the changes and ensuring that the contribution would not break the build.
-<!--more-->
 
 ## Why Travis-CI?
 

@@ -8,9 +8,8 @@ tags: [Windows10, Linux, Terminal, Shell]
 excerpt_separator: <!--more-->
 ---
 
-When the Linux Shell in Windows was first released, I used it and didn’t quite like it. Fast forward a year later, I heard it is a lot better now (also the fact that my familiarity with terminal commands improved helped) so I decided to give it another try. It is a really fun experience so far.
 <!--more-->
-In case you haven’t install the Windows Subsystem for Linux (WSL), follow this [step-by-step guide](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) by Microsoft to get started. Then, install Hyper for Windows from [here](https://releases.hyper.is/download/win). If you didn’t already, you will also need node.js for the package management for plugins of Hyper.
+When the Linux Shell in Windows was first released, I used it and didn’t quite like it. Fast forward a year later, I heard it is a lot better now (also the fact that my familiarity with terminal commands improved helped) so I decided to give it another try. It is a really fun experience so far. In case you haven’t install the Windows Subsystem for Linux (WSL), follow this [step-by-step guide](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) by Microsoft to get started. Then, install Hyper for Windows from [here](https://releases.hyper.is/download/win). If you didn’t already, you will also need node.js for the package management for plugins of Hyper.
 
 ## Opening the config file
 
@@ -139,6 +138,8 @@ lxrun /install
 ## Afterthoughts
 
 Initially, I did this with [zsh](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) (since I personally uses [Powerlevel9k](https://github.com/bhilburn/powerlevel9k) on my Mac and I love it) but zsh doesn’t seems to play well with Hyper (specifically with the plugins) causing a lot of weird configuration behaviors. Even without Hyper, the alignments for Powerlevel9k specifically goes way off causing the input line to be on the next line instead. I speculate this is due to zsh not being built with Windows in mind and does not have such compatibility.
+
+--
 
 ## About author
 
