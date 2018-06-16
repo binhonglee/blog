@@ -53,7 +53,7 @@ cd ~
 git clone https://github.com/banga/powerline-shell.git
 cd powerline-shell
 cat config.py.dist > config.py
-./install.py 
+./install.py
 ```
 
 WARNING: you should not at anytime remove `powerline-shell` folder (or attempt to) without reverting the following changes that you will make to the `.bashrc`.
@@ -139,7 +139,7 @@ lxrun /install
 
 Initially, I did this with [zsh](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH) (since I personally uses [Powerlevel9k](https://github.com/bhilburn/powerlevel9k) on my Mac and I love it) but zsh doesn’t seems to play well with Hyper (specifically with the plugins) causing a lot of weird configuration behaviors. Even without Hyper, the alignments for Powerlevel9k specifically goes way off causing the input line to be on the next line instead. I speculate this is due to zsh not being built with Windows in mind and does not have such compatibility.
 
---
+---
 
 ## About author
 

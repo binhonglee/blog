@@ -40,14 +40,14 @@ theme_settings:
   wordpress:
   youtube:
 
-  # Scripts / Features 
+  # Scripts / Features
   google_analytics: # Tracking ID, e.g. "UA-000000-01"
   disqus_shortname:
   katex: true # Enable if using math markup
   portfolio: false
   search: true
   tags: true
-  
+
   # Localization strings
   str_follow_on: "Follow on"
   str_rss_follow: "Follow RSS feed"
@@ -61,11 +61,11 @@ theme_settings:
 
   # Colours, typography and padding
   # Open the "_sass > base" folder, and open "_variables.scss"
-  google_fonts: "Fira+Sans,Share+Tech+Mono,PT+Sans:400,700,700italic,400italic,Dosis:400,600,700"
+  google_fonts: "Fira+Sans|Share+Tech+Mono|PT+Sans:400,700,700italic,400italic|Dosis:400,600,700"
 
   # Post navigation
   post_navigation: true
-  
+
 
 # PAGINATION
 paginate: 10
