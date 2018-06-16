@@ -52,7 +52,7 @@ Don’t get too hung up on the project. I’m not saying you shouldn’t be prou
 
 Of course, in an off chance that it blows up, congrats! For starters, maybe you can start thinking about how to monetize it? I don’t know (this has not happened to me). Maybe some guys at I can handle the business side can help you with that. 😉😂 /j
 
---
+---
 
 ## About me
 
