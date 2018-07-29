@@ -1,47 +1,55 @@
 <header class="site-header">
-    <!-- Toggle menu -->
-    <nav class="clear">
-    <a id="pull" class="toggle" href="#">
-    <i class="fa fa-bars fa-lg"></i>
-    </a>
-    
+  <!-- Toggle menu -->
+  <nav class="clear">
+  <a id="pull" class="toggle" href="#">
+  <i class="fa fa-bars fa-lg"></i>
+  </a>
+
     <!-- Menu -->
     <ul>
-        <li>
-            <a class="clear" href="{{ site.url }}{{ site.baseurl }}/">
-                Home
-            </a>
-        </li>
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="https://binhonglee.github.io">
-                Portfolio
-            </a>
-        </li>
-        {% if site.theme_settings.search %}
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="{{ site.url }}{{ site.baseurl }}/search">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
-        </li>
-        {% endif %}
-        {% if site.theme_settings.tags %}
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="{{ site.url }}{{ site.baseurl }}/tags">
-                <i class="fa fa-tags" aria-hidden="true"></i>
-            </a>
-        </li>
-        {% endif %}
-        
+      <li class="items"><a href="{{ site.url }}{{ site.baseurl }}/">Home</a></li>
+      <li class="items"><a href="{{ site.url }}">Portfolio</a></li>
+      <li class="items">|</li>
+      <li class="items"><a href="{{ site.url }}{{ site.baseurl }}/search"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+      {% endif %}
+      {% if site.theme_settings.tags %}
+      <li class="items"><a href="{{ site.url }}{{ site.baseurl }}/tags"><i class="fa fa-tags" aria-hidden="true"></i></a></li>
+      {% endif %}
     </ul>
-        
-	</nav>
+  </nav>
+
+  <style scoped>
+    .site-header {
+      font-family: 'Fira Sans';
+      height: 35px;
+      background-color: #036564;
+      float: left;
+      position: fixed;
+    }
+
+    .menu {
+      margin-top: -10px;
+      margin-left: -20px;
+      font-size: 18px;
+    }
+
+    .items {
+      color: #ffffff;
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 1rem;
+    }
+    .items:last-of-type {
+      margin-right: 20px;
+    }
+
+    a {
+      color: #ffffff;
+    }
+
+    a:hover,
+    a:focus {
+      color: #000000;
+    }
+  </style>
 </header>
