@@ -1,26 +1,26 @@
 <header class="site-header">
   <!-- Toggle menu -->
   <nav class="clear">
-  <a id="pull" class="toggle" href="#">
-  <i class="fa fa-bars fa-lg"></i>
-  </a>
+    <a id="pull" class="toggle" href="#">
+      <i class="fa fa-bars fa-lg"></i>
+    </a>
 
     <!-- Menu -->
-    <ul>
-      <li class="items"><a href="{{ site.url }}{{ site.baseurl }}/">Home</a></li>
-      <li class="items"><a href="{{ site.url }}">Portfolio</a></li>
-      <li class="items">|</li>
+    <ul class="menu-list">
+      <li class="items"><a href="{{ site.url }}{{ site.baseurl }}/" class="nav-link">Home</a></li>
+      <li class="items"><a href="{{ site.url }}" class="nav-link">Portfolio</a></li>
+      <li class="items" class="nav-link">|</li>
       {% if site.theme_settings.search %}
-      <li class="items"><a href="{{ site.url }}{{ site.baseurl }}/search"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+      <li class="items"><a href="{{ site.url }}{{ site.baseurl }}/search" class="nav-link"><i class="fa fa-search" aria-hidden="true"></i></a></li>
       {% endif %}
       {% if site.theme_settings.tags %}
-      <li class="items"><a href="{{ site.url }}{{ site.baseurl }}/tags"><i class="fa fa-tags" aria-hidden="true"></i></a></li>
+      <li class="items"><a href="{{ site.url }}{{ site.baseurl }}/tags" class="nav-link"><i class="fa fa-tags" aria-hidden="true"></i></a></li>
       {% endif %}
     </ul>
   </nav>
 
   <style scoped>
-    ul {
+    .menu-list {
       padding-left: 40px;
     }
 
@@ -44,19 +44,18 @@
       vertical-align: top;
       margin-right: 16px;
     }
-    
+
     .items:last-of-type {
       margin-right: 20px;
     }
 
-    a {
+    .nav-link {
       color: #ffffff;
-      text-decoration: underline;
     }
 
-    a:hover,
-    a:focus {
-      color: #000000;
+    .nav-link:hover,
+    .nav-link:focus {
+      text-decoration: underline;
     }
   </style>
 </header>
