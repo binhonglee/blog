@@ -10,6 +10,7 @@
       <li class="items"><a href="{{ site.url }}{{ site.baseurl }}/">Home</a></li>
       <li class="items"><a href="{{ site.url }}">Portfolio</a></li>
       <li class="items">|</li>
+      {% if site.theme_settings.search %}
       <li class="items"><a href="{{ site.url }}{{ site.baseurl }}/search"><i class="fa fa-search" aria-hidden="true"></i></a></li>
       {% endif %}
       {% if site.theme_settings.tags %}
