@@ -3,8 +3,8 @@ layout: post
 title: Hosting your own Git server with Gitea
 subtitle: "Having additional backups are never a bad idea"
 feature-img: "assets/img/gitea.png"
-thumbnail: "assets/img/gitea.jpg"
-tags: [Git, Gitea, Continuous Integration, DevOps]
+thumbnail: "assets/img/gitea.png"
+tags: [Git, Gitea, Continuous Integration, Self Hosted, DevOps]
 excerpt_separator: <!--more-->
 ---
 
