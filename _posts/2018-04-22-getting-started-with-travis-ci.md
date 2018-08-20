@@ -223,6 +223,6 @@ If you are like me, the reason I was hooked up by this is because long time ago 
 
 ## About me
 
-I currently work at Apple Inc. on the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey here or on [GitHub](https://github.com/binhonglee).
+I currently work at Apple Inc. on the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey [here](https://binhong.me/blog) or on [GitHub](https://github.com/binhonglee).
 
 > _This article was originally published on [codeburst.io](https://codeburst.io/getting-started-with-travis-ci-f3223082f256)._
