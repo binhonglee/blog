@@ -59,7 +59,7 @@ If you are running this on a remote server (especially if you are also hosting a
 
 #### Apache HTTPD
 
-```httpd.conf
+```apache
 <VirtualHost *:80>
     ProxyPreserveHost On
     ProxyRequests off
@@ -70,7 +70,7 @@ If you are running this on a remote server (especially if you are also hosting a
 
 #### NGINX
 
-```virtual.conf
+```nginx
 server {
     listen 80;
     server_name git.example.com;
@@ -175,7 +175,7 @@ Similarly, if this is hosted on a remote server, you will have to add the follow
 
 #### Apache HTTPD
 
-```conf
+```apache
 server {
     listen 80;
     server_name drone.example.com;
@@ -195,7 +195,7 @@ server {
 
 #### NGINX
 
-````sh
+````nginx
 <VirtualHost *:80>
     ProxyPreserveHost On
 
