@@ -175,7 +175,19 @@ Similarly, if this is hosted on a remote server, you will have to add the follow
 
 #### Apache HTTPD
 
-```apache
+````apache
+<VirtualHost *:80>
+    ProxyPreserveHost On
+
+    RequestHeader set X-Forwarded-Proto "https"
+    ProxyPass / http://127.0.0.1:8000/
+    ProxyPassReverse / http://127.0.0.1:8000/
+</VirtualHost>
+````
+
+#### NGINX
+
+```nginx
 server {
     listen 80;
     server_name drone.example.com;
@@ -192,18 +204,6 @@ server {
     }
 }
 ```
-
-#### NGINX
-
-````nginx
-<VirtualHost *:80>
-    ProxyPreserveHost On
-
-    RequestHeader set X-Forwarded-Proto "https"
-    ProxyPass / http://127.0.0.1:8000/
-    ProxyPassReverse / http://127.0.0.1:8000/
-</VirtualHost>
-````
 
 ## Usage
 
