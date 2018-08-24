@@ -152,6 +152,8 @@ services:
     environment:
       - DRONE_SERVER=drone-server:9000
       - DRONE_SECRET=${DRONE_SECRET}
+      - DRONE_DATABASE_DRIVER:postgres
+      - DRONE_DATABASE_DATASOURCE:postgres://root:password@1.2.3.4:5432/postgres?sslmode=disable
 ```
 
 Few things to keep in mind in the file above:
@@ -159,6 +161,7 @@ Few things to keep in mind in the file above:
 - `DRONE_SECRET` - This is a secret string of your choice used for authentication purpose.
 - `DRONE_HOST` - URL where this drone server is hosted.
 - `DRONE_GITEA_URL` - Link to your Gitea server location (it can also be `http://localhost:3000/` link)
+- `DRONE_DATABASE_DRIVER` - Database setup is __optional__. In their [documentation](http://docs.drone.io/database-settings/), they mention the setup process of MySQL and PostgreSQL. Though do note that their documentation doesn't seems to be accurate at least [from my experience](https://github.com/drone/docs/pull/360) setting it up.
 
 In the same directory run the following and drone will be running on `http://localhost:8000/`.
 
