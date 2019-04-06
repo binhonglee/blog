@@ -2,8 +2,8 @@
 layout: post
 title: Test Driven Development with Alexa SDK
 subtitle: "Quick guide to building and unit testing an Alexa Skill"
-feature-img: "assets/img/use-terminal-in-windows-with-style.png"
-thumbnail: "assets/img/use-terminal-in-windows-with-style.png"
+feature-img: "assets/img/alexa.jpeg"
+thumbnail: "assets/img/alexa.jpeg"
 tags: [JavaScript, Alexa, Alexa Skills, Tdd, Alexa Sdk]
 excerpt_separator: <!--more-->
 ---
