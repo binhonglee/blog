@@ -98,4 +98,10 @@ Overall, I think one of the main takeaway is that if there's already an actively
 
 Admittedly, I've only started learning about how a programming language is written only after a few months into the project so the design and structure is not ideal. However, since this is also much simpler compared to a full blown programming language, I can still get away with it on this. That said, I might start to incorporate some of these principles into wings as I continue to work on it (including writing a proper lexer and parser for it). 
 
-Of course, this is just a little side project spawn off of another side project. There's also the long time dilemma of "should I just write them manually or do I need to write codes (or use an external library) to write them" (the NIH syndrome). In this case the later took way more time than the former, but this is a side project so it's more about learning than meeting non-existent delivery dates anyway. I've also find it fun to have been working on the project so far and I hope you find this helpful.
+Of course, this is just a little side project spawn off of another side project. There's also the long time dilemma of "should I just write them manually or do I need to write codes (or use an external library) to write them" (the NIH syndrome). In this case the later took way more time than the former, but this is a side project so it's more about learning than meeting non-existent delivery dates anyway. I've also find it fun to have been working on the project so far and I hope you find this helpful. If you'd like to learn more about it (or use it yourself), check out the project website at [wings.sh](https://wings.sh). If you like what you've read, I'd appreciate a star on the [wings repository](https://github.com/binhonglee/wings).
+
+---
+
+## About me
+
+I currently work at Facebook as a Software Engineer. I spend some of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey [here](https://binhong.me/blog) or on [GitHub](https://github.com/binhonglee).
