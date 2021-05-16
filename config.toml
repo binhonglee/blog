@@ -1,0 +1,33 @@
+baseURL = "https://binhong.me/blog/"
+languageCode = "en-us"
+title = "Just some guy"
+theme = "CustomPaper"
+
+[Menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "https://binhong.me"
+  [[menu.main]]
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/binhonglee"
+
+[Author]
+  name = "BinHong Lee"
+
+[Params]
+  favicon = "img/profile.png"
+  [params.social]
+    rss = true
+    homepage = true
+    facebook = "binhonglee"
+    github = "binhonglee"
+    instagram = "binhonglee"
+    linkedin = "binhonglee"
+    reddit = "binhonglee"
+    stackexchange = "binhonglee"
+    twitter = "binhonglee"
+
+[markup.highlight]
+  guessSyntax = false

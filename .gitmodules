@@ -1,0 +1,3 @@
+[submodule "themes/CustomPaper"]
+	path = themes/CustomPaper
+	url = git@github.com:binhonglee/CustomPaper.git
