@@ -1,6 +1,6 @@
 baseURL = "https://binhong.me/blog/"
 languageCode = "en-us"
-title = "Just some guy"
+title = "The Ink Mortar"
 theme = "CustomPaper"
 
 [Menu]
