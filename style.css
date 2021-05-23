@@ -185,9 +185,6 @@ img {
 .menu a {
   font-size: 16px;
 }
-.menu {
-  margin-right: 15%;
-}
 .dark-mode-toggle {
   float: right;
   margin-right: var(--gap);
@@ -200,6 +197,12 @@ img {
 }
 .dark .bright-text {
   display: inherit;
+}
+
+@media screen and (max-width: 500px) {
+  .logo {
+    display: block;
+  }
 }
 
 /* Main
