@@ -163,14 +163,14 @@ img {
   line-height: var(--header-height);
 }
 .logo,
-.menu-item,
-.dark-mode-toggle {
+.menu-item{
   display: inline-block;
   margin-left: var(--gap);
 }
 .logo a {
   font-size: 24px;
   font-weight: 700;
+  margin-right: var(--gap);
 }
 .logo,
 .menu {
@@ -178,13 +178,15 @@ img {
   list-style: none;
   word-break: keep-all;
   overflow-x: auto;
-  margin-right: var(--gap);
 }
 .menu li + li {
   margin-left: var(--gap);
 }
 .menu a {
   font-size: 16px;
+}
+.menu {
+  margin-right: 15%;
 }
 .dark-mode-toggle {
   float: right;
