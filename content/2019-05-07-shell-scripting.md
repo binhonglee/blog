@@ -1,6 +1,5 @@
 ---
 title: Functional and flexible shell scripting tricks
-subtitle: "Functional and Flexible Scripting Tricks"
 date: 2019-05-07 00:00:00 -0800 GMT
 thumbnail: "img/shellscript.jpeg"
 tags: [Programming, Scripting, Automation, Shell Script]
