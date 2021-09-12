@@ -3,6 +3,7 @@ title: Ava with Vue (2.x) + TypeScript (and NYC)
 subtitle: "Component and Unit Testing with Test Coverage"
 date: 2021-05-22 00:00:00 -0800 GMT
 tags: [Vue, Test, Coverage, TypeScript]
+ss: "img/avass.png"
 ---
 
 When working on a project with Vue (TypeScript), I faced a lot of roadblocks trying to get code coverage to work. The issue is largely covered in [this issue thread](https://github.com/vuejs/vue-cli/issues/1363). Most solutions / workarounds for that seems to revolve around changing the bundling flow with webpack. Considering my lack of familiarity with webpack (on top of my use of scss and pug in Vue files), putting together a webpack config that works for me turns out to be extremely challenging. That somewhat prompted me to move the build and test process away from `vue-cli` while starting to experiment with different tools that could work. One thing to note is that, I'll be using babel to handle TypeScript compiling / transpiling instead of `ts-node` as recommended from Ava's guide. 

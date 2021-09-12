@@ -2,6 +2,7 @@
 title: PostgreSQL on Azure Pipeline with OSX
 date: 2021-07-18 00:00:00 -0800 GMT
 tags: [PostgreSQL, Azure Pipeline, OSX, Continuous Integration]
+ss: "img/psqlss.png"
 ---
 
 While the defacto way of running postgres on Azure Pipeline according to [this guide](https://devblogs.microsoft.com/devops/using-containerized-services-in-your-pipeline/) seems to be using the docker image, the MacOS image on Azure Pipeline does not have docker support due to some [licensing issue](https://github.com/actions/virtual-environments/issues/2150). So instead, this has to be setup and handled manually. We'd use brew here since it comes installed in the OS image and is the easiest way to deal with it as far as I'm aware. 
