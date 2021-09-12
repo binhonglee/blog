@@ -1,22 +1,92 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>RESTful API with Spark Kotlin - The Ink Mortar</title><meta name=description content="When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.
-Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project."><meta name=author content="BinHong Lee"><link href=https://binhong.me/blog/an-old-hope.min.css rel=stylesheet><link href=https://binhong.me/blog/style.css rel=stylesheet><link href=https://binhong.me/blog/custom.css rel=stylesheet><link rel=icon href=https://binhong.me/blog/img/profile.png><meta name=generator content="Hugo 0.85.0"><script>const key='dark-theme',dark='dark',light='light';function setTheme(){localStorage.getItem(key)?localStorage.getItem(key)===dark&&document.body.classList.add(dark):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add(dark)}function toggleDarkMode(){const b=localStorage.getItem(key);var a=dark;b===a&&(a=light),localStorage.setItem(key,a),document.body.classList.toggle(dark)}</script></head><body class=single><script>setTheme()</script><header class=header><nav class=nav><h1 class=logo><a href=https://binhong.me/blog/>The Ink Mortar</a></h1><button class=dark-mode-toggle onclick=toggleDarkMode()><h4 class=bright-text>Bright</h2><h4 class=dark-text>Dark</h2></button></nav></header><main class=main><article class=post-single><a href=https://binhong.me/blog/img/sparkcover.jpeg><img class=post-thumbnail-img src=https://binhong.me/blog/img/sparkcover.jpeg></a><div class=post-single-content><header class=post-header><h1 class=post-title>RESTful API with Spark Kotlin</h1><h2 class=post-subtitle>The not-so-mainstream way of building an API</h2><div class=post-meta>BinHong Lee · March 21, 2018</div></header><div class=post-content><p>When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.</p><p><em>Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project. (coming soon™)</em></p><h2 id=understanding-rest>Understanding REST</h2><p>If you already know or built a RESTful API, you can skip this part. There are already quite a few <a href=http://www.looah.com/source/view/2284>guides</a> out there that goes into the specifics of what REST is and all the amazing things about it. So instead, I’ll just cover the basics (more like, that’s all I know about it). It’s the standard way of communication on the internet through HTTP. In the world of internet, the frontend web interface needs a way to communicate with the backend. While the frontend can say all kinds of things, they still need to declare a set of standard ‘phrases’ between them so the backend knows what the frontend is asking for.</p><h2 id=setting-up>Setting up</h2><p>Here are a few thing you might want to have installed before getting started:</p><ul><li>Maven / Gradle</li><li>Kotlin</li><li>Java? (not too sure but you’ll probably need it)</li><li>(optional) IntelliJ</li></ul><h2 id=getting-started>Getting started</h2><p>According to the <a href=https://github.com/perwendel/spark-kotlin>official GitHub repo of spark-kotlin</a>, here are the following things to include to use it for either Maven or Gradle. Personally, I’m using Gradle for this simply because I’ve never used it outside of Android Development. (Also, its the new sexy thing. Kinda?)</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;dependency&gt;</span>
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>RESTful API with Spark Kotlin - The Ink Mortar</title>
+<meta name=description content="When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.
+Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project.">
+<meta name=author content="BinHong Lee">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RESTful API with Spark Kotlin">
+<meta property="og:site_name" content="The Ink Mortar">
+<meta property="og:description" content="When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.
+Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project.">
+<meta name=twitter:description content="When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.
+Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project.">
+<meta name=twitter:title content="RESTful API with Spark Kotlin"><meta property="article:published_time" 2018-03-21t00:00:00-08:00>
+<meta property="article:modified_time" 2018-03-21t00:00:00-08:00>
+<meta property="og:image" content="https://binhong.me/blog/img/sparkcover.jpeg">
+<meta name=twitter:image content="https://binhong.me/blog/img/sparkcover.jpeg">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:site content="@">
+<link href=https://binhong.me/blog/an-old-hope.min.css rel=stylesheet>
+<link href=https://binhong.me/blog/style.css rel=stylesheet>
+<link href=https://binhong.me/blog/custom.css rel=stylesheet>
+<link rel=icon href=https://binhong.me/blog/img/profile.png>
+<meta name=generator content="Hugo 0.88.1">
+<script>const key='dark-theme',dark='dark',light='light';function setTheme(){localStorage.getItem(key)?localStorage.getItem(key)===dark&&document.body.classList.add(dark):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add(dark)}function toggleDarkMode(){const b=localStorage.getItem(key);var a=dark;b===a&&(a=light),localStorage.setItem(key,a),document.body.classList.toggle(dark)}</script>
+</head>
+<body class=single>
+<script>setTheme()</script>
+<header class=header>
+<nav class=nav>
+<h1 class=logo><a href=https://binhong.me/blog/>The Ink Mortar</a></h1>
+<button class=dark-mode-toggle onclick=toggleDarkMode()>
+<h4 class=bright-text>Bright</h2>
+<h4 class=dark-text>Dark</h2>
+</button>
+</nav>
+</header>
+<main class=main>
+<article class=post-single>
+<a href=https://binhong.me/blog/img/sparkcover.jpeg>
+<img class=post-thumbnail-img src=https://binhong.me/blog/img/sparkcover.jpeg>
+</a>
+<div class=post-single-content>
+<header class=post-header>
+<h1 class=post-title>RESTful API with Spark Kotlin</h1>
+<h2 class=post-subtitle>The not-so-mainstream way of building an API</h2>
+<div class=post-meta>BinHong Lee · March 21, 2018</div>
+</header>
+<div class=post-content><p>When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.</p>
+<p><em>Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project. (coming soon™)</em></p>
+<h2 id=understanding-rest>Understanding REST</h2>
+<p>If you already know or built a RESTful API, you can skip this part. There are already quite a few <a href=http://www.looah.com/source/view/2284>guides</a> out there that goes into the specifics of what REST is and all the amazing things about it. So instead, I’ll just cover the basics (more like, that’s all I know about it). It’s the standard way of communication on the internet through HTTP. In the world of internet, the frontend web interface needs a way to communicate with the backend. While the frontend can say all kinds of things, they still need to declare a set of standard ‘phrases’ between them so the backend knows what the frontend is asking for.</p>
+<h2 id=setting-up>Setting up</h2>
+<p>Here are a few thing you might want to have installed before getting started:</p>
+<ul>
+<li>Maven / Gradle</li>
+<li>Kotlin</li>
+<li>Java? (not too sure but you’ll probably need it)</li>
+<li>(optional) IntelliJ</li>
+</ul>
+<h2 id=getting-started>Getting started</h2>
+<p>According to the <a href=https://github.com/perwendel/spark-kotlin>official GitHub repo of spark-kotlin</a>, here are the following things to include to use it for either Maven or Gradle. Personally, I’m using Gradle for this simply because I’ve never used it outside of Android Development. (Also, its the new sexy thing. Kinda?)</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml><span style=color:#f92672>&lt;dependency&gt;</span>
     <span style=color:#f92672>&lt;groupId&gt;</span>com.sparkjava<span style=color:#f92672>&lt;/groupId&gt;</span>
     <span style=color:#f92672>&lt;artifactId&gt;</span>spark-kotlin<span style=color:#f92672>&lt;/artifactId&gt;</span>
     <span style=color:#f92672>&lt;version&gt;</span>1.0.0-alpha<span style=color:#f92672>&lt;/version&gt;</span>
 <span style=color:#f92672>&lt;/dependency&gt;</span>
-</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-groovy data-lang=groovy>dependencies <span style=color:#f92672>{</span>
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-groovy data-lang=groovy>dependencies <span style=color:#f92672>{</span>
     <span style=color:#f92672>...</span>
     compile <span style=color:#e6db74>&#34;com.sparkjava:spark-kotlin:1.0.0-alpha&#34;</span>
     <span style=color:#f92672>...</span>
 <span style=color:#f92672>}</span>
-</code></pre></div><h2 id=the-basics>The basics</h2><p>This is what attracted me to use it over spring-boot. It just looks so much easier and straightforward comparatively. Admittedly, I’ve never used spring-boot for server development so I could be totally wrong especially if/when it comes down to a large scale application.</p><h3 id=get-request>GET request</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=color:#66d9ef>import</span> spark.kotlin.*
+</code></pre></div><h2 id=the-basics>The basics</h2>
+<p>This is what attracted me to use it over spring-boot. It just looks so much easier and straightforward comparatively. Admittedly, I’ve never used spring-boot for server development so I could be totally wrong especially if/when it comes down to a large scale application.</p>
+<h3 id=get-request>GET request</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=color:#66d9ef>import</span> spark.kotlin.*
 
 <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>main</span>(args:Array&lt;String&gt;) {
     <span style=color:#66d9ef>get</span>(<span style=color:#e6db74>&#34;/&#34;</span>) {
         <span style=color:#e6db74>&#34;Welcome to website abc.&#34;</span>
     }
 }
-</code></pre></div><p>That’s it! I could’ve just ended the article here and you can pretty much figure out the rest on your own. But yea, let’s explore into a few more interesting features.</p><h3 id=post-request>POST request</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=color:#66d9ef>import</span> spark.kotlin.*
+</code></pre></div><p>That’s it! I could’ve just ended the article here and you can pretty much figure out the rest on your own. But yea, let’s explore into a few more interesting features.</p>
+<h3 id=post-request>POST request</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=color:#66d9ef>import</span> spark.kotlin.*
 
 <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>main</span>(args:Array&lt;String&gt;) {
     post(<span style=color:#e6db74>&#34;/checkExist&#34;</span>) {
@@ -31,7 +101,11 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
 <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>exist</span>(input:String): Boolean {
     <span style=color:#75715e>//Some check to make sure given string exist
 </span><span style=color:#75715e></span>}
-</code></pre></div><p>For POST request, they work as easily too! All you need to know is that the request body can be retrieved with <code>request.body()</code>.</p><h2 id=more-fun-stuff>More fun stuff</h2><h3 id=redirect-params>redirect(), params()</h3><p>Now, what if you want to have the same output for separate links? Well, you can just do <code>redirect("/path")</code>. You can also get information from the URL through <code>params(":path")</code> tag. Something like this…</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=color:#66d9ef>import</span> spark.kotlin.*
+</code></pre></div><p>For POST request, they work as easily too! All you need to know is that the request body can be retrieved with <code>request.body()</code>.</p>
+<h2 id=more-fun-stuff>More fun stuff</h2>
+<h3 id=redirect-params>redirect(), params()</h3>
+<p>Now, what if you want to have the same output for separate links? Well, you can just do <code>redirect("/path")</code>. You can also get information from the URL through <code>params(":path")</code> tag. Something like this…</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=color:#66d9ef>import</span> spark.kotlin.*
 
 <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>main</span>(args:Array&lt;String&gt;) {
     post(<span style=color:#e6db74>&#34;/checkExist&#34;</span>) {
@@ -54,7 +128,9 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
 <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>exist</span>(input:String): Boolean {
     <span style=color:#75715e>//Some check to make sure given string exist
 </span><span style=color:#75715e></span>}
-</code></pre></div><h3 id=instance-api>Instance API</h3><p>You can also have a separate instance API that is running on a different port or with a different setting than the static API simply by declaring it as a separate variable.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=color:#66d9ef>import</span> spark.kotlin.*
+</code></pre></div><h3 id=instance-api>Instance API</h3>
+<p>You can also have a separate instance API that is running on a different port or with a different setting than the static API simply by declaring it as a separate variable.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=color:#66d9ef>import</span> spark.kotlin.*
 
 <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>main</span>(args:Array&lt;String&gt;) {
     <span style=color:#66d9ef>val</span> http = ignite {
@@ -71,7 +147,12 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
         <span style=color:#e6db74>&#34;Page does not exist.&#34;</span>
     }
 }
-</code></pre></div><p>Of course, there are a lot of more advanced features (such as session, uri, etc.) that I did not cover. Feel free to explore them on your own following the <a href=https://github.com/perwendel/spark-kotlin/blob/master/README.md>README of the repo</a>.</p><hr><p>From here on out, I’m including some relevant but not exactly spark-kotlin stuff on it.</p><h2 id=dealing-with-json>Dealing with JSON</h2><p>In many (or most) occasions, both requests and responses will be in JSON format. Here’s where Google&rsquo;s <a href=https://github.com/google/gson>Gson library</a> comes in handy. It is really easy to use and had a wide range of support. I put together a simple example below to show how it is and can be used.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=color:#66d9ef>import</span> com.google.gson.GsonBuilder
+</code></pre></div><p>Of course, there are a lot of more advanced features (such as session, uri, etc.) that I did not cover. Feel free to explore them on your own following the <a href=https://github.com/perwendel/spark-kotlin/blob/master/README.md>README of the repo</a>.</p>
+<hr>
+<p>From here on out, I’m including some relevant but not exactly spark-kotlin stuff on it.</p>
+<h2 id=dealing-with-json>Dealing with JSON</h2>
+<p>In many (or most) occasions, both requests and responses will be in JSON format. Here’s where Google&rsquo;s <a href=https://github.com/google/gson>Gson library</a> comes in handy. It is really easy to use and had a wide range of support. I put together a simple example below to show how it is and can be used.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=color:#66d9ef>import</span> com.google.gson.GsonBuilder
 
 <span style=color:#66d9ef>fun</span> <span style=color:#a6e22e>main</span>(args:Array&lt;String&gt;) {
     <span style=color:#75715e>// Some codes
@@ -85,7 +166,9 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
 }
 
 <span style=color:#66d9ef>data</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Item</span> (<span style=color:#66d9ef>val</span> id: Long, <span style=color:#66d9ef>val</span> info: String)
-</code></pre></div><h2 id=unit-testing>Unit testing</h2><p>It took me a while to find a testing library that works as easily as I wished. This is a test library made specifically for the spark framework by <a href=https://www.despegar.com/>Despegar</a> called <a href=https://github.com/despegar/spark-test>spark-test</a>.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=color:#66d9ef>import</span> com.despegar.http.client.*
+</code></pre></div><h2 id=unit-testing>Unit testing</h2>
+<p>It took me a while to find a testing library that works as easily as I wished. This is a test library made specifically for the spark framework by <a href=https://www.despegar.com/>Despegar</a> called <a href=https://github.com/despegar/spark-test>spark-test</a>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=color:#66d9ef>import</span> com.despegar.http.client.*
 <span style=color:#66d9ef>import</span> com.despegar.sparkjava.test.SparkServer
 <span style=color:#66d9ef>import</span> spark.servlet.SparkApplication
 
@@ -116,8 +199,43 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
         assertEquals(String(httpResponse.body()), <span style=color:#e6db74>&#34;Exist.&#34;</span>) <span style=color:#75715e>// or &#34;Does not exist.&#34;
 </span><span style=color:#75715e></span>    }
 }
-</code></pre></div><p>A few things to keep in mind though:</p><ul><li>This is a Java library made for <a href=https://github.com/perwendel/spark>spark-java</a> instead of <a href=https://github.com/perwendel/spark-kotlin>spark-kotlin</a></li><li>The server needs to be running on the background (in my case, on port 4567) for this to work</li><li>Unable to attach a request body for DELETE request</li></ul><p><em>Note: As mentioned at the time of writing, the DELETE request is unable to attach any kind of request body to it making it hard to test your DELETE request. Personally, I use different URL each feature so I just redirect a POST request from the same url to the DELETE request and test it through the POST request instead. Not ideal, but it works for now.</em></p><hr><h2 id=about-me>About me</h2><p>I currently work at Apple Inc. on the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey <a href=https://binhong.me/blog>here</a> or on <a href=https://github.com/binhonglee>GitHub</a>.</p><hr><h2 id=references>References</h2><ul><li><a href=https://medium.com/@codemwnci/kotlin-webapp-tutorial-todolist-part-1-c544b9a70f29>Kotlin WebApp Tutorial</a> by Wayne Ellis</li><li><a href=https://medium.com/@v.souhrada/build-rest-service-with-kotlin-spark-java-and-requery-part-1-1798844fdf04>Build REST Service with Kotlin, Spark Java and Requery</a> by Vaclav Souhrada</li></ul><blockquote><p><em>This article was originally published on <a href=https://hackernoon.com/restful-api-with-spark-kotlin-f43bd57affc4>Hacker Noon</a>.</em></p></blockquote></div><footer class=post-footer><ul class=post-tags><li><a href=https://binhong.me/blog/tags/restful-api>RESTful API</a></li><li><a href=https://binhong.me/blog/tags/kotlin>Kotlin</a></li><li><a href=https://binhong.me/blog/tags/spark-kotlin>Spark Kotlin</a></li><li><a href=https://binhong.me/blog/tags/api>API</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2021 <a href=https://binhong.me/blog/>The Ink Mortar</a> by BinHong Lee</span>
+</code></pre></div><p>A few things to keep in mind though:</p>
+<ul>
+<li>This is a Java library made for <a href=https://github.com/perwendel/spark>spark-java</a> instead of <a href=https://github.com/perwendel/spark-kotlin>spark-kotlin</a></li>
+<li>The server needs to be running on the background (in my case, on port 4567) for this to work</li>
+<li>Unable to attach a request body for DELETE request</li>
+</ul>
+<p><em>Note: As mentioned at the time of writing, the DELETE request is unable to attach any kind of request body to it making it hard to test your DELETE request. Personally, I use different URL each feature so I just redirect a POST request from the same url to the DELETE request and test it through the POST request instead. Not ideal, but it works for now.</em></p>
+<hr>
+<h2 id=about-me>About me</h2>
+<p>I currently work at Apple Inc. on the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey <a href=https://binhong.me/blog>here</a> or on <a href=https://github.com/binhonglee>GitHub</a>.</p>
+<hr>
+<h2 id=references>References</h2>
+<ul>
+<li><a href=https://medium.com/@codemwnci/kotlin-webapp-tutorial-todolist-part-1-c544b9a70f29>Kotlin WebApp Tutorial</a> by Wayne Ellis</li>
+<li><a href=https://medium.com/@v.souhrada/build-rest-service-with-kotlin-spark-java-and-requery-part-1-1798844fdf04>Build REST Service with Kotlin, Spark Java and Requery</a> by Vaclav Souhrada</li>
+</ul>
+<blockquote>
+<p><em>This article was originally published on <a href=https://hackernoon.com/restful-api-with-spark-kotlin-f43bd57affc4>Hacker Noon</a>.</em></p>
+</blockquote>
+</div>
+<footer class=post-footer>
+<ul class=post-tags>
+<li><a href=https://binhong.me/blog/tags/restful-api>RESTful API</a></li>
+<li><a href=https://binhong.me/blog/tags/kotlin>Kotlin</a></li>
+<li><a href=https://binhong.me/blog/tags/spark-kotlin>Spark Kotlin</a></li>
+<li><a href=https://binhong.me/blog/tags/api>API</a></li>
+</ul>
+</footer>
+</article></main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://binhong.me/blog/>The Ink Mortar</a> by BinHong Lee</span>
 <span>&#183;</span>
 <span>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️</span>
 <span>&#183;</span>
-<span>Theme️ <a href=https://github.com/binhonglee/CustomPaper rel=noopener target=_blank>CustomPaper</a></span></footer><script src=https://binhong.me/blog/highlight.min.js></script><script>hljs.initHighlightingOnLoad()</script></body></html>
+<span>Theme️ <a href=https://github.com/binhonglee/CustomPaper rel=noopener target=_blank>CustomPaper</a></span>
+</footer>
+<script src=https://binhong.me/blog/highlight.min.js></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

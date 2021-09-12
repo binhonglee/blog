@@ -1,7 +1,98 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>Automation - The Ink Mortar</title><meta name=description content><meta name=author content="BinHong Lee"><link href=https://binhong.me/blog/an-old-hope.min.css rel=stylesheet><link href=https://binhong.me/blog/style.css rel=stylesheet><link href=https://binhong.me/blog/custom.css rel=stylesheet><link rel=icon href=https://binhong.me/blog/img/profile.png><meta name=generator content="Hugo 0.85.0"><link rel=alternate type=application/rss+xml href=https://binhong.me/blog/tags/automation/index.xml title="The Ink Mortar"><script>const key='dark-theme',dark='dark',light='light';function setTheme(){localStorage.getItem(key)?localStorage.getItem(key)===dark&&document.body.classList.add(dark):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add(dark)}function toggleDarkMode(){const b=localStorage.getItem(key);var a=dark;b===a&&(a=light),localStorage.setItem(key,a),document.body.classList.toggle(dark)}</script></head><body class=list><script>setTheme()</script><header class=header><nav class=nav><h1 class=logo><a href=https://binhong.me/blog/>The Ink Mortar</a></h1><button class=dark-mode-toggle onclick=toggleDarkMode()><h4 class=bright-text>Bright</h2><h4 class=dark-text>Dark</h2></button></nav></header><main class=main><article class=post-entry><header class=entry-header><h2>RESTful API with Spark Kotlin</h2><h3 class=entry-subtitle>The not-so-mainstream way of building an API</h3></header><section class=entry-content><p>When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.
-Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project....</p></section><footer class=entry-footer><time>March 21, 2018</time></footer><a class=entry-link href=https://binhong.me/blog/2018-03-21-restful-api-with-spark-kotlin/></a></article><article class=post-entry><header class=entry-header><h2>Being lucky</h2><h3 class=entry-subtitle>Getting an engineering job as an international student</h3></header><section class=entry-content><p>Ah, you’ve graduated. Now what? Oh right, still no job offer! *panics*
-As an international student, I have come across hundreds of guides on “how to land an interview”, “how to get a job”, “how to solve DSA questions” etc but almost none of them were specifically written with an international student in mind. I’m not here to dismiss the quality of such guides but rather, to be an add-on (or plugin if you will), to help international students understand their challenges better....</p></section><footer class=entry-footer><time>February 10, 2018</time></footer><a class=entry-link href=https://binhong.me/blog/2018-02-10-being-lucky/></a></article><article class=post-entry><header class=entry-header><h2>I could become you tomorrow and no one will know</h2><h3 class=entry-subtitle>because I have your IC number, your house address and phone number.</h3></header><section class=entry-content><p>Backstory I lied, but maybe someone else could. If you didn’t know already, Malaysia just suffered possibly its largest data breach ever with personal data of millions of Malaysians (including your full name, IC number, phone number and home address) up for grabs as long as the price is right. If you are not freaked out yet, you should be and I’ll tell you why. I don’t think many people understand how dangerous these data can be....</p></section><footer class=entry-footer><time>November 20, 2017</time></footer><a class=entry-link href=https://binhong.me/blog/2017-11-20-i-could-become-you-tomorrow-and-no-one-would-find-out/></a></article><article class=post-entry><header class=entry-header><h2>Use Terminal in Windows with Style</h2><h3 class=entry-subtitle>Windows [Linux Shell (Powerline + Hyper)]</h3></header><section class=entry-content><p>When the Linux Shell in Windows was first released, I used it and didn’t quite like it. Fast forward a year later, I heard it is a lot better now (also the fact that my familiarity with terminal commands improved helped) so I decided to give it another try. It is a really fun experience so far. In case you haven’t install the Windows Subsystem for Linux (WSL), follow this step-by-step guide by Microsoft to get started....</p></section><footer class=entry-footer><time>August 15, 2017</time></footer><a class=entry-link href=https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=/blog/tags/automation/>← Prev Page</a></nav></footer></main><footer class=footer><span>&copy; 2021 <a href=https://binhong.me/blog/>The Ink Mortar</a> by BinHong Lee</span>
+<!doctype html><html lang=en-us>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<title>Automation - The Ink Mortar</title>
+<meta name=description content>
+<meta name=author content="BinHong Lee">
+<link href=https://binhong.me/blog/an-old-hope.min.css rel=stylesheet>
+<link href=https://binhong.me/blog/style.css rel=stylesheet>
+<link href=https://binhong.me/blog/custom.css rel=stylesheet>
+<link rel=icon href=https://binhong.me/blog/img/profile.png>
+<meta name=generator content="Hugo 0.88.1">
+<link rel=alternate type=application/rss+xml href=https://binhong.me/blog/tags/automation/index.xml title="The Ink Mortar">
+<script>const key='dark-theme',dark='dark',light='light';function setTheme(){localStorage.getItem(key)?localStorage.getItem(key)===dark&&document.body.classList.add(dark):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add(dark)}function toggleDarkMode(){const b=localStorage.getItem(key);var a=dark;b===a&&(a=light),localStorage.setItem(key,a),document.body.classList.toggle(dark)}</script>
+</head>
+<body class=list>
+<script>setTheme()</script>
+<header class=header>
+<nav class=nav>
+<h1 class=logo><a href=https://binhong.me/blog/>The Ink Mortar</a></h1>
+<button class=dark-mode-toggle onclick=toggleDarkMode()>
+<h4 class=bright-text>Bright</h2>
+<h4 class=dark-text>Dark</h2>
+</button>
+</nav>
+</header>
+<main class=main>
+<article class=post-entry>
+<header class=entry-header>
+<h2>RESTful API with Spark Kotlin</h2>
+<h3 class=entry-subtitle>The not-so-mainstream way of building an API</h3>
+</header>
+<section class=entry-content>
+<p>When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.
+Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project....</p>
+</section>
+<footer class=entry-footer>
+<time>March 21, 2018</time>
+</footer>
+<a class=entry-link href=https://binhong.me/blog/2018-03-21-restful-api-with-spark-kotlin/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>Being lucky</h2>
+<h3 class=entry-subtitle>Getting an engineering job as an international student</h3>
+</header>
+<section class=entry-content>
+<p>Ah, you’ve graduated. Now what? Oh right, still no job offer! *panics*
+As an international student, I have come across hundreds of guides on “how to land an interview”, “how to get a job”, “how to solve DSA questions” etc but almost none of them were specifically written with an international student in mind. I’m not here to dismiss the quality of such guides but rather, to be an add-on (or plugin if you will), to help international students understand their challenges better....</p>
+</section>
+<footer class=entry-footer>
+<time>February 10, 2018</time>
+</footer>
+<a class=entry-link href=https://binhong.me/blog/2018-02-10-being-lucky/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>I could become you tomorrow and no one will know</h2>
+<h3 class=entry-subtitle>because I have your IC number, your house address and phone number.</h3>
+</header>
+<section class=entry-content>
+<p>Backstory I lied, but maybe someone else could. If you didn’t know already, Malaysia just suffered possibly its largest data breach ever with personal data of millions of Malaysians (including your full name, IC number, phone number and home address) up for grabs as long as the price is right. If you are not freaked out yet, you should be and I’ll tell you why. I don’t think many people understand how dangerous these data can be....</p>
+</section>
+<footer class=entry-footer>
+<time>November 20, 2017</time>
+</footer>
+<a class=entry-link href=https://binhong.me/blog/2017-11-20-i-could-become-you-tomorrow-and-no-one-would-find-out/></a>
+</article>
+<article class=post-entry>
+<header class=entry-header>
+<h2>Use Terminal in Windows with Style</h2>
+<h3 class=entry-subtitle>Windows [Linux Shell (Powerline + Hyper)]</h3>
+</header>
+<section class=entry-content>
+<p>When the Linux Shell in Windows was first released, I used it and didn’t quite like it. Fast forward a year later, I heard it is a lot better now (also the fact that my familiarity with terminal commands improved helped) so I decided to give it another try. It is a really fun experience so far. In case you haven’t install the Windows Subsystem for Linux (WSL), follow this step-by-step guide by Microsoft to get started....</p>
+</section>
+<footer class=entry-footer>
+<time>August 15, 2017</time>
+</footer>
+<a class=entry-link href=https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style/></a>
+</article>
+<footer class=page-footer>
+<nav class=pagination>
+<a class=prev href=/blog/tags/automation/>← Prev Page</a>
+</nav>
+</footer></main>
+<footer class=footer>
+<span>&copy; 2021 <a href=https://binhong.me/blog/>The Ink Mortar</a> by BinHong Lee</span>
 <span>&#183;</span>
 <span>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️</span>
 <span>&#183;</span>
-<span>Theme️ <a href=https://github.com/binhonglee/CustomPaper rel=noopener target=_blank>CustomPaper</a></span></footer><script src=https://binhong.me/blog/highlight.min.js></script><script>hljs.initHighlightingOnLoad()</script></body></html>
+<span>Theme️ <a href=https://github.com/binhonglee/CustomPaper rel=noopener target=_blank>CustomPaper</a></span>
+</footer>
+<script src=https://binhong.me/blog/highlight.min.js></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
