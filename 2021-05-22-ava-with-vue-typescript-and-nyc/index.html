@@ -10,8 +10,8 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ava with Vue (2.x) + TypeScript (and NYC)">
 <meta property="og:site_name" content="The Ink Mortar">
-<meta property="og:description" content="When working on a project with Vue (TypeScript), I faced a lot of roadblocks trying to get code coverage to work. The issue is largely covered in this issue thread. Most solutions / workarounds for that seems to revolve around changing the bundling flow with webpack. Considering my lack of familiarity with webpack (on top of my use of scss and pug in Vue files), putting together a webpack config that works for me turns out to be extremely challenging.">
-<meta name=twitter:description content="When working on a project with Vue (TypeScript), I faced a lot of roadblocks trying to get code coverage to work. The issue is largely covered in this issue thread. Most solutions / workarounds for that seems to revolve around changing the bundling flow with webpack. Considering my lack of familiarity with webpack (on top of my use of scss and pug in Vue files), putting together a webpack config that works for me turns out to be extremely challenging.">
+<meta property="og:description" content="Component and Unit Testing with Test Coverage">
+<meta name=twitter:description content="Component and Unit Testing with Test Coverage">
 <meta name=twitter:title content="Ava with Vue (2.x) + TypeScript (and NYC)"><meta property="article:published_time" 2021-05-22t00:00:00-08:00>
 <meta property="article:modified_time" 2021-05-22t00:00:00-08:00>
 <meta property="og:image" content="https://binhong.me/blog/img/avass.png">
@@ -22,7 +22,7 @@
 <link href=https://binhong.me/blog/style.css rel=stylesheet>
 <link href=https://binhong.me/blog/custom.css rel=stylesheet>
 <link rel=icon href=https://binhong.me/blog/img/profile.png>
-<meta name=generator content="Hugo 0.88.1">
+<meta name=generator content="Hugo 0.89.2">
 <script>const key='dark-theme',dark='dark',light='light';function setTheme(){localStorage.getItem(key)?localStorage.getItem(key)===dark&&document.body.classList.add(dark):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add(dark)}function toggleDarkMode(){const b=localStorage.getItem(key);var a=dark;b===a&&(a=light),localStorage.setItem(key,a),document.body.classList.toggle(dark)}</script>
 </head>
 <body class=single>
@@ -30,6 +30,14 @@
 <header class=header>
 <nav class=nav>
 <h1 class=logo><a href=https://binhong.me/blog/>The Ink Mortar</a></h1>
+<ul class=menu>
+<li class=menu-item>
+<a href=https://binhong.me>About</a>
+</li>
+<li class=menu-item>
+<a href=https://github.com/binhonglee>GitHub</a>
+</li>
+</ul>
 <button class=dark-mode-toggle onclick=toggleDarkMode()>
 <h4 class=bright-text>Bright</h2>
 <h4 class=dark-text>Dark</h2>

@@ -10,8 +10,8 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Use Terminal in Windows with Style">
 <meta property="og:site_name" content="The Ink Mortar">
-<meta property="og:description" content="When the Linux Shell in Windows was first released, I used it and didn’t quite like it. Fast forward a year later, I heard it is a lot better now (also the fact that my familiarity with terminal commands improved helped) so I decided to give it another try. It is a really fun experience so far. In case you haven’t install the Windows Subsystem for Linux (WSL), follow this step-by-step guide by Microsoft to get started.">
-<meta name=twitter:description content="When the Linux Shell in Windows was first released, I used it and didn’t quite like it. Fast forward a year later, I heard it is a lot better now (also the fact that my familiarity with terminal commands improved helped) so I decided to give it another try. It is a really fun experience so far. In case you haven’t install the Windows Subsystem for Linux (WSL), follow this step-by-step guide by Microsoft to get started.">
+<meta property="og:description" content="Windows [Linux Shell (Powerline + Hyper)]">
+<meta name=twitter:description content="Windows [Linux Shell (Powerline + Hyper)]">
 <meta name=twitter:title content="Use Terminal in Windows with Style"><meta property="article:published_time" 2017-08-15t00:00:00-08:00>
 <meta property="article:modified_time" 2017-08-15t00:00:00-08:00>
 <meta property="og:image" content="https://binhong.me/blog/img/use-terminal-in-windows-with-style.png">
@@ -22,7 +22,7 @@
 <link href=https://binhong.me/blog/style.css rel=stylesheet>
 <link href=https://binhong.me/blog/custom.css rel=stylesheet>
 <link rel=icon href=https://binhong.me/blog/img/profile.png>
-<meta name=generator content="Hugo 0.88.1">
+<meta name=generator content="Hugo 0.89.2">
 <script>const key='dark-theme',dark='dark',light='light';function setTheme(){localStorage.getItem(key)?localStorage.getItem(key)===dark&&document.body.classList.add(dark):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add(dark)}function toggleDarkMode(){const b=localStorage.getItem(key);var a=dark;b===a&&(a=light),localStorage.setItem(key,a),document.body.classList.toggle(dark)}</script>
 </head>
 <body class=single>
@@ -30,6 +30,14 @@
 <header class=header>
 <nav class=nav>
 <h1 class=logo><a href=https://binhong.me/blog/>The Ink Mortar</a></h1>
+<ul class=menu>
+<li class=menu-item>
+<a href=https://binhong.me>About</a>
+</li>
+<li class=menu-item>
+<a href=https://github.com/binhonglee>GitHub</a>
+</li>
+</ul>
 <button class=dark-mode-toggle onclick=toggleDarkMode()>
 <h4 class=bright-text>Bright</h2>
 <h4 class=dark-text>Dark</h2>
@@ -56,7 +64,7 @@
 </ul>
 <p>After this, you should be able to pull up the config file easily with either pressing <code>Ctrl + ,</code> or through the Hamburger Menu into ‘Edit’ → ‘Preferences’.</p>
 <h2 id=pointing-hyper-to-the-linux-shell>Pointing Hyper to the Linux Shell</h2>
-<p>![]({{ site.baseurl }}/assets/img/utImage1.png)</p>
+<p><img src=/blog/img/utImage1.png alt></p>
 <p>From the config file, look for the <code>shell: ''</code>, option as seen from the screenshot above, change it to <code>shell: 'C:\\Windows\\System32\\bash.exe\'</code>, as suggested by the comment. In my personal experience so far, neither keeping nor removing ‘shellArgs’ make any changes to the bash shell. While you are at it, feel free to add any kind of plugins you want to it. Personally, I added <code>'hyperterm-cobalt2-theme'</code> because I like the theme.</p>
 <p>You should now be able to use Hyper just like a normal Linux Shell.</p>
 <h2 id=general-development-environment-and-tools>General development environment and tools</h2>
@@ -88,12 +96,12 @@ nano .bashrc
 <span style=color:#66d9ef>fi</span>
 </code></pre></div><p><em>*Note: If you happen use nano (like the given example), do note that <code>Ctrl+X</code> will not exit the program. You can do <code>F2</code> instead.</em></p>
 <p>Save and restart Hyper (or refresh) and it should look something like this. Realize the missing characters which are supposed to be the arrows.</p>
-<p>![]({{ site.baseurl }}/assets/img/utImage2.png)</p>
+<p><img src=/blog/img/utImage2.png alt></p>
 <h3 id=fonts-for-powerline>Fonts for Powerline</h3>
 <p>For the character to show, you will need Powerline fonts installed and set it in your config file <code>Ctrl + ,</code> for Hyper.</p>
 <p>Go to <a href=https://github.com/powerline/fonts>https://github.com/powerline/fonts</a>, pick a font you like (I use monofur) or clone the repo and install all the fonts. Remember to install it as Windows, meaning you will be running the ps1 file (PowerShell) instead of the sh file. If it throws an error saying something along the lines of “running scripts is disabled”, follow the instructions <a href=https://www.faqforge.com/windows/windows-powershell-running-scripts-is-disabled-on-this-system/>here</a> to enable it and run it again.</p>
 <p>When you are done with the installation, remember to change the font through the config file, then reload Hyper. At this point, it should look something like the following screenshot.</p>
-<p>![]({{ site.baseurl }}/assets/img/utImage3.png)</p>
+<p><img src=/blog/img/utImage3.png alt></p>
 <h2 id=optional-installing-npm>(Optional) Installing npm</h2>
 <h4 id=_this-section-is-referenced-from-installing-nvm-nodejs-and-npm-on-ubuntuhttpsrandikacominstalling-nvm-nodejs-and-npm-on-ubuntu-f6deef0cd22a-by-randika-rathugamagehttpsmediumcomrandika_><em>This section is referenced from <a href=https://randika.com/installing-nvm-nodejs-and-npm-on-ubuntu-f6deef0cd22a>Installing nvm, nodejs and npm on Ubuntu</a> by <a href=https://medium.com/@randika>Randika Rathugamage</a></em></h4>
 <p>The obvious way to do this is by installing it through the default package manager. However, the npm installed through apt-get is 3.5.2 version without node. I personally prefer installing it with nvm starting by cloning the nvm repository and adding it to <code>.bashrc</code>.</p>
