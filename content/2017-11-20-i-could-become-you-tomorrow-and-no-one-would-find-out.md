@@ -16,7 +16,7 @@ Let’s face it, with the amount of telecommunication companies being breached, 
 
 When I brought this up to some of my friends, their reactions were rather “Meh, I don’t have anything of worth anyway. Why would they wanna hack me?”. This is where you’re wrong. They don’t have to hack you, you’re ALREADY HACKED. As to what can they do with it? **Identity theft**, basically THEY CAN BECOME YOU. With that, I mean they can apply for loans from banks on your behalf, register phone numbers (to run shady business) on your behalf, essentially enjoy all the benefits of being you without any of the drawbacks.
 
-![Information obtainable from SPR website]({{ site.baseurl }}/assets/img/icImage2.jpeg)
+![Information obtainable from SPR website](/blog/img/icImage2.jpeg)
 
 When I first read about the breach, I thought, "it’s been 3 years now, as long as you’ve moved and changed phone number, they pretty much "only" have your IC no. It’s bad, but maybe not as severe as I initially might imagined”. Could I have been any more wrong. If you are a registered voter and your IC no is fallen into the wrong hands, whoever this is can easily pull up your full profile (full name, home address) from the SPR website. And while doing so, every single device that this set of data goes through (router, ISP, some surveillance services, or even a MIM attack) gets to see all of these information as well since the site is not encrypted. (It’s 2017 and TLS is free!)
 

@@ -19,7 +19,7 @@ After this, you should be able to pull up the config file easily with either pre
 
 ## Pointing Hyper to the Linux Shell
 
-![]({{ site.baseurl }}/assets/img/utImage1.png)
+![](/blog/img/utImage1.png)
 
 From the config file, look for the `shell: ''`, option as seen from the screenshot above, change it to `shell: 'C:\\Windows\\System32\\bash.exe\'`, as suggested by the comment. In my personal experience so far, neither keeping nor removing ‘shellArgs’ make any changes to the bash shell. While you are at it, feel free to add any kind of plugins you want to it. Personally, I added `'hyperterm-cobalt2-theme'` because I like the theme.
 
@@ -76,7 +76,7 @@ _*Note: If you happen use nano (like the given example), do note that `Ctrl+X` w
 
 Save and restart Hyper (or refresh) and it should look something like this. Realize the missing characters which are supposed to be the arrows.
 
-![]({{ site.baseurl }}/assets/img/utImage2.png)
+![](/blog/img/utImage2.png)
 
 ### Fonts for Powerline
 
@@ -86,7 +86,7 @@ Go to [https://github.com/powerline/fonts](https://github.com/powerline/fonts), 
 
 When you are done with the installation, remember to change the font through the config file, then reload Hyper. At this point, it should look something like the following screenshot.
 
-![]({{ site.baseurl }}/assets/img/utImage3.png)
+![](/blog/img/utImage3.png)
 
 ## (Optional) Installing npm
 

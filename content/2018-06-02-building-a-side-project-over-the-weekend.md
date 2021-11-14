@@ -14,7 +14,7 @@ Be realistic. You don’t want to end your weekend with an unfinished product th
 
 In cases where the thing you really wanted to build is huge and complicated, try breaking it down into smaller pieces and maybe span it over multiple weekends. The point being to have a realistic idea of what to expect at the end of the weekend and achieve it while not mounting yourself additional pressure (and distractions) to _‘complete’_ the other parts of it during your work / study week that would jeopardize what you are supposed to be doing during the day.
 
-![]({{ site.baseurl }}/assets/img/sideProject2.png)
+![](/blog/img/sideProject2.png)
 
 ## Preparation
 
@@ -30,7 +30,7 @@ I think this is a major one. Figure out how you’re going to get food supplies 
 
 Also do you even Soylent? (Credit to [Jane Manchun Wong](https://twitter.com/wongmjane))
 
-![]({{ site.baseurl }}/assets/img/sideProject3.png)
+![](/blog/img/sideProject3.png)
 
 ## Process
 
@@ -40,7 +40,7 @@ Take it slow. The faster you go in the beginning, the faster you burn out. This 
 
 Take frequent breaks. I can’t stress how important it is to relax in between. You don’t get maximum efficiency by rushing things, you get them by being in between too comfortable and too overwhelmed. Personally, I would take a break and go out for a walk and fresh air every 30 mins or so. This highly differs among individuals so you have to figure out what works best for you.
 
-![]({{ site.baseurl }}/assets/img/sideProject4.png)
+![](/blog/img/sideProject4.png)
 
 ## Wrap up
 

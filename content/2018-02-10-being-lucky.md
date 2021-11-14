@@ -16,7 +16,7 @@ Let’s face it, with all the hassle for potential visa sponsorship or even losi
 
 I have people around me who constantly complain about this. I do too sometimes but then I thought, I’m not ‘top of the class’ smart or ‘winner of multiple hackathons’ smart. Also, complaining about it won’t help your case. A job won’t fall from the sky randomly just because you complained hard enough. If you are just an average graduate (like myself), there is really very little incentive to think you are irreplaceable (technologically speaking) though that doesn’t mean you won’t be in 3 years time.
 
-![“Two books on a desk near a MacBook with lines of code on its screen” by Émile Perron on Unsplash]({{ site.baseurl }}/assets/img/bl1.jpeg)
+![“Two books on a desk near a MacBook with lines of code on its screen” by Émile Perron on Unsplash](/blog/img/bl1.jpeg)
 
 ## Going for the big four
 
@@ -38,7 +38,7 @@ Remember, the requirement is to work at least 20 hours a week. Since you’re wo
 
 Don’t take this from me. Take this from almost every other person in the industry I’ve ever met. Get an internship whenever you can! Even if this means you might have to go back to your home country or work on some shitty project. If you are like me, only realizing the importance of this in your senior year, start working on side projects or open source projects. Develop niche, specific skills and people skills. Few months ago, I wouldn’t have known that my experience in developing an Alexa skill (because why not?) would helped me that much in my interview. If you know you won’t be able to impress recruiters with your experience, grades or anything, you’ll need to make it up with something else. Remember, you’ve got a lot more to prove, more than your peers with no visa issues.
 
-![Photo by Michał Parzuchowski on Unsplash]({{ site.baseurl }}/assets/img/bl2.jpeg)
+![Photo by Michał Parzuchowski on Unsplash](/blog/img/bl2.jpeg)
 
 ## Being lucky
 
