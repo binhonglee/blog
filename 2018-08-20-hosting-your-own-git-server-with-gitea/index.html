@@ -3,13 +3,13 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<title>Hosting your own Git server with Gitea - The Ink Mortar</title>
+<title>Hosting your own Git server with Gitea - Ink Mortar</title>
 <meta name=description content="Most people (including myself) host their personal projects on a third-party free Git hosting websites like GitHub, GitLab, Bitbucket etc. While that is sufficient for most people, it is also pretty fun to have your own Git service hosted on your own domain name of choice. While I trust my fellow engineers at these companies, I am using this as a personally backup to those services if anything goes wrong (like GitLab.">
 <meta name=author content="BinHong Lee">
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hosting your own Git server with Gitea">
-<meta property="og:site_name" content="The Ink Mortar">
+<meta property="og:site_name" content="Ink Mortar">
 <meta property="og:description" content="Having additional backups are never a bad idea">
 <meta name=twitter:description content="Having additional backups are never a bad idea">
 <meta name=twitter:title content="Hosting your own Git server with Gitea"><meta property="article:published_time" 2018-08-20t00:00:00-08:00>
@@ -18,44 +18,41 @@
 <meta name=twitter:image content="https://binhong.me/blog/img/gitea.png">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:site content="@">
-<link href=https://binhong.me/blog/an-old-hope.min.css rel=stylesheet>
 <link href=https://binhong.me/blog/style.css rel=stylesheet>
-<link href=https://binhong.me/blog/custom.css rel=stylesheet>
 <link rel=icon href=https://binhong.me/blog/img/profile.png>
-<meta name=generator content="Hugo 0.89.2">
-<script>const key='dark-theme',dark='dark',light='light';function setTheme(){localStorage.getItem(key)?localStorage.getItem(key)===dark&&document.body.classList.add(dark):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add(dark)}function toggleDarkMode(){const b=localStorage.getItem(key);var a=dark;b===a&&(a=light),localStorage.setItem(key,a),document.body.classList.toggle(dark)}</script>
+<meta name=generator content="Hugo 0.89.4">
 </head>
 <body class=single>
-<script>setTheme()</script>
-<header class=header>
-<nav class=nav>
-<h1 class=logo><a href=https://binhong.me/blog/>The Ink Mortar</a></h1>
-<ul class=menu>
-<li class=menu-item>
-<a href=https://binhong.me>About</a>
-</li>
-<li class=menu-item>
-<a href=https://github.com/binhonglee>GitHub</a>
-</li>
-</ul>
-<button class=dark-mode-toggle onclick=toggleDarkMode()>
-<h4 class=bright-text>Bright</h2>
-<h4 class=dark-text>Dark</h2>
-</button>
-</nav>
-</header>
-<main class=main>
-<article class=post-single>
-<a href=https://binhong.me/blog/img/gitea.png>
-<img class=post-thumbnail-img src=https://binhong.me/blog/img/gitea.png>
-</a>
-<div class=post-single-content>
-<header class=post-header>
-<h1 class=post-title>Hosting your own Git server with Gitea</h1>
-<h2 class=post-subtitle>Having additional backups are never a bad idea</h2>
-<div class=post-meta>BinHong Lee · August 20, 2018</div>
-</header>
-<div class=post-content><p>Most people (including myself) host their personal projects on a third-party free Git hosting websites like GitHub, GitLab, Bitbucket etc. While that is sufficient for most people, it is also pretty fun to have your own Git service hosted on your own domain name of choice. While I trust my fellow engineers at these companies, I am using this as a personally backup to those services if anything goes wrong (<a href=https://about.gitlab.com/2017/02/01/gitlab-dot-com-database-incident/>like GitLab</a>. Though to their credit, they were able to <a href=https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/>recover most of it</a>).</p>
+<details class=dark_mode_toggle role=button open>
+<summary>
+<div class=content>
+<div class=secondary_block>
+<p class=name-title>Ink Mortar</p>
+</div>
+</div>
+</summary>
+</details>
+<div class=wrapper>
+<div class=content>
+<div class=header_links>
+<a class=link href=https://binhong.me/>About</a>
+<p>|</p>
+<a class=link href=https://binhong.me/blog/>Blog</a>
+</div>
+</div>
+<article class="content_body primary_block projects">
+<div class=img_class>
+<img class=thumbnail_img src=https://binhong.me/blog/img/gitea.png>
+</div>
+<main class=content>
+<div class=active>
+<p class="row name title">Hosting your own Git server with Gitea</h1>
+<p class="row lang">Having additional backups are never a bad idea</h2>
+<div class="row author">
+<p>BinHong Lee</p>
+<p class=right>August 20, 2018</p>
+</div>
+<div class=post_content><p>Most people (including myself) host their personal projects on a third-party free Git hosting websites like GitHub, GitLab, Bitbucket etc. While that is sufficient for most people, it is also pretty fun to have your own Git service hosted on your own domain name of choice. While I trust my fellow engineers at these companies, I am using this as a personally backup to those services if anything goes wrong (<a href=https://about.gitlab.com/2017/02/01/gitlab-dot-com-database-incident/>like GitLab</a>. Though to their credit, they were able to <a href=https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/>recover most of it</a>).</p>
 <h2 id=requirements>Requirements</h2>
 <p>There really isn&rsquo;t much requirements except for a working machine and a proper working network. Preferably, you would be hosting this on a Virtual Private Server (DigitalOcean, Vultr, Linode etc.). However, you can also mess around with it on your own machine (it takes and requires very little resources by itself) or even host it at home on a Raspberry Pi!</p>
 <h2 id=installation>Installation</h2>
@@ -227,24 +224,28 @@ gpg --verify gitea-1.5.0-linux-amd64.asc gitea-1.5.0-linux-amd64
 <p><em>This article was originally published on <a href=https://codeburst.io/hosting-your-own-git-server-with-gitea-fc3298aa15ce>codeburst.io</a>.</em></p>
 </blockquote>
 </div>
-<footer class=post-footer>
-<ul class=post-tags>
-<li><a href=https://binhong.me/blog/tags/git>Git</a></li>
-<li><a href=https://binhong.me/blog/tags/gitea>Gitea</a></li>
-<li><a href=https://binhong.me/blog/tags/continuous-integration>Continuous Integration</a></li>
-<li><a href=https://binhong.me/blog/tags/self-hosted>Self Hosted</a></li>
-<li><a href=https://binhong.me/blog/tags/devops>DevOps</a></li>
-</ul>
+<hr>
+<div class=links>
+<a class=link href=https://binhong.me/blog/tags/git>Git</a>
+<a class=link href=https://binhong.me/blog/tags/gitea>Gitea</a>
+<a class=link href=https://binhong.me/blog/tags/continuous-integration>Continuous Integration</a>
+<a class=link href=https://binhong.me/blog/tags/self-hosted>Self Hosted</a>
+<a class=link href=https://binhong.me/blog/tags/devops>DevOps</a>
+</div>
+</div>
+</main>
+</article><footer class=footer>
+<div class=row>
+<p>Fonts:</p>
+<a href=https://github.com/tonsky/FiraCode/ rel=noopener target=_blank class=name>Fira Code</a>,
+<a href=https://github.com/adobe-fonts/source-sans/ rel=noopener target=_blank class=name>Source Sans 3</a>,
+<a href=https://rubjo.github.io/victor-mono/ rel=noopener target=_blank class=name>Victor Mono</a>
+</div>
+<div class=row>
+<p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a> </p>
+</div>
+<p class=row>&copy; 2021 <a href=https://binhong.me/blog/>Ink Mortar</a> by <a href=https://binhong.me>BinHong Lee</a></p>
 </footer>
-</article></main>
-<footer class=footer>
-<span>&copy; 2021 <a href=https://binhong.me/blog/>The Ink Mortar</a> by BinHong Lee</span>
-<span>&#183;</span>
-<span>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️</span>
-<span>&#183;</span>
-<span>Theme️ <a href=https://github.com/binhonglee/CustomPaper rel=noopener target=_blank>CustomPaper</a></span>
-</footer>
-<script src=https://binhong.me/blog/highlight.min.js></script>
-<script>hljs.initHighlightingOnLoad()</script>
+</div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<title>Test Driven Development with Alexa SDK - The Ink Mortar</title>
+<title>Test Driven Development with Alexa SDK - Ink Mortar</title>
 <meta name=description content="What is Test Driven Development? According to Wikipedia, it means “Requirements are turned into very specific test cases, then the software is improved to pass the new tests, only.” Basically, you would first have to write the test of the software/feature you are developing before you start working on the developing the software/feature itself.
 Here are a few more articles on the benefits and why you should apply TDD:
  Test Driven Development by Jan Olbrich Isn’t TDD twice the work?">
@@ -11,7 +11,7 @@ Here are a few more articles on the benefits and why you should apply TDD:
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Test Driven Development with Alexa SDK">
-<meta property="og:site_name" content="The Ink Mortar">
+<meta property="og:site_name" content="Ink Mortar">
 <meta property="og:description" content="Quick guide to building and unit testing an Alexa Skill">
 <meta name=twitter:description content="Quick guide to building and unit testing an Alexa Skill">
 <meta name=twitter:title content="Test Driven Development with Alexa SDK"><meta property="article:published_time" 2018-10-29t00:00:00-08:00>
@@ -20,44 +20,41 @@ Here are a few more articles on the benefits and why you should apply TDD:
 <meta name=twitter:image content="https://binhong.me/blog/img/alexa.jpeg">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:site content="@">
-<link href=https://binhong.me/blog/an-old-hope.min.css rel=stylesheet>
 <link href=https://binhong.me/blog/style.css rel=stylesheet>
-<link href=https://binhong.me/blog/custom.css rel=stylesheet>
 <link rel=icon href=https://binhong.me/blog/img/profile.png>
-<meta name=generator content="Hugo 0.89.2">
-<script>const key='dark-theme',dark='dark',light='light';function setTheme(){localStorage.getItem(key)?localStorage.getItem(key)===dark&&document.body.classList.add(dark):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add(dark)}function toggleDarkMode(){const b=localStorage.getItem(key);var a=dark;b===a&&(a=light),localStorage.setItem(key,a),document.body.classList.toggle(dark)}</script>
+<meta name=generator content="Hugo 0.89.4">
 </head>
 <body class=single>
-<script>setTheme()</script>
-<header class=header>
-<nav class=nav>
-<h1 class=logo><a href=https://binhong.me/blog/>The Ink Mortar</a></h1>
-<ul class=menu>
-<li class=menu-item>
-<a href=https://binhong.me>About</a>
-</li>
-<li class=menu-item>
-<a href=https://github.com/binhonglee>GitHub</a>
-</li>
-</ul>
-<button class=dark-mode-toggle onclick=toggleDarkMode()>
-<h4 class=bright-text>Bright</h2>
-<h4 class=dark-text>Dark</h2>
-</button>
-</nav>
-</header>
-<main class=main>
-<article class=post-single>
-<a href=https://binhong.me/blog/img/alexa.jpeg>
-<img class=post-thumbnail-img src=https://binhong.me/blog/img/alexa.jpeg>
-</a>
-<div class=post-single-content>
-<header class=post-header>
-<h1 class=post-title>Test Driven Development with Alexa SDK</h1>
-<h2 class=post-subtitle>Quick guide to building and unit testing an Alexa Skill</h2>
-<div class=post-meta>BinHong Lee · October 29, 2018</div>
-</header>
-<div class=post-content><h1 id=what-is-test-driven-development>What is Test Driven Development?</h1>
+<details class=dark_mode_toggle role=button open>
+<summary>
+<div class=content>
+<div class=secondary_block>
+<p class=name-title>Ink Mortar</p>
+</div>
+</div>
+</summary>
+</details>
+<div class=wrapper>
+<div class=content>
+<div class=header_links>
+<a class=link href=https://binhong.me/>About</a>
+<p>|</p>
+<a class=link href=https://binhong.me/blog/>Blog</a>
+</div>
+</div>
+<article class="content_body primary_block projects">
+<div class=img_class>
+<img class=thumbnail_img src=https://binhong.me/blog/img/alexa.jpeg>
+</div>
+<main class=content>
+<div class=active>
+<p class="row name title">Test Driven Development with Alexa SDK</h1>
+<p class="row lang">Quick guide to building and unit testing an Alexa Skill</h2>
+<div class="row author">
+<p>BinHong Lee</p>
+<p class=right>October 29, 2018</p>
+</div>
+<div class=post_content><h1 id=what-is-test-driven-development>What is Test Driven Development?</h1>
 <p>According to <a href=https://en.wikipedia.org/wiki/Test-driven_development>Wikipedia</a>, it means “Requirements are turned into very specific <a href=https://en.wikipedia.org/wiki/Test_case>test cases</a>, then the software is improved to pass the new tests, only.” Basically, you would first have to write the test of the software/feature you are developing before you start working on the developing the software/feature itself.</p>
 <p>Here are a few more articles on the benefits and why you should apply TDD:</p>
 <ul>
@@ -179,24 +176,28 @@ AMAZON.StopIntent
 <p><em>This article was originally published on <a href=https://hackernoon.com/test-driven-development-with-alexa-sdk-777f6b5e5486>Hackernoon</a>.</em></p>
 </blockquote>
 </div>
-<footer class=post-footer>
-<ul class=post-tags>
-<li><a href=https://binhong.me/blog/tags/javascript>JavaScript</a></li>
-<li><a href=https://binhong.me/blog/tags/alexa>Alexa</a></li>
-<li><a href=https://binhong.me/blog/tags/alexa-skills>Alexa Skills</a></li>
-<li><a href=https://binhong.me/blog/tags/tdd>Tdd</a></li>
-<li><a href=https://binhong.me/blog/tags/alexa-sdk>Alexa Sdk</a></li>
-</ul>
+<hr>
+<div class=links>
+<a class=link href=https://binhong.me/blog/tags/javascript>JavaScript</a>
+<a class=link href=https://binhong.me/blog/tags/alexa>Alexa</a>
+<a class=link href=https://binhong.me/blog/tags/alexa-skills>Alexa Skills</a>
+<a class=link href=https://binhong.me/blog/tags/tdd>Tdd</a>
+<a class=link href=https://binhong.me/blog/tags/alexa-sdk>Alexa Sdk</a>
+</div>
+</div>
+</main>
+</article><footer class=footer>
+<div class=row>
+<p>Fonts:</p>
+<a href=https://github.com/tonsky/FiraCode/ rel=noopener target=_blank class=name>Fira Code</a>,
+<a href=https://github.com/adobe-fonts/source-sans/ rel=noopener target=_blank class=name>Source Sans 3</a>,
+<a href=https://rubjo.github.io/victor-mono/ rel=noopener target=_blank class=name>Victor Mono</a>
+</div>
+<div class=row>
+<p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a> </p>
+</div>
+<p class=row>&copy; 2021 <a href=https://binhong.me/blog/>Ink Mortar</a> by <a href=https://binhong.me>BinHong Lee</a></p>
 </footer>
-</article></main>
-<footer class=footer>
-<span>&copy; 2021 <a href=https://binhong.me/blog/>The Ink Mortar</a> by BinHong Lee</span>
-<span>&#183;</span>
-<span>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️</span>
-<span>&#183;</span>
-<span>Theme️ <a href=https://github.com/binhonglee/CustomPaper rel=noopener target=_blank>CustomPaper</a></span>
-</footer>
-<script src=https://binhong.me/blog/highlight.min.js></script>
-<script>hljs.initHighlightingOnLoad()</script>
+</div>
 </body>
 </html>

@@ -3,14 +3,14 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
 <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
-<title>RESTful API with Spark Kotlin - The Ink Mortar</title>
+<title>RESTful API with Spark Kotlin - Ink Mortar</title>
 <meta name=description content="When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.
 Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project.">
 <meta name=author content="BinHong Lee">
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RESTful API with Spark Kotlin">
-<meta property="og:site_name" content="The Ink Mortar">
+<meta property="og:site_name" content="Ink Mortar">
 <meta property="og:description" content="The not-so-mainstream way of building an API">
 <meta name=twitter:description content="The not-so-mainstream way of building an API">
 <meta name=twitter:title content="RESTful API with Spark Kotlin"><meta property="article:published_time" 2018-03-21t00:00:00-08:00>
@@ -19,44 +19,41 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
 <meta name=twitter:image content="https://binhong.me/blog/img/sparkcover.jpeg">
 <meta name=twitter:card content="summary_large_image">
 <meta name=twitter:site content="@">
-<link href=https://binhong.me/blog/an-old-hope.min.css rel=stylesheet>
 <link href=https://binhong.me/blog/style.css rel=stylesheet>
-<link href=https://binhong.me/blog/custom.css rel=stylesheet>
 <link rel=icon href=https://binhong.me/blog/img/profile.png>
-<meta name=generator content="Hugo 0.89.2">
-<script>const key='dark-theme',dark='dark',light='light';function setTheme(){localStorage.getItem(key)?localStorage.getItem(key)===dark&&document.body.classList.add(dark):window.matchMedia('(prefers-color-scheme: dark)').matches&&document.body.classList.add(dark)}function toggleDarkMode(){const b=localStorage.getItem(key);var a=dark;b===a&&(a=light),localStorage.setItem(key,a),document.body.classList.toggle(dark)}</script>
+<meta name=generator content="Hugo 0.89.4">
 </head>
 <body class=single>
-<script>setTheme()</script>
-<header class=header>
-<nav class=nav>
-<h1 class=logo><a href=https://binhong.me/blog/>The Ink Mortar</a></h1>
-<ul class=menu>
-<li class=menu-item>
-<a href=https://binhong.me>About</a>
-</li>
-<li class=menu-item>
-<a href=https://github.com/binhonglee>GitHub</a>
-</li>
-</ul>
-<button class=dark-mode-toggle onclick=toggleDarkMode()>
-<h4 class=bright-text>Bright</h2>
-<h4 class=dark-text>Dark</h2>
-</button>
-</nav>
-</header>
-<main class=main>
-<article class=post-single>
-<a href=https://binhong.me/blog/img/sparkcover.jpeg>
-<img class=post-thumbnail-img src=https://binhong.me/blog/img/sparkcover.jpeg>
-</a>
-<div class=post-single-content>
-<header class=post-header>
-<h1 class=post-title>RESTful API with Spark Kotlin</h1>
-<h2 class=post-subtitle>The not-so-mainstream way of building an API</h2>
-<div class=post-meta>BinHong Lee · March 21, 2018</div>
-</header>
-<div class=post-content><p>When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.</p>
+<details class=dark_mode_toggle role=button open>
+<summary>
+<div class=content>
+<div class=secondary_block>
+<p class=name-title>Ink Mortar</p>
+</div>
+</div>
+</summary>
+</details>
+<div class=wrapper>
+<div class=content>
+<div class=header_links>
+<a class=link href=https://binhong.me/>About</a>
+<p>|</p>
+<a class=link href=https://binhong.me/blog/>Blog</a>
+</div>
+</div>
+<article class="content_body primary_block projects">
+<div class=img_class>
+<img class=thumbnail_img src=https://binhong.me/blog/img/sparkcover.jpeg>
+</div>
+<main class=content>
+<div class=active>
+<p class="row name title">RESTful API with Spark Kotlin</h1>
+<p class="row lang">The not-so-mainstream way of building an API</h2>
+<div class="row author">
+<p>BinHong Lee</p>
+<p class=right>March 21, 2018</p>
+</div>
+<div class=post_content><p>When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.</p>
 <p><em>Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project. (coming soon™)</em></p>
 <h2 id=understanding-rest>Understanding REST</h2>
 <p>If you already know or built a RESTful API, you can skip this part. There are already quite a few <a href=http://www.looah.com/source/view/2284>guides</a> out there that goes into the specifics of what REST is and all the amazing things about it. So instead, I’ll just cover the basics (more like, that’s all I know about it). It’s the standard way of communication on the internet through HTTP. In the world of internet, the frontend web interface needs a way to communicate with the backend. While the frontend can say all kinds of things, they still need to declare a set of standard ‘phrases’ between them so the backend knows what the frontend is asking for.</p>
@@ -225,23 +222,27 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
 <p><em>This article was originally published on <a href=https://hackernoon.com/restful-api-with-spark-kotlin-f43bd57affc4>Hacker Noon</a>.</em></p>
 </blockquote>
 </div>
-<footer class=post-footer>
-<ul class=post-tags>
-<li><a href=https://binhong.me/blog/tags/restful-api>RESTful API</a></li>
-<li><a href=https://binhong.me/blog/tags/kotlin>Kotlin</a></li>
-<li><a href=https://binhong.me/blog/tags/spark-kotlin>Spark Kotlin</a></li>
-<li><a href=https://binhong.me/blog/tags/api>API</a></li>
-</ul>
+<hr>
+<div class=links>
+<a class=link href=https://binhong.me/blog/tags/restful-api>RESTful API</a>
+<a class=link href=https://binhong.me/blog/tags/kotlin>Kotlin</a>
+<a class=link href=https://binhong.me/blog/tags/spark-kotlin>Spark Kotlin</a>
+<a class=link href=https://binhong.me/blog/tags/api>API</a>
+</div>
+</div>
+</main>
+</article><footer class=footer>
+<div class=row>
+<p>Fonts:</p>
+<a href=https://github.com/tonsky/FiraCode/ rel=noopener target=_blank class=name>Fira Code</a>,
+<a href=https://github.com/adobe-fonts/source-sans/ rel=noopener target=_blank class=name>Source Sans 3</a>,
+<a href=https://rubjo.github.io/victor-mono/ rel=noopener target=_blank class=name>Victor Mono</a>
+</div>
+<div class=row>
+<p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a> </p>
+</div>
+<p class=row>&copy; 2021 <a href=https://binhong.me/blog/>Ink Mortar</a> by <a href=https://binhong.me>BinHong Lee</a></p>
 </footer>
-</article></main>
-<footer class=footer>
-<span>&copy; 2021 <a href=https://binhong.me/blog/>The Ink Mortar</a> by BinHong Lee</span>
-<span>&#183;</span>
-<span>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️</span>
-<span>&#183;</span>
-<span>Theme️ <a href=https://github.com/binhonglee/CustomPaper rel=noopener target=_blank>CustomPaper</a></span>
-</footer>
-<script src=https://binhong.me/blog/highlight.min.js></script>
-<script>hljs.initHighlightingOnLoad()</script>
+</div>
 </body>
 </html>
