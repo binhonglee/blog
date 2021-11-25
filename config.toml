@@ -1,7 +1,7 @@
 baseURL = "https://binhong.me/blog/"
 languageCode = "en-us"
-title = "The Ink Mortar"
-theme = "CustomPaper"
+title = "Ink Mortar"
+theme = "my_theme"
 
 [Menu]
   [[menu.main]]

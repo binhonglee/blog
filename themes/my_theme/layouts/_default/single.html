@@ -1,0 +1,33 @@
+{{- partial "header.html" . }}
+<article class="content_body primary_block projects">
+  {{- if .Params.thumbnail }}
+  <div class="img_class">
+    <img class="thumbnail_img" src="{{ .Params.thumbnail | absURL }}">
+  </div>
+  {{- end }}
+  <main class="content">
+    <div class="active">
+      <p class="row name title">{{ .Title }}</h1>
+      {{- if .Params.subtitle }}
+      <p class="row lang">{{ .Params.subtitle }}</h2>
+      {{- end }}
+      <div class="row author">
+        {{- if or .Params.Author .Site.Author.name }}
+        <p>{{- .Params.Author | default .Site.Author.name }}</p>
+        {{ end }}
+        <p class="right">{{- .Date.Format "January 2, 2006" -}}</p>
+      </div>
+      <div class="post_content">{{ .Content }}</div>
+      {{- if .Params.tags }}
+      <hr/>
+      <div class="links">
+        {{- range .Params.tags }}
+        {{- $href := print (absURL "tags/") (urlize .) }}
+        <a class="link" href="{{ $href }}">{{ . }}</a>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+  </main>
+</article>
+{{- partial "footer.html" . }}

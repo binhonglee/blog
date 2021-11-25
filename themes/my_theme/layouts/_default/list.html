@@ -1,0 +1,37 @@
+{{- partial "header.html" . }}
+<main class="content_body content">
+<div class="primary_block projects">
+
+{{- $scope := .Site }}
+
+{{- $paginator := .Paginate (where $scope.RegularPages ".Params.type" "!=" "page") }}
+
+{{- range $index, $page := $paginator.Pages }}
+
+
+<article class="block">
+  <a class="article_link active" href="{{ .Permalink }}">
+    <p class="name row">{{ .Title }}</h2>
+    {{- if .Params.subtitle }}
+    <p class="lang row">{{ .Params.subtitle }}</h3>
+    {{- end }}
+    <p class="desc">{{ .Summary | plainify | htmlUnescape }}...</p>
+    <p class="right">{{ .Date.Format "January 2, 2006" }}</p>
+  </a>
+</article>
+{{- end }}
+</div>
+
+{{- if gt $paginator.TotalPages 1 }}
+<nav class="navigation">
+  {{- if $paginator.HasPrev }}
+  <a class="left" href="{{ $paginator.Prev.URL }}">← Newer</a>
+  {{- end }}
+  {{- if $paginator.HasNext }}
+  <a class="right" href="{{ $paginator.Next.URL }}">Older →</a>
+  {{- end }}
+</nav>
+{{- end }}
+</main>
+
+{{- partial "footer.html" . }}

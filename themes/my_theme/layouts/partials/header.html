@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    <!-- Title -->
+    <title>{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+    <!-- Meta -->
+    {{- if eq .Kind "page" }}
+    <meta name="description" content="{{ .Summary }}">
+    <meta name="author" content="{{ .Params.Author | default .Site.Author.name }}">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ .Title }}">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    {{- if .Params.subtitle }}
+    <meta property="og:description" content="{{ .Params.subtitle }}">
+    <meta name="twitter:description" content="{{ .Params.subtitle }}">
+    {{- else }}
+    <meta property="og:description" content="{{ .Summary }}">
+    <meta name="twitter:description" content="{{ .Summary }}">
+    {{- end }}
+    <meta name="twitter:title" content="{{ .Title }}">
+    {{- $iso8601 := "2006-01-02T15:04:05Z07:00" -}}
+    <meta property="article:published_time" {{ .Date.Format $iso8601 | safeHTMLAttr }} />
+    <meta property="article:modified_time" {{ .Date.Format $iso8601 | safeHTMLAttr }} />
+    {{- if .Params.ss }}
+    <meta property="og:image" content="{{ .Params.ss | absURL }}">
+    <meta name="twitter:image" content="{{ .Params.ss | absURL }}">
+    <meta name="twitter:card" content="summary_large_image">
+    {{- else if .Params.thumbnail }}
+    <meta property="og:image" content="{{ .Params.thumbnail | absURL }}">
+    <meta name="twitter:image" content="{{ .Params.thumbnail | absURL }}">
+    <meta name="twitter:card" content="summary_large_image">
+    {{- else }}
+    <meta property="og:image" content="{{ .Site.Params.favicon | absURL }}">
+    <meta name="twitter:image" content="{{ .Site.Params.favicon | absURL }}">
+    <meta name="twitter:card" content="summary">
+    {{- end }}
+      <meta name="twitter:site" content="@{{ .Site.Params.twitter }}">
+    {{- else }}
+    <meta name="description" content="{{ .Site.Params.description }}">
+    <meta name="author" content="{{ .Site.Author.name }}">
+    {{- end }}
+    <!-- Styles -->
+    <link href="{{ "style.css" | absURL }}" rel="stylesheet">
+    <!-- Favicon -->
+    {{ if .Site.Params.favicon }}
+    <link rel="icon" href="{{ .Site.Params.favicon | absURL }}" />
+    {{ end }}
+    <!-- Generator -->
+    {{- hugo.Generator }}
+    <!-- RSS -->
+    {{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    {{ end -}}
+  </head>
+  <body class="{{ if eq .Kind `page` }}single{{ else }}list{{ if .IsHome }} home{{ end }}{{ end }}">
+    <details class="dark_mode_toggle" role="button" open>
+      <summary>
+        <div class="content">
+          <div class="secondary_block">
+            <p class="name-title">Ink Mortar</p>
+          </div>
+        </div>
+      </summary>
+    </details>
+    <div class="wrapper">
+      <div class="content">
+        <div class="header_links">
+          <a class="link" href="https://binhong.me/">About</a>
+          <p>|</p>
+          <a class="link" href="{{ "" | absURL }}">Blog</a>
+        </div>
+      </div>

@@ -1,0 +1,302 @@
+@font-face {
+  font-family: VictorMono;
+  src: url(VictorMono/VictorMono-Regular.woff);
+}
+
+@font-face {
+  font-family: SourceSans3;
+  src: url(SourceSans3/SourceSans3-Regular.ttf.woff2);
+}
+
+@font-face {
+  font-family: FiraCode;
+  src: url(FiraCode/FiraCode-Regular.woff2);
+}
+
+html {
+  font-family: FiraCode;
+  font-size: 130%;
+}
+
+.desc, .post_content {
+  font-family: SourceSans3;
+  font-size: 130%;
+}
+
+.post_content img {
+  max-width: 950px;
+  padding: 10px;
+}
+
+body {
+  margin: 0;
+}
+
+:root {
+  --default-background: #FBFAF5;
+  --default-color: #181A18;
+  --default-links: darkgreen;
+  --default-active: navy;
+  --default-deprecated: darkred;
+  --default-footer-a: goldenrod;
+
+  --dark-background: #181A18;
+  --dark-color: #FBFAF5;
+  --dark-links: lawngreen;
+  --dark-active: cyan;
+  --dark-deprecated: deeppink;
+  --dark-footer-a: yellow;
+}
+
+details > summary p {
+  cursor: pointer;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+}
+
+summary p {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover,
+a .name:hover,
+.name-title:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.projects a:hover {
+  text-decoration: none;
+}
+
+.post_content p {
+  padding: 10px 0;
+}
+
+.active .title {
+  font-size: 1.75em;
+}
+
+p, li, .footer a {
+  margin: 0;
+  display: inline-block;
+  font-size: 25px;
+}
+
+p > .link {
+  margin-right: 50px;
+}
+
+.wrapper {
+  min-height: 100vh;
+  background-color: var(--default-background);
+  color: var(--default-color);
+}
+
+.dark_mode_toggle {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.dark_mode_toggle .content {
+  background: var(--default-background);
+}
+
+.dark_mode_toggle[open] .content {
+  background: var(--dark-background);
+}
+
+.dark_mode_toggle > summary {
+  list-style: none;
+}
+
+.block {
+  padding-bottom: 60px;
+}
+
+.left {
+  float: left;
+}
+
+.right, .dark_mode_toggle .secondary_block {
+  float: right;
+}
+
+.dark_mode_toggle[open] div,
+.dark_mode_toggle[open] + div,
+.dark_mode_toggle[open] + div .content {
+  background-color: var(--dark-background);
+  color: var(--dark-color);
+}
+
+.content {
+  background-color: var(--default-background);
+  color: var(--default-color);
+}
+
+.content, .footer {
+  max-width: 900px;
+  padding: 10px;
+  text-align: left;
+  margin: auto;
+}
+
+.footer {
+  padding-bottom: 30px;
+}
+
+.links .link {
+  padding: 0 20px;
+}
+
+.header_links {
+  position: absolute;
+  z-index: 2;
+}
+
+.content_body {
+  padding-top: 30px;
+}
+
+.header_links p {
+  padding-right: 5px;
+}
+
+.header_links .link, .links .link {
+  color: var(--default-links);
+}
+
+.dark_mode_toggle[open] .link,
+.dark_mode_toggle[open] + div .link,
+.dark_mode_toggle[open] + div .links .link {
+  color: var(--dark-links);
+}
+
+.projects a,
+footer a {
+  color: var(--default-color);
+}
+
+.dark_mode_toggle[open] + div .projects a,
+.dark_mode_toggle[open] + div footer a {
+  color: var(--dark-color);
+}
+
+.active .name, .post_content a {
+  color: var(--default-active);
+}
+
+.navigation {
+  height: 10px;
+  padding-bottom: 20px;
+}
+
+.active .lang, .navigation a {
+  color: var(--default-links);
+}
+
+.dark_mode_toggle[open] + div .active .name,
+.dark_mode_toggle[open] + div .post_content a {
+  color: var(--dark-active);
+}
+
+.dark_mode_toggle[open] + div .active .lang,
+.dark_mode_toggle[open] + div .navigation a {
+  color: var(--dark-links);
+}
+
+footer a {
+  color: var(--default-footer-a);
+}
+
+.dark_mode_toggle[open] + div footer a {
+  color: var(--dark-footer-a);
+}
+
+.row {
+  display: block;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.article_link .lang {
+  padding: 0;
+}
+
+.primary_block {
+  margin: 10px;
+}
+
+.name {
+  font-size: 120%;
+}
+
+.name-title {
+  font-size: 150%;
+}
+
+.img_class {
+  margin: auto;
+  text-align: center;
+}
+
+.thumbnail_img {
+  width: 80%;
+}
+
+footer .row {
+  padding: 3px 0;
+  text-align: center;
+}
+
+.desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+pre {
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: VictorMono;
+  font-size: 100%;
+  padding: 0 5px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.dark_mode_toggle[open] + div code {
+  background-color: #272822;
+}
+
+pre code {
+  display: block;
+  padding: 20px;
+  background-color: #272822;
+}
+
+pre code,
+pre .custom-language {
+  font-family: VictorMono;
+  font-size: 23px;
+}
+
+@media screen and (max-width: 950px) {
+  .content .links {
+    display: none;
+  }
+}

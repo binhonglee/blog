@@ -3,7 +3,7 @@ title: Building a side project over the weekend
 subtitle: "Basically a solo hackathon"
 date: 2018-06-02 00:00:00 -0800 GMT
 thumbnail: "img/sideProject1.jpg"
-tags: [Weekend, Hackathons, Side Project, Software Development, Learning To Code]
+tags: [Weekend, Hackathons, Side Project, Software Development]
 ---
 
 Few months ago during my job search, I decided that I want to add some new skills to my arsenal (resume) so I went ahead to build a [bill splitting webapp](http://www.breakups.life/) (and the month before, [an Alexa skill](https://github.com/binhonglee/dota2-random)). Granted, the backend was built weeks before during a hackathon (shoutout to [HackISU](http://www.hackisu.org/)), I’m just focusing on building the UI that makes post requests to the backend. In the process, I also ended up fixing some inherent flaws I left behind in the backend.
@@ -14,7 +14,7 @@ Be realistic. You don’t want to end your weekend with an unfinished product th
 
 In cases where the thing you really wanted to build is huge and complicated, try breaking it down into smaller pieces and maybe span it over multiple weekends. The point being to have a realistic idea of what to expect at the end of the weekend and achieve it while not mounting yourself additional pressure (and distractions) to _‘complete’_ the other parts of it during your work / study week that would jeopardize what you are supposed to be doing during the day.
 
-![](/blog/img/sideProject2.png)
+![](/blog/img/sideProject2.jpg)
 
 ## Preparation
 
@@ -30,7 +30,7 @@ I think this is a major one. Figure out how you’re going to get food supplies 
 
 Also do you even Soylent? (Credit to [Jane Manchun Wong](https://twitter.com/wongmjane))
 
-![](/blog/img/sideProject3.png)
+![](/blog/img/sideProject3.jpg)
 
 ## Process
 
@@ -40,13 +40,13 @@ Take it slow. The faster you go in the beginning, the faster you burn out. This 
 
 Take frequent breaks. I can’t stress how important it is to relax in between. You don’t get maximum efficiency by rushing things, you get them by being in between too comfortable and too overwhelmed. Personally, I would take a break and go out for a walk and fresh air every 30 mins or so. This highly differs among individuals so you have to figure out what works best for you.
 
-![](/blog/img/sideProject4.png)
+![](/blog/img/sideProject4.jpg)
 
 ## Wrap up
 
 Don’t get too hung up on the project. I’m not saying you shouldn’t be proud of it but the skills you obtained in the process will very likely to be much more valuable than that. As mentioned, you don’t want to feel obligated to come back and ‘complete’ the project in the future when you’re procrastinating while you actually have other priorities like project deadlines, homeworks etc. so its important to wrap up your project properly in a way that its a minimal product presentable but also something you understand that you can always add onto whenever you feel like it.
 
-Of course, in an off chance that it blows up, congrats! For starters, maybe you can start thinking about how to monetize it? I don’t know (this has not happened to me). Maybe some guys at I can handle the business side can help you with that. 😉😂 /j
+Of course, in an off chance that it blows up, congrats! For starters, maybe you can start thinking about how to monetize it? I don’t know (this has not happened to me). Maybe some guys at [I can handle the business side](https://www.facebook.com/groups/1401833413216649) can help you with that. 😉😂 /j
 
 ---
 
