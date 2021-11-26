@@ -24,7 +24,7 @@ html {
 }
 
 .post_content img {
-  width: 980px;
+  max-width: 950px;
   padding: 10px;
 }
 
@@ -85,7 +85,7 @@ a .name:hover,
   font-size: 1.75em;
 }
 
-p {
+p, li, .footer a {
   margin: 0;
   display: inline-block;
   font-size: 25px;
@@ -144,7 +144,7 @@ p > .link {
 }
 
 .content, .footer {
-  max-width: 1000px;
+  max-width: 900px;
   padding: 10px;
   text-align: left;
   margin: auto;
@@ -292,5 +292,11 @@ pre code {
 pre code,
 pre .custom-language {
   font-family: VictorMono;
-  font-size: 18px;
+  font-size: 23px;
+}
+
+@media screen and (max-width: 950px) {
+  .content .links {
+    display: none;
+  }
 }
