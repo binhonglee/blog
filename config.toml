@@ -1,6 +1,6 @@
 baseURL = "https://binhong.me/blog/"
 languageCode = "en-us"
-title = "Ink Mortar"
+title = "BinHong Lee's Blog"
 theme = "my_theme"
 
 [Menu]

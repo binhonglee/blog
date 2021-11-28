@@ -4,6 +4,8 @@ subtitle: "Getting an engineering job as an international student"
 date: 2018-02-10 00:00:00 -0800 GMT
 thumbnail: "img/blcover.jpeg"
 tags: [Career, International Student, Engineering, Job]
+aliases:
+    - /2018/02/10/being-lucky.html
 ---
 
 Ah, you’ve graduated. Now what? Oh right, still no job offer! _\*panics\*_

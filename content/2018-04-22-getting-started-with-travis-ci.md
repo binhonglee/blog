@@ -4,6 +4,8 @@ subtitle: "Add that fancy badge onto your GitHub repository README"
 date: 2018-04-22 00:00:00 -0800 GMT
 thumbnail: "img/traviscover.png"
 tags: [Travis-CI, Continuous Integration, Testing, Automated Deployment, Devops]
+aliases:
+    - /2018/04/22/getting-started-with-travis-ci.html
 ---
 
 ## What is CI and why should I care about it?

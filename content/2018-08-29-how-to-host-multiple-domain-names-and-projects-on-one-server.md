@@ -4,6 +4,8 @@ subtitle: "NGINX is one magical tool"
 date: 2018-08-29 00:00:00 -0800 GMT
 thumbnail: "img/nginx.jpeg"
 tags: [Git, Gitea, Continuous Integration, Self Hosted, DevOps]
+aliases:
+    - /2018/08/29/how-to-host-multiple-domain-names-and-projects-on-one-server.html
 ---
 
 I own multiple domain names, and each one hosts a different side project. For the longest time, everything that required ‘hosting’ was hosted on Heroku. But their free tier can be quite limited, it can also get costly quickly if you are paying for each separate project. So instead, I decided to explore putting all of them together using NGINX (recommended to me by [Jane Manchun Wong](https://jmw.fyi)).

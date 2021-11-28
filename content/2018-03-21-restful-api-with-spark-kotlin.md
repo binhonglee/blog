@@ -4,6 +4,8 @@ subtitle: "The not-so-mainstream way of building an API"
 date: 2018-03-21 00:00:00 -0800 GMT
 thumbnail: "img/sparkcover.jpeg"
 tags: [RESTful API, Kotlin, Spark Kotlin, API]
+aliases:
+    - /2018/03/21/restful-api-with-spark-kotlin.html
 ---
 
 When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.

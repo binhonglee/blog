@@ -4,6 +4,8 @@ subtitle: "Developing with Please"
 date: 2019-08-07 00:00:00 -0800 GMT
 thumbnail: "img/please.png"
 tags: [Build, DevOps, Automation]
+aliases:
+    - /2019/08/07/multi-language-support-build-tool.html
 ---
 
 I recently started learning about Go to find out what’s all the hype about. So I figured what’s a better way than to build a project out of it? As I was setting up my machine and going through tutorials step-by-step, I was slightly annoyed by the fact that the development of Go projects are limited to inside the `$GOPATH`.

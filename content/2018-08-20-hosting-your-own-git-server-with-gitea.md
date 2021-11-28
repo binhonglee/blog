@@ -4,6 +4,8 @@ subtitle: "Having additional backups are never a bad idea"
 date: 2018-08-20 00:00:00 -0800 GMT
 thumbnail: "img/gitea.png"
 tags: [Git, Gitea, Continuous Integration, Self Hosted, DevOps]
+aliases:
+    - /2018/08/20/hosting-your-own-git-server-with-gitea.html
 ---
 
 Most people (including myself) host their personal projects on a third-party free Git hosting websites like GitHub, GitLab, Bitbucket etc. While that is sufficient for most people, it is also pretty fun to have your own Git service hosted on your own domain name of choice. While I trust my fellow engineers at these companies, I am using this as a personally backup to those services if anything goes wrong ([like GitLab](https://about.gitlab.com/2017/02/01/gitlab-dot-com-database-incident/). Though to their credit, they were able to [recover most of it](https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/)).
