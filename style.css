@@ -11,6 +11,9 @@ html {
 .post_content img {
   max-width: 980px;
   padding: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 body {
@@ -33,12 +36,24 @@ body {
   --dark-footer-a: yellow;
 }
 
+blockquote {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 25px;
+  border-style: solid;
+}
+
+.dark_mode_toggle[open] blockquote,
+.dark_mode_toggle[open] + div blockquote {
+  background-color: black;
+}
+
 details > summary p {
   cursor: pointer;
 }
 
 footer {
-  width: 100%;
   text-align: center;
 }
 
@@ -58,21 +73,38 @@ a .name:hover,
   text-decoration: underline;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  margin-top: 10px;
+}
+
+h1 {
+  font-size: 1.75em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
 .projects a:hover {
   text-decoration: none;
 }
 
 .post_content p {
   padding: 10px 0;
+  width: 100%;
 }
 
 .active .title {
   font-size: 1.75em;
 }
 
+p, .footer a {
+  display: inline-block;
+}
+
 p, li, .footer a {
   margin: 0;
-  display: inline-block;
   font-size: 25px;
 }
 
@@ -128,8 +160,15 @@ p > .link {
   color: var(--default-color);
 }
 
+.article_body {
+  max-width: 1300px;
+}
+
 .content, .footer {
   max-width: 950px;
+}
+
+.article_body, .content, .footer {
   padding: 10px;
   text-align: left;
   margin: auto;
@@ -222,7 +261,7 @@ footer a {
 }
 
 .name {
-  font-size: 120%;
+  font-size: 130%;
 }
 
 .name-title {
@@ -258,7 +297,7 @@ pre {
 
 code {
   font-family: VictorMono;
-  font-size: 100%;
+  font-size: 21px;
   padding: 0 5px;
   background-color: white;
   border-radius: 10px;
@@ -277,7 +316,7 @@ pre code {
 pre code,
 pre .custom-language {
   font-family: VictorMono;
-  font-size: 23px;
+  font-size: 20px;
 }
 
 @media screen and (max-width: 950px) {

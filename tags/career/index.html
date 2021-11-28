@@ -1,22 +1,37 @@
-<!doctype html><html>
+<!doctype html><html lang=en>
 <head>
 <meta charset=utf-8>
 <meta name=viewport content="initial-scale=.75">
-<title>Career - Ink Mortar</title>
+<title>Career - BinHong Lee's Blog</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Home - BinHong's Blog">
+<meta property="og:description" content="A place where I scribble notes for future references.">
+<meta property="og:image" content="https://binhong.me/images/profile.png">
+<meta property="og:profile:first_name" content="BinHong">
+<meta property="og:profile:last_name" content="Lee">
+<meta property="og:username" content="binhong">
+<meta name=twitter:card content="summary">
+<meta name=twitter:description content="A place where I scribble notes for future references.">
+<meta name=twitter:title content="Home - BinHong's Blog">
+<meta name=twitter:image content="https://binhong.me/images/profile.png">
+<meta name=twitter:image:alt content="Commissioned image icon of me coding with a pair of black headphones on while sitting on a pink bean bag wearing a light blue hoodie. The laptop is purple with a bunch of mostly MLH demo stickers on it.">
+<meta name=twitter:site content="@">
 <meta name=description content>
 <meta name=author content="BinHong Lee">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="BinHong Lee's Blog">
 <link href=https://binhong.me/blog/style.css rel=stylesheet>
 <link href=https://binhong.me/fonts/fonts.css rel=stylesheet>
 <link rel=icon href=https://binhong.me/blog/img/profile.png>
 <meta name=generator content="Hugo 0.89.4">
-<link rel=alternate type=application/rss+xml href=https://binhong.me/blog/tags/career/index.xml title="Ink Mortar">
+<link rel=alternate type=application/rss+xml href=https://binhong.me/blog/tags/career/index.xml title="BinHong Lee's Blog">
 </head>
 <body class=list>
 <details class=dark_mode_toggle role=button open>
 <summary>
 <div class=content>
 <div class=secondary_block>
-<p class=name-title>Ink Mortar</p>
+<p class=name-title>Blog</p>
 </div>
 </div>
 </summary>
@@ -31,35 +46,35 @@
 <a class=link href=https://binhong.me/threads>Threads</a>
 </div>
 </div>
-<main class="content_body content">
+<main class="content_body article_body">
 <div class="primary_block projects">
 <article class=block>
 <a class="article_link active" href=https://binhong.me/blog/postgresql-on-azure/>
-<p class="name row">PostgreSQL on Azure Pipeline with OSX</h2>
+<p class="name row">PostgreSQL on Azure Pipeline with OSX</p>
 <p class=desc>While the defacto way of running postgres on Azure Pipeline according to this guide seems to be using the docker image, the MacOS image on Azure Pipeline does not have docker support due to some licensing issue. So instead, this has to be setup and handled manually. We’d use brew here since it comes installed in the OS image and is the easiest way to deal with it as far as I’m aware....</p>
 <p class=right>July 18, 2021</p>
 </a>
 </article>
 <article class=block>
 <a class="article_link active" href=https://binhong.me/blog/2021-05-22-ava-with-vue-typescript-and-nyc/>
-<p class="name row">Ava with Vue (2.x) + TypeScript (and NYC)</h2>
-<p class="lang row">Component and Unit Testing with Test Coverage</h3>
+<p class="name row">Ava with Vue (2.x) + TypeScript (and NYC)</p>
+<p class="lang row">Component and Unit Testing with Test Coverage</p>
 <p class=desc>When working on a project with Vue (TypeScript), I faced a lot of roadblocks trying to get code coverage to work. The issue is largely covered in this issue thread. Most solutions / workarounds for that seems to revolve around changing the bundling flow with webpack. Considering my lack of familiarity with webpack (on top of my use of scss and pug in Vue files), putting together a webpack config that works for me turns out to be extremely challenging....</p>
 <p class=right>May 22, 2021</p>
 </a>
 </article>
 <article class=block>
 <a class="article_link active" href=https://binhong.me/blog/2020-08-09-cross-language-object-parsing/>
-<p class="name row">Cross Language Object Parsing</h2>
-<p class="lang row">I wrote code that writes code</h3>
+<p class="name row">Cross Language Object Parsing</p>
+<p class="lang row">I wrote code that writes code</p>
 <p class=desc>I was working on a side project where I had the backend and frontend setup to run on different programming languages. As I was working on it, it started to bug me a little that I have to write the same object / struct and enum for each language in use everytime I introduce a new enum or struct. It can also be confusing / dangerous if I updated one side and forget to update the other....</p>
 <p class=right>August 9, 2020</p>
 </a>
 </article>
 <article class=block>
 <a class="article_link active" href=https://binhong.me/blog/2019-08-07-multi-language-support-build-tool/>
-<p class="name row">Multi-language Support Build Tool</h2>
-<p class="lang row">Developing with Please</h3>
+<p class="name row">Multi-language Support Build Tool</p>
+<p class="lang row">Developing with Please</p>
 <p class=desc>I recently started learning about Go to find out what’s all the hype about. So I figured what’s a better way than to build a project out of it? As I was setting up my machine and going through tutorials step-by-step, I was slightly annoyed by the fact that the development of Go projects are limited to inside the $GOPATH.
 Personally, I have all my side projects stored at the top level of the computer....</p>
 <p class=right>August 7, 2019</p>
@@ -67,7 +82,7 @@ Personally, I have all my side projects stored at the top level of the computer.
 </article>
 <article class=block>
 <a class="article_link active" href=https://binhong.me/blog/2019-05-07-shell-scripting/>
-<p class="name row">Functional and flexible shell scripting tricks</h2>
+<p class="name row">Functional and flexible shell scripting tricks</p>
 <p class=desc>Shell scripts vs python or perl Its 2019 now, who writes shell scripts anymore? Am I right? Well, apparently I do. ¯\_(ツ)_/¯
 There are some good arguments for that here and here which mainly revolve around 2 things:
 Shell exists in all Unix systems and makes use of system default features. Shell is an “interactive command function” designed to get user inputs during the process of running them. Also, here’s an additional relevant reading about the differences between sh and bash....</p>
@@ -76,8 +91,8 @@ Shell exists in all Unix systems and makes use of system default features. Shell
 </article>
 <article class=block>
 <a class="article_link active" href=https://binhong.me/blog/2018-10-29-test-driven-development-with-alexa-sdk/>
-<p class="name row">Test Driven Development with Alexa SDK</h2>
-<p class="lang row">Quick guide to building and unit testing an Alexa Skill</h3>
+<p class="name row">Test Driven Development with Alexa SDK</p>
+<p class="lang row">Quick guide to building and unit testing an Alexa Skill</p>
 <p class=desc>What is Test Driven Development? According to Wikipedia, it means “Requirements are turned into very specific test cases, then the software is improved to pass the new tests, only.” Basically, you would first have to write the test of the software/feature you are developing before you start working on the developing the software/feature itself.
 Here are a few more articles on the benefits and why you should apply TDD:
 Test Driven Development by Jan Olbrich Isn’t TDD twice the work?...</p>
@@ -86,8 +101,8 @@ Test Driven Development by Jan Olbrich Isn’t TDD twice the work?...</p>
 </article>
 <article class=block>
 <a class="article_link active" href=https://binhong.me/blog/2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server/>
-<p class="name row">How to host multiple domain names and projects on one server</h2>
-<p class="lang row">NGINX is one magical tool</h3>
+<p class="name row">How to host multiple domain names and projects on one server</p>
+<p class="lang row">NGINX is one magical tool</p>
 <p class=desc>I own multiple domain names, and each one hosts a different side project. For the longest time, everything that required ‘hosting’ was hosted on Heroku. But their free tier can be quite limited, it can also get costly quickly if you are paying for each separate project. So instead, I decided to explore putting all of them together using NGINX (recommended to me by Jane Manchun Wong).
 Required Resources Virtual Private Server (VPS) You’ll need a virtual server such as DigitalOcean or EC2 by AWS....</p>
 <p class=right>August 29, 2018</p>
@@ -95,24 +110,24 @@ Required Resources Virtual Private Server (VPS) You’ll need a virtual server s
 </article>
 <article class=block>
 <a class="article_link active" href=https://binhong.me/blog/2018-08-20-hosting-your-own-git-server-with-gitea/>
-<p class="name row">Hosting your own Git server with Gitea</h2>
-<p class="lang row">Having additional backups are never a bad idea</h3>
+<p class="name row">Hosting your own Git server with Gitea</p>
+<p class="lang row">Having additional backups are never a bad idea</p>
 <p class=desc>Most people (including myself) host their personal projects on a third-party free Git hosting websites like GitHub, GitLab, Bitbucket etc. While that is sufficient for most people, it is also pretty fun to have your own Git service hosted on your own domain name of choice. While I trust my fellow engineers at these companies, I am using this as a personally backup to those services if anything goes wrong (like GitLab....</p>
 <p class=right>August 20, 2018</p>
 </a>
 </article>
 <article class=block>
 <a class="article_link active" href=https://binhong.me/blog/2018-06-02-building-a-side-project-over-the-weekend/>
-<p class="name row">Building a side project over the weekend</h2>
-<p class="lang row">Basically a solo hackathon</h3>
+<p class="name row">Building a side project over the weekend</p>
+<p class="lang row">Basically a solo hackathon</p>
 <p class=desc>Few months ago during my job search, I decided that I want to add some new skills to my arsenal (resume) so I went ahead to build a bill splitting webapp (and the month before, an Alexa skill). Granted, the backend was built weeks before during a hackathon (shoutout to HackISU), I’m just focusing on building the UI that makes post requests to the backend. In the process, I also ended up fixing some inherent flaws I left behind in the backend....</p>
 <p class=right>June 2, 2018</p>
 </a>
 </article>
 <article class=block>
 <a class="article_link active" href=https://binhong.me/blog/2018-04-22-getting-started-with-travis-ci/>
-<p class="name row">Getting started with Travis-CI</h2>
-<p class="lang row">Add that fancy badge onto your GitHub repository README</h3>
+<p class="name row">Getting started with Travis-CI</p>
+<p class="lang row">Add that fancy badge onto your GitHub repository README</p>
 <p class=desc>What is CI and why should I care about it? CI stands for Continuous Integration which as the name suggests, is an integrated tests that runs continuously on every time when someone pushes a commit (or mostly when opening a Pull Request).
 As for why is it important, it automates the whole testing modules. Ideally, you would still want to test your changes locally before pushing them to remote but in some occasion where you forgot or the program requires a lot more resources than your current machine can handle, CI comes in very handy....</p>
 <p class=right>April 22, 2018</p>
@@ -122,7 +137,8 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 <nav class=navigation>
 <a class=right href=/blog/tags/career/page/2/>Older →</a>
 </nav>
-</main><footer class=footer>
+</main><footer class=content>
+<div class="footer primary_block">
 <div class=row>
 <p>Fonts:</p>
 <a href=https://github.com/tonsky/FiraCode/ rel=noopener target=_blank>Fira Code</a>,
@@ -133,7 +149,8 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 <p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a> </p>
 </div>
 <div class=row>
-<p>&copy; 2021 <a href=https://binhong.me/blog/>Ink Mortar</a> by <a href=https://binhong.me>BinHong Lee</a></p>
+<p>&copy; 2021 <a href=https://binhong.me>BinHong Lee</a></p>
+</div>
 </div>
 </footer>
 </div>
