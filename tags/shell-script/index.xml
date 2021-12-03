@@ -1,3 +1,147 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shell Script on BinHong Lee's Blog</title><link>https://binhong.me/blog/tags/shell-script/</link><description>Recent content in Shell Script on BinHong Lee's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 07 May 2019 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/shell-script/index.xml" rel="self" type="application/rss+xml"/><item><title>Functional and flexible shell scripting tricks</title><link>https://binhong.me/blog/2019-05-07-shell-scripting/</link><pubDate>Tue, 07 May 2019 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2019-05-07-shell-scripting/</guid><description>Shell scripts vs python or perl Its 2019 now, who writes shell scripts anymore? Am I right? Well, apparently I do. ¯\_(ツ)_/¯
-There are some good arguments for that here and here which mainly revolve around 2 things:
-Shell exists in all Unix systems and makes use of system default features. Shell is an &amp;ldquo;interactive command function&amp;rdquo; designed to get user inputs during the process of running them. Also, here&amp;rsquo;s an additional relevant reading about the differences between sh and bash.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shell Script on BinHong Lee's Blog</title><link>https://binhong.me/blog/tags/shell-script/</link><description>Recent content in Shell Script on BinHong Lee's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 07 May 2019 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/shell-script/index.xml" rel="self" type="application/rss+xml"/><item><title>Functional and flexible shell scripting tricks</title><link>https://binhong.me/blog/2019-05-07-shell-scripting/</link><pubDate>Tue, 07 May 2019 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2019-05-07-shell-scripting/</guid><description>&lt;h2 id="shell-scripts-vs-python-or-perl">Shell scripts vs python or perl&lt;/h2>
+&lt;p>Its 2019 now, who writes shell scripts anymore? Am I right? Well, apparently I do. ¯\_(ツ)_/¯&lt;/p>
+&lt;p>There are some good arguments for that &lt;a href="https://stackoverflow.com/questions/796319/strengths-of-shell-scripting-compared-to-python#796343">here&lt;/a> and &lt;a href="https://www.linuxquestions.org/questions/linux-newbie-8/what-is-the-difference-between-perl-and-shell-scripting-4175486499/">here&lt;/a> which mainly revolve around 2 things:&lt;/p>
+&lt;ol>
+&lt;li>Shell exists in all Unix systems and makes use of system default features.&lt;/li>
+&lt;li>Shell is an &amp;ldquo;interactive command function&amp;rdquo; designed to get user inputs during the process of running them.&lt;/li>
+&lt;/ol>
+&lt;p>Also, &lt;a href="https://stackoverflow.com/questions/5725296/difference-between-sh-and-bash">here&lt;/a>&amp;rsquo;s an additional relevant reading about the differences between &lt;code>sh&lt;/code> and &lt;code>bash&lt;/code>.&lt;/p>
+&lt;h2 id="arguments">Arguments&lt;/h2>
+&lt;p>In some occasions, you will need to pass an argument (or expect one) into the script like how you might pass a param into a function. In that case, you will use something like &lt;code>$1&lt;/code> for the first argument, &lt;code>$2&lt;/code> for the second. Here&amp;rsquo;s an example of how it would look like:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">echo &lt;span style="color:#e6db74">&amp;#34;The input message was &lt;/span>$1&lt;span style="color:#e6db74">.&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">./run_this.sh userInput
+The input message was userInput.
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>Note: The params are separated by spaces so if you want to input a string as a param that contains a space, it might need to be something like &lt;code>./run_this.sh &amp;quot;user input&amp;quot;&lt;/code> just so &lt;code>&amp;quot;user input&amp;quot;&lt;/code> would be counted as &lt;code>$1&lt;/code> entirely.&lt;/em>&lt;/p>
+&lt;p>In the occasion where you are not sure how long the user input might be and you want to capture it all, you would use &lt;code>$@&lt;/code> instead. In the following example, I took in the entire string and print them out word by word after breaking them into a string array according to the spaces in between.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">userInputs&lt;span style="color:#f92672">=(&lt;/span>$@&lt;span style="color:#f92672">)&lt;/span>
+&lt;span style="color:#66d9ef">for&lt;/span> i in &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>userInputs[@]&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>;; &lt;span style="color:#66d9ef">do&lt;/span>
+echo &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$i&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;span style="color:#66d9ef">done&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">./run_this.sh who knows how long this can go
+who
+knows
+how
+long
+this
+can
+go
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="functions">Functions&lt;/h2>
+&lt;p>If you have done any sort of programming, you should be familiar with the concept of &lt;em>functions&lt;/em>. It&amp;rsquo;s basically a set of commands / operations that you will be repeating over and over again. Instead of repeating it multiple times in your code, you can put them into a function. Then just call the function which effectively reduces the lines of code that need to be written.&lt;/p>
+&lt;p>&lt;em>Side note: If you don&amp;rsquo;t know already, LOC is a horrible metric for any sort of measurement in terms of programming. Don&amp;rsquo;t take this from me, take this from &lt;a href="https://www.goodreads.com/quotes/536587-measuring-programming-progress-by-lines-of-code-is-like-measuring">Bill Gates&lt;/a>:&lt;/em>&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;em>&amp;ldquo;Measuring programming progress by lines of code is like measuring aircraft building progress by weight.&amp;quot;&lt;/em>&lt;/p>
+&lt;/blockquote>
+&lt;p>Here&amp;rsquo;s how a normal function looks like:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">&lt;span style="color:#75715e"># Declaring the function&lt;/span>
+doSomething&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#75715e"># Calling the function&lt;/span>
+doSomething
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Pretty straightforward and easy to understand. Now, here&amp;rsquo;s a few differences between functions in shell scripts and a normal programming language.&lt;/p>
+&lt;h3 id="parameters">Parameters&lt;/h3>
+&lt;p>If you were to pass a parameter / use a parameter into a function in Java, you have to declare them in the function declaration. They look something like this.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-java" data-lang="java">&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>&lt;span style="color:#f92672">(&lt;/span>String&lt;span style="color:#f92672">[]&lt;/span> args&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+doSomething&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#34;random String&amp;#34;&lt;/span>&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">private&lt;/span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">doSomething&lt;/span> &lt;span style="color:#f92672">(&lt;/span>String words&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+System&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">out&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">println&lt;/span>&lt;span style="color:#f92672">(&lt;/span>words&lt;span style="color:#f92672">);&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>In the shell, however, they do not require a declaration of types or names at all. Each of them is like a separate script that lives in the script itself. If you were to use a param, just pass it in and call it like how you would do it if you were taking in input for this script at the top level. Something like this:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">doSomething&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+echo $1
+&lt;span style="color:#f92672">}&lt;/span>
+doSomething &lt;span style="color:#e6db74">&amp;#34;random String&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol>
+&lt;li>Similar to above, if you want to take in everything, you will use &lt;code>$@&lt;/code> instead of &lt;code>$1&lt;/code> since &lt;code>$1&lt;/code> would only use the first input (and &lt;code>$2&lt;/code> for the second etc.).&lt;/li>
+&lt;li>Functions need to be declared ahead of where they are being called. (Usually beginning of the file before any main operations.)&lt;/li>
+&lt;/ol>
+&lt;h3 id="return">Return&lt;/h3>
+&lt;p>Let&amp;rsquo;s say we create a script like below named &lt;code>run_this.sh&lt;/code>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">doSomething&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+echo &lt;span style="color:#e6db74">&amp;#34;magic&amp;#34;&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+output&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">`&lt;/span>doSomething&lt;span style="color:#e6db74">`&lt;/span>
+echo $output
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now let&amp;rsquo;s run it and see what is being assigned to the &lt;code>output&lt;/code> variable.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">$ ./run_this.sh
+magic
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Note that instead of &lt;code>0&lt;/code>, it shows &lt;code>magic&lt;/code> instead. This is because when you do &lt;code>output=`doSomething` &lt;/code>, it assigns the output message to &lt;code>output&lt;/code> instead of the return value since output message is how you communicate almost anything in shell script.&lt;/p>
+&lt;p>So when does it make sense to use the &lt;code>return&lt;/code> call then? When you are using it as part of an if statement. Something like this:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">doSomething&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
+echo &lt;span style="color:#e6db74">&amp;#34;magic&amp;#34;&lt;/span>
+&lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;span style="color:#f92672">}&lt;/span>
+&lt;span style="color:#66d9ef">if&lt;/span> doSomething; &lt;span style="color:#66d9ef">then&lt;/span>
+echo &lt;span style="color:#e6db74">&amp;#34;Its true!&amp;#34;&lt;/span>
+&lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-txt" data-lang="txt">$ ./run_this.sh
+Its true!
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>In this case, &lt;code>return 0&lt;/code> means &lt;code>true&lt;/code> while &lt;code>return 1&lt;/code> meant &lt;code>false&lt;/code> in a traditional &lt;code>boolean&lt;/code> sense.&lt;/p>
+&lt;h2 id="multi-line-echo">Multi-line echo&lt;/h2>
+&lt;p>There are times when you need to print a multi-line message. There are a few ways to go around this. The easiest way is to use &lt;code>echo&lt;/code> multiple times like this:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">echo &lt;span style="color:#e6db74">&amp;#34;line1&amp;#34;&lt;/span>
+echo &lt;span style="color:#e6db74">&amp;#34;line2&amp;#34;&lt;/span>
+echo &lt;span style="color:#e6db74">&amp;#34;line3&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>It works but probably not the most elegant way to get around this. Instead, you can use &lt;code>cat &amp;lt;&amp;lt; EOF&lt;/code> instead. Something like this:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">cat &lt;span style="color:#e6db74">&amp;lt;&amp;lt; EOF
+&lt;/span>&lt;span style="color:#e6db74">line1
+&lt;/span>&lt;span style="color:#e6db74">line2
+&lt;/span>&lt;span style="color:#e6db74">line3
+&lt;/span>&lt;span style="color:#e6db74">EOF&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Note that there should not be anything (including spaces or tabs) before &lt;code>EOF&lt;/code>. If you want to do it in an &lt;code>if&lt;/code> statement, it should look something like this.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> &lt;span style="color:#e6db74">&amp;#34;a&amp;#34;&lt;/span> &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;a&amp;#34;&lt;/span> &lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+cat &lt;span style="color:#e6db74">&amp;lt;&amp;lt; EOF
+&lt;/span>&lt;span style="color:#e6db74">line1
+&lt;/span>&lt;span style="color:#e6db74">line2
+&lt;/span>&lt;span style="color:#e6db74">line3
+&lt;/span>&lt;span style="color:#e6db74">EOF&lt;/span>
+&lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Realize that even the messages itself are aligned to the left. This is because if you leave them tabbed, the output message shown in the command line will also be tabbed. Also, if &lt;code>EOF&lt;/code> is tabbed, shell would complain about it and usually ends the script there.&lt;/p>
+&lt;h2 id="flags--options">Flags / Options&lt;/h2>
+&lt;p>You&amp;rsquo;ve probably seen some of the scripts or commands that comes with an ability to add flags (and sometimes arguments for the specific flag). Something like &lt;code>git commit -a -m &amp;quot;Some commit message&amp;quot;&lt;/code>.&lt;/p>
+&lt;p>Here&amp;rsquo;s a quick example of how it looks like (I&amp;rsquo;ve tried to be as comprehensive as possible with the example.)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">&lt;span style="color:#66d9ef">while&lt;/span> getopts ac: opt; &lt;span style="color:#66d9ef">do&lt;/span>
+&lt;span style="color:#66d9ef">case&lt;/span> $opt in
+a&lt;span style="color:#f92672">)&lt;/span>
+echo &lt;span style="color:#e6db74">&amp;#34;\&amp;#34;a\&amp;#34; was executed.&amp;#34;&lt;/span>
+;;
+c&lt;span style="color:#f92672">)&lt;/span>
+echo &lt;span style="color:#e6db74">&amp;#34;\&amp;#34;c\&amp;#34; was executed with parameter \&amp;#34;&lt;/span>$OPTARG&lt;span style="color:#e6db74">\&amp;#34;.&amp;#34;&lt;/span>
+;;
+&lt;span style="color:#ae81ff">\?&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+echo &lt;span style="color:#e6db74">&amp;#34;Invalid option: -&lt;/span>$opt&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+exit &lt;span style="color:#ae81ff">1&lt;/span>
+;;
+:&lt;span style="color:#f92672">)&lt;/span>
+echo &lt;span style="color:#e6db74">&amp;#34;option -&lt;/span>$opt&lt;span style="color:#e6db74"> requires an argument.&amp;#34;&lt;/span>
+exit &lt;span style="color:#ae81ff">1&lt;/span>
+;;
+&lt;span style="color:#66d9ef">esac&lt;/span>
+&lt;span style="color:#66d9ef">done&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;pre tabindex="0">&lt;code>$ ./run_this.sh
+$ ./run_this.sh -a
+&amp;quot;a&amp;quot; was executed.
+$ ./run_this.sh -c
+option -c requires an argument.
+$ ./run_this.sh -c abcd
+&amp;quot;c&amp;quot; was executed with parameter &amp;quot;abcd&amp;quot;.
+$ ./run_this.sh -a -c abc
+&amp;quot;a&amp;quot; was executed.
+&amp;quot;c&amp;quot; was executed with parameter &amp;quot;abc&amp;quot;.
+$ ./run_this.sh -x
+Invalid option: -x
+&lt;/code>&lt;/pre>&lt;p>In the above example, the differences between option &lt;code>-a&lt;/code> and &lt;code>-c&lt;/code> is that in the &lt;code>getopts&lt;/code> line, &lt;code>c&lt;/code> has a colon (&lt;code>:&lt;/code>) following it after therefore telling the program to expect a parameter for the option. Another thing to keep in mind is that the options need to be declared in an alphabetical way. If you declare something like &lt;code>acb&lt;/code>, the &lt;code>b&lt;/code> declaration would be ignored and using the &lt;code>-b&lt;/code> flag would lead to the error message instead of the &lt;code>b&lt;/code> case in the switch condition.&lt;/p>
+&lt;p>Thanks for reading!&lt;/p>
+&lt;hr>
+&lt;h2 id="about-me">About me&lt;/h2>
+&lt;p>I currently work at Facebook as a Software Engineer. I spend some of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey &lt;a href="https://binhong.me/blog">here&lt;/a> or on &lt;a href="https://github.com/binhonglee">GitHub&lt;/a>.&lt;/p>
+&lt;hr>
+&lt;h2 id="references">References&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="http://wiki.bash-hackers.org/howto/getopts_tutorial">Small getopts tutorial&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://stackoverflow.com/questions/10969953/how-to-output-a-multiline-string-in-bash#10970616">How to output a multiline string in Bash&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>&lt;em>This article was originally published on &lt;a href="https://medium.freecodecamp.org/functional-and-flexible-shell-scripting-tricks-a2d693be2dd4">freeCodeCamp&lt;/a>.&lt;/em>&lt;/p>
+&lt;/blockquote></description></item></channel></rss>

@@ -1,2 +1,141 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Automated Deployment on BinHong Lee's Blog</title><link>https://binhong.me/blog/tags/automated-deployment/</link><description>Recent content in Automated Deployment on BinHong Lee's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 22 Apr 2018 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/automated-deployment/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting started with Travis-CI</title><link>https://binhong.me/blog/2018-04-22-getting-started-with-travis-ci/</link><pubDate>Sun, 22 Apr 2018 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2018-04-22-getting-started-with-travis-ci/</guid><description>What is CI and why should I care about it? CI stands for Continuous Integration which as the name suggests, is an integrated tests that runs continuously on every time when someone pushes a commit (or mostly when opening a Pull Request).
-As for why is it important, it automates the whole testing modules. Ideally, you would still want to test your changes locally before pushing them to remote but in some occasion where you forgot or the program requires a lot more resources than your current machine can handle, CI comes in very handy.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Automated Deployment on BinHong Lee's Blog</title><link>https://binhong.me/blog/tags/automated-deployment/</link><description>Recent content in Automated Deployment on BinHong Lee's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 22 Apr 2018 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/automated-deployment/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting started with Travis-CI</title><link>https://binhong.me/blog/2018-04-22-getting-started-with-travis-ci/</link><pubDate>Sun, 22 Apr 2018 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2018-04-22-getting-started-with-travis-ci/</guid><description>&lt;h2 id="what-is-ci-and-why-should-i-care-aboutit">What is CI and why should I care about it?&lt;/h2>
+&lt;p>CI stands for Continuous Integration which as the name suggests, is an integrated tests that runs continuously on every time when someone pushes a commit (or mostly when opening a &lt;a href="https://help.github.com/articles/about-pull-requests/">Pull Request&lt;/a>).&lt;/p>
+&lt;p>As for why is it important, it automates the whole testing modules. Ideally, you would still want to test your changes locally before pushing them to remote but in some occasion where you forgot or the program requires a lot more resources than your current machine can handle, CI comes in very handy. That aside, if your project happen to have people wanting to contribute code, a properly written test with CI will help you in reviewing the changes and ensuring that the contribution would not break the build.&lt;/p>
+&lt;h2 id="why-travis-ci">Why Travis-CI?&lt;/h2>
+&lt;p>There are plenty of CI tools out there (cricleCI, AppVeyor etc.) so why Travis-CI? The straightforward answer is that its the easiest one to get started with especially if you are already on GitHub. This is actually also one of its major drawback which is how tightly tied Travis-CI is onto GitHub. As far as I know, it is not possible to use Travis-CI outside of GitHub. That aside, if you host your projects on GitHub, that should be the least of your concern.&lt;/p>
+&lt;h2 id="setup">Setup&lt;/h2>
+&lt;p>First, sign up at &lt;a href="https://travis-ci.org/">their website&lt;/a>, link your GitHub account and enable it for the repository you would like to implement this. Do note that this is only for public repositories. If you would like to do this for a private repository instead, you will need to sign up for &lt;a href="https://docs.travis-ci.com/user/travis-ci-for-private/">Travis-CI Pro&lt;/a>.&lt;/p>
+&lt;p>Create a file named &lt;code>.travis.yml&lt;/code> and add the first line with the programming language you used (unless its Android in which you would then write Android instead of Java).&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">language&lt;/span>: &lt;span style="color:#ae81ff">java&lt;/span>
+&lt;span style="color:#75715e"># (or cpp, android, node_js etc.)&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now, there’s also a possibility that running the test might require sudo access to the testing environment in which you would then add the following line above the &lt;code>language&lt;/code> line.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">sudo&lt;/span>: &lt;span style="color:#ae81ff">required&lt;/span>
+&lt;span style="color:#f92672">language&lt;/span>: &lt;span style="color:#ae81ff">cpp&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="testing-environment">Testing environment&lt;/h2>
+&lt;p>Ideally, you will only be testing it in one environment which means this will be a one liner of this.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">os&lt;/span>: &lt;span style="color:#ae81ff">linux&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>However, in most occasion, we will be testing our software with a few different kinds of environment (at the time of writing, Travis-CI seems to only Ubuntu and OSX as seen &lt;a href="https://docs.travis-ci.com/user/reference/overview/">here&lt;/a>). Sometimes, 2 lines is enough.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">os&lt;/span>:
+- &lt;span style="color:#ae81ff">linux&lt;/span>
+- &lt;span style="color:#ae81ff">osx&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>But more time than not, you need complicated configuration for each one of them (especially when it comes to C++ projects).&lt;/p>
+&lt;p>Here is how the environment configuration for &lt;a href="https://github.com/binhonglee/TicketingSystem/blob/master/.travis.yml">one of my projects&lt;/a> looks like (shortened):&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">matrix&lt;/span>:
+&lt;span style="color:#f92672">include&lt;/span>:
+- &lt;span style="color:#f92672">os&lt;/span>: &lt;span style="color:#ae81ff">linux&lt;/span>
+&lt;span style="color:#f92672">addons&lt;/span>:
+&lt;span style="color:#f92672">apt&lt;/span>:
+&lt;span style="color:#f92672">sources&lt;/span>:
+- &lt;span style="color:#ae81ff">ubuntu-toolchain-r-test&lt;/span>
+&lt;span style="color:#f92672">packages&lt;/span>:
+- &lt;span style="color:#ae81ff">g++-7&lt;/span>
+&lt;span style="color:#f92672">env&lt;/span>:
+- &lt;span style="color:#ae81ff">MATRIX_EVAL=&amp;#34;CC=gcc-7 &amp;amp;&amp;amp; CXX=g++-7&amp;#34;&lt;/span>
+- &lt;span style="color:#f92672">os&lt;/span>: &lt;span style="color:#ae81ff">osx&lt;/span>
+&lt;span style="color:#f92672">osx_image&lt;/span>: &lt;span style="color:#ae81ff">xcode8&lt;/span>
+&lt;span style="color:#f92672">env&lt;/span>:
+- &lt;span style="color:#ae81ff">MATRIX_EVAL=&amp;#34;brew update &amp;amp;&amp;amp; brew install gcc &amp;amp;&amp;amp; CC=gcc-7 &amp;amp;&amp;amp; CXX=g++-7&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="language-specificsettings">Language specific settings&lt;/h2>
+&lt;p>For some languages, it is a lot more complicated than the others due to the way their versioning works.&lt;/p>
+&lt;h3 id="android">Android&lt;/h3>
+&lt;p>This is probably the most complicated one I’ve come across. It took a lot of tries and failure for me to figure out how it works. (&lt;a href="https://docs.travis-ci.com/user/languages/android/">The documentation&lt;/a> has also since updated which helps greatly.)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">android&lt;/span>:
+&lt;span style="color:#f92672">components&lt;/span>:
+- &lt;span style="color:#ae81ff">tools&lt;/span>
+- &lt;span style="color:#ae81ff">platform-tools&lt;/span>
+- &lt;span style="color:#ae81ff">build-tools-26.0.2&lt;/span>
+- &lt;span style="color:#ae81ff">android-26&lt;/span>
+- &lt;span style="color:#ae81ff">platform-tools&lt;/span>
+- &lt;span style="color:#ae81ff">extra-android-support&lt;/span>
+- &lt;span style="color:#ae81ff">extra-google-google_play_services&lt;/span>
+- &lt;span style="color:#ae81ff">extra-google-m2repository&lt;/span>
+- &lt;span style="color:#ae81ff">extra-android-m2repository&lt;/span>
+- &lt;span style="color:#ae81ff">addon-google_apis-google-26&lt;/span>
+- &lt;span style="color:#ae81ff">sys-img-armeabi-v7a-android-26&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="c">C++&lt;/h3>
+&lt;p>There isn’t specific custom configuration available for C++ like for Android above but due to the nature of its complicated OS configuration, you will need to import the matrix from before into the system before installing anything that might be needed to run the test itself. Therefore you will need to add the following.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">before_install&lt;/span>:
+- &lt;span style="color:#ae81ff">eval &amp;#34;${MATRIX_EVAL}&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="java">Java&lt;/h3>
+&lt;p>For Java, due to the differences between OpenJDK, OracleJDK and also differences from versions to versions itself (shoutout to OracleJDK 9 &amp;amp; 10), you might want to test your software with every version available.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">jdk&lt;/span>:
+- &lt;span style="color:#ae81ff">oraclejdk9&lt;/span>
+- &lt;span style="color:#ae81ff">oraclejdk8&lt;/span>
+- &lt;span style="color:#ae81ff">openjdk8&lt;/span>
+- &lt;span style="color:#ae81ff">openjdk7&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="python">Python&lt;/h3>
+&lt;p>Similarly, you can test your software or package against different versions of Python including the development versions.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">python&lt;/span>:
+- &lt;span style="color:#e6db74">&amp;#34;2.7&amp;#34;&lt;/span>
+- &lt;span style="color:#e6db74">&amp;#34;3.6&amp;#34;&lt;/span>
+- &lt;span style="color:#e6db74">&amp;#34;3.6-dev&amp;#34;&lt;/span>
+- &lt;span style="color:#e6db74">&amp;#34;pypy2.7&amp;#34;&lt;/span>
+- &lt;span style="color:#e6db74">&amp;#34;pypy3.8&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>*Note: Due to recent changes, seems like &lt;code>3.7-dev&lt;/code>, &lt;code>3.8-dev&lt;/code>, and &lt;code>nightly&lt;/code> would not work as of now.&lt;/em>&lt;/p>
+&lt;h3 id="nodejs">Node.js&lt;/h3>
+&lt;p>Again, you might need to test your software with multiple versions or node.js except the differences between each version is not as drastic but there are a lot more versions comparatively.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">node_js&lt;/span>:
+- &lt;span style="color:#e6db74">&amp;#34;node&amp;#34;&lt;/span>
+- &lt;span style="color:#e6db74">&amp;#34;9&amp;#34;&lt;/span>
+- &lt;span style="color:#e6db74">&amp;#34;8&amp;#34;&lt;/span>
+- &lt;span style="color:#e6db74">&amp;#34;7&amp;#34;&lt;/span>
+- &lt;span style="color:#e6db74">&amp;#34;6&amp;#34;&lt;/span>
+- &lt;span style="color:#e6db74">&amp;#34;5&amp;#34;&lt;/span>
+- &lt;span style="color:#e6db74">&amp;#34;4&amp;#34;&lt;/span>
+- &lt;span style="color:#e6db74">&amp;#34;lts/*&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>By doing this, you will be testing your software towards possibly 8 versions of node.js.&lt;/p>
+&lt;h2 id="install-and-runtest">Install and run test&lt;/h2>
+&lt;p>If you look into the &lt;a href="https://docs.travis-ci.com/user/languages/">specific documentations&lt;/a> about the configurations for each languages, you will find that many of them has default &lt;code>install&lt;/code> and &lt;code>test&lt;/code> scripts but you can always overwrite them with your own scripts or commands like the following.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">before_install&lt;/span>:
+- &lt;span style="color:#ae81ff">./beforeInstall.sh&lt;/span>
+&lt;span style="color:#f92672">install&lt;/span>:
+- &lt;span style="color:#ae81ff">./install.sh&lt;/span>
+&lt;span style="color:#f92672">before_script&lt;/span>:
+- &lt;span style="color:#ae81ff">./preTest.sh&lt;/span>
+&lt;span style="color:#f92672">script&lt;/span>:
+- &lt;span style="color:#ae81ff">./test.sh&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>*Note: if you testing in macOS environment and is installing any dependencies through Homebrew (including language dependencies in C++), you will have to do a &lt;code>brew update&lt;/code> before running anything brew related to prevent an error.&lt;/em>&lt;/p>
+&lt;h2 id="deployment">Deployment&lt;/h2>
+&lt;p>If you host your project externally while using your GitHub repository as your code control, Travis-CI can also help automating the deployment process. Depending on the service provider you use, their configuration can vary greatly from one another. Below, I included some of those that I think is the more popular ones. As you might have guessed, you can also deploy to multiple developers at once. I recommend checking out the &lt;a href="https://docs.travis-ci.com/user/deployment">documentation page&lt;/a> before implementing any of these.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#f92672">before_deploy&lt;/span>:
+- &lt;span style="color:#ae81ff">./before_deployment&lt;/span>
+&lt;span style="color:#f92672">deploy&lt;/span>:
+- &lt;span style="color:#f92672">provider&lt;/span>: &lt;span style="color:#ae81ff">heroku&lt;/span>
+&lt;span style="color:#f92672">api_key&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;YOUR_API_KEY&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">skip_cleanup&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;span style="color:#f92672">on&lt;/span>: &lt;span style="color:#ae81ff">production&lt;/span>
+&lt;span style="color:#f92672">run&lt;/span>:
+- &lt;span style="color:#e6db74">&amp;#34;./deploy&amp;#34;&lt;/span>
+- &lt;span style="color:#f92672">provider&lt;/span>: &lt;span style="color:#ae81ff">pages&lt;/span>
+&lt;span style="color:#f92672">github_token&lt;/span>: &lt;span style="color:#ae81ff">$GITHUB_TOKEN&lt;/span>
+&lt;span style="color:#f92672">skip_cleanup&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;span style="color:#f92672">on&lt;/span>: &lt;span style="color:#ae81ff">production&lt;/span>
+&lt;span style="color:#f92672">run&lt;/span>:
+- &lt;span style="color:#e6db74">&amp;#34;./deploy&amp;#34;&lt;/span>
+- &lt;span style="color:#f92672">provider&lt;/span>: &lt;span style="color:#ae81ff">npm&lt;/span>
+&lt;span style="color:#f92672">api_key&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;YOUR_API_KEY&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">email&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;email@domain.com&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">on&lt;/span>: &lt;span style="color:#ae81ff">production&lt;/span>
+- &lt;span style="color:#f92672">provider&lt;/span>: &lt;span style="color:#ae81ff">elasticbeanstalk&lt;/span>
+&lt;span style="color:#f92672">access_key_id&lt;/span>: &lt;span style="color:#ae81ff">&amp;lt;access-key-id&amp;gt;&lt;/span>
+&lt;span style="color:#f92672">secret_access_key&lt;/span>:
+&lt;span style="color:#f92672">secure&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;Encypted &amp;lt;secret-access-key&amp;gt;&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">region&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;us-east-1&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">app&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;your-app-name&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">env&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;your-app-environment&amp;#34;&lt;/span>
+- &lt;span style="color:#f92672">provider&lt;/span>: &lt;span style="color:#ae81ff">pypi&lt;/span>
+&lt;span style="color:#f92672">user&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;username&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">password&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;password&amp;#34;&lt;/span>
+&lt;span style="color:#f92672">after_deploy&lt;/span>:
+- &lt;span style="color:#ae81ff">./post_deployment&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="code-coverage">Code coverage&lt;/h2>
+&lt;p>Along with testing, I would also recommend using a tool to analyze your code coverage. It will show you how much coverage your test has over your codes (and usually, use cases). Personally, I use the tool called &lt;a href="https://codecov.io/">codecov&lt;/a>.&lt;/p>
+&lt;h2 id="add-thebadge">Add the badge!&lt;/h2>
+&lt;p>If you are like me, the reason I was hooked up by this is because long time ago when I first got on GitHub, I saw plenty of repositories have the badge that shows if their build is &lt;code>passing&lt;/code> or &lt;code>failing&lt;/code>. I thought that was really fancy and wanted one of those so I started getting myself to learn what CI as a whole is about and how can I make use of it. Turns out, its a lot more useful than just being pretty!&lt;/p>
+&lt;hr>
+&lt;h2 id="about-me">About me&lt;/h2>
+&lt;p>I currently work at Apple Inc. on the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey &lt;a href="https://binhong.me/blog">here&lt;/a> or on &lt;a href="https://github.com/binhonglee">GitHub&lt;/a>.&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;em>This article was originally published on &lt;a href="https://codeburst.io/getting-started-with-travis-ci-f3223082f256">codeburst.io&lt;/a>.&lt;/em>&lt;/p>
+&lt;/blockquote></description></item></channel></rss>

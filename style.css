@@ -49,6 +49,14 @@ blockquote {
   background-color: black;
 }
 
+.dark_mode_toggle > summary {
+  list-style: none;
+}
+
+.dark_mode_toggle > summary::-webkit-details-marker {
+  display: none;
+}
+
 details > summary p {
   cursor: pointer;
 }
@@ -73,6 +81,10 @@ a .name:hover,
   text-decoration: underline;
 }
 
+.name-title {
+  padding: 5px 10px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   margin-top: 10px;
@@ -84,6 +96,10 @@ h1 {
 
 h2 {
   font-size: 1.5em;
+}
+
+.dropdown_toggle {
+  display: none;
 }
 
 .projects a:hover {
@@ -184,15 +200,12 @@ p > .link {
 
 .header_links {
   position: absolute;
+  padding: 8px 10px;
   z-index: 2;
 }
 
 .content_body {
-  padding-top: 30px;
-}
-
-.header_links p {
-  padding-right: 5px;
+  padding-top: 35px;
 }
 
 .header_links .link, .links .link {
@@ -322,5 +335,66 @@ pre .custom-language {
 @media screen and (max-width: 950px) {
   .content .links {
     display: none;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .dropdown_toggle {
+    display: block;
+    position: absolute;
+    border: none;
+    cursor: pointer;
+    padding: 0 10px;
+    font-size: 40px;
+    z-index: 2  ;
+  }
+
+  .dropdown_toggle[open] {
+    border-style: solid;
+  }
+
+  .dropdown_toggle > summary {
+    list-style: none;
+  }
+  
+  .dropdown_toggle > summary::-webkit-details-marker {
+    display: none;
+  }  
+
+  .header_links {
+    display: none;
+    position: absolute;
+    padding: 0;
+    width: 150px;
+    background-color: var(--default-background);
+    box-shadow: 0px 8px 16px 0px var;
+    z-index: 2;
+  }
+
+  .header_links a {
+    padding: 10px;
+    border-style: solid;
+    border-color: var(--default-color);
+  }
+
+  .dark_mode_toggle[open] + div .header_links {
+    background-color: var(--dark-background);
+  }
+
+  .dark_mode_toggle[open] + div .header_links a {
+    border-color: var(--dark-color);
+  }
+
+  .header_links p {
+    display: none;
+  }
+
+  .header_links .link {
+    display: block;
+  }
+
+  .dropdown_toggle[open] + .header_links {
+    display: block;
+    margin-top: 50px;
   }
 }
