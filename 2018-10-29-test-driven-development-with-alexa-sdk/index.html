@@ -35,8 +35,8 @@ Here are a few more articles on the benefits and why you should apply TDD:
 </summary>
 </details>
 <div class=wrapper>
-<div class=content>
-<details class=dropdown_toggle role=button><summary>+</summary></details>
+<div class="content dropdown">
+<button class=dropdown_toggle>+</button>
 <div class=header_links>
 <a class=link href=https://binhong.me/>About</a>
 <p>|</p>
@@ -103,11 +103,21 @@ Shout out to <a href=https://twitter.com/robmccauley>robmccauley</a> for maintai
 <li>Create a file named ‘default.txt’ in the ‘dialog’ folder</li>
 <li>Edit the ‘SourceCodeFile’ line in the cloned ‘testflow’ repository to point to the ‘index.js’ in the base level of the folder (feel free to edit it to your personal preference).</li>
 </ul>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>git clone git@github.com:robm26/testflow.git test
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>git clone git@github.com:robm26/testflow.git <span style=color:#8be9fd;font-style:italic>test</span>
 mkdir dialogs
 touch dialogs/default.txt
-sed -i <span style=color:#e6db74>&#39;9c const SourceCodeFile = &#34;../index.js&#34;&#39;</span> test/testflow.js
-</code></pre></div><p>Inside the ‘default.txt’ file in the ‘dialogs’ folder, you should have the intents you are trying to test. The default in the testflow repository consist of the followings but you should definitely add some more customized ones to it depending on what you are trying to do in your skill.</p>
+sed -i <span style=color:#f1fa8c>&#39;9c const SourceCodeFile = &#34;../index.js&#34;&#39;</span> test/testflow.js
+</code></pre></td></tr></table>
+</div>
+</div><p>Inside the ‘default.txt’ file in the ‘dialogs’ folder, you should have the intents you are trying to test. The default in the testflow repository consist of the followings but you should definitely add some more customized ones to it depending on what you are trying to do in your skill.</p>
 <pre tabindex=0><code>LaunchRequest
 AMAZON.HelpIntent
 AMAZON.StopIntent
@@ -116,47 +126,93 @@ AMAZON.StopIntent
 </code></pre><p>To get a deeper understanding into using testflow, I recommend looking into its <a href=https://github.com/robm26/testflow/blob/master/tutorial/TUTORIAL.md>tutorial page</a> and the <a href=https://developer.amazon.com/blogs/alexa/post/35eb8ae8-2cd8-4de7-86c5-97a1abc239b9/testflow-simulate-conversations-with-your-alexa-skill-code-to-ease-debugging>blog post</a> by the author himself.</p>
 <h1 id=developing-the-skill>Developing the skill</h1>
 <p>To be honest, I don’t have too much to talk about on this topic. Here is some sample code of how a sample skill can look like. (Also remember to do <code>npm install --save alexa-sdk</code>.)</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>Alexa</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#39;alexa-sdk&#39;</span>)
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-js data-lang=js><span style=color:#8be9fd;font-style:italic>var</span> Alexa <span style=color:#ff79c6>=</span> require(<span style=color:#f1fa8c>&#39;alexa-sdk&#39;</span>)
 
-<span style=color:#a6e22e>exports</span>.<span style=color:#a6e22e>handler</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>function</span> (<span style=color:#a6e22e>event</span>, <span style=color:#a6e22e>context</span>, <span style=color:#a6e22e>callback</span>) {
-  <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>alexa</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>Alexa</span>.<span style=color:#a6e22e>handler</span>(<span style=color:#a6e22e>event</span>, <span style=color:#a6e22e>context</span>)
-  <span style=color:#a6e22e>alexa</span>.<span style=color:#a6e22e>registerHandlers</span>(<span style=color:#a6e22e>handlers</span>)
-  <span style=color:#a6e22e>alexa</span>.<span style=color:#a6e22e>execute</span>()
+exports.handler <span style=color:#ff79c6>=</span> <span style=color:#8be9fd;font-style:italic>function</span> (event, context, callback) {
+  <span style=color:#8be9fd;font-style:italic>var</span> alexa <span style=color:#ff79c6>=</span> Alexa.handler(event, context)
+  alexa.registerHandlers(handlers)
+  alexa.execute()
 }
 
-<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>handlers</span> <span style=color:#f92672>=</span> {
-  <span style=color:#e6db74>&#39;LaunchRequest&#39;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
-    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>emit</span>(<span style=color:#e6db74>&#39;:ask&#39;</span>, <span style=color:#e6db74>&#39;Welcome to the sample skill. Say help for help.&#39;</span>)
+<span style=color:#8be9fd;font-style:italic>var</span> handlers <span style=color:#ff79c6>=</span> {
+  <span style=color:#f1fa8c>&#39;LaunchRequest&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
+    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:ask&#39;</span>, <span style=color:#f1fa8c>&#39;Welcome to the sample skill. Say help for help.&#39;</span>)
   },
   
-  <span style=color:#e6db74>&#39;Intent1&#39;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
-    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>emit</span>(<span style=color:#e6db74>&#39;:ask&#39;</span>, <span style=color:#e6db74>&#39;This is the first intent.&#39;</span>)
+  <span style=color:#f1fa8c>&#39;Intent1&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
+    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:ask&#39;</span>, <span style=color:#f1fa8c>&#39;This is the first intent.&#39;</span>)
   },
   
-  <span style=color:#e6db74>&#39;Intent2&#39;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
-    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>input1</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>event</span>.<span style=color:#a6e22e>request</span>.<span style=color:#a6e22e>intent</span>.<span style=color:#a6e22e>slots</span>.<span style=color:#a6e22e>InputOne</span>.<span style=color:#a6e22e>value</span>.<span style=color:#a6e22e>toString</span>()
-    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>input2</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>event</span>.<span style=color:#a6e22e>request</span>.<span style=color:#a6e22e>intent</span>.<span style=color:#a6e22e>slots</span>.<span style=color:#a6e22e>InputTwo</span>.<span style=color:#a6e22e>value</span>.<span style=color:#a6e22e>toString</span>()
-    <span style=color:#66d9ef>var</span> <span style=color:#a6e22e>response</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>doSomething</span>(<span style=color:#a6e22e>input1</span>, <span style=color:#a6e22e>input2</span>)
-    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>emit</span>(<span style=color:#e6db74>&#39;:ask&#39;</span>, <span style=color:#a6e22e>response</span>)
+  <span style=color:#f1fa8c>&#39;Intent2&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
+    <span style=color:#8be9fd;font-style:italic>var</span> input1 <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>this</span>.event.request.intent.slots.InputOne.value.toString()
+    <span style=color:#8be9fd;font-style:italic>var</span> input2 <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>this</span>.event.request.intent.slots.InputTwo.value.toString()
+    <span style=color:#8be9fd;font-style:italic>var</span> response <span style=color:#ff79c6>=</span> doSomething(input1, input2)
+    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:ask&#39;</span>, response)
   },
 
-  <span style=color:#e6db74>&#39;AMAZON.HelpIntent&#39;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
-    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>emit</span>(<span style=color:#e6db74>&#39;:ask&#39;</span>, <span style=color:#e6db74>&#39;Insert some help message here.&#39;</span>)
+  <span style=color:#f1fa8c>&#39;AMAZON.HelpIntent&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
+    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:ask&#39;</span>, <span style=color:#f1fa8c>&#39;Insert some help message here.&#39;</span>)
   },
 
-  <span style=color:#e6db74>&#39;AMAZON.StopIntent&#39;</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>function</span> () {
-    <span style=color:#66d9ef>this</span>.<span style=color:#a6e22e>emit</span>(<span style=color:#e6db74>&#39;:tell&#39;</span>, <span style=color:#e6db74>&#39;Have a good rest of your day!&#39;</span>)
+  <span style=color:#f1fa8c>&#39;AMAZON.StopIntent&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
+    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:tell&#39;</span>, <span style=color:#f1fa8c>&#39;Have a good rest of your day!&#39;</span>)
   }
 }
 
-<span style=color:#66d9ef>function</span> <span style=color:#a6e22e>doSomething</span> (<span style=color:#a6e22e>input1</span>, <span style=color:#a6e22e>input2</span>) {
-  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>input1</span>.<span style=color:#a6e22e>localeCompare</span>(<span style=color:#a6e22e>input2</span>)) {
-    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;They are the same string!&#34;</span>
-  } <span style=color:#66d9ef>else</span> {
-    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;They are different!&#34;</span>
+<span style=color:#8be9fd;font-style:italic>function</span> doSomething (input1, input2) {
+  <span style=color:#ff79c6>if</span> (input1.localeCompare(input2)) {
+    <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;They are the same string!&#34;</span>
+  } <span style=color:#ff79c6>else</span> {
+    <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;They are different!&#34;</span>
   }
 }
-</code></pre></div><p>I recommend looking into the official <a href=https://github.com/alexa/alexa-cookbook>Alexa GitHub repository</a> that provides all kinds of sample skills that you can work on top of.</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>I recommend looking into the official <a href=https://github.com/alexa/alexa-cookbook>Alexa GitHub repository</a> that provides all kinds of sample skills that you can work on top of.</p>
 <h1 id=deployment>Deployment</h1>
 <h2 id=alexa-skill-kit>Alexa Skill Kit</h2>
 <p>Go to <a href=https://developer.amazon.com/alexa/console/>this page</a> and select ‘Create Skill’. In there you should see options to ‘add intents’ and ‘custom slot types’. You should add the appropriate slot types and intents accordingly from above. After you are done with that, select ‘Endpoint’ from the side bar and select ‘AWS Lambda ARN’ as the skill’s service endpoint. Make a copy of the Skill ID as you will need it later.</p>

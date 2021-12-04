@@ -33,8 +33,8 @@
 </summary>
 </details>
 <div class=wrapper>
-<div class=content>
-<details class=dropdown_toggle role=button><summary>+</summary></details>
+<div class="content dropdown">
+<button class=dropdown_toggle>+</button>
 <div class=header_links>
 <a class=link href=https://binhong.me/>About</a>
 <p>|</p>
@@ -54,89 +54,206 @@
 <div class=post_content><p>While the defacto way of running postgres on Azure Pipeline according to <a href=https://devblogs.microsoft.com/devops/using-containerized-services-in-your-pipeline/>this guide</a> seems to be using the docker image, the MacOS image on Azure Pipeline does not have docker support due to some <a href=https://github.com/actions/virtual-environments/issues/2150>licensing issue</a>. So instead, this has to be setup and handled manually. We&rsquo;d use brew here since it comes installed in the OS image and is the easiest way to deal with it as far as I&rsquo;m aware.</p>
 <h2 id=install-optional>Install (optional)</h2>
 <p>By default postgres should already be installed in the included MacOS image but if you prefer to run it on a specific version you&rsquo;d have to force reinstall the version you want just to be sure.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>steps</span>:
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>steps</span>:
 ...
-- <span style=color:#f92672>script</span>: <span style=color:#ae81ff>brew install postgresql@13.1</span>
-  <span style=color:#f92672>displayName</span>: <span style=color:#ae81ff>Install PostgreSQL</span>
+- <span style=color:#ff79c6>script</span>: brew install postgresql@13.1
+  <span style=color:#ff79c6>displayName</span>: Install PostgreSQL
 ...
-</code></pre></div><h2 id=multiple-versions-optional>Multiple Versions (optional)</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=multiple-versions-optional>Multiple Versions (optional)</h2>
 <p>If you&rsquo;d like to test that it works with multiple versions of PostgreSQL, you can setup a version matrix for it.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>strategy</span>:
-  <span style=color:#f92672>matrix</span>:
-    <span style=color:#f92672>postgresql-11-10</span>:
-      <span style=color:#f92672>psqlVersion</span>: <span style=color:#e6db74>&#39;11.10&#39;</span>
-    <span style=color:#f92672>postgresql-13-1</span>:
-      <span style=color:#f92672>psqlVersion</span>: <span style=color:#e6db74>&#39;13.1&#39;</span>
-</code></pre></div><p>Then amend the installation part to make use of the value from the matrix.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>steps</span>:
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>strategy</span>:
+  <span style=color:#ff79c6>matrix</span>:
+    <span style=color:#ff79c6>postgresql-11-10</span>:
+      <span style=color:#ff79c6>psqlVersion</span>: <span style=color:#f1fa8c>&#39;11.10&#39;</span>
+    <span style=color:#ff79c6>postgresql-13-1</span>:
+      <span style=color:#ff79c6>psqlVersion</span>: <span style=color:#f1fa8c>&#39;13.1&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Then amend the installation part to make use of the value from the matrix.</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>steps</span>:
 ...
-- <span style=color:#f92672>script</span>: <span style=color:#ae81ff>brew install postgresql@$PSQL_VERSION</span>
-  <span style=color:#f92672>displayName</span>: <span style=color:#ae81ff>Install PostgreSQL</span>
-  <span style=color:#f92672>env</span>:
-    <span style=color:#f92672>PSQL_VERSION</span>: <span style=color:#ae81ff>$(psqlVersion)</span>
+- <span style=color:#ff79c6>script</span>: brew install postgresql@$PSQL_VERSION
+  <span style=color:#ff79c6>displayName</span>: Install PostgreSQL
+  <span style=color:#ff79c6>env</span>:
+    <span style=color:#ff79c6>PSQL_VERSION</span>: $(psqlVersion)
 ...
-</code></pre></div><h2 id=start-service>Start Service</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=start-service>Start Service</h2>
 <p>Despite being installed by default, it doesn&rsquo;t run by default so you&rsquo;ll need to add something like this to get the service started.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>steps</span>:
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>steps</span>:
 ...
-- <span style=color:#f92672>script</span>: <span style=color:#ae81ff>brew services start postgresql</span>
-  <span style=color:#f92672>displayName</span>: <span style=color:#ae81ff>Start Postgres Service</span>
+- <span style=color:#ff79c6>script</span>: brew services start postgresql
+  <span style=color:#ff79c6>displayName</span>: Start Postgres Service
 ...
-</code></pre></div><h2 id=set-up-db>Set up DB</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=set-up-db>Set up DB</h2>
 <p>Now, let&rsquo;s create a database called <code>db_name</code> owned by the user called <code>username</code> with <code>password</code> as password. (You can replace each of these with whatever that works best for you / your process.)</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>steps</span>:
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>steps</span>:
 ...
-- <span style=color:#f92672>script</span>: |<span style=color:#e6db74>
-</span><span style=color:#e6db74>    psql postgres -w -c &#34;CREATE DATABASE db_name;&#34;
-</span><span style=color:#e6db74>    psql postgres -w -c &#34;CREATE ROLE username WITH SUPERUSER CREATEDB LOGIN ENCRYPTED PASSWORD &#39;password&#39;;&#34;
-</span><span style=color:#e6db74>    psql postgres -w -c &#34;GRANT ALL PRIVILEGES ON DATABASE db_name TO username;&#34;</span>    
-  <span style=color:#f92672>displayName</span>: <span style=color:#ae81ff>Setup Database</span>
+- <span style=color:#ff79c6>script</span>: |<span style=color:#f1fa8c>
+</span><span style=color:#f1fa8c>    psql postgres -w -c &#34;CREATE DATABASE db_name;&#34;
+</span><span style=color:#f1fa8c>    psql postgres -w -c &#34;CREATE ROLE username WITH SUPERUSER CREATEDB LOGIN ENCRYPTED PASSWORD &#39;password&#39;;&#34;
+</span><span style=color:#f1fa8c>    psql postgres -w -c &#34;GRANT ALL PRIVILEGES ON DATABASE db_name TO username;&#34;</span>    
+  <span style=color:#ff79c6>displayName</span>: Setup Database
 ...
-</code></pre></div><h2 id=brew-optimization-optional>Brew Optimization (optional)</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=brew-optimization-optional>Brew Optimization (optional)</h2>
 <p>At this point, postgres should already be working as intended but it&rsquo;s not exactly ideal considering the first <code>brew</code> call actually takes a long time since it&rsquo;s also trying to run update and cleanup which can take a while. Considering that running brew update and brew cleanup probably has minimal benefit on a CI, we can add the following environment variables so brew wouldn&rsquo;t do that.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>variables</span>:
-  <span style=color:#f92672>HOMEBREW_NO_INSTALL_CLEANUP</span>: <span style=color:#ae81ff>1</span>
-  <span style=color:#f92672>HOMEBREW_NO_AUTO_UPDATE</span>: <span style=color:#ae81ff>1</span>
-</code></pre></div><h2 id=os-condition-optional>OS Condition (optional)</h2>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>variables</span>:
+  <span style=color:#ff79c6>HOMEBREW_NO_INSTALL_CLEANUP</span>: <span style=color:#bd93f9>1</span>
+  <span style=color:#ff79c6>HOMEBREW_NO_AUTO_UPDATE</span>: <span style=color:#bd93f9>1</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=os-condition-optional>OS Condition (optional)</h2>
 <p>If you&rsquo;re including this as part of a multi OS testing config, you can add an additional condition for each line of the commands here to make sure it doesn&rsquo;t run on other OS-es causing unexpected failures. Similarly, you can add its equivalent for commands specific to other OS-es.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>steps</span>:
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>steps</span>:
 ...
-- <span style=color:#f92672>script</span>: <span style=color:#ae81ff>brew services start postgresql</span>
-  <span style=color:#f92672>displayName</span>: <span style=color:#ae81ff>Start Postgres Service</span>
-  <span style=color:#f92672>condition</span>: <span style=color:#ae81ff>eq(variables[&#39;Agent.OS&#39;], &#39;Darwin&#39;)</span>
+- <span style=color:#ff79c6>script</span>: brew services start postgresql
+  <span style=color:#ff79c6>displayName</span>: Start Postgres Service
+  <span style=color:#ff79c6>condition</span>: eq(variables[&#39;Agent.OS&#39;], &#39;Darwin&#39;)
 ...
-</code></pre></div><h2 id=full-config>Full config</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=full-config>Full config</h2>
 <p>Finally when put together, your config likely looks something like this.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>variables</span>:
-  <span style=color:#f92672>HOMEBREW_NO_INSTALL_CLEANUP</span>: <span style=color:#ae81ff>1</span>
-  <span style=color:#f92672>HOMEBREW_NO_AUTO_UPDATE</span>: <span style=color:#ae81ff>1</span>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>variables</span>:
+  <span style=color:#ff79c6>HOMEBREW_NO_INSTALL_CLEANUP</span>: <span style=color:#bd93f9>1</span>
+  <span style=color:#ff79c6>HOMEBREW_NO_AUTO_UPDATE</span>: <span style=color:#bd93f9>1</span>
 
-<span style=color:#f92672>pool</span>:
-  <span style=color:#f92672>vmImage</span>: <span style=color:#ae81ff>macos-latest</span>
+<span style=color:#ff79c6>pool</span>:
+  <span style=color:#ff79c6>vmImage</span>: macos-latest
 
-<span style=color:#f92672>strategy</span>:
-  <span style=color:#f92672>matrix</span>:
-    <span style=color:#f92672>postgresql-11-10</span>:
-      <span style=color:#f92672>psqlVersion</span>: <span style=color:#e6db74>&#39;11.10&#39;</span>
-    <span style=color:#f92672>postgresql-13-1</span>:
-      <span style=color:#f92672>psqlVersion</span>: <span style=color:#e6db74>&#39;13.1&#39;</span>
+<span style=color:#ff79c6>strategy</span>:
+  <span style=color:#ff79c6>matrix</span>:
+    <span style=color:#ff79c6>postgresql-11-10</span>:
+      <span style=color:#ff79c6>psqlVersion</span>: <span style=color:#f1fa8c>&#39;11.10&#39;</span>
+    <span style=color:#ff79c6>postgresql-13-1</span>:
+      <span style=color:#ff79c6>psqlVersion</span>: <span style=color:#f1fa8c>&#39;13.1&#39;</span>
 
-<span style=color:#f92672>steps</span>:
-- <span style=color:#f92672>script</span>: <span style=color:#ae81ff>brew install postgresql@$(psqlVersion)</span>
-  <span style=color:#f92672>displayName</span>: <span style=color:#ae81ff>Install PostgreSQL</span>
-  <span style=color:#f92672>condition</span>: <span style=color:#ae81ff>eq(variables[&#39;Agent.OS&#39;], &#39;Darwin&#39;)</span>
+<span style=color:#ff79c6>steps</span>:
+- <span style=color:#ff79c6>script</span>: brew install postgresql@$(psqlVersion)
+  <span style=color:#ff79c6>displayName</span>: Install PostgreSQL
+  <span style=color:#ff79c6>condition</span>: eq(variables[&#39;Agent.OS&#39;], &#39;Darwin&#39;)
 
-- <span style=color:#f92672>script</span>: <span style=color:#ae81ff>brew services start postgresql</span>
-  <span style=color:#f92672>displayName</span>: <span style=color:#ae81ff>Start Postgres Service</span>
-  <span style=color:#f92672>condition</span>: <span style=color:#ae81ff>eq(variables[&#39;Agent.OS&#39;], &#39;Darwin&#39;)</span>
+- <span style=color:#ff79c6>script</span>: brew services start postgresql
+  <span style=color:#ff79c6>displayName</span>: Start Postgres Service
+  <span style=color:#ff79c6>condition</span>: eq(variables[&#39;Agent.OS&#39;], &#39;Darwin&#39;)
 
-- <span style=color:#f92672>script</span>: |<span style=color:#e6db74>
-</span><span style=color:#e6db74>    psql postgres -w -c &#34;CREATE DATABASE db_name;&#34;
-</span><span style=color:#e6db74>    psql postgres -w -c &#34;CREATE ROLE username WITH SUPERUSER CREATEDB LOGIN ENCRYPTED PASSWORD &#39;password&#39;;&#34;
-</span><span style=color:#e6db74>    psql postgres -w -c &#34;GRANT ALL PRIVILEGES ON DATABASE db_name TO username;&#34;</span>    
-  <span style=color:#f92672>displayName</span>: <span style=color:#ae81ff>Setup Database</span>
-  <span style=color:#f92672>condition</span>: <span style=color:#ae81ff>eq(variables[&#39;Agent.OS&#39;], &#39;Darwin&#39;)</span>
-</code></pre></div><p>Hopefully you find this article helpful!</p>
+- <span style=color:#ff79c6>script</span>: |<span style=color:#f1fa8c>
+</span><span style=color:#f1fa8c>    psql postgres -w -c &#34;CREATE DATABASE db_name;&#34;
+</span><span style=color:#f1fa8c>    psql postgres -w -c &#34;CREATE ROLE username WITH SUPERUSER CREATEDB LOGIN ENCRYPTED PASSWORD &#39;password&#39;;&#34;
+</span><span style=color:#f1fa8c>    psql postgres -w -c &#34;GRANT ALL PRIVILEGES ON DATABASE db_name TO username;&#34;</span>    
+  <span style=color:#ff79c6>displayName</span>: Setup Database
+  <span style=color:#ff79c6>condition</span>: eq(variables[&#39;Agent.OS&#39;], &#39;Darwin&#39;)
+</code></pre></td></tr></table>
+</div>
+</div><p>Hopefully you find this article helpful!</p>
 <hr>
 <h2 id=about-me>About me</h2>
 <p>I currently work at Facebook as a Software Engineer. I spend some of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey <a href=https://binhong.me/blog>here</a> or on <a href=https://github.com/binhonglee>GitHub</a>.</p>

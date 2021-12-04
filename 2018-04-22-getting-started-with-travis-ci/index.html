@@ -34,8 +34,8 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 </summary>
 </details>
 <div class=wrapper>
-<div class=content>
-<details class=dropdown_toggle role=button><summary>+</summary></details>
+<div class="content dropdown">
+<button class=dropdown_toggle>+</button>
 <div class=header_links>
 <a class=link href=https://binhong.me/>About</a>
 <p>|</p>
@@ -64,130 +64,300 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 <h2 id=setup>Setup</h2>
 <p>First, sign up at <a href=https://travis-ci.org/>their website</a>, link your GitHub account and enable it for the repository you would like to implement this. Do note that this is only for public repositories. If you would like to do this for a private repository instead, you will need to sign up for <a href=https://docs.travis-ci.com/user/travis-ci-for-private/>Travis-CI Pro</a>.</p>
 <p>Create a file named <code>.travis.yml</code> and add the first line with the programming language you used (unless its Android in which you would then write Android instead of Java).</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>language</span>: <span style=color:#ae81ff>java</span>
-<span style=color:#75715e># (or cpp, android, node_js etc.)</span>
-</code></pre></div><p>Now, there’s also a possibility that running the test might require sudo access to the testing environment in which you would then add the following line above the <code>language</code> line.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>sudo</span>: <span style=color:#ae81ff>required</span>
-<span style=color:#f92672>language</span>: <span style=color:#ae81ff>cpp</span>
-</code></pre></div><h2 id=testing-environment>Testing environment</h2>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>language</span>: java
+<span style=color:#6272a4># (or cpp, android, node_js etc.)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Now, there’s also a possibility that running the test might require sudo access to the testing environment in which you would then add the following line above the <code>language</code> line.</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>sudo</span>: required
+<span style=color:#ff79c6>language</span>: cpp
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=testing-environment>Testing environment</h2>
 <p>Ideally, you will only be testing it in one environment which means this will be a one liner of this.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>os</span>: <span style=color:#ae81ff>linux</span>
-</code></pre></div><p>However, in most occasion, we will be testing our software with a few different kinds of environment (at the time of writing, Travis-CI seems to only Ubuntu and OSX as seen <a href=https://docs.travis-ci.com/user/reference/overview/>here</a>). Sometimes, 2 lines is enough.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>os</span>:
-  - <span style=color:#ae81ff>linux</span>
-  - <span style=color:#ae81ff>osx</span>
-</code></pre></div><p>But more time than not, you need complicated configuration for each one of them (especially when it comes to C++ projects).</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>os</span>: linux
+</code></pre></td></tr></table>
+</div>
+</div><p>However, in most occasion, we will be testing our software with a few different kinds of environment (at the time of writing, Travis-CI seems to only Ubuntu and OSX as seen <a href=https://docs.travis-ci.com/user/reference/overview/>here</a>). Sometimes, 2 lines is enough.</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>os</span>:
+  - linux
+  - osx
+</code></pre></td></tr></table>
+</div>
+</div><p>But more time than not, you need complicated configuration for each one of them (especially when it comes to C++ projects).</p>
 <p>Here is how the environment configuration for <a href=https://github.com/binhonglee/TicketingSystem/blob/master/.travis.yml>one of my projects</a> looks like (shortened):</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>matrix</span>:
-  <span style=color:#f92672>include</span>:
-    - <span style=color:#f92672>os</span>: <span style=color:#ae81ff>linux</span>
-      <span style=color:#f92672>addons</span>:
-        <span style=color:#f92672>apt</span>:
-          <span style=color:#f92672>sources</span>:
-            - <span style=color:#ae81ff>ubuntu-toolchain-r-test</span>
-          <span style=color:#f92672>packages</span>:
-            - <span style=color:#ae81ff>g++-7</span>
-      <span style=color:#f92672>env</span>:
-        - <span style=color:#ae81ff>MATRIX_EVAL=&#34;CC=gcc-7 &amp;&amp; CXX=g++-7&#34;</span>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>matrix</span>:
+  <span style=color:#ff79c6>include</span>:
+    - <span style=color:#ff79c6>os</span>: linux
+      <span style=color:#ff79c6>addons</span>:
+        <span style=color:#ff79c6>apt</span>:
+          <span style=color:#ff79c6>sources</span>:
+            - ubuntu-toolchain-r-test
+          <span style=color:#ff79c6>packages</span>:
+            - g++-7
+      <span style=color:#ff79c6>env</span>:
+        - MATRIX_EVAL=&#34;CC=gcc-7 &amp;&amp; CXX=g++-7&#34;
 
-    - <span style=color:#f92672>os</span>: <span style=color:#ae81ff>osx</span>
-      <span style=color:#f92672>osx_image</span>: <span style=color:#ae81ff>xcode8</span>
-      <span style=color:#f92672>env</span>:
-        - <span style=color:#ae81ff>MATRIX_EVAL=&#34;brew update &amp;&amp; brew install gcc &amp;&amp; CC=gcc-7 &amp;&amp; CXX=g++-7&#34;</span>
-</code></pre></div><h2 id=language-specificsettings>Language specific settings</h2>
+    - <span style=color:#ff79c6>os</span>: osx
+      <span style=color:#ff79c6>osx_image</span>: xcode8
+      <span style=color:#ff79c6>env</span>:
+        - MATRIX_EVAL=&#34;brew update &amp;&amp; brew install gcc &amp;&amp; CC=gcc-7 &amp;&amp; CXX=g++-7&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=language-specificsettings>Language specific settings</h2>
 <p>For some languages, it is a lot more complicated than the others due to the way their versioning works.</p>
 <h3 id=android>Android</h3>
 <p>This is probably the most complicated one I’ve come across. It took a lot of tries and failure for me to figure out how it works. (<a href=https://docs.travis-ci.com/user/languages/android/>The documentation</a> has also since updated which helps greatly.)</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>android</span>:
-  <span style=color:#f92672>components</span>:
-    - <span style=color:#ae81ff>tools</span>
-    - <span style=color:#ae81ff>platform-tools</span>
-    - <span style=color:#ae81ff>build-tools-26.0.2</span>
-    - <span style=color:#ae81ff>android-26</span>
-    - <span style=color:#ae81ff>platform-tools</span>
-    - <span style=color:#ae81ff>extra-android-support</span>
-    - <span style=color:#ae81ff>extra-google-google_play_services</span>
-    - <span style=color:#ae81ff>extra-google-m2repository</span>
-    - <span style=color:#ae81ff>extra-android-m2repository</span>
-    - <span style=color:#ae81ff>addon-google_apis-google-26</span>
-    - <span style=color:#ae81ff>sys-img-armeabi-v7a-android-26</span>
-</code></pre></div><h3 id=c>C++</h3>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>android</span>:
+  <span style=color:#ff79c6>components</span>:
+    - tools
+    - platform-tools
+    - build-tools-26.0.2
+    - android-26
+    - platform-tools
+    - extra-android-support
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - addon-google_apis-google-26
+    - sys-img-armeabi-v7a-android-26
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=c>C++</h3>
 <p>There isn’t specific custom configuration available for C++ like for Android above but due to the nature of its complicated OS configuration, you will need to import the matrix from before into the system before installing anything that might be needed to run the test itself. Therefore you will need to add the following.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>before_install</span>:
-  - <span style=color:#ae81ff>eval &#34;${MATRIX_EVAL}&#34;</span>
-</code></pre></div><h3 id=java>Java</h3>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>before_install</span>:
+  - eval &#34;${MATRIX_EVAL}&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=java>Java</h3>
 <p>For Java, due to the differences between OpenJDK, OracleJDK and also differences from versions to versions itself (shoutout to OracleJDK 9 & 10), you might want to test your software with every version available.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>jdk</span>:
-  - <span style=color:#ae81ff>oraclejdk9</span>
-  - <span style=color:#ae81ff>oraclejdk8</span>
-  - <span style=color:#ae81ff>openjdk8</span>
-  - <span style=color:#ae81ff>openjdk7</span>
-</code></pre></div><h3 id=python>Python</h3>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>jdk</span>:
+  - oraclejdk9
+  - oraclejdk8
+  - openjdk8
+  - openjdk7
+</code></pre></td></tr></table>
+</div>
+</div><h3 id=python>Python</h3>
 <p>Similarly, you can test your software or package against different versions of Python including the development versions.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>python</span>:
-  - <span style=color:#e6db74>&#34;2.7&#34;</span>
-  - <span style=color:#e6db74>&#34;3.6&#34;</span>
-  - <span style=color:#e6db74>&#34;3.6-dev&#34;</span>
-  - <span style=color:#e6db74>&#34;pypy2.7&#34;</span>
-  - <span style=color:#e6db74>&#34;pypy3.8&#34;</span>
-</code></pre></div><p><em>*Note: Due to recent changes, seems like <code>3.7-dev</code>, <code>3.8-dev</code>, and <code>nightly</code> would not work as of now.</em></p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>python</span>:
+  - <span style=color:#f1fa8c>&#34;2.7&#34;</span>
+  - <span style=color:#f1fa8c>&#34;3.6&#34;</span>
+  - <span style=color:#f1fa8c>&#34;3.6-dev&#34;</span>
+  - <span style=color:#f1fa8c>&#34;pypy2.7&#34;</span>
+  - <span style=color:#f1fa8c>&#34;pypy3.8&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><em>*Note: Due to recent changes, seems like <code>3.7-dev</code>, <code>3.8-dev</code>, and <code>nightly</code> would not work as of now.</em></p>
 <h3 id=nodejs>Node.js</h3>
 <p>Again, you might need to test your software with multiple versions or node.js except the differences between each version is not as drastic but there are a lot more versions comparatively.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>node_js</span>:
-  - <span style=color:#e6db74>&#34;node&#34;</span>
-  - <span style=color:#e6db74>&#34;9&#34;</span>
-  - <span style=color:#e6db74>&#34;8&#34;</span>
-  - <span style=color:#e6db74>&#34;7&#34;</span>
-  - <span style=color:#e6db74>&#34;6&#34;</span>
-  - <span style=color:#e6db74>&#34;5&#34;</span>
-  - <span style=color:#e6db74>&#34;4&#34;</span>
-  - <span style=color:#e6db74>&#34;lts/*&#34;</span>
-</code></pre></div><p>By doing this, you will be testing your software towards possibly 8 versions of node.js.</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>node_js</span>:
+  - <span style=color:#f1fa8c>&#34;node&#34;</span>
+  - <span style=color:#f1fa8c>&#34;9&#34;</span>
+  - <span style=color:#f1fa8c>&#34;8&#34;</span>
+  - <span style=color:#f1fa8c>&#34;7&#34;</span>
+  - <span style=color:#f1fa8c>&#34;6&#34;</span>
+  - <span style=color:#f1fa8c>&#34;5&#34;</span>
+  - <span style=color:#f1fa8c>&#34;4&#34;</span>
+  - <span style=color:#f1fa8c>&#34;lts/*&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>By doing this, you will be testing your software towards possibly 8 versions of node.js.</p>
 <h2 id=install-and-runtest>Install and run test</h2>
 <p>If you look into the <a href=https://docs.travis-ci.com/user/languages/>specific documentations</a> about the configurations for each languages, you will find that many of them has default <code>install</code> and <code>test</code> scripts but you can always overwrite them with your own scripts or commands like the following.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>before_install</span>:
-  - <span style=color:#ae81ff>./beforeInstall.sh</span>
-<span style=color:#f92672>install</span>:
-  - <span style=color:#ae81ff>./install.sh</span>
-<span style=color:#f92672>before_script</span>:
-  - <span style=color:#ae81ff>./preTest.sh</span>
-<span style=color:#f92672>script</span>:
-  - <span style=color:#ae81ff>./test.sh</span>
-</code></pre></div><p><em>*Note: if you testing in macOS environment and is installing any dependencies through Homebrew (including language dependencies in C++), you will have to do a <code>brew update</code> before running anything brew related to prevent an error.</em></p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>before_install</span>:
+  - ./beforeInstall.sh
+<span style=color:#ff79c6>install</span>:
+  - ./install.sh
+<span style=color:#ff79c6>before_script</span>:
+  - ./preTest.sh
+<span style=color:#ff79c6>script</span>:
+  - ./test.sh
+</code></pre></td></tr></table>
+</div>
+</div><p><em>*Note: if you testing in macOS environment and is installing any dependencies through Homebrew (including language dependencies in C++), you will have to do a <code>brew update</code> before running anything brew related to prevent an error.</em></p>
 <h2 id=deployment>Deployment</h2>
 <p>If you host your project externally while using your GitHub repository as your code control, Travis-CI can also help automating the deployment process. Depending on the service provider you use, their configuration can vary greatly from one another. Below, I included some of those that I think is the more popular ones. As you might have guessed, you can also deploy to multiple developers at once. I recommend checking out the <a href=https://docs.travis-ci.com/user/deployment>documentation page</a> before implementing any of these.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>before_deploy</span>:
-  - <span style=color:#ae81ff>./before_deployment</span>
-<span style=color:#f92672>deploy</span>:
-  - <span style=color:#f92672>provider</span>: <span style=color:#ae81ff>heroku</span>
-    <span style=color:#f92672>api_key</span>: <span style=color:#e6db74>&#34;YOUR_API_KEY&#34;</span>
-    <span style=color:#f92672>skip_cleanup</span>: <span style=color:#66d9ef>true</span>
-    <span style=color:#f92672>on</span>: <span style=color:#ae81ff>production</span>
-    <span style=color:#f92672>run</span>:
-      - <span style=color:#e6db74>&#34;./deploy&#34;</span>
-  - <span style=color:#f92672>provider</span>: <span style=color:#ae81ff>pages</span>
-    <span style=color:#f92672>github_token</span>: <span style=color:#ae81ff>$GITHUB_TOKEN</span>
-    <span style=color:#f92672>skip_cleanup</span>: <span style=color:#66d9ef>true</span>
-    <span style=color:#f92672>on</span>: <span style=color:#ae81ff>production</span>
-    <span style=color:#f92672>run</span>:
-      - <span style=color:#e6db74>&#34;./deploy&#34;</span>
-  - <span style=color:#f92672>provider</span>: <span style=color:#ae81ff>npm</span>
-    <span style=color:#f92672>api_key</span>: <span style=color:#e6db74>&#34;YOUR_API_KEY&#34;</span>
-    <span style=color:#f92672>email</span>: <span style=color:#e6db74>&#34;email@domain.com&#34;</span>
-    <span style=color:#f92672>on</span>: <span style=color:#ae81ff>production</span>
-  - <span style=color:#f92672>provider</span>: <span style=color:#ae81ff>elasticbeanstalk</span>
-    <span style=color:#f92672>access_key_id</span>: <span style=color:#ae81ff>&lt;access-key-id&gt;</span>
-    <span style=color:#f92672>secret_access_key</span>:
-      <span style=color:#f92672>secure</span>: <span style=color:#e6db74>&#34;Encypted &lt;secret-access-key&gt;&#34;</span>
-    <span style=color:#f92672>region</span>: <span style=color:#e6db74>&#34;us-east-1&#34;</span>
-    <span style=color:#f92672>app</span>: <span style=color:#e6db74>&#34;your-app-name&#34;</span>
-    <span style=color:#f92672>env</span>: <span style=color:#e6db74>&#34;your-app-environment&#34;</span>
-  - <span style=color:#f92672>provider</span>: <span style=color:#ae81ff>pypi</span>
-    <span style=color:#f92672>user</span>: <span style=color:#e6db74>&#34;username&#34;</span>
-    <span style=color:#f92672>password</span>: <span style=color:#e6db74>&#34;password&#34;</span>
-<span style=color:#f92672>after_deploy</span>:
-  - <span style=color:#ae81ff>./post_deployment</span>
-</code></pre></div><hr>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>before_deploy</span>:
+  - ./before_deployment
+<span style=color:#ff79c6>deploy</span>:
+  - <span style=color:#ff79c6>provider</span>: heroku
+    <span style=color:#ff79c6>api_key</span>: <span style=color:#f1fa8c>&#34;YOUR_API_KEY&#34;</span>
+    <span style=color:#ff79c6>skip_cleanup</span>: <span style=color:#ff79c6>true</span>
+    <span style=color:#ff79c6>on</span>: production
+    <span style=color:#ff79c6>run</span>:
+      - <span style=color:#f1fa8c>&#34;./deploy&#34;</span>
+  - <span style=color:#ff79c6>provider</span>: pages
+    <span style=color:#ff79c6>github_token</span>: $GITHUB_TOKEN
+    <span style=color:#ff79c6>skip_cleanup</span>: <span style=color:#ff79c6>true</span>
+    <span style=color:#ff79c6>on</span>: production
+    <span style=color:#ff79c6>run</span>:
+      - <span style=color:#f1fa8c>&#34;./deploy&#34;</span>
+  - <span style=color:#ff79c6>provider</span>: npm
+    <span style=color:#ff79c6>api_key</span>: <span style=color:#f1fa8c>&#34;YOUR_API_KEY&#34;</span>
+    <span style=color:#ff79c6>email</span>: <span style=color:#f1fa8c>&#34;email@domain.com&#34;</span>
+    <span style=color:#ff79c6>on</span>: production
+  - <span style=color:#ff79c6>provider</span>: elasticbeanstalk
+    <span style=color:#ff79c6>access_key_id</span>: &lt;access-key-id&gt;
+    <span style=color:#ff79c6>secret_access_key</span>:
+      <span style=color:#ff79c6>secure</span>: <span style=color:#f1fa8c>&#34;Encypted &lt;secret-access-key&gt;&#34;</span>
+    <span style=color:#ff79c6>region</span>: <span style=color:#f1fa8c>&#34;us-east-1&#34;</span>
+    <span style=color:#ff79c6>app</span>: <span style=color:#f1fa8c>&#34;your-app-name&#34;</span>
+    <span style=color:#ff79c6>env</span>: <span style=color:#f1fa8c>&#34;your-app-environment&#34;</span>
+  - <span style=color:#ff79c6>provider</span>: pypi
+    <span style=color:#ff79c6>user</span>: <span style=color:#f1fa8c>&#34;username&#34;</span>
+    <span style=color:#ff79c6>password</span>: <span style=color:#f1fa8c>&#34;password&#34;</span>
+<span style=color:#ff79c6>after_deploy</span>:
+  - ./post_deployment
+</code></pre></td></tr></table>
+</div>
+</div><hr>
 <h2 id=code-coverage>Code coverage</h2>
 <p>Along with testing, I would also recommend using a tool to analyze your code coverage. It will show you how much coverage your test has over your codes (and usually, use cases). Personally, I use the tool called <a href=https://codecov.io/>codecov</a>.</p>
 <h2 id=add-thebadge>Add the badge!</h2>

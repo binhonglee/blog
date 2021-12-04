@@ -33,8 +33,8 @@
 </summary>
 </details>
 <div class=wrapper>
-<div class=content>
-<details class=dropdown_toggle role=button><summary>+</summary></details>
+<div class="content dropdown">
+<button class=dropdown_toggle>+</button>
 <div class=header_links>
 <a class=link href=https://binhong.me/>About</a>
 <p>|</p>
@@ -66,34 +66,83 @@
 In your choice of database, you should create a user (preferably only specifically for the use of Gitea) and a database for Gitea. You will need to fill out these credentials later when setting up Gitea.</p>
 <h2 id=gitea>Gitea</h2>
 <p>As Gitea calls itself &lsquo;a painless self-hosted Git service&rsquo;, the setup is indeed very straightforward. Simply download and run it depending on they way you want to do it.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>wget -O gitea https://dl.gitea.io/gitea/1.5.0/gitea-1.5.0-linux-amd64
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>wget -O gitea https://dl.gitea.io/gitea/1.5.0/gitea-1.5.0-linux-amd64
 chmod +x gitea
-</code></pre></div><p><em>Optionally</em>, you can also verify the GPG signature of the downloaded file with Gitea&rsquo;s <a href="https://pgp.mit.edu/pks/lookup?op=vindex&fingerprint=on&search=0x2D9AE806EC1592E2">GPG key</a> for security purposes before running it.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>gpg --keyserver pgp.mit.edu --recv 0x2D9AE806EC1592E2
+</code></pre></td></tr></table>
+</div>
+</div><p><em>Optionally</em>, you can also verify the GPG signature of the downloaded file with Gitea&rsquo;s <a href="https://pgp.mit.edu/pks/lookup?op=vindex&fingerprint=on&search=0x2D9AE806EC1592E2">GPG key</a> for security purposes before running it.</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>gpg --keyserver pgp.mit.edu --recv 0x2D9AE806EC1592E2
 gpg --verify gitea-1.5.0-linux-amd64.asc gitea-1.5.0-linux-amd64
-</code></pre></div><p>To run Gitea, it is as simple as the following…</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>./gitea web
-</code></pre></div><p>By default, it will be running on port::3000 of the device IP (http://localhost:3000/). In case you prefer running Gitea from source, they also have <a href=https://docs.gitea.io/en-us/install-from-source/>specific documentations</a> for that. I had a lot of troubles trying to set it up myself so YMMV.</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>To run Gitea, it is as simple as the following…</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>./gitea web
+</code></pre></td></tr></table>
+</div>
+</div><p>By default, it will be running on port::3000 of the device IP (http://localhost:3000/). In case you prefer running Gitea from source, they also have <a href=https://docs.gitea.io/en-us/install-from-source/>specific documentations</a> for that. I had a lot of troubles trying to set it up myself so YMMV.</p>
 <h2 id=load-balancer-optional>Load Balancer (Optional)</h2>
 <p><em>Referenced from <a href=https://docs.gitea.io/en-us/reverse-proxies/>Gitea&rsquo;s own documentation</a></em></p>
 <p>If you are running this on a remote server (especially if you are also hosting a bunch of other stuffs), you will need to use a load balance (like Apache HTTPD or NGINX) to forward a specific domain to the port. Append your configuration file with the following as you see fit.</p>
 <h4 id=apache-httpd>Apache HTTPD</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-apache data-lang=apache><span style=color:#f92672>&lt;VirtualHost</span> <span style=color:#e6db74>*:80</span><span style=color:#f92672>&gt;</span>
-    ProxyPreserveHost <span style=color:#66d9ef>On</span>
-    ProxyRequests <span style=color:#66d9ef>off</span>
-    ProxyPass / http://localhost:3000/
-    ProxyPassReverse / http://localhost:3000/
-<span style=color:#f92672>&lt;/VirtualHost&gt;</span>
-</code></pre></div><h4 id=nginx>NGINX</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-nginx data-lang=nginx><span style=color:#66d9ef>server</span> {
-    <span style=color:#f92672>listen</span> <span style=color:#ae81ff>80</span>;
-    <span style=color:#f92672>server_name</span> <span style=color:#e6db74>git.example.com</span>;
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-apache data-lang=apache><span style=color:#ff79c6>&lt;VirtualHost</span> <span style=color:#f1fa8c>*:80</span><span style=color:#ff79c6>&gt;</span>
+    <span style=color:#8be9fd;font-style:italic>ProxyPreserveHost</span> <span style=color:#ff79c6>On</span>
+    <span style=color:#8be9fd;font-style:italic>ProxyRequests</span> <span style=color:#ff79c6>off</span>
+    <span style=color:#8be9fd;font-style:italic>ProxyPass</span> / http://localhost:3000/
+    <span style=color:#8be9fd;font-style:italic>ProxyPassReverse</span> / http://localhost:3000/
+<span style=color:#ff79c6>&lt;/VirtualHost&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id=nginx>NGINX</h4>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-nginx data-lang=nginx><span style=color:#ff79c6>server</span> {
+    <span style=color:#ff79c6>listen</span> <span style=color:#bd93f9>80</span>;
+    <span style=color:#ff79c6>server_name</span> <span style=color:#f1fa8c>git.example.com</span>;
 
-    <span style=color:#f92672>location</span> <span style=color:#e6db74>/</span> {
-        <span style=color:#f92672>proxy_pass</span> <span style=color:#e6db74>http://localhost:3000</span>;
+    <span style=color:#ff79c6>location</span> <span style=color:#f1fa8c>/</span> {
+        <span style=color:#ff79c6>proxy_pass</span> <span style=color:#f1fa8c>http://localhost:3000</span>;
     }
 }
-</code></pre></div><h2 id=configuration>Configuration</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=configuration>Configuration</h2>
 <p>Open your browser and navigate to the wherever Gitea was hosted. In there, you will be filling out the database settings as you have configured above (for PostgreSQL, it should be on <code>127.0.0.1:5432</code>, not sure about the others).</p>
 <p>Few things to look out for:</p>
 <ul>
@@ -113,42 +162,88 @@ gpg --verify gitea-1.5.0-linux-amd64.asc gitea-1.5.0-linux-amd64
 <h2 id=installation-1>Installation</h2>
 <p><em>Referenced from <a href=http://docs.drone.io/installation/>drone&rsquo;s own documentation</a></em></p>
 <p>First, get the docker image for drone.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>docker pull drone/drone:0.8
-</code></pre></div><p>Next, create a file named <code>docker-compose.yaml</code> and fill in the following.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yaml data-lang=yaml><span style=color:#f92672>version</span>: <span style=color:#e6db74>&#39;2&#39;</span>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker pull drone/drone:0.8
+</code></pre></td></tr></table>
+</div>
+</div><p>Next, create a file named <code>docker-compose.yaml</code> and fill in the following.</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=color:#ff79c6>version</span>: <span style=color:#f1fa8c>&#39;2&#39;</span>
 
-<span style=color:#f92672>services</span>:
-  <span style=color:#f92672>drone-server</span>:
-    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>drone/drone:0.8</span>
+<span style=color:#ff79c6>services</span>:
+  <span style=color:#ff79c6>drone-server</span>:
+    <span style=color:#ff79c6>image</span>: drone/drone:0.8
 
-    <span style=color:#f92672>ports</span>:
-      - <span style=color:#ae81ff>8000</span>:<span style=color:#ae81ff>8000</span>
-      - <span style=color:#ae81ff>9000</span>:<span style=color:#ae81ff>9000</span>
-    <span style=color:#f92672>volumes</span>:
-      - <span style=color:#ae81ff>/var/lib/drone:/var/lib/drone/</span>
-    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
-    <span style=color:#f92672>environment</span>:
-      - <span style=color:#ae81ff>DRONE_OPEN=true</span>
-      - <span style=color:#ae81ff>DRONE_HOST=http://drone.example.com</span>
-      - <span style=color:#ae81ff>DRONE_GITEA=true</span>
-      - <span style=color:#ae81ff>DRONE_GITEA_URL=http://git.example.com</span>
-      - <span style=color:#ae81ff>DRONE_SECRET=${DRONE_SECRET}</span>
+    <span style=color:#ff79c6>ports</span>:
+      - <span style=color:#bd93f9>8000</span>:<span style=color:#bd93f9>8000</span>
+      - <span style=color:#bd93f9>9000</span>:<span style=color:#bd93f9>9000</span>
+    <span style=color:#ff79c6>volumes</span>:
+      - /var/lib/drone:/var/lib/drone/
+    <span style=color:#ff79c6>restart</span>: always
+    <span style=color:#ff79c6>environment</span>:
+      - DRONE_OPEN=true
+      - DRONE_HOST=http://drone.example.com
+      - DRONE_GITEA=true
+      - DRONE_GITEA_URL=http://git.example.com
+      - DRONE_SECRET=${DRONE_SECRET}
 
-  <span style=color:#f92672>drone-agent</span>:
-    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>drone/agent:0.8</span>
+  <span style=color:#ff79c6>drone-agent</span>:
+    <span style=color:#ff79c6>image</span>: drone/agent:0.8
 
-    <span style=color:#f92672>command</span>: <span style=color:#ae81ff>agent</span>
-    <span style=color:#f92672>restart</span>: <span style=color:#ae81ff>always</span>
-    <span style=color:#f92672>depends_on</span>:
-      - <span style=color:#ae81ff>drone-server</span>
-    <span style=color:#f92672>volumes</span>:
-      - <span style=color:#ae81ff>/var/run/docker.sock:/var/run/docker.sock</span>
-    <span style=color:#f92672>environment</span>:
-      - <span style=color:#ae81ff>DRONE_SERVER=drone-server:9000</span>
-      - <span style=color:#ae81ff>DRONE_SECRET=${DRONE_SECRET}</span>
-      - <span style=color:#ae81ff>DRONE_DATABASE_DRIVER:postgres</span>
-      - <span style=color:#ae81ff>DRONE_DATABASE_DATASOURCE:postgres://root:password@1.2.3.4:5432/postgres?sslmode=disable</span>
-</code></pre></div><p>Few things to keep in mind in the file above:</p>
+    <span style=color:#ff79c6>command</span>: agent
+    <span style=color:#ff79c6>restart</span>: always
+    <span style=color:#ff79c6>depends_on</span>:
+      - drone-server
+    <span style=color:#ff79c6>volumes</span>:
+      - /var/run/docker.sock:/var/run/docker.sock
+    <span style=color:#ff79c6>environment</span>:
+      - DRONE_SERVER=drone-server:9000
+      - DRONE_SECRET=${DRONE_SECRET}
+      - DRONE_DATABASE_DRIVER:postgres
+      - DRONE_DATABASE_DATASOURCE:postgres://root:password@1.2.3.4:5432/postgres?sslmode=disable
+</code></pre></td></tr></table>
+</div>
+</div><p>Few things to keep in mind in the file above:</p>
 <ul>
 <li><code>DRONE_SECRET</code> - This is a secret string of your choice used for authentication purpose.</li>
 <li><code>DRONE_HOST</code> - URL where this drone server is hosted.</li>
@@ -156,49 +251,109 @@ gpg --verify gitea-1.5.0-linux-amd64.asc gitea-1.5.0-linux-amd64
 <li><code>DRONE_DATABASE_DRIVER</code> - Database setup is <strong>optional</strong>. In their <a href=http://docs.drone.io/database-settings/>documentation</a>, they mention the setup process of MySQL and PostgreSQL. Though do note that their documentation doesn&rsquo;t seems to be accurate at least <a href=https://github.com/drone/docs/pull/360>from my experience</a> setting it up.</li>
 </ul>
 <p>In the same directory run the following and drone will be running on <code>http://localhost:8000/</code>.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>docker-compose up
-</code></pre></div><h2 id=load-balancer-optional-1>Load Balancer (Optional)</h2>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>docker-compose up
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=load-balancer-optional-1>Load Balancer (Optional)</h2>
 <p>Similarly, if this is hosted on a remote server, you will have to add the following with the load balancer of your choice.</p>
 <h4 id=apache-httpd-1>Apache HTTPD</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-apache data-lang=apache><span style=color:#f92672>&lt;VirtualHost</span> <span style=color:#e6db74>*:80</span><span style=color:#f92672>&gt;</span>
-    ProxyPreserveHost <span style=color:#66d9ef>On</span>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-apache data-lang=apache><span style=color:#ff79c6>&lt;VirtualHost</span> <span style=color:#f1fa8c>*:80</span><span style=color:#ff79c6>&gt;</span>
+    <span style=color:#8be9fd;font-style:italic>ProxyPreserveHost</span> <span style=color:#ff79c6>On</span>
 
-    RequestHeader set X-Forwarded-Proto <span style=color:#e6db74>&#34;https&#34;</span>
-    ProxyPass / http://127.0.0.1:8000/
-    ProxyPassReverse / http://127.0.0.1:8000/
-<span style=color:#f92672>&lt;/VirtualHost&gt;</span>
-</code></pre></div><h4 id=nginx-1>NGINX</h4>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-nginx data-lang=nginx><span style=color:#66d9ef>server</span> {
-    <span style=color:#f92672>listen</span> <span style=color:#ae81ff>80</span>;
-    <span style=color:#f92672>server_name</span> <span style=color:#e6db74>drone.example.com</span>;
-    <span style=color:#f92672>location</span> <span style=color:#e6db74>/</span> {
-        <span style=color:#f92672>proxy_set_header</span> <span style=color:#e6db74>X-Forwarded-For</span> $remote_addr;
-        <span style=color:#f92672>proxy_set_header</span> <span style=color:#e6db74>X-Forwarded-Proto</span> $scheme;
-        <span style=color:#f92672>proxy_set_header</span> <span style=color:#e6db74>Host</span> $http_host;
+    <span style=color:#8be9fd;font-style:italic>RequestHeader</span> set X-Forwarded-Proto <span style=color:#f1fa8c>&#34;https&#34;</span>
+    <span style=color:#8be9fd;font-style:italic>ProxyPass</span> / http://127.0.0.1:8000/
+    <span style=color:#8be9fd;font-style:italic>ProxyPassReverse</span> / http://127.0.0.1:8000/
+<span style=color:#ff79c6>&lt;/VirtualHost&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id=nginx-1>NGINX</h4>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-nginx data-lang=nginx><span style=color:#ff79c6>server</span> {
+    <span style=color:#ff79c6>listen</span> <span style=color:#bd93f9>80</span>;
+    <span style=color:#ff79c6>server_name</span> <span style=color:#f1fa8c>drone.example.com</span>;
+    <span style=color:#ff79c6>location</span> <span style=color:#f1fa8c>/</span> {
+        <span style=color:#ff79c6>proxy_set_header</span> <span style=color:#f1fa8c>X-Forwarded-For</span> <span style=color:#8be9fd;font-style:italic>$remote_addr</span>;
+        <span style=color:#ff79c6>proxy_set_header</span> <span style=color:#f1fa8c>X-Forwarded-Proto</span> <span style=color:#8be9fd;font-style:italic>$scheme</span>;
+        <span style=color:#ff79c6>proxy_set_header</span> <span style=color:#f1fa8c>Host</span> <span style=color:#8be9fd;font-style:italic>$http_host</span>;
 
-        <span style=color:#f92672>proxy_pass</span> <span style=color:#e6db74>http://127.0.0.1:8000</span>;
-        <span style=color:#f92672>proxy_redirect</span> <span style=color:#66d9ef>off</span>;
-        <span style=color:#f92672>proxy_http_version</span> <span style=color:#ae81ff>1</span><span style=color:#e6db74>.1</span>;
-        <span style=color:#f92672>proxy_buffering</span> <span style=color:#66d9ef>off</span>;
-        <span style=color:#f92672>chunked_transfer_encoding</span> <span style=color:#66d9ef>off</span>;
+        <span style=color:#ff79c6>proxy_pass</span> <span style=color:#f1fa8c>http://127.0.0.1:8000</span>;
+        <span style=color:#ff79c6>proxy_redirect</span> off;
+        <span style=color:#ff79c6>proxy_http_version</span> <span style=color:#bd93f9>1</span><span style=color:#f1fa8c>.1</span>;
+        <span style=color:#ff79c6>proxy_buffering</span> off;
+        <span style=color:#ff79c6>chunked_transfer_encoding</span> off;
     }
 }
-</code></pre></div><h2 id=usage-1>Usage</h2>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id=usage-1>Usage</h2>
 <p>As mentioned, drone relies on docker not only for its installation but also running the CI itself. Each repository that you want to configure for drone should have to have a <code>.drone.yml</code> file like below at the top level of the repository. </p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yml data-lang=yml><span style=color:#f92672>pipeline</span>:
-  <span style=color:#f92672>build</span>:
-    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>node:${NODE_VERSION}</span>
-    <span style=color:#f92672>commands</span>:
-      - <span style=color:#ae81ff>npm install</span>
-      - <span style=color:#ae81ff>npm run test</span>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yml data-lang=yml><span style=color:#ff79c6>pipeline</span>:
+  <span style=color:#ff79c6>build</span>:
+    <span style=color:#ff79c6>image</span>: node:${NODE_VERSION}
+    <span style=color:#ff79c6>commands</span>:
+      - npm install
+      - npm run test
 
-<span style=color:#f92672>matrix</span>:
-  <span style=color:#f92672>NODE_VERSION</span>:
-    - <span style=color:#ae81ff>latest</span>
-    - <span style=color:#e6db74>&#34;7&#34;</span>
-    - <span style=color:#e6db74>&#34;6&#34;</span>
-    - <span style=color:#e6db74>&#34;4&#34;</span>
-</code></pre></div><p>Few things to pay attention to in the sample file:</p>
+<span style=color:#ff79c6>matrix</span>:
+  <span style=color:#ff79c6>NODE_VERSION</span>:
+    - latest
+    - <span style=color:#f1fa8c>&#34;7&#34;</span>
+    - <span style=color:#f1fa8c>&#34;6&#34;</span>
+    - <span style=color:#f1fa8c>&#34;4&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Few things to pay attention to in the sample file:</p>
 <ul>
 <li><code>image</code> - Drone supports any docker images available for download. You can look for available docker images at the Docker Hub.</li>
 <li><code>matrix</code> - Like the scenario above, you want to test the project in multiple environments but doesn&rsquo;t want to retype most of the stuffs, you can use matrix as a variable to hold all the different versions you would like to run tests on.</li>
@@ -213,7 +368,8 @@ gpg --verify gitea-1.5.0-linux-amd64.asc gitea-1.5.0-linux-amd64
 <h4 id=static-ip>Static IP</h4>
 <p>In case you are hosting this on a Raspberry Pi at home for personal use, you would want to set a static IP direction on your router. This would help make sure that when in your network, you can always connect to the device through the same IP.</p>
 <h4 id=nginx-2>NGINX</h4>
-<p>I did not go deep into either of the load balancers in here as I am currently working on a separate piece that will focus more onto the configuration and use of NGINX to hosting multiple domain names and &lsquo;servers&rsquo;. Keep a look out for that!</p>
+<p><del>I did not go deep into either of the load balancers in here as I am currently working on a separate piece that will focus more onto the configuration and use of NGINX to hosting multiple domain names and &lsquo;servers&rsquo;. Keep a look out for that!</del></p>
+<p><em>You can read more about NGINX on my next post <a href=http://localhost:1313/blog/2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server/>here</a>.</em></p>
 <hr>
 <h2 id=about-me>About me</h2>
 <p>I currently work at Apple Inc. on the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey <a href=https://binhong.me/blog>here</a> or on <a href=https://github.com/binhonglee>GitHub</a>.</p>

@@ -33,8 +33,8 @@
 </summary>
 </details>
 <div class=wrapper>
-<div class=content>
-<details class=dropdown_toggle role=button><summary>+</summary></details>
+<div class="content dropdown">
+<button class=dropdown_toggle>+</button>
 <div class=header_links>
 <a class=link href=https://binhong.me/>About</a>
 <p>|</p>
@@ -61,7 +61,7 @@
 <p>If you have nimble (comes with nim) installed, you can install wings with <code>nimble install wings</code>. As of now, the only alternative to that is to get the binary and place it in a folder included by the path (like <code>/usr/bin/</code>) which unfortunately means that it won&rsquo;t automatically update when a newer version is released. I&rsquo;m still working on (and learning how to) deploy it to more package managers for easier installation process.</p>
 <h2 id=usage>Usage</h2>
 <p>You write a wings file like the example below then run <code>wings &lt;FILENAME>.wings</code>.</p>
-<pre tabindex=0><code>go-filepath examples/go/classroom
+<pre tabindex=0><code class=language-wings data-lang=wings>go-filepath examples/go/classroom
 kt-filepath examples/kt
 nim-filepath examples/nim
 py-filepath examples/py

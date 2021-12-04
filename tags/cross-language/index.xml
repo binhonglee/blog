@@ -4,7 +4,7 @@
 &lt;p>If you have nimble (comes with nim) installed, you can install wings with &lt;code>nimble install wings&lt;/code>. As of now, the only alternative to that is to get the binary and place it in a folder included by the path (like &lt;code>/usr/bin/&lt;/code>) which unfortunately means that it won&amp;rsquo;t automatically update when a newer version is released. I&amp;rsquo;m still working on (and learning how to) deploy it to more package managers for easier installation process.&lt;/p>
 &lt;h2 id="usage">Usage&lt;/h2>
 &lt;p>You write a wings file like the example below then run &lt;code>wings &amp;lt;FILENAME&amp;gt;.wings&lt;/code>.&lt;/p>
-&lt;pre tabindex="0">&lt;code>go-filepath examples/go/classroom
+&lt;pre tabindex="0">&lt;code class="language-wings" data-lang="wings">go-filepath examples/go/classroom
 kt-filepath examples/kt
 nim-filepath examples/nim
 py-filepath examples/py

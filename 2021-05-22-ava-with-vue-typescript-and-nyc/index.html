@@ -33,8 +33,8 @@
 </summary>
 </details>
 <div class=wrapper>
-<div class=content>
-<details class=dropdown_toggle role=button><summary>+</summary></details>
+<div class="content dropdown">
+<button class=dropdown_toggle>+</button>
 <div class=header_links>
 <a class=link href=https://binhong.me/>About</a>
 <p>|</p>
@@ -56,31 +56,61 @@
 <h2 id=babel>Babel</h2>
 <p>We use babel to help Ava properly transpile the Vue and TypeScript files. This is especially useful if you would like to get accurate code coverage for your tests.</p>
 <p>Here&rsquo;s how the <code>.babelrc</code> should look like:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-  <span style=color:#f92672>&#34;presets&#34;</span>: [
-    <span style=color:#e6db74>&#34;@babel/preset-env&#34;</span>,
-    <span style=color:#e6db74>&#34;@babel/preset-typescript&#34;</span>,
-    <span style=color:#e6db74>&#34;babel-preset-typescript-vue&#34;</span>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-json data-lang=json>{
+  <span style=color:#ff79c6>&#34;presets&#34;</span>: [
+    <span style=color:#f1fa8c>&#34;@babel/preset-env&#34;</span>,
+    <span style=color:#f1fa8c>&#34;@babel/preset-typescript&#34;</span>,
+    <span style=color:#f1fa8c>&#34;babel-preset-typescript-vue&#34;</span>
   ],
-  <span style=color:#f92672>&#34;plugins&#34;</span>: [
-    <span style=color:#e6db74>&#34;@babel/plugin-transform-runtime&#34;</span>,
-    <span style=color:#e6db74>&#34;@babel/plugin-transform-typescript&#34;</span>,
+  <span style=color:#ff79c6>&#34;plugins&#34;</span>: [
+    <span style=color:#f1fa8c>&#34;@babel/plugin-transform-runtime&#34;</span>,
+    <span style=color:#f1fa8c>&#34;@babel/plugin-transform-typescript&#34;</span>,
     [
-      <span style=color:#e6db74>&#34;module-resolver&#34;</span>,
+      <span style=color:#f1fa8c>&#34;module-resolver&#34;</span>,
       {
-        <span style=color:#f92672>&#34;alias&#34;</span>: {
-          <span style=color:#f92672>&#34;@&#34;</span>: <span style=color:#e6db74>&#34;./src&#34;</span>
+        <span style=color:#ff79c6>&#34;alias&#34;</span>: {
+          <span style=color:#ff79c6>&#34;@&#34;</span>: <span style=color:#f1fa8c>&#34;./src&#34;</span>
         }
       }
     ]
   ],
-  <span style=color:#f92672>&#34;env&#34;</span>: {
-    <span style=color:#f92672>&#34;test&#34;</span>: {
-      <span style=color:#f92672>&#34;plugins&#34;</span>: [<span style=color:#e6db74>&#34;istanbul&#34;</span>]
+  <span style=color:#ff79c6>&#34;env&#34;</span>: {
+    <span style=color:#ff79c6>&#34;test&#34;</span>: {
+      <span style=color:#ff79c6>&#34;plugins&#34;</span>: [<span style=color:#f1fa8c>&#34;istanbul&#34;</span>]
     }
   }
 }
-</code></pre></div><p>A few things to note here:</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>A few things to note here:</p>
 <ul>
 <li>Alias set is optional. You only need it if you actually use the alias. You can also set multiple aliases or point it to a different directory depending on how your project is setup. Make sure you sync it with your <code>tsconfig.json</code> to prevent confusion / unwanted errors</li>
 <li><code>istanbul</code> plugin is also optional. This is only needed if you want to also set up code coverage with <code>nyc</code> (more on this later).</li>
@@ -88,73 +118,152 @@
 <h2 id=setup-file>Setup File</h2>
 <p>Setup file is there to set the test environment considering that these Vue component files are supposed to be ran inside a Vue instance with some preset, this file serve as a similar purpose but limited only to testing use.</p>
 <p>Here&rsquo;s a sample <code>_setup.js</code> where you can build on top of depending on what you need / use. See original reference <a href=https://github.com/avajs/ava/blob/main/docs/recipes/vue.md>here</a>.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>var</span> <span style=color:#a6e22e>html</span>;
-<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>options</span> <span style=color:#f92672>=</span> { <span style=color:#a6e22e>url</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;http://localhost/&#34;</span> };
-<span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#34;jsdom-global&#34;</span>)(<span style=color:#a6e22e>html</span>, <span style=color:#a6e22e>options</span>);
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-js data-lang=js><span style=color:#8be9fd;font-style:italic>var</span> html;
+<span style=color:#8be9fd;font-style:italic>var</span> options <span style=color:#ff79c6>=</span> { url<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#34;http://localhost/&#34;</span> };
+require(<span style=color:#f1fa8c>&#34;jsdom-global&#34;</span>)(html, options);
 
-<span style=color:#75715e>// Fix the Date object, see &lt;https://github.com/vuejs/vue-test-utils/issues/936#issuecomment-415386167&gt;.
-</span><span style=color:#75715e></span>window.Date <span style=color:#f92672>=</span> Date;
+<span style=color:#6272a4>// Fix the Date object, see &lt;https://github.com/vuejs/vue-test-utils/issues/936#issuecomment-415386167&gt;.
+</span><span style=color:#6272a4></span><span style=color:#8be9fd;font-style:italic>window</span>.<span style=color:#8be9fd;font-style:italic>Date</span> <span style=color:#ff79c6>=</span> <span style=color:#8be9fd;font-style:italic>Date</span>;
 
-<span style=color:#75715e>// Setup browser environment
-</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>hooks</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#34;require-extension-hooks&#34;</span>);
-<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>Vue</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#34;vue&#34;</span>);
+<span style=color:#6272a4>// Setup browser environment
+</span><span style=color:#6272a4></span><span style=color:#ff79c6>const</span> hooks <span style=color:#ff79c6>=</span> require(<span style=color:#f1fa8c>&#34;require-extension-hooks&#34;</span>);
+<span style=color:#ff79c6>const</span> Vue <span style=color:#ff79c6>=</span> require(<span style=color:#f1fa8c>&#34;vue&#34;</span>);
 
-<span style=color:#a6e22e>Vue</span>.<span style=color:#a6e22e>config</span>.<span style=color:#a6e22e>productionTip</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>;
-<span style=color:#a6e22e>Vue</span>.<span style=color:#a6e22e>config</span>.<span style=color:#a6e22e>devtools</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>;
+Vue.config.productionTip <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>false</span>;
+Vue.config.devtools <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>false</span>;
 
-<span style=color:#a6e22e>hooks</span>(<span style=color:#e6db74>&#34;vue&#34;</span>).<span style=color:#a6e22e>plugin</span>(<span style=color:#e6db74>&#34;vue&#34;</span>).<span style=color:#a6e22e>push</span>();
-<span style=color:#a6e22e>hooks</span>([<span style=color:#e6db74>&#34;vue&#34;</span>, <span style=color:#e6db74>&#34;ts&#34;</span>])
-  .<span style=color:#a6e22e>exclude</span>(({ <span style=color:#a6e22e>filename</span> }) =&gt;
-    <span style=color:#a6e22e>filename</span>.<span style=color:#a6e22e>match</span>(<span style=color:#e6db74>/\/node_modules\//</span>),
+hooks(<span style=color:#f1fa8c>&#34;vue&#34;</span>).plugin(<span style=color:#f1fa8c>&#34;vue&#34;</span>).push();
+hooks([<span style=color:#f1fa8c>&#34;vue&#34;</span>, <span style=color:#f1fa8c>&#34;ts&#34;</span>])
+  .exclude(({ filename }) =&gt;
+    filename.match(<span style=color:#f1fa8c>/\/node_modules\//</span>),
   )
-  .<span style=color:#a6e22e>plugin</span>(<span style=color:#e6db74>&#34;babel&#34;</span>)
-  .<span style=color:#a6e22e>push</span>();
+  .plugin(<span style=color:#f1fa8c>&#34;babel&#34;</span>)
+  .push();
 
-<span style=color:#66d9ef>if</span> (<span style=color:#f92672>!</span>window.<span style=color:#a6e22e>localStorage</span>) {
-  window.<span style=color:#a6e22e>localStorage</span> <span style=color:#f92672>=</span> {
-    <span style=color:#a6e22e>getItem</span>() {
-      <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;{}&#34;</span>;
+<span style=color:#ff79c6>if</span> (<span style=color:#ff79c6>!</span><span style=color:#8be9fd;font-style:italic>window</span>.localStorage) {
+  <span style=color:#8be9fd;font-style:italic>window</span>.localStorage <span style=color:#ff79c6>=</span> {
+    getItem() {
+      <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;{}&#34;</span>;
     },
-    <span style=color:#a6e22e>setItem</span>() {},
-    <span style=color:#a6e22e>clear</span>() {},
+    setItem() {},
+    clear() {},
   };
 }
 
-<span style=color:#a6e22e>localStorage</span> <span style=color:#f92672>=</span> window.<span style=color:#a6e22e>localStorage</span>; 
-</code></pre></div><p>One of the changes I made was to set <code>localStorage</code> so you can also use it for the test.</p>
+localStorage <span style=color:#ff79c6>=</span> <span style=color:#8be9fd;font-style:italic>window</span>.localStorage; 
+</code></pre></td></tr></table>
+</div>
+</div><p>One of the changes I made was to set <code>localStorage</code> so you can also use it for the test.</p>
 <p>You&rsquo;ll also need to include this file in your <code>ava.config.js</code> like below:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> {
-  <span style=color:#a6e22e>extensions</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#34;ts&#34;</span>, <span style=color:#e6db74>&#34;vue&#34;</span>],
-  <span style=color:#a6e22e>require</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#34;./src/tests/_setup.js&#34;</span>],
-  <span style=color:#a6e22e>babel</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>true</span>,
-  <span style=color:#a6e22e>files</span><span style=color:#f92672>:</span> [
-    <span style=color:#e6db74>&#34;src/tests/**/*.spec.ts&#34;</span>,
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-js data-lang=js><span style=color:#ff79c6>export</span> <span style=color:#ff79c6>default</span> {
+  extensions<span style=color:#ff79c6>:</span> [<span style=color:#f1fa8c>&#34;ts&#34;</span>, <span style=color:#f1fa8c>&#34;vue&#34;</span>],
+  require<span style=color:#ff79c6>:</span> [<span style=color:#f1fa8c>&#34;./src/tests/_setup.js&#34;</span>],
+  babel<span style=color:#ff79c6>:</span> <span style=color:#ff79c6>true</span>,
+  files<span style=color:#ff79c6>:</span> [
+    <span style=color:#f1fa8c>&#34;src/tests/**/*.spec.ts&#34;</span>,
   ] 
 };
-</code></pre></div><p>At this point you should be able to run your Ava tests as intended and it would work just fine. However, if you want to have code coverage for the project, read on on how to setup your NYC config.</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>At this point you should be able to run your Ava tests as intended and it would work just fine. However, if you want to have code coverage for the project, read on on how to setup your NYC config.</p>
 <h2 id=nyc-optional>NYC (optional)</h2>
 <p>One of the main reasons I started exploring for this option is to get good code coverage report. This setup allows us to let NYC generate proper coverage reports.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
-  <span style=color:#f92672>&#34;instrument&#34;</span>: <span style=color:#66d9ef>true</span>,
-  <span style=color:#f92672>&#34;sourceMaps&#34;</span>: <span style=color:#66d9ef>false</span>,
-  <span style=color:#f92672>&#34;all&#34;</span>: <span style=color:#66d9ef>true</span>,
-  <span style=color:#f92672>&#34;check-coverage&#34;</span>: <span style=color:#66d9ef>false</span>,
-  <span style=color:#f92672>&#34;per-file&#34;</span>: <span style=color:#66d9ef>true</span>,
-  <span style=color:#f92672>&#34;include&#34;</span>: [
-    <span style=color:#e6db74>&#34;src/**/*.{ts,vue}&#34;</span>
+<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-json data-lang=json>{
+  <span style=color:#ff79c6>&#34;instrument&#34;</span>: <span style=color:#ff79c6>true</span>,
+  <span style=color:#ff79c6>&#34;sourceMaps&#34;</span>: <span style=color:#ff79c6>false</span>,
+  <span style=color:#ff79c6>&#34;all&#34;</span>: <span style=color:#ff79c6>true</span>,
+  <span style=color:#ff79c6>&#34;check-coverage&#34;</span>: <span style=color:#ff79c6>false</span>,
+  <span style=color:#ff79c6>&#34;per-file&#34;</span>: <span style=color:#ff79c6>true</span>,
+  <span style=color:#ff79c6>&#34;include&#34;</span>: [
+    <span style=color:#f1fa8c>&#34;src/**/*.{ts,vue}&#34;</span>
   ],
-  <span style=color:#f92672>&#34;exclude&#34;</span>: [
-    <span style=color:#e6db74>&#34;**/*.{spec,test}.{js,ts}&#34;</span>,
-    <span style=color:#e6db74>&#34;src/scripts/**/*&#34;</span>,
-    <span style=color:#e6db74>&#34;src/tests/**/*&#34;</span>,
-    <span style=color:#e6db74>&#34;*.js&#34;</span>
+  <span style=color:#ff79c6>&#34;exclude&#34;</span>: [
+    <span style=color:#f1fa8c>&#34;**/*.{spec,test}.{js,ts}&#34;</span>,
+    <span style=color:#f1fa8c>&#34;src/scripts/**/*&#34;</span>,
+    <span style=color:#f1fa8c>&#34;src/tests/**/*&#34;</span>,
+    <span style=color:#f1fa8c>&#34;*.js&#34;</span>
   ],
-  <span style=color:#f92672>&#34;extension&#34;</span>: [
-    <span style=color:#e6db74>&#34;.ts&#34;</span>,
-    <span style=color:#e6db74>&#34;.vue&#34;</span>
+  <span style=color:#ff79c6>&#34;extension&#34;</span>: [
+    <span style=color:#f1fa8c>&#34;.ts&#34;</span>,
+    <span style=color:#f1fa8c>&#34;.vue&#34;</span>
   ]
 } 
-</code></pre></div><h1 id=conclusion>Conclusion</h1>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id=conclusion>Conclusion</h1>
 <p>Personally, I wrote this piece based on my work on <a href=https://globetrotte.com>GlobeTrotte</a>. I&rsquo;ve tried my best to cleanup the code for it to be as reusable as I can. Feel free to let me know if there&rsquo;s any issue with it. Hopefully you find this helpful.</p>
 <hr>
 <h2 id=about-me>About me</h2>

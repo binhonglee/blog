@@ -12,31 +12,74 @@
 &lt;p>You should now be able to use Hyper just like a normal Linux Shell.&lt;/p>
 &lt;h2 id="general-development-environment-and-tools">General development environment and tools&lt;/h2>
 &lt;p>Since you will most likely be using this for development, you should definitely run the following commands to set yourself up.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">sudo apt-get update
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code class="language-sh" data-lang="sh">sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install build-essential
 sudo apt-get install python-pip
 pip install --upgrade pip
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>Among all of the above, installation of python-pip is crucial to the next step in installing Powerline for Hyper (or more like bash).&lt;/p>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Among all of the above, installation of python-pip is crucial to the next step in installing Powerline for Hyper (or more like bash).&lt;/p>
 &lt;h2 id="installing-powerline">Installing Powerline&lt;/h2>
 &lt;h4 id="_this-section-is-referenced-from-setting-up-powerline-shell-on-windows-subsystem-for-linuxhttpiamnotmyselfcom20170415setting-up-powerline-shell-on-windows-subsystem-for-linux_">&lt;em>This section is referenced from &lt;a href="http://iamnotmyself.com/2017/04/15/setting-up-powerline-shell-on-windows-subsystem-for-linux/">SETTING UP POWERLINE SHELL ON WINDOWS SUBSYSTEM FOR LINUX&lt;/a>&lt;/em>&lt;/h4>
 &lt;p>Run the following to install Powerline.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">cd ~
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code class="language-sh" data-lang="sh">&lt;span style="color:#8be9fd;font-style:italic">cd&lt;/span> ~
 git clone https://github.com/banga/powerline-shell.git
-cd powerline-shell
+&lt;span style="color:#8be9fd;font-style:italic">cd&lt;/span> powerline-shell
 cat config.py.dist &amp;gt; config.py
 ./install.py
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>WARNING: you should not at anytime remove &lt;code>powerline-shell&lt;/code> folder (or attempt to) without reverting the following changes that you will make to the &lt;code>.bashrc&lt;/code>.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">cd ~
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>WARNING: you should not at anytime remove &lt;code>powerline-shell&lt;/code> folder (or attempt to) without reverting the following changes that you will make to the &lt;code>.bashrc&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code class="language-sh" data-lang="sh">&lt;span style="color:#8be9fd;font-style:italic">cd&lt;/span> ~
 nano .bashrc
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>Feel free to use any other command line editor if you prefer (I use vim personally). Add the following lines to the file.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">&lt;span style="color:#66d9ef">function&lt;/span> _update_ps1&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#f92672">{&lt;/span>
-PS1&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>~/powerline-shell/powerline-shell.py $? 2&amp;gt; /dev/null&lt;span style="color:#66d9ef">)&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
-&lt;span style="color:#f92672">}&lt;/span>
-&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">[&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&lt;/span>$TERM&lt;span style="color:#e6db74">&amp;#34;&lt;/span> !&lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;linux&amp;#34;&lt;/span> &lt;span style="color:#f92672">]&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
-PROMPT_COMMAND&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;_update_ps1; &lt;/span>$PROMPT_COMMAND&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
-&lt;span style="color:#66d9ef">fi&lt;/span>
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>*Note: If you happen use nano (like the given example), do note that &lt;code>Ctrl+X&lt;/code> will not exit the program. You can do &lt;code>F2&lt;/code> instead.&lt;/em>&lt;/p>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Feel free to use any other command line editor if you prefer (I use vim personally). Add the following lines to the file.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code class="language-sh" data-lang="sh">&lt;span style="color:#ff79c6">function&lt;/span> _update_ps1&lt;span style="color:#ff79c6">()&lt;/span> &lt;span style="color:#ff79c6">{&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">PS1&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#ff79c6">$(&lt;/span>~/powerline-shell/powerline-shell.py &lt;span style="color:#8be9fd;font-style:italic">$?&lt;/span> 2&amp;gt; /dev/null&lt;span style="color:#ff79c6">)&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">}&lt;/span>
+&lt;span style="color:#ff79c6">if&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$TERM&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> !&lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;linux&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">]&lt;/span>; &lt;span style="color:#ff79c6">then&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">PROMPT_COMMAND&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;_update_ps1; &lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$PROMPT_COMMAND&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">fi&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;em>*Note: If you happen use nano (like the given example), do note that &lt;code>Ctrl+X&lt;/code> will not exit the program. You can do &lt;code>F2&lt;/code> instead.&lt;/em>&lt;/p>
 &lt;p>Save and restart Hyper (or refresh) and it should look something like this. Realize the missing characters which are supposed to be the arrows.&lt;/p>
 &lt;p>&lt;img src="https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style//blog/img/utImage2.png" alt="">&lt;/p>
 &lt;h3 id="fonts-for-powerline">Fonts for Powerline&lt;/h3>
@@ -47,21 +90,45 @@ PROMPT_COMMAND&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e
 &lt;h2 id="optional-installing-npm">(Optional) Installing npm&lt;/h2>
 &lt;h4 id="_this-section-is-referenced-from-installing-nvm-nodejs-and-npm-on-ubuntuhttpsrandikacominstalling-nvm-nodejs-and-npm-on-ubuntu-f6deef0cd22a-by-randika-rathugamagehttpsmediumcomrandika_">&lt;em>This section is referenced from &lt;a href="https://randika.com/installing-nvm-nodejs-and-npm-on-ubuntu-f6deef0cd22a">Installing nvm, nodejs and npm on Ubuntu&lt;/a> by &lt;a href="https://medium.com/@randika">Randika Rathugamage&lt;/a>&lt;/em>&lt;/h4>
 &lt;p>The obvious way to do this is by installing it through the default package manager. However, the npm installed through apt-get is 3.5.2 version without node. I personally prefer installing it with nvm starting by cloning the nvm repository and adding it to &lt;code>.bashrc&lt;/code>.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">cd ~
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code class="language-sh" data-lang="sh">&lt;span style="color:#8be9fd;font-style:italic">cd&lt;/span> ~
 git clone https://github.com/creationix/nvm.git
-echo &lt;span style="color:#e6db74">&amp;#34;source ~/nvm/nvm.sh&amp;#34;&lt;/span> &amp;gt;&amp;gt; .bashrc
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>From here, you can either reset Hyper or do a &lt;code>source .bashrc&lt;/code> to get nvm working for you. After that, you can do &lt;code>nvm ls-remote&lt;/code> to look at all the versions available before deciding which to install or you can just do &lt;code>nvm install node&lt;/code> and call it a day.&lt;/p>
+&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;source ~/nvm/nvm.sh&amp;#34;&lt;/span> &amp;gt;&amp;gt; .bashrc
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>From here, you can either reset Hyper or do a &lt;code>source .bashrc&lt;/code> to get nvm working for you. After that, you can do &lt;code>nvm ls-remote&lt;/code> to look at all the versions available before deciding which to install or you can just do &lt;code>nvm install node&lt;/code> and call it a day.&lt;/p>
 &lt;h2 id="optional-configuring-aliases">(Optional) Configuring aliases&lt;/h2>
 &lt;p>It is important to note that the Linux file system is separated from the Windows file system (located in C:/User/your-name/AppData/Local/lxss). Windows went as far as to not show the folder in File Explorer even if you select to show hidden files just so you don’t mess with it. In one scenario where I made a change to one of the files in there from File Explorer through my text editor in Windows, the WSL no longer recognizes the existence of such file in the directory immediately.* This is why you should keep all your files in your Windows side of file system and access them through something like cd /mnt/e/git/. Retyping the file path over and over again can be annoying so instead, you can set an alias by adding the command below but changing the location to the directory where you store your development files.&lt;/p>
 &lt;p>&lt;em>*Workaround: I ended up creating a new file with vim in bash and copy pasting the entire existing file from Windows. I also renamed the files beforehand to prevent file conflict.&lt;/em>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">echo &lt;span style="color:#e6db74">&amp;#39;alias gitfiles=&amp;#34;cd /mnt/e/git/&amp;#34;&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.bashrc
-&lt;/code>&lt;/pre>&lt;/div>&lt;p>From here on out, you can just do &lt;code>gitfiles&lt;/code> in Hyper (or bash) and you will go directly to your development folder.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code class="language-sh" data-lang="sh">&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;alias gitfiles=&amp;#34;cd /mnt/e/git/&amp;#34;&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.bashrc
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>From here on out, you can just do &lt;code>gitfiles&lt;/code> in Hyper (or bash) and you will go directly to your development folder.&lt;/p>
 &lt;h2 id="reset">Reset&lt;/h2>
 &lt;h4 id="_this-section-is-referenced-from-how-to-removereset-windows-subsystem-for-linux-on-windows-insider-build-14316httpssuperusercomquestions1065569how-to-remove-reset-windows-subsystem-for-linux-on-windows-insider-build-14316_">&lt;em>This section is referenced from &lt;a href="https://superuser.com/questions/1065569/how-to-remove-reset-windows-subsystem-for-linux-on-windows-insider-build-14316">How to remove/reset Windows Subsystem for Linux on Windows Insider Build 14316&lt;/a>&lt;/em>&lt;/h4>
 &lt;p>If at any point, you seems to have screwed up your Linux subsystem, you can always reset it by going to your command prompt &lt;code>cmd.exe&lt;/code> with admin privilege (Run as administrator) and input the following commands to reset the Linux subsystem.&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-sh" data-lang="sh">lxrun /uninstall /full
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code class="language-sh" data-lang="sh">lxrun /uninstall /full
 lxrun /install
-&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="other-useful-links">Other useful links&lt;/h2>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="other-useful-links">Other useful links&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="http://www.webupd8.org/2015/02/install-oracle-java-9-in-ubuntu-linux.html">Installing Oracle Java for development&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">First time Git setup&lt;/a>&lt;/li>
