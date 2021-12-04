@@ -18,7 +18,7 @@ If you have nimble (comes with nim) installed, you can install wings with `nimbl
 
 You write a wings file like the example below then run `wings <FILENAME>.wings`.
 
-```
+```wings
 go-filepath examples/go/classroom
 kt-filepath examples/kt
 nim-filepath examples/nim

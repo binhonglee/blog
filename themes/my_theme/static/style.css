@@ -34,6 +34,9 @@ body {
   --dark-active: cyan;
   --dark-deprecated: deeppink;
   --dark-footer-a: yellow;
+
+  --dracula-background: #282a36;
+  --dracula-color: #f8f8f2;
 }
 
 blockquote {
@@ -42,19 +45,6 @@ blockquote {
   padding: 20px;
   margin: 25px;
   border-style: solid;
-}
-
-.dark_mode_toggle[open] blockquote,
-.dark_mode_toggle[open] + div blockquote {
-  background-color: black;
-}
-
-.dark_mode_toggle > summary {
-  list-style: none;
-}
-
-.dark_mode_toggle > summary::-webkit-details-marker {
-  display: none;
 }
 
 details > summary p {
@@ -140,16 +130,25 @@ p > .link {
   z-index: 1;
 }
 
+.dark_mode_toggle > summary {
+  list-style: none;
+}
+
+.dark_mode_toggle > summary::-webkit-details-marker {
+  display: none;
+}
+
+.dark_mode_toggle[open] blockquote,
+.dark_mode_toggle[open] + div blockquote {
+  background-color: black;
+}
+
 .dark_mode_toggle .content {
   background: var(--default-background);
 }
 
 .dark_mode_toggle[open] .content {
   background: var(--dark-background);
-}
-
-.dark_mode_toggle > summary {
-  list-style: none;
 }
 
 .block {
@@ -305,25 +304,43 @@ footer .row {
 
 pre {
   border-radius: 10px;
-  overflow-x: auto;
+  background-color: var(--dracula-background);
+  padding-right: 10px;
+  margin: 0;
+}
+
+.highlight > div {
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.post_content > pre,
+.highlight > pre {
+  padding: 20px;
+}
+
+.highlight,
+.post_content > pre {
+  margin: 20px 0;
 }
 
 code {
   font-family: VictorMono;
   font-size: 21px;
-  padding: 0 5px;
+  padding: 0 8px;
   background-color: white;
   border-radius: 10px;
+  overflow-x: auto;
 }
 
 .dark_mode_toggle[open] + div code {
-  background-color: #272822;
+  background-color: var(--dracula-background);
 }
 
 pre code {
+  background-color: var(--dracula-background);
+  color: var(--dark-color);
   display: block;
-  padding: 20px;
-  background-color: #272822;
 }
 
 pre code,
@@ -332,49 +349,40 @@ pre .custom-language {
   font-size: 20px;
 }
 
-@media screen and (max-width: 950px) {
-  .content .links {
-    display: none;
-  }
+/* Haven't figure out how to deal with tags */
+.content_body .links {
+  display: none;
 }
 
 @media screen and (max-width: 750px) {
+  .dropdown {
+    display: block;
+    position: relative;
+  }
+
   .dropdown_toggle {
     display: block;
     position: absolute;
     border: none;
-    cursor: pointer;
     padding: 0 10px;
     font-size: 40px;
-    z-index: 2  ;
+    z-index: 1;
+    background-color: var(--default-background);
+    color: var(--default-active);
   }
 
-  .dropdown_toggle[open] {
-    border-style: solid;
+  .dark_mode_toggle[open] + div .dropdown_toggle {
+    background-color: var(--dark-background);
+    color: var(--dark-color);
   }
-
-  .dropdown_toggle > summary {
-    list-style: none;
-  }
-  
-  .dropdown_toggle > summary::-webkit-details-marker {
-    display: none;
-  }  
 
   .header_links {
     display: none;
     position: absolute;
     padding: 0;
     width: 150px;
+    z-index: 1;
     background-color: var(--default-background);
-    box-shadow: 0px 8px 16px 0px var;
-    z-index: 2;
-  }
-
-  .header_links a {
-    padding: 10px;
-    border-style: solid;
-    border-color: var(--default-color);
   }
 
   .dark_mode_toggle[open] + div .header_links {
@@ -382,7 +390,7 @@ pre .custom-language {
   }
 
   .dark_mode_toggle[open] + div .header_links a {
-    border-color: var(--dark-color);
+    border-color: var(--dracula-color);
   }
 
   .header_links p {
@@ -390,10 +398,19 @@ pre .custom-language {
   }
 
   .header_links .link {
+    border-style: solid;
+    border-color: var(--default-color);
     display: block;
+    padding: 10px;
+    text-decoration: none;
+    z-index: 1;
   }
 
-  .dropdown_toggle[open] + .header_links {
+  .dropdown:hover .dropdown_toggle {
+    border: solid;
+  }
+
+  .dropdown:hover .header_links {
     display: block;
     margin-top: 50px;
   }

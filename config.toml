@@ -31,3 +31,7 @@ theme = "my_theme"
 
 [markup.highlight]
   guessSyntax = false
+  lineNoStart = 1
+  lineNos = true
+  style = 'dracula'
+  tabWidth = 2

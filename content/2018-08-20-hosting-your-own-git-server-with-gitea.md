@@ -247,7 +247,9 @@ In case you are hosting this on a Raspberry Pi at home for personal use, you wou
 
 #### NGINX
 
-I did not go deep into either of the load balancers in here as I am currently working on a separate piece that will focus more onto the configuration and use of NGINX to hosting multiple domain names and 'servers'. Keep a look out for that!
+~~I did not go deep into either of the load balancers in here as I am currently working on a separate piece that will focus more onto the configuration and use of NGINX to hosting multiple domain names and 'servers'. Keep a look out for that!~~
+
+_You can read more about NGINX on my next post [here](http://localhost:1313/blog/2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server/)._
 
 ---
 
