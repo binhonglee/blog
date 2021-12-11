@@ -354,6 +354,12 @@ pre .custom-language {
   display: none;
 }
 
+@media screen and (max-width: 1000px) {
+  .post_content img {
+    max-width: 80%;
+  }  
+}
+
 @media screen and (max-width: 750px) {
   .dropdown {
     display: block;
