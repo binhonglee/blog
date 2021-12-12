@@ -88,6 +88,22 @@ h2 {
   font-size: 1.5em;
 }
 
+h3 {
+  font-size: 1.25em;
+}
+
+h1 code {
+  font-size: 1.25em;
+}
+
+h2 code {
+  font-size: 0.9em;
+}
+
+h3 code {
+  font-size: 0.8em;
+}
+
 .dropdown_toggle {
   display: none;
 }
