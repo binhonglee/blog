@@ -6,6 +6,7 @@ thumbnail: "img/blcover.jpeg"
 tags: [Career, International Student, Engineering, Job]
 aliases:
     - /2018/02/10/being-lucky.html
+    - /being_lucky/
 ---
 
 Ah, you’ve graduated. Now what? Oh right, still no job offer! _\*panics\*_
