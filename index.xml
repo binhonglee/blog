@@ -1,4 +1,116 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BinHong Lee's Blog</title><link>https://binhong.me/blog/</link><description>Recent content on BinHong Lee's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 18 Jul 2021 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>PostgreSQL on Azure Pipeline with OSX</title><link>https://binhong.me/blog/2021-07-18-postgresql-on-azure/</link><pubDate>Sun, 18 Jul 2021 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2021-07-18-postgresql-on-azure/</guid><description>&lt;p>While the defacto way of running postgres on Azure Pipeline according to &lt;a href="https://devblogs.microsoft.com/devops/using-containerized-services-in-your-pipeline/">this guide&lt;/a> seems to be using the docker image, the MacOS image on Azure Pipeline does not have docker support due to some &lt;a href="https://github.com/actions/virtual-environments/issues/2150">licensing issue&lt;/a>. So instead, this has to be setup and handled manually. We&amp;rsquo;d use brew here since it comes installed in the OS image and is the easiest way to deal with it as far as I&amp;rsquo;m aware.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BinHong Lee's Blog</title><link>https://binhong.me/blog/</link><description>Recent content on BinHong Lee's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 18 Jul 2021 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Upgrading a Vue TypeScript Project (2.x -> 3.x)</title><link>https://binhong.me/blog/2021-12-12-vue-3-vite/</link><pubDate>Sun, 12 Dec 2021 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2021-12-12-vue-3-vite/</guid><description>&lt;p>&lt;del>While Vue 3 has been out of beta for quite a while, (&lt;a href="https://v3.vuejs.org/guide/migration/introduction.html#breaking-changes">as noted on their website&lt;/a>) a migration build is still a work in progress so the current advice is to stay with Vue 2 if it&amp;rsquo;s a non-trivial project.&lt;/del> I procrastinated on this article for so long that a migration build has since been released. Feel free to check it out &lt;a href="https://v3.vuejs.org/guide/migration/migration-build.html">here&lt;/a>.&lt;/p>
+&lt;p>That said, as Parcel v1 is &lt;a href="https://www.npmjs.com/package/parcel-bundler/v/1.9.4">no longer maintained&lt;/a> (and with v2 supporting only Vue 3), I figured it&amp;rsquo;s time to upgrade.&lt;/p>
+&lt;h2 id="why-not-parcel-v2">Why not Parcel v2?&lt;/h2>
+&lt;p>This is actually quite straightforward. I&amp;rsquo;ve been wanting to try out vite for a while since I first saw it mentioned on an esbuild issue (asking for vue SFC support). I did consider snowpack for a while but I still decided to stick with vite seeing how its also created by Evan You and it seems to have mildly better performance.&lt;/p>
+&lt;p>I did initially try to upgrade the project to Parcel v2 seeing as &lt;a href="https://v2.parceljs.org/getting-started/migration">how simple it was described as&lt;/a>. However, &lt;a href="https://github.com/parcel-bundler/parcel/issues/4022">I was wrong&lt;/a> and instead of sinking anymore time into it, I decided to move onto something else.&lt;/p>
+&lt;h2 id="moving-onto-vite">Moving onto vite&lt;/h2>
+&lt;p>The one thing that really sealed it for me (with vite) was how simple the move turned out to be. I created an empty project with their template, clone the relatively minimal default config over, and it&amp;rsquo;s &amp;ldquo;mostly&amp;rdquo; working. (Well, &amp;ldquo;mostly&amp;rdquo; because my project was still on Vue 2 instead of Vue 3.) Funnily enough, this was the same reason that led me to opting with Parcel initially since it needed very minimal configuration to get started.&lt;/p>
+&lt;h2 id="vue-router">&lt;code>vue-router&lt;/code>&lt;/h2>
+&lt;p>According to the official Vue 3 guide, the way to call the router is to import and call it the &lt;code>VueRouter&lt;/code> you defined. This is slightly different from the previous version where you call &lt;code>this.router&lt;/code> to use it. Well technically you can still do exactly that, as long as you define router in your global properties like below.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code class="language-ts" data-lang="ts">&lt;span style="color:#ff79c6">import&lt;/span> { createApp } &lt;span style="color:#ff79c6">from&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;vue&amp;#34;&lt;/span>;
+&lt;span style="color:#ff79c6">import&lt;/span> App &lt;span style="color:#ff79c6">from&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;./App.vue&amp;#34;&lt;/span>;
+&lt;span style="color:#ff79c6">import&lt;/span> router &lt;span style="color:#ff79c6">from&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;./router&amp;#34;&lt;/span>;
+&lt;span style="color:#ff79c6">const&lt;/span> app &lt;span style="color:#ff79c6">=&lt;/span> createApp(App);
+app.config.globalProperties.$router &lt;span style="color:#ff79c6">=&lt;/span> router;
+app.use(router);
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>At this point, router navigation should work just fine but you might see &lt;code>tsc&lt;/code> (or &lt;code>vue-tsc&lt;/code>) throwing type errors saying that &lt;code>this.router&lt;/code> is of type unknown. We&amp;rsquo;ll fix this later when discussing about &lt;code>vue-tsc&lt;/code>.&lt;/p>
+&lt;h2 id="vue-tsc">&lt;code>vue-tsc&lt;/code>&lt;/h2>
+&lt;p>One of the main upgrades that Vue 3 provides is &lt;code>vue-tsc&lt;/code>. On top of the regular type checking already available with &lt;code>tsc&lt;/code>, &lt;code>vue-tsc&lt;/code> also do type checking for inline TypeScript / Vue code in template (like &lt;code>v-for&lt;/code>, &lt;code>v-if&lt;/code>, &lt;code>:props&lt;/code>&amp;hellip;).&lt;/p>
+&lt;h3 id="volar-vscode">Volar (vscode)&lt;/h3>
+&lt;p>If you do your Vue project development on vscode, you probably have Vetur installed. While Vetur works with Vue 3 projects, Volar is an upgrade to that comparatively as it uses vue-tsc and displays those new type errors inline. They do not complement / work with each other though so make sure you remove one before you install the other.&lt;/p>
+&lt;h2 id="shims">Shims&lt;/h2>
+&lt;p>So if you&amp;rsquo;re not already familiar with shims, it&amp;rsquo;s essentially a type declaration file to tell your IDE what are the types of the vue file exports (and tsx files). &lt;a href="https://stackoverflow.com/questions/54622621/">Here&lt;/a>&amp;rsquo;s a stackoverflow question on why it&amp;rsquo;s needed.&lt;/p>
+&lt;h3 id="shims-vuedts">&lt;code>shims-vue.d.ts&lt;/code>&lt;/h3>
+&lt;p>This is the generic one that&amp;rsquo;d be generated when you create a new Vue project.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code class="language-ts" data-lang="ts">&lt;span style="color:#ff79c6">declare&lt;/span> module &lt;span style="color:#f1fa8c">&amp;#34;*.vue&amp;#34;&lt;/span> {
+&lt;span style="color:#ff79c6">import&lt;/span> { DefineComponent } &lt;span style="color:#ff79c6">from&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;vue&amp;#34;&lt;/span>;
+&lt;span style="color:#ff79c6">const&lt;/span> component: &lt;span style="color:#8be9fd">DefineComponent&lt;/span>;
+&lt;span style="color:#ff79c6">export&lt;/span> &lt;span style="color:#ff79c6">default&lt;/span> component;
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="shims-vue-run-timedts">&lt;code>shims-vue-run-time.d.ts&lt;/code>&lt;/h3>
+&lt;p>If you make router calls in your code with &lt;code>this.$router&lt;/code> directly, you might find &lt;code>vue-tsc&lt;/code> complaining about missing type declaration for it even if you already declared &lt;code>app.use(router);&lt;/code> in your &lt;code>main.ts&lt;/code> file. It seems like that doesn&amp;rsquo;t inherit the types imported automatically so you need to declare it separately for &lt;code>vue-tsc&lt;/code> to know where to look.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code class="language-ts" data-lang="ts">&lt;span style="color:#ff79c6">import&lt;/span> VueRouter &lt;span style="color:#ff79c6">from&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;vue-router&amp;#34;&lt;/span>;
+&lt;span style="color:#ff79c6">declare&lt;/span> module &lt;span style="color:#f1fa8c">&amp;#34;@vue/runtime-core&amp;#34;&lt;/span> {
+&lt;span style="color:#ff79c6">interface&lt;/span> ComponentCustomProperties {
+$router: &lt;span style="color:#8be9fd">VueRouter&lt;/span>;
+}
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Of course, if you also call other stuffs similarly. As an example, let&amp;rsquo;s say you call &lt;code>this.$notify&lt;/code> with ElementPlus. You&amp;rsquo;d also include that in this type declaration file like this:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code class="language-ts" data-lang="ts">&lt;span style="color:#ff79c6">import&lt;/span> { ElNotification } &lt;span style="color:#ff79c6">from&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;element-plus&amp;#34;&lt;/span>;
+&lt;span style="color:#ff79c6">import&lt;/span> VueRouter &lt;span style="color:#ff79c6">from&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;vue-router&amp;#34;&lt;/span>;
+&lt;span style="color:#ff79c6">declare&lt;/span> module &lt;span style="color:#f1fa8c">&amp;#34;@vue/runtime-core&amp;#34;&lt;/span> {
+&lt;span style="color:#ff79c6">interface&lt;/span> ComponentCustomProperties {
+$notify: &lt;span style="color:#8be9fd">ElNotification&lt;/span>;
+$router: &lt;span style="color:#8be9fd">VueRouter&lt;/span>;
+}
+}
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>As for why I can&amp;rsquo;t just put these lines of codes in the same type declaration file as above, it threw me some error when I tried that. Separating them somehow solved the issue for me.&lt;/p>
+&lt;h2 id="indexhtml">index.html&lt;/h2>
+&lt;p>Usually this should just be in default state so the only change that needs to be made was to add this additional param of &lt;code>type=&amp;quot;module&amp;quot;&lt;/code> to the script tag calling the entrypoint.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">&lt;code class="language-html" data-lang="html">&amp;lt;&lt;span style="color:#ff79c6">script&lt;/span> &lt;span style="color:#50fa7b">type&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;module&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">src&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;/src/main.ts&amp;#34;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#ff79c6">script&lt;/span>&amp;gt;
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="pug">Pug&lt;/h2>
+&lt;p>For pug in Vue 2, you can have your whole block indented (kinda like the regular html block). But in Vue 3, it&amp;rsquo;s no longer supported so your outer most &lt;code>div&lt;/code> can no longer be indented.&lt;/p>
+&lt;h2 id="wrap-up">Wrap up&lt;/h2>
+&lt;p>Overall, there are some bumps here and there but the process is relatively easy to understand especially with the help of new tools like volar (and faster compilation of vite).&lt;/p></description></item><item><title>PostgreSQL on Azure Pipeline with OSX</title><link>https://binhong.me/blog/2021-07-18-postgresql-on-azure/</link><pubDate>Sun, 18 Jul 2021 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2021-07-18-postgresql-on-azure/</guid><description>&lt;p>While the defacto way of running postgres on Azure Pipeline according to &lt;a href="https://devblogs.microsoft.com/devops/using-containerized-services-in-your-pipeline/">this guide&lt;/a> seems to be using the docker image, the MacOS image on Azure Pipeline does not have docker support due to some &lt;a href="https://github.com/actions/virtual-environments/issues/2150">licensing issue&lt;/a>. So instead, this has to be setup and handled manually. We&amp;rsquo;d use brew here since it comes installed in the OS image and is the easiest way to deal with it as far as I&amp;rsquo;m aware.&lt;/p>
 &lt;h2 id="install-optional">Install (optional)&lt;/h2>
 &lt;p>By default postgres should already be installed in the included MacOS image but if you prefer to run it on a specific version you&amp;rsquo;d have to force reinstall the version you want just to be sure.&lt;/p>
 &lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2">
