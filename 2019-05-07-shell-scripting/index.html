@@ -26,7 +26,7 @@ There are some good arguments for that here and here which mainly revolve around
 <link href=https://binhong.me/blog/style.css rel=stylesheet>
 <link href=https://binhong.me/fonts/fonts.css rel=stylesheet>
 <link rel=icon href=https://binhong.me/blog/img/profile.png>
-<meta name=generator content="Hugo 0.90.1">
+<meta name=generator content="Hugo 0.92.1">
 </head>
 <body class=single>
 <details class=dark_mode_toggle role=button open>
@@ -40,13 +40,13 @@ There are some good arguments for that here and here which mainly revolve around
 </details>
 <div class=wrapper>
 <div class="content dropdown">
-<button class=dropdown_toggle>+</button>
-<div class=header_links>
-<a class=link href=https://binhong.me/>About</a>
+<button class=dropdown_toggle aria-haspopup=true aria-controls=dropdown_menu id=dropdown_toggle>+</button>
+<div class=header_links id=dropdown_menu aria-labelledby=dropdown_toggle role=menu>
+<a class=link href=https://binhong.me/ role=menuitem>About</a>
 <p>|</p>
-<a class=link href=https://binhong.me/blog/>Blog</a>
+<a class=link href=https://binhong.me/blog/ role=menuitem>Blog</a>
 <p>|</p>
-<a class=link href=https://binhong.me/threads>Threads</a>
+<a class=link href=https://binhong.me/threads role=menuitem>Threads</a>
 </div>
 </div>
 <article class="content_body primary_block projects">
@@ -384,9 +384,6 @@ Invalid option: -x
 </code></pre><p>In the above example, the differences between option <code>-a</code> and <code>-c</code> is that in the <code>getopts</code> line, <code>c</code> has a colon (<code>:</code>) following it after therefore telling the program to expect a parameter for the option. Another thing to keep in mind is that the options need to be declared in an alphabetical way. If you declare something like <code>acb</code>, the <code>b</code> declaration would be ignored and using the <code>-b</code> flag would lead to the error message instead of the <code>b</code> case in the switch condition.</p>
 <p>Thanks for reading!</p>
 <hr>
-<h2 id=about-me>About me</h2>
-<p>I currently work at Facebook as a Software Engineer. I spend some of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey <a href=https://binhong.me/blog>here</a> or on <a href=https://github.com/binhonglee>GitHub</a>.</p>
-<hr>
 <h2 id=references>References</h2>
 <ul>
 <li><a href=http://wiki.bash-hackers.org/howto/getopts_tutorial>Small getopts tutorial</a></li>
@@ -417,7 +414,7 @@ Invalid option: -x
 <p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a> </p>
 </div>
 <div class=row>
-<p>&copy; 2021 <a href=https://binhong.me>BinHong Lee</a></p>
+<p>&copy; 2022 <a href=https://binhong.me>BinHong Lee</a></p>
 </div>
 </div>
 </footer>

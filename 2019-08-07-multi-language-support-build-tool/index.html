@@ -21,7 +21,7 @@ Personally, I have all my side projects stored at the top level of the computer.
 <link href=https://binhong.me/blog/style.css rel=stylesheet>
 <link href=https://binhong.me/fonts/fonts.css rel=stylesheet>
 <link rel=icon href=https://binhong.me/blog/img/profile.png>
-<meta name=generator content="Hugo 0.90.1">
+<meta name=generator content="Hugo 0.92.1">
 </head>
 <body class=single>
 <details class=dark_mode_toggle role=button open>
@@ -35,13 +35,13 @@ Personally, I have all my side projects stored at the top level of the computer.
 </details>
 <div class=wrapper>
 <div class="content dropdown">
-<button class=dropdown_toggle>+</button>
-<div class=header_links>
-<a class=link href=https://binhong.me/>About</a>
+<button class=dropdown_toggle aria-haspopup=true aria-controls=dropdown_menu id=dropdown_toggle>+</button>
+<div class=header_links id=dropdown_menu aria-labelledby=dropdown_toggle role=menu>
+<a class=link href=https://binhong.me/ role=menuitem>About</a>
 <p>|</p>
-<a class=link href=https://binhong.me/blog/>Blog</a>
+<a class=link href=https://binhong.me/blog/ role=menuitem>Blog</a>
 <p>|</p>
-<a class=link href=https://binhong.me/threads>Threads</a>
+<a class=link href=https://binhong.me/threads role=menuitem>Threads</a>
 </div>
 </div>
 <article class="content_body primary_block projects">
@@ -171,9 +171,6 @@ genrule(
 <hr>
 <p>Hopefully this has been helpful in opening you up to trying and mixing different programming languages into your project. Why? To me, side projects are just experimental grounds for fun. If it sounds interesting enough, I’ll try and make it happen (or in this case, see if someone has done it and use their ready build tool).</p>
 <p>If you are interested, <a href=https://github.com/binhonglee/GlobeTrotte/>this</a> is the side project I’ve been working on. Thus far, its still not functional. It will most likely take another few months or so (depending on my progress and how much free time I have committed to this outside of work) before I can deploy a minimally working version of it.</p>
-<hr>
-<h2 id=about-me>About me</h2>
-<p>I currently work at Facebook as a Software Engineer. I spend some of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey <a href=https://binhong.me/blog>here</a> or on <a href=https://github.com/binhonglee>GitHub</a>.</p>
 </div>
 <hr>
 <div class=links>
@@ -195,7 +192,7 @@ genrule(
 <p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a> </p>
 </div>
 <div class=row>
-<p>&copy; 2021 <a href=https://binhong.me>BinHong Lee</a></p>
+<p>&copy; 2022 <a href=https://binhong.me>BinHong Lee</a></p>
 </div>
 </div>
 </footer>

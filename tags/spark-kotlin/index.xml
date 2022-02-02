@@ -302,9 +302,6 @@ assertEquals(String(httpResponse.body()), &lt;span style="color:#f1fa8c">&amp;#3
 &lt;/ul>
 &lt;p>&lt;em>Note: As mentioned at the time of writing, the DELETE request is unable to attach any kind of request body to it making it hard to test your DELETE request. Personally, I use different URL each feature so I just redirect a POST request from the same url to the DELETE request and test it through the POST request instead. Not ideal, but it works for now.&lt;/em>&lt;/p>
 &lt;hr>
-&lt;h2 id="about-me">About me&lt;/h2>
-&lt;p>I currently work at Apple Inc. on the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey &lt;a href="https://binhong.me/blog">here&lt;/a> or on &lt;a href="https://github.com/binhonglee">GitHub&lt;/a>.&lt;/p>
-&lt;hr>
 &lt;h2 id="references">References&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://medium.com/@codemwnci/kotlin-webapp-tutorial-todolist-part-1-c544b9a70f29">Kotlin WebApp Tutorial&lt;/a> by Wayne Ellis&lt;/li>

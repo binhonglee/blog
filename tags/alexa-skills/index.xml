@@ -157,9 +157,6 @@ alexa.execute()
 &lt;h2 id="submission">Submission&lt;/h2>
 &lt;p>When you are done, you can go back to the Alexa Skill Kit page, select the ‘Distribution’ tab and fill out the appropriate information before submitting your skill for review. Hopefully everything goes well and your skill gets published at the Alexa Skill Store!&lt;/p>
 &lt;hr>
-&lt;h2 id="about-me">About me&lt;/h2>
-&lt;p>I recently started working at Facebook as a Software Engineer. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey &lt;a href="https://binhong.me/blog">here&lt;/a> or on &lt;a href="https://github.com/binhonglee">GitHub&lt;/a>.&lt;/p>
-&lt;hr>
 &lt;h2 id="credits">Credits&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html">Build Skills with the Alexa Skills Kit&lt;/a>&lt;/li>

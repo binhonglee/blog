@@ -195,10 +195,7 @@
 &lt;span style="color:#ff79c6">condition&lt;/span>: eq(variables[&amp;#39;Agent.OS&amp;#39;], &amp;#39;Darwin&amp;#39;)
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>Hopefully you find this article helpful!&lt;/p>
-&lt;hr>
-&lt;h2 id="about-me">About me&lt;/h2>
-&lt;p>I currently work at Facebook as a Software Engineer. I spend some of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey &lt;a href="https://binhong.me/blog">here&lt;/a> or on &lt;a href="https://github.com/binhonglee">GitHub&lt;/a>.&lt;/p></description></item><item><title>How to host multiple domain names and projects on one server</title><link>https://binhong.me/blog/2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server/</link><pubDate>Wed, 29 Aug 2018 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server/</guid><description>&lt;p>I own multiple domain names, and each one hosts a different side project. For the longest time, everything that required ‘hosting’ was hosted on Heroku. But their free tier can be quite limited, it can also get costly quickly if you are paying for each separate project. So instead, I decided to explore putting all of them together using NGINX (recommended to me by &lt;a href="https://jmw.fyi">Jane Manchun Wong&lt;/a>).&lt;/p>
+&lt;/div>&lt;p>Hopefully you find this article helpful!&lt;/p></description></item><item><title>How to host multiple domain names and projects on one server</title><link>https://binhong.me/blog/2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server/</link><pubDate>Wed, 29 Aug 2018 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server/</guid><description>&lt;p>I own multiple domain names, and each one hosts a different side project. For the longest time, everything that required ‘hosting’ was hosted on Heroku. But their free tier can be quite limited, it can also get costly quickly if you are paying for each separate project. So instead, I decided to explore putting all of them together using NGINX (recommended to me by &lt;a href="https://jmw.fyi">Jane Manchun Wong&lt;/a>).&lt;/p>
 &lt;h2 id="required-resources">Required Resources&lt;/h2>
 &lt;h4 id="virtual-private-server-vps">Virtual Private Server (VPS)&lt;/h4>
 &lt;p>You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I uses &lt;a href="https://www.vultr.com/?ref=7358373">Vultr&lt;/a> (here’s the &lt;a href="http://vultr.com/">non-referral link&lt;/a>) which costs me about $2.50 / month.&lt;/p>
@@ -418,8 +415,6 @@ screen -S nodeServer -X stuff &lt;span style="color:#f1fa8c">&amp;#34;npm start
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>Thanks for reading! Let me know if you have any questions in the comments below.&lt;/p>
-&lt;h2 id="about-me">About me&lt;/h2>
-&lt;p>At the time of writing, I work at Apple Inc. in the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey &lt;a href="https://binhong.me/blog">here&lt;/a> or on &lt;a href="https://github.com/binhonglee">GitHub&lt;/a>.&lt;/p>
 &lt;hr>
 &lt;h2 id="other-references">Other References&lt;/h2>
 &lt;ul>
@@ -736,9 +731,6 @@ gpg --verify gitea-1.5.0-linux-amd64.asc gitea-1.5.0-linux-amd64
 &lt;p>&lt;del>I did not go deep into either of the load balancers in here as I am currently working on a separate piece that will focus more onto the configuration and use of NGINX to hosting multiple domain names and &amp;lsquo;servers&amp;rsquo;. Keep a look out for that!&lt;/del>&lt;/p>
 &lt;p>&lt;em>You can read more about NGINX on my next post &lt;a href="http://localhost:1313/blog/2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server/">here&lt;/a>.&lt;/em>&lt;/p>
 &lt;hr>
-&lt;h2 id="about-me">About me&lt;/h2>
-&lt;p>I currently work at Apple Inc. on the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey &lt;a href="https://binhong.me/blog">here&lt;/a> or on &lt;a href="https://github.com/binhonglee">GitHub&lt;/a>.&lt;/p>
-&lt;hr>
 &lt;h2 id="references">References&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="http://bryangilbert.com/post/devops/how-to-setup-gitea-ubuntu/">How to Setup Gitea on an Ubuntu Server&lt;/a> by &lt;a href="http://bryangilbert.com/">Bryan Gilbert&lt;/a>&lt;/li>
@@ -1051,9 +1043,6 @@ gpg --verify gitea-1.5.0-linux-amd64.asc gitea-1.5.0-linux-amd64
 &lt;p>Along with testing, I would also recommend using a tool to analyze your code coverage. It will show you how much coverage your test has over your codes (and usually, use cases). Personally, I use the tool called &lt;a href="https://codecov.io/">codecov&lt;/a>.&lt;/p>
 &lt;h2 id="add-thebadge">Add the badge!&lt;/h2>
 &lt;p>If you are like me, the reason I was hooked up by this is because long time ago when I first got on GitHub, I saw plenty of repositories have the badge that shows if their build is &lt;code>passing&lt;/code> or &lt;code>failing&lt;/code>. I thought that was really fancy and wanted one of those so I started getting myself to learn what CI as a whole is about and how can I make use of it. Turns out, its a lot more useful than just being pretty!&lt;/p>
-&lt;hr>
-&lt;h2 id="about-me">About me&lt;/h2>
-&lt;p>I currently work at Apple Inc. on the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey &lt;a href="https://binhong.me/blog">here&lt;/a> or on &lt;a href="https://github.com/binhonglee">GitHub&lt;/a>.&lt;/p>
 &lt;blockquote>
 &lt;p>&lt;em>This article was originally published on &lt;a href="https://codeburst.io/getting-started-with-travis-ci-f3223082f256">codeburst.io&lt;/a>.&lt;/em>&lt;/p>
 &lt;/blockquote></description></item></channel></rss>

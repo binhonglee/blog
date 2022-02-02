@@ -23,7 +23,7 @@
 <link href=https://binhong.me/blog/style.css rel=stylesheet>
 <link href=https://binhong.me/fonts/fonts.css rel=stylesheet>
 <link rel=icon href=https://binhong.me/blog/img/profile.png>
-<meta name=generator content="Hugo 0.90.1">
+<meta name=generator content="Hugo 0.92.1">
 <link rel=alternate type=application/rss+xml href=https://binhong.me/blog/tags/automation/index.xml title="BinHong Lee's Blog">
 </head>
 <body class=list>
@@ -38,17 +38,25 @@
 </details>
 <div class=wrapper>
 <div class="content dropdown">
-<button class=dropdown_toggle>+</button>
-<div class=header_links>
-<a class=link href=https://binhong.me/>About</a>
+<button class=dropdown_toggle aria-haspopup=true aria-controls=dropdown_menu id=dropdown_toggle>+</button>
+<div class=header_links id=dropdown_menu aria-labelledby=dropdown_toggle role=menu>
+<a class=link href=https://binhong.me/ role=menuitem>About</a>
 <p>|</p>
-<a class=link href=https://binhong.me/blog/>Blog</a>
+<a class=link href=https://binhong.me/blog/ role=menuitem>Blog</a>
 <p>|</p>
-<a class=link href=https://binhong.me/threads>Threads</a>
+<a class=link href=https://binhong.me/threads role=menuitem>Threads</a>
 </div>
 </div>
 <main class="content_body article_body">
 <div class="primary_block projects">
+<article class=block>
+<a class="article_link active" href=https://binhong.me/blog/2018-06-02-building-a-side-project-over-the-weekend/>
+<p class="name row">Building a side project over the weekend</p>
+<p class="lang row">Basically a solo hackathon</p>
+<p class=desc>Few months ago during my job search, I decided that I want to add some new skills to my arsenal (resume) so I went ahead to build a bill splitting webapp (and the month before, an Alexa skill). Granted, the backend was built weeks before during a hackathon (shoutout to HackISU), I’m just focusing on building the UI that makes post requests to the backend. In the process, I also ended up fixing some inherent flaws I left behind in the backend....</p>
+<p class=right>June 2, 2018</p>
+</a>
+</article>
 <article class=block>
 <a class="article_link active" href=https://binhong.me/blog/2018-04-22-getting-started-with-travis-ci/>
 <p class="name row">Getting started with Travis-CI</p>
@@ -108,7 +116,7 @@ As an international student, I have come across hundreds of guides on “how to 
 <p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a> </p>
 </div>
 <div class=row>
-<p>&copy; 2021 <a href=https://binhong.me>BinHong Lee</a></p>
+<p>&copy; 2022 <a href=https://binhong.me>BinHong Lee</a></p>
 </div>
 </div>
 </footer>

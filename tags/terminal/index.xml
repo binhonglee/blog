@@ -138,8 +138,6 @@ lxrun /install
 &lt;h2 id="afterthoughts">Afterthoughts&lt;/h2>
 &lt;p>Initially, I did this with &lt;a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH">zsh&lt;/a> (since I personally uses &lt;a href="https://github.com/bhilburn/powerlevel9k">Powerlevel9k&lt;/a> on my Mac and I love it) but zsh doesn’t seems to play well with Hyper (specifically with the plugins) causing a lot of weird configuration behaviors. Even without Hyper, the alignments for Powerlevel9k specifically goes way off causing the input line to be on the next line instead. I speculate this is due to zsh not being built with Windows in mind and does not have such compatibility.&lt;/p>
 &lt;hr>
-&lt;h2 id="about-author">About author&lt;/h2>
-&lt;p>BinHong recently graduated from Arizona State University with B.Sc. in Software Engineering. He currently spends most of his time experimenting with technologies he had never explored in order to widen his area of expertise while he continues on his job searching journey.&lt;/p>
 &lt;blockquote>
 &lt;p>&lt;em>This article was originally published on &lt;a href="https://blog.binhong.me/use-terminal-in-windows-with-style-45158e0c2f50">my personal Medium publication&lt;/a>.&lt;/em>&lt;/p>
 &lt;/blockquote></description></item></channel></rss>

@@ -20,7 +20,7 @@
 <link href=https://binhong.me/blog/style.css rel=stylesheet>
 <link href=https://binhong.me/fonts/fonts.css rel=stylesheet>
 <link rel=icon href=https://binhong.me/blog/img/profile.png>
-<meta name=generator content="Hugo 0.90.1">
+<meta name=generator content="Hugo 0.92.1">
 </head>
 <body class=single>
 <details class=dark_mode_toggle role=button open>
@@ -34,13 +34,13 @@
 </details>
 <div class=wrapper>
 <div class="content dropdown">
-<button class=dropdown_toggle>+</button>
-<div class=header_links>
-<a class=link href=https://binhong.me/>About</a>
+<button class=dropdown_toggle aria-haspopup=true aria-controls=dropdown_menu id=dropdown_toggle>+</button>
+<div class=header_links id=dropdown_menu aria-labelledby=dropdown_toggle role=menu>
+<a class=link href=https://binhong.me/ role=menuitem>About</a>
 <p>|</p>
-<a class=link href=https://binhong.me/blog/>Blog</a>
+<a class=link href=https://binhong.me/blog/ role=menuitem>Blog</a>
 <p>|</p>
-<a class=link href=https://binhong.me/threads>Threads</a>
+<a class=link href=https://binhong.me/threads role=menuitem>Threads</a>
 </div>
 </div>
 <article class="content_body primary_block projects">
@@ -196,8 +196,6 @@ lxrun /install
 <h2 id=afterthoughts>Afterthoughts</h2>
 <p>Initially, I did this with <a href=https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH>zsh</a> (since I personally uses <a href=https://github.com/bhilburn/powerlevel9k>Powerlevel9k</a> on my Mac and I love it) but zsh doesn’t seems to play well with Hyper (specifically with the plugins) causing a lot of weird configuration behaviors. Even without Hyper, the alignments for Powerlevel9k specifically goes way off causing the input line to be on the next line instead. I speculate this is due to zsh not being built with Windows in mind and does not have such compatibility.</p>
 <hr>
-<h2 id=about-author>About author</h2>
-<p>BinHong recently graduated from Arizona State University with B.Sc. in Software Engineering. He currently spends most of his time experimenting with technologies he had never explored in order to widen his area of expertise while he continues on his job searching journey.</p>
 <blockquote>
 <p><em>This article was originally published on <a href=https://blog.binhong.me/use-terminal-in-windows-with-style-45158e0c2f50>my personal Medium publication</a>.</em></p>
 </blockquote>
@@ -223,7 +221,7 @@ lxrun /install
 <p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a> </p>
 </div>
 <div class=row>
-<p>&copy; 2021 <a href=https://binhong.me>BinHong Lee</a></p>
+<p>&copy; 2022 <a href=https://binhong.me>BinHong Lee</a></p>
 </div>
 </div>
 </footer>

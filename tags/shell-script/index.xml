@@ -310,9 +310,6 @@ Invalid option: -x
 &lt;/code>&lt;/pre>&lt;p>In the above example, the differences between option &lt;code>-a&lt;/code> and &lt;code>-c&lt;/code> is that in the &lt;code>getopts&lt;/code> line, &lt;code>c&lt;/code> has a colon (&lt;code>:&lt;/code>) following it after therefore telling the program to expect a parameter for the option. Another thing to keep in mind is that the options need to be declared in an alphabetical way. If you declare something like &lt;code>acb&lt;/code>, the &lt;code>b&lt;/code> declaration would be ignored and using the &lt;code>-b&lt;/code> flag would lead to the error message instead of the &lt;code>b&lt;/code> case in the switch condition.&lt;/p>
 &lt;p>Thanks for reading!&lt;/p>
 &lt;hr>
-&lt;h2 id="about-me">About me&lt;/h2>
-&lt;p>I currently work at Facebook as a Software Engineer. I spend some of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey &lt;a href="https://binhong.me/blog">here&lt;/a> or on &lt;a href="https://github.com/binhonglee">GitHub&lt;/a>.&lt;/p>
-&lt;hr>
 &lt;h2 id="references">References&lt;/h2>
 &lt;ul>
 &lt;li>&lt;a href="http://wiki.bash-hackers.org/howto/getopts_tutorial">Small getopts tutorial&lt;/a>&lt;/li>

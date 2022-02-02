@@ -303,9 +303,6 @@
 &lt;p>Along with testing, I would also recommend using a tool to analyze your code coverage. It will show you how much coverage your test has over your codes (and usually, use cases). Personally, I use the tool called &lt;a href="https://codecov.io/">codecov&lt;/a>.&lt;/p>
 &lt;h2 id="add-thebadge">Add the badge!&lt;/h2>
 &lt;p>If you are like me, the reason I was hooked up by this is because long time ago when I first got on GitHub, I saw plenty of repositories have the badge that shows if their build is &lt;code>passing&lt;/code> or &lt;code>failing&lt;/code>. I thought that was really fancy and wanted one of those so I started getting myself to learn what CI as a whole is about and how can I make use of it. Turns out, its a lot more useful than just being pretty!&lt;/p>
-&lt;hr>
-&lt;h2 id="about-me">About me&lt;/h2>
-&lt;p>I currently work at Apple Inc. on the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey &lt;a href="https://binhong.me/blog">here&lt;/a> or on &lt;a href="https://github.com/binhonglee">GitHub&lt;/a>.&lt;/p>
 &lt;blockquote>
 &lt;p>&lt;em>This article was originally published on &lt;a href="https://codeburst.io/getting-started-with-travis-ci-f3223082f256">codeburst.io&lt;/a>.&lt;/em>&lt;/p>
 &lt;/blockquote></description></item></channel></rss>

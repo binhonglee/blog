@@ -20,7 +20,7 @@
 <link href=https://binhong.me/blog/style.css rel=stylesheet>
 <link href=https://binhong.me/fonts/fonts.css rel=stylesheet>
 <link rel=icon href=https://binhong.me/blog/img/profile.png>
-<meta name=generator content="Hugo 0.90.1">
+<meta name=generator content="Hugo 0.92.1">
 </head>
 <body class=single>
 <details class=dark_mode_toggle role=button open>
@@ -34,13 +34,13 @@
 </details>
 <div class=wrapper>
 <div class="content dropdown">
-<button class=dropdown_toggle>+</button>
-<div class=header_links>
-<a class=link href=https://binhong.me/>About</a>
+<button class=dropdown_toggle aria-haspopup=true aria-controls=dropdown_menu id=dropdown_toggle>+</button>
+<div class=header_links id=dropdown_menu aria-labelledby=dropdown_toggle role=menu>
+<a class=link href=https://binhong.me/ role=menuitem>About</a>
 <p>|</p>
-<a class=link href=https://binhong.me/blog/>Blog</a>
+<a class=link href=https://binhong.me/blog/ role=menuitem>Blog</a>
 <p>|</p>
-<a class=link href=https://binhong.me/threads>Threads</a>
+<a class=link href=https://binhong.me/threads role=menuitem>Threads</a>
 </div>
 </div>
 <article class="content_body primary_block projects">
@@ -113,9 +113,6 @@ ts-func(
 <p>Overall, I think one of the main takeaway is that if there&rsquo;s already an actively maintained existing solution, it&rsquo;s probably better to use that than to create your own. By now you might have realizes that this project is slowly morphing into something that looks similar to the existing alternatives but in a much simpler form.</p>
 <p>Admittedly, I&rsquo;ve only started learning about how a programming language is written only after a few months into the project so the design and structure is not ideal. However, since this is also much simpler compared to a full blown programming language, I can still get away with it on this. That said, I might start to incorporate some of these principles into wings as I continue to work on it (including writing a proper lexer and parser for it).</p>
 <p>Of course, this is just a little side project spawn off of another side project. There&rsquo;s also the long time dilemma of &ldquo;should I just write them manually or do I need to write codes (or use an external library) to write them&rdquo; (the NIH syndrome). In this case the later took way more time than the former, but this is a side project so it&rsquo;s more about learning than meeting non-existent delivery dates anyway. I&rsquo;ve also find it fun to have been working on the project so far and I hope you find this helpful. If you&rsquo;d like to learn more about it (or use it yourself), check out the project website at <a href=https://wings.sh>wings.sh</a>. If you like what you&rsquo;ve read, I&rsquo;d appreciate a star on the <a href=https://github.com/binhonglee/wings>wings repository</a>.</p>
-<hr>
-<h2 id=about-me>About me</h2>
-<p>I currently work at Facebook as a Software Engineer. I spend some of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey <a href=https://binhong.me/blog>here</a> or on <a href=https://github.com/binhonglee>GitHub</a>.</p>
 </div>
 <hr>
 <div class=links>
@@ -138,7 +135,7 @@ ts-func(
 <p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a> </p>
 </div>
 <div class=row>
-<p>&copy; 2021 <a href=https://binhong.me>BinHong Lee</a></p>
+<p>&copy; 2022 <a href=https://binhong.me>BinHong Lee</a></p>
 </div>
 </div>
 </footer>
