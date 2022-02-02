@@ -163,10 +163,6 @@ cd ../
 
 Thanks for reading! Let me know if you have any questions in the comments below.
 
-## About me
-
-At the time of writing, I work at Apple Inc. in the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey [here](https://binhong.me/blog) or on [GitHub](https://github.com/binhonglee).
-
 ---
 
 ## Other References

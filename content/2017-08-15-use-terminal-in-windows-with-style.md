@@ -140,8 +140,4 @@ Initially, I did this with [zsh](https://github.com/robbyrussell/oh-my-zsh/wiki/
 
 ---
 
-## About author
-
-BinHong recently graduated from Arizona State University with B.Sc. in Software Engineering. He currently spends most of his time experimenting with technologies he had never explored in order to widen his area of expertise while he continues on his job searching journey.
-
 > _This article was originally published on [my personal Medium publication](https://blog.binhong.me/use-terminal-in-windows-with-style-45158e0c2f50)._

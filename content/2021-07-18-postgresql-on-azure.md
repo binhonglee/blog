@@ -133,9 +133,3 @@ steps:
 ```
 
 Hopefully you find this article helpful!
-
----
-
-## About me
-
-I currently work at Facebook as a Software Engineer. I spend some of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey [here](https://binhong.me/blog) or on [GitHub](https://github.com/binhonglee).

@@ -218,10 +218,4 @@ Along with testing, I would also recommend using a tool to analyze your code cov
 
 If you are like me, the reason I was hooked up by this is because long time ago when I first got on GitHub, I saw plenty of repositories have the badge that shows if their build is `passing` or `failing`. I thought that was really fancy and wanted one of those so I started getting myself to learn what CI as a whole is about and how can I make use of it. Turns out, its a lot more useful than just being pretty!
 
----
-
-## About me
-
-I currently work at Apple Inc. on the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey [here](https://binhong.me/blog) or on [GitHub](https://github.com/binhonglee).
-
 > _This article was originally published on [codeburst.io](https://codeburst.io/getting-started-with-travis-ci-f3223082f256)._

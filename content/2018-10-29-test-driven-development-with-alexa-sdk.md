@@ -151,12 +151,6 @@ When you are done, you can go back to the Alexa Skill Kit page, select the ‘Di
 
 ---
 
-## About me
-
-I recently started working at Facebook as a Software Engineer. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey [here](https://binhong.me/blog) or on [GitHub](https://github.com/binhonglee).
-
----
-
 ## Credits
 - [Build Skills with the Alexa Skills Kit](https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html)
 - [TestFlow: Simulate Conversations with Your Alexa Skill Code to Ease Debugging](https://developer.amazon.com/blogs/alexa/post/35eb8ae8-2cd8-4de7-86c5-97a1abc239b9/testflow-simulate-conversations-with-your-alexa-skill-code-to-ease-debugging)

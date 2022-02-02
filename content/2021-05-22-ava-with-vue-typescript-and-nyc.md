@@ -134,9 +134,3 @@ One of the main reasons I started exploring for this option is to get good code 
 # Conclusion
 
 Personally, I wrote this piece based on my work on [GlobeTrotte](https://globetrotte.com). I've tried my best to cleanup the code for it to be as reusable as I can. Feel free to let me know if there's any issue with it. Hopefully you find this helpful.
-
----
-
-## About me
-
-I currently work at Facebook as a Software Engineer. I spend some of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey [here](https://binhong.me/blog) or on [GitHub](https://github.com/binhonglee).

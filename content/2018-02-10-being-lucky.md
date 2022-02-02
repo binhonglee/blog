@@ -51,10 +51,4 @@ This is not just me. Almost every time I come across an international student ge
 
 One could argue that if you are good enough, luck is irrelevant. That’s probably true. But then if you are that good, you are probably just sitting at home debating which offer to pick up instead of sitting here reading this piece of article from some random guy on the internet. It’s not just about being lucky, its also about being ready enough to fully utilize that moment of luck.
 
-## About myself
-
-To be honest, I’m probably the least qualified person to write about this among all the people I know working in a tech giant. I’m not even sure what would happen after my current contract expires. But I thought I would try to write something like this in hopes that this would encourage more people to chip in on what worked for them and what didn’t. When I was job searching, it was indeed frustrating to see the lack of such resources for international students so I figured I want to be the person I wished someone else was.
-
-At the time of publishing, I’m working at Apple as an independent contractor through AdvantisGlobal. I graduated from Arizona State University with BSc. in Software Engineering on May 2017 and took 6 months to land this offer. I also spent a lot of time (and probably too much money) going to hackathons mentoring others during the weekends.
-
 > _This article was originally published on [my personal Medium publication](https://blog.binhong.me/being-lucky-ce014cafa627)._

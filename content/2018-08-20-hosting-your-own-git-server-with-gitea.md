@@ -253,12 +253,6 @@ _You can read more about NGINX on my next post [here](http://localhost:1313/blog
 
 ---
 
-## About me
-
-I currently work at Apple Inc. on the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey [here](https://binhong.me/blog) or on [GitHub](https://github.com/binhonglee).
-
----
-
 ## References
 
 - [How to Setup Gitea on an Ubuntu Server](http://bryangilbert.com/post/devops/how-to-setup-gitea-ubuntu/) by [Bryan Gilbert](http://bryangilbert.com/)

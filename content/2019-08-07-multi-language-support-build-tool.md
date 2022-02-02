@@ -119,9 +119,3 @@ _*Note: you will want to replace `{workplaceFolder}` with an absolute path to wh
 Hopefully this has been helpful in opening you up to trying and mixing different programming languages into your project. Why? To me, side projects are just experimental grounds for fun. If it sounds interesting enough, I’ll try and make it happen (or in this case, see if someone has done it and use their ready build tool).
 
 If you are interested, [this](https://github.com/binhonglee/GlobeTrotte/) is the side project I’ve been working on. Thus far, its still not functional. It will most likely take another few months or so (depending on my progress and how much free time I have committed to this outside of work) before I can deploy a minimally working version of it.
-
----
-
-## About me
-
-I currently work at Facebook as a Software Engineer. I spend some of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey [here](https://binhong.me/blog) or on [GitHub](https://github.com/binhonglee).

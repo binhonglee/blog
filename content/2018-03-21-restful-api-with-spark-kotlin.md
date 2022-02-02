@@ -216,12 +216,6 @@ _Note: As mentioned at the time of writing, the DELETE request is unable to atta
 
 ---
 
-## About me
-
-I currently work at Apple Inc. on the role of Siri Language Engineer as an Independent Contractor through AdvantisGlobal. I spend a lot of my free time experimenting and building new things with technologies I find fun and interesting. Follow my exploration journey [here](https://binhong.me/blog) or on [GitHub](https://github.com/binhonglee).
-
----
-
 ## References
 
 - [Kotlin WebApp Tutorial](https://medium.com/@codemwnci/kotlin-webapp-tutorial-todolist-part-1-c544b9a70f29) by Wayne Ellis
