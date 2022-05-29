@@ -2,7 +2,7 @@
 title: Test Driven Development with Alexa SDK
 subtitle: "Quick guide to building and unit testing an Alexa Skill"
 date: 2018-10-29 00:00:00 -0800 GMT
-thumbnail: "img/alexa.jpeg"
+ss: "preview/tdd_alexa.jpg"
 tags: [JavaScript, Alexa, Alexa Skills, Tdd, Alexa Sdk]
 aliases:
     - /2018/10/29/test-driven-development-with-alexa-sdk.html

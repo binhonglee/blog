@@ -3,6 +3,7 @@ title: I could become you tomorrow and no one will know
 subtitle: "because I have your IC number, your house address and phone number."
 date: 2017-11-20 00:00:00 -0800 GMT
 thumbnail: "img/icImage1.png"
+ss: "preview/become_you_tomorrow.jpg"
 tags: [Cybersecurity, Malaysia, Privacy, Data Breach]
 aliases:
     - /2017/11/20/i-could-become-you-tomorrow-and-no-one-would-find-out.html

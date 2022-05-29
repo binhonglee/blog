@@ -1,8 +1,8 @@
 ---
-title: Hosting your own Git server with Gitea
+title: Hosting your own Git server with Gitea
 subtitle: "Having additional backups are never a bad idea"
 date: 2018-08-20 00:00:00 -0800 GMT
-thumbnail: "img/gitea.png"
+ss: "preview/own_git_server_gitea.jpg"
 tags: [Git, Gitea, Continuous Integration, Self Hosted, DevOps]
 aliases:
     - /2018/08/20/hosting-your-own-git-server-with-gitea.html

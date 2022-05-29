@@ -1,0 +1,55 @@
+{
+  "baseURL": "http://localhost:1313/blog",
+  "browser": "chromium",
+  "destURLs": [
+    {
+      "name": "rebuild_personal_site",
+      "url": "2022-01-31-rebuild-personal-site"
+    }, {
+      "name": "vue3_vite",
+      "url": "2021-12-12-vue-3-vite"
+    }, {
+      "name": "postgres_on_azure",
+      "url": "2021-07-18-postgresql-on-azure"
+    }, {
+      "name": "ava_vue_ts_nyc",
+      "url": "2021-05-22-ava-with-vue-typescript-and-nyc"
+    }, {
+      "name": "cross_language_object_parsing",
+      "url": "2020-08-09-cross-language-object-parsing"
+    }, {
+      "name": "multi_language_build_tool",
+      "url": "2019-08-07-multi-language-support-build-tool"
+    }, {
+      "name": "shell_scripting",
+      "url": "2019-05-07-shell-scripting"
+    }, {
+      "name": "tdd_alexa",
+      "url": "2018-10-29-test-driven-development-with-alexa-sdk"
+    }, {
+      "name": "multiple_domain",
+      "url": "2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server"
+    }, {
+      "name": "own_git_server_gitea",
+      "url": "2018-08-20-hosting-your-own-git-server-with-gitea"
+    }, {
+      "name": "side_project_weekend",
+      "url": "2018-06-02-building-a-side-project-over-the-weekend"
+    }, {
+      "name": "travis_ci",
+      "url": "2018-04-22-getting-started-with-travis-ci"
+    }, {
+      "name": "spark_kotlin",
+      "url": "2018-03-21-restful-api-with-spark-kotlin"
+    }, {
+      "name": "being_lucky",
+      "url": "2018-02-10-being-lucky"
+    }, {
+      "name": "become_you_tomorrow",
+      "url": "2017-11-20-i-could-become-you-tomorrow-and-no-one-would-find-out"
+    }
+  ],
+  "width": 800,
+  "height": 400,
+  "dir": "static/preview"
+}

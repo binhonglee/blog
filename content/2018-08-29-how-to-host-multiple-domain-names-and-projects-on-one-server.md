@@ -2,7 +2,7 @@
 title: How to host multiple domain names and projects on one server
 subtitle: "NGINX is one magical tool"
 date: 2018-08-29 00:00:00 -0800 GMT
-thumbnail: "img/nginx.jpeg"
+ss: "preview/multiple_domain.jpg"
 tags: [Git, Gitea, Continuous Integration, Self Hosted, DevOps]
 aliases:
     - /2018/08/29/how-to-host-multiple-domain-names-and-projects-on-one-server.html

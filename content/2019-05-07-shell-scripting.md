@@ -1,7 +1,7 @@
 ---
 title: Functional and flexible shell scripting tricks
 date: 2019-05-07 00:00:00 -0800 GMT
-thumbnail: "img/shellscript.jpeg"
+ss: "preview/shell_scripting.jpg"
 tags: [Programming, Scripting, Automation, Shell Script]
 aliases:
     - /2019/05/07/shell-scripting.html

@@ -2,7 +2,7 @@
 title: RESTful API with Spark Kotlin
 subtitle: "The not-so-mainstream way of building an API"
 date: 2018-03-21 00:00:00 -0800 GMT
-thumbnail: "img/sparkcover.jpeg"
+ss: "preview/spark_kotlin.jpg"
 tags: [RESTful API, Kotlin, Spark Kotlin, API]
 aliases:
     - /2018/03/21/restful-api-with-spark-kotlin.html

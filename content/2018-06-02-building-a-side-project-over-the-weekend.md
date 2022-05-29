@@ -2,7 +2,7 @@
 title: Building a side project over the weekend
 subtitle: "Basically a solo hackathon"
 date: 2018-06-02 00:00:00 -0800 GMT
-thumbnail: "img/sideProject1.jpg"
+ss: "preview/side_project_weekend.jpg"
 tags: [Weekend, Hackathons, Side Project, Software Development]
 aliases:
     - /2018/06/02/building-a-side-project-over-the-weekend.html

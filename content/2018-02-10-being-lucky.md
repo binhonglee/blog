@@ -2,7 +2,7 @@
 title: Being lucky
 subtitle: "Getting an engineering job as an international student"
 date: 2018-02-10 00:00:00 -0800 GMT
-thumbnail: "img/blcover.jpeg"
+ss: "preview/being_lucky.jpg"
 tags: [Career, International Student, Engineering, Job]
 aliases:
     - /2018/02/10/being-lucky.html

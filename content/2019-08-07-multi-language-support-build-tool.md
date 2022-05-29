@@ -3,6 +3,7 @@ title: Multi-language Support Build Tool
 subtitle: "Developing with Please"
 date: 2019-08-07 00:00:00 -0800 GMT
 thumbnail: "img/please.png"
+ss: "preview/multi_language_build_tool.jpg"
 tags: [Build, DevOps, Automation]
 aliases:
     - /2019/08/07/multi-language-support-build-tool.html

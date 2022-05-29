@@ -3,6 +3,7 @@ title: Cross Language Object Parsing
 subtitle: "I wrote code that writes code"
 date: 2020-08-09 00:00:00 -0800 GMT
 thumbnail: "img/wings.png"
+ss: "preview/cross_language_object_parsing.jpg"
 tags: [Automation, Object, Parsing, Cross Language]
 ---
 

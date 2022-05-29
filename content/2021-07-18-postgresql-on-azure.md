@@ -2,7 +2,7 @@
 title: PostgreSQL on Azure Pipeline with OSX
 date: 2021-07-18 00:00:00 -0800 GMT
 tags: [PostgreSQL, Azure Pipeline, OSX, Continuous Integration]
-ss: "img/psqlss.png"
+ss: "preview/postgres_on_azure.jpg"
 aliases:
     - /postgresql-on-azure/
 ---
