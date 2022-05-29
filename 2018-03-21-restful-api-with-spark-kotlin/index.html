@@ -1,417 +1,241 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="initial-scale=.75">
-<title>RESTful API with Spark Kotlin - BinHong Lee's Blog</title>
-<meta name=description content="When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.
-Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project.">
-<meta name=author content="BinHong Lee">
-<meta property="og:type" content="article">
-<meta property="og:title" content="RESTful API with Spark Kotlin">
-<meta property="og:description" content="The not-so-mainstream way of building an API">
-<meta name=twitter:description content="The not-so-mainstream way of building an API">
-<meta name=twitter:title content="RESTful API with Spark Kotlin"><meta property="article:published_time" 2018-03-21t00:00:00-08:00>
-<meta property="article:modified_time" 2018-03-21t00:00:00-08:00>
-<meta property="og:image" content="https://binhong.me/blog/img/sparkcover.jpeg">
-<meta name=twitter:image content="https://binhong.me/blog/img/sparkcover.jpeg">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:site content="@">
-<meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="BinHong Lee's Blog">
-<link href=https://binhong.me/blog/style.css rel=stylesheet>
-<link href=https://binhong.me/fonts/fonts.css rel=stylesheet>
-<link rel=icon href=https://binhong.me/blog/img/profile.png>
-<meta name=generator content="Hugo 0.92.1">
-</head>
-<body class=single>
-<details class=dark_mode_toggle role=button open>
-<summary>
-<div class=content>
-<div class=secondary_block>
-<p class=name-title>Blog</p>
-</div>
-</div>
-</summary>
-</details>
-<div class=wrapper>
-<div class="content dropdown">
-<button class=dropdown_toggle aria-haspopup=true aria-controls=dropdown_menu id=dropdown_toggle>+</button>
-<div class=header_links id=dropdown_menu aria-labelledby=dropdown_toggle role=menu>
-<a class=link href=https://binhong.me/ role=menuitem>About</a>
-<p>|</p>
-<a class=link href=https://binhong.me/blog/ role=menuitem>Blog</a>
-<p>|</p>
-<a class=link href=https://binhong.me/threads role=menuitem>Threads</a>
-</div>
-</div>
-<article class="content_body primary_block projects">
-<div class=img_class>
-<img class=thumbnail_img src=https://binhong.me/blog/img/sparkcover.jpeg>
-</div>
-<main class=article_body>
-<div class=active>
-<p class="row name title">RESTful API with Spark Kotlin</h1>
-<p class="row lang">The not-so-mainstream way of building an API</h2>
-<div class="row author">
-<p>BinHong Lee</p>
-<p class=right>March 21, 2018</p>
-</div>
-<div class=post_content><p>When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.</p>
-<p><em>Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project. (coming soon™)</em></p>
-<h2 id=understanding-rest>Understanding REST</h2>
-<p>If you already know or built a RESTful API, you can skip this part. There are already quite a few <a href=http://www.looah.com/source/view/2284>guides</a> out there that goes into the specifics of what REST is and all the amazing things about it. So instead, I’ll just cover the basics (more like, that’s all I know about it). It’s the standard way of communication on the internet through HTTP. In the world of internet, the frontend web interface needs a way to communicate with the backend. While the frontend can say all kinds of things, they still need to declare a set of standard ‘phrases’ between them so the backend knows what the frontend is asking for.</p>
-<h2 id=setting-up>Setting up</h2>
-<p>Here are a few thing you might want to have installed before getting started:</p>
-<ul>
-<li>Maven / Gradle</li>
-<li>Kotlin</li>
-<li>Java? (not too sure but you’ll probably need it)</li>
-<li>(optional) IntelliJ</li>
-</ul>
-<h2 id=getting-started>Getting started</h2>
-<p>According to the <a href=https://github.com/perwendel/spark-kotlin>official GitHub repo of spark-kotlin</a>, here are the following things to include to use it for either Maven or Gradle. Personally, I’m using Gradle for this simply because I’ve never used it outside of Android Development. (Also, its the new sexy thing. Kinda?)</p>
-<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
-<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
-</span></code></pre></td>
-<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-xml data-lang=xml><span style=color:#ff79c6>&lt;dependency&gt;</span>
-    <span style=color:#ff79c6>&lt;groupId&gt;</span>com.sparkjava<span style=color:#ff79c6>&lt;/groupId&gt;</span>
-    <span style=color:#ff79c6>&lt;artifactId&gt;</span>spark-kotlin<span style=color:#ff79c6>&lt;/artifactId&gt;</span>
-    <span style=color:#ff79c6>&lt;version&gt;</span>1.0.0-alpha<span style=color:#ff79c6>&lt;/version&gt;</span>
-<span style=color:#ff79c6>&lt;/dependency&gt;</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
-<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
-</span></code></pre></td>
-<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-groovy data-lang=groovy>dependencies <span style=color:#ff79c6>{</span>
-    <span style=color:#ff79c6>...</span>
-    compile <span style=color:#f1fa8c>&#34;com.sparkjava:spark-kotlin:1.0.0-alpha&#34;</span>
-    <span style=color:#ff79c6>...</span>
-<span style=color:#ff79c6>}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id=the-basics>The basics</h2>
-<p>This is what attracted me to use it over spring-boot. It just looks so much easier and straightforward comparatively. Admittedly, I’ve never used spring-boot for server development so I could be totally wrong especially if/when it comes down to a large scale application.</p>
-<h3 id=get-request>GET request</h3>
-<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
-<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
-</span></code></pre></td>
-<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-kotlin data-lang=kotlin><span style=color:#ff79c6>import</span> spark.kotlin.*
-
-<span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>main</span>(args:Array&lt;String&gt;) {
-    <span style=color:#ff79c6>get</span>(<span style=color:#f1fa8c>&#34;/&#34;</span>) {
-        <span style=color:#f1fa8c>&#34;Welcome to website abc.&#34;</span>
-    }
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>That’s it! I could’ve just ended the article here and you can pretty much figure out the rest on your own. But yea, let’s explore into a few more interesting features.</p>
-<h3 id=post-request>POST request</h3>
-<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
-<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span></code></pre></td>
-<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-kotlin data-lang=kotlin><span style=color:#ff79c6>import</span> spark.kotlin.*
-
-<span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>main</span>(args:Array&lt;String&gt;) {
-    post(<span style=color:#f1fa8c>&#34;/checkExist&#34;</span>) {
-        checkItem(request.body())
-    }
-}
-
-<span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>checkItem</span>(input:String): String {
-    <span style=color:#ff79c6>return</span> <span style=color:#ff79c6>if</span>(exists) <span style=color:#f1fa8c>&#34;Exists.&#34;</span> <span style=color:#ff79c6>else</span> <span style=color:#f1fa8c>&#34;Does not exist.&#34;</span>
-}
-
-<span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>exist</span>(input:String): Boolean {
-    <span style=color:#6272a4>//Some check to make sure given string exist
-</span><span style=color:#6272a4></span>}
-</code></pre></td></tr></table>
-</div>
-</div><p>For POST request, they work as easily too! All you need to know is that the request body can be retrieved with <code>request.body()</code>.</p>
-<h2 id=more-fun-stuff>More fun stuff</h2>
-<h3 id=redirect-params>redirect(), params()</h3>
-<p>Now, what if you want to have the same output for separate links? Well, you can just do <code>redirect("/path")</code>. You can also get information from the URL through <code>params(":path")</code> tag. Something like this…</p>
-<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
-<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
-</span></code></pre></td>
-<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-kotlin data-lang=kotlin><span style=color:#ff79c6>import</span> spark.kotlin.*
-
-<span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>main</span>(args:Array&lt;String&gt;) {
-    post(<span style=color:#f1fa8c>&#34;/checkExist&#34;</span>) {
-        redirect(<span style=color:#f1fa8c>&#34;/checkExist/&#34;</span> + request.body())
-    }
-
-    <span style=color:#ff79c6>get</span>(<span style=color:#f1fa8c>&#34;/checkExist/:id&#34;</span>) {
-        checkItem(params(<span style=color:#f1fa8c>&#34;:id&#34;</span>))
-    }
-}
-
-<span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>checkItem</span>(input:String): String {
-    <span style=color:#ff79c6>if</span> (exist(input)) {
-        <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;Exist.&#34;</span>
-    } <span style=color:#ff79c6>else</span> {
-        <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;Does not exist.&#34;</span>
-    }
-}
-
-<span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>exist</span>(input:String): Boolean {
-    <span style=color:#6272a4>//Some check to make sure given string exist
-</span><span style=color:#6272a4></span>}
-</code></pre></td></tr></table>
-</div>
-</div><h3 id=instance-api>Instance API</h3>
-<p>You can also have a separate instance API that is running on a different port or with a different setting than the static API simply by declaring it as a separate variable.</p>
-<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
-<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span></code></pre></td>
-<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-kotlin data-lang=kotlin><span style=color:#ff79c6>import</span> spark.kotlin.*
-
-<span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>main</span>(args:Array&lt;String&gt;) {
-    <span style=color:#ff79c6>val</span> http = ignite {
-        port = <span style=color:#bd93f9>4567</span>
-        ipAddress = <span style=color:#f1fa8c>&#34;0.0.0.0&#34;</span>
-    }
-
-    http.<span style=color:#ff79c6>get</span>(<span style=color:#f1fa8c>&#34;/&#34;</span>) {
-        <span style=color:#f1fa8c>&#34;Welcome to website abc.&#34;</span>
-    }
-
-    http.<span style=color:#ff79c6>get</span>(<span style=color:#f1fa8c>&#34;/404&#34;</span>) {
-        status(<span style=color:#bd93f9>404</span>)
-        <span style=color:#f1fa8c>&#34;Page does not exist.&#34;</span>
-    }
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>Of course, there are a lot of more advanced features (such as session, uri, etc.) that I did not cover. Feel free to explore them on your own following the <a href=https://github.com/perwendel/spark-kotlin/blob/master/README.md>README of the repo</a>.</p>
-<hr>
-<p>From here on out, I’m including some relevant but not exactly spark-kotlin stuff on it.</p>
-<h2 id=dealing-with-json>Dealing with JSON</h2>
-<p>In many (or most) occasions, both requests and responses will be in JSON format. Here’s where Google&rsquo;s <a href=https://github.com/google/gson>Gson library</a> comes in handy. It is really easy to use and had a wide range of support. I put together a simple example below to show how it is and can be used.</p>
-<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
-<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span></code></pre></td>
-<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-kotlin data-lang=kotlin><span style=color:#ff79c6>import</span> com.google.gson.GsonBuilder
-
-<span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>main</span>(args:Array&lt;String&gt;) {
-    <span style=color:#6272a4>// Some codes
-</span><span style=color:#6272a4></span>    <span style=color:#ff79c6>val</span> json: String = <span style=color:#f1fa8c>&#34;{</span><span style=color:#f1fa8c>\&#34;</span><span style=color:#f1fa8c>id</span><span style=color:#f1fa8c>\&#34;</span><span style=color:#f1fa8c>: 32151986,</span><span style=color:#f1fa8c>\&#34;</span><span style=color:#f1fa8c>info</span><span style=color:#f1fa8c>\&#34;</span><span style=color:#f1fa8c>: </span><span style=color:#f1fa8c>\&#34;</span><span style=color:#f1fa8c>someWords</span><span style=color:#f1fa8c>\&#34;</span><span style=color:#f1fa8c>}&#34;</span>
-
-    <span style=color:#6272a4>// Creating the item from JSON
-</span><span style=color:#6272a4></span>    <span style=color:#ff79c6>val</span> newItem: Item = GsonBuilder().create().fromJson(json, Item<span style=color:#ff79c6>::</span><span style=color:#ff79c6>class</span>.java)
-
-    <span style=color:#6272a4>// Creating JSON string from item
-</span><span style=color:#6272a4></span>    print(GsonBuilder().setPrettyPrinting().create().toJson(newItem))
-}
-
-<span style=color:#ff79c6>data</span> <span style=color:#ff79c6>class</span> <span style=color:#50fa7b>Item</span> (<span style=color:#ff79c6>val</span> id: Long, <span style=color:#ff79c6>val</span> info: String)
-</code></pre></td></tr></table>
-</div>
-</div><h2 id=unit-testing>Unit testing</h2>
-<p>It took me a while to find a testing library that works as easily as I wished. This is a test library made specifically for the spark framework by <a href=https://www.despegar.com/>Despegar</a> called <a href=https://github.com/despegar/spark-test>spark-test</a>.</p>
-<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
-<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
-</span></code></pre></td>
-<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-kotlin data-lang=kotlin><span style=color:#ff79c6>import</span> com.despegar.http.client.*
-<span style=color:#ff79c6>import</span> com.despegar.sparkjava.test.SparkServer
-<span style=color:#ff79c6>import</span> spark.servlet.SparkApplication
-
-<span style=color:#ff79c6>class</span> <span style=color:#50fa7b>YourTest</span>: SparkApplication {
-    <span style=color:#ff79c6>override</span> <span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>init</span>() {
-        main(arrayOf())
-    }
-}
-<span style=color:#ff79c6>var</span> testServer: SparkServer&lt;YourTest&gt; = SparkServer(YourTest<span style=color:#ff79c6>::</span><span style=color:#ff79c6>class</span>.java, <span style=color:#bd93f9>4567</span>)
-
-<span style=color:#ff79c6>class</span> <span style=color:#50fa7b>Tests</span> {
-    @Test
-    <span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>getTest</span>() {
-        <span style=color:#ff79c6>var</span> get: GetMethod = testServer.<span style=color:#ff79c6>get</span>(<span style=color:#f1fa8c>&#34;/&#34;</span>, <span style=color:#ff79c6>false</span>)
-        <span style=color:#ff79c6>var</span> httpResponse = testServer.execute(<span style=color:#ff79c6>get</span>)
-        assertEquals(httpResponse.code(), <span style=color:#bd93f9>200</span>)
-        assertEquals(String(httpResponse.body()), <span style=color:#f1fa8c>&#34;Welcome to website abc.&#34;</span>)
-        <span style=color:#ff79c6>get</span> = testServer.<span style=color:#ff79c6>get</span>(<span style=color:#f1fa8c>&#34;/404&#34;</span>, <span style=color:#ff79c6>false</span>)
-        httpResponse = testServer.execute(<span style=color:#ff79c6>get</span>)
-        assertEquals(httpResponse.code(), <span style=color:#bd93f9>404</span>)
-    }
-
-    @Test
-    <span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>checkExistTest</span>() {
-        <span style=color:#ff79c6>val</span> post: PostMethod = testServer.post(<span style=color:#f1fa8c>&#34;/checkExist&#34;</span>, <span style=color:#f1fa8c>&#34;someInput&#34;</span>, <span style=color:#ff79c6>true</span>)
-        <span style=color:#ff79c6>val</span> httpResponse = testServer.execute(post)
-        assertEquals(httpResponse.code(), <span style=color:#bd93f9>200</span>)
-        assertEquals(String(httpResponse.body()), <span style=color:#f1fa8c>&#34;Exist.&#34;</span>) <span style=color:#6272a4>// or &#34;Does not exist.&#34;
-</span><span style=color:#6272a4></span>    }
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>A few things to keep in mind though:</p>
-<ul>
-<li>This is a Java library made for <a href=https://github.com/perwendel/spark>spark-java</a> instead of <a href=https://github.com/perwendel/spark-kotlin>spark-kotlin</a></li>
-<li>The server needs to be running on the background (in my case, on port 4567) for this to work</li>
-<li>Unable to attach a request body for DELETE request</li>
-</ul>
-<p><em>Note: As mentioned at the time of writing, the DELETE request is unable to attach any kind of request body to it making it hard to test your DELETE request. Personally, I use different URL each feature so I just redirect a POST request from the same url to the DELETE request and test it through the POST request instead. Not ideal, but it works for now.</em></p>
-<hr>
-<h2 id=references>References</h2>
-<ul>
-<li><a href=https://medium.com/@codemwnci/kotlin-webapp-tutorial-todolist-part-1-c544b9a70f29>Kotlin WebApp Tutorial</a> by Wayne Ellis</li>
-<li><a href=https://medium.com/@v.souhrada/build-rest-service-with-kotlin-spark-java-and-requery-part-1-1798844fdf04>Build REST Service with Kotlin, Spark Java and Requery</a> by Vaclav Souhrada</li>
-</ul>
-<blockquote>
-<p><em>This article was originally published on <a href=https://hackernoon.com/restful-api-with-spark-kotlin-f43bd57affc4>Hacker Noon</a>.</em></p>
-</blockquote>
-</div>
-<hr>
-<div class=links>
-<a class=link href=https://binhong.me/blog/tags/restful-api>RESTful API</a>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="initial-scale=.75"><title>RESTful API with Spark Kotlin - BinHong Lee's Blog</title><meta name=description content="When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.
+Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project."><meta name=author content="BinHong Lee"><meta property="og:type" content="article"><meta property="og:title" content="RESTful API with Spark Kotlin"><meta property="og:description" content="The not-so-mainstream way of building an API"><meta name=twitter:description content="The not-so-mainstream way of building an API"><meta name=twitter:title content="RESTful API with Spark Kotlin"><meta property="article:published_time" 2018-03-21t00:00:00-08:00><meta property="article:modified_time" 2018-03-21t00:00:00-08:00><meta property="og:image" content="https://binhong.me/blog/preview/spark_kotlin.jpg"><meta name=twitter:image content="https://binhong.me/blog/preview/spark_kotlin.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@"><meta property="og:locale" content="en_US"><meta property="og:site_name" content="BinHong Lee's Blog"><link href=https://binhong.me/blog/style.css rel=stylesheet><link href=https://binhong.me/fonts/fonts.css rel=stylesheet><link rel=icon href=https://binhong.me/blog/img/profile.png><meta name=generator content="Hugo 0.99.1"></head><body class=single><details class=dark_mode_toggle role=button open><summary><div class=content><div class=secondary_block><p class=name-title>Blog</p></div></div></summary></details><div class=wrapper><div class="content dropdown"><button class=dropdown_toggle aria-haspopup=true aria-controls=dropdown_menu id=dropdown_toggle>+</button><div class=header_links id=dropdown_menu aria-labelledby=dropdown_toggle role=menu><a class=link href=https://binhong.me/ role=menuitem>About</a><p>|</p><a class=link href=https://binhong.me/blog/ role=menuitem>Blog</a><p>|</p><a class=link href=https://binhong.me/threads role=menuitem>Threads</a></div></div><article class="content_body primary_block projects"><main class=article_body><div class=active><p class="row name title">RESTful API with Spark Kotlin</h1><p class="row lang">The not-so-mainstream way of building an API</h2><div class="row author"><p>BinHong Lee</p><p class=right>March 21, 2018</p></div><div class=post_content><p>When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.</p><p><em>Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project. (coming soon™)</em></p><h2 id=understanding-rest>Understanding REST</h2><p>If you already know or built a RESTful API, you can skip this part. There are already quite a few <a href=http://www.looah.com/source/view/2284>guides</a> out there that goes into the specifics of what REST is and all the amazing things about it. So instead, I’ll just cover the basics (more like, that’s all I know about it). It’s the standard way of communication on the internet through HTTP. In the world of internet, the frontend web interface needs a way to communicate with the backend. While the frontend can say all kinds of things, they still need to declare a set of standard ‘phrases’ between them so the backend knows what the frontend is asking for.</p><h2 id=setting-up>Setting up</h2><p>Here are a few thing you might want to have installed before getting started:</p><ul><li>Maven / Gradle</li><li>Kotlin</li><li>Java? (not too sure but you’ll probably need it)</li><li>(optional) IntelliJ</li></ul><h2 id=getting-started>Getting started</h2><p>According to the <a href=https://github.com/perwendel/spark-kotlin>official GitHub repo of spark-kotlin</a>, here are the following things to include to use it for either Maven or Gradle. Personally, I’m using Gradle for this simply because I’ve never used it outside of Android Development. (Also, its the new sexy thing. Kinda?)</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#ff79c6>&lt;dependency&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>&lt;groupId&gt;</span>com.sparkjava<span style=color:#ff79c6>&lt;/groupId&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>&lt;artifactId&gt;</span>spark-kotlin<span style=color:#ff79c6>&lt;/artifactId&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>&lt;version&gt;</span>1.0.0-alpha<span style=color:#ff79c6>&lt;/version&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>&lt;/dependency&gt;</span>
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-groovy data-lang=groovy><span style=display:flex><span>dependencies <span style=color:#ff79c6>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>...</span>
+</span></span><span style=display:flex><span>    compile <span style=color:#f1fa8c>&#34;com.sparkjava:spark-kotlin:1.0.0-alpha&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>...</span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=the-basics>The basics</h2><p>This is what attracted me to use it over spring-boot. It just looks so much easier and straightforward comparatively. Admittedly, I’ve never used spring-boot for server development so I could be totally wrong especially if/when it comes down to a large scale application.</p><h3 id=get-request>GET request</h3><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#ff79c6>import</span> spark.kotlin.*
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>main</span>(args:Array&lt;String&gt;) {
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>get</span>(<span style=color:#f1fa8c>&#34;/&#34;</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#34;Welcome to website abc.&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><p>That’s it! I could’ve just ended the article here and you can pretty much figure out the rest on your own. But yea, let’s explore into a few more interesting features.</p><h3 id=post-request>POST request</h3><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#ff79c6>import</span> spark.kotlin.*
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>main</span>(args:Array&lt;String&gt;) {
+</span></span><span style=display:flex><span>    post(<span style=color:#f1fa8c>&#34;/checkExist&#34;</span>) {
+</span></span><span style=display:flex><span>        checkItem(request.body())
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>checkItem</span>(input:String): String {
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>return</span> <span style=color:#ff79c6>if</span>(exists) <span style=color:#f1fa8c>&#34;Exists.&#34;</span> <span style=color:#ff79c6>else</span> <span style=color:#f1fa8c>&#34;Does not exist.&#34;</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>exist</span>(input:String): Boolean {
+</span></span><span style=display:flex><span>    <span style=color:#6272a4>//Some check to make sure given string exist
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>}
+</span></span></code></pre></td></tr></table></div></div><p>For POST request, they work as easily too! All you need to know is that the request body can be retrieved with <code>request.body()</code>.</p><h2 id=more-fun-stuff>More fun stuff</h2><h3 id=redirect-params>redirect(), params()</h3><p>Now, what if you want to have the same output for separate links? Well, you can just do <code>redirect("/path")</code>. You can also get information from the URL through <code>params(":path")</code> tag. Something like this…</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#ff79c6>import</span> spark.kotlin.*
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>main</span>(args:Array&lt;String&gt;) {
+</span></span><span style=display:flex><span>    post(<span style=color:#f1fa8c>&#34;/checkExist&#34;</span>) {
+</span></span><span style=display:flex><span>        redirect(<span style=color:#f1fa8c>&#34;/checkExist/&#34;</span> + request.body())
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>get</span>(<span style=color:#f1fa8c>&#34;/checkExist/:id&#34;</span>) {
+</span></span><span style=display:flex><span>        checkItem(params(<span style=color:#f1fa8c>&#34;:id&#34;</span>))
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>checkItem</span>(input:String): String {
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>if</span> (exist(input)) {
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;Exist.&#34;</span>
+</span></span><span style=display:flex><span>    } <span style=color:#ff79c6>else</span> {
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;Does not exist.&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>exist</span>(input:String): Boolean {
+</span></span><span style=display:flex><span>    <span style=color:#6272a4>//Some check to make sure given string exist
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>}
+</span></span></code></pre></td></tr></table></div></div><h3 id=instance-api>Instance API</h3><p>You can also have a separate instance API that is running on a different port or with a different setting than the static API simply by declaring it as a separate variable.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#ff79c6>import</span> spark.kotlin.*
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>main</span>(args:Array&lt;String&gt;) {
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>val</span> http = ignite {
+</span></span><span style=display:flex><span>        port = <span style=color:#bd93f9>4567</span>
+</span></span><span style=display:flex><span>        ipAddress = <span style=color:#f1fa8c>&#34;0.0.0.0&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    http.<span style=color:#ff79c6>get</span>(<span style=color:#f1fa8c>&#34;/&#34;</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#34;Welcome to website abc.&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    http.<span style=color:#ff79c6>get</span>(<span style=color:#f1fa8c>&#34;/404&#34;</span>) {
+</span></span><span style=display:flex><span>        status(<span style=color:#bd93f9>404</span>)
+</span></span><span style=display:flex><span>        <span style=color:#f1fa8c>&#34;Page does not exist.&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><p>Of course, there are a lot of more advanced features (such as session, uri, etc.) that I did not cover. Feel free to explore them on your own following the <a href=https://github.com/perwendel/spark-kotlin/blob/master/README.md>README of the repo</a>.</p><hr><p>From here on out, I’m including some relevant but not exactly spark-kotlin stuff on it.</p><h2 id=dealing-with-json>Dealing with JSON</h2><p>In many (or most) occasions, both requests and responses will be in JSON format. Here’s where Google&rsquo;s <a href=https://github.com/google/gson>Gson library</a> comes in handy. It is really easy to use and had a wide range of support. I put together a simple example below to show how it is and can be used.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#ff79c6>import</span> com.google.gson.GsonBuilder
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>main</span>(args:Array&lt;String&gt;) {
+</span></span><span style=display:flex><span>    <span style=color:#6272a4>// Some codes
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    <span style=color:#ff79c6>val</span> json: String = <span style=color:#f1fa8c>&#34;{</span><span style=color:#f1fa8c>\&#34;</span><span style=color:#f1fa8c>id</span><span style=color:#f1fa8c>\&#34;</span><span style=color:#f1fa8c>: 32151986,</span><span style=color:#f1fa8c>\&#34;</span><span style=color:#f1fa8c>info</span><span style=color:#f1fa8c>\&#34;</span><span style=color:#f1fa8c>: </span><span style=color:#f1fa8c>\&#34;</span><span style=color:#f1fa8c>someWords</span><span style=color:#f1fa8c>\&#34;</span><span style=color:#f1fa8c>}&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6272a4>// Creating the item from JSON
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    <span style=color:#ff79c6>val</span> newItem: Item = GsonBuilder().create().fromJson(json, Item<span style=color:#ff79c6>::</span><span style=color:#ff79c6>class</span>.java)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#6272a4>// Creating JSON string from item
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    print(GsonBuilder().setPrettyPrinting().create().toJson(newItem))
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>data</span> <span style=color:#ff79c6>class</span> <span style=color:#50fa7b>Item</span> (<span style=color:#ff79c6>val</span> id: Long, <span style=color:#ff79c6>val</span> info: String)
+</span></span></code></pre></td></tr></table></div></div><h2 id=unit-testing>Unit testing</h2><p>It took me a while to find a testing library that works as easily as I wished. This is a test library made specifically for the spark framework by <a href=https://www.despegar.com/>Despegar</a> called <a href=https://github.com/despegar/spark-test>spark-test</a>.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#ff79c6>import</span> com.despegar.http.client.*
+</span></span><span style=display:flex><span><span style=color:#ff79c6>import</span> com.despegar.sparkjava.test.SparkServer
+</span></span><span style=display:flex><span><span style=color:#ff79c6>import</span> spark.servlet.SparkApplication
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>class</span> <span style=color:#50fa7b>YourTest</span>: SparkApplication {
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>override</span> <span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>init</span>() {
+</span></span><span style=display:flex><span>        main(arrayOf())
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#ff79c6>var</span> testServer: SparkServer&lt;YourTest&gt; = SparkServer(YourTest<span style=color:#ff79c6>::</span><span style=color:#ff79c6>class</span>.java, <span style=color:#bd93f9>4567</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#ff79c6>class</span> <span style=color:#50fa7b>Tests</span> {
+</span></span><span style=display:flex><span>    @Test
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>getTest</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>var</span> get: GetMethod = testServer.<span style=color:#ff79c6>get</span>(<span style=color:#f1fa8c>&#34;/&#34;</span>, <span style=color:#ff79c6>false</span>)
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>var</span> httpResponse = testServer.execute(<span style=color:#ff79c6>get</span>)
+</span></span><span style=display:flex><span>        assertEquals(httpResponse.code(), <span style=color:#bd93f9>200</span>)
+</span></span><span style=display:flex><span>        assertEquals(String(httpResponse.body()), <span style=color:#f1fa8c>&#34;Welcome to website abc.&#34;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>get</span> = testServer.<span style=color:#ff79c6>get</span>(<span style=color:#f1fa8c>&#34;/404&#34;</span>, <span style=color:#ff79c6>false</span>)
+</span></span><span style=display:flex><span>        httpResponse = testServer.execute(<span style=color:#ff79c6>get</span>)
+</span></span><span style=display:flex><span>        assertEquals(httpResponse.code(), <span style=color:#bd93f9>404</span>)
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    @Test
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>fun</span> <span style=color:#50fa7b>checkExistTest</span>() {
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>val</span> post: PostMethod = testServer.post(<span style=color:#f1fa8c>&#34;/checkExist&#34;</span>, <span style=color:#f1fa8c>&#34;someInput&#34;</span>, <span style=color:#ff79c6>true</span>)
+</span></span><span style=display:flex><span>        <span style=color:#ff79c6>val</span> httpResponse = testServer.execute(post)
+</span></span><span style=display:flex><span>        assertEquals(httpResponse.code(), <span style=color:#bd93f9>200</span>)
+</span></span><span style=display:flex><span>        assertEquals(String(httpResponse.body()), <span style=color:#f1fa8c>&#34;Exist.&#34;</span>) <span style=color:#6272a4>// or &#34;Does not exist.&#34;
+</span></span></span><span style=display:flex><span><span style=color:#6272a4></span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><p>A few things to keep in mind though:</p><ul><li>This is a Java library made for <a href=https://github.com/perwendel/spark>spark-java</a> instead of <a href=https://github.com/perwendel/spark-kotlin>spark-kotlin</a></li><li>The server needs to be running on the background (in my case, on port 4567) for this to work</li><li>Unable to attach a request body for DELETE request</li></ul><p><em>Note: As mentioned at the time of writing, the DELETE request is unable to attach any kind of request body to it making it hard to test your DELETE request. Personally, I use different URL each feature so I just redirect a POST request from the same url to the DELETE request and test it through the POST request instead. Not ideal, but it works for now.</em></p><hr><h2 id=references>References</h2><ul><li><a href=https://medium.com/@codemwnci/kotlin-webapp-tutorial-todolist-part-1-c544b9a70f29>Kotlin WebApp Tutorial</a> by Wayne Ellis</li><li><a href=https://medium.com/@v.souhrada/build-rest-service-with-kotlin-spark-java-and-requery-part-1-1798844fdf04>Build REST Service with Kotlin, Spark Java and Requery</a> by Vaclav Souhrada</li></ul><blockquote><p><em>This article was originally published on <a href=https://hackernoon.com/restful-api-with-spark-kotlin-f43bd57affc4>Hacker Noon</a>.</em></p></blockquote></div><hr><div class=links><a class=link href=https://binhong.me/blog/tags/restful-api>RESTful API</a>
 <a class=link href=https://binhong.me/blog/tags/kotlin>Kotlin</a>
 <a class=link href=https://binhong.me/blog/tags/spark-kotlin>Spark Kotlin</a>
-<a class=link href=https://binhong.me/blog/tags/api>API</a>
-</div>
-</div>
-</main>
-</article><footer class=content>
-<div class="footer primary_block">
-<div class=row>
-<p>Fonts:</p>
-<a href=https://github.com/tonsky/FiraCode/ rel=noopener target=_blank>Fira Code</a>,
+<a class=link href=https://binhong.me/blog/tags/api>API</a></div></div></main></article><footer class=content><div class="footer primary_block"><div class=row><p>Fonts:</p><a href=https://github.com/tonsky/FiraCode/ rel=noopener target=_blank>Fira Code</a>,
 <a href=https://github.com/adobe-fonts/source-sans/ rel=noopener target=_blank class=name>Source Sans 3</a>,
-<a href=https://rubjo.github.io/victor-mono/ rel=noopener target=_blank class=name>Victor Mono</a>
-</div>
-<div class=row>
-<p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a> </p>
-</div>
-<div class=row>
-<p>&copy; 2022 <a href=https://binhong.me>BinHong Lee</a></p>
-</div>
-</div>
-</footer>
-</div>
-</body>
-</html>
+<a href=https://rubjo.github.io/victor-mono/ rel=noopener target=_blank class=name>Victor Mono</a></div><div class=row><p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a></p></div><div class=row><p>&copy; 2022 <a href=https://binhong.me>BinHong Lee</a></p></div></div></footer></div></body></html>

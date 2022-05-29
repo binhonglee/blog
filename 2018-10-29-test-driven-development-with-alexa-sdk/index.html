@@ -1,84 +1,6 @@
-<!doctype html><html lang=en>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="initial-scale=.75">
-<title>Test Driven Development with Alexa SDK - BinHong Lee's Blog</title>
-<meta name=description content="What is Test Driven Development? According to Wikipedia, it means “Requirements are turned into very specific test cases, then the software is improved to pass the new tests, only.” Basically, you would first have to write the test of the software/feature you are developing before you start working on the developing the software/feature itself.
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="initial-scale=.75"><title>Test Driven Development with Alexa SDK - BinHong Lee's Blog</title><meta name=description content="What is Test Driven Development? According to Wikipedia, it means “Requirements are turned into very specific test cases, then the software is improved to pass the new tests, only.” Basically, you would first have to write the test of the software/feature you are developing before you start working on the developing the software/feature itself.
 Here are a few more articles on the benefits and why you should apply TDD:
- Test Driven Development by Jan Olbrich Isn’t TDD twice the work?">
-<meta name=author content="BinHong Lee">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Test Driven Development with Alexa SDK">
-<meta property="og:description" content="Quick guide to building and unit testing an Alexa Skill">
-<meta name=twitter:description content="Quick guide to building and unit testing an Alexa Skill">
-<meta name=twitter:title content="Test Driven Development with Alexa SDK"><meta property="article:published_time" 2018-10-29t00:00:00-08:00>
-<meta property="article:modified_time" 2018-10-29t00:00:00-08:00>
-<meta property="og:image" content="https://binhong.me/blog/img/alexa.jpeg">
-<meta name=twitter:image content="https://binhong.me/blog/img/alexa.jpeg">
-<meta name=twitter:card content="summary_large_image">
-<meta name=twitter:site content="@">
-<meta property="og:locale" content="en_US">
-<meta property="og:site_name" content="BinHong Lee's Blog">
-<link href=https://binhong.me/blog/style.css rel=stylesheet>
-<link href=https://binhong.me/fonts/fonts.css rel=stylesheet>
-<link rel=icon href=https://binhong.me/blog/img/profile.png>
-<meta name=generator content="Hugo 0.92.1">
-</head>
-<body class=single>
-<details class=dark_mode_toggle role=button open>
-<summary>
-<div class=content>
-<div class=secondary_block>
-<p class=name-title>Blog</p>
-</div>
-</div>
-</summary>
-</details>
-<div class=wrapper>
-<div class="content dropdown">
-<button class=dropdown_toggle aria-haspopup=true aria-controls=dropdown_menu id=dropdown_toggle>+</button>
-<div class=header_links id=dropdown_menu aria-labelledby=dropdown_toggle role=menu>
-<a class=link href=https://binhong.me/ role=menuitem>About</a>
-<p>|</p>
-<a class=link href=https://binhong.me/blog/ role=menuitem>Blog</a>
-<p>|</p>
-<a class=link href=https://binhong.me/threads role=menuitem>Threads</a>
-</div>
-</div>
-<article class="content_body primary_block projects">
-<div class=img_class>
-<img class=thumbnail_img src=https://binhong.me/blog/img/alexa.jpeg>
-</div>
-<main class=article_body>
-<div class=active>
-<p class="row name title">Test Driven Development with Alexa SDK</h1>
-<p class="row lang">Quick guide to building and unit testing an Alexa Skill</h2>
-<div class="row author">
-<p>BinHong Lee</p>
-<p class=right>October 29, 2018</p>
-</div>
-<div class=post_content><h1 id=what-is-test-driven-development>What is Test Driven Development?</h1>
-<p>According to <a href=https://en.wikipedia.org/wiki/Test-driven_development>Wikipedia</a>, it means “Requirements are turned into very specific <a href=https://en.wikipedia.org/wiki/Test_case>test cases</a>, then the software is improved to pass the new tests, only.” Basically, you would first have to write the test of the software/feature you are developing before you start working on the developing the software/feature itself.</p>
-<p>Here are a few more articles on the benefits and why you should apply TDD:</p>
-<ul>
-<li><a href=https://medium.com/mobile-quality/test-driven-development-d16fd216d45c>Test Driven Development</a> by Jan Olbrich</li>
-<li><a href=https://hackernoon.com/test-driven-development-with-alexa-sdk-777f6b5e5486>Isn’t TDD twice the work? Why should you care?</a> by Navdeep Singh</li>
-</ul>
-<h1 id=preparation>Preparation</h1>
-<p>Here are a few thing you might want to have set up or installed before getting started:</p>
-<ul>
-<li><a href=https://aws.amazon.com/>Amazon Web Service</a> account (a free one will work just fine)</li>
-<li><a href=https://nodejs.org/en/>node.js</a> (personally though, I prefer installing and maintaining it through <a href=https://github.com/creationix/nvm>nvm</a>)</li>
-<li>Text editor of your choice</li>
-</ul>
-<h1 id=setting-up>Setting up</h1>
-<ol>
-<li>Create a new project folder (<code>mkdir project-name</code>)</li>
-<li>Navigate into that new folder (<code>cd project-name</code>)</li>
-<li>Initialize npm (<code>npm init</code>)</li>
-<li>Follow through everything as you prefer (if you don’t know what it is, just press enter and it’ll keep the default) except for test command:, put in node test/testflow.js instead. The command line should look something like the snippet below.</li>
-</ol>
-<pre tabindex=0><code>This utility will walk you through creating a package.json file.
+ Test Driven Development by Jan Olbrich Isn’t TDD twice the work?"><meta name=author content="BinHong Lee"><meta property="og:type" content="article"><meta property="og:title" content="Test Driven Development with Alexa SDK"><meta property="og:description" content="Quick guide to building and unit testing an Alexa Skill"><meta name=twitter:description content="Quick guide to building and unit testing an Alexa Skill"><meta name=twitter:title content="Test Driven Development with Alexa SDK"><meta property="article:published_time" 2018-10-29t00:00:00-08:00><meta property="article:modified_time" 2018-10-29t00:00:00-08:00><meta property="og:image" content="https://binhong.me/blog/preview/tdd_alexa.jpg"><meta name=twitter:image content="https://binhong.me/blog/preview/tdd_alexa.jpg"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@"><meta property="og:locale" content="en_US"><meta property="og:site_name" content="BinHong Lee's Blog"><link href=https://binhong.me/blog/style.css rel=stylesheet><link href=https://binhong.me/fonts/fonts.css rel=stylesheet><link rel=icon href=https://binhong.me/blog/img/profile.png><meta name=generator content="Hugo 0.99.1"></head><body class=single><details class=dark_mode_toggle role=button open><summary><div class=content><div class=secondary_block><p class=name-title>Blog</p></div></div></summary></details><div class=wrapper><div class="content dropdown"><button class=dropdown_toggle aria-haspopup=true aria-controls=dropdown_menu id=dropdown_toggle>+</button><div class=header_links id=dropdown_menu aria-labelledby=dropdown_toggle role=menu><a class=link href=https://binhong.me/ role=menuitem>About</a><p>|</p><a class=link href=https://binhong.me/blog/ role=menuitem>Blog</a><p>|</p><a class=link href=https://binhong.me/threads role=menuitem>Threads</a></div></div><article class="content_body primary_block projects"><main class=article_body><div class=active><p class="row name title">Test Driven Development with Alexa SDK</h1><p class="row lang">Quick guide to building and unit testing an Alexa Skill</h2><div class="row author"><p>BinHong Lee</p><p class=right>October 29, 2018</p></div><div class=post_content><h1 id=what-is-test-driven-development>What is Test Driven Development?</h1><p>According to <a href=https://en.wikipedia.org/wiki/Test-driven_development>Wikipedia</a>, it means “Requirements are turned into very specific <a href=https://en.wikipedia.org/wiki/Test_case>test cases</a>, then the software is improved to pass the new tests, only.” Basically, you would first have to write the test of the software/feature you are developing before you start working on the developing the software/feature itself.</p><p>Here are a few more articles on the benefits and why you should apply TDD:</p><ul><li><a href=https://medium.com/mobile-quality/test-driven-development-d16fd216d45c>Test Driven Development</a> by Jan Olbrich</li><li><a href=https://hackernoon.com/test-driven-development-with-alexa-sdk-777f6b5e5486>Isn’t TDD twice the work? Why should you care?</a> by Navdeep Singh</li></ul><h1 id=preparation>Preparation</h1><p>Here are a few thing you might want to have set up or installed before getting started:</p><ul><li><a href=https://aws.amazon.com/>Amazon Web Service</a> account (a free one will work just fine)</li><li><a href=https://nodejs.org/en/>node.js</a> (personally though, I prefer installing and maintaining it through <a href=https://github.com/creationix/nvm>nvm</a>)</li><li>Text editor of your choice</li></ul><h1 id=setting-up>Setting up</h1><ol><li>Create a new project folder (<code>mkdir project-name</code>)</li><li>Navigate into that new folder (<code>cd project-name</code>)</li><li>Initialize npm (<code>npm init</code>)</li><li>Follow through everything as you prefer (if you don’t know what it is, just press enter and it’ll keep the default) except for test command:, put in node test/testflow.js instead. The command line should look something like the snippet below.</li></ol><pre tabindex=0><code>This utility will walk you through creating a package.json file.
 It only covers the most common items, and tries to guess sensible defaults.
 See `npm help json` for definitive documentation on these fields
 and exactly what they do.
@@ -94,170 +16,103 @@ git repository:
 keywords: 
 author: 
 license: (ISC)
-</code></pre><p>Now you have node.js setup for the project.</p>
-<p>Unit testing
-Shout out to <a href=https://twitter.com/robmccauley>robmccauley</a> for maintaining <a href=https://github.com/robm26/testflow>testflow</a> that provides unit testing for Alexa skills. Here’s what the following commands will do :</p>
-<ul>
-<li>Clone testflow repository into your project at the ‘test’ folder. (If this project is also a git project itself, I recommend doing <code>git submodule add</code> instead of <code>git clone</code>.)</li>
-<li>Create a folder named ‘dialogs’</li>
-<li>Create a file named ‘default.txt’ in the ‘dialog’ folder</li>
-<li>Edit the ‘SourceCodeFile’ line in the cloned ‘testflow’ repository to point to the ‘index.js’ in the base level of the folder (feel free to edit it to your personal preference).</li>
-</ul>
-<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
-<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span></code></pre></td>
-<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh>git clone git@github.com:robm26/testflow.git <span style=color:#8be9fd;font-style:italic>test</span>
-mkdir dialogs
-touch dialogs/default.txt
-sed -i <span style=color:#f1fa8c>&#39;9c const SourceCodeFile = &#34;../index.js&#34;&#39;</span> test/testflow.js
-</code></pre></td></tr></table>
-</div>
-</div><p>Inside the ‘default.txt’ file in the ‘dialogs’ folder, you should have the intents you are trying to test. The default in the testflow repository consist of the followings but you should definitely add some more customized ones to it depending on what you are trying to do in your skill.</p>
-<pre tabindex=0><code>LaunchRequest
+</code></pre><p>Now you have node.js setup for the project.</p><p>Unit testing
+Shout out to <a href=https://twitter.com/robmccauley>robmccauley</a> for maintaining <a href=https://github.com/robm26/testflow>testflow</a> that provides unit testing for Alexa skills. Here’s what the following commands will do :</p><ul><li>Clone testflow repository into your project at the ‘test’ folder. (If this project is also a git project itself, I recommend doing <code>git submodule add</code> instead of <code>git clone</code>.)</li><li>Create a folder named ‘dialogs’</li><li>Create a file named ‘default.txt’ in the ‘dialog’ folder</li><li>Edit the ‘SourceCodeFile’ line in the cloned ‘testflow’ repository to point to the ‘index.js’ in the base level of the folder (feel free to edit it to your personal preference).</li></ul><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=display:flex><span>git clone git@github.com:robm26/testflow.git <span style=color:#8be9fd;font-style:italic>test</span>
+</span></span><span style=display:flex><span>mkdir dialogs
+</span></span><span style=display:flex><span>touch dialogs/default.txt
+</span></span><span style=display:flex><span>sed -i <span style=color:#f1fa8c>&#39;9c const SourceCodeFile = &#34;../index.js&#34;&#39;</span> test/testflow.js
+</span></span></code></pre></td></tr></table></div></div><p>Inside the ‘default.txt’ file in the ‘dialogs’ folder, you should have the intents you are trying to test. The default in the testflow repository consist of the followings but you should definitely add some more customized ones to it depending on what you are trying to do in your skill.</p><pre tabindex=0><code>LaunchRequest
 AMAZON.HelpIntent
 AMAZON.StopIntent
-</code></pre><p>In case where you are taking in variables through utterances, you can do something like this :</p>
-<pre tabindex=0><code>DoSomething Input1=userInput1 Input2=userInput2
-</code></pre><p>To get a deeper understanding into using testflow, I recommend looking into its <a href=https://github.com/robm26/testflow/blob/master/tutorial/TUTORIAL.md>tutorial page</a> and the <a href=https://developer.amazon.com/blogs/alexa/post/35eb8ae8-2cd8-4de7-86c5-97a1abc239b9/testflow-simulate-conversations-with-your-alexa-skill-code-to-ease-debugging>blog post</a> by the author himself.</p>
-<h1 id=developing-the-skill>Developing the skill</h1>
-<p>To be honest, I don’t have too much to talk about on this topic. Here is some sample code of how a sample skill can look like. (Also remember to do <code>npm install --save alexa-sdk</code>.)</p>
-<div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2>
-<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
-</span></code></pre></td>
-<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
-<pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-js data-lang=js><span style=color:#8be9fd;font-style:italic>var</span> Alexa <span style=color:#ff79c6>=</span> require(<span style=color:#f1fa8c>&#39;alexa-sdk&#39;</span>)
-
-exports.handler <span style=color:#ff79c6>=</span> <span style=color:#8be9fd;font-style:italic>function</span> (event, context, callback) {
-  <span style=color:#8be9fd;font-style:italic>var</span> alexa <span style=color:#ff79c6>=</span> Alexa.handler(event, context)
-  alexa.registerHandlers(handlers)
-  alexa.execute()
-}
-
-<span style=color:#8be9fd;font-style:italic>var</span> handlers <span style=color:#ff79c6>=</span> {
-  <span style=color:#f1fa8c>&#39;LaunchRequest&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
-    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:ask&#39;</span>, <span style=color:#f1fa8c>&#39;Welcome to the sample skill. Say help for help.&#39;</span>)
-  },
-  
-  <span style=color:#f1fa8c>&#39;Intent1&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
-    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:ask&#39;</span>, <span style=color:#f1fa8c>&#39;This is the first intent.&#39;</span>)
-  },
-  
-  <span style=color:#f1fa8c>&#39;Intent2&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
-    <span style=color:#8be9fd;font-style:italic>var</span> input1 <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>this</span>.event.request.intent.slots.InputOne.value.toString()
-    <span style=color:#8be9fd;font-style:italic>var</span> input2 <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>this</span>.event.request.intent.slots.InputTwo.value.toString()
-    <span style=color:#8be9fd;font-style:italic>var</span> response <span style=color:#ff79c6>=</span> doSomething(input1, input2)
-    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:ask&#39;</span>, response)
-  },
-
-  <span style=color:#f1fa8c>&#39;AMAZON.HelpIntent&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
-    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:ask&#39;</span>, <span style=color:#f1fa8c>&#39;Insert some help message here.&#39;</span>)
-  },
-
-  <span style=color:#f1fa8c>&#39;AMAZON.StopIntent&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
-    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:tell&#39;</span>, <span style=color:#f1fa8c>&#39;Have a good rest of your day!&#39;</span>)
-  }
-}
-
-<span style=color:#8be9fd;font-style:italic>function</span> doSomething (input1, input2) {
-  <span style=color:#ff79c6>if</span> (input1.localeCompare(input2)) {
-    <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;They are the same string!&#34;</span>
-  } <span style=color:#ff79c6>else</span> {
-    <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;They are different!&#34;</span>
-  }
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>I recommend looking into the official <a href=https://github.com/alexa/alexa-cookbook>Alexa GitHub repository</a> that provides all kinds of sample skills that you can work on top of.</p>
-<h1 id=deployment>Deployment</h1>
-<h2 id=alexa-skill-kit>Alexa Skill Kit</h2>
-<p>Go to <a href=https://developer.amazon.com/alexa/console/>this page</a> and select ‘Create Skill’. In there you should see options to ‘add intents’ and ‘custom slot types’. You should add the appropriate slot types and intents accordingly from above. After you are done with that, select ‘Endpoint’ from the side bar and select ‘AWS Lambda ARN’ as the skill’s service endpoint. Make a copy of the Skill ID as you will need it later.</p>
-<h2 id=aws-lambda>AWS Lambda</h2>
-<p>Create an AWS Lambda function selecting ‘from scratch’. After that, you should have an option to ‘add trigger’ where you would select ‘Alexa Skills Kit’. Now in the configuration dialog, you should put in the Skill ID you took a copy of previously then select ‘Add’.</p>
-<p>After this, select back to the box that labeled your project name. There should be a ‘Function code’ dialog box appeared below. While you can definitely copy and paste your code onto the online text editor, there might be chance where the packages you have installed and used in your code is included by default. It is also possible that you have more than 1 JavaScript files for the skill.</p>
-<p>In this case, you would select ‘Upload a .ZIP file’ under ‘Code entry type’. Locally, zip up all the JavaScript files along with the <code>node_modules</code> folder then upload the resulting zip file.</p>
-<h2 id=submission>Submission</h2>
-<p>When you are done, you can go back to the Alexa Skill Kit page, select the ‘Distribution’ tab and fill out the appropriate information before submitting your skill for review. Hopefully everything goes well and your skill gets published at the Alexa Skill Store!</p>
-<hr>
-<h2 id=credits>Credits</h2>
-<ul>
-<li><a href=https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html>Build Skills with the Alexa Skills Kit</a></li>
-<li><a href=https://developer.amazon.com/blogs/alexa/post/35eb8ae8-2cd8-4de7-86c5-97a1abc239b9/testflow-simulate-conversations-with-your-alexa-skill-code-to-ease-debugging>TestFlow: Simulate Conversations with Your Alexa Skill Code to Ease Debugging</a></li>
-</ul>
-<blockquote>
-<p><em>This article was originally published on <a href=https://hackernoon.com/test-driven-development-with-alexa-sdk-777f6b5e5486>Hackernoon</a>.</em></p>
-</blockquote>
-</div>
-<hr>
-<div class=links>
-<a class=link href=https://binhong.me/blog/tags/javascript>JavaScript</a>
+</code></pre><p>In case where you are taking in variables through utterances, you can do something like this :</p><pre tabindex=0><code>DoSomething Input1=userInput1 Input2=userInput2
+</code></pre><p>To get a deeper understanding into using testflow, I recommend looking into its <a href=https://github.com/robm26/testflow/blob/master/tutorial/TUTORIAL.md>tutorial page</a> and the <a href=https://developer.amazon.com/blogs/alexa/post/35eb8ae8-2cd8-4de7-86c5-97a1abc239b9/testflow-simulate-conversations-with-your-alexa-skill-code-to-ease-debugging>blog post</a> by the author himself.</p><h1 id=developing-the-skill>Developing the skill</h1><p>To be honest, I don’t have too much to talk about on this topic. Here is some sample code of how a sample skill can look like. (Also remember to do <code>npm install --save alexa-sdk</code>.)</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-js data-lang=js><span style=display:flex><span><span style=color:#8be9fd;font-style:italic>var</span> Alexa <span style=color:#ff79c6>=</span> require(<span style=color:#f1fa8c>&#39;alexa-sdk&#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>exports.handler <span style=color:#ff79c6>=</span> <span style=color:#8be9fd;font-style:italic>function</span> (event, context, callback) {
+</span></span><span style=display:flex><span>  <span style=color:#8be9fd;font-style:italic>var</span> alexa <span style=color:#ff79c6>=</span> Alexa.handler(event, context)
+</span></span><span style=display:flex><span>  alexa.registerHandlers(handlers)
+</span></span><span style=display:flex><span>  alexa.execute()
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd;font-style:italic>var</span> handlers <span style=color:#ff79c6>=</span> {
+</span></span><span style=display:flex><span>  <span style=color:#f1fa8c>&#39;LaunchRequest&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:ask&#39;</span>, <span style=color:#f1fa8c>&#39;Welcome to the sample skill. Say help for help.&#39;</span>)
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#f1fa8c>&#39;Intent1&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:ask&#39;</span>, <span style=color:#f1fa8c>&#39;This is the first intent.&#39;</span>)
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#f1fa8c>&#39;Intent2&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#8be9fd;font-style:italic>var</span> input1 <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>this</span>.event.request.intent.slots.InputOne.value.toString()
+</span></span><span style=display:flex><span>    <span style=color:#8be9fd;font-style:italic>var</span> input2 <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>this</span>.event.request.intent.slots.InputTwo.value.toString()
+</span></span><span style=display:flex><span>    <span style=color:#8be9fd;font-style:italic>var</span> response <span style=color:#ff79c6>=</span> doSomething(input1, input2)
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:ask&#39;</span>, response)
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#f1fa8c>&#39;AMAZON.HelpIntent&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:ask&#39;</span>, <span style=color:#f1fa8c>&#39;Insert some help message here.&#39;</span>)
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#f1fa8c>&#39;AMAZON.StopIntent&#39;</span><span style=color:#ff79c6>:</span> <span style=color:#8be9fd;font-style:italic>function</span> () {
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>this</span>.emit(<span style=color:#f1fa8c>&#39;:tell&#39;</span>, <span style=color:#f1fa8c>&#39;Have a good rest of your day!&#39;</span>)
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#8be9fd;font-style:italic>function</span> doSomething (input1, input2) {
+</span></span><span style=display:flex><span>  <span style=color:#ff79c6>if</span> (input1.localeCompare(input2)) {
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;They are the same string!&#34;</span>
+</span></span><span style=display:flex><span>  } <span style=color:#ff79c6>else</span> {
+</span></span><span style=display:flex><span>    <span style=color:#ff79c6>return</span> <span style=color:#f1fa8c>&#34;They are different!&#34;</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><p>I recommend looking into the official <a href=https://github.com/alexa/alexa-cookbook>Alexa GitHub repository</a> that provides all kinds of sample skills that you can work on top of.</p><h1 id=deployment>Deployment</h1><h2 id=alexa-skill-kit>Alexa Skill Kit</h2><p>Go to <a href=https://developer.amazon.com/alexa/console/>this page</a> and select ‘Create Skill’. In there you should see options to ‘add intents’ and ‘custom slot types’. You should add the appropriate slot types and intents accordingly from above. After you are done with that, select ‘Endpoint’ from the side bar and select ‘AWS Lambda ARN’ as the skill’s service endpoint. Make a copy of the Skill ID as you will need it later.</p><h2 id=aws-lambda>AWS Lambda</h2><p>Create an AWS Lambda function selecting ‘from scratch’. After that, you should have an option to ‘add trigger’ where you would select ‘Alexa Skills Kit’. Now in the configuration dialog, you should put in the Skill ID you took a copy of previously then select ‘Add’.</p><p>After this, select back to the box that labeled your project name. There should be a ‘Function code’ dialog box appeared below. While you can definitely copy and paste your code onto the online text editor, there might be chance where the packages you have installed and used in your code is included by default. It is also possible that you have more than 1 JavaScript files for the skill.</p><p>In this case, you would select ‘Upload a .ZIP file’ under ‘Code entry type’. Locally, zip up all the JavaScript files along with the <code>node_modules</code> folder then upload the resulting zip file.</p><h2 id=submission>Submission</h2><p>When you are done, you can go back to the Alexa Skill Kit page, select the ‘Distribution’ tab and fill out the appropriate information before submitting your skill for review. Hopefully everything goes well and your skill gets published at the Alexa Skill Store!</p><hr><h2 id=credits>Credits</h2><ul><li><a href=https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html>Build Skills with the Alexa Skills Kit</a></li><li><a href=https://developer.amazon.com/blogs/alexa/post/35eb8ae8-2cd8-4de7-86c5-97a1abc239b9/testflow-simulate-conversations-with-your-alexa-skill-code-to-ease-debugging>TestFlow: Simulate Conversations with Your Alexa Skill Code to Ease Debugging</a></li></ul><blockquote><p><em>This article was originally published on <a href=https://hackernoon.com/test-driven-development-with-alexa-sdk-777f6b5e5486>Hackernoon</a>.</em></p></blockquote></div><hr><div class=links><a class=link href=https://binhong.me/blog/tags/javascript>JavaScript</a>
 <a class=link href=https://binhong.me/blog/tags/alexa>Alexa</a>
 <a class=link href=https://binhong.me/blog/tags/alexa-skills>Alexa Skills</a>
 <a class=link href=https://binhong.me/blog/tags/tdd>Tdd</a>
-<a class=link href=https://binhong.me/blog/tags/alexa-sdk>Alexa Sdk</a>
-</div>
-</div>
-</main>
-</article><footer class=content>
-<div class="footer primary_block">
-<div class=row>
-<p>Fonts:</p>
-<a href=https://github.com/tonsky/FiraCode/ rel=noopener target=_blank>Fira Code</a>,
+<a class=link href=https://binhong.me/blog/tags/alexa-sdk>Alexa Sdk</a></div></div></main></article><footer class=content><div class="footer primary_block"><div class=row><p>Fonts:</p><a href=https://github.com/tonsky/FiraCode/ rel=noopener target=_blank>Fira Code</a>,
 <a href=https://github.com/adobe-fonts/source-sans/ rel=noopener target=_blank class=name>Source Sans 3</a>,
-<a href=https://rubjo.github.io/victor-mono/ rel=noopener target=_blank class=name>Victor Mono</a>
-</div>
-<div class=row>
-<p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a> </p>
-</div>
-<div class=row>
-<p>&copy; 2022 <a href=https://binhong.me>BinHong Lee</a></p>
-</div>
-</div>
-</footer>
-</div>
-</body>
-</html>
+<a href=https://rubjo.github.io/victor-mono/ rel=noopener target=_blank class=name>Victor Mono</a></div><div class=row><p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a></p></div><div class=row><p>&copy; 2022 <a href=https://binhong.me>BinHong Lee</a></p></div></div></footer></div></body></html>
