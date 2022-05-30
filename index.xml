@@ -1,4 +1,197 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BinHong Lee's Blog</title><link>https://binhong.me/blog/</link><description>Recent content on BinHong Lee's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 18 Jul 2021 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Rebuilding Personal Site from Scratch</title><link>https://binhong.me/blog/2022-01-31-rebuild-personal-site/</link><pubDate>Mon, 31 Jan 2022 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2022-01-31-rebuild-personal-site/</guid><description>&lt;p>As time goes on in my journey of experimenting with different technologies on building a web interface, I figured it&amp;rsquo;s time for my personal site to return to the fundamentals. So I decided to build it with only HTML + CSS with one of the goals being that it should work perfectly fine with JavaScript disabled.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BinHong Lee's Blog</title><link>https://binhong.me/blog/</link><description>Recent content on BinHong Lee's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 18 Jul 2021 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>Automated Link Preview Image Card</title><link>https://binhong.me/blog/2022-05-31-automated-link-preview-image/</link><pubDate>Tue, 31 May 2022 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2022-05-31-automated-link-preview-image/</guid><description>&lt;p>A while ago, I saw this tweet thread from Simon Willison about how he added social media preview cards to his TILs. He detailed how he did this through a combination of Puppeteer, Vercel, SQLite, and some other stuff I didn&amp;rsquo;t understand 😅.&lt;/p>
+&lt;div class="tweet_block">
+&lt;div class="tweet">
+&lt;a class="unbreak" rel="noopener" href="https://twitter.com/simonw/">
+&lt;div class="profile_picture_block">
+&lt;img src="https://binhong.me/blog/2022-05-31-automated-link-preview-image/https://pbs.twimg.com/profile_images/378800000261649705/be9cc55e64014e6d7663c50d7cb9fc75_200x200.jpeg" />
+@simonw&lt;/div>
+&lt;/a>
+&lt;p class="text">Added social media preview cards to my TILs! &lt;a href="https://til.simonwillison.net/til/til/pytest_subprocess-server.md">https://til.simonwillison.net/til/til/pytest_subprocess-server.md&lt;/a>&lt;/p>&lt;p>
+&lt;a class="unbreak" rel="noopener" href='https://twitter.com/simonw/status/1300868423774212096'>
+Read more...
+&lt;/a>
+&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;p>At that time, I was manually taking these screenshots by hand to be included as part of the commit, which is to say it&amp;rsquo;s not very efficient. Anyway, this stayed on my backlog of &amp;ldquo;things to explore&amp;rdquo; for a really long time until recently during this long weekend (where I also took additional PTOs), I had some free time and decided to look into this. The goal is simple, automate creating the preview images for a list of given / defined urls.&lt;/p>
+&lt;h2 id="playwright">Playwright&lt;/h2>
+&lt;p>I know I just mentioned above that Simon used Puppeteer for his implementation but I just recently picked up Playwright for another project (&lt;a href="https://globetrotte.com">GlobeTrotte&lt;/a>) and figured that it seems like the right tool for this. Also, Playwright has better TypeScript support in general so I decided to opt for Playwright instead. (If you didn&amp;rsquo;t know, Playwright is built by the same team of engineers who built Puppeteer but has somehow all moved over from Google to Microsoft to build Playwright. There were some uhh interesting discussions about this when Playwright was first announced publicly.)&lt;/p>
+&lt;p>The minimum code needed for a working version is pretty short. It looks something like this:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-ts" data-lang="ts">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">import&lt;/span> { chromium } &lt;span style="color:#ff79c6">from&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;playwright-core&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">async&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">function&lt;/span> genRun()&lt;span style="color:#ff79c6">:&lt;/span> Promise&amp;lt;&lt;span style="color:#ff79c6">void&lt;/span>&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">const&lt;/span> browser &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">await&lt;/span> chromium.launch()&lt;span style="color:#ff79c6">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">const&lt;/span> env &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">await&lt;/span> browser.newContext({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> baseURL&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;http://localhost:1313/blog&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> viewport&lt;span style="color:#ff79c6">:&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> width: &lt;span style="color:#8be9fd">1200&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> height: &lt;span style="color:#8be9fd">600&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">const&lt;/span> page &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">await&lt;/span> env.newPage();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">await&lt;/span> page.&lt;span style="color:#ff79c6">goto&lt;/span>(&lt;span style="color:#f1fa8c">&amp;#34;/2022-05-31-automated-link-preview-image&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">await&lt;/span> page.waitForLoadState(&lt;span style="color:#f1fa8c">&amp;#34;networkidle&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">await&lt;/span> page.screenshot({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> animations&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;disabled&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> fullPage: &lt;span style="color:#8be9fd">false&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">type&lt;/span>&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;jpeg&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> path&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;preview/automated_link_preview.jpg&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">await&lt;/span> browser.close();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="globetrottealtimeter">@globetrotte/altimeter&lt;/h2>
+&lt;p>Since I might want to use this in multiple places, I figured it&amp;rsquo;s probably a good idea to create &lt;a href="https://www.npmjs.com/package/@globetrotte/altimeter">an npm package&lt;/a> for this so I can reuse it everywhere (with just some slight config change).&lt;/p>
+&lt;p>The package itself is really just a CLI tool for now. First, create a json config file based on &lt;a href="https://github.com/binhonglee/GlobeTrotte/tree/main/src/altimeter#config">this doc&lt;/a> (depending on what you want from these screenshots). Then, run &lt;code>npm i -g @globetrotte/altimeter &amp;amp;&amp;amp; altimeter config.json&lt;/code> and you should see the screenshots show up once the run is complete.&lt;/p>
+&lt;p>&lt;em>Note: Unfortunately straight up calling &lt;code>npx @globetrotte/altimeter config.json&lt;/code> doesn&amp;rsquo;t work as of now (unless you already have playwright installed before which can&amp;rsquo;t be guaranteed) since it won&amp;rsquo;t trigger the postinstall script to install playwright.&lt;/em>&lt;/p>
+&lt;p>Alternatively, it can also be generated by including the package as a dependency, then import &lt;code>AltimeterConfig&lt;/code> from the package, set the variables, and write the output to a JSON file. Something like this:&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-ts" data-lang="ts">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">import&lt;/span> { AltimeterConfig, AltimeterDestination } &lt;span style="color:#ff79c6">from&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;@globetrotte/altimeter&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">async&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">function&lt;/span> genConfig(urls: &lt;span style="color:#8be9fd">string&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">const&lt;/span> config &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">new&lt;/span> AltimeterConfig();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> config.baseURL &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;http://localhost:1313/blog&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> config.destURLs &lt;span style="color:#ff79c6">=&lt;/span> urls.map((url) &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#6272a4">// You can also do some modification here to set a better &amp;#34;name&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4">&lt;/span> &lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#ff79c6">new&lt;/span> AltimeterDestination(url, url);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#6272a4">// This line is to add the index page itself (omit if not needed)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6272a4">&lt;/span> config.destURLs.push(&lt;span style="color:#ff79c6">new&lt;/span> AltimeterDestination(&lt;span style="color:#f1fa8c">&amp;#34;index&amp;#34;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#34;/&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> config.dir &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;dist/preview&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> writeFileSync(path.join(__dirname, &lt;span style="color:#f1fa8c">&amp;#34;config.json&amp;#34;&lt;/span>), JSON.stringify(config, &lt;span style="color:#ff79c6">null&lt;/span>, &lt;span style="color:#bd93f9">2&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Then you can run it with &lt;code>altimeter config.json&lt;/code> and it will start taking the screenshots and saving them into the specified folder.&lt;/p>
+&lt;h2 id="meta--tags">&lt;code>&amp;lt;meta /&amp;gt;&lt;/code> tags&lt;/h2>
+&lt;p>To actually make the images show up when your web page is linked, you need to add the appropriate meta tags depending on which social media you want the image to be fetched and displayed.&lt;/p>
+&lt;h3 id="open-graph-protocol">Open Graph Protocol&lt;/h3>
+&lt;p>&lt;a href="https://ogp.me/">Open Graph Protocol&lt;/a> is used on many web services (including Facebook, LinkedIn, Mastodon) to fetch the preview image so you need to add the followings onto your site within the &lt;code>&amp;lt;head&amp;gt;&lt;/code> element. You can also (optionally) specify the image width and height. From my personal experience, it doesn&amp;rsquo;t matter if they are absolute or relative path as they seem to work either way.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#ff79c6">head&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff79c6">meta&lt;/span> &lt;span style="color:#50fa7b">property&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;og:image&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">content&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;preview/automated_link_preview.jpg&amp;#34;&lt;/span> /&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff79c6">meta&lt;/span> &lt;span style="color:#50fa7b">property&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;og:image:height&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">content&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;600&amp;#34;&lt;/span> /&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff79c6">meta&lt;/span> &lt;span style="color:#50fa7b">property&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;og:image:width&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">content&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;1200&amp;#34;&lt;/span> /&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#ff79c6">head&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="twitter">Twitter&lt;/h3>
+&lt;p>Twitter has its &lt;a href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup">own documentation&lt;/a> for the display card. At the time of writing, it seems like they only take absolute path, relative paths don&amp;rsquo;t seem to work as intended.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#ff79c6">head&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff79c6">meta&lt;/span> &lt;span style="color:#50fa7b">name&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;twitter:card&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">content&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;summary_large_image&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff79c6">meta&lt;/span> &lt;span style="color:#50fa7b">name&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;twitter:image&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">content&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;https://binhong.me/blog/preview/automated_link_preview.jpg&amp;#34;&lt;/span> /&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#ff79c6">head&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>You can use &lt;a href="https://cards-dev.twitter.com/validator">this card validator&lt;/a> built by Twitter to try if your newly set &lt;code>&amp;lt;meta /&amp;gt;&lt;/code> tags are getting picked up. Unlike just tweeting it out on your profile and see how it work, this would always force fetch from the given link and overwrite whatever cache they already stored of the link.&lt;/p>
+&lt;h3 id="google">Google&lt;/h3>
+&lt;p>Honestly, I couldn&amp;rsquo;t find a good documentation on how to go about setting the image properly. I only found &lt;a href="https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#max-image-preview">this&lt;/a> about setting the &lt;code>max-image-preview&lt;/code> but nowhere does it say how to tell Google which image to use. I looked into how some of the news websites does it instead. NYTimes uses the &lt;code>image&lt;/code> tag as below. The Verge seems to use some sort of &lt;a href="https://schema.org/">Schema.org&lt;/a> setup but within a &lt;code>&amp;lt;script /&amp;gt;&lt;/code> tag (instead of &lt;code>&amp;lt;meta /&amp;gt;&lt;/code>) and label it as &lt;code>application/ld+json&lt;/code> type. I also checked GitHub (since they actually do one of these screenshot as preview image stuff really well) but I didn&amp;rsquo;t see any &lt;code>&amp;lt;meta /&amp;gt;&lt;/code> tag that stood out.&lt;/p>
+&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#ff79c6">head&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff79c6">meta&lt;/span> &lt;span style="color:#50fa7b">name&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;robots&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">content&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;max-image-preview:large&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff79c6">meta&lt;/span> &lt;span style="color:#50fa7b">name&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;image&amp;#34;&lt;/span> &lt;span style="color:#50fa7b">content&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;https://binhong.me/threads/preview/index.jpg&amp;#34;&lt;/span> /&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#ff79c6">head&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="github-action">GitHub Action&lt;/h2>
+&lt;p>I currently use the above package as a CLI on my own blog (specifically this one that you&amp;rsquo;re reading right now). I didn&amp;rsquo;t want to have to run a bunch of things manually everytime I write a new post before I deploy so instead, I &amp;ldquo;delegated&amp;rdquo; this part of the job to GitHub Action.&lt;/p>
+&lt;ol>
+&lt;li>Add the generated directory to .gitignore&lt;/li>
+&lt;li>Use Node.js in the GitHub Action (&lt;code>- uses: actions/setup-node@v1&lt;/code>)&lt;/li>
+&lt;li>Make sure the devserver site is up and running (in my case, &lt;code>hugo serve -D&lt;/code>)&lt;/li>
+&lt;li>Run &lt;code>npx altimeter config.json&lt;/code>&lt;/li>
+&lt;li>Run build if needed (&lt;code>hugo --minify --buildFuture&lt;/code>)&lt;/li>
+&lt;li>Deploy! 🎉&lt;/li>
+&lt;/ol>
+&lt;h2 id="wrap-up">Wrap up&lt;/h2>
+&lt;p>This was a fun ride. Honestly, I ran into a few problems here and there (mainly, setting up monorepo in GlobeTrotte and creating CLI with TypeScript) but it&amp;rsquo;s relatively straightforward otherwise. The actual coding part took less than a day while writing up the documentations (and this blog post) probably took close to double the time.&lt;/p></description></item><item><title>Rebuilding Personal Site from Scratch</title><link>https://binhong.me/blog/2022-01-31-rebuild-personal-site/</link><pubDate>Mon, 31 Jan 2022 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2022-01-31-rebuild-personal-site/</guid><description>&lt;p>As time goes on in my journey of experimenting with different technologies on building a web interface, I figured it&amp;rsquo;s time for my personal site to return to the fundamentals. So I decided to build it with only HTML + CSS with one of the goals being that it should work perfectly fine with JavaScript disabled.&lt;/p>
 &lt;p>&lt;em>Before this, it&amp;rsquo;s built with Vue. You can still find the source &lt;a href="https://github.com/binhonglee/binhonglee.github.io/tree/old_dev">here&lt;/a>.&lt;/em>&lt;/p>
 &lt;h1 id="design">Design&lt;/h1>
 &lt;h2 id="inspiration">Inspiration&lt;/h2>
