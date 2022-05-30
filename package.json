@@ -2,11 +2,9 @@
   "name": "blog",
   "version": "0.0.1",
   "scripts": {
-    "build": "altimeter preview.json",
-    "postinstall": "playwright install"
+    "build": "altimeter preview.json"
   },
   "devDependencies": {
-    "@globetrotte/altimeter": "0.0.2",
-    "playwright-core": "1.22.2"
+    "@globetrotte/altimeter": "0.0.4"
   }
 }
