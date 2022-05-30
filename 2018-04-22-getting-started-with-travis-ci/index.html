@@ -1,204 +1,415 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="initial-scale=.75"><title>Getting started with Travis-CI - BinHong Lee's Blog</title><meta name=description content="What is CI and why should I care about it? CI stands for Continuous Integration which as the name suggests, is an integrated tests that runs continuously on every time when someone pushes a commit (or mostly when opening a Pull Request).
-As for why is it important, it automates the whole testing modules. Ideally, you would still want to test your changes locally before pushing them to remote but in some occasion where you forgot or the program requires a lot more resources than your current machine can handle, CI comes in very handy."><meta name=author content="BinHong Lee"><meta property="og:type" content="article"><meta property="og:title" content="Getting started with Travis-CI"><meta property="og:description" content="Add that fancy badge onto your GitHub repository README"><meta name=twitter:description content="Add that fancy badge onto your GitHub repository README"><meta name=twitter:title content="Getting started with Travis-CI"><meta property="article:published_time" 2018-04-22t00:00:00-08:00><meta property="article:modified_time" 2018-04-22t00:00:00-08:00><meta property="og:image" content="https://binhong.me/blog/preview/travis_ci.jpg"><meta property="og:image:height" content="600"><meta property="og:image:width" content="1200"><meta name=twitter:image content="https://binhong.me/blog/preview/travis_ci.jpg"><meta name=twitter:card content="summary_large_image"><meta name=robots content="max-image-preview:large"><meta name=image content="https://binhong.me/blog/preview/travis_ci.jpg"><meta name=twitter:site content="@"><meta property="og:locale" content="en_US"><meta property="og:site_name" content="BinHong Lee's Blog"><link href=https://binhong.me/blog/style.css rel=stylesheet><link href=https://binhong.me/fonts/fonts.css rel=stylesheet><link href=https://binhong.me/threads/threads.css rel=stylesheet><link rel=icon href=https://binhong.me/blog/img/profile.png><meta name=generator content="Hugo 0.99.1"></head><body class=single><details class=dark_mode_toggle role=button open><summary><div class=content><div class=secondary_block><p class=name-title>Blog</p></div></div></summary></details><div class=wrapper><div class="content dropdown"><button class=dropdown_toggle aria-haspopup=true aria-controls=dropdown_menu id=dropdown_toggle>+</button><div class=header_links id=dropdown_menu aria-labelledby=dropdown_toggle role=menu><a class=link href=https://binhong.me/ role=menuitem>About</a><p>|</p><a class=link href=https://binhong.me/blog/ role=menuitem>Blog</a><p>|</p><a class=link href=https://binhong.me/threads role=menuitem>Threads</a></div></div><article class="content_body primary_block projects"><div class=img_class><img class=thumbnail_img src=https://binhong.me/blog/img/traviscover.png></div><main class=article_body><div class=active><p class="row name title">Getting started with Travis-CI</h1><p class="row lang">Add that fancy badge onto your GitHub repository README</h2><div class="row author"><p>BinHong Lee</p><p class=right>April 22, 2018</p></div><div class=post_content><h2 id=what-is-ci-and-why-should-i-care-aboutit>What is CI and why should I care about it?</h2><p>CI stands for Continuous Integration which as the name suggests, is an integrated tests that runs continuously on every time when someone pushes a commit (or mostly when opening a <a href=https://help.github.com/articles/about-pull-requests/>Pull Request</a>).</p><p>As for why is it important, it automates the whole testing modules. Ideally, you would still want to test your changes locally before pushing them to remote but in some occasion where you forgot or the program requires a lot more resources than your current machine can handle, CI comes in very handy. That aside, if your project happen to have people wanting to contribute code, a properly written test with CI will help you in reviewing the changes and ensuring that the contribution would not break the build.</p><h2 id=why-travis-ci>Why Travis-CI?</h2><p>There are plenty of CI tools out there (cricleCI, AppVeyor etc.) so why Travis-CI? The straightforward answer is that its the easiest one to get started with especially if you are already on GitHub. This is actually also one of its major drawback which is how tightly tied Travis-CI is onto GitHub. As far as I know, it is not possible to use Travis-CI outside of GitHub. That aside, if you host your projects on GitHub, that should be the least of your concern.</p><h2 id=setup>Setup</h2><p>First, sign up at <a href=https://travis-ci.org/>their website</a>, link your GitHub account and enable it for the repository you would like to implement this. Do note that this is only for public repositories. If you would like to do this for a private repository instead, you will need to sign up for <a href=https://docs.travis-ci.com/user/travis-ci-for-private/>Travis-CI Pro</a>.</p><p>Create a file named <code>.travis.yml</code> and add the first line with the programming language you used (unless its Android in which you would then write Android instead of Java).</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ff79c6>language</span>: java
-</span></span><span style=display:flex><span><span style=color:#6272a4># (or cpp, android, node_js etc.)</span>
-</span></span></code></pre></td></tr></table></div></div><p>Now, there’s also a possibility that running the test might require sudo access to the testing environment in which you would then add the following line above the <code>language</code> line.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ff79c6>sudo</span>: required
-</span></span><span style=display:flex><span><span style=color:#ff79c6>language</span>: cpp
-</span></span></code></pre></td></tr></table></div></div><h2 id=testing-environment>Testing environment</h2><p>Ideally, you will only be testing it in one environment which means this will be a one liner of this.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ff79c6>os</span>: linux
-</span></span></code></pre></td></tr></table></div></div><p>However, in most occasion, we will be testing our software with a few different kinds of environment (at the time of writing, Travis-CI seems to only Ubuntu and OSX as seen <a href=https://docs.travis-ci.com/user/reference/overview/>here</a>). Sometimes, 2 lines is enough.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ff79c6>os</span>:
-</span></span><span style=display:flex><span>  - linux
-</span></span><span style=display:flex><span>  - osx
-</span></span></code></pre></td></tr></table></div></div><p>But more time than not, you need complicated configuration for each one of them (especially when it comes to C++ projects).</p><p>Here is how the environment configuration for <a href=https://github.com/binhonglee/TicketingSystem/blob/master/.travis.yml>one of my projects</a> looks like (shortened):</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ff79c6>matrix</span>:
-</span></span><span style=display:flex><span>  <span style=color:#ff79c6>include</span>:
-</span></span><span style=display:flex><span>    - <span style=color:#ff79c6>os</span>: linux
-</span></span><span style=display:flex><span>      <span style=color:#ff79c6>addons</span>:
-</span></span><span style=display:flex><span>        <span style=color:#ff79c6>apt</span>:
-</span></span><span style=display:flex><span>          <span style=color:#ff79c6>sources</span>:
-</span></span><span style=display:flex><span>            - ubuntu-toolchain-r-test
-</span></span><span style=display:flex><span>          <span style=color:#ff79c6>packages</span>:
-</span></span><span style=display:flex><span>            - g++-7
-</span></span><span style=display:flex><span>      <span style=color:#ff79c6>env</span>:
-</span></span><span style=display:flex><span>        - MATRIX_EVAL=&#34;CC=gcc-7 &amp;&amp; CXX=g++-7&#34;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    - <span style=color:#ff79c6>os</span>: osx
-</span></span><span style=display:flex><span>      <span style=color:#ff79c6>osx_image</span>: xcode8
-</span></span><span style=display:flex><span>      <span style=color:#ff79c6>env</span>:
-</span></span><span style=display:flex><span>        - MATRIX_EVAL=&#34;brew update &amp;&amp; brew install gcc &amp;&amp; CC=gcc-7 &amp;&amp; CXX=g++-7&#34;
-</span></span></code></pre></td></tr></table></div></div><h2 id=language-specificsettings>Language specific settings</h2><p>For some languages, it is a lot more complicated than the others due to the way their versioning works.</p><h3 id=android>Android</h3><p>This is probably the most complicated one I’ve come across. It took a lot of tries and failure for me to figure out how it works. (<a href=https://docs.travis-ci.com/user/languages/android/>The documentation</a> has also since updated which helps greatly.)</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ff79c6>android</span>:
-</span></span><span style=display:flex><span>  <span style=color:#ff79c6>components</span>:
-</span></span><span style=display:flex><span>    - tools
-</span></span><span style=display:flex><span>    - platform-tools
-</span></span><span style=display:flex><span>    - build-tools-26.0.2
-</span></span><span style=display:flex><span>    - android-26
-</span></span><span style=display:flex><span>    - platform-tools
-</span></span><span style=display:flex><span>    - extra-android-support
-</span></span><span style=display:flex><span>    - extra-google-google_play_services
-</span></span><span style=display:flex><span>    - extra-google-m2repository
-</span></span><span style=display:flex><span>    - extra-android-m2repository
-</span></span><span style=display:flex><span>    - addon-google_apis-google-26
-</span></span><span style=display:flex><span>    - sys-img-armeabi-v7a-android-26
-</span></span></code></pre></td></tr></table></div></div><h3 id=c>C++</h3><p>There isn’t specific custom configuration available for C++ like for Android above but due to the nature of its complicated OS configuration, you will need to import the matrix from before into the system before installing anything that might be needed to run the test itself. Therefore you will need to add the following.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ff79c6>before_install</span>:
-</span></span><span style=display:flex><span>  - eval &#34;${MATRIX_EVAL}&#34;
-</span></span></code></pre></td></tr></table></div></div><h3 id=java>Java</h3><p>For Java, due to the differences between OpenJDK, OracleJDK and also differences from versions to versions itself (shoutout to OracleJDK 9 & 10), you might want to test your software with every version available.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ff79c6>jdk</span>:
-</span></span><span style=display:flex><span>  - oraclejdk9
-</span></span><span style=display:flex><span>  - oraclejdk8
-</span></span><span style=display:flex><span>  - openjdk8
-</span></span><span style=display:flex><span>  - openjdk7
-</span></span></code></pre></td></tr></table></div></div><h3 id=python>Python</h3><p>Similarly, you can test your software or package against different versions of Python including the development versions.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ff79c6>python</span>:
-</span></span><span style=display:flex><span>  - <span style=color:#f1fa8c>&#34;2.7&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#f1fa8c>&#34;3.6&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#f1fa8c>&#34;3.6-dev&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#f1fa8c>&#34;pypy2.7&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#f1fa8c>&#34;pypy3.8&#34;</span>
-</span></span></code></pre></td></tr></table></div></div><p><em>*Note: Due to recent changes, seems like <code>3.7-dev</code>, <code>3.8-dev</code>, and <code>nightly</code> would not work as of now.</em></p><h3 id=nodejs>Node.js</h3><p>Again, you might need to test your software with multiple versions or node.js except the differences between each version is not as drastic but there are a lot more versions comparatively.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">9
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ff79c6>node_js</span>:
-</span></span><span style=display:flex><span>  - <span style=color:#f1fa8c>&#34;node&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#f1fa8c>&#34;9&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#f1fa8c>&#34;8&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#f1fa8c>&#34;7&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#f1fa8c>&#34;6&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#f1fa8c>&#34;5&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#f1fa8c>&#34;4&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#f1fa8c>&#34;lts/*&#34;</span>
-</span></span></code></pre></td></tr></table></div></div><p>By doing this, you will be testing your software towards possibly 8 versions of node.js.</p><h2 id=install-and-runtest>Install and run test</h2><p>If you look into the <a href=https://docs.travis-ci.com/user/languages/>specific documentations</a> about the configurations for each languages, you will find that many of them has default <code>install</code> and <code>test</code> scripts but you can always overwrite them with your own scripts or commands like the following.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ff79c6>before_install</span>:
-</span></span><span style=display:flex><span>  - ./beforeInstall.sh
-</span></span><span style=display:flex><span><span style=color:#ff79c6>install</span>:
-</span></span><span style=display:flex><span>  - ./install.sh
-</span></span><span style=display:flex><span><span style=color:#ff79c6>before_script</span>:
-</span></span><span style=display:flex><span>  - ./preTest.sh
-</span></span><span style=display:flex><span><span style=color:#ff79c6>script</span>:
-</span></span><span style=display:flex><span>  - ./test.sh
-</span></span></code></pre></td></tr></table></div></div><p><em>*Note: if you testing in macOS environment and is installing any dependencies through Homebrew (including language dependencies in C++), you will have to do a <code>brew update</code> before running anything brew related to prevent an error.</em></p><h2 id=deployment>Deployment</h2><p>If you host your project externally while using your GitHub repository as your code control, Travis-CI can also help automating the deployment process. Depending on the service provider you use, their configuration can vary greatly from one another. Below, I included some of those that I think is the more popular ones. As you might have guessed, you can also deploy to multiple developers at once. I recommend checking out the <a href=https://docs.travis-ci.com/user/deployment>documentation page</a> before implementing any of these.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ff79c6>before_deploy</span>:
-</span></span><span style=display:flex><span>  - ./before_deployment
-</span></span><span style=display:flex><span><span style=color:#ff79c6>deploy</span>:
-</span></span><span style=display:flex><span>  - <span style=color:#ff79c6>provider</span>: heroku
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>api_key</span>: <span style=color:#f1fa8c>&#34;YOUR_API_KEY&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>skip_cleanup</span>: <span style=color:#ff79c6>true</span>
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>on</span>: production
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>run</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#f1fa8c>&#34;./deploy&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#ff79c6>provider</span>: pages
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>github_token</span>: $GITHUB_TOKEN
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>skip_cleanup</span>: <span style=color:#ff79c6>true</span>
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>on</span>: production
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>run</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#f1fa8c>&#34;./deploy&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#ff79c6>provider</span>: npm
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>api_key</span>: <span style=color:#f1fa8c>&#34;YOUR_API_KEY&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>email</span>: <span style=color:#f1fa8c>&#34;email@domain.com&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>on</span>: production
-</span></span><span style=display:flex><span>  - <span style=color:#ff79c6>provider</span>: elasticbeanstalk
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>access_key_id</span>: &lt;access-key-id&gt;
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>secret_access_key</span>:
-</span></span><span style=display:flex><span>      <span style=color:#ff79c6>secure</span>: <span style=color:#f1fa8c>&#34;Encypted &lt;secret-access-key&gt;&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>region</span>: <span style=color:#f1fa8c>&#34;us-east-1&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>app</span>: <span style=color:#f1fa8c>&#34;your-app-name&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>env</span>: <span style=color:#f1fa8c>&#34;your-app-environment&#34;</span>
-</span></span><span style=display:flex><span>  - <span style=color:#ff79c6>provider</span>: pypi
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>user</span>: <span style=color:#f1fa8c>&#34;username&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>password</span>: <span style=color:#f1fa8c>&#34;password&#34;</span>
-</span></span><span style=display:flex><span><span style=color:#ff79c6>after_deploy</span>:
-</span></span><span style=display:flex><span>  - ./post_deployment
-</span></span></code></pre></td></tr></table></div></div><hr><h2 id=code-coverage>Code coverage</h2><p>Along with testing, I would also recommend using a tool to analyze your code coverage. It will show you how much coverage your test has over your codes (and usually, use cases). Personally, I use the tool called <a href=https://codecov.io/>codecov</a>.</p><h2 id=add-thebadge>Add the badge!</h2><p>If you are like me, the reason I was hooked up by this is because long time ago when I first got on GitHub, I saw plenty of repositories have the badge that shows if their build is <code>passing</code> or <code>failing</code>. I thought that was really fancy and wanted one of those so I started getting myself to learn what CI as a whole is about and how can I make use of it. Turns out, its a lot more useful than just being pretty!</p><blockquote><p><em>This article was originally published on <a href=https://codeburst.io/getting-started-with-travis-ci-f3223082f256>codeburst.io</a>.</em></p></blockquote></div><hr><div class=links><a class=link href=https://binhong.me/blog/tags/travis-ci>Travis-CI</a>
-<a class=link href=https://binhong.me/blog/tags/continuous-integration>Continuous Integration</a>
-<a class=link href=https://binhong.me/blog/tags/testing>Testing</a>
-<a class=link href=https://binhong.me/blog/tags/automated-deployment>Automated Deployment</a>
-<a class=link href=https://binhong.me/blog/tags/devops>Devops</a></div></div></main></article><footer class=content><div class="footer primary_block"><div class=row><p>Fonts:</p><a href=https://github.com/tonsky/FiraCode/ rel=noopener target=_blank>Fira Code</a>,
-<a href=https://github.com/adobe-fonts/source-sans/ rel=noopener target=_blank class=name>Source Sans 3</a>,
-<a href=https://rubjo.github.io/victor-mono/ rel=noopener target=_blank class=name>Victor Mono</a></div><div class=row><p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a></p></div><div class=row><p>&copy; 2022 <a href=https://binhong.me>BinHong Lee</a></p></div></div></footer></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Getting started with Travis-CI - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="What is CI and why should I care about it? CI stands for Continuous Integration which as the name suggests, is an integrated tests that runs continuously on every time when someone pushes a commit (or mostly when opening a Pull Request).
+As for why is it important, it automates the whole testing modules. Ideally, you would still want to test your changes locally before pushing them to remote but in some occasion where you forgot or the program requires a lot more resources than your current machine can handle, CI comes in very handy.">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Getting started with Travis-CI">
+    <meta property="og:description" content="Add that fancy badge onto your GitHub repository README">
+    <meta name="twitter:description" content="Add that fancy badge onto your GitHub repository README">
+    <meta name="twitter:title" content="Getting started with Travis-CI"><meta property="article:published_time" 2018-04-22T00:00:00-08:00 />
+    <meta property="article:modified_time" 2018-04-22T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/travis_ci.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/travis_ci.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/travis_ci.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    
+    <link href="https://binhong.me/blog/style.css" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.99.1" />
+    
+    </head>
+  <body class="single">
+    <details class="dark_mode_toggle" role="button" open>
+      <summary>
+        <div class="content">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+      </summary>
+    </details>
+    <div class="wrapper">
+      <div class="content dropdown">
+        <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu" id="dropdown_toggle">+</button>
+        <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+          <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/threads" role="menuitem">Threads</a>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <div class="img_class">
+        <img class="thumbnail_img" src="https://binhong.me/blog/img/traviscover.png">
+      </div>
+      <main class="article_body">
+        <div class="active">
+          <p class="row name title">Getting started with Travis-CI</h1>
+          <p class="row lang">Add that fancy badge onto your GitHub repository README</h2>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            
+            <p class="right">April 22, 2018</p>
+          </div>
+          <div class="post_content"><h2 id="what-is-ci-and-why-should-i-care-aboutit">What is CI and why should I care about it?</h2>
+<p>CI stands for Continuous Integration which as the name suggests, is an integrated tests that runs continuously on every time when someone pushes a commit (or mostly when opening a <a href="https://help.github.com/articles/about-pull-requests/">Pull Request</a>).</p>
+<p>As for why is it important, it automates the whole testing modules. Ideally, you would still want to test your changes locally before pushing them to remote but in some occasion where you forgot or the program requires a lot more resources than your current machine can handle, CI comes in very handy. That aside, if your project happen to have people wanting to contribute code, a properly written test with CI will help you in reviewing the changes and ensuring that the contribution would not break the build.</p>
+<h2 id="why-travis-ci">Why Travis-CI?</h2>
+<p>There are plenty of CI tools out there (cricleCI, AppVeyor etc.) so why Travis-CI? The straightforward answer is that its the easiest one to get started with especially if you are already on GitHub. This is actually also one of its major drawback which is how tightly tied Travis-CI is onto GitHub. As far as I know, it is not possible to use Travis-CI outside of GitHub. That aside, if you host your projects on GitHub, that should be the least of your concern.</p>
+<h2 id="setup">Setup</h2>
+<p>First, sign up at <a href="https://travis-ci.org/">their website</a>, link your GitHub account and enable it for the repository you would like to implement this. Do note that this is only for public repositories. If you would like to do this for a private repository instead, you will need to sign up for <a href="https://docs.travis-ci.com/user/travis-ci-for-private/">Travis-CI Pro</a>.</p>
+<p>Create a file named <code>.travis.yml</code> and add the first line with the programming language you used (unless its Android in which you would then write Android instead of Java).</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">language</span>: java
+</span></span><span style="display:flex;"><span><span style="color:#6272a4"># (or cpp, android, node_js etc.)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Now, there’s also a possibility that running the test might require sudo access to the testing environment in which you would then add the following line above the <code>language</code> line.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">sudo</span>: required
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">language</span>: cpp
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="testing-environment">Testing environment</h2>
+<p>Ideally, you will only be testing it in one environment which means this will be a one liner of this.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">os</span>: linux
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>However, in most occasion, we will be testing our software with a few different kinds of environment (at the time of writing, Travis-CI seems to only Ubuntu and OSX as seen <a href="https://docs.travis-ci.com/user/reference/overview/">here</a>). Sometimes, 2 lines is enough.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">os</span>:
+</span></span><span style="display:flex;"><span>  - linux
+</span></span><span style="display:flex;"><span>  - osx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>But more time than not, you need complicated configuration for each one of them (especially when it comes to C++ projects).</p>
+<p>Here is how the environment configuration for <a href="https://github.com/binhonglee/TicketingSystem/blob/master/.travis.yml">one of my projects</a> looks like (shortened):</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">matrix</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">include</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff79c6">os</span>: linux
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">addons</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">apt</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">sources</span>:
+</span></span><span style="display:flex;"><span>            - ubuntu-toolchain-r-test
+</span></span><span style="display:flex;"><span>          <span style="color:#ff79c6">packages</span>:
+</span></span><span style="display:flex;"><span>            - g++-7
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">env</span>:
+</span></span><span style="display:flex;"><span>        - MATRIX_EVAL=&#34;CC=gcc-7 &amp;&amp; CXX=g++-7&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ff79c6">os</span>: osx
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">osx_image</span>: xcode8
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">env</span>:
+</span></span><span style="display:flex;"><span>        - MATRIX_EVAL=&#34;brew update &amp;&amp; brew install gcc &amp;&amp; CC=gcc-7 &amp;&amp; CXX=g++-7&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="language-specificsettings">Language specific settings</h2>
+<p>For some languages, it is a lot more complicated than the others due to the way their versioning works.</p>
+<h3 id="android">Android</h3>
+<p>This is probably the most complicated one I’ve come across. It took a lot of tries and failure for me to figure out how it works. (<a href="https://docs.travis-ci.com/user/languages/android/">The documentation</a> has also since updated which helps greatly.)</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">android</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">components</span>:
+</span></span><span style="display:flex;"><span>    - tools
+</span></span><span style="display:flex;"><span>    - platform-tools
+</span></span><span style="display:flex;"><span>    - build-tools-26.0.2
+</span></span><span style="display:flex;"><span>    - android-26
+</span></span><span style="display:flex;"><span>    - platform-tools
+</span></span><span style="display:flex;"><span>    - extra-android-support
+</span></span><span style="display:flex;"><span>    - extra-google-google_play_services
+</span></span><span style="display:flex;"><span>    - extra-google-m2repository
+</span></span><span style="display:flex;"><span>    - extra-android-m2repository
+</span></span><span style="display:flex;"><span>    - addon-google_apis-google-26
+</span></span><span style="display:flex;"><span>    - sys-img-armeabi-v7a-android-26
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="c">C++</h3>
+<p>There isn’t specific custom configuration available for C++ like for Android above but due to the nature of its complicated OS configuration, you will need to import the matrix from before into the system before installing anything that might be needed to run the test itself. Therefore you will need to add the following.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">before_install</span>:
+</span></span><span style="display:flex;"><span>  - eval &#34;${MATRIX_EVAL}&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="java">Java</h3>
+<p>For Java, due to the differences between OpenJDK, OracleJDK and also differences from versions to versions itself (shoutout to OracleJDK 9 &amp; 10), you might want to test your software with every version available.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">jdk</span>:
+</span></span><span style="display:flex;"><span>  - oraclejdk9
+</span></span><span style="display:flex;"><span>  - oraclejdk8
+</span></span><span style="display:flex;"><span>  - openjdk8
+</span></span><span style="display:flex;"><span>  - openjdk7
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="python">Python</h3>
+<p>Similarly, you can test your software or package against different versions of Python including the development versions.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">python</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f1fa8c">&#34;2.7&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f1fa8c">&#34;3.6&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f1fa8c">&#34;3.6-dev&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f1fa8c">&#34;pypy2.7&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f1fa8c">&#34;pypy3.8&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>*Note: Due to recent changes, seems like <code>3.7-dev</code>, <code>3.8-dev</code>, and <code>nightly</code> would not work as of now.</em></p>
+<h3 id="nodejs">Node.js</h3>
+<p>Again, you might need to test your software with multiple versions or node.js except the differences between each version is not as drastic but there are a lot more versions comparatively.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">node_js</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f1fa8c">&#34;node&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f1fa8c">&#34;9&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f1fa8c">&#34;8&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f1fa8c">&#34;7&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f1fa8c">&#34;6&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f1fa8c">&#34;5&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f1fa8c">&#34;4&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#f1fa8c">&#34;lts/*&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>By doing this, you will be testing your software towards possibly 8 versions of node.js.</p>
+<h2 id="install-and-runtest">Install and run test</h2>
+<p>If you look into the <a href="https://docs.travis-ci.com/user/languages/">specific documentations</a> about the configurations for each languages, you will find that many of them has default <code>install</code> and <code>test</code> scripts but you can always overwrite them with your own scripts or commands like the following.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">before_install</span>:
+</span></span><span style="display:flex;"><span>  - ./beforeInstall.sh
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">install</span>:
+</span></span><span style="display:flex;"><span>  - ./install.sh
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">before_script</span>:
+</span></span><span style="display:flex;"><span>  - ./preTest.sh
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">script</span>:
+</span></span><span style="display:flex;"><span>  - ./test.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>*Note:  if you testing in macOS environment and is installing any dependencies through Homebrew (including language dependencies in C++), you will have to do a <code>brew update</code> before running anything brew related to prevent an error.</em></p>
+<h2 id="deployment">Deployment</h2>
+<p>If you host your project externally while using your GitHub repository as your code control, Travis-CI can also help automating the deployment process. Depending on the service provider you use, their configuration can vary greatly from one another. Below, I included some of those that I think is the more popular ones. As you might have guessed, you can also deploy to multiple developers at once. I recommend checking out the <a href="https://docs.travis-ci.com/user/deployment">documentation page</a> before implementing any of these.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">before_deploy</span>:
+</span></span><span style="display:flex;"><span>  - ./before_deployment
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">deploy</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff79c6">provider</span>: heroku
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">api_key</span>: <span style="color:#f1fa8c">&#34;YOUR_API_KEY&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">skip_cleanup</span>: <span style="color:#ff79c6">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">on</span>: production
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">run</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f1fa8c">&#34;./deploy&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff79c6">provider</span>: pages
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">github_token</span>: $GITHUB_TOKEN
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">skip_cleanup</span>: <span style="color:#ff79c6">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">on</span>: production
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">run</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#f1fa8c">&#34;./deploy&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff79c6">provider</span>: npm
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">api_key</span>: <span style="color:#f1fa8c">&#34;YOUR_API_KEY&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">email</span>: <span style="color:#f1fa8c">&#34;email@domain.com&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">on</span>: production
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff79c6">provider</span>: elasticbeanstalk
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">access_key_id</span>: &lt;access-key-id&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">secret_access_key</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">secure</span>: <span style="color:#f1fa8c">&#34;Encypted &lt;secret-access-key&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">region</span>: <span style="color:#f1fa8c">&#34;us-east-1&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">app</span>: <span style="color:#f1fa8c">&#34;your-app-name&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">env</span>: <span style="color:#f1fa8c">&#34;your-app-environment&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ff79c6">provider</span>: pypi
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">user</span>: <span style="color:#f1fa8c">&#34;username&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">password</span>: <span style="color:#f1fa8c">&#34;password&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">after_deploy</span>:
+</span></span><span style="display:flex;"><span>  - ./post_deployment
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="code-coverage">Code coverage</h2>
+<p>Along with testing, I would also recommend using a tool to analyze your code coverage. It will show you how much coverage your test has over your codes (and usually, use cases). Personally, I use the tool called <a href="https://codecov.io/">codecov</a>.</p>
+<h2 id="add-thebadge">Add the badge!</h2>
+<p>If you are like me, the reason I was hooked up by this is because long time ago when I first got on GitHub, I saw plenty of repositories have the badge that shows if their build is <code>passing</code> or <code>failing</code>. I thought that was really fancy and wanted one of those so I started getting myself to learn what CI as a whole is about and how can I make use of it. Turns out, its a lot more useful than just being pretty!</p>
+<blockquote>
+<p><em>This article was originally published on <a href="https://codeburst.io/getting-started-with-travis-ci-f3223082f256">codeburst.io</a>.</em></p>
+</blockquote>
+</div>
+          <hr/>
+          <div class="links">
+            <a class="link" href="https://binhong.me/blog/tags/travis-ci">Travis-CI</a>
+            <a class="link" href="https://binhong.me/blog/tags/continuous-integration">Continuous Integration</a>
+            <a class="link" href="https://binhong.me/blog/tags/testing">Testing</a>
+            <a class="link" href="https://binhong.me/blog/tags/automated-deployment">Automated Deployment</a>
+            <a class="link" href="https://binhong.me/blog/tags/devops">Devops</a>
+          </div>
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="https://github.com/tonsky/FiraCode/" rel="noopener" target="_blank">Fira Code</a>,
+            <a href="https://github.com/adobe-fonts/source-sans/" rel="noopener" target="_blank" class="name">Source Sans 3</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️ | <a href="https://github.com/binhonglee/blog" rel="noopener" target="_blank">Source (GitHub)</a> </p>
+          </div>
+          <div class="row">
+            <p>&copy; 2022 <a href="https://binhong.me">BinHong Lee</a></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+

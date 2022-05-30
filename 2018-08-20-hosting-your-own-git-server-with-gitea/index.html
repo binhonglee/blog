@@ -1,186 +1,426 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="initial-scale=.75"><title>Hosting your own Git server with Gitea - BinHong Lee's Blog</title><meta name=description content="Most people (including myself) host their personal projects on a third-party free Git hosting websites like GitHub, GitLab, Bitbucket etc. While that is sufficient for most people, it is also pretty fun to have your own Git service hosted on your own domain name of choice. While I trust my fellow engineers at these companies, I am using this as a personally backup to those services if anything goes wrong (like GitLab."><meta name=author content="BinHong Lee"><meta property="og:type" content="article"><meta property="og:title" content="Hosting your own Git server with Gitea"><meta property="og:description" content="Having additional backups are never a bad idea"><meta name=twitter:description content="Having additional backups are never a bad idea"><meta name=twitter:title content="Hosting your own Git server with Gitea"><meta property="article:published_time" 2018-08-20t00:00:00-08:00><meta property="article:modified_time" 2018-08-20t00:00:00-08:00><meta property="og:image" content="https://binhong.me/blog/preview/own_git_server_gitea.jpg"><meta property="og:image:height" content="600"><meta property="og:image:width" content="1200"><meta name=twitter:image content="https://binhong.me/blog/preview/own_git_server_gitea.jpg"><meta name=twitter:card content="summary_large_image"><meta name=robots content="max-image-preview:large"><meta name=image content="https://binhong.me/blog/preview/own_git_server_gitea.jpg"><meta name=twitter:site content="@"><meta property="og:locale" content="en_US"><meta property="og:site_name" content="BinHong Lee's Blog"><link href=https://binhong.me/blog/style.css rel=stylesheet><link href=https://binhong.me/fonts/fonts.css rel=stylesheet><link href=https://binhong.me/threads/threads.css rel=stylesheet><link rel=icon href=https://binhong.me/blog/img/profile.png><meta name=generator content="Hugo 0.99.1"></head><body class=single><details class=dark_mode_toggle role=button open><summary><div class=content><div class=secondary_block><p class=name-title>Blog</p></div></div></summary></details><div class=wrapper><div class="content dropdown"><button class=dropdown_toggle aria-haspopup=true aria-controls=dropdown_menu id=dropdown_toggle>+</button><div class=header_links id=dropdown_menu aria-labelledby=dropdown_toggle role=menu><a class=link href=https://binhong.me/ role=menuitem>About</a><p>|</p><a class=link href=https://binhong.me/blog/ role=menuitem>Blog</a><p>|</p><a class=link href=https://binhong.me/threads role=menuitem>Threads</a></div></div><article class="content_body primary_block projects"><main class=article_body><div class=active><p class="row name title">Hosting your own Git server with Gitea</h1><p class="row lang">Having additional backups are never a bad idea</h2><div class="row author"><p>BinHong Lee</p><p class=right>August 20, 2018</p></div><div class=post_content><p>Most people (including myself) host their personal projects on a third-party free Git hosting websites like GitHub, GitLab, Bitbucket etc. While that is sufficient for most people, it is also pretty fun to have your own Git service hosted on your own domain name of choice. While I trust my fellow engineers at these companies, I am using this as a personally backup to those services if anything goes wrong (<a href=https://about.gitlab.com/2017/02/01/gitlab-dot-com-database-incident/>like GitLab</a>. Though to their credit, they were able to <a href=https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/>recover most of it</a>).</p><h2 id=requirements>Requirements</h2><p>There really isn&rsquo;t much requirements except for a working machine and a proper working network. Preferably, you would be hosting this on a Virtual Private Server (DigitalOcean, Vultr, Linode etc.). However, you can also mess around with it on your own machine (it takes and requires very little resources by itself) or even host it at home on a Raspberry Pi!</p><h2 id=installation>Installation</h2><p><em>Referenced from <a href=https://docs.gitea.io/en-us/install-from-binary/>Gitea&rsquo;s own documentation</a></em></p><p>While there is a Gitea package in Debian&rsquo;s contrib (which most popular Linux OS such as Ubuntu and Mint based itself on), it doesn&rsquo;t seem it was maintained by the Gitea folks themselves so I wouldn&rsquo;t advice using it. Instead, the instructions below will provide an easy way to just download and run it with binary.</p><h2 id=database>Database</h2><p>You&rsquo;ll need a database to maintain all the information of user accounts and such. Gitea comes with support for SQLite, MySQL and PostgreSQL out of the box so you can pick either of those that you are familiar with to go with. Personally I picked PostgreSQL as I&rsquo;ve always wanted to learn how to mess with one.
-In your choice of database, you should create a user (preferably only specifically for the use of Gitea) and a database for Gitea. You will need to fill out these credentials later when setting up Gitea.</p><h2 id=gitea>Gitea</h2><p>As Gitea calls itself &lsquo;a painless self-hosted Git service&rsquo;, the setup is indeed very straightforward. Simply download and run it depending on they way you want to do it.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=display:flex><span>wget -O gitea https://dl.gitea.io/gitea/1.5.0/gitea-1.5.0-linux-amd64
-</span></span><span style=display:flex><span>chmod +x gitea
-</span></span></code></pre></td></tr></table></div></div><p><em>Optionally</em>, you can also verify the GPG signature of the downloaded file with Gitea&rsquo;s <a href="https://pgp.mit.edu/pks/lookup?op=vindex&fingerprint=on&search=0x2D9AE806EC1592E2">GPG key</a> for security purposes before running it.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=display:flex><span>gpg --keyserver pgp.mit.edu --recv 0x2D9AE806EC1592E2
-</span></span><span style=display:flex><span>gpg --verify gitea-1.5.0-linux-amd64.asc gitea-1.5.0-linux-amd64
-</span></span></code></pre></td></tr></table></div></div><p>To run Gitea, it is as simple as the following…</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=display:flex><span>./gitea web
-</span></span></code></pre></td></tr></table></div></div><p>By default, it will be running on port::3000 of the device IP (http://localhost:3000/). In case you prefer running Gitea from source, they also have <a href=https://docs.gitea.io/en-us/install-from-source/>specific documentations</a> for that. I had a lot of troubles trying to set it up myself so YMMV.</p><h2 id=load-balancer-optional>Load Balancer (Optional)</h2><p><em>Referenced from <a href=https://docs.gitea.io/en-us/reverse-proxies/>Gitea&rsquo;s own documentation</a></em></p><p>If you are running this on a remote server (especially if you are also hosting a bunch of other stuffs), you will need to use a load balance (like Apache HTTPD or NGINX) to forward a specific domain to the port. Append your configuration file with the following as you see fit.</p><h4 id=apache-httpd>Apache HTTPD</h4><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-apache data-lang=apache><span style=display:flex><span><span style=color:#ff79c6>&lt;VirtualHost</span> <span style=color:#f1fa8c>*:80</span><span style=color:#ff79c6>&gt;</span>
-</span></span><span style=display:flex><span>    <span style=color:#8be9fd;font-style:italic>ProxyPreserveHost</span> <span style=color:#ff79c6>On</span>
-</span></span><span style=display:flex><span>    <span style=color:#8be9fd;font-style:italic>ProxyRequests</span> <span style=color:#ff79c6>off</span>
-</span></span><span style=display:flex><span>    <span style=color:#8be9fd;font-style:italic>ProxyPass</span> / http://localhost:3000/
-</span></span><span style=display:flex><span>    <span style=color:#8be9fd;font-style:italic>ProxyPassReverse</span> / http://localhost:3000/
-</span></span><span style=display:flex><span><span style=color:#ff79c6>&lt;/VirtualHost&gt;</span>
-</span></span></code></pre></td></tr></table></div></div><h4 id=nginx>NGINX</h4><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-nginx data-lang=nginx><span style=display:flex><span><span style=color:#ff79c6>server</span> {
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>listen</span> <span style=color:#bd93f9>80</span>;
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>server_name</span> <span style=color:#f1fa8c>git.example.com</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>location</span> <span style=color:#f1fa8c>/</span> {
-</span></span><span style=display:flex><span>        <span style=color:#ff79c6>proxy_pass</span> <span style=color:#f1fa8c>http://localhost:3000</span>;
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></td></tr></table></div></div><h2 id=configuration>Configuration</h2><p>Open your browser and navigate to the wherever Gitea was hosted. In there, you will be filling out the database settings as you have configured above (for PostgreSQL, it should be on <code>127.0.0.1:5432</code>, not sure about the others).</p><p>Few things to look out for:</p><ul><li><code>Domain / Application URL</code> - This is important to be set up properly as they are used for SSH and HTTPS connection when it comes to cloning and pushing.</li><li><code>Disable Self-registration</code> - Considering that you are probably setting this up only for your own use, you should select this option so random people wouldn&rsquo;t just sign up and host projects on your server.</li><li><code>Admin username and password</code> - Since you have disabled self registration, you should then set this up in here and use it as your primary account. If you are concerned about security, you can also use the admin account to setup a day-to-day use account so in case the day-to-day account is compromised, you still retain full control of the server through your admin account.</li></ul><h2 id=usage>Usage</h2><p>For the most part, I&rsquo;m using this as a backup to my projects hosted on GitHub and GitLab (project pages is an amazing feature) so ideally, I am mirroring most (if not all) of my projects. As part of being a mirrored repository, Gitea will periodically check the source repository for updates so you don&rsquo;t have to manually sync them. That said, I have quite a few projects that I moved away from mirroring and I&rsquo;ll talk about why below.</p><h2 id=maintenance>Maintenance</h2><p>In case where your VPS (or Raspberry Pi) might restart constantly or so, it might be a chore to always manually start the service every time it is restarted. You should then consider configuring Gitea to run as a service (<a href=https://docs.gitea.io/en-us/linux-service/>Ubuntu</a>, <a href=https://docs.gitea.io/en-us/windows-service/>Windows</a>).</p><hr><h2 id=droneio>Drone.io</h2><p>When talking about the topic of Git, its hard to stay away from CI. It is such a great idea of automation that saves so much pain and problem especially if it is a huge project that takes a lot of resources and hard to run the tests locally. Here, I&rsquo;ll talk about <a href=https://drone.io>drone.io</a> which can also be self-hosted along with your Gitea server.</p><h2 id=requirements-1>Requirements</h2><p>You will need to have <a href=https://www.docker.com/>docker</a> installed in your machine as drone as a whole relies quite a bit on docker to work. The machine where drone is hosted will also require quite a bit of memory and processing power as running CI can be quite a chore for servers.</p><h2 id=installation-1>Installation</h2><p><em>Referenced from <a href=http://docs.drone.io/installation/>drone&rsquo;s own documentation</a></em></p><p>First, get the docker image for drone.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=display:flex><span>docker pull drone/drone:0.8
-</span></span></code></pre></td></tr></table></div></div><p>Next, create a file named <code>docker-compose.yaml</code> and fill in the following.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#ff79c6>version</span>: <span style=color:#f1fa8c>&#39;2&#39;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#ff79c6>services</span>:
-</span></span><span style=display:flex><span>  <span style=color:#ff79c6>drone-server</span>:
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>image</span>: drone/drone:0.8
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>ports</span>:
-</span></span><span style=display:flex><span>      - <span style=color:#bd93f9>8000</span>:<span style=color:#bd93f9>8000</span>
-</span></span><span style=display:flex><span>      - <span style=color:#bd93f9>9000</span>:<span style=color:#bd93f9>9000</span>
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>volumes</span>:
-</span></span><span style=display:flex><span>      - /var/lib/drone:/var/lib/drone/
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>restart</span>: always
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>environment</span>:
-</span></span><span style=display:flex><span>      - DRONE_OPEN=true
-</span></span><span style=display:flex><span>      - DRONE_HOST=http://drone.example.com
-</span></span><span style=display:flex><span>      - DRONE_GITEA=true
-</span></span><span style=display:flex><span>      - DRONE_GITEA_URL=http://git.example.com
-</span></span><span style=display:flex><span>      - DRONE_SECRET=${DRONE_SECRET}
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=color:#ff79c6>drone-agent</span>:
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>image</span>: drone/agent:0.8
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>command</span>: agent
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>restart</span>: always
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>depends_on</span>:
-</span></span><span style=display:flex><span>      - drone-server
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>volumes</span>:
-</span></span><span style=display:flex><span>      - /var/run/docker.sock:/var/run/docker.sock
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>environment</span>:
-</span></span><span style=display:flex><span>      - DRONE_SERVER=drone-server:9000
-</span></span><span style=display:flex><span>      - DRONE_SECRET=${DRONE_SECRET}
-</span></span><span style=display:flex><span>      - DRONE_DATABASE_DRIVER:postgres
-</span></span><span style=display:flex><span>      - DRONE_DATABASE_DATASOURCE:postgres://root:password@1.2.3.4:5432/postgres?sslmode=disable
-</span></span></code></pre></td></tr></table></div></div><p>Few things to keep in mind in the file above:</p><ul><li><code>DRONE_SECRET</code> - This is a secret string of your choice used for authentication purpose.</li><li><code>DRONE_HOST</code> - URL where this drone server is hosted.</li><li><code>DRONE_GITEA_URL</code> - Link to your Gitea server location (it can also be <code>http://localhost:3000/</code> link)</li><li><code>DRONE_DATABASE_DRIVER</code> - Database setup is <strong>optional</strong>. In their <a href=http://docs.drone.io/database-settings/>documentation</a>, they mention the setup process of MySQL and PostgreSQL. Though do note that their documentation doesn&rsquo;t seems to be accurate at least <a href=https://github.com/drone/docs/pull/360>from my experience</a> setting it up.</li></ul><p>In the same directory run the following and drone will be running on <code>http://localhost:8000/</code>.</p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-sh data-lang=sh><span style=display:flex><span>docker-compose up
-</span></span></code></pre></td></tr></table></div></div><h2 id=load-balancer-optional-1>Load Balancer (Optional)</h2><p>Similarly, if this is hosted on a remote server, you will have to add the following with the load balancer of your choice.</p><h4 id=apache-httpd-1>Apache HTTPD</h4><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-apache data-lang=apache><span style=display:flex><span><span style=color:#ff79c6>&lt;VirtualHost</span> <span style=color:#f1fa8c>*:80</span><span style=color:#ff79c6>&gt;</span>
-</span></span><span style=display:flex><span>    <span style=color:#8be9fd;font-style:italic>ProxyPreserveHost</span> <span style=color:#ff79c6>On</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=color:#8be9fd;font-style:italic>RequestHeader</span> set X-Forwarded-Proto <span style=color:#f1fa8c>&#34;https&#34;</span>
-</span></span><span style=display:flex><span>    <span style=color:#8be9fd;font-style:italic>ProxyPass</span> / http://127.0.0.1:8000/
-</span></span><span style=display:flex><span>    <span style=color:#8be9fd;font-style:italic>ProxyPassReverse</span> / http://127.0.0.1:8000/
-</span></span><span style=display:flex><span><span style=color:#ff79c6>&lt;/VirtualHost&gt;</span>
-</span></span></code></pre></td></tr></table></div></div><h4 id=nginx-1>NGINX</h4><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-nginx data-lang=nginx><span style=display:flex><span><span style=color:#ff79c6>server</span> {
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>listen</span> <span style=color:#bd93f9>80</span>;
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>server_name</span> <span style=color:#f1fa8c>drone.example.com</span>;
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>location</span> <span style=color:#f1fa8c>/</span> {
-</span></span><span style=display:flex><span>        <span style=color:#ff79c6>proxy_set_header</span> <span style=color:#f1fa8c>X-Forwarded-For</span> <span style=color:#8be9fd;font-style:italic>$remote_addr</span>;
-</span></span><span style=display:flex><span>        <span style=color:#ff79c6>proxy_set_header</span> <span style=color:#f1fa8c>X-Forwarded-Proto</span> <span style=color:#8be9fd;font-style:italic>$scheme</span>;
-</span></span><span style=display:flex><span>        <span style=color:#ff79c6>proxy_set_header</span> <span style=color:#f1fa8c>Host</span> <span style=color:#8be9fd;font-style:italic>$http_host</span>;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>        <span style=color:#ff79c6>proxy_pass</span> <span style=color:#f1fa8c>http://127.0.0.1:8000</span>;
-</span></span><span style=display:flex><span>        <span style=color:#ff79c6>proxy_redirect</span> off;
-</span></span><span style=display:flex><span>        <span style=color:#ff79c6>proxy_http_version</span> <span style=color:#bd93f9>1</span><span style=color:#f1fa8c>.1</span>;
-</span></span><span style=display:flex><span>        <span style=color:#ff79c6>proxy_buffering</span> off;
-</span></span><span style=display:flex><span>        <span style=color:#ff79c6>chunked_transfer_encoding</span> off;
-</span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>}
-</span></span></code></pre></td></tr></table></div></div><h2 id=usage-1>Usage</h2><p>As mentioned, drone relies on docker not only for its installation but also running the CI itself. Each repository that you want to configure for drone should have to have a <code>.drone.yml</code> file like below at the top level of the repository. </p><div class=highlight><div style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
-</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
-</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yml data-lang=yml><span style=display:flex><span><span style=color:#ff79c6>pipeline</span>:
-</span></span><span style=display:flex><span>  <span style=color:#ff79c6>build</span>:
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>image</span>: node:${NODE_VERSION}
-</span></span><span style=display:flex><span>    <span style=color:#ff79c6>commands</span>:
-</span></span><span style=display:flex><span>      - npm install
-</span></span><span style=display:flex><span>      - npm run test
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#ff79c6>matrix</span>:
-</span></span><span style=display:flex><span>  <span style=color:#ff79c6>NODE_VERSION</span>:
-</span></span><span style=display:flex><span>    - latest
-</span></span><span style=display:flex><span>    - <span style=color:#f1fa8c>&#34;7&#34;</span>
-</span></span><span style=display:flex><span>    - <span style=color:#f1fa8c>&#34;6&#34;</span>
-</span></span><span style=display:flex><span>    - <span style=color:#f1fa8c>&#34;4&#34;</span>
-</span></span></code></pre></td></tr></table></div></div><p>Few things to pay attention to in the sample file:</p><ul><li><code>image</code> - Drone supports any docker images available for download. You can look for available docker images at the Docker Hub.</li><li><code>matrix</code> - Like the scenario above, you want to test the project in multiple environments but doesn&rsquo;t want to retype most of the stuffs, you can use matrix as a variable to hold all the different versions you would like to run tests on.</li><li><code>commands</code> - This is the list of commands to run for the test to take place. You should also include installation of project dependent packages (such as <code>mvn install</code>, <code>npm install</code>, <code>bundle install</code> etc).</li></ul><hr><h2 id=personal-notes>Personal Notes</h2><h4 id=mirrored-repositories>Mirrored Repositories</h4><p>Currently from my own experimentation, adding new commits to mirrored repositories (which are read-only) that are mainly hosted elsewhere would not trigger drone to run CI. Therefore, if you were to run drone on your own server, you can either enable it directly with the origin of the repository mirror or push twice to 2 separate servers for every commit. I&rsquo;m still looking for a solution for this so hopefully there&rsquo;s a better way than that.</p><h4 id=memory-issues>Memory issues</h4><p>Some of these instances can take quite a bit of memory spaces to run. Personally, I am hosting this on a 256MB VPS squeezing it with a bunch of other stuffs I hosts. This actually causes an issue where the tests cannot be run properly. As seen <a href=https://drone.binhong.me/binhong/LibrarySystem/3/3>here</a>, at the end of the <code>build</code> log, it was just abruptly &lsquo;Killed&rsquo; and ended there and then with no further information. I am still working on investigating this but it is very likely due to the lack of remaining unused memory space on the VPS.</p><h4 id=static-ip>Static IP</h4><p>In case you are hosting this on a Raspberry Pi at home for personal use, you would want to set a static IP direction on your router. This would help make sure that when in your network, you can always connect to the device through the same IP.</p><h4 id=nginx-2>NGINX</h4><p><del>I did not go deep into either of the load balancers in here as I am currently working on a separate piece that will focus more onto the configuration and use of NGINX to hosting multiple domain names and &lsquo;servers&rsquo;. Keep a look out for that!</del></p><p><em>You can read more about NGINX on my next post <a href=http://localhost:1313/blog/2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server/>here</a>.</em></p><hr><h2 id=references>References</h2><ul><li><a href=http://bryangilbert.com/post/devops/how-to-setup-gitea-ubuntu/>How to Setup Gitea on an Ubuntu Server</a> by <a href=http://bryangilbert.com/>Bryan Gilbert</a></li><li><a href=https://www.slideshare.net/appleboy/introduction-to-gitea-with-drone>Introduction to Gitea with Drone</a> by <a href=https://www.slideshare.net/appleboy>Bo-Yi Wu</a></li></ul><blockquote><p><em>This article was originally published on <a href=https://codeburst.io/hosting-your-own-git-server-with-gitea-fc3298aa15ce>codeburst.io</a>.</em></p></blockquote></div><hr><div class=links><a class=link href=https://binhong.me/blog/tags/git>Git</a>
-<a class=link href=https://binhong.me/blog/tags/gitea>Gitea</a>
-<a class=link href=https://binhong.me/blog/tags/continuous-integration>Continuous Integration</a>
-<a class=link href=https://binhong.me/blog/tags/self-hosted>Self Hosted</a>
-<a class=link href=https://binhong.me/blog/tags/devops>DevOps</a></div></div></main></article><footer class=content><div class="footer primary_block"><div class=row><p>Fonts:</p><a href=https://github.com/tonsky/FiraCode/ rel=noopener target=_blank>Fira Code</a>,
-<a href=https://github.com/adobe-fonts/source-sans/ rel=noopener target=_blank class=name>Source Sans 3</a>,
-<a href=https://rubjo.github.io/victor-mono/ rel=noopener target=_blank class=name>Victor Mono</a></div><div class=row><p>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️ | <a href=https://github.com/binhonglee/blog rel=noopener target=_blank>Source (GitHub)</a></p></div><div class=row><p>&copy; 2022 <a href=https://binhong.me>BinHong Lee</a></p></div></div></footer></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Hosting your own Git server with Gitea - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="Most people (including myself) host their personal projects on a third-party free Git hosting websites like GitHub, GitLab, Bitbucket etc. While that is sufficient for most people, it is also pretty fun to have your own Git service hosted on your own domain name of choice. While I trust my fellow engineers at these companies, I am using this as a personally backup to those services if anything goes wrong (like GitLab.">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Hosting your own Git server with Gitea">
+    <meta property="og:description" content="Having additional backups are never a bad idea">
+    <meta name="twitter:description" content="Having additional backups are never a bad idea">
+    <meta name="twitter:title" content="Hosting your own Git server with Gitea"><meta property="article:published_time" 2018-08-20T00:00:00-08:00 />
+    <meta property="article:modified_time" 2018-08-20T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/own_git_server_gitea.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/own_git_server_gitea.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/own_git_server_gitea.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    
+    <link href="https://binhong.me/blog/style.css" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.99.1" />
+    
+    </head>
+  <body class="single">
+    <details class="dark_mode_toggle" role="button" open>
+      <summary>
+        <div class="content">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+      </summary>
+    </details>
+    <div class="wrapper">
+      <div class="content dropdown">
+        <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu" id="dropdown_toggle">+</button>
+        <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+          <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/threads" role="menuitem">Threads</a>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <p class="row name title">Hosting your own Git server with Gitea</h1>
+          <p class="row lang">Having additional backups are never a bad idea</h2>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            
+            <p class="right">August 20, 2018</p>
+          </div>
+          <div class="post_content"><p>Most people (including myself) host their personal projects on a third-party free Git hosting websites like GitHub, GitLab, Bitbucket etc. While that is sufficient for most people, it is also pretty fun to have your own Git service hosted on your own domain name of choice. While I trust my fellow engineers at these companies, I am using this as a personally backup to those services if anything goes wrong (<a href="https://about.gitlab.com/2017/02/01/gitlab-dot-com-database-incident/">like GitLab</a>. Though to their credit, they were able to <a href="https://about.gitlab.com/2017/02/10/postmortem-of-database-outage-of-january-31/">recover most of it</a>).</p>
+<h2 id="requirements">Requirements</h2>
+<p>There really isn&rsquo;t much requirements except for a working machine and a proper working network. Preferably, you would be hosting this on a Virtual Private Server (DigitalOcean, Vultr, Linode etc.). However, you can also mess around with it on your own machine (it takes and requires very little resources by itself) or even host it at home on a Raspberry Pi!</p>
+<h2 id="installation">Installation</h2>
+<p><em>Referenced from <a href="https://docs.gitea.io/en-us/install-from-binary/">Gitea&rsquo;s own documentation</a></em></p>
+<p>While there is a Gitea package in Debian&rsquo;s contrib (which most popular Linux OS such as Ubuntu and Mint based itself on), it doesn&rsquo;t seem it was maintained by the Gitea folks themselves so I wouldn&rsquo;t advice using it. Instead, the instructions below will provide an easy way to just download and run it with binary.</p>
+<h2 id="database">Database</h2>
+<p>You&rsquo;ll need a database to maintain all the information of user accounts and such. Gitea comes with support for SQLite, MySQL and PostgreSQL out of the box so you can pick either of those that you are familiar with to go with. Personally I picked PostgreSQL as I&rsquo;ve always wanted to learn how to mess with one.
+In your choice of database, you should create a user (preferably only specifically for the use of Gitea) and a database for Gitea. You will need to fill out these credentials later when setting up Gitea.</p>
+<h2 id="gitea">Gitea</h2>
+<p>As Gitea calls itself &lsquo;a painless self-hosted Git service&rsquo;, the setup is indeed very straightforward. Simply download and run it depending on they way you want to do it.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>wget -O gitea https://dl.gitea.io/gitea/1.5.0/gitea-1.5.0-linux-amd64
+</span></span><span style="display:flex;"><span>chmod +x gitea
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>Optionally</em>, you can also verify the GPG signature of the downloaded file with Gitea&rsquo;s <a href="https://pgp.mit.edu/pks/lookup?op=vindex&amp;fingerprint=on&amp;search=0x2D9AE806EC1592E2">GPG key</a> for security purposes before running it.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>gpg --keyserver pgp.mit.edu --recv 0x2D9AE806EC1592E2
+</span></span><span style="display:flex;"><span>gpg --verify gitea-1.5.0-linux-amd64.asc gitea-1.5.0-linux-amd64
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>To run Gitea, it is as simple as the following…</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./gitea web
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>By default, it will be running on port::3000 of the device IP (http://localhost:3000/). In case you prefer running Gitea from source, they also have <a href="https://docs.gitea.io/en-us/install-from-source/">specific documentations</a> for that. I had a lot of troubles trying to set it up myself so YMMV.</p>
+<h2 id="load-balancer-optional">Load Balancer (Optional)</h2>
+<p><em>Referenced from <a href="https://docs.gitea.io/en-us/reverse-proxies/">Gitea&rsquo;s own documentation</a></em></p>
+<p>If you are running this on a remote server (especially if you are also hosting a bunch of other stuffs), you will need to use a load balance (like Apache HTTPD or NGINX) to forward a specific domain to the port. Append your configuration file with the following as you see fit.</p>
+<h4 id="apache-httpd">Apache HTTPD</h4>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-apache" data-lang="apache"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;VirtualHost</span> <span style="color:#f1fa8c">*:80</span><span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">ProxyPreserveHost</span> <span style="color:#ff79c6">On</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">ProxyRequests</span> <span style="color:#ff79c6">off</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">ProxyPass</span> / http://localhost:3000/
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">ProxyPassReverse</span> / http://localhost:3000/
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;/VirtualHost&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="nginx">NGINX</h4>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#ff79c6">server</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">listen</span> <span style="color:#bd93f9">80</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">server_name</span> <span style="color:#f1fa8c">git.example.com</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> <span style="color:#f1fa8c">/</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_pass</span> <span style="color:#f1fa8c">http://localhost:3000</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="configuration">Configuration</h2>
+<p>Open your browser and navigate to the wherever Gitea was hosted. In there, you will be filling out the database settings as you have configured above (for PostgreSQL, it should be on <code>127.0.0.1:5432</code>, not sure about the others).</p>
+<p>Few things to look out for:</p>
+<ul>
+<li><code>Domain / Application URL</code> - This is important to be set up properly as they are used for SSH and HTTPS connection when it comes to cloning and pushing.</li>
+<li><code>Disable Self-registration</code> - Considering that you are probably setting this up only for your own use, you should select this option so random people wouldn&rsquo;t just sign up and host projects on your server.</li>
+<li><code>Admin username and password</code> - Since you have disabled self registration, you should then set this up in here and use it as your primary account. If you are concerned about security, you can also use the admin account to setup a day-to-day use account so in case the day-to-day account is compromised, you still retain full control of the server through your admin account.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>For the most part, I&rsquo;m using this as a backup to my projects hosted on GitHub and GitLab (project pages is an amazing feature) so ideally, I am mirroring most (if not all) of my projects. As part of being a mirrored repository, Gitea will periodically check the source repository for updates so you don&rsquo;t have to manually sync them. That said, I have quite a few projects that I moved away from mirroring and I&rsquo;ll talk about why below.</p>
+<h2 id="maintenance">Maintenance</h2>
+<p>In case where your VPS (or Raspberry Pi) might restart constantly or so, it might be a chore to always manually start the service every time it is restarted. You should then consider configuring Gitea to run as a service (<a href="https://docs.gitea.io/en-us/linux-service/">Ubuntu</a>, <a href="https://docs.gitea.io/en-us/windows-service/">Windows</a>).</p>
+<hr>
+<h2 id="droneio">Drone.io</h2>
+<p>When talking about the topic of Git, its hard to stay away from CI. It is such a great idea of automation that saves so much pain and problem especially if it is a huge project that takes a lot of resources and hard to run the tests locally. Here, I&rsquo;ll talk about <a href="https://drone.io">drone.io</a> which can also be self-hosted along with your Gitea server.</p>
+<h2 id="requirements-1">Requirements</h2>
+<p>You will need to have <a href="https://www.docker.com/">docker</a> installed in your machine as drone as a whole relies quite a bit on docker to work. The machine where drone is hosted will also require quite a bit of memory and processing power as running CI can be quite a chore for servers.</p>
+<h2 id="installation-1">Installation</h2>
+<p><em>Referenced from <a href="http://docs.drone.io/installation/">drone&rsquo;s own documentation</a></em></p>
+<p>First, get the docker image for drone.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>docker pull drone/drone:0.8
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Next, create a file named <code>docker-compose.yaml</code> and fill in the following.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ff79c6">version</span>: <span style="color:#f1fa8c">&#39;2&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">services</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">drone-server</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">image</span>: drone/drone:0.8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">ports</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#bd93f9">8000</span>:<span style="color:#bd93f9">8000</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#bd93f9">9000</span>:<span style="color:#bd93f9">9000</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">volumes</span>:
+</span></span><span style="display:flex;"><span>      - /var/lib/drone:/var/lib/drone/
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">restart</span>: always
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">environment</span>:
+</span></span><span style="display:flex;"><span>      - DRONE_OPEN=true
+</span></span><span style="display:flex;"><span>      - DRONE_HOST=http://drone.example.com
+</span></span><span style="display:flex;"><span>      - DRONE_GITEA=true
+</span></span><span style="display:flex;"><span>      - DRONE_GITEA_URL=http://git.example.com
+</span></span><span style="display:flex;"><span>      - DRONE_SECRET=${DRONE_SECRET}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">drone-agent</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">image</span>: drone/agent:0.8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">command</span>: agent
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">restart</span>: always
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">depends_on</span>:
+</span></span><span style="display:flex;"><span>      - drone-server
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">volumes</span>:
+</span></span><span style="display:flex;"><span>      - /var/run/docker.sock:/var/run/docker.sock
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">environment</span>:
+</span></span><span style="display:flex;"><span>      - DRONE_SERVER=drone-server:9000
+</span></span><span style="display:flex;"><span>      - DRONE_SECRET=${DRONE_SECRET}
+</span></span><span style="display:flex;"><span>      - DRONE_DATABASE_DRIVER:postgres
+</span></span><span style="display:flex;"><span>      - DRONE_DATABASE_DATASOURCE:postgres://root:password@1.2.3.4:5432/postgres?sslmode=disable
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Few things to keep in mind in the file above:</p>
+<ul>
+<li><code>DRONE_SECRET</code> - This is a secret string of your choice used for authentication purpose.</li>
+<li><code>DRONE_HOST</code> - URL where this drone server is hosted.</li>
+<li><code>DRONE_GITEA_URL</code> - Link to your Gitea server location (it can also be <code>http://localhost:3000/</code> link)</li>
+<li><code>DRONE_DATABASE_DRIVER</code> - Database setup is <strong>optional</strong>. In their <a href="http://docs.drone.io/database-settings/">documentation</a>, they mention the setup process of MySQL and PostgreSQL. Though do note that their documentation doesn&rsquo;t seems to be accurate at least <a href="https://github.com/drone/docs/pull/360">from my experience</a> setting it up.</li>
+</ul>
+<p>In the same directory run the following and drone will be running on <code>http://localhost:8000/</code>.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>docker-compose up
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="load-balancer-optional-1">Load Balancer (Optional)</h2>
+<p>Similarly, if this is hosted on a remote server, you will have to add the following with the load balancer of your choice.</p>
+<h4 id="apache-httpd-1">Apache HTTPD</h4>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-apache" data-lang="apache"><span style="display:flex;"><span><span style="color:#ff79c6">&lt;VirtualHost</span> <span style="color:#f1fa8c">*:80</span><span style="color:#ff79c6">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">ProxyPreserveHost</span> <span style="color:#ff79c6">On</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">RequestHeader</span> set X-Forwarded-Proto <span style="color:#f1fa8c">&#34;https&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">ProxyPass</span> / http://127.0.0.1:8000/
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">ProxyPassReverse</span> / http://127.0.0.1:8000/
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">&lt;/VirtualHost&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="nginx-1">NGINX</h4>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#ff79c6">server</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">listen</span> <span style="color:#bd93f9">80</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">server_name</span> <span style="color:#f1fa8c">drone.example.com</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> <span style="color:#f1fa8c">/</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">X-Forwarded-For</span> <span style="color:#8be9fd;font-style:italic">$remote_addr</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">X-Forwarded-Proto</span> <span style="color:#8be9fd;font-style:italic">$scheme</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_set_header</span> <span style="color:#f1fa8c">Host</span> <span style="color:#8be9fd;font-style:italic">$http_host</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_pass</span> <span style="color:#f1fa8c">http://127.0.0.1:8000</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_redirect</span> off;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_http_version</span> <span style="color:#bd93f9">1</span><span style="color:#f1fa8c">.1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_buffering</span> off;
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">chunked_transfer_encoding</span> off;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="usage-1">Usage</h2>
+<p>As mentioned, drone relies on docker not only for its installation but also running the CI itself. Each repository that you want to configure for drone should have to have a <code>.drone.yml</code> file like below at the top level of the repository. </p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#ff79c6">pipeline</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">build</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">image</span>: node:${NODE_VERSION}
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">commands</span>:
+</span></span><span style="display:flex;"><span>      - npm install
+</span></span><span style="display:flex;"><span>      - npm run test
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">matrix</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">NODE_VERSION</span>:
+</span></span><span style="display:flex;"><span>    - latest
+</span></span><span style="display:flex;"><span>    - <span style="color:#f1fa8c">&#34;7&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f1fa8c">&#34;6&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f1fa8c">&#34;4&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Few things to pay attention to in the sample file:</p>
+<ul>
+<li><code>image</code> - Drone supports any docker images available for download. You can look for available docker images at the Docker Hub.</li>
+<li><code>matrix</code> - Like the scenario above, you want to test the project in multiple environments but doesn&rsquo;t want to retype most of the stuffs, you can use matrix as a variable to hold all the different versions you would like to run tests on.</li>
+<li><code>commands</code> - This is the list of commands to run for the test to take place. You should also include installation of project dependent packages (such as <code>mvn install</code>, <code>npm install</code>, <code>bundle install</code> etc).</li>
+</ul>
+<hr>
+<h2 id="personal-notes">Personal Notes</h2>
+<h4 id="mirrored-repositories">Mirrored Repositories</h4>
+<p>Currently from my own experimentation, adding new commits to mirrored repositories (which are read-only) that are mainly hosted elsewhere would not trigger drone to run CI. Therefore, if you were to run drone on your own server, you can either enable it directly with the origin of the repository mirror or push twice to 2 separate servers for every commit. I&rsquo;m still looking for a solution for this so hopefully there&rsquo;s a better way than that.</p>
+<h4 id="memory-issues">Memory issues</h4>
+<p>Some of these instances can take quite a bit of memory spaces to run. Personally, I am hosting this on a 256MB VPS squeezing it with a bunch of other stuffs I hosts. This actually causes an issue where the tests cannot be run properly. As seen <a href="https://drone.binhong.me/binhong/LibrarySystem/3/3">here</a>, at the end of the <code>build</code> log, it was just abruptly &lsquo;Killed&rsquo; and ended there and then with no further information. I am still working on investigating this but it is very likely due to the lack of remaining unused memory space on the VPS.</p>
+<h4 id="static-ip">Static IP</h4>
+<p>In case you are hosting this on a Raspberry Pi at home for personal use, you would want to set a static IP direction on your router. This would help make sure that when in your network, you can always connect to the device through the same IP.</p>
+<h4 id="nginx-2">NGINX</h4>
+<p><del>I did not go deep into either of the load balancers in here as I am currently working on a separate piece that will focus more onto the configuration and use of NGINX to hosting multiple domain names and &lsquo;servers&rsquo;. Keep a look out for that!</del></p>
+<p><em>You can read more about NGINX on my next post <a href="http://localhost:1313/blog/2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server/">here</a>.</em></p>
+<hr>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="http://bryangilbert.com/post/devops/how-to-setup-gitea-ubuntu/">How to Setup Gitea on an Ubuntu Server</a> by <a href="http://bryangilbert.com/">Bryan Gilbert</a></li>
+<li><a href="https://www.slideshare.net/appleboy/introduction-to-gitea-with-drone">Introduction to Gitea with Drone</a> by <a href="https://www.slideshare.net/appleboy">Bo-Yi Wu</a></li>
+</ul>
+<blockquote>
+<p><em>This article was originally published on <a href="https://codeburst.io/hosting-your-own-git-server-with-gitea-fc3298aa15ce">codeburst.io</a>.</em></p>
+</blockquote>
+</div>
+          <hr/>
+          <div class="links">
+            <a class="link" href="https://binhong.me/blog/tags/git">Git</a>
+            <a class="link" href="https://binhong.me/blog/tags/gitea">Gitea</a>
+            <a class="link" href="https://binhong.me/blog/tags/continuous-integration">Continuous Integration</a>
+            <a class="link" href="https://binhong.me/blog/tags/self-hosted">Self Hosted</a>
+            <a class="link" href="https://binhong.me/blog/tags/devops">DevOps</a>
+          </div>
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="https://github.com/tonsky/FiraCode/" rel="noopener" target="_blank">Fira Code</a>,
+            <a href="https://github.com/adobe-fonts/source-sans/" rel="noopener" target="_blank" class="name">Source Sans 3</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️ | <a href="https://github.com/binhonglee/blog" rel="noopener" target="_blank">Source (GitHub)</a> </p>
+          </div>
+          <div class="row">
+            <p>&copy; 2022 <a href="https://binhong.me">BinHong Lee</a></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
+

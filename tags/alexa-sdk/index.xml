@@ -1,174 +1,194 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Alexa Sdk on BinHong Lee's Blog</title><link>https://binhong.me/blog/tags/alexa-sdk/</link><description>Recent content in Alexa Sdk on BinHong Lee's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 29 Oct 2018 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/alexa-sdk/index.xml" rel="self" type="application/rss+xml"/><item><title>Test Driven Development with Alexa SDK</title><link>https://binhong.me/blog/2018-10-29-test-driven-development-with-alexa-sdk/</link><pubDate>Mon, 29 Oct 2018 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2018-10-29-test-driven-development-with-alexa-sdk/</guid><description>&lt;h1 id="what-is-test-driven-development">What is Test Driven Development?&lt;/h1>
-&lt;p>According to &lt;a href="https://en.wikipedia.org/wiki/Test-driven_development">Wikipedia&lt;/a>, it means “Requirements are turned into very specific &lt;a href="https://en.wikipedia.org/wiki/Test_case">test cases&lt;/a>, then the software is improved to pass the new tests, only.” Basically, you would first have to write the test of the software/feature you are developing before you start working on the developing the software/feature itself.&lt;/p>
-&lt;p>Here are a few more articles on the benefits and why you should apply TDD:&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://medium.com/mobile-quality/test-driven-development-d16fd216d45c">Test Driven Development&lt;/a> by Jan Olbrich&lt;/li>
-&lt;li>&lt;a href="https://hackernoon.com/test-driven-development-with-alexa-sdk-777f6b5e5486">Isn’t TDD twice the work? Why should you care?&lt;/a> by Navdeep Singh&lt;/li>
-&lt;/ul>
-&lt;h1 id="preparation">Preparation&lt;/h1>
-&lt;p>Here are a few thing you might want to have set up or installed before getting started:&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://aws.amazon.com/">Amazon Web Service&lt;/a> account (a free one will work just fine)&lt;/li>
-&lt;li>&lt;a href="https://nodejs.org/en/">node.js&lt;/a> (personally though, I prefer installing and maintaining it through &lt;a href="https://github.com/creationix/nvm">nvm&lt;/a>)&lt;/li>
-&lt;li>Text editor of your choice&lt;/li>
-&lt;/ul>
-&lt;h1 id="setting-up">Setting up&lt;/h1>
-&lt;ol>
-&lt;li>Create a new project folder (&lt;code>mkdir project-name&lt;/code>)&lt;/li>
-&lt;li>Navigate into that new folder (&lt;code>cd project-name&lt;/code>)&lt;/li>
-&lt;li>Initialize npm (&lt;code>npm init&lt;/code>)&lt;/li>
-&lt;li>Follow through everything as you prefer (if you don’t know what it is, just press enter and it’ll keep the default) except for test command:, put in node test/testflow.js instead. The command line should look something like the snippet below.&lt;/li>
-&lt;/ol>
-&lt;pre tabindex="0">&lt;code>This utility will walk you through creating a package.json file.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Alexa Sdk on BinHong Lee&#39;s Blog</title>
+    <link>https://binhong.me/blog/tags/alexa-sdk/</link>
+    <description>Recent content in Alexa Sdk on BinHong Lee&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 29 Oct 2018 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/alexa-sdk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test Driven Development with Alexa SDK</title>
+      <link>https://binhong.me/blog/2018-10-29-test-driven-development-with-alexa-sdk/</link>
+      <pubDate>Mon, 29 Oct 2018 00:00:00 -0800</pubDate>
+      
+      <guid>https://binhong.me/blog/2018-10-29-test-driven-development-with-alexa-sdk/</guid>
+      <description>&lt;h1 id=&#34;what-is-test-driven-development&#34;&gt;What is Test Driven Development?&lt;/h1&gt;
+&lt;p&gt;According to &lt;a href=&#34;https://en.wikipedia.org/wiki/Test-driven_development&#34;&gt;Wikipedia&lt;/a&gt;, it means “Requirements are turned into very specific &lt;a href=&#34;https://en.wikipedia.org/wiki/Test_case&#34;&gt;test cases&lt;/a&gt;, then the software is improved to pass the new tests, only.” Basically, you would first have to write the test of the software/feature you are developing before you start working on the developing the software/feature itself.&lt;/p&gt;
+&lt;p&gt;Here are a few more articles on the benefits and why you should apply TDD:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/mobile-quality/test-driven-development-d16fd216d45c&#34;&gt;Test Driven Development&lt;/a&gt; by Jan Olbrich&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hackernoon.com/test-driven-development-with-alexa-sdk-777f6b5e5486&#34;&gt;Isn’t TDD twice the work? Why should you care?&lt;/a&gt; by Navdeep Singh&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;preparation&#34;&gt;Preparation&lt;/h1&gt;
+&lt;p&gt;Here are a few thing you might want to have set up or installed before getting started:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/&#34;&gt;Amazon Web Service&lt;/a&gt; account (a free one will work just fine)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nodejs.org/en/&#34;&gt;node.js&lt;/a&gt; (personally though, I prefer installing and maintaining it through &lt;a href=&#34;https://github.com/creationix/nvm&#34;&gt;nvm&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Text editor of your choice&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;setting-up&#34;&gt;Setting up&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a new project folder (&lt;code&gt;mkdir project-name&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Navigate into that new folder (&lt;code&gt;cd project-name&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Initialize npm (&lt;code&gt;npm init&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Follow through everything as you prefer (if you don’t know what it is, just press enter and it’ll keep the default) except for test command:, put in node test/testflow.js instead. The command line should look something like the snippet below.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;This utility will walk you through creating a package.json file.
 It only covers the most common items, and tries to guess sensible defaults.
 See `npm help json` for definitive documentation on these fields
 and exactly what they do.
 Use `npm install &amp;lt;pkg&amp;gt;` afterwards to install a package and
 save it as a dependency in the package.json file.
 Press ^C at any time to quit.
-package name: (emptyproject)
-version: (1.0.0)
-description:
-entry point: (index.js)
+package name: (emptyproject) 
+version: (1.0.0) 
+description: 
+entry point: (index.js) 
 test command: node test/testflow.js
-git repository:
-keywords:
-author:
+git repository: 
+keywords: 
+author: 
 license: (ISC)
-&lt;/code>&lt;/pre>&lt;p>Now you have node.js setup for the project.&lt;/p>
-&lt;p>Unit testing
-Shout out to &lt;a href="https://twitter.com/robmccauley">robmccauley&lt;/a> for maintaining &lt;a href="https://github.com/robm26/testflow">testflow&lt;/a> that provides unit testing for Alexa skills. Here’s what the following commands will do :&lt;/p>
-&lt;ul>
-&lt;li>Clone testflow repository into your project at the ‘test’ folder. (If this project is also a git project itself, I recommend doing &lt;code>git submodule add&lt;/code> instead of &lt;code>git clone&lt;/code>.)&lt;/li>
-&lt;li>Create a folder named ‘dialogs’&lt;/li>
-&lt;li>Create a file named ‘default.txt’ in the ‘dialog’ folder&lt;/li>
-&lt;li>Edit the ‘SourceCodeFile’ line in the cloned ‘testflow’ repository to point to the ‘index.js’ in the base level of the folder (feel free to edit it to your personal preference).&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>git clone git@github.com:robm26/testflow.git &lt;span style="color:#8be9fd;font-style:italic">test&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkdir dialogs
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>touch dialogs/default.txt
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sed -i &lt;span style="color:#f1fa8c">&amp;#39;9c const SourceCodeFile = &amp;#34;../index.js&amp;#34;&amp;#39;&lt;/span> test/testflow.js
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Inside the ‘default.txt’ file in the ‘dialogs’ folder, you should have the intents you are trying to test. The default in the testflow repository consist of the followings but you should definitely add some more customized ones to it depending on what you are trying to do in your skill.&lt;/p>
-&lt;pre tabindex="0">&lt;code>LaunchRequest
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now you have node.js setup for the project.&lt;/p&gt;
+&lt;p&gt;Unit testing
+Shout out to &lt;a href=&#34;https://twitter.com/robmccauley&#34;&gt;robmccauley&lt;/a&gt; for maintaining &lt;a href=&#34;https://github.com/robm26/testflow&#34;&gt;testflow&lt;/a&gt; that provides unit testing for Alexa skills. Here’s what the following commands will do :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clone testflow repository into your project at the ‘test’ folder. (If this project is also a git project itself, I recommend doing &lt;code&gt;git submodule add&lt;/code&gt; instead of &lt;code&gt;git clone&lt;/code&gt;.)&lt;/li&gt;
+&lt;li&gt;Create a folder named ‘dialogs’&lt;/li&gt;
+&lt;li&gt;Create a file named ‘default.txt’ in the ‘dialog’ folder&lt;/li&gt;
+&lt;li&gt;Edit the ‘SourceCodeFile’ line in the cloned ‘testflow’ repository to point to the ‘index.js’ in the base level of the folder (feel free to edit it to your personal preference).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone git@github.com:robm26/testflow.git &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;test&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir dialogs
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;touch dialogs/default.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sed -i &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;9c const SourceCodeFile = &amp;#34;../index.js&amp;#34;&amp;#39;&lt;/span&gt; test/testflow.js
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Inside the ‘default.txt’ file in the ‘dialogs’ folder, you should have the intents you are trying to test. The default in the testflow repository consist of the followings but you should definitely add some more customized ones to it depending on what you are trying to do in your skill.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;LaunchRequest
 AMAZON.HelpIntent
 AMAZON.StopIntent
-&lt;/code>&lt;/pre>&lt;p>In case where you are taking in variables through utterances, you can do something like this :&lt;/p>
-&lt;pre tabindex="0">&lt;code>DoSomething Input1=userInput1 Input2=userInput2
-&lt;/code>&lt;/pre>&lt;p>To get a deeper understanding into using testflow, I recommend looking into its &lt;a href="https://github.com/robm26/testflow/blob/master/tutorial/TUTORIAL.md">tutorial page&lt;/a> and the &lt;a href="https://developer.amazon.com/blogs/alexa/post/35eb8ae8-2cd8-4de7-86c5-97a1abc239b9/testflow-simulate-conversations-with-your-alexa-skill-code-to-ease-debugging">blog post&lt;/a> by the author himself.&lt;/p>
-&lt;h1 id="developing-the-skill">Developing the skill&lt;/h1>
-&lt;p>To be honest, I don’t have too much to talk about on this topic. Here is some sample code of how a sample skill can look like. (Also remember to do &lt;code>npm install --save alexa-sdk&lt;/code>.)&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">var&lt;/span> Alexa &lt;span style="color:#ff79c6">=&lt;/span> require(&lt;span style="color:#f1fa8c">&amp;#39;alexa-sdk&amp;#39;&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>exports.handler &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">function&lt;/span> (event, context, callback) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8be9fd;font-style:italic">var&lt;/span> alexa &lt;span style="color:#ff79c6">=&lt;/span> Alexa.handler(event, context)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> alexa.registerHandlers(handlers)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> alexa.execute()
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">var&lt;/span> handlers &lt;span style="color:#ff79c6">=&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f1fa8c">&amp;#39;LaunchRequest&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">function&lt;/span> () {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">this&lt;/span>.emit(&lt;span style="color:#f1fa8c">&amp;#39;:ask&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;Welcome to the sample skill. Say help for help.&amp;#39;&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f1fa8c">&amp;#39;Intent1&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">function&lt;/span> () {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">this&lt;/span>.emit(&lt;span style="color:#f1fa8c">&amp;#39;:ask&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;This is the first intent.&amp;#39;&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f1fa8c">&amp;#39;Intent2&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">function&lt;/span> () {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8be9fd;font-style:italic">var&lt;/span> input1 &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">this&lt;/span>.event.request.intent.slots.InputOne.value.toString()
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8be9fd;font-style:italic">var&lt;/span> input2 &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">this&lt;/span>.event.request.intent.slots.InputTwo.value.toString()
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8be9fd;font-style:italic">var&lt;/span> response &lt;span style="color:#ff79c6">=&lt;/span> doSomething(input1, input2)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">this&lt;/span>.emit(&lt;span style="color:#f1fa8c">&amp;#39;:ask&amp;#39;&lt;/span>, response)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f1fa8c">&amp;#39;AMAZON.HelpIntent&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">function&lt;/span> () {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">this&lt;/span>.emit(&lt;span style="color:#f1fa8c">&amp;#39;:ask&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;Insert some help message here.&amp;#39;&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f1fa8c">&amp;#39;AMAZON.StopIntent&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">function&lt;/span> () {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">this&lt;/span>.emit(&lt;span style="color:#f1fa8c">&amp;#39;:tell&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;Have a good rest of your day!&amp;#39;&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">function&lt;/span> doSomething (input1, input2) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">if&lt;/span> (input1.localeCompare(input2)) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;They are the same string!&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#ff79c6">else&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;They are different!&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>I recommend looking into the official &lt;a href="https://github.com/alexa/alexa-cookbook">Alexa GitHub repository&lt;/a> that provides all kinds of sample skills that you can work on top of.&lt;/p>
-&lt;h1 id="deployment">Deployment&lt;/h1>
-&lt;h2 id="alexa-skill-kit">Alexa Skill Kit&lt;/h2>
-&lt;p>Go to &lt;a href="https://developer.amazon.com/alexa/console/">this page&lt;/a> and select ‘Create Skill’. In there you should see options to ‘add intents’ and ‘custom slot types’. You should add the appropriate slot types and intents accordingly from above. After you are done with that, select ‘Endpoint’ from the side bar and select ‘AWS Lambda ARN’ as the skill’s service endpoint. Make a copy of the Skill ID as you will need it later.&lt;/p>
-&lt;h2 id="aws-lambda">AWS Lambda&lt;/h2>
-&lt;p>Create an AWS Lambda function selecting ‘from scratch’. After that, you should have an option to ‘add trigger’ where you would select ‘Alexa Skills Kit’. Now in the configuration dialog, you should put in the Skill ID you took a copy of previously then select ‘Add’.&lt;/p>
-&lt;p>After this, select back to the box that labeled your project name. There should be a ‘Function code’ dialog box appeared below. While you can definitely copy and paste your code onto the online text editor, there might be chance where the packages you have installed and used in your code is included by default. It is also possible that you have more than 1 JavaScript files for the skill.&lt;/p>
-&lt;p>In this case, you would select ‘Upload a .ZIP file’ under ‘Code entry type’. Locally, zip up all the JavaScript files along with the &lt;code>node_modules&lt;/code> folder then upload the resulting zip file.&lt;/p>
-&lt;h2 id="submission">Submission&lt;/h2>
-&lt;p>When you are done, you can go back to the Alexa Skill Kit page, select the ‘Distribution’ tab and fill out the appropriate information before submitting your skill for review. Hopefully everything goes well and your skill gets published at the Alexa Skill Store!&lt;/p>
-&lt;hr>
-&lt;h2 id="credits">Credits&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html">Build Skills with the Alexa Skills Kit&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://developer.amazon.com/blogs/alexa/post/35eb8ae8-2cd8-4de7-86c5-97a1abc239b9/testflow-simulate-conversations-with-your-alexa-skill-code-to-ease-debugging">TestFlow: Simulate Conversations with Your Alexa Skill Code to Ease Debugging&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;blockquote>
-&lt;p>&lt;em>This article was originally published on &lt;a href="https://hackernoon.com/test-driven-development-with-alexa-sdk-777f6b5e5486">Hackernoon&lt;/a>.&lt;/em>&lt;/p>
-&lt;/blockquote></description></item></channel></rss>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In case where you are taking in variables through utterances, you can do something like this :&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;DoSomething Input1=userInput1 Input2=userInput2
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;To get a deeper understanding into using testflow, I recommend looking into its &lt;a href=&#34;https://github.com/robm26/testflow/blob/master/tutorial/TUTORIAL.md&#34;&gt;tutorial page&lt;/a&gt; and the &lt;a href=&#34;https://developer.amazon.com/blogs/alexa/post/35eb8ae8-2cd8-4de7-86c5-97a1abc239b9/testflow-simulate-conversations-with-your-alexa-skill-code-to-ease-debugging&#34;&gt;blog post&lt;/a&gt; by the author himself.&lt;/p&gt;
+&lt;h1 id=&#34;developing-the-skill&#34;&gt;Developing the skill&lt;/h1&gt;
+&lt;p&gt;To be honest, I don’t have too much to talk about on this topic. Here is some sample code of how a sample skill can look like. (Also remember to do &lt;code&gt;npm install --save alexa-sdk&lt;/code&gt;.)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;12
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;13
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;14
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;15
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;16
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;17
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;18
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;19
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;20
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;21
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;22
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;23
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;24
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;25
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;26
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;27
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;28
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;29
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;30
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;31
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;32
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;33
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;34
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;35
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;36
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;37
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;38
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;39
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;40
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;var&lt;/span&gt; Alexa &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; require(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;alexa-sdk&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;exports.handler &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;function&lt;/span&gt; (event, context, callback) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;var&lt;/span&gt; alexa &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; Alexa.handler(event, context)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  alexa.registerHandlers(handlers)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  alexa.execute()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;var&lt;/span&gt; handlers &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;LaunchRequest&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;function&lt;/span&gt; () {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;this&lt;/span&gt;.emit(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;:ask&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;Welcome to the sample skill. Say help for help.&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;Intent1&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;function&lt;/span&gt; () {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;this&lt;/span&gt;.emit(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;:ask&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;This is the first intent.&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;Intent2&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;function&lt;/span&gt; () {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;var&lt;/span&gt; input1 &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;this&lt;/span&gt;.event.request.intent.slots.InputOne.value.toString()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;var&lt;/span&gt; input2 &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;this&lt;/span&gt;.event.request.intent.slots.InputTwo.value.toString()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;var&lt;/span&gt; response &lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; doSomething(input1, input2)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;this&lt;/span&gt;.emit(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;:ask&amp;#39;&lt;/span&gt;, response)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;AMAZON.HelpIntent&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;function&lt;/span&gt; () {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;this&lt;/span&gt;.emit(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;:ask&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;Insert some help message here.&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;AMAZON.StopIntent&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;function&lt;/span&gt; () {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;this&lt;/span&gt;.emit(&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;:tell&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;Have a good rest of your day!&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;function&lt;/span&gt; doSomething (input1, input2) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;if&lt;/span&gt; (input1.localeCompare(input2)) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;They are the same string!&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  } &lt;span style=&#34;color:#ff79c6&#34;&gt;else&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff79c6&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;They are different!&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;I recommend looking into the official &lt;a href=&#34;https://github.com/alexa/alexa-cookbook&#34;&gt;Alexa GitHub repository&lt;/a&gt; that provides all kinds of sample skills that you can work on top of.&lt;/p&gt;
+&lt;h1 id=&#34;deployment&#34;&gt;Deployment&lt;/h1&gt;
+&lt;h2 id=&#34;alexa-skill-kit&#34;&gt;Alexa Skill Kit&lt;/h2&gt;
+&lt;p&gt;Go to &lt;a href=&#34;https://developer.amazon.com/alexa/console/&#34;&gt;this page&lt;/a&gt; and select ‘Create Skill’. In there you should see options to ‘add intents’ and ‘custom slot types’. You should add the appropriate slot types and intents accordingly from above. After you are done with that, select ‘Endpoint’ from the side bar and select ‘AWS Lambda ARN’ as the skill’s service endpoint. Make a copy of the Skill ID as you will need it later.&lt;/p&gt;
+&lt;h2 id=&#34;aws-lambda&#34;&gt;AWS Lambda&lt;/h2&gt;
+&lt;p&gt;Create an AWS Lambda function selecting ‘from scratch’. After that, you should have an option to ‘add trigger’ where you would select ‘Alexa Skills Kit’. Now in the configuration dialog, you should put in the Skill ID you took a copy of previously then select ‘Add’.&lt;/p&gt;
+&lt;p&gt;After this, select back to the box that labeled your project name. There should be a ‘Function code’ dialog box appeared below. While you can definitely copy and paste your code onto the online text editor, there might be chance where the packages you have installed and used in your code is included by default. It is also possible that you have more than 1 JavaScript files for the skill.&lt;/p&gt;
+&lt;p&gt;In this case, you would select ‘Upload a .ZIP file’ under ‘Code entry type’. Locally, zip up all the JavaScript files along with the &lt;code&gt;node_modules&lt;/code&gt; folder then upload the resulting zip file.&lt;/p&gt;
+&lt;h2 id=&#34;submission&#34;&gt;Submission&lt;/h2&gt;
+&lt;p&gt;When you are done, you can go back to the Alexa Skill Kit page, select the ‘Distribution’ tab and fill out the appropriate information before submitting your skill for review. Hopefully everything goes well and your skill gets published at the Alexa Skill Store!&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;credits&#34;&gt;Credits&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html&#34;&gt;Build Skills with the Alexa Skills Kit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.amazon.com/blogs/alexa/post/35eb8ae8-2cd8-4de7-86c5-97a1abc239b9/testflow-simulate-conversations-with-your-alexa-skill-code-to-ease-debugging&#34;&gt;TestFlow: Simulate Conversations with Your Alexa Skill Code to Ease Debugging&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://hackernoon.com/test-driven-development-with-alexa-sdk-777f6b5e5486&#34;&gt;Hackernoon&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

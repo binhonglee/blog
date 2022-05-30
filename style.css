@@ -327,6 +327,7 @@ pre {
 
 .highlight > div {
   border-radius: 10px;
+  overflow-x: auto;
   padding: 15px;
 }
 
@@ -346,7 +347,6 @@ code {
   padding: 0 8px;
   background-color: white;
   border-radius: 10px;
-  overflow-x: auto;
 }
 
 .dark_mode_toggle[open] + div code {

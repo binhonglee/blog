@@ -1,144 +1,164 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows10 on BinHong Lee's Blog</title><link>https://binhong.me/blog/tags/windows10/</link><description>Recent content in Windows10 on BinHong Lee's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 15 Aug 2017 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/windows10/index.xml" rel="self" type="application/rss+xml"/><item><title>Use Terminal in Windows with Style</title><link>https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style/</link><pubDate>Tue, 15 Aug 2017 00:00:00 -0800</pubDate><guid>https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style/</guid><description>&lt;p>When the Linux Shell in Windows was first released, I used it and didn’t quite like it. Fast forward a year later, I heard it is a lot better now (also the fact that my familiarity with terminal commands improved helped) so I decided to give it another try. It is a really fun experience so far. In case you haven’t install the Windows Subsystem for Linux (WSL), follow this &lt;a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide">step-by-step guide&lt;/a> by Microsoft to get started. Then, install Hyper for Windows from &lt;a href="https://releases.hyper.is/download/win">here&lt;/a>. If you didn’t already, you will also need node.js for the package management for plugins of Hyper.&lt;/p>
-&lt;h2 id="opening-the-config-file">Opening the config file&lt;/h2>
-&lt;p>At the Hyper window, press &lt;code>Ctrl + ,&lt;/code>. It should open the config file “.hyper.js” with your default text editor. In case it throws an error, it is probably because Windows is trying to execute the js file instead of opening it for editing. You have 2 ways to work around this.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>(Not recommended)&lt;/strong> If you have an editor that can be opened through Powershell, then you can go ahead and do &lt;code>atom .hyper.js&lt;/code> (or whatever text editor yours is).&lt;/li>
-&lt;li>&lt;strong>(Recommended)&lt;/strong> Navigate to the user folder with your File Explorer (“C:\Users%YourUserName%\”). Right click “.hyper.js”, select “Properties”, change the “Opens with: ” to a text editor like ‘Notepad’ etc.&lt;/li>
-&lt;/ul>
-&lt;p>After this, you should be able to pull up the config file easily with either pressing &lt;code>Ctrl + ,&lt;/code> or through the Hamburger Menu into ‘Edit’ → ‘Preferences’.&lt;/p>
-&lt;h2 id="pointing-hyper-to-the-linux-shell">Pointing Hyper to the Linux Shell&lt;/h2>
-&lt;p>&lt;img src="https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style//blog/img/utImage1.png" alt="">&lt;/p>
-&lt;p>From the config file, look for the &lt;code>shell: ''&lt;/code>, option as seen from the screenshot above, change it to &lt;code>shell: 'C:\\Windows\\System32\\bash.exe\'&lt;/code>, as suggested by the comment. In my personal experience so far, neither keeping nor removing ‘shellArgs’ make any changes to the bash shell. While you are at it, feel free to add any kind of plugins you want to it. Personally, I added &lt;code>'hyperterm-cobalt2-theme'&lt;/code> because I like the theme.&lt;/p>
-&lt;p>You should now be able to use Hyper just like a normal Linux Shell.&lt;/p>
-&lt;h2 id="general-development-environment-and-tools">General development environment and tools&lt;/h2>
-&lt;p>Since you will most likely be using this for development, you should definitely run the following commands to set yourself up.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>sudo apt-get update
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt-get upgrade
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt-get install build-essential
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt-get install python-pip
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pip install --upgrade pip
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Among all of the above, installation of python-pip is crucial to the next step in installing Powerline for Hyper (or more like bash).&lt;/p>
-&lt;h2 id="installing-powerline">Installing Powerline&lt;/h2>
-&lt;h4 id="_this-section-is-referenced-from-setting-up-powerline-shell-on-windows-subsystem-for-linuxhttpiamnotmyselfcom20170415setting-up-powerline-shell-on-windows-subsystem-for-linux_">&lt;em>This section is referenced from &lt;a href="http://iamnotmyself.com/2017/04/15/setting-up-powerline-shell-on-windows-subsystem-for-linux/">SETTING UP POWERLINE SHELL ON WINDOWS SUBSYSTEM FOR LINUX&lt;/a>&lt;/em>&lt;/h4>
-&lt;p>Run the following to install Powerline.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">cd&lt;/span> ~
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone https://github.com/banga/powerline-shell.git
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">cd&lt;/span> powerline-shell
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cat config.py.dist &amp;gt; config.py
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./install.py
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>WARNING: you should not at anytime remove &lt;code>powerline-shell&lt;/code> folder (or attempt to) without reverting the following changes that you will make to the &lt;code>.bashrc&lt;/code>.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">cd&lt;/span> ~
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nano .bashrc
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>Feel free to use any other command line editor if you prefer (I use vim personally). Add the following lines to the file.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">function&lt;/span> _update_ps1&lt;span style="color:#ff79c6">()&lt;/span> &lt;span style="color:#ff79c6">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8be9fd;font-style:italic">PS1&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#ff79c6">$(&lt;/span>~/powerline-shell/powerline-shell.py &lt;span style="color:#8be9fd;font-style:italic">$?&lt;/span> 2&amp;gt; /dev/null&lt;span style="color:#ff79c6">)&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">if&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$TERM&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span> !&lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;linux&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">]&lt;/span>; &lt;span style="color:#ff79c6">then&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#8be9fd;font-style:italic">PROMPT_COMMAND&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;_update_ps1; &lt;/span>&lt;span style="color:#8be9fd;font-style:italic">$PROMPT_COMMAND&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff79c6">fi&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;em>*Note: If you happen use nano (like the given example), do note that &lt;code>Ctrl+X&lt;/code> will not exit the program. You can do &lt;code>F2&lt;/code> instead.&lt;/em>&lt;/p>
-&lt;p>Save and restart Hyper (or refresh) and it should look something like this. Realize the missing characters which are supposed to be the arrows.&lt;/p>
-&lt;p>&lt;img src="https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style//blog/img/utImage2.png" alt="">&lt;/p>
-&lt;h3 id="fonts-for-powerline">Fonts for Powerline&lt;/h3>
-&lt;p>For the character to show, you will need Powerline fonts installed and set it in your config file &lt;code>Ctrl + ,&lt;/code> for Hyper.&lt;/p>
-&lt;p>Go to &lt;a href="https://github.com/powerline/fonts">https://github.com/powerline/fonts&lt;/a>, pick a font you like (I use monofur) or clone the repo and install all the fonts. Remember to install it as Windows, meaning you will be running the ps1 file (PowerShell) instead of the sh file. If it throws an error saying something along the lines of “running scripts is disabled”, follow the instructions &lt;a href="https://www.faqforge.com/windows/windows-powershell-running-scripts-is-disabled-on-this-system/">here&lt;/a> to enable it and run it again.&lt;/p>
-&lt;p>When you are done with the installation, remember to change the font through the config file, then reload Hyper. At this point, it should look something like the following screenshot.&lt;/p>
-&lt;p>&lt;img src="https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style//blog/img/utImage3.png" alt="">&lt;/p>
-&lt;h2 id="optional-installing-npm">(Optional) Installing npm&lt;/h2>
-&lt;h4 id="_this-section-is-referenced-from-installing-nvm-nodejs-and-npm-on-ubuntuhttpsrandikacominstalling-nvm-nodejs-and-npm-on-ubuntu-f6deef0cd22a-by-randika-rathugamagehttpsmediumcomrandika_">&lt;em>This section is referenced from &lt;a href="https://randika.com/installing-nvm-nodejs-and-npm-on-ubuntu-f6deef0cd22a">Installing nvm, nodejs and npm on Ubuntu&lt;/a> by &lt;a href="https://medium.com/@randika">Randika Rathugamage&lt;/a>&lt;/em>&lt;/h4>
-&lt;p>The obvious way to do this is by installing it through the default package manager. However, the npm installed through apt-get is 3.5.2 version without node. I personally prefer installing it with nvm starting by cloning the nvm repository and adding it to &lt;code>.bashrc&lt;/code>.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">cd&lt;/span> ~
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone https://github.com/creationix/nvm.git
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;source ~/nvm/nvm.sh&amp;#34;&lt;/span> &amp;gt;&amp;gt; .bashrc
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>From here, you can either reset Hyper or do a &lt;code>source .bashrc&lt;/code> to get nvm working for you. After that, you can do &lt;code>nvm ls-remote&lt;/code> to look at all the versions available before deciding which to install or you can just do &lt;code>nvm install node&lt;/code> and call it a day.&lt;/p>
-&lt;h2 id="optional-configuring-aliases">(Optional) Configuring aliases&lt;/h2>
-&lt;p>It is important to note that the Linux file system is separated from the Windows file system (located in C:/User/your-name/AppData/Local/lxss). Windows went as far as to not show the folder in File Explorer even if you select to show hidden files just so you don’t mess with it. In one scenario where I made a change to one of the files in there from File Explorer through my text editor in Windows, the WSL no longer recognizes the existence of such file in the directory immediately.* This is why you should keep all your files in your Windows side of file system and access them through something like cd /mnt/e/git/. Retyping the file path over and over again can be annoying so instead, you can set an alias by adding the command below but changing the location to the directory where you store your development files.&lt;/p>
-&lt;p>&lt;em>*Workaround: I ended up creating a new file with vim in bash and copy pasting the entire existing file from Windows. I also renamed the files beforehand to prevent file conflict.&lt;/em>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#8be9fd;font-style:italic">echo&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;alias gitfiles=&amp;#34;cd /mnt/e/git/&amp;#34;&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.bashrc
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>From here on out, you can just do &lt;code>gitfiles&lt;/code> in Hyper (or bash) and you will go directly to your development folder.&lt;/p>
-&lt;h2 id="reset">Reset&lt;/h2>
-&lt;h4 id="_this-section-is-referenced-from-how-to-removereset-windows-subsystem-for-linux-on-windows-insider-build-14316httpssuperusercomquestions1065569how-to-remove-reset-windows-subsystem-for-linux-on-windows-insider-build-14316_">&lt;em>This section is referenced from &lt;a href="https://superuser.com/questions/1065569/how-to-remove-reset-windows-subsystem-for-linux-on-windows-insider-build-14316">How to remove/reset Windows Subsystem for Linux on Windows Insider Build 14316&lt;/a>&lt;/em>&lt;/h4>
-&lt;p>If at any point, you seems to have screwed up your Linux subsystem, you can always reset it by going to your command prompt &lt;code>cmd.exe&lt;/code> with admin privilege (Run as administrator) and input the following commands to reset the Linux subsystem.&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>lxrun /uninstall /full
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>lxrun /install
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="other-useful-links">Other useful links&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="http://www.webupd8.org/2015/02/install-oracle-java-9-in-ubuntu-linux.html">Installing Oracle Java for development&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup">First time Git setup&lt;/a>&lt;/li>
-&lt;li>Setting up ssh access for GitHub (&lt;a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#platform-linux">Creating key&lt;/a>, &lt;a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/#platform-linux">Adding key to account&lt;/a>)&lt;/li>
-&lt;li>&lt;a href="https://blog.ronakshah.net/Making-Terminal-Great-Again/">Making Terminal Great Again&lt;/a> (My inspiration to write this)&lt;/li>
-&lt;/ul>
-&lt;h2 id="afterthoughts">Afterthoughts&lt;/h2>
-&lt;p>Initially, I did this with &lt;a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH">zsh&lt;/a> (since I personally uses &lt;a href="https://github.com/bhilburn/powerlevel9k">Powerlevel9k&lt;/a> on my Mac and I love it) but zsh doesn’t seems to play well with Hyper (specifically with the plugins) causing a lot of weird configuration behaviors. Even without Hyper, the alignments for Powerlevel9k specifically goes way off causing the input line to be on the next line instead. I speculate this is due to zsh not being built with Windows in mind and does not have such compatibility.&lt;/p>
-&lt;hr>
-&lt;blockquote>
-&lt;p>&lt;em>This article was originally published on &lt;a href="https://blog.binhong.me/use-terminal-in-windows-with-style-45158e0c2f50">my personal Medium publication&lt;/a>.&lt;/em>&lt;/p>
-&lt;/blockquote></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows10 on BinHong Lee&#39;s Blog</title>
+    <link>https://binhong.me/blog/tags/windows10/</link>
+    <description>Recent content in Windows10 on BinHong Lee&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Aug 2017 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/windows10/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Use Terminal in Windows with Style</title>
+      <link>https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style/</link>
+      <pubDate>Tue, 15 Aug 2017 00:00:00 -0800</pubDate>
+      
+      <guid>https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style/</guid>
+      <description>&lt;p&gt;When the Linux Shell in Windows was first released, I used it and didn’t quite like it. Fast forward a year later, I heard it is a lot better now (also the fact that my familiarity with terminal commands improved helped) so I decided to give it another try. It is a really fun experience so far. In case you haven’t install the Windows Subsystem for Linux (WSL), follow this &lt;a href=&#34;https://msdn.microsoft.com/en-us/commandline/wsl/install_guide&#34;&gt;step-by-step guide&lt;/a&gt; by Microsoft to get started. Then, install Hyper for Windows from &lt;a href=&#34;https://releases.hyper.is/download/win&#34;&gt;here&lt;/a&gt;. If you didn’t already, you will also need node.js for the package management for plugins of Hyper.&lt;/p&gt;
+&lt;h2 id=&#34;opening-the-config-file&#34;&gt;Opening the config file&lt;/h2&gt;
+&lt;p&gt;At the Hyper window, press &lt;code&gt;Ctrl + ,&lt;/code&gt;. It should open the config file “.hyper.js” with your default text editor. In case it throws an error, it is probably because Windows is trying to execute the js file instead of opening it for editing. You have 2 ways to work around this.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;(Not recommended)&lt;/strong&gt; If you have an editor that can be opened through Powershell, then you can go ahead and do &lt;code&gt;atom .hyper.js&lt;/code&gt; (or whatever text editor yours is).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;(Recommended)&lt;/strong&gt; Navigate to the user folder with your File Explorer (“C:\Users%YourUserName%\”). Right click “.hyper.js”, select “Properties”, change the “Opens with: ” to a text editor like ‘Notepad’ etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After this, you should be able to pull up the config file easily with either pressing &lt;code&gt;Ctrl + ,&lt;/code&gt; or through the Hamburger Menu into ‘Edit’ → ‘Preferences’.&lt;/p&gt;
+&lt;h2 id=&#34;pointing-hyper-to-the-linux-shell&#34;&gt;Pointing Hyper to the Linux Shell&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style//blog/img/utImage1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;From the config file, look for the &lt;code&gt;shell: &#39;&#39;&lt;/code&gt;, option as seen from the screenshot above, change it to &lt;code&gt;shell: &#39;C:\\Windows\\System32\\bash.exe\&#39;&lt;/code&gt;, as suggested by the comment. In my personal experience so far, neither keeping nor removing ‘shellArgs’ make any changes to the bash shell. While you are at it, feel free to add any kind of plugins you want to it. Personally, I added &lt;code&gt;&#39;hyperterm-cobalt2-theme&#39;&lt;/code&gt; because I like the theme.&lt;/p&gt;
+&lt;p&gt;You should now be able to use Hyper just like a normal Linux Shell.&lt;/p&gt;
+&lt;h2 id=&#34;general-development-environment-and-tools&#34;&gt;General development environment and tools&lt;/h2&gt;
+&lt;p&gt;Since you will most likely be using this for development, you should definitely run the following commands to set yourself up.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get update
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get upgrade
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get install build-essential
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sudo apt-get install python-pip
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pip install --upgrade pip
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Among all of the above, installation of python-pip is crucial to the next step in installing Powerline for Hyper (or more like bash).&lt;/p&gt;
+&lt;h2 id=&#34;installing-powerline&#34;&gt;Installing Powerline&lt;/h2&gt;
+&lt;h4 id=&#34;_this-section-is-referenced-from-setting-up-powerline-shell-on-windows-subsystem-for-linuxhttpiamnotmyselfcom20170415setting-up-powerline-shell-on-windows-subsystem-for-linux_&#34;&gt;&lt;em&gt;This section is referenced from &lt;a href=&#34;http://iamnotmyself.com/2017/04/15/setting-up-powerline-shell-on-windows-subsystem-for-linux/&#34;&gt;SETTING UP POWERLINE SHELL ON WINDOWS SUBSYSTEM FOR LINUX&lt;/a&gt;&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;Run the following to install Powerline.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;cd&lt;/span&gt; ~
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/banga/powerline-shell.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;cd&lt;/span&gt; powerline-shell
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cat config.py.dist &amp;gt; config.py
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;./install.py
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;WARNING: you should not at anytime remove &lt;code&gt;powerline-shell&lt;/code&gt; folder (or attempt to) without reverting the following changes that you will make to the &lt;code&gt;.bashrc&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;cd&lt;/span&gt; ~
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nano .bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;Feel free to use any other command line editor if you prefer (I use vim personally). Add the following lines to the file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;5
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;6
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;function&lt;/span&gt; _update_ps1&lt;span style=&#34;color:#ff79c6&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;PS1&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;$(&lt;/span&gt;~/powerline-shell/powerline-shell.py &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$?&lt;/span&gt; 2&amp;gt; /dev/null&lt;span style=&#34;color:#ff79c6&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$TERM&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt; !&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;linux&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;]&lt;/span&gt;; &lt;span style=&#34;color:#ff79c6&#34;&gt;then&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;PROMPT_COMMAND&lt;/span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;_update_ps1; &lt;/span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;$PROMPT_COMMAND&lt;/span&gt;&lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;fi&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;em&gt;*Note: If you happen use nano (like the given example), do note that &lt;code&gt;Ctrl+X&lt;/code&gt; will not exit the program. You can do &lt;code&gt;F2&lt;/code&gt; instead.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Save and restart Hyper (or refresh) and it should look something like this. Realize the missing characters which are supposed to be the arrows.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style//blog/img/utImage2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;fonts-for-powerline&#34;&gt;Fonts for Powerline&lt;/h3&gt;
+&lt;p&gt;For the character to show, you will need Powerline fonts installed and set it in your config file &lt;code&gt;Ctrl + ,&lt;/code&gt; for Hyper.&lt;/p&gt;
+&lt;p&gt;Go to &lt;a href=&#34;https://github.com/powerline/fonts&#34;&gt;https://github.com/powerline/fonts&lt;/a&gt;, pick a font you like (I use monofur) or clone the repo and install all the fonts. Remember to install it as Windows, meaning you will be running the ps1 file (PowerShell) instead of the sh file. If it throws an error saying something along the lines of “running scripts is disabled”, follow the instructions &lt;a href=&#34;https://www.faqforge.com/windows/windows-powershell-running-scripts-is-disabled-on-this-system/&#34;&gt;here&lt;/a&gt; to enable it and run it again.&lt;/p&gt;
+&lt;p&gt;When you are done with the installation, remember to change the font through the config file, then reload Hyper. At this point, it should look something like the following screenshot.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style//blog/img/utImage3.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;optional-installing-npm&#34;&gt;(Optional) Installing npm&lt;/h2&gt;
+&lt;h4 id=&#34;_this-section-is-referenced-from-installing-nvm-nodejs-and-npm-on-ubuntuhttpsrandikacominstalling-nvm-nodejs-and-npm-on-ubuntu-f6deef0cd22a-by-randika-rathugamagehttpsmediumcomrandika_&#34;&gt;&lt;em&gt;This section is referenced from &lt;a href=&#34;https://randika.com/installing-nvm-nodejs-and-npm-on-ubuntu-f6deef0cd22a&#34;&gt;Installing nvm, nodejs and npm on Ubuntu&lt;/a&gt; by &lt;a href=&#34;https://medium.com/@randika&#34;&gt;Randika Rathugamage&lt;/a&gt;&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;The obvious way to do this is by installing it through the default package manager. However, the npm installed through apt-get is 3.5.2 version without node. I personally prefer installing it with nvm starting by cloning the nvm repository and adding it to &lt;code&gt;.bashrc&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;cd&lt;/span&gt; ~
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/creationix/nvm.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#34;source ~/nvm/nvm.sh&amp;#34;&lt;/span&gt; &amp;gt;&amp;gt; .bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;From here, you can either reset Hyper or do a &lt;code&gt;source .bashrc&lt;/code&gt; to get nvm working for you. After that, you can do &lt;code&gt;nvm ls-remote&lt;/code&gt; to look at all the versions available before deciding which to install or you can just do &lt;code&gt;nvm install node&lt;/code&gt; and call it a day.&lt;/p&gt;
+&lt;h2 id=&#34;optional-configuring-aliases&#34;&gt;(Optional) Configuring aliases&lt;/h2&gt;
+&lt;p&gt;It is important to note that the Linux file system is separated from the Windows file system (located in C:/User/your-name/AppData/Local/lxss). Windows went as far as to not show the folder in File Explorer even if you select to show hidden files just so you don’t mess with it. In one scenario where I made a change to one of the files in there from File Explorer through my text editor in Windows, the WSL no longer recognizes the existence of such file in the directory immediately.* This is why you should keep all your files in your Windows side of file system and access them through something like cd /mnt/e/git/. Retyping the file path over and over again can be annoying so instead, you can set an alias by adding the command below but changing the location to the directory where you store your development files.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;*Workaround: I ended up creating a new file with vim in bash and copy pasting the entire existing file from Windows. I also renamed the files beforehand to prevent file conflict.&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8be9fd;font-style:italic&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#f1fa8c&#34;&gt;&amp;#39;alias gitfiles=&amp;#34;cd /mnt/e/git/&amp;#34;&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; ~/.bashrc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;From here on out, you can just do &lt;code&gt;gitfiles&lt;/code&gt; in Hyper (or bash) and you will go directly to your development folder.&lt;/p&gt;
+&lt;h2 id=&#34;reset&#34;&gt;Reset&lt;/h2&gt;
+&lt;h4 id=&#34;_this-section-is-referenced-from-how-to-removereset-windows-subsystem-for-linux-on-windows-insider-build-14316httpssuperusercomquestions1065569how-to-remove-reset-windows-subsystem-for-linux-on-windows-insider-build-14316_&#34;&gt;&lt;em&gt;This section is referenced from &lt;a href=&#34;https://superuser.com/questions/1065569/how-to-remove-reset-windows-subsystem-for-linux-on-windows-insider-build-14316&#34;&gt;How to remove/reset Windows Subsystem for Linux on Windows Insider Build 14316&lt;/a&gt;&lt;/em&gt;&lt;/h4&gt;
+&lt;p&gt;If at any point, you seems to have screwed up your Linux subsystem, you can always reset it by going to your command prompt &lt;code&gt;cmd.exe&lt;/code&gt; with admin privilege (Run as administrator) and input the following commands to reset the Linux subsystem.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lxrun /uninstall /full
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lxrun /install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;other-useful-links&#34;&gt;Other useful links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.webupd8.org/2015/02/install-oracle-java-9-in-ubuntu-linux.html&#34;&gt;Installing Oracle Java for development&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup&#34;&gt;First time Git setup&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Setting up ssh access for GitHub (&lt;a href=&#34;https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#platform-linux&#34;&gt;Creating key&lt;/a&gt;, &lt;a href=&#34;https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/#platform-linux&#34;&gt;Adding key to account&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.ronakshah.net/Making-Terminal-Great-Again/&#34;&gt;Making Terminal Great Again&lt;/a&gt; (My inspiration to write this)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;afterthoughts&#34;&gt;Afterthoughts&lt;/h2&gt;
+&lt;p&gt;Initially, I did this with &lt;a href=&#34;https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH&#34;&gt;zsh&lt;/a&gt; (since I personally uses &lt;a href=&#34;https://github.com/bhilburn/powerlevel9k&#34;&gt;Powerlevel9k&lt;/a&gt; on my Mac and I love it) but zsh doesn’t seems to play well with Hyper (specifically with the plugins) causing a lot of weird configuration behaviors. Even without Hyper, the alignments for Powerlevel9k specifically goes way off causing the input line to be on the next line instead. I speculate this is due to zsh not being built with Windows in mind and does not have such compatibility.&lt;/p&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/use-terminal-in-windows-with-style-45158e0c2f50&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
