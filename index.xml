@@ -202,10 +202,12 @@
 &lt;li&gt;Add the generated directory to .gitignore&lt;/li&gt;
 &lt;li&gt;Use Node.js in the GitHub Action (&lt;code&gt;- uses: actions/setup-node@v1&lt;/code&gt;)&lt;/li&gt;
 &lt;li&gt;Make sure the devserver site is up and running (in my case, &lt;code&gt;hugo serve -D&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;npm install&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Run &lt;code&gt;npx altimeter config.json&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Run build if needed (&lt;code&gt;hugo --minify --buildFuture&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Run build if needed (&lt;code&gt;hugo --buildFuture&lt;/code&gt;)&lt;/li&gt;
 &lt;li&gt;Deploy! 🎉&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;&lt;em&gt;Note: If you are generating this for static content, you might need to setup a server to serve up those static content on a &lt;code&gt;localhost&lt;/code&gt; address. I recommend following &lt;a href=&#34;https://nodejs.org/en/knowledge/HTTP/servers/how-to-serve-static-files/&#34;&gt;this guide&lt;/a&gt; to set up a server (instead of using &lt;code&gt;expressjs&lt;/code&gt;).&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&#34;wrap-up&#34;&gt;Wrap up&lt;/h2&gt;
 &lt;p&gt;This was a fun ride. Honestly, I ran into a few problems here and there (mainly, setting up monorepo in GlobeTrotte and creating CLI with TypeScript) but it&amp;rsquo;s relatively straightforward otherwise. The actual coding part took less than a day while writing up the documentations (and this blog post) probably took close to double the time.&lt;/p&gt;
 </description>

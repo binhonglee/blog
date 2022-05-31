@@ -7,8 +7,8 @@
     <title>Automated Link Preview Image Card - BinHong Lee&#39;s Blog</title>
     
     <meta name="description" content="A while ago, I saw this tweet thread from Simon Willison about how he added social media preview cards to his TILs. He detailed how he did this through a combination of Puppeteer, Vercel, SQLite, and some other stuff I didn&rsquo;t understand 😅.
-@simonw  Added social media preview cards to my TILs! https://til.simonwillison.net/til/til/pytest_subprocess-server.md
- Read more...    At that time, I was manually taking these screenshots by hand to be included as part of the commit, which is to say it&rsquo;s not very efficient.">
+@simonw Added social media preview cards to my TILs! https://til.simonwillison.net/til/til/pytest_subprocess-server.md
+Read more... At that time, I was manually taking these screenshots by hand to be included as part of the commit, which is to say it&rsquo;s not very efficient.">
     <meta name="author" content="BinHong Lee">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Automated Link Preview Image Card">
@@ -34,7 +34,7 @@
     
     <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
     
-    <meta name="generator" content="Hugo 0.99.1" />
+    <meta name="generator" content="Hugo 0.100.0" />
     
     </head>
   <body class="single">
@@ -259,10 +259,12 @@
 <li>Add the generated directory to .gitignore</li>
 <li>Use Node.js in the GitHub Action (<code>- uses: actions/setup-node@v1</code>)</li>
 <li>Make sure the devserver site is up and running (in my case, <code>hugo serve -D</code>)</li>
+<li>Run <code>npm install</code></li>
 <li>Run <code>npx altimeter config.json</code></li>
-<li>Run build if needed (<code>hugo --minify --buildFuture</code>)</li>
+<li>Run build if needed (<code>hugo --buildFuture</code>)</li>
 <li>Deploy! 🎉</li>
 </ol>
+<p><em>Note: If you are generating this for static content, you might need to setup a server to serve up those static content on a <code>localhost</code> address. I recommend following <a href="https://nodejs.org/en/knowledge/HTTP/servers/how-to-serve-static-files/">this guide</a> to set up a server (instead of using <code>expressjs</code>).</em></p>
 <h2 id="wrap-up">Wrap up</h2>
 <p>This was a fun ride. Honestly, I ran into a few problems here and there (mainly, setting up monorepo in GlobeTrotte and creating CLI with TypeScript) but it&rsquo;s relatively straightforward otherwise. The actual coding part took less than a day while writing up the documentations (and this blog post) probably took close to double the time.</p>
 </div>
