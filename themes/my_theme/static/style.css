@@ -191,11 +191,9 @@ p > .link {
   color: var(--default-color);
 }
 
-.article_body {
-  max-width: 1300px;
-}
-
-.content, .footer {
+.article_body ,
+.content,
+.footer {
   max-width: 950px;
 }
 

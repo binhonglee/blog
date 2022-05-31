@@ -131,9 +131,12 @@ I currently use the above package as a CLI on my own blog (specifically this one
 1. Add the generated directory to .gitignore
 2. Use Node.js in the GitHub Action (`- uses: actions/setup-node@v1`)
 3. Make sure the devserver site is up and running (in my case, `hugo serve -D`)
-4. Run `npx altimeter config.json`
-5. Run build if needed (`hugo --minify --buildFuture`)
-6. Deploy! 🎉
+4. Run `npm install`
+5. Run `npx altimeter config.json`
+6. Run build if needed (`hugo --buildFuture`)
+7. Deploy! 🎉
+
+_Note: If you are generating this for static content, you might need to setup a server to serve up those static content on a `localhost` address. I recommend following [this guide](https://nodejs.org/en/knowledge/HTTP/servers/how-to-serve-static-files/) to set up a server (instead of using `expressjs`)._
 
 ## Wrap up
 
