@@ -13,12 +13,12 @@ theme = "my_theme"
     name = "GitHub"
     url = "https://github.com/binhonglee"
 
-[Author]
-  name = "BinHong Lee"
-
 [Params]
   favicon = "img/profile.png"
-  [params.social]
+  [Params.author]
+    name = "BinHong Lee"
+    email = "binhong@binhong.me"
+  [Params.social]
     rss = true
     homepage = true
     facebook = "binhonglee"

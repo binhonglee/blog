@@ -13,9 +13,7 @@
           <p class="row lang">{{ .Params.subtitle }}</h2>
           {{- end }}
           <div class="row author">
-            {{- if or .Params.Author .Site.Author.name }}
-            <p>{{- .Params.Author | default .Site.Author.name }}</p>
-            {{ end }}
+            <p>{{ .Site.Params.author.name }}</p>
             <p class="right">{{- .Date.Format "January 2, 2006" -}}</p>
           </div>
           <div class="post_content">{{ .Content }}</div>

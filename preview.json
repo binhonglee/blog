@@ -2,6 +2,9 @@
   "baseURL": "http://localhost:1313/blog",
   "destURLs": [
     {
+      "name": "self_hosted_github_runners",
+      "url": "2025-04-25-self-hosted-github-runners"
+    }, {
       "name": "automated_link_preview",
       "url": "2022-05-31-automated-link-preview-image"
     }, {

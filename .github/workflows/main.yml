@@ -7,7 +7,7 @@ on:
       - hugo
 jobs:
   deploy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v2
         with:
@@ -15,24 +15,24 @@ jobs:
           fetch-depth: 0
       - name: Cache cache directory
         id: cache-cache
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ~/.cache
           key: ${{ hashFiles('**/package.json') }}-cache
       - name: Cache node_modules
         id: cache-node-modules
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: ${{ hashFiles('**/package.json') }}-npm-v1
       
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
-          node-version: '16.13.1'
+          node-version: "23.8.0"
 
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: 'latest'
 

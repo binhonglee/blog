@@ -8,7 +8,6 @@
     <!-- Meta -->
     {{- if eq .Kind "page" }}
     <meta name="description" content="{{ .Summary }}">
-    <meta name="author" content="{{ .Params.Author | default .Site.Author.name }}">
     <meta property="og:type" content="article">
     <meta property="og:title" content="{{ .Title }}">
     {{- if .Params.subtitle }}
@@ -47,9 +46,6 @@
     <meta property="og:title" content="Home - BinHong's Blog">
     <meta property="og:description" content="A place where I scribble notes for future references.">
     <meta property="og:image" content="https://binhong.me/images/profile.png">
-    <meta property="og:profile:first_name" content="BinHong">
-    <meta property="og:profile:last_name" content="Lee">
-    <meta property="og:username" content="binhong">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:description" content="A place where I scribble notes for future references.">
     <meta name="twitter:title" content="Home - BinHong's Blog">
@@ -57,10 +53,14 @@
     <meta name="twitter:image:alt" content="Commissioned image icon of me coding with a pair of black headphones on while sitting on a pink bean bag wearing a light blue hoodie. The laptop is purple with a bunch of mostly MLH demo stickers on it.">
     <meta name="twitter:site" content="@{{ .Site.Params.twitter }}">
     <meta name="description" content="{{ .Site.Params.description }}">
-    <meta name="author" content="{{ .Site.Author.name }}">
     {{- end }}
+    <meta name="author" content="{{ .Site.Params.author.name }}">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="{{ .Site.Title }}">
+    <meta name="twitter:site" content="@{{ .Site.Params.social.twitter }}">
     <!-- Styles -->
     <link href="{{ "style.css" | absURL }}" rel="stylesheet">
     <link href="https://binhong.me/fonts/fonts.css" rel="stylesheet">

@@ -8,9 +8,7 @@ aliases:
     - /automated_link_preview/
 ---
 
-A while ago, I saw this tweet thread from Simon Willison about how he added social media preview cards to his TILs. He detailed how he did this through a combination of Puppeteer, Vercel, SQLite, and some other stuff I didn't understand 😅.
-
-{{< tweet 1300868423774212096 >}}
+A while ago, I saw [this tweet thread from Simon Willison](https://twitter.com/simonw/status/1300868423774212096) about how he added social media preview cards to his TILs. He detailed how he did this through a combination of Puppeteer, Vercel, SQLite, and some other stuff I didn't understand 😅.
 
 At that time, I was manually taking these screenshots by hand to be included as part of the commit, which is to say it's not very efficient. Anyway, this stayed on my backlog of "things to explore" for a really long time until recently during this long weekend (where I also took additional PTOs), I had some free time and decided to look into this. The goal is simple, automate creating the preview images for a list of given / defined urls.
 

@@ -130,10 +130,6 @@ p, li, .footer a {
   font-size: 25px;
 }
 
-p > .link {
-  margin-right: 50px;
-}
-
 .wrapper {
   min-height: 100vh;
   background-color: var(--default-background);
@@ -312,6 +308,7 @@ footer .row {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  line-clamp: 3;
   overflow: hidden;
   word-break: break-word;
 }
@@ -388,7 +385,7 @@ pre .custom-language {
     font-size: 40px;
     z-index: 1;
     background-color: var(--default-background);
-    color: var(--default-active);
+    color: var(--default-color);
   }
 
   .dark_mode_toggle[open] + div .dropdown_toggle {
