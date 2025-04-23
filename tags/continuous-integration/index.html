@@ -10,9 +10,6 @@
     <meta property="og:title" content="Home - BinHong's Blog">
     <meta property="og:description" content="A place where I scribble notes for future references.">
     <meta property="og:image" content="https://binhong.me/images/profile.png">
-    <meta property="og:profile:first_name" content="BinHong">
-    <meta property="og:profile:last_name" content="Lee">
-    <meta property="og:username" content="binhong">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:description" content="A place where I scribble notes for future references.">
     <meta name="twitter:title" content="Home - BinHong's Blog">
@@ -21,8 +18,12 @@
     <meta name="twitter:site" content="@">
     <meta name="description" content="">
     <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
     
     <link href="https://binhong.me/blog/style.css" rel="stylesheet">
     <link href="https://binhong.me/fonts/fonts.css" rel="stylesheet">
@@ -31,7 +32,7 @@
     
     <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
     
-    <meta name="generator" content="Hugo 0.100.0" />
+    <meta name="generator" content="Hugo 0.146.7">
     
     <link rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/tags/continuous-integration/index.xml" title="BinHong Lee's Blog" />
     </head>
@@ -63,12 +64,24 @@
 
 
         <article class="block">
+          <a class="article_link active" href="https://binhong.me/blog/2025-04-25-self-hosted-github-runners/">
+            <p class="name row">Self-Hosted GitHub Runners</p>
+            <p class="lang row">Turning your old laptops into GH Runners</p>
+            <p class="desc">This post will focus more on the “why” and some of the quirks around doing so instead of the “how” since GitHub already have a very comprehensive guide around it.
+Just wanted to take a bit of time to acknowledge that it’s been almost 3 years since I last wrote a blog post. It’s been a busy 3 years for sure but hopefully I’ll be writing more consistently moving forward. (I do have quite a few half-written drafts that I’ve never published which I can’t tell if it’s still relavant at this point.)
+...</p>
+            <p class="right">April 25, 2025</p>
+          </a>
+        </article>
+
+
+        <article class="block">
           <a class="article_link active" href="https://binhong.me/blog/2022-05-31-automated-link-preview-image/">
             <p class="name row">Automated Link Preview Image Card</p>
             <p class="lang row">Taking screenshots with Playwright</p>
             <p class="desc">A while ago, I saw this tweet thread from Simon Willison about how he added social media preview cards to his TILs. He detailed how he did this through a combination of Puppeteer, Vercel, SQLite, and some other stuff I didn’t understand 😅.
-@simonw Added social media preview cards to my TILs! https://til.simonwillison.net/til/til/pytest_subprocess-server.md
-Read more... At that time, I was manually taking these screenshots by hand to be included as part of the commit, which is to say it’s not very efficient....</p>
+At that time, I was manually taking these screenshots by hand to be included as part of the commit, which is to say it’s not very efficient. Anyway, this stayed on my backlog of “things to explore” for a really long time until recently during this long weekend (where I also took additional PTOs), I had some free time and decided to look into this. The goal is simple, automate creating the preview images for a list of given / defined urls.
+...</p>
             <p class="right">May 31, 2022</p>
           </a>
         </article>
@@ -80,7 +93,8 @@ Read more... At that time, I was manually taking these screenshots by hand to be
             <p class="lang row">Only HTML &#43; CSS with no frameworks</p>
             <p class="desc">As time goes on in my journey of experimenting with different technologies on building a web interface, I figured it’s time for my personal site to return to the fundamentals. So I decided to build it with only HTML &#43; CSS with one of the goals being that it should work perfectly fine with JavaScript disabled.
 Before this, it’s built with Vue. You can still find the source here.
-Design Inspiration Skip this next paragraph if you’re not interested in my old site’s origin story....</p>
+Design Inspiration Skip this next paragraph if you’re not interested in my old site’s origin story.
+...</p>
             <p class="right">January 31, 2022</p>
           </a>
         </article>
@@ -91,7 +105,8 @@ Design Inspiration Skip this next paragraph if you’re not interested in my old
             <p class="name row">Upgrading a Vue TypeScript Project (2.x -&gt; 3.x)</p>
             <p class="lang row">Migrating from Parcel to vite</p>
             <p class="desc">While Vue 3 has been out of beta for quite a while, (as noted on their website) a migration build is still a work in progress so the current advice is to stay with Vue 2 if it’s a non-trivial project. I procrastinated on this article for so long that a migration build has since been released. Feel free to check it out here.
-That said, as Parcel v1 is no longer maintained (and with v2 supporting only Vue 3), I figured it’s time to upgrade....</p>
+That said, as Parcel v1 is no longer maintained (and with v2 supporting only Vue 3), I figured it’s time to upgrade.
+...</p>
             <p class="right">December 12, 2021</p>
           </a>
         </article>
@@ -100,7 +115,8 @@ That said, as Parcel v1 is no longer maintained (and with v2 supporting only Vue
         <article class="block">
           <a class="article_link active" href="https://binhong.me/blog/2021-07-18-postgresql-on-azure/">
             <p class="name row">PostgreSQL on Azure Pipeline with OSX</p>
-            <p class="desc">While the defacto way of running postgres on Azure Pipeline according to this guide seems to be using the docker image, the MacOS image on Azure Pipeline does not have docker support due to some licensing issue. So instead, this has to be setup and handled manually. We’d use brew here since it comes installed in the OS image and is the easiest way to deal with it as far as I’m aware....</p>
+            <p class="desc">While the defacto way of running postgres on Azure Pipeline according to this guide seems to be using the docker image, the MacOS image on Azure Pipeline does not have docker support due to some licensing issue. So instead, this has to be setup and handled manually. We’d use brew here since it comes installed in the OS image and is the easiest way to deal with it as far as I’m aware.
+...</p>
             <p class="right">July 18, 2021</p>
           </a>
         </article>
@@ -110,7 +126,8 @@ That said, as Parcel v1 is no longer maintained (and with v2 supporting only Vue
           <a class="article_link active" href="https://binhong.me/blog/2021-05-22-ava-with-vue-typescript-and-nyc/">
             <p class="name row">Ava with Vue (2.x) &#43; TypeScript (and NYC)</p>
             <p class="lang row">Component and Unit Testing with Test Coverage</p>
-            <p class="desc">When working on a project with Vue (TypeScript), I faced a lot of roadblocks trying to get code coverage to work. The issue is largely covered in this issue thread. Most solutions / workarounds for that seems to revolve around changing the bundling flow with webpack. Considering my lack of familiarity with webpack (on top of my use of scss and pug in Vue files), putting together a webpack config that works for me turns out to be extremely challenging....</p>
+            <p class="desc">When working on a project with Vue (TypeScript), I faced a lot of roadblocks trying to get code coverage to work. The issue is largely covered in this issue thread. Most solutions / workarounds for that seems to revolve around changing the bundling flow with webpack. Considering my lack of familiarity with webpack (on top of my use of scss and pug in Vue files), putting together a webpack config that works for me turns out to be extremely challenging. That somewhat prompted me to move the build and test process away from vue-cli while starting to experiment with different tools that could work. One thing to note is that, I’ll be using babel to handle TypeScript compiling / transpiling instead of ts-node as recommended from Ava’s guide.
+...</p>
             <p class="right">May 22, 2021</p>
           </a>
         </article>
@@ -120,7 +137,8 @@ That said, as Parcel v1 is no longer maintained (and with v2 supporting only Vue
           <a class="article_link active" href="https://binhong.me/blog/2020-08-09-cross-language-object-parsing/">
             <p class="name row">Cross Language Object Parsing</p>
             <p class="lang row">I wrote code that writes code</p>
-            <p class="desc">I was working on a side project where I had the backend and frontend setup to run on different programming languages. As I was working on it, it started to bug me a little that I have to write the same object / struct and enum for each language in use everytime I introduce a new enum or struct. It can also be confusing / dangerous if I updated one side and forget to update the other....</p>
+            <p class="desc">I was working on a side project where I had the backend and frontend setup to run on different programming languages. As I was working on it, it started to bug me a little that I have to write the same object / struct and enum for each language in use everytime I introduce a new enum or struct. It can also be confusing / dangerous if I updated one side and forget to update the other.
+...</p>
             <p class="right">August 9, 2020</p>
           </a>
         </article>
@@ -131,7 +149,8 @@ That said, as Parcel v1 is no longer maintained (and with v2 supporting only Vue
             <p class="name row">Multi-language Support Build Tool</p>
             <p class="lang row">Developing with Please</p>
             <p class="desc">I recently started learning about Go to find out what’s all the hype about. So I figured what’s a better way than to build a project out of it? As I was setting up my machine and going through tutorials step-by-step, I was slightly annoyed by the fact that the development of Go projects are limited to inside the $GOPATH.
-Personally, I have all my side projects stored at the top level of the computer....</p>
+Personally, I have all my side projects stored at the top level of the computer. It might not be the best way to do it but I’m liking that I can see all my projects at one glance. I guess one could argue that you can soft link the folder into the folder inside $GOPATH and I would pretty much achieve the same effect. But it didn’t quite feel right to me, sounds like a really hacky workaround that might not worth the maintenance cost as I switch to a separate machine only to have to do everything all over again.
+...</p>
             <p class="right">August 7, 2019</p>
           </a>
         </article>
@@ -142,7 +161,8 @@ Personally, I have all my side projects stored at the top level of the computer.
             <p class="name row">Functional and flexible shell scripting tricks</p>
             <p class="desc">Shell scripts vs python or perl Its 2019 now, who writes shell scripts anymore? Am I right? Well, apparently I do. ¯\_(ツ)_/¯
 There are some good arguments for that here and here which mainly revolve around 2 things:
-Shell exists in all Unix systems and makes use of system default features. Shell is an “interactive command function” designed to get user inputs during the process of running them. Also, here’s an additional relevant reading about the differences between sh and bash....</p>
+Shell exists in all Unix systems and makes use of system default features. Shell is an “interactive command function” designed to get user inputs during the process of running them. Also, here’s an additional relevant reading about the differences between sh and bash.
+...</p>
             <p class="right">May 7, 2019</p>
           </a>
         </article>
@@ -154,19 +174,9 @@ Shell exists in all Unix systems and makes use of system default features. Shell
             <p class="lang row">Quick guide to building and unit testing an Alexa Skill</p>
             <p class="desc">What is Test Driven Development? According to Wikipedia, it means “Requirements are turned into very specific test cases, then the software is improved to pass the new tests, only.” Basically, you would first have to write the test of the software/feature you are developing before you start working on the developing the software/feature itself.
 Here are a few more articles on the benefits and why you should apply TDD:
-Test Driven Development by Jan Olbrich Isn’t TDD twice the work?...</p>
+Test Driven Development by Jan Olbrich Isn’t TDD twice the work? Why should you care? by Navdeep Singh Preparation Here are a few thing you might want to have set up or installed before getting started:
+...</p>
             <p class="right">October 29, 2018</p>
-          </a>
-        </article>
-
-
-        <article class="block">
-          <a class="article_link active" href="https://binhong.me/blog/2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server/">
-            <p class="name row">How to host multiple domain names and projects on one server</p>
-            <p class="lang row">NGINX is one magical tool</p>
-            <p class="desc">I own multiple domain names, and each one hosts a different side project. For the longest time, everything that required ‘hosting’ was hosted on Heroku. But their free tier can be quite limited, it can also get costly quickly if you are paying for each separate project. So instead, I decided to explore putting all of them together using NGINX (recommended to me by Jane Manchun Wong).
-Required Resources Virtual Private Server (VPS) You’ll need a virtual server such as DigitalOcean or EC2 by AWS....</p>
-            <p class="right">August 29, 2018</p>
           </a>
         </article>
       </div>
@@ -183,14 +193,15 @@ Required Resources Virtual Private Server (VPS) You’ll need a virtual server s
             <a href="https://rubjo.github.io/victor-mono/" rel="noopener" target="_blank" class="name">Victor Mono</a>
           </div>
           <div class="row">
-            <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️ | <a href="https://github.com/binhonglee/blog" rel="noopener" target="_blank">Source (GitHub)</a> </p>
+            <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a> | <a href="https://github.com/binhonglee/blog" rel="noopener" target="_blank">Source (GitHub)</a> </p>
           </div>
           <div class="row">
-            <p>&copy; 2022 <a href="https://binhong.me">BinHong Lee</a></p>
+            <p>&copy; 2025 <a href="https://binhong.me">BinHong Lee</a></p>
           </div>
         </div>
       </footer>
     </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
   </body>
 </html>
 

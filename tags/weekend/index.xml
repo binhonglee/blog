@@ -6,12 +6,14 @@
     <description>Recent content in Weekend on BinHong Lee&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
+    <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
     <lastBuildDate>Sat, 02 Jun 2018 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/weekend/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building a side project over the weekend</title>
       <link>https://binhong.me/blog/2018-06-02-building-a-side-project-over-the-weekend/</link>
       <pubDate>Sat, 02 Jun 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/2018-06-02-building-a-side-project-over-the-weekend/</guid>
       <description>&lt;p&gt;Few months ago during my job search, I decided that I want to add some new skills to my arsenal (resume) so I went ahead to build a &lt;a href=&#34;http://www.breakups.life/&#34;&gt;bill splitting webapp&lt;/a&gt; (and the month before, &lt;a href=&#34;https://github.com/binhonglee/dota2-random&#34;&gt;an Alexa skill&lt;/a&gt;). Granted, the backend was built weeks before during a hackathon (shoutout to &lt;a href=&#34;http://www.hackisu.org/&#34;&gt;HackISU&lt;/a&gt;), I’m just focusing on building the UI that makes post requests to the backend. In the process, I also ended up fixing some inherent flaws I left behind in the backend.&lt;/p&gt;
 &lt;h2 id=&#34;idea&#34;&gt;Idea&lt;/h2&gt;
@@ -35,8 +37,7 @@
 &lt;p&gt;Don’t get too hung up on the project. I’m not saying you shouldn’t be proud of it but the skills you obtained in the process will very likely to be much more valuable than that. As mentioned, you don’t want to feel obligated to come back and ‘complete’ the project in the future when you’re procrastinating while you actually have other priorities like project deadlines, homeworks etc. so its important to wrap up your project properly in a way that its a minimal product presentable but also something you understand that you can always add onto whenever you feel like it.&lt;/p&gt;
 &lt;p&gt;Of course, in an off chance that it blows up, congrats! For starters, maybe you can start thinking about how to monetize it? I don’t know (this has not happened to me). Maybe some guys at &lt;a href=&#34;https://www.facebook.com/groups/1401833413216649&#34;&gt;I can handle the business side&lt;/a&gt; can help you with that. 😉😂 /j&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/building-a-side-project-over-the-weekend-8895e0cf02d7&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/building-a-side-project-over-the-weekend-8895e0cf02d7&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     

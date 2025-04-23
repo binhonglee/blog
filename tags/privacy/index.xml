@@ -6,12 +6,14 @@
     <description>Recent content in Privacy on BinHong Lee&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
+    <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
     <lastBuildDate>Mon, 20 Nov 2017 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/privacy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>I could become you tomorrow and no one will know</title>
       <link>https://binhong.me/blog/2017-11-20-i-could-become-you-tomorrow-and-no-one-would-find-out/</link>
       <pubDate>Mon, 20 Nov 2017 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/2017-11-20-i-could-become-you-tomorrow-and-no-one-would-find-out/</guid>
       <description>&lt;h2 id=&#34;backstory&#34;&gt;Backstory&lt;/h2&gt;
 &lt;p&gt;I lied, but maybe someone else could. If you didn’t know already, &lt;a href=&#34;https://www.lowyat.net/2017/145654/personal-data-millions-malaysians-sale-source-breach-still-unknown/&#34;&gt;Malaysia just suffered possibly its largest data breach ever&lt;/a&gt; with personal data of millions of Malaysians (including your full name, IC number, phone number and home address) up for grabs as long as the price is right. If you are not freaked out yet, you should be and I’ll tell you why. I don’t think many people understand how dangerous these data can be. I’m also honestly mildly infuriated about this. No, not about the creator of &lt;a href=&#34;https://sayakenahack.com/&#34;&gt;sayakenahack.com&lt;/a&gt; (hereafter referred as Keith) but rather how this whole thing panned out. I’ve mentioned before in private conversations with friends about my concerns on cybersecurity in Malaysia but never really gave it too much thoughts. Not until I discovered this whole fiasco.&lt;/p&gt;
@@ -33,8 +35,7 @@
 &lt;p&gt;Honestly, I’m widely upset by the of public’s reaction or lack thereof. Anyone who got their hands onto such information can just show up and ‘become you’ figuratively tomorrow but you couldn’t care less? I guess I’m going a little too far with my fear-mongering approach but I really think the public awareness of such danger is at little to none.&lt;/p&gt;
 &lt;p&gt;Much like the whole Equifax fiasco in the US, I sincerely think this is an important educational opportunity for both the public and the government officials to understand the importance of cybersecurity. I&amp;rsquo;m in no way an expert (not even a beginner so to say) in this realm but the ignorance over such topic is hurting the well-being of not just any individual but the trust in the country. With no punishment in place for organizations mishandling such damaging information (that allows impersonation), how am I ever going to trust anyone, any company, with any of my personal details anymore?&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/i-could-become-you-tomorrow-and-no-one-would-find-out-c9928e915c70&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/i-could-become-you-tomorrow-and-no-one-would-find-out-c9928e915c70&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
 </description>
     </item>
     

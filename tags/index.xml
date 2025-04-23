@@ -6,12 +6,14 @@
     <description>Recent content in Tags on BinHong Lee&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
+    <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
     <lastBuildDate>Sun, 18 Jul 2021 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Azure Pipeline</title>
       <link>https://binhong.me/blog/tags/azure-pipeline/</link>
       <pubDate>Sun, 18 Jul 2021 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/azure-pipeline/</guid>
       <description></description>
     </item>
@@ -20,7 +22,7 @@
       <title>Continuous Integration</title>
       <link>https://binhong.me/blog/tags/continuous-integration/</link>
       <pubDate>Sun, 18 Jul 2021 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/continuous-integration/</guid>
       <description></description>
     </item>
@@ -29,7 +31,7 @@
       <title>OSX</title>
       <link>https://binhong.me/blog/tags/osx/</link>
       <pubDate>Sun, 18 Jul 2021 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/osx/</guid>
       <description></description>
     </item>
@@ -38,7 +40,7 @@
       <title>PostgreSQL</title>
       <link>https://binhong.me/blog/tags/postgresql/</link>
       <pubDate>Sun, 18 Jul 2021 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/postgresql/</guid>
       <description></description>
     </item>
@@ -47,7 +49,7 @@
       <title>Coverage</title>
       <link>https://binhong.me/blog/tags/coverage/</link>
       <pubDate>Sat, 22 May 2021 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/coverage/</guid>
       <description></description>
     </item>
@@ -56,7 +58,7 @@
       <title>Test</title>
       <link>https://binhong.me/blog/tags/test/</link>
       <pubDate>Sat, 22 May 2021 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/test/</guid>
       <description></description>
     </item>
@@ -65,7 +67,7 @@
       <title>TypeScript</title>
       <link>https://binhong.me/blog/tags/typescript/</link>
       <pubDate>Sat, 22 May 2021 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/typescript/</guid>
       <description></description>
     </item>
@@ -74,7 +76,7 @@
       <title>Vue</title>
       <link>https://binhong.me/blog/tags/vue/</link>
       <pubDate>Sat, 22 May 2021 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/vue/</guid>
       <description></description>
     </item>
@@ -83,7 +85,7 @@
       <title>Automation</title>
       <link>https://binhong.me/blog/tags/automation/</link>
       <pubDate>Sun, 09 Aug 2020 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/automation/</guid>
       <description></description>
     </item>
@@ -92,7 +94,7 @@
       <title>Cross Language</title>
       <link>https://binhong.me/blog/tags/cross-language/</link>
       <pubDate>Sun, 09 Aug 2020 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/cross-language/</guid>
       <description></description>
     </item>
@@ -101,7 +103,7 @@
       <title>Object</title>
       <link>https://binhong.me/blog/tags/object/</link>
       <pubDate>Sun, 09 Aug 2020 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/object/</guid>
       <description></description>
     </item>
@@ -110,7 +112,7 @@
       <title>Parsing</title>
       <link>https://binhong.me/blog/tags/parsing/</link>
       <pubDate>Sun, 09 Aug 2020 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/parsing/</guid>
       <description></description>
     </item>
@@ -119,16 +121,16 @@
       <title>Build</title>
       <link>https://binhong.me/blog/tags/build/</link>
       <pubDate>Wed, 07 Aug 2019 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/build/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Devops</title>
+      <title>DevOps</title>
       <link>https://binhong.me/blog/tags/devops/</link>
       <pubDate>Wed, 07 Aug 2019 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/devops/</guid>
       <description></description>
     </item>
@@ -137,7 +139,7 @@
       <title>Programming</title>
       <link>https://binhong.me/blog/tags/programming/</link>
       <pubDate>Tue, 07 May 2019 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/programming/</guid>
       <description></description>
     </item>
@@ -146,7 +148,7 @@
       <title>Scripting</title>
       <link>https://binhong.me/blog/tags/scripting/</link>
       <pubDate>Tue, 07 May 2019 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/scripting/</guid>
       <description></description>
     </item>
@@ -155,7 +157,7 @@
       <title>Shell Script</title>
       <link>https://binhong.me/blog/tags/shell-script/</link>
       <pubDate>Tue, 07 May 2019 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/shell-script/</guid>
       <description></description>
     </item>
@@ -164,7 +166,7 @@
       <title>Alexa</title>
       <link>https://binhong.me/blog/tags/alexa/</link>
       <pubDate>Mon, 29 Oct 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/alexa/</guid>
       <description></description>
     </item>
@@ -173,7 +175,7 @@
       <title>Alexa Sdk</title>
       <link>https://binhong.me/blog/tags/alexa-sdk/</link>
       <pubDate>Mon, 29 Oct 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/alexa-sdk/</guid>
       <description></description>
     </item>
@@ -182,7 +184,7 @@
       <title>Alexa Skills</title>
       <link>https://binhong.me/blog/tags/alexa-skills/</link>
       <pubDate>Mon, 29 Oct 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/alexa-skills/</guid>
       <description></description>
     </item>
@@ -191,7 +193,7 @@
       <title>JavaScript</title>
       <link>https://binhong.me/blog/tags/javascript/</link>
       <pubDate>Mon, 29 Oct 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/javascript/</guid>
       <description></description>
     </item>
@@ -200,7 +202,7 @@
       <title>Tdd</title>
       <link>https://binhong.me/blog/tags/tdd/</link>
       <pubDate>Mon, 29 Oct 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/tdd/</guid>
       <description></description>
     </item>
@@ -209,7 +211,7 @@
       <title>Git</title>
       <link>https://binhong.me/blog/tags/git/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/git/</guid>
       <description></description>
     </item>
@@ -218,7 +220,7 @@
       <title>Gitea</title>
       <link>https://binhong.me/blog/tags/gitea/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/gitea/</guid>
       <description></description>
     </item>
@@ -227,7 +229,7 @@
       <title>Self Hosted</title>
       <link>https://binhong.me/blog/tags/self-hosted/</link>
       <pubDate>Wed, 29 Aug 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/self-hosted/</guid>
       <description></description>
     </item>
@@ -236,7 +238,7 @@
       <title>Hackathons</title>
       <link>https://binhong.me/blog/tags/hackathons/</link>
       <pubDate>Sat, 02 Jun 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/hackathons/</guid>
       <description></description>
     </item>
@@ -245,7 +247,7 @@
       <title>Side Project</title>
       <link>https://binhong.me/blog/tags/side-project/</link>
       <pubDate>Sat, 02 Jun 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/side-project/</guid>
       <description></description>
     </item>
@@ -254,7 +256,7 @@
       <title>Software Development</title>
       <link>https://binhong.me/blog/tags/software-development/</link>
       <pubDate>Sat, 02 Jun 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/software-development/</guid>
       <description></description>
     </item>
@@ -263,7 +265,7 @@
       <title>Weekend</title>
       <link>https://binhong.me/blog/tags/weekend/</link>
       <pubDate>Sat, 02 Jun 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/weekend/</guid>
       <description></description>
     </item>
@@ -272,7 +274,7 @@
       <title>Automated Deployment</title>
       <link>https://binhong.me/blog/tags/automated-deployment/</link>
       <pubDate>Sun, 22 Apr 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/automated-deployment/</guid>
       <description></description>
     </item>
@@ -281,7 +283,7 @@
       <title>Testing</title>
       <link>https://binhong.me/blog/tags/testing/</link>
       <pubDate>Sun, 22 Apr 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/testing/</guid>
       <description></description>
     </item>
@@ -290,7 +292,7 @@
       <title>Travis-CI</title>
       <link>https://binhong.me/blog/tags/travis-ci/</link>
       <pubDate>Sun, 22 Apr 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/travis-ci/</guid>
       <description></description>
     </item>
@@ -299,7 +301,7 @@
       <title>API</title>
       <link>https://binhong.me/blog/tags/api/</link>
       <pubDate>Wed, 21 Mar 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/api/</guid>
       <description></description>
     </item>
@@ -308,7 +310,7 @@
       <title>Kotlin</title>
       <link>https://binhong.me/blog/tags/kotlin/</link>
       <pubDate>Wed, 21 Mar 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/kotlin/</guid>
       <description></description>
     </item>
@@ -317,7 +319,7 @@
       <title>RESTful API</title>
       <link>https://binhong.me/blog/tags/restful-api/</link>
       <pubDate>Wed, 21 Mar 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/restful-api/</guid>
       <description></description>
     </item>
@@ -326,7 +328,7 @@
       <title>Spark Kotlin</title>
       <link>https://binhong.me/blog/tags/spark-kotlin/</link>
       <pubDate>Wed, 21 Mar 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/spark-kotlin/</guid>
       <description></description>
     </item>
@@ -335,7 +337,7 @@
       <title>Career</title>
       <link>https://binhong.me/blog/tags/career/</link>
       <pubDate>Sat, 10 Feb 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/career/</guid>
       <description></description>
     </item>
@@ -344,7 +346,7 @@
       <title>Engineering</title>
       <link>https://binhong.me/blog/tags/engineering/</link>
       <pubDate>Sat, 10 Feb 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/engineering/</guid>
       <description></description>
     </item>
@@ -353,7 +355,7 @@
       <title>International Student</title>
       <link>https://binhong.me/blog/tags/international-student/</link>
       <pubDate>Sat, 10 Feb 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/international-student/</guid>
       <description></description>
     </item>
@@ -362,7 +364,7 @@
       <title>Job</title>
       <link>https://binhong.me/blog/tags/job/</link>
       <pubDate>Sat, 10 Feb 2018 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/job/</guid>
       <description></description>
     </item>
@@ -371,7 +373,7 @@
       <title>Cybersecurity</title>
       <link>https://binhong.me/blog/tags/cybersecurity/</link>
       <pubDate>Mon, 20 Nov 2017 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/cybersecurity/</guid>
       <description></description>
     </item>
@@ -380,7 +382,7 @@
       <title>Data Breach</title>
       <link>https://binhong.me/blog/tags/data-breach/</link>
       <pubDate>Mon, 20 Nov 2017 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/data-breach/</guid>
       <description></description>
     </item>
@@ -389,7 +391,7 @@
       <title>Malaysia</title>
       <link>https://binhong.me/blog/tags/malaysia/</link>
       <pubDate>Mon, 20 Nov 2017 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/malaysia/</guid>
       <description></description>
     </item>
@@ -398,7 +400,7 @@
       <title>Privacy</title>
       <link>https://binhong.me/blog/tags/privacy/</link>
       <pubDate>Mon, 20 Nov 2017 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/privacy/</guid>
       <description></description>
     </item>
@@ -407,7 +409,7 @@
       <title>Linux</title>
       <link>https://binhong.me/blog/tags/linux/</link>
       <pubDate>Tue, 15 Aug 2017 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/linux/</guid>
       <description></description>
     </item>
@@ -416,7 +418,7 @@
       <title>Shell</title>
       <link>https://binhong.me/blog/tags/shell/</link>
       <pubDate>Tue, 15 Aug 2017 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/shell/</guid>
       <description></description>
     </item>
@@ -425,7 +427,7 @@
       <title>Terminal</title>
       <link>https://binhong.me/blog/tags/terminal/</link>
       <pubDate>Tue, 15 Aug 2017 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/terminal/</guid>
       <description></description>
     </item>
@@ -434,7 +436,7 @@
       <title>Windows10</title>
       <link>https://binhong.me/blog/tags/windows10/</link>
       <pubDate>Tue, 15 Aug 2017 00:00:00 -0800</pubDate>
-      
+      <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/windows10/</guid>
       <description></description>
     </item>

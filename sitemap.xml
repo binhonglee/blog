@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://binhong.me/blog/</loc>
+    <lastmod>2025-04-25T00:00:00-08:00</lastmod>
+  </url><url>
+    <loc>https://binhong.me/blog/2025-04-25-self-hosted-github-runners/</loc>
+    <lastmod>2025-04-25T00:00:00-08:00</lastmod>
+  </url><url>
     <loc>https://binhong.me/blog/2022-05-31-automated-link-preview-image/</loc>
     <lastmod>2022-05-31T00:00:00-08:00</lastmod>
   </url><url>
@@ -12,9 +18,6 @@
     <lastmod>2021-12-12T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/tags/azure-pipeline/</loc>
-    <lastmod>2021-07-18T00:00:00-08:00</lastmod>
-  </url><url>
-    <loc>https://binhong.me/blog/</loc>
     <lastmod>2021-07-18T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/tags/continuous-integration/</loc>

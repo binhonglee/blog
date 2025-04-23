@@ -7,7 +7,6 @@
     <title>Cross Language Object Parsing - BinHong Lee&#39;s Blog</title>
     
     <meta name="description" content="I was working on a side project where I had the backend and frontend setup to run on different programming languages. As I was working on it, it started to bug me a little that I have to write the same object / struct and enum for each language in use everytime I introduce a new enum or struct. It can also be confusing / dangerous if I updated one side and forget to update the other.">
-    <meta name="author" content="BinHong Lee">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Cross Language Object Parsing">
     <meta property="og:description" content="I wrote code that writes code">
@@ -22,8 +21,13 @@
     <meta name="robots" content="max-image-preview:large">
     <meta name="image" content="https://binhong.me/blog/preview/cross_language_object_parsing.jpg" />
     <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
     <meta property="og:locale" content="en_US">
     <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
     
     <link href="https://binhong.me/blog/style.css" rel="stylesheet">
     <link href="https://binhong.me/fonts/fonts.css" rel="stylesheet">
@@ -32,7 +36,7 @@
     
     <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
     
-    <meta name="generator" content="Hugo 0.100.0" />
+    <meta name="generator" content="Hugo 0.146.7">
     
     </head>
   <body class="single">
@@ -68,7 +72,6 @@
           <p class="row lang">I wrote code that writes code</h2>
           <div class="row author">
             <p>BinHong Lee</p>
-            
             <p class="right">August 9, 2020</p>
           </div>
           <div class="post_content"><p>I was working on a side project where I had the backend and frontend setup to run on different programming languages. As I was working on it, it started to bug me a little that I have to write the same object / struct and enum for each language in use everytime I introduce a new enum or struct. It can also be confusing / dangerous if I updated one side and forget to update the other.</p>
@@ -115,15 +118,15 @@ ts-func(
 <p>Since it&rsquo;s very beginning, wings has been published on nimble as a library for nim. With this, you will be able to make further customizations by importing it as a library especially if you only want to use a specific part of it. From there, you can even use build tools to incorporate it as part of your workflow if supported. (Shameless plug, I wrote the PR for please&rsquo;s basic <a href="https://github.com/thought-machine/pleasings/pull/29">nim</a> and <a href="https://github.com/thought-machine/pleasings/pull/31">nimble</a> support through pleasings. Though admittedly it isn&rsquo;t quite as complete as you can see here I use <a href="https://github.com/binhonglee/wings/blob/devel/build_defs/nim/nim.build_defs">my own version of the config</a> in the repo.)</p>
 <p>I&rsquo;ve also created <a href="https://github.com/binhonglee/stones"><code>stones</code></a>, a separate library that contains some generic functions and tools used in wings.</p>
 <h2 id="generated-files">Generated Files</h2>
-<h3 id="structhttpswingsshstruct"><a href="https://wings.sh/#struct">Struct</a></h3>
+<h3 id="struct"><a href="https://wings.sh/#struct">Struct</a></h3>
 <p>Unlike the afromentioned existing alternatives, it doesn&rsquo;t change the way the data was stored and transferred. You&rsquo;ll still be converting them from and to JSON and communicate through JSON (so they will still be human readable). Therefore, comparatively, it will be &ldquo;slower&rdquo; than the alternatives as it will inherit the same &ldquo;slowness&rdquo; of JSON (depending on how it is serialized and deserialized in each individual languages) and bulkiness (it&rsquo;s a pretty well established fact that JSON string takes more space in memory than something like a serialized thrift object).</p>
-<h3 id="enumhttpswingsshenum"><a href="https://wings.sh/#enum">Enum</a></h3>
+<h3 id="enum"><a href="https://wings.sh/#enum">Enum</a></h3>
 <p>Nothing much about them. They&rsquo;re just normal enums that starts from 0 and increment by 1 for each element in it. Custom type and initialization is in the works and might change up the syntax a little when support is added.</p>
 <h2 id="util-classes">Util Classes</h2>
 <p>While the generated files (generally) work out of the box, they by themselves are still lacking of certain features that can be applied across all Struct or Enum classes. This is where the util classes comes in. They are written in each of their respective targeted languages as a package / library. Currently, there&rsquo;s only a Util class for TypeScript since golang already have all the features in the util class baked in with its JSON support.</p>
-<h2 id="confighttpswingsshconfig"><a href="https://wings.sh/config/">Config</a></h2>
+<h2 id="config"><a href="https://wings.sh/config/">Config</a></h2>
 <p>While the use of a config file is optional, its also where the core value &ldquo;customizable&rdquo; comes from. Config files are accpeted in JSON format and should be added as an argument when calling wings with <code>-c:&lt;CONFIG.json&gt;</code>. Some of the more simple / straightforward configurable value includes things like <a href="https://wings.sh/config/#logging-int"><code>logging</code></a> which controls the verbosity of the output message in the terminal, <a href="https://wings.sh/config/#skipimport-bool"><code>skipImport</code></a> which lets you dictate if you&rsquo;d want to also generate imported files or skip doing so, and <a href="https://wings.sh/config/#header-str"><code>header</code></a> which lets you specify your customized the header comment for all the generated files. On top of that, you can also configure how you want the output files to be formatted by specifying your own templates in <a href="https://wings.sh/config/#langconfigs-str"><code>langConfig</code></a> (more on this below).</p>
-<h2 id="templatehttpswingsshtemplate"><a href="https://wings.sh/template/">Template</a></h2>
+<h2 id="template"><a href="https://wings.sh/template/">Template</a></h2>
 <p>As mentioned above, you can also write your own or import someone else&rsquo;s templates (with <a href="https://wings.sh/experimental/#remote-template"><code>remoteLangConfigs</code></a>) to configure the output files in your own format or even to output to languages that are not officially supported. This allows wings to be used in a more dynamic way both in terms of range of supported languages and style format instead of being limited by what&rsquo;s officially supported (like in Thrift and protobuf though they do already have a wide range of support).</p>
 <h2 id="takeaways">Takeaways</h2>
 <p>Overall, I think one of the main takeaway is that if there&rsquo;s already an actively maintained existing solution, it&rsquo;s probably better to use that than to create your own. By now you might have realizes that this project is slowly morphing into something that looks similar to the existing alternatives but in a much simpler form.</p>
@@ -149,14 +152,15 @@ ts-func(
             <a href="https://rubjo.github.io/victor-mono/" rel="noopener" target="_blank" class="name">Victor Mono</a>
           </div>
           <div class="row">
-            <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️ | <a href="https://github.com/binhonglee/blog" rel="noopener" target="_blank">Source (GitHub)</a> </p>
+            <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a> | <a href="https://github.com/binhonglee/blog" rel="noopener" target="_blank">Source (GitHub)</a> </p>
           </div>
           <div class="row">
-            <p>&copy; 2022 <a href="https://binhong.me">BinHong Lee</a></p>
+            <p>&copy; 2025 <a href="https://binhong.me">BinHong Lee</a></p>
           </div>
         </div>
       </footer>
     </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
   </body>
 </html>
 
