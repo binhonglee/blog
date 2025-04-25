@@ -10,13 +10,15 @@
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
     <lastBuildDate>Fri, 25 Apr 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Self-Hosted GitHub Runners</title>
+      <title>Self-Hosted GitHub Actions Runners</title>
       <link>https://binhong.me/blog/2025-04-25-self-hosted-github-runners/</link>
       <pubDate>Fri, 25 Apr 2025 00:00:00 -0800</pubDate>
       <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/2025-04-25-self-hosted-github-runners/</guid>
       <description>&lt;p&gt;This post will focus more on the &amp;ldquo;why&amp;rdquo; and some of the quirks around doing so instead of the &amp;ldquo;how&amp;rdquo; since GitHub already have &lt;a href=&#34;https://docs.github.com/en/actions/hosting-your-own-runners&#34;&gt;a very comprehensive guide&lt;/a&gt; around it.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Just wanted to take a bit of time to acknowledge that it&amp;rsquo;s been almost 3 years since I last wrote a blog post. It&amp;rsquo;s been a busy 3 years for sure but hopefully I&amp;rsquo;ll be writing more consistently moving forward. (I do have quite a few half-written drafts that I&amp;rsquo;ve never published which I can&amp;rsquo;t tell if it&amp;rsquo;s still relavant at this point.)&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;whats-a-github-actions-runner&#34;&gt;What&amp;rsquo;s a GitHub Actions Runner?&lt;/h2&gt;
+&lt;p&gt;Basically instead of running GitHub Actions (GitHub&amp;rsquo;s own CI/CD) on GitHub&amp;rsquo;s machines, you can run them on your own devices. Running GitHub Actions on your self-hosted GARs would not count against your monthly Action minutes (since you are not using their machines) and can be an effective cost saving alternative.&lt;/p&gt;
 &lt;h2 id=&#34;why-do-i-even-need-to-self-host-it&#34;&gt;Why do I even need to self-host it?&lt;/h2&gt;
 &lt;p&gt;The main use-cases is when you have private GitHub repositories so you only have 2000 included Actions minutes. While it might make sense for you to pay for GitHub Pro (which comes with more GitHub minutes), I didn&amp;rsquo;t find myself needing all other features that comes with it. On top of that, I happen to have a few old computers lying around so I figured I&amp;rsquo;d use them as ever-on GitHub runners. (So far, the electricity bill seems to be cheaper than paying for extra minutes or paying for any external equivalent CI service.)&lt;/p&gt;
 &lt;h2 id=&#34;why-not-gitea-runners-or-other-self-hosted-ci-services&#34;&gt;Why not Gitea Runners (or other self-hosted CI services)?&lt;/h2&gt;

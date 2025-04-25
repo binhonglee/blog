@@ -4,15 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=0.75">
     
-    <title>Self-Hosted GitHub Runners - BinHong Lee&#39;s Blog</title>
+    <title>Self-Hosted GitHub Actions Runners - BinHong Lee&#39;s Blog</title>
     
     <meta name="description" content="This post will focus more on the &ldquo;why&rdquo; and some of the quirks around doing so instead of the &ldquo;how&rdquo; since GitHub already have a very comprehensive guide around it.
 Just wanted to take a bit of time to acknowledge that it&rsquo;s been almost 3 years since I last wrote a blog post. It&rsquo;s been a busy 3 years for sure but hopefully I&rsquo;ll be writing more consistently moving forward. (I do have quite a few half-written drafts that I&rsquo;ve never published which I can&rsquo;t tell if it&rsquo;s still relavant at this point.)">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Self-Hosted GitHub Runners">
-    <meta property="og:description" content="Turning your old laptops into GH Runners">
-    <meta name="twitter:description" content="Turning your old laptops into GH Runners">
-    <meta name="twitter:title" content="Self-Hosted GitHub Runners"><meta property="article:published_time" 2025-04-25T00:00:00-08:00 />
+    <meta property="og:title" content="Self-Hosted GitHub Actions Runners">
+    <meta property="og:description" content="Turning your old laptops into GARs">
+    <meta name="twitter:description" content="Turning your old laptops into GARs">
+    <meta name="twitter:title" content="Self-Hosted GitHub Actions Runners"><meta property="article:published_time" 2025-04-25T00:00:00-08:00 />
     <meta property="article:modified_time" 2025-04-25T00:00:00-08:00 />
     <meta property="og:image" content="https://binhong.me/blog/preview/self_hosted_github_runners.jpg">
     <meta property="og:image:height" content="600">
@@ -66,14 +66,16 @@ Just wanted to take a bit of time to acknowledge that it&rsquo;s been almost 3 y
     <article class="content_body primary_block projects">
       <main class="article_body">
         <div class="active">
-          <p class="row name title">Self-Hosted GitHub Runners</h1>
-          <p class="row lang">Turning your old laptops into GH Runners</h2>
+          <p class="row name title">Self-Hosted GitHub Actions Runners</h1>
+          <p class="row lang">Turning your old laptops into GARs</h2>
           <div class="row author">
             <p>BinHong Lee</p>
             <p class="right">April 25, 2025</p>
           </div>
           <div class="post_content"><p>This post will focus more on the &ldquo;why&rdquo; and some of the quirks around doing so instead of the &ldquo;how&rdquo; since GitHub already have <a href="https://docs.github.com/en/actions/hosting-your-own-runners">a very comprehensive guide</a> around it.</p>
 <p><em>Just wanted to take a bit of time to acknowledge that it&rsquo;s been almost 3 years since I last wrote a blog post. It&rsquo;s been a busy 3 years for sure but hopefully I&rsquo;ll be writing more consistently moving forward. (I do have quite a few half-written drafts that I&rsquo;ve never published which I can&rsquo;t tell if it&rsquo;s still relavant at this point.)</em></p>
+<h2 id="whats-a-github-actions-runner">What&rsquo;s a GitHub Actions Runner?</h2>
+<p>Basically instead of running GitHub Actions (GitHub&rsquo;s own CI/CD) on GitHub&rsquo;s machines, you can run them on your own devices. Running GitHub Actions on your self-hosted GARs would not count against your monthly Action minutes (since you are not using their machines) and can be an effective cost saving alternative.</p>
 <h2 id="why-do-i-even-need-to-self-host-it">Why do I even need to self-host it?</h2>
 <p>The main use-cases is when you have private GitHub repositories so you only have 2000 included Actions minutes. While it might make sense for you to pay for GitHub Pro (which comes with more GitHub minutes), I didn&rsquo;t find myself needing all other features that comes with it. On top of that, I happen to have a few old computers lying around so I figured I&rsquo;d use them as ever-on GitHub runners. (So far, the electricity bill seems to be cheaper than paying for extra minutes or paying for any external equivalent CI service.)</p>
 <h2 id="why-not-gitea-runners-or-other-self-hosted-ci-services">Why not Gitea Runners (or other self-hosted CI services)?</h2>
