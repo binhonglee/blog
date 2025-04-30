@@ -7,9 +7,9 @@ aliases:
     - /2019/05/07/shell-scripting.html
 ---
 
-## Shell scripts vs python or perl
-
 Its 2019 now, who writes shell scripts anymore? Am I right? Well, apparently I do. ¯\\\_(ツ)\_/¯
+
+## Shell scripts vs python or perl
 
 There are some good arguments for that [here](https://stackoverflow.com/questions/796319/strengths-of-shell-scripting-compared-to-python#796343) and [here](https://www.linuxquestions.org/questions/linux-newbie-8/what-is-the-difference-between-perl-and-shell-scripting-4175486499/) which mainly revolve around 2 things:
 

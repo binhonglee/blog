@@ -1,10 +1,10 @@
 html {
-  font-family: FiraCode;
+  font-family: VictorMono;
   font-size: 130%;
 }
 
 .desc, .post_content {
-  font-family: SourceSans3;
+  font-family: Vollkorn;
   font-size: 130%;
 }
 
@@ -81,27 +81,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 1.75em;
-}
-
-h2 {
   font-size: 1.5em;
 }
 
-h3 {
+h2 {
   font-size: 1.25em;
+}
+
+h3 {
+  font-size: 1.125em;
 }
 
 h1 code {
-  font-size: 1.25em;
+  font-size: 1.125em;
 }
 
 h2 code {
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 
 h3 code {
-  font-size: 0.8em;
+  font-size: 0.75em;
 }
 
 .dropdown_toggle {
@@ -182,6 +182,23 @@ p, li, .footer a {
   color: var(--dark-color);
 }
 
+.title {
+  color: var(--default-active);
+}
+
+.dark_mode_toggle[open] + div .title {
+  color: var(--dark-active);
+}
+
+.subtitle {
+  color: var(--default-deprecated);
+  font-size: 1.25em;
+}
+
+.dark_mode_toggle[open] + div .subtitle {
+  color: var(--dark-deprecated);
+}
+
 .content {
   background-color: var(--default-background);
   color: var(--default-color);
@@ -217,11 +234,15 @@ p, li, .footer a {
   padding-top: 35px;
 }
 
-.header_links .link, .links .link {
+h1, h2, h3, h4, .header_links .link, .links .link {
   color: var(--default-links);
 }
 
 .dark_mode_toggle[open] .link,
+.dark_mode_toggle[open] + div h1,
+.dark_mode_toggle[open] + div h2,
+.dark_mode_toggle[open] + div h3,
+.dark_mode_toggle[open] + div h4,
 .dark_mode_toggle[open] + div .link,
 .dark_mode_toggle[open] + div .links .link {
   color: var(--dark-links);
@@ -260,6 +281,14 @@ footer a {
   color: var(--dark-links);
 }
 
+em {
+  color: gray
+}
+
+.dark_mode_toggle[open] + div em {
+  color: lightgray
+}
+
 footer a {
   color: var(--default-footer-a);
 }
@@ -275,7 +304,7 @@ footer a {
 }
 
 .article_link .lang {
-  padding: 0;
+  padding: 0 0 10px 0;
 }
 
 .primary_block {
@@ -404,10 +433,6 @@ pre .custom-language {
 
   .dark_mode_toggle[open] + div .header_links {
     background-color: var(--dark-background);
-  }
-
-  .dark_mode_toggle[open] + div .header_links a {
-    border-color: var(--dracula-color);
   }
 
   .header_links p {

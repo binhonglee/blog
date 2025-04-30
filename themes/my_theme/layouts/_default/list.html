@@ -12,9 +12,9 @@
 
         <article class="block">
           <a class="article_link active" href="{{ .Permalink }}">
-            <p class="name row">{{ .Title }}</p>
+            <h1 class="row title">{{ .Title }}</h1>
             {{- if .Params.subtitle }}
-            <p class="lang row">{{ .Params.subtitle }}</p>
+            <p class="row subtitle">{{ .Params.subtitle }}</p>
             {{- end }}
             <p class="desc">{{ .Summary | plainify | htmlUnescape }}...</p>
             <p class="right">{{ .Date.Format "January 2, 2006" }}</p>

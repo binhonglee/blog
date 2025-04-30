@@ -8,9 +8,9 @@
       {{- end }}
       <main class="article_body">
         <div class="active">
-          <p class="row name title">{{ .Title }}</h1>
+          <h1 class="row title">{{ .Title }}</h1>
           {{- if .Params.subtitle }}
-          <p class="row lang">{{ .Params.subtitle }}</h2>
+          <p class="row subtitle">{{ .Params.subtitle }}</p>
           {{- end }}
           <div class="row author">
             <p>{{ .Site.Params.author.name }}</p>
