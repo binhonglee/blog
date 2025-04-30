@@ -286,7 +286,7 @@
     </item>
     
     <item>
-      <title>Upgrading a Vue TypeScript Project (2.x -&gt; 3.x)</title>
+      <title>Upgrading Vue TS Project (2.x -&gt; 3.x)</title>
       <link>https://binhong.me/blog/2021-12-12-vue-3-vite/</link>
       <pubDate>Sun, 12 Dec 2021 00:00:00 -0800</pubDate>
       <author>binhong@binhong.me (BinHong Lee)</author>
@@ -1041,8 +1041,8 @@ ts-func(
       <pubDate>Tue, 07 May 2019 00:00:00 -0800</pubDate>
       <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/2019-05-07-shell-scripting/</guid>
-      <description>&lt;h2 id=&#34;shell-scripts-vs-python-or-perl&#34;&gt;Shell scripts vs python or perl&lt;/h2&gt;
-&lt;p&gt;Its 2019 now, who writes shell scripts anymore? Am I right? Well, apparently I do. ¯\_(ツ)_/¯&lt;/p&gt;
+      <description>&lt;p&gt;Its 2019 now, who writes shell scripts anymore? Am I right? Well, apparently I do. ¯\_(ツ)_/¯&lt;/p&gt;
+&lt;h2 id=&#34;shell-scripts-vs-python-or-perl&#34;&gt;Shell scripts vs python or perl&lt;/h2&gt;
 &lt;p&gt;There are some good arguments for that &lt;a href=&#34;https://stackoverflow.com/questions/796319/strengths-of-shell-scripting-compared-to-python#796343&#34;&gt;here&lt;/a&gt; and &lt;a href=&#34;https://www.linuxquestions.org/questions/linux-newbie-8/what-is-the-difference-between-perl-and-shell-scripting-4175486499/&#34;&gt;here&lt;/a&gt; which mainly revolve around 2 things:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Shell exists in all Unix systems and makes use of system default features.&lt;/li&gt;
