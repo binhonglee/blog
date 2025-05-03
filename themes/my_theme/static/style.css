@@ -40,6 +40,7 @@ body {
 }
 
 blockquote {
+  text-align: center;
   background-color: white;
   border-radius: 20px;
   padding: 20px;
@@ -65,10 +66,14 @@ a {
 }
 
 a:hover,
-a .name:hover,
+a:hover .name,
 .name-title:hover,
 .article_body p a:hover {
   font-weight: bold;
+  text-decoration: underline;
+}
+
+.article_body .article_link:hover .title {
   text-decoration: underline;
 }
 

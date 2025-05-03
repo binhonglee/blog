@@ -2,6 +2,12 @@
   "baseURL": "http://localhost:1313/blog",
   "destURLs": [
     {
+      "name": "push_fearlessly_with_automated_testing",
+      "url": "2025-05-04-push-fearlessly-with-automated-testing"
+    }, {
+      "name": "opinionated_engineer",
+      "url": "2025-05-04-the-opinionated-engineer"
+    }, {
       "name": "self_hosted_github_runners",
       "url": "2025-04-25-self-hosted-github-runners"
     }, {
