@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Push Fearlessly with Automated Testing - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="Conventional wisdom is that writing tests slows you down, because the alternative is that you don&rsquo;t need to write tests. In fact, Meta (then Facebook) was famously lacking of automated test inline with it&rsquo;s famous &ldquo;move fast and break things&rdquo; mantra. However, from what I&rsquo;ve seen, I beg to differ.
+This is part of a series (The Opinionated Engineer) where I share my strong opinions on engineering practices.
+When to write tests?
+
+If you love something, put a ring test on it.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Push Fearlessly with Automated Testing">
+    <meta property="og:description" content="Move faster by moving slower">
+    <meta name="twitter:description" content="Move faster by moving slower">
+    <meta name="twitter:title" content="Push Fearlessly with Automated Testing"><meta property="article:published_time" 2025-05-04T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-05-04T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/push_fearlessly_with_automated_testing.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/push_fearlessly_with_automated_testing.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/push_fearlessly_with_automated_testing.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.147.1">
+    
+    </head>
+  <body class="single">
+    <details class="dark_mode_toggle" role="button" open>
+      <summary>
+        <div class="content">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+      </summary>
+    </details>
+    <div class="wrapper">
+      <div class="content dropdown">
+        <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu" id="dropdown_toggle">+</button>
+        <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+          <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Push Fearlessly with Automated Testing</h1>
+          <p class="row subtitle">Move faster by moving slower</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">May 4, 2025</p>
+          </div>
+          <div class="post_content"><p>Conventional wisdom is that writing tests slows you down, because the alternative is that you don&rsquo;t need to write tests. In fact, Meta (then Facebook) was famously lacking of automated test inline with it&rsquo;s famous &ldquo;move fast and break things&rdquo; mantra. However, from what I&rsquo;ve seen, I beg to differ.</p>
+<p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+<h2 id="when-to-write-tests">When to write tests?</h2>
+<blockquote>
+<p>If you love something, put a <del>ring</del> test on it.</p></blockquote>
+<p>I find this quote as a good general guiding principle. You should definitely have tests for all the &ldquo;core&rdquo; features. For all the additional features (or edge case handling), you&rsquo;d need to make a decision / tradeoff based on how critical it is for something to work, and how frequent you might be changing it.</p>
+<h2 id="fearlessly">Fearlessly</h2>
+<p>The main goal of writing tests is to prevent regressions. Without automated tests, you&rsquo;d have to rely on other (less reliable) ways to avoid regression. Having (non-flaky) tests makes it easy to consistently verify when / how a regression is introduced. With the right CI system setup, you can make sure that you don&rsquo;t release new versions / feature that would accidentally break previously released features in an unexpected way.</p>
+<h2 id="assumptions--prerequisite">Assumptions / Prerequisite</h2>
+<p>The expectation here is that you already have a working CI/CD pipeline setup which comprehensively runs all your tests for each commit merges and deployments. Alternatively, if you have too big of a test suite to run (or too costly), you could instead only run relavant tests on each individual commits while running all tests for each deployment.  If there’s a test that failed before deployment, you could still bisect to find the blame commit that broke the test.</p>
+<h2 id="what-about-manual-testing">What about manual testing?</h2>
+<p>The main issue with manual testing is that you don&rsquo;t know what you don&rsquo;t know. You know your code change affects x and y so you test them both and they work as intended but what you didn&rsquo;t realize was that it also breaks z entirely which you did not test because that was unexpected. Having an automated test means you&rsquo;d just always run the test suite (within your CI/CD process) which would be able to catch the issue.</p>
+<h2 id="what-about-qa-testing">What about QA testing?</h2>
+<p>QA testing generally happens on a weekly or bi-weekly (either definition) cadence. At best, you can do them on a daily basis but depending on the scale or speed at which your team is executing, it might still be hard to narrow down the specific commit that is causing the regression. With automated tests, you can bisect through your commit history without having to worry about setup and cleanup steps (assuming your tests are properly written).</p>
+<h2 id="why-not-just-write-test-for-everything">Why not just write test for everything?</h2>
+<p>In an ideal world where the cost to write test is 0, this would be a prescribed solution and everyone will be adopting TDD (Test Driven Development) but instead, we live in a real world where writing tests cost time and energy so it&rsquo;s important to pick and choose things worth investing on vs things that aren&rsquo;t. Such tradeoff is subjective to the criticality of said system and how often the system might be changed / updated.</p>
+<h2 id="broken-tests">Broken Tests</h2>
+<p>Broken tests are <strong>tech debts</strong>. Either prioritize fixing them or delete them if they are no longer relavant. Keeping them around gives false impression on the state of the test coverage while potentially adds unnecessary operational cost in running these tests. Same applies to flaky tests. In fact, I&rsquo;d go a step further by saying that flaky tests are worse than broken tests because at least broken tests are deterministic (which is one important characteristic of a quality test).</p>
+<h2 id="wrap-up">Wrap up</h2>
+<p>When you have working quality automated tests, you can push new changes fearlessly knowing that it won&rsquo;t cause regressions on features protected by these tests. This allows you to move faster both in terms of thinking about and testing all the possible regressions your change might cause, while also saving time on root causing a regression (if / when it does happen).</p>
+</div>
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a> | <a href="https://github.com/binhonglee/blog" rel="noopener" target="_blank">Source (GitHub)</a> </p>
+          </div>
+          <div class="row">
+            <p>&copy; 2025 <a href="https://binhong.me">BinHong Lee</a></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+  </body>
+</html>
+

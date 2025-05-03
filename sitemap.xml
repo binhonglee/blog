@@ -3,7 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://binhong.me/blog/</loc>
-    <lastmod>2025-04-25T00:00:00-08:00</lastmod>
+    <lastmod>2025-05-04T00:00:00-08:00</lastmod>
+  </url><url>
+    <loc>https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/</loc>
+    <lastmod>2025-05-04T00:00:00-08:00</lastmod>
+  </url><url>
+    <loc>https://binhong.me/blog/2025-05-04-the-opinionated-engineer/</loc>
+    <lastmod>2025-05-04T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/2025-04-25-self-hosted-github-runners/</loc>
     <lastmod>2025-04-25T00:00:00-08:00</lastmod>

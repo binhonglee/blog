@@ -8,7 +8,62 @@
     <language>en-us</language>
     <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
-    <lastBuildDate>Fri, 25 Apr 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 May 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Push Fearlessly with Automated Testing</title>
+      <link>https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/</link>
+      <pubDate>Sun, 04 May 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/</guid>
+      <description>&lt;p&gt;Conventional wisdom is that writing tests slows you down, because the alternative is that you don&amp;rsquo;t need to write tests. In fact, Meta (then Facebook) was famously lacking of automated test inline with it&amp;rsquo;s famous &amp;ldquo;move fast and break things&amp;rdquo; mantra. However, from what I&amp;rsquo;ve seen, I beg to differ.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;when-to-write-tests&#34;&gt;When to write tests?&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you love something, put a &lt;del&gt;ring&lt;/del&gt; test on it.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;I find this quote as a good general guiding principle. You should definitely have tests for all the &amp;ldquo;core&amp;rdquo; features. For all the additional features (or edge case handling), you&amp;rsquo;d need to make a decision / tradeoff based on how critical it is for something to work, and how frequent you might be changing it.&lt;/p&gt;
+&lt;h2 id=&#34;fearlessly&#34;&gt;Fearlessly&lt;/h2&gt;
+&lt;p&gt;The main goal of writing tests is to prevent regressions. Without automated tests, you&amp;rsquo;d have to rely on other (less reliable) ways to avoid regression. Having (non-flaky) tests makes it easy to consistently verify when / how a regression is introduced. With the right CI system setup, you can make sure that you don&amp;rsquo;t release new versions / feature that would accidentally break previously released features in an unexpected way.&lt;/p&gt;
+&lt;h2 id=&#34;assumptions--prerequisite&#34;&gt;Assumptions / Prerequisite&lt;/h2&gt;
+&lt;p&gt;The expectation here is that you already have a working CI/CD pipeline setup which comprehensively runs all your tests for each commit merges and deployments. Alternatively, if you have too big of a test suite to run (or too costly), you could instead only run relavant tests on each individual commits while running all tests for each deployment.  If there’s a test that failed before deployment, you could still bisect to find the blame commit that broke the test.&lt;/p&gt;
+&lt;h2 id=&#34;what-about-manual-testing&#34;&gt;What about manual testing?&lt;/h2&gt;
+&lt;p&gt;The main issue with manual testing is that you don&amp;rsquo;t know what you don&amp;rsquo;t know. You know your code change affects x and y so you test them both and they work as intended but what you didn&amp;rsquo;t realize was that it also breaks z entirely which you did not test because that was unexpected. Having an automated test means you&amp;rsquo;d just always run the test suite (within your CI/CD process) which would be able to catch the issue.&lt;/p&gt;
+&lt;h2 id=&#34;what-about-qa-testing&#34;&gt;What about QA testing?&lt;/h2&gt;
+&lt;p&gt;QA testing generally happens on a weekly or bi-weekly (either definition) cadence. At best, you can do them on a daily basis but depending on the scale or speed at which your team is executing, it might still be hard to narrow down the specific commit that is causing the regression. With automated tests, you can bisect through your commit history without having to worry about setup and cleanup steps (assuming your tests are properly written).&lt;/p&gt;
+&lt;h2 id=&#34;why-not-just-write-test-for-everything&#34;&gt;Why not just write test for everything?&lt;/h2&gt;
+&lt;p&gt;In an ideal world where the cost to write test is 0, this would be a prescribed solution and everyone will be adopting TDD (Test Driven Development) but instead, we live in a real world where writing tests cost time and energy so it&amp;rsquo;s important to pick and choose things worth investing on vs things that aren&amp;rsquo;t. Such tradeoff is subjective to the criticality of said system and how often the system might be changed / updated.&lt;/p&gt;
+&lt;h2 id=&#34;broken-tests&#34;&gt;Broken Tests&lt;/h2&gt;
+&lt;p&gt;Broken tests are &lt;strong&gt;tech debts&lt;/strong&gt;. Either prioritize fixing them or delete them if they are no longer relavant. Keeping them around gives false impression on the state of the test coverage while potentially adds unnecessary operational cost in running these tests. Same applies to flaky tests. In fact, I&amp;rsquo;d go a step further by saying that flaky tests are worse than broken tests because at least broken tests are deterministic (which is one important characteristic of a quality test).&lt;/p&gt;
+&lt;h2 id=&#34;wrap-up&#34;&gt;Wrap up&lt;/h2&gt;
+&lt;p&gt;When you have working quality automated tests, you can push new changes fearlessly knowing that it won&amp;rsquo;t cause regressions on features protected by these tests. This allows you to move faster both in terms of thinking about and testing all the possible regressions your change might cause, while also saving time on root causing a regression (if / when it does happen).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Opinionated Engineer</title>
+      <link>https://binhong.me/blog/2025-05-04-the-opinionated-engineer/</link>
+      <pubDate>Sun, 04 May 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-05-04-the-opinionated-engineer/</guid>
+      <description>&lt;p&gt;Historically, my personal blog has been mostly about &amp;ldquo;how to do x&amp;rdquo;, &amp;ldquo;guide on making y&amp;rdquo; but never about ideology or engineering practices. This new series intends to change that where I&amp;rsquo;ll explore the more opinionated side of myself especially around engineering practices instead of just the &lt;em&gt;pure&lt;/em&gt; technical stuff.&lt;/p&gt;
+&lt;h2 id=&#34;topics&#34;&gt;Topics&lt;/h2&gt;
+&lt;p&gt;I have not fully planned out the entire series but here are a few topics I have in mind (or have released) so far&amp;hellip;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/&#34;&gt;Push Fearlessly with Automated Testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Code Review Culture&lt;/li&gt;
+&lt;li&gt;Understanding the Value of Dev Tools&lt;/li&gt;
+&lt;li&gt;Disaster Recovery vs Disaster Prevention&lt;/li&gt;
+&lt;li&gt;The Intangibles&lt;/li&gt;
+&lt;li&gt;Biased Towards Overcommunicate&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;where-is-this-coming-from&#34;&gt;Where is this coming from?&lt;/h2&gt;
+&lt;p&gt;Back when I was working at Meta, I would generally build an idea proposal (on how / what to fix) around an opinionated piece like this. It largely serves like a RFC where I can gather other (both supporting or opposing) opinions and concerns before proceeding to make sure that I&amp;rsquo;ve considered everyone&amp;rsquo;s perspective. The difference in this series however, I would focus more on exploring my personal opinions and why I feel strongly about them. It&amp;rsquo;s up to you to decide whether it fits the bill for you.&lt;/p&gt;
+&lt;h2 id=&#34;what-should-i-do-with-this-information&#34;&gt;What should I do with this information?&lt;/h2&gt;
+&lt;p&gt;These are not meant to be blind prescription (especially since your situation could very well be different from what I am / was going through) but rather as an extra perspective for consideration when deciding on relevant matters. As the title states, these are opinions with which you&amp;rsquo;re open to have opposing views.&lt;/p&gt;
+&lt;h2 id=&#34;feedback&#34;&gt;Feedback&lt;/h2&gt;
+&lt;p&gt;Unfortunately I don&amp;rsquo;t have comment feature setup on here but feel free to respond and tag me on &lt;a href=&#34;https://threads.com/@binhonglee&#34;&gt;Threads&lt;/a&gt; or &lt;a href=&#34;https://social.lol/@bh&#34;&gt;Mastodon&lt;/a&gt;. I&amp;rsquo;m generally active and happy to engage in any discussions and / or learn more about any counter examples!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Self-Hosted GitHub Actions Runners</title>
       <link>https://binhong.me/blog/2025-04-25-self-hosted-github-runners/</link>
