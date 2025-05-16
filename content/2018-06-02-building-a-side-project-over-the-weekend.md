@@ -6,6 +6,8 @@ ss: "preview/side_project_weekend.jpg"
 tags: [Weekend, Hackathons, Side Project, Software Development]
 aliases:
     - /2018/06/02/building-a-side-project-over-the-weekend.html
+    - /building-a-side-project-over-the-weekend-8895e0cf02d7
+    - /8895e0cf02d7
 ---
 
 Few months ago during my job search, I decided that I want to add some new skills to my arsenal (resume) so I went ahead to build a [bill splitting webapp](http://www.breakups.life/) (and the month before, [an Alexa skill](https://github.com/binhonglee/dota2-random)). Granted, the backend was built weeks before during a hackathon (shoutout to [HackISU](http://www.hackisu.org/)), I’m just focusing on building the UI that makes post requests to the backend. In the process, I also ended up fixing some inherent flaws I left behind in the backend.

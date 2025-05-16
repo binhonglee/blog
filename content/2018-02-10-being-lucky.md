@@ -7,6 +7,8 @@ tags: [Career, International Student, Engineering, Job]
 aliases:
     - /2018/02/10/being-lucky.html
     - /being_lucky/
+    - /being-lucky-ce014cafa627
+    - /ce014cafa627
 ---
 
 Ah, you’ve graduated. Now what? Oh right, still no job offer! _\*panics\*_

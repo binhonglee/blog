@@ -17,7 +17,7 @@
             <p class="right">{{- .Date.Format "January 2, 2006" -}}</p>
           </div>
           <div class="post_content">{{ .Content }}</div>
-          {{- if .Params.tags }}
+          <!-- {{- if .Params.tags }}
           <hr/>
           <div class="links">
             {{- range .Params.tags }}
@@ -25,7 +25,38 @@
             <a class="link" href="{{ $href }}">{{ . }}</a>
             {{- end }}
           </div>
-          {{- end }}
+          {{- end }} -->
+        </div>
+        <div class="bottom_buttons">
+          {{ $pages := .CurrentSection.Pages.ByWeight }}
+          
+          {{ with $pages.Next . }}
+          <a href="{{ .RelPermalink }}">
+            <div class="bottom_button">
+              ← Next
+              <br />
+              <br />
+              <span class="button_title">{{ .Title }}</span>
+            </div>
+          </a>
+          {{ else }}
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          {{ end }}
+          
+          {{ with $pages.Prev . }}
+          <a href="{{ .RelPermalink }}">
+            <div class="bottom_button previous_post">
+              Previous →
+              <br />
+              <br />
+              <span class="button_title">{{ .Title }}</span>
+            </div>
+          </a>
+          {{ end }}
         </div>
       </main>
     </article>

@@ -6,6 +6,8 @@ thumbnail: "img/use-terminal-in-windows-with-style.png"
 tags: [Windows10, Linux, Terminal, Shell]
 aliases:
     - /2017/08/15/use-terminal-in-windows-with-style.html
+    - /use-terminal-in-windows-with-style-45158e0c2f50
+    - /45158e0c2f50
 ---
 
 When the Linux Shell in Windows was first released, I used it and didn’t quite like it. Fast forward a year later, I heard it is a lot better now (also the fact that my familiarity with terminal commands improved helped) so I decided to give it another try. It is a really fun experience so far. In case you haven’t install the Windows Subsystem for Linux (WSL), follow this [step-by-step guide](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) by Microsoft to get started. Then, install Hyper for Windows from [here](https://releases.hyper.is/download/win). If you didn’t already, you will also need node.js for the package management for plugins of Hyper.

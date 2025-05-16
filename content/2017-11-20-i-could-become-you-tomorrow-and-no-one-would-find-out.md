@@ -7,6 +7,8 @@ ss: "preview/become_you_tomorrow.jpg"
 tags: [Cybersecurity, Malaysia, Privacy, Data Breach]
 aliases:
     - /2017/11/20/i-could-become-you-tomorrow-and-no-one-would-find-out.html
+    - /i-could-become-you-tomorrow-and-no-one-would-find-out-c9928e915c70
+    - /c9928e915c70
 ---
 
 ## Backstory

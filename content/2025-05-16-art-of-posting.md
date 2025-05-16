@@ -6,6 +6,7 @@ tags: []
 ss: "preview/art_of_posting.jpg"
 aliases:
     - /art_of_posting/
+    - /2025-05-15-art-of-posting/
 ---
 
 This piece is specifically more about Meta's _unique_ culture of "posting" about things but I imagine it can be a useful reference on communication in general. Many people loathe this process and complains about how it's just a lot of "self-promotion" and while there's definitely some truth to it, it's also a valuable communication avenue that you can leverage to your advantage. As we will explore further below, _posting_ by itself is more of a bonus as the post will still require actual substance (which is _your work_ lol).
