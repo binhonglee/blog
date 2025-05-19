@@ -2,8 +2,14 @@
   "baseURL": "http://localhost:1313/blog",
   "destURLs": [
     {
+      "name": "code_review_culture",
+      "url": "2025-05-23-code-review-culture"
+    }, {
+      "name": "simple_newsletter_service",
+      "url": "2025-05-21-building-a-simple-newsletter-service"
+    }, {
       "name": "art_of_posting",
-      "url": "2025-05-15-art-of-posting"
+      "url": "2025-05-16-art-of-posting"
     }, {
       "name": "push_fearlessly_with_automated_testing",
       "url": "2025-05-04-push-fearlessly-with-automated-testing"
