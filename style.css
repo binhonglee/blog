@@ -404,7 +404,7 @@ pre {
 }
 
 .bottom_buttons {
-  margin-top: 40px;
+  margin-top: 20px;
   padding: 20px 0;
   width: 100%;
   display: flex;
@@ -542,6 +542,88 @@ pre .custom-language {
 
   .bottom_button {
     width: calc(100% - 40px);
+    margin: 12px 0;
+  }
+}
+
+/* Newsletter */
+
+.newsletter {
+  background-color: var(--dracula-color);
+  border-radius: 16px;
+  text-align: center;
+  font-family: Vollkorn;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.newsletter h2 {
+  padding-bottom: 16px;
+  color: var(--default-color);
+}
+
+.dark_mode_toggle[open] + div .newsletter {
+  background-color: var(--dracula-background);
+}
+.dark_mode_toggle[open] + div .newsletter h2 {
+  color: var(--dark-color);
+}
+
+input {
+  box-sizing: border-box;
+  border-radius: 12px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--default-color);
+  background-color: var(--default-background);
+  color: var(--default-color);
+  font-family: Vollkorn;
+  font-size: 100%;
+  padding: 12px;
+  width: 300px;
+  margin-bottom: 12px;
+}
+
+input:hover, input:focus {
+  border-width: 3px;
+}
+
+.dark_mode_toggle[open] + div input {
+  background-color: var(--dark-background);
+  border-color: var(--dark-color);
+  color: var(--dark-color);
+}
+
+button {
+  border-radius: 12px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--default-links);
+  background-color: var(--default-background);
+  color: var(--default-links);
+  cursor: pointer;
+  font-family: Vollkorn;
+  font-size: 100%;
+  margin-left: 12px;
+  padding: 12px;
+}
+
+button:hover {
+  border-width: 3px;
+}
+
+.dark_mode_toggle[open] + div button {
+  border-color: var(--dark-links);
+  background-color: var(--dark-background);
+  color: var(--dark-links);
+}
+
+@media screen and (max-width: 520px) {
+  input {
+    width: 100%;
+  }
+
+  .subscribe {
     margin: 12px 0;
   }
 }
