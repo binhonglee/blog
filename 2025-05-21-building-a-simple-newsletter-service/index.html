@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Building a Simple Newsletter Service - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="When I had the idea on the series about The Opinionated Engineer, I figured maybe that&rsquo;s something worth setting up a newsletter service over. That said, after some consideration, I just thought that I didn&rsquo;t need anything too complex and decided to roll my own because &ldquo;how hard could it be?&rdquo;. As far as I can tell, I think it&rsquo;s working fine so far(?) and took me around one whole day to put the whole thing together from my couch. You can find all of it&rsquo;s source code here on GitHub.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Building a Simple Newsletter Service">
+    <meta property="og:description" content="Just a DB with some HTMLs">
+    <meta name="twitter:description" content="Just a DB with some HTMLs">
+    <meta name="twitter:title" content="Building a Simple Newsletter Service"><meta property="article:published_time" 2025-05-21T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-05-21T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/simple_newsletter_service.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/simple_newsletter_service.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/simple_newsletter_service.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.147.3">
+    
+    </head>
+  <body class="single">
+    <details class="dark_mode_toggle" role="button" open>
+      <summary>
+        <div class="content">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+      </summary>
+    </details>
+    <div class="wrapper">
+      <div class="content dropdown">
+        <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu" id="dropdown_toggle">+</button>
+        <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+          <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Building a Simple Newsletter Service</h1>
+          <p class="row subtitle">Just a DB with some HTMLs</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">May 21, 2025</p>
+          </div>
+          <div class="post_content"><p>When I had the idea on the series about <a href="/blog/2025-05-04-the-opinionated-engineer/">The Opinionated Engineer</a>, I figured maybe that&rsquo;s something worth setting up a newsletter service over. That said, after some consideration, I just thought that I didn&rsquo;t need anything too complex and decided to roll my own because &ldquo;how hard could it be?&rdquo;. As far as I can tell, I think it&rsquo;s working fine so far(?) and took me around one whole day to put the whole thing together from my couch. You can find all of it&rsquo;s source code <a href="https://github.com/binhonglee/subscription">here on GitHub</a>.</p>
+<a class="anchor" href="#existing-newsletter-services">
+    <h2 id="existing-newsletter-services">
+        <span class="text">Existing newsletter services</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Aside from Substack, pretty much all other services provides it with a &ldquo;freemium&rdquo; model where you are charged based on the number of subscribers (regardless if they are paid). Admittedly, I doubt my newsletter would get to that point (I try to not take myself too seriously lol) but I also didn&rsquo;t need most of the things those services are providing. Not to take anything away from them, they all seem really useful if someone is doing that for a living, but I mostly write for fun and as a way to do some knowledge preservation (future self-reference) with the sharing part mostly being a bonus.</p>
+<p>As for Substack, I didn&rsquo;t look too deep into things and while they don&rsquo;t have the best of reputation, their product seem to fit my use case best where I won&rsquo;t have to pay anything ever unless I started having paid subscribers. That said, I thought I didn&rsquo;t need something as fancy but just something simple that goes with my personal blog.</p>
+<a class="anchor" href="#design">
+    <h2 id="design">
+        <span class="text">Design</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>It&rsquo;s a pretty straightforward design with a DB storing the email, a key (used in place of an email as an identifier), and it&rsquo;s confirmation status. When someone subscribes, they get sent an email to confirm their subscription, which they can pick to either &ldquo;Confirm&rdquo; (where we update the confirmation status) or &ldquo;Unsubscribe&rdquo; (where the entry is removed from the DB). First reason to use a key is so that we know the confirmation or unsubscribe click is coming from the users&rsquo; email instead of just people manually typing the link with someone else&rsquo;s email as the param. Secondly, it prevents unintentional leak of the user&rsquo;s email in address bar / browser history. Not necessarily a big deal but just not the ideal privacy design. (You could argue that <em>exposing</em> the key that way isn&rsquo;t great either but I&rsquo;d imagine being unintentionally unsubscribed from <del>a</del> my newsletter is likely a non-issue for most people lol.)</p>
+<a class="anchor" href="#python-core-library-only">
+    <h2 id="python-core-library-only">
+        <span class="text">Python core library only</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>The whole thing is written in Python (with some HTML templates) without using any third party library. I can&rsquo;t say this was fully intentional but I generally like to avoid external libraries unless absolutely necessary which in this case, it&rsquo;s not. As for &ldquo;why Python&rdquo;, it was an arbitrary decision as I&rsquo;ve been doing interviews with Python and sometimes feel like I probably should brush up on it&rsquo;s syntaxes lol. (Kept having to Google random things like &ldquo;split string in Python&rdquo;, &ldquo;define object in Python&rdquo; is uhh, not exactly ideal while in the middle of a coding interview session lol.) I did slightly regret on this because this can&rsquo;t be &ldquo;compiled into a binary&rdquo; where it can just be dump somewhere to run by itself forever with some config files and HTML files. Instead, it needs the server to have Python installed and run the actual Python code. I&rsquo;d prefer keeping and running only the binary on server but I digress.</p>
+<p>As for it being HTML / CSS only, it&rsquo;s mostly an extension from my personal site and blog being that way <a href="/blog/2022-01-31-rebuild-personal-site/">which I&rsquo;ve previously discussed about here</a>. My personal opinion is that our growing reliance on JavaScript to do things had made us forget how powerful raw HTML and CSS could be in general. But also, I&rsquo;ve been pleasantly surprised at how maintainable this has made my site ever since. No worries about vulnerabilities or chasing and rebuilding it on the next / new shiny framework.</p>
+<a class="anchor" href="#email-html-quirks">
+    <h2 id="email-html-quirks">
+        <span class="text">Email HTML quirks</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>For the most part, email HTML behaves mostly the same with regular page HTML but there&rsquo;s a few things that didn&rsquo;t work which I&rsquo;d like to point out:</p>
+<ul>
+<li><code>&lt;button type=&quot;submit&quot; /&gt;</code> within a <code>&lt;form method=&quot;post&quot; /&gt;</code></li>
+<li><code>var()</code> CSS params</li>
+<li><code>html {}</code>, <code>:root {}</code>, <code>body {}</code> selector in CSS</li>
+<li><code>:hover</code> - I read that some email provider supports them but most don&rsquo;t</li>
+<li><code>&lt;style /&gt;</code> block (Gmail client specific) - Despite <a href="https://developers.google.com/workspace/gmail/design/css">what Google says</a>, only inline CSS is rendered on Gmail&rsquo;s own clients*</li>
+<li>JavaScript - expected to prevent XSS lol</li>
+</ul>
+<p>I also tried to include everything in the email itself and didn&rsquo;t make any references to external files for CSS which I assume would likely be stripped off as well.</p>
+<p><em>*The content of the email do remain so if you use a 3rd party client (like Mail on iOS) it&rsquo;d render just fine but Gmail apps or web client won&rsquo;t render anything in <code>&lt;style /&gt;</code> tag.</em></p>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>This is a fun little experience and mostly a good opportunity to brush up my Python skill better. I&rsquo;d imagine if I started having more, different, thematic series in the future, it might make sense to allow for segmented subscription / un-subscription but that&rsquo;s work for another day. For now, I hope you enjoy reading this as much as I had fun building and writing this. Please subscribe below (or don&rsquo;t lol).</p>
+</div>
+          
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a> | <a href="https://github.com/binhonglee/blog" rel="noopener" target="_blank">Source (GitHub)</a> </p>
+          </div>
+          <div class="row">
+            <p>&copy; 2025 <a href="https://binhong.me">BinHong Lee</a></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+  </body>
+</html>
+

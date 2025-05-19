@@ -30,7 +30,10 @@
     &lt;/h2&gt;
 &lt;/a&gt;
 &lt;p&gt;When I brought this up to some of my friends, their reactions were rather “Meh, I don’t have anything of worth anyway. Why would they wanna hack me?”. This is where you’re wrong. They don’t have to hack you, you’re ALREADY HACKED. As to what can they do with it? &lt;strong&gt;Identity theft&lt;/strong&gt;, basically THEY CAN BECOME YOU. With that, I mean they can apply for loans from banks on your behalf, register phone numbers (to run shady business) on your behalf, essentially enjoy all the benefits of being you without any of the drawbacks.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://binhong.me/blog/2017-11-20-i-could-become-you-tomorrow-and-no-one-would-find-out//blog/img/icImage2.jpeg&#34; alt=&#34;Information obtainable from SPR website&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/icImage2.jpeg&#34; target=&#34;_blank&#34;&gt;
+    &lt;img src=&#34;https://binhong.me/blog/2017-11-20-i-could-become-you-tomorrow-and-no-one-would-find-out//blog/img/icImage2.jpeg&#34; alt=&#34;Information obtainable from SPR website&#34;&gt;
+&lt;/a&gt;
+&lt;/p&gt;
 &lt;p&gt;When I first read about the breach, I thought, &amp;ldquo;it’s been 3 years now, as long as you’ve moved and changed phone number, they pretty much &amp;ldquo;only&amp;rdquo; have your IC no. It’s bad, but maybe not as severe as I initially might imagined”. Could I have been any more wrong. If you are a registered voter and your IC no is fallen into the wrong hands, whoever this is can easily pull up your full profile (full name, home address) from the SPR website. And while doing so, every single device that this set of data goes through (router, ISP, some surveillance services, or even a MIM attack) gets to see all of these information as well since the site is not encrypted. (It’s 2017 and TLS is free!)&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#responses&#34;&gt;
     &lt;h2 id=&#34;responses&#34;&gt;
