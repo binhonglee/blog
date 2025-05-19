@@ -2,14 +2,9 @@
 
     <main class="content_body article_body">
       <div class="primary_block projects">
-
         {{- $scope := .Site }}
-
         {{- $paginator := .Paginate (where $scope.RegularPages ".Params.type" "!=" "page") }}
-
         {{- range $index, $page := $paginator.Pages }}
-
-
         <article class="block">
           <a class="article_link active" href="{{ .Permalink }}">
             <h1 class="row title">{{ .Title }}</h1>
@@ -33,6 +28,8 @@
         {{- end }}
       </nav>
       {{- end }}
+
+      {{- partial "newsletter.html" . }}
     </main>
 
 {{- partial "footer.html" . }}
