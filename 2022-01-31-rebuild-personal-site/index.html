@@ -8,8 +8,18 @@
     
     <meta name="description" content="As time goes on in my journey of experimenting with different technologies on building a web interface, I figured it&rsquo;s time for my personal site to return to the fundamentals. So I decided to build it with only HTML &#43; CSS with one of the goals being that it should work perfectly fine with JavaScript disabled.
 Before this, it&rsquo;s built with Vue. You can still find the source here.
-Design
-Inspiration
+
+    
+        Design
+        #
+    
+
+
+    
+        Inspiration
+        #
+    
+
 Skip this next paragraph if you&rsquo;re not interested in my old site&rsquo;s origin story.">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Rebuilding Personal Site from Scratch">
@@ -77,8 +87,18 @@ Skip this next paragraph if you&rsquo;re not interested in my old site&rsquo;s o
           </div>
           <div class="post_content"><p>As time goes on in my journey of experimenting with different technologies on building a web interface, I figured it&rsquo;s time for my personal site to return to the fundamentals. So I decided to build it with only HTML + CSS with one of the goals being that it should work perfectly fine with JavaScript disabled.</p>
 <p><em>Before this, it&rsquo;s built with Vue. You can still find the source <a href="https://github.com/binhonglee/binhonglee.github.io/tree/old_dev">here</a>.</em></p>
-<h1 id="design">Design</h1>
-<h2 id="inspiration">Inspiration</h2>
+<a class="anchor" href="#design">
+    <h1 id="design">
+        <span class="text">Design</span>
+        <span class="tag">#</span>
+    </h1>
+</a>
+<a class="anchor" href="#inspiration">
+    <h2 id="inspiration">
+        <span class="text">Inspiration</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p><em>Skip this next paragraph if you&rsquo;re not interested in my old site&rsquo;s origin story.</em></p>
 <p>My old site is structured more like a resume than a personal self intro. It&rsquo;s rather serious by nature since it was built at a time when I was looking my first job out of college. I stole the design from the personal site of a great friend of mine, Pat Pataranutaporn (just one out of the plethora of pages) and dulled it down a little. He rebuilt his entire personal site shortly after but I stick with it since I built it in a way that&rsquo;s rather easy to maintain (as in adding and removing stuff overtime). It served me well during those times but at this point a redesign is rather long overdue.</p>
 <p>I can&rsquo;t really do design (unless I&rsquo;m given a rigid component library then maybe 😅) so I looked up how some of the seasoned software engineers design their site and pick out the parts I like about them. Here are some of the websites I took inspiration from:</p>
@@ -87,20 +107,50 @@ Skip this next paragraph if you&rsquo;re not interested in my old site&rsquo;s o
 <li><a href="https://cassidoo.co/">Cassidy Williams</a></li>
 <li><a href="https://joeprevite.com/">Joe Previte</a></li>
 </ul>
-<h2 id="ideology">Ideology</h2>
+<a class="anchor" href="#ideology">
+    <h2 id="ideology">
+        <span class="text">Ideology</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>One of the most obvious common traits among them is how minimal they are while still showing a lot of personality. The other being that 2 / 3 have a dark mode toggle while Jane&rsquo;s site is dark mode only. I stick with these ideas and decided to be more playful with my text colors especially since I can&rsquo;t draw.</p>
 <p>One other takeaway I had was that I really liked the monospaced font used on Cassidy&rsquo;s site. I tried Victor Mono initially since I really like it (and use it day-to-day on all my text editors) but I find it&rsquo;s readability isn&rsquo;t great for longer paragraphs. I decided to settle for Fira Code instead (first font that introduced me to ligatures for programming).</p>
 <p><em>Note: Monospaced fonts in general aren&rsquo;t meant for regular text reading anyway so this is something completely within expectation.</em></p>
-<h1 id="implementation">Implementation</h1>
-<h2 id="dark-mode">Dark mode</h2>
+<a class="anchor" href="#implementation">
+    <h1 id="implementation">
+        <span class="text">Implementation</span>
+        <span class="tag">#</span>
+    </h1>
+</a>
+<a class="anchor" href="#dark-mode">
+    <h2 id="dark-mode">
+        <span class="text">Dark mode</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>Since I&rsquo;m not using JavaScript, this is going to be tricky. That said, major credit to Shubham for pointing out the basic concept of its implementation in <a href="https://twitter.com/4shub/status/1259298005368270849">this tweet</a>. On top of that, there&rsquo;s just a lot of CSS gymnastics where I learn about the different selectors and what they each does in CSS (<a href="https://www.w3schools.com/cssref/sel_element_pluss.asp">+</a>, <a href="https://www.w3schools.com/cssref/sel_element_gt.asp">&gt;</a>, <a href="https://www.w3schools.com/cssref/sel_gen_sibling.asp">~</a>, <a href="https://www.w3schools.com/cssref/sel_attribute.asp">[]</a>).</p>
 <p>One important thing of note is that, the toggle &ldquo;button&rdquo; (the <code>detail</code> component) has to be at the same level as the top level of the rest of the components on the screen. I keep my toggle on the right which is sufficient to prevent colliding / blocked by other stuff on screen.</p>
-<h2 id="smaller-screens">Smaller Screens</h2>
+<a class="anchor" href="#smaller-screens">
+    <h2 id="smaller-screens">
+        <span class="text">Smaller Screens</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>I tried my best to make everything as modular as possible so it should properly reorganize itself dynamically based on the given screen size. However, there are always exceptions and this is where <code>@media screen and (max-width: 1000px)</code> comes in handy for addressing these edge cases.</p>
-<h2 id="dropdown-menu">Dropdown Menu</h2>
+<a class="anchor" href="#dropdown-menu">
+    <h2 id="dropdown-menu">
+        <span class="text">Dropdown Menu</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>As I add a few more sections to my side, I started to realize that the link menu might not fit on certain display sizes. In general, it just follows <a href="https://www.w3schools.com/Css/css_dropdowns.asp">this w3c guide</a>. I originally did one implementation that used the similar idea of the dark mode toggle above but I opted for <code>:hover</code> instead of <code>[open]</code> due to its interaction where I think it makes more sense to be dismissed when I tap on random places on the screen.</p>
 <p>In order to make it more accessible, it is also important to add the appropriate aria labels. <a href="https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html">This page</a> has a rather comprehensive guide on the proper labels to add for each fields.</p>
-<h2 id="truncation-somewhat-unrelated">Truncation (somewhat unrelated)</h2>
+<a class="anchor" href="#truncation-somewhat-unrelated">
+    <h2 id="truncation-somewhat-unrelated">
+        <span class="text">Truncation (somewhat unrelated)</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>This is more for the blog part of the site where I find the default truncation being too lenient thus generating some of the overly long (and not uniformed) summary text.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -122,7 +172,12 @@ Skip this next paragraph if you&rsquo;re not interested in my old site&rsquo;s o
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="takeaway">Takeaway</h1>
+</div><a class="anchor" href="#takeaway">
+    <h1 id="takeaway">
+        <span class="text">Takeaway</span>
+        <span class="tag">#</span>
+    </h1>
+</a>
 <p>Overall it&rsquo;s been a great experience to relearn and understand what we can do even without any of the modern JavaScript frameworks. It also serves as a great reminder that web existed for quite a while before JavaScript came around. While they may not be as pretty and reactive as it is today, they still works and have a lot to offer (especially as HTML and CSS standards continues to evolve as well).</p>
 </div>
           

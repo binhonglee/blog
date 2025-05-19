@@ -74,12 +74,27 @@ That said, as Parcel v1 is no longer maintained (and with v2 supporting only Vue
           </div>
           <div class="post_content"><p><del>While Vue 3 has been out of beta for quite a while, (<a href="https://v3.vuejs.org/guide/migration/introduction.html#breaking-changes">as noted on their website</a>) a migration build is still a work in progress so the current advice is to stay with Vue 2 if it&rsquo;s a non-trivial project.</del> I procrastinated on this article for so long that a migration build has since been released. Feel free to check it out <a href="https://v3.vuejs.org/guide/migration/migration-build.html">here</a>.</p>
 <p>That said, as Parcel v1 is <a href="https://www.npmjs.com/package/parcel-bundler/v/1.9.4">no longer maintained</a> (and with v2 supporting only Vue 3), I figured it&rsquo;s time to upgrade.</p>
-<h2 id="why-not-parcel-v2">Why not Parcel v2?</h2>
+<a class="anchor" href="#why-not-parcel-v2">
+    <h2 id="why-not-parcel-v2">
+        <span class="text">Why not Parcel v2?</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>This is actually quite straightforward. I&rsquo;ve been wanting to try out vite for a while since I first saw it mentioned on an esbuild issue (asking for vue SFC support). I did consider snowpack for a while but I still decided to stick with vite seeing how its also created by Evan You and it seems to have mildly better performance.</p>
 <p>I did initially try to upgrade the project to Parcel v2 seeing as <a href="https://v2.parceljs.org/getting-started/migration">how simple it was described as</a>. However, <a href="https://github.com/parcel-bundler/parcel/issues/4022">I was wrong</a> and instead of sinking anymore time into it, I decided to move onto something else.</p>
-<h2 id="moving-onto-vite">Moving onto vite</h2>
+<a class="anchor" href="#moving-onto-vite">
+    <h2 id="moving-onto-vite">
+        <span class="text">Moving onto vite</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>The one thing that really sealed it for me (with vite) was how simple the move turned out to be. I created an empty project with their template, clone the relatively minimal default config over, and it&rsquo;s &ldquo;mostly&rdquo; working. (Well, &ldquo;mostly&rdquo; because my project was still on Vue 2 instead of Vue 3.) Funnily enough, this was the same reason that led me to opting with Parcel initially since it needed very minimal configuration to get started.</p>
-<h2 id="vue-router"><code>vue-router</code></h2>
+<a class="anchor" href="#vue-router">
+    <h2 id="vue-router">
+        <span class="text"><code>vue-router</code></span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>According to the official Vue 3 guide, the way to call the router is to import and call it the <code>VueRouter</code> you defined. This is slightly different from the previous version where you call <code>this.router</code> to use it. Well technically you can still do exactly that, as long as you define router in your global properties like below.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -102,13 +117,33 @@ That said, as Parcel v1 is no longer maintained (and with v2 supporting only Vue
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>At this point, router navigation should work just fine but you might see <code>tsc</code> (or <code>vue-tsc</code>) throwing type errors saying that <code>this.router</code> is of type unknown. We&rsquo;ll fix this later when discussing about <code>vue-tsc</code>.</p>
-<h2 id="vue-tsc"><code>vue-tsc</code></h2>
+<a class="anchor" href="#vue-tsc">
+    <h2 id="vue-tsc">
+        <span class="text"><code>vue-tsc</code></span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>One of the main upgrades that Vue 3 provides is <code>vue-tsc</code>. On top of the regular type checking already available with <code>tsc</code>, <code>vue-tsc</code> also do type checking for inline TypeScript / Vue code in template (like <code>v-for</code>, <code>v-if</code>, <code>:props</code>&hellip;).</p>
-<h3 id="volar-vscode">Volar (vscode)</h3>
+<a class="anchor" href="#volar-vscode">
+    <h3 id="volar-vscode">
+        <span class="text">Volar (vscode)</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
 <p>If you do your Vue project development on vscode, you probably have Vetur installed. While Vetur works with Vue 3 projects, Volar is an upgrade to that comparatively as it uses vue-tsc and displays those new type errors inline. They do not complement / work with each other though so make sure you remove one before you install the other.</p>
-<h2 id="shims">Shims</h2>
+<a class="anchor" href="#shims">
+    <h2 id="shims">
+        <span class="text">Shims</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>So if you&rsquo;re not already familiar with shims, it&rsquo;s essentially a type declaration file to tell your IDE what are the types of the vue file exports (and tsx files). <a href="https://stackoverflow.com/questions/54622621/">Here</a>&rsquo;s a stackoverflow question on why it&rsquo;s needed.</p>
-<h3 id="shims-vuedts"><code>shims-vue.d.ts</code></h3>
+<a class="anchor" href="#shims-vuedts">
+    <h3 id="shims-vuedts">
+        <span class="text"><code>shims-vue.d.ts</code></span>
+        <span class="tag">#</span>
+    </h3>
+</a>
 <p>This is the generic one that&rsquo;d be generated when you create a new Vue project.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -126,7 +161,12 @@ That said, as Parcel v1 is no longer maintained (and with v2 supporting only Vue
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="shims-vue-run-timedts"><code>shims-vue-run-time.d.ts</code></h3>
+</div><a class="anchor" href="#shims-vue-run-timedts">
+    <h3 id="shims-vue-run-timedts">
+        <span class="text"><code>shims-vue-run-time.d.ts</code></span>
+        <span class="tag">#</span>
+    </h3>
+</a>
 <p>If you make router calls in your code with <code>this.$router</code> directly, you might find <code>vue-tsc</code> complaining about missing type declaration for it even if you already declared <code>app.use(router);</code> in your <code>main.ts</code> file. It seems like that doesn&rsquo;t inherit the types imported automatically so you need to declare it separately for <code>vue-tsc</code> to know where to look.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -174,7 +214,12 @@ That said, as Parcel v1 is no longer maintained (and with v2 supporting only Vue
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>As for why I can&rsquo;t just put these lines of codes in the same type declaration file as above, it threw me some error when I tried that. Separating them somehow solved the issue for me.</p>
-<h2 id="indexhtml">index.html</h2>
+<a class="anchor" href="#indexhtml">
+    <h2 id="indexhtml">
+        <span class="text">index.html</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>Usually this should just be in default state so the only change that needs to be made was to add this additional param of <code>type=&quot;module&quot;</code> to the script tag calling the entrypoint.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -184,9 +229,19 @@ That said, as Parcel v1 is no longer maintained (and with v2 supporting only Vue
 <pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#ff79c6">script</span> <span style="color:#50fa7b">type</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;module&#34;</span> <span style="color:#50fa7b">src</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#34;/src/main.ts&#34;</span>&gt;&lt;/<span style="color:#ff79c6">script</span>&gt;
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="pug">Pug</h2>
+</div><a class="anchor" href="#pug">
+    <h2 id="pug">
+        <span class="text">Pug</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>For pug in Vue 2, you can have your whole block indented (kinda like the regular html block). But in Vue 3, it&rsquo;s no longer supported so your outer most <code>div</code> can no longer be indented.</p>
-<h2 id="wrap-up">Wrap up</h2>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>Overall, there are some bumps here and there but the process is relatively easy to understand especially with the help of new tools like volar (and faster compilation of vite).</p>
 </div>
           

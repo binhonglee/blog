@@ -7,8 +7,18 @@
     <title>How to host multiple domain names and projects on one server - BinHong Lee&#39;s Blog</title>
     
     <meta name="description" content="I own multiple domain names, and each one hosts a different side project. For the longest time, everything that required ‘hosting’ was hosted on Heroku. But their free tier can be quite limited, it can also get costly quickly if you are paying for each separate project. So instead, I decided to explore putting all of them together using NGINX (recommended to me by Jane Manchun Wong).
-Required Resources
-Virtual Private Server (VPS)
+
+    
+        Required Resources
+        #
+    
+
+
+    
+        Virtual Private Server (VPS)
+        #
+    
+
 You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I uses Vultr (here’s the non-referral link) which costs me about $2.50 / month.">
     <meta property="og:type" content="article">
     <meta property="og:title" content="How to host multiple domain names and projects on one server">
@@ -75,13 +85,38 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
             <p class="right">August 29, 2018</p>
           </div>
           <div class="post_content"><p>I own multiple domain names, and each one hosts a different side project. For the longest time, everything that required ‘hosting’ was hosted on Heroku. But their free tier can be quite limited, it can also get costly quickly if you are paying for each separate project. So instead, I decided to explore putting all of them together using NGINX (recommended to me by <a href="https://jmw.fyi">Jane Manchun Wong</a>).</p>
-<h2 id="required-resources">Required Resources</h2>
-<h4 id="virtual-private-server-vps">Virtual Private Server (VPS)</h4>
+<a class="anchor" href="#required-resources">
+    <h2 id="required-resources">
+        <span class="text">Required Resources</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<a class="anchor" href="#virtual-private-server-vps">
+    <h4 id="virtual-private-server-vps">
+        <span class="text">Virtual Private Server (VPS)</span>
+        <span class="tag">#</span>
+    </h4>
+</a>
 <p>You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I uses <a href="https://www.vultr.com/?ref=7358373">Vultr</a> (here’s the <a href="http://vultr.com/">non-referral link</a>) which costs me about $2.50 / month.</p>
-<h4 id="domain-names">Domain Names</h4>
+<a class="anchor" href="#domain-names">
+    <h4 id="domain-names">
+        <span class="text">Domain Names</span>
+        <span class="tag">#</span>
+    </h4>
+</a>
 <p>You will need to register a few domain names. Assuming that you probably already have them, make sure your domain names are pointing at the name servers of your VPS. There should be a DNS section in your domain name service dashboard where you can select “custom DNS” or something similar. If you are not sure what the nameservers of your VPS are, you should be able to find that info easily through a simple search of “nameserver” + VPS service name.</p>
-<h2 id="setting-up-nginx">Setting up NGINX</h2>
-<h4 id="installation-and-basic-setup">Installation and basic setup</h4>
+<a class="anchor" href="#setting-up-nginx">
+    <h2 id="setting-up-nginx">
+        <span class="text">Setting up NGINX</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<a class="anchor" href="#installation-and-basic-setup">
+    <h4 id="installation-and-basic-setup">
+        <span class="text">Installation and basic setup</span>
+        <span class="tag">#</span>
+    </h4>
+</a>
 <p><em>Reference from <a href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-16-04">How To Install Nginx on Ubuntu 16.04</a></em></p>
 <p>Run the following commands through SSH-ing into the VPS. It will install NGINX, set firewall rules allowing it, and set NGINX to autostart on boot.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
@@ -98,7 +133,12 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
 </span></span><span style="display:flex;"><span>sudo systemctl <span style="color:#8be9fd;font-style:italic">enable</span> nginx
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="configuration-setup">Configuration setup</h4>
+</div><a class="anchor" href="#configuration-setup">
+    <h4 id="configuration-setup">
+        <span class="text">Configuration setup</span>
+        <span class="tag">#</span>
+    </h4>
+</a>
 <p><em>Reference from <a href="https://geekflare.com/multiple-domains-on-one-server-with-apache-nginx/">Host Multiple Domains on One Server/IP with Apache or nginx</a></em></p>
 <p>The default virtual.conf location should be at /etc/nginx/conf.d/virtual.conf. I recommend backing up the default file before making any changes. (If it doesn’t exist, you can just create it.) Edit the file to look something like the following:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
@@ -181,7 +221,12 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>After you are done, restart the server so the new configurations will be loaded and applied.</p>
-<h2 id="cloning-and-linking">Cloning and linking</h2>
+<a class="anchor" href="#cloning-and-linking">
+    <h2 id="cloning-and-linking">
+        <span class="text">Cloning and linking</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>Now remember, since you have your directory pointing at /opt/htdocs/<em>websiteName</em>, your initial thought might be to clone your projects into these folders. This can work, but it’s not ideal since many operations in these folders require root access to really do anything.</p>
 <p>Instead, you can clone them into your user folder or anywhere else like you normally would, and then create a soft link to connect the path to your repository folder. Something like this:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
@@ -195,7 +240,12 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Of course, when you are cloning a Node.js static site folder (ReactJS, Angular or Vue.js), you will want to install (<code>npm install</code>) and build (<code>npm run-script build</code>) them. Then link the <em>./build</em> folder instead of the base level of the cloned repository. (Similarly for Jekyll sites, but use the <em>./_output</em> folder instead.) As for active servers, just make sure your server is running on the same port as it is listed in the configuration file.</p>
-<h2 id="set-up-https-with-certbot">Set up HTTPS with certbot</h2>
+<a class="anchor" href="#set-up-https-with-certbot">
+    <h2 id="set-up-https-with-certbot">
+        <span class="text">Set up HTTPS with certbot</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>Thanks to Let’s Encrypt, you can now get free and easy HTTPS certificates. With the introduction of certbot, everything just got even easier!</p>
 <p><em>Reference from <a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04">How To Secure Nginx with Let’s Encrypt on Ubuntu 16.04</a></em></p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
@@ -221,7 +271,12 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
 <pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo certbot renew --dry-run
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="updating-everything">Updating everything</h2>
+</div><a class="anchor" href="#updating-everything">
+    <h2 id="updating-everything">
+        <span class="text">Updating everything</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>Now that you have everything up and running, you might be thinking, well there seems to be an awful lot to remember if/when I need to update something. Unfortunately, that’s kinda true, but we can always make it easier by adding a script that does it for us.</p>
 <p>Here is how one would look:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
@@ -302,7 +357,12 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
 </div>
 </div><p>Thanks for reading! Let me know if you have any questions in the comments below.</p>
 <hr>
-<h2 id="other-references">Other References</h2>
+<a class="anchor" href="#other-references">
+    <h2 id="other-references">
+        <span class="text">Other References</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <ul>
 <li><a href="https://serverfault.com/questions/363159/nginx-proxy-pass-redirects-ignore-port">nginx proxy pass redirects ignore port</a> on <a href="https://serverfault.com/">serverfault</a></li>
 <li><a href="https://superuser.com/questions/632205/continue-ssh-background-task-jobs-when-closing-ssh">Continue SSH background task/jobs when closing SSH</a> on <a href="https://superuser.com/">superuser</a></li>

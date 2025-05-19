@@ -6,7 +6,12 @@
     
     <title>Getting started with Travis-CI - BinHong Lee&#39;s Blog</title>
     
-    <meta name="description" content="What is CI and why should I care about it?
+    <meta name="description" content="
+    
+        What is CI and why should I care about it?
+        #
+    
+
 CI stands for Continuous Integration which as the name suggests, is an integrated tests that runs continuously on every time when someone pushes a commit (or mostly when opening a Pull Request).
 As for why is it important, it automates the whole testing modules. Ideally, you would still want to test your changes locally before pushing them to remote but in some occasion where you forgot or the program requires a lot more resources than your current machine can handle, CI comes in very handy. That aside, if your project happen to have people wanting to contribute code, a properly written test with CI will help you in reviewing the changes and ensuring that the contribution would not break the build.">
     <meta property="og:type" content="article">
@@ -76,12 +81,27 @@ As for why is it important, it automates the whole testing modules. Ideally, you
             <p>BinHong Lee</p>
             <p class="right">April 22, 2018</p>
           </div>
-          <div class="post_content"><h2 id="what-is-ci-and-why-should-i-care-aboutit">What is CI and why should I care about it?</h2>
+          <div class="post_content"><a class="anchor" href="#what-is-ci-and-why-should-i-care-aboutit">
+    <h2 id="what-is-ci-and-why-should-i-care-aboutit">
+        <span class="text">What is CI and why should I care about it?</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>CI stands for Continuous Integration which as the name suggests, is an integrated tests that runs continuously on every time when someone pushes a commit (or mostly when opening a <a href="https://help.github.com/articles/about-pull-requests/">Pull Request</a>).</p>
 <p>As for why is it important, it automates the whole testing modules. Ideally, you would still want to test your changes locally before pushing them to remote but in some occasion where you forgot or the program requires a lot more resources than your current machine can handle, CI comes in very handy. That aside, if your project happen to have people wanting to contribute code, a properly written test with CI will help you in reviewing the changes and ensuring that the contribution would not break the build.</p>
-<h2 id="why-travis-ci">Why Travis-CI?</h2>
+<a class="anchor" href="#why-travis-ci">
+    <h2 id="why-travis-ci">
+        <span class="text">Why Travis-CI?</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>There are plenty of CI tools out there (cricleCI, AppVeyor etc.) so why Travis-CI? The straightforward answer is that its the easiest one to get started with especially if you are already on GitHub. This is actually also one of its major drawback which is how tightly tied Travis-CI is onto GitHub. As far as I know, it is not possible to use Travis-CI outside of GitHub. That aside, if you host your projects on GitHub, that should be the least of your concern.</p>
-<h2 id="setup">Setup</h2>
+<a class="anchor" href="#setup">
+    <h2 id="setup">
+        <span class="text">Setup</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>First, sign up at <a href="https://travis-ci.org/">their website</a>, link your GitHub account and enable it for the repository you would like to implement this. Do note that this is only for public repositories. If you would like to do this for a private repository instead, you will need to sign up for <a href="https://docs.travis-ci.com/user/travis-ci-for-private/">Travis-CI Pro</a>.</p>
 <p>Create a file named <code>.travis.yml</code> and add the first line with the programming language you used (unless its Android in which you would then write Android instead of Java).</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
@@ -105,7 +125,12 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 </span></span><span style="display:flex;"><span><span style="color:#ff79c6">language</span>: cpp
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="testing-environment">Testing environment</h2>
+</div><a class="anchor" href="#testing-environment">
+    <h2 id="testing-environment">
+        <span class="text">Testing environment</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>Ideally, you will only be testing it in one environment which means this will be a one liner of this.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -168,9 +193,19 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 </span></span><span style="display:flex;"><span>        - MATRIX_EVAL=&#34;brew update &amp;&amp; brew install gcc &amp;&amp; CC=gcc-7 &amp;&amp; CXX=g++-7&#34;
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="language-specificsettings">Language specific settings</h2>
+</div><a class="anchor" href="#language-specificsettings">
+    <h2 id="language-specificsettings">
+        <span class="text">Language specific settings</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>For some languages, it is a lot more complicated than the others due to the way their versioning works.</p>
-<h3 id="android">Android</h3>
+<a class="anchor" href="#android">
+    <h3 id="android">
+        <span class="text">Android</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
 <p>This is probably the most complicated one I’ve come across. It took a lot of tries and failure for me to figure out how it works. (<a href="https://docs.travis-ci.com/user/languages/android/">The documentation</a> has also since updated which helps greatly.)</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -204,7 +239,12 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 </span></span><span style="display:flex;"><span>    - sys-img-armeabi-v7a-android-26
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="c">C++</h3>
+</div><a class="anchor" href="#c">
+    <h3 id="c">
+        <span class="text">C++</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
 <p>There isn’t specific custom configuration available for C++ like for Android above but due to the nature of its complicated OS configuration, you will need to import the matrix from before into the system before installing anything that might be needed to run the test itself. Therefore you will need to add the following.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -216,7 +256,12 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 </span></span><span style="display:flex;"><span>  - eval &#34;${MATRIX_EVAL}&#34;
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="java">Java</h3>
+</div><a class="anchor" href="#java">
+    <h3 id="java">
+        <span class="text">Java</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
 <p>For Java, due to the differences between OpenJDK, OracleJDK and also differences from versions to versions itself (shoutout to OracleJDK 9 &amp; 10), you might want to test your software with every version available.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -234,7 +279,12 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 </span></span><span style="display:flex;"><span>  - openjdk7
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="python">Python</h3>
+</div><a class="anchor" href="#python">
+    <h3 id="python">
+        <span class="text">Python</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
 <p>Similarly, you can test your software or package against different versions of Python including the development versions.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -255,7 +305,12 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><em>*Note: Due to recent changes, seems like <code>3.7-dev</code>, <code>3.8-dev</code>, and <code>nightly</code> would not work as of now.</em></p>
-<h3 id="nodejs">Node.js</h3>
+<a class="anchor" href="#nodejs">
+    <h3 id="nodejs">
+        <span class="text">Node.js</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
 <p>Again, you might need to test your software with multiple versions or node.js except the differences between each version is not as drastic but there are a lot more versions comparatively.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -282,7 +337,12 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>By doing this, you will be testing your software towards possibly 8 versions of node.js.</p>
-<h2 id="install-and-runtest">Install and run test</h2>
+<a class="anchor" href="#install-and-runtest">
+    <h2 id="install-and-runtest">
+        <span class="text">Install and run test</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>If you look into the <a href="https://docs.travis-ci.com/user/languages/">specific documentations</a> about the configurations for each languages, you will find that many of them has default <code>install</code> and <code>test</code> scripts but you can always overwrite them with your own scripts or commands like the following.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -307,7 +367,12 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p><em>*Note:  if you testing in macOS environment and is installing any dependencies through Homebrew (including language dependencies in C++), you will have to do a <code>brew update</code> before running anything brew related to prevent an error.</em></p>
-<h2 id="deployment">Deployment</h2>
+<a class="anchor" href="#deployment">
+    <h2 id="deployment">
+        <span class="text">Deployment</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>If you host your project externally while using your GitHub repository as your code control, Travis-CI can also help automating the deployment process. Depending on the service provider you use, their configuration can vary greatly from one another. Below, I included some of those that I think is the more popular ones. As you might have guessed, you can also deploy to multiple developers at once. I recommend checking out the <a href="https://docs.travis-ci.com/user/deployment">documentation page</a> before implementing any of these.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -378,9 +443,19 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 </span></span></code></pre></td></tr></table>
 </div>
 </div><hr>
-<h2 id="code-coverage">Code coverage</h2>
+<a class="anchor" href="#code-coverage">
+    <h2 id="code-coverage">
+        <span class="text">Code coverage</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>Along with testing, I would also recommend using a tool to analyze your code coverage. It will show you how much coverage your test has over your codes (and usually, use cases). Personally, I use the tool called <a href="https://codecov.io/">codecov</a>.</p>
-<h2 id="add-thebadge">Add the badge!</h2>
+<a class="anchor" href="#add-thebadge">
+    <h2 id="add-thebadge">
+        <span class="text">Add the badge!</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>If you are like me, the reason I was hooked up by this is because long time ago when I first got on GitHub, I saw plenty of repositories have the badge that shows if their build is <code>passing</code> or <code>failing</code>. I thought that was really fancy and wanted one of those so I started getting myself to learn what CI as a whole is about and how can I make use of it. Turns out, its a lot more useful than just being pretty!</p>
 <blockquote>
 <p><em>This article was originally published on <a href="https://codeburst.io/getting-started-with-travis-ci-f3223082f256">codeburst.io</a>.</em></p></blockquote>

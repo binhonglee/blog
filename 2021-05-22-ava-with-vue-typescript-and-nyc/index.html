@@ -72,7 +72,12 @@
             <p class="right">May 22, 2021</p>
           </div>
           <div class="post_content"><p>When working on a project with Vue (TypeScript), I faced a lot of roadblocks trying to get code coverage to work. The issue is largely covered in <a href="https://github.com/vuejs/vue-cli/issues/1363">this issue thread</a>. Most solutions / workarounds for that seems to revolve around changing the bundling flow with webpack. Considering my lack of familiarity with webpack (on top of my use of scss and pug in Vue files), putting together a webpack config that works for me turns out to be extremely challenging. That somewhat prompted me to move the build and test process away from <code>vue-cli</code> while starting to experiment with different tools that could work. One thing to note is that, I&rsquo;ll be using babel to handle TypeScript compiling / transpiling instead of <code>ts-node</code> as recommended from Ava&rsquo;s guide.</p>
-<h2 id="babel">Babel</h2>
+<a class="anchor" href="#babel">
+    <h2 id="babel">
+        <span class="text">Babel</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>We use babel to help Ava properly transpile the Vue and TypeScript files. This is especially useful if you would like to get accurate code coverage for your tests.</p>
 <p>Here&rsquo;s how the <code>.babelrc</code> should look like:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
@@ -134,7 +139,12 @@
 <li>Alias set is optional. You only need it if you actually use the alias. You can also set multiple aliases or point it to a different directory depending on how your project is setup. Make sure you sync it with your <code>tsconfig.json</code> to prevent confusion / unwanted errors</li>
 <li><code>istanbul</code> plugin is also optional. This is only needed if you want to also set up code coverage with <code>nyc</code> (more on this later).</li>
 </ul>
-<h2 id="setup-file">Setup File</h2>
+<a class="anchor" href="#setup-file">
+    <h2 id="setup-file">
+        <span class="text">Setup File</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>Setup file is there to set the test environment considering that these Vue component files are supposed to be ran inside a Vue instance with some preset, this file serve as a similar purpose but limited only to testing use.</p>
 <p>Here&rsquo;s a sample <code>_setup.js</code> where you can build on top of depending on what you need / use. See original reference <a href="https://github.com/avajs/ava/blob/main/docs/recipes/vue.md">here</a>.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
@@ -234,7 +244,12 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>At this point you should be able to run your Ava tests as intended and it would work just fine. However, if you want to have code coverage for the project, read on on how to setup your NYC config.</p>
-<h2 id="nyc-optional">NYC (optional)</h2>
+<a class="anchor" href="#nyc-optional">
+    <h2 id="nyc-optional">
+        <span class="text">NYC (optional)</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>One of the main reasons I started exploring for this option is to get good code coverage report. This setup allows us to let NYC generate proper coverage reports.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -282,7 +297,12 @@
 </span></span><span style="display:flex;"><span>} 
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="conclusion">Conclusion</h1>
+</div><a class="anchor" href="#conclusion">
+    <h1 id="conclusion">
+        <span class="text">Conclusion</span>
+        <span class="tag">#</span>
+    </h1>
+</a>
 <p>Personally, I wrote this piece based on my work on <a href="https://globetrotte.com">GlobeTrotte</a>. I&rsquo;ve tried my best to cleanup the code for it to be as reusable as I can. Feel free to let me know if there&rsquo;s any issue with it. Hopefully you find this helpful.</p>
 </div>
           

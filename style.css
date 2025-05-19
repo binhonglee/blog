@@ -26,6 +26,7 @@ body {
   --default-links: #1e681e;
   --default-active: #333382;
   --default-deprecated: #893636;
+  --default-gray: #808080;
   --default-footer-a: #967c3b;
 
   --dark-background: #181a18;
@@ -33,6 +34,7 @@ body {
   --dark-links: #46c970;
   --dark-active: #44cfde;
   --dark-deprecated: #fe6161;
+  --dark-gray: #d3d3d3;
   --dark-footer-a: #ce9b35;
 
   --dracula-background: #282a36;
@@ -244,6 +246,11 @@ h1, h2, h3, h4, .header_links .link, .links .link {
   color: var(--default-links);
 }
 
+h1:hover .text, h2:hover .text, h3:hover .text, h4:hover .text {
+  text-decoration: underline;
+  font-weight: 100;
+}
+
 .dark_mode_toggle[open] .link,
 .dark_mode_toggle[open] + div h1,
 .dark_mode_toggle[open] + div h2,
@@ -288,11 +295,30 @@ footer a {
 }
 
 em {
-  color: gray
+  color: var(--default-gray);
 }
 
 .dark_mode_toggle[open] + div em {
-  color: lightgray
+  color: var(--dark-gray);
+}
+
+.tag {
+  color: var(--dark-gray);
+}
+
+.dark_mode_toggle[open] + div .tag {
+  color: var(--default-gray);
+}
+
+h1:hover .tag, h2:hover .tag, h3:hover .tag, h4:hover .tag {
+  color: var(--default-gray);
+}
+
+.dark_mode_toggle[open] + div h1:hover .tag, 
+.dark_mode_toggle[open] + div h2:hover .tag, 
+.dark_mode_toggle[open] + div h3:hover .tag, 
+.dark_mode_toggle[open] + div h4:hover .tag {
+  color: var(--dark-gray);
 }
 
 footer a {

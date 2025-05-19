@@ -16,7 +16,12 @@
       <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/2021-05-22-ava-with-vue-typescript-and-nyc/</guid>
       <description>&lt;p&gt;When working on a project with Vue (TypeScript), I faced a lot of roadblocks trying to get code coverage to work. The issue is largely covered in &lt;a href=&#34;https://github.com/vuejs/vue-cli/issues/1363&#34;&gt;this issue thread&lt;/a&gt;. Most solutions / workarounds for that seems to revolve around changing the bundling flow with webpack. Considering my lack of familiarity with webpack (on top of my use of scss and pug in Vue files), putting together a webpack config that works for me turns out to be extremely challenging. That somewhat prompted me to move the build and test process away from &lt;code&gt;vue-cli&lt;/code&gt; while starting to experiment with different tools that could work. One thing to note is that, I&amp;rsquo;ll be using babel to handle TypeScript compiling / transpiling instead of &lt;code&gt;ts-node&lt;/code&gt; as recommended from Ava&amp;rsquo;s guide.&lt;/p&gt;
-&lt;h2 id=&#34;babel&#34;&gt;Babel&lt;/h2&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#babel&#34;&gt;
+    &lt;h2 id=&#34;babel&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Babel&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;We use babel to help Ava properly transpile the Vue and TypeScript files. This is especially useful if you would like to get accurate code coverage for your tests.&lt;/p&gt;
 &lt;p&gt;Here&amp;rsquo;s how the &lt;code&gt;.babelrc&lt;/code&gt; should look like:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
@@ -78,7 +83,12 @@
 &lt;li&gt;Alias set is optional. You only need it if you actually use the alias. You can also set multiple aliases or point it to a different directory depending on how your project is setup. Make sure you sync it with your &lt;code&gt;tsconfig.json&lt;/code&gt; to prevent confusion / unwanted errors&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;istanbul&lt;/code&gt; plugin is also optional. This is only needed if you want to also set up code coverage with &lt;code&gt;nyc&lt;/code&gt; (more on this later).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;setup-file&#34;&gt;Setup File&lt;/h2&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#setup-file&#34;&gt;
+    &lt;h2 id=&#34;setup-file&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Setup File&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;Setup file is there to set the test environment considering that these Vue component files are supposed to be ran inside a Vue instance with some preset, this file serve as a similar purpose but limited only to testing use.&lt;/p&gt;
 &lt;p&gt;Here&amp;rsquo;s a sample &lt;code&gt;_setup.js&lt;/code&gt; where you can build on top of depending on what you need / use. See original reference &lt;a href=&#34;https://github.com/avajs/ava/blob/main/docs/recipes/vue.md&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
@@ -178,7 +188,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;At this point you should be able to run your Ava tests as intended and it would work just fine. However, if you want to have code coverage for the project, read on on how to setup your NYC config.&lt;/p&gt;
-&lt;h2 id=&#34;nyc-optional&#34;&gt;NYC (optional)&lt;/h2&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#nyc-optional&#34;&gt;
+    &lt;h2 id=&#34;nyc-optional&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;NYC (optional)&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;One of the main reasons I started exploring for this option is to get good code coverage report. This setup allows us to let NYC generate proper coverage reports.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
@@ -226,7 +241,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;} 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+&lt;/div&gt;&lt;a class=&#34;anchor&#34; href=&#34;#conclusion&#34;&gt;
+    &lt;h1 id=&#34;conclusion&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Conclusion&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h1&gt;
+&lt;/a&gt;
 &lt;p&gt;Personally, I wrote this piece based on my work on &lt;a href=&#34;https://globetrotte.com&#34;&gt;GlobeTrotte&lt;/a&gt;. I&amp;rsquo;ve tried my best to cleanup the code for it to be as reusable as I can. Feel free to let me know if there&amp;rsquo;s any issue with it. Hopefully you find this helpful.&lt;/p&gt;
 </description>
     </item>

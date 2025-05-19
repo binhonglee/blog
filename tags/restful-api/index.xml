@@ -17,9 +17,19 @@
       <guid>https://binhong.me/blog/2018-03-21-restful-api-with-spark-kotlin/</guid>
       <description>&lt;p&gt;When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project. (coming soon™)&lt;/em&gt;&lt;/p&gt;
-&lt;h2 id=&#34;understanding-rest&#34;&gt;Understanding REST&lt;/h2&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#understanding-rest&#34;&gt;
+    &lt;h2 id=&#34;understanding-rest&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Understanding REST&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;If you already know or built a RESTful API, you can skip this part. There are already quite a few &lt;a href=&#34;http://www.looah.com/source/view/2284&#34;&gt;guides&lt;/a&gt; out there that goes into the specifics of what REST is and all the amazing things about it. So instead, I’ll just cover the basics (more like, that’s all I know about it). It’s the standard way of communication on the internet through HTTP. In the world of internet, the frontend web interface needs a way to communicate with the backend. While the frontend can say all kinds of things, they still need to declare a set of standard ‘phrases’ between them so the backend knows what the frontend is asking for.&lt;/p&gt;
-&lt;h2 id=&#34;setting-up&#34;&gt;Setting up&lt;/h2&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#setting-up&#34;&gt;
+    &lt;h2 id=&#34;setting-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Setting up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;Here are a few thing you might want to have installed before getting started:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Maven / Gradle&lt;/li&gt;
@@ -27,7 +37,12 @@
 &lt;li&gt;Java? (not too sure but you’ll probably need it)&lt;/li&gt;
 &lt;li&gt;(optional) IntelliJ&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;getting-started&#34;&gt;Getting started&lt;/h2&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#getting-started&#34;&gt;
+    &lt;h2 id=&#34;getting-started&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Getting started&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;According to the &lt;a href=&#34;https://github.com/perwendel/spark-kotlin&#34;&gt;official GitHub repo of spark-kotlin&lt;/a&gt;, here are the following things to include to use it for either Maven or Gradle. Personally, I’m using Gradle for this simply because I’ve never used it outside of Android Development. (Also, its the new sexy thing. Kinda?)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
@@ -61,9 +76,19 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;the-basics&#34;&gt;The basics&lt;/h2&gt;
+&lt;/div&gt;&lt;a class=&#34;anchor&#34; href=&#34;#the-basics&#34;&gt;
+    &lt;h2 id=&#34;the-basics&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;The basics&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;This is what attracted me to use it over spring-boot. It just looks so much easier and straightforward comparatively. Admittedly, I’ve never used spring-boot for server development so I could be totally wrong especially if/when it comes down to a large scale application.&lt;/p&gt;
-&lt;h3 id=&#34;get-request&#34;&gt;GET request&lt;/h3&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#get-request&#34;&gt;
+    &lt;h3 id=&#34;get-request&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;GET request&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h3&gt;
+&lt;/a&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
@@ -85,7 +110,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;That’s it! I could’ve just ended the article here and you can pretty much figure out the rest on your own. But yea, let’s explore into a few more interesting features.&lt;/p&gt;
-&lt;h3 id=&#34;post-request&#34;&gt;POST request&lt;/h3&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#post-request&#34;&gt;
+    &lt;h3 id=&#34;post-request&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;POST request&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h3&gt;
+&lt;/a&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1
@@ -123,8 +153,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;For POST request, they work as easily too! All you need to know is that the request body can be retrieved with &lt;code&gt;request.body()&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;more-fun-stuff&#34;&gt;More fun stuff&lt;/h2&gt;
-&lt;h3 id=&#34;redirect-params&#34;&gt;redirect(), params()&lt;/h3&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#more-fun-stuff&#34;&gt;
+    &lt;h2 id=&#34;more-fun-stuff&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;More fun stuff&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#redirect-params&#34;&gt;
+    &lt;h3 id=&#34;redirect-params&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;redirect(), params()&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h3&gt;
+&lt;/a&gt;
 &lt;p&gt;Now, what if you want to have the same output for separate links? Well, you can just do &lt;code&gt;redirect(&amp;quot;/path&amp;quot;)&lt;/code&gt;. You can also get information from the URL through &lt;code&gt;params(&amp;quot;:path&amp;quot;)&lt;/code&gt; tag. Something like this…&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
@@ -178,7 +218,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#6272a4&#34;&gt;&lt;/span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;instance-api&#34;&gt;Instance API&lt;/h3&gt;
+&lt;/div&gt;&lt;a class=&#34;anchor&#34; href=&#34;#instance-api&#34;&gt;
+    &lt;h3 id=&#34;instance-api&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Instance API&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h3&gt;
+&lt;/a&gt;
 &lt;p&gt;You can also have a separate instance API that is running on a different port or with a different setting than the static API simply by declaring it as a separate variable.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
@@ -223,7 +268,12 @@
 &lt;/div&gt;&lt;p&gt;Of course, there are a lot of more advanced features (such as session, uri, etc.) that I did not cover. Feel free to explore them on your own following the &lt;a href=&#34;https://github.com/perwendel/spark-kotlin/blob/master/README.md&#34;&gt;README of the repo&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;From here on out, I’m including some relevant but not exactly spark-kotlin stuff on it.&lt;/p&gt;
-&lt;h2 id=&#34;dealing-with-json&#34;&gt;Dealing with JSON&lt;/h2&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#dealing-with-json&#34;&gt;
+    &lt;h2 id=&#34;dealing-with-json&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Dealing with JSON&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;In many (or most) occasions, both requests and responses will be in JSON format. Here’s where Google&amp;rsquo;s &lt;a href=&#34;https://github.com/google/gson&#34;&gt;Gson library&lt;/a&gt; comes in handy. It is really easy to use and had a wide range of support. I put together a simple example below to show how it is and can be used.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
@@ -259,7 +309,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff79c6&#34;&gt;data&lt;/span&gt; &lt;span style=&#34;color:#ff79c6&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#50fa7b&#34;&gt;Item&lt;/span&gt; (&lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; id: Long, &lt;span style=&#34;color:#ff79c6&#34;&gt;val&lt;/span&gt; info: String)
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;unit-testing&#34;&gt;Unit testing&lt;/h2&gt;
+&lt;/div&gt;&lt;a class=&#34;anchor&#34; href=&#34;#unit-testing&#34;&gt;
+    &lt;h2 id=&#34;unit-testing&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Unit testing&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;It took me a while to find a testing library that works as easily as I wished. This is a test library made specifically for the spark framework by &lt;a href=&#34;https://www.despegar.com/&#34;&gt;Despegar&lt;/a&gt; called &lt;a href=&#34;https://github.com/despegar/spark-test&#34;&gt;spark-test&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
@@ -337,7 +392,12 @@
 &lt;/ul&gt;
 &lt;p&gt;&lt;em&gt;Note: As mentioned at the time of writing, the DELETE request is unable to attach any kind of request body to it making it hard to test your DELETE request. Personally, I use different URL each feature so I just redirect a POST request from the same url to the DELETE request and test it through the POST request instead. Not ideal, but it works for now.&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#references&#34;&gt;
+    &lt;h2 id=&#34;references&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;References&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://medium.com/@codemwnci/kotlin-webapp-tutorial-todolist-part-1-c544b9a70f29&#34;&gt;Kotlin WebApp Tutorial&lt;/a&gt; by Wayne Ellis&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://medium.com/@v.souhrada/build-rest-service-with-kotlin-spark-java-and-requery-part-1-1798844fdf04&#34;&gt;Build REST Service with Kotlin, Spark Java and Requery&lt;/a&gt; by Vaclav Souhrada&lt;/li&gt;

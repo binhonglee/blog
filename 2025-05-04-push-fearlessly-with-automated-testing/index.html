@@ -8,7 +8,12 @@
     
     <meta name="description" content="Conventional wisdom is that writing tests slows you down, because the alternative is that you don&rsquo;t need to write tests. In fact, Meta (then Facebook) was famously lacking of automated test inline with it&rsquo;s famous &ldquo;move fast and break things&rdquo; mantra. However, from what I&rsquo;ve seen, I beg to differ.
 This is part of a series (The Opinionated Engineer) where I share my strong opinions on engineering practices.
-When to write tests?
+
+    
+        When to write tests?
+        #
+    
+
 
 If you love something, put a ring test on it.">
     <meta property="og:type" content="article">
@@ -77,23 +82,63 @@ If you love something, put a ring test on it.">
           </div>
           <div class="post_content"><p>Conventional wisdom is that writing tests slows you down, because the alternative is that you don&rsquo;t need to write tests. In fact, Meta (then Facebook) was famously lacking of automated test inline with it&rsquo;s famous &ldquo;move fast and break things&rdquo; mantra. However, from what I&rsquo;ve seen, I beg to differ.</p>
 <p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
-<h2 id="when-to-write-tests">When to write tests?</h2>
+<a class="anchor" href="#when-to-write-tests">
+    <h2 id="when-to-write-tests">
+        <span class="text">When to write tests?</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <blockquote>
 <p>If you love something, put a <del>ring</del> test on it.</p></blockquote>
 <p>I find this quote as a good general guiding principle. You should definitely have tests for all the &ldquo;core&rdquo; features. For all the additional features (or edge case handling), you&rsquo;d need to make a decision / tradeoff based on how critical it is for something to work, and how frequent you might be changing it.</p>
-<h2 id="fearlessly">Fearlessly</h2>
+<a class="anchor" href="#fearlessly">
+    <h2 id="fearlessly">
+        <span class="text">Fearlessly</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>The main goal of writing tests is to prevent regressions. Without automated tests, you&rsquo;d have to rely on other (less reliable) ways to avoid regression. Having (non-flaky) tests makes it easy to consistently verify when / how a regression is introduced. With the right CI system setup, you can make sure that you don&rsquo;t release new versions / feature that would accidentally break previously released features in an unexpected way.</p>
-<h2 id="assumptions--prerequisite">Assumptions / Prerequisite</h2>
+<a class="anchor" href="#assumptions--prerequisite">
+    <h2 id="assumptions--prerequisite">
+        <span class="text">Assumptions / Prerequisite</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>The expectation here is that you already have a working CI/CD pipeline setup which comprehensively runs all your tests for each commit merges and deployments. Alternatively, if you have too big of a test suite to run (or too costly), you could instead only run relavant tests on each individual commits while running all tests for each deployment.  If there’s a test that failed before deployment, you could still bisect to find the blame commit that broke the test.</p>
-<h2 id="what-about-manual-testing">What about manual testing?</h2>
+<a class="anchor" href="#what-about-manual-testing">
+    <h2 id="what-about-manual-testing">
+        <span class="text">What about manual testing?</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>The main issue with manual testing is that you don&rsquo;t know what you don&rsquo;t know. You know your code change affects x and y so you test them both and they work as intended but what you didn&rsquo;t realize was that it also breaks z entirely which you did not test because that was unexpected. Having an automated test means you&rsquo;d just always run the test suite (within your CI/CD process) which would be able to catch the issue.</p>
-<h2 id="what-about-qa-testing">What about QA testing?</h2>
+<a class="anchor" href="#what-about-qa-testing">
+    <h2 id="what-about-qa-testing">
+        <span class="text">What about QA testing?</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>QA testing generally happens on a weekly or bi-weekly (either definition) cadence. At best, you can do them on a daily basis but depending on the scale or speed at which your team is executing, it might still be hard to narrow down the specific commit that is causing the regression. With automated tests, you can bisect through your commit history without having to worry about setup and cleanup steps (assuming your tests are properly written).</p>
-<h2 id="why-not-just-write-test-for-everything">Why not just write test for everything?</h2>
+<a class="anchor" href="#why-not-just-write-test-for-everything">
+    <h2 id="why-not-just-write-test-for-everything">
+        <span class="text">Why not just write test for everything?</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>In an ideal world where the cost to write test is 0, this would be a prescribed solution and everyone will be adopting TDD (Test Driven Development) but instead, we live in a real world where writing tests cost time and energy so it&rsquo;s important to pick and choose things worth investing on vs things that aren&rsquo;t. Such tradeoff is subjective to the criticality of said system and how often the system might be changed / updated.</p>
-<h2 id="broken-tests">Broken Tests</h2>
+<a class="anchor" href="#broken-tests">
+    <h2 id="broken-tests">
+        <span class="text">Broken Tests</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>Broken tests are <strong>tech debts</strong>. Either prioritize fixing them or delete them if they are no longer relavant. Keeping them around gives false impression on the state of the test coverage while potentially adds unnecessary operational cost in running these tests. Same applies to flaky tests. In fact, I&rsquo;d go a step further by saying that flaky tests are worse than broken tests because at least broken tests are deterministic (which is one important characteristic of a quality test).</p>
-<h2 id="wrap-up">Wrap up</h2>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>When you have working quality automated tests, you can push new changes fearlessly knowing that it won&rsquo;t cause regressions on features protected by these tests. This allows you to move faster both in terms of thinking about and testing all the possible regressions your change might cause, while also saving time on root causing a regression (if / when it does happen).</p>
 </div>
           

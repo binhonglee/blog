@@ -16,7 +16,12 @@
       <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/2021-07-18-postgresql-on-azure/</guid>
       <description>&lt;p&gt;While the defacto way of running postgres on Azure Pipeline according to &lt;a href=&#34;https://devblogs.microsoft.com/devops/using-containerized-services-in-your-pipeline/&#34;&gt;this guide&lt;/a&gt; seems to be using the docker image, the MacOS image on Azure Pipeline does not have docker support due to some &lt;a href=&#34;https://github.com/actions/virtual-environments/issues/2150&#34;&gt;licensing issue&lt;/a&gt;. So instead, this has to be setup and handled manually. We&amp;rsquo;d use brew here since it comes installed in the OS image and is the easiest way to deal with it as far as I&amp;rsquo;m aware.&lt;/p&gt;
-&lt;h2 id=&#34;install-optional&#34;&gt;Install (optional)&lt;/h2&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#install-optional&#34;&gt;
+    &lt;h2 id=&#34;install-optional&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Install (optional)&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;By default postgres should already be installed in the included MacOS image but if you prefer to run it on a specific version you&amp;rsquo;d have to force reinstall the version you want just to be sure.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
@@ -34,7 +39,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;multiple-versions-optional&#34;&gt;Multiple Versions (optional)&lt;/h2&gt;
+&lt;/div&gt;&lt;a class=&#34;anchor&#34; href=&#34;#multiple-versions-optional&#34;&gt;
+    &lt;h2 id=&#34;multiple-versions-optional&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Multiple Versions (optional)&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;If you&amp;rsquo;d like to test that it works with multiple versions of PostgreSQL, you can setup a version matrix for it.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
@@ -75,7 +85,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;start-service&#34;&gt;Start Service&lt;/h2&gt;
+&lt;/div&gt;&lt;a class=&#34;anchor&#34; href=&#34;#start-service&#34;&gt;
+    &lt;h2 id=&#34;start-service&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Start Service&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;Despite being installed by default, it doesn&amp;rsquo;t run by default so you&amp;rsquo;ll need to add something like this to get the service started.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
@@ -93,7 +108,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;set-up-db&#34;&gt;Set up DB&lt;/h2&gt;
+&lt;/div&gt;&lt;a class=&#34;anchor&#34; href=&#34;#set-up-db&#34;&gt;
+    &lt;h2 id=&#34;set-up-db&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Set up DB&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;Now, let&amp;rsquo;s create a database called &lt;code&gt;db_name&lt;/code&gt; owned by the user called &lt;code&gt;username&lt;/code&gt; with &lt;code&gt;password&lt;/code&gt; as password. (You can replace each of these with whatever that works best for you / your process.)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
@@ -117,7 +137,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;brew-optimization-optional&#34;&gt;Brew Optimization (optional)&lt;/h2&gt;
+&lt;/div&gt;&lt;a class=&#34;anchor&#34; href=&#34;#brew-optimization-optional&#34;&gt;
+    &lt;h2 id=&#34;brew-optimization-optional&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Brew Optimization (optional)&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;At this point, postgres should already be working as intended but it&amp;rsquo;s not exactly ideal considering the first &lt;code&gt;brew&lt;/code&gt; call actually takes a long time since it&amp;rsquo;s also trying to run update and cleanup which can take a while. Considering that running brew update and brew cleanup probably has minimal benefit on a CI, we can add the following environment variables so brew wouldn&amp;rsquo;t do that.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
@@ -131,7 +156,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff79c6&#34;&gt;HOMEBREW_NO_AUTO_UPDATE&lt;/span&gt;: &lt;span style=&#34;color:#bd93f9&#34;&gt;1&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;os-condition-optional&#34;&gt;OS Condition (optional)&lt;/h2&gt;
+&lt;/div&gt;&lt;a class=&#34;anchor&#34; href=&#34;#os-condition-optional&#34;&gt;
+    &lt;h2 id=&#34;os-condition-optional&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;OS Condition (optional)&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;If you&amp;rsquo;re including this as part of a multi OS testing config, you can add an additional condition for each line of the commands here to make sure it doesn&amp;rsquo;t run on other OS-es causing unexpected failures. Similarly, you can add its equivalent for commands specific to other OS-es.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
@@ -151,7 +181,12 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;full-config&#34;&gt;Full config&lt;/h2&gt;
+&lt;/div&gt;&lt;a class=&#34;anchor&#34; href=&#34;#full-config&#34;&gt;
+    &lt;h2 id=&#34;full-config&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Full config&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
 &lt;p&gt;Finally when put together, your config likely looks something like this.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;

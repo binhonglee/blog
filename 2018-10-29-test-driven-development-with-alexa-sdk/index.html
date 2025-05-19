@@ -6,14 +6,24 @@
     
     <title>Test Driven Development with Alexa SDK - BinHong Lee&#39;s Blog</title>
     
-    <meta name="description" content="What is Test Driven Development?
+    <meta name="description" content="
+    
+        What is Test Driven Development?
+        #
+    
+
 According to Wikipedia, it means “Requirements are turned into very specific test cases, then the software is improved to pass the new tests, only.” Basically, you would first have to write the test of the software/feature you are developing before you start working on the developing the software/feature itself.
 Here are a few more articles on the benefits and why you should apply TDD:
 
 Test Driven Development by Jan Olbrich
 Isn’t TDD twice the work? Why should you care? by Navdeep Singh
 
-Preparation
+
+    
+        Preparation
+        #
+    
+
 Here are a few thing you might want to have set up or installed before getting started:">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Test Driven Development with Alexa SDK">
@@ -79,21 +89,36 @@ Here are a few thing you might want to have set up or installed before getting s
             <p>BinHong Lee</p>
             <p class="right">October 29, 2018</p>
           </div>
-          <div class="post_content"><h1 id="what-is-test-driven-development">What is Test Driven Development?</h1>
+          <div class="post_content"><a class="anchor" href="#what-is-test-driven-development">
+    <h1 id="what-is-test-driven-development">
+        <span class="text">What is Test Driven Development?</span>
+        <span class="tag">#</span>
+    </h1>
+</a>
 <p>According to <a href="https://en.wikipedia.org/wiki/Test-driven_development">Wikipedia</a>, it means “Requirements are turned into very specific <a href="https://en.wikipedia.org/wiki/Test_case">test cases</a>, then the software is improved to pass the new tests, only.” Basically, you would first have to write the test of the software/feature you are developing before you start working on the developing the software/feature itself.</p>
 <p>Here are a few more articles on the benefits and why you should apply TDD:</p>
 <ul>
 <li><a href="https://medium.com/mobile-quality/test-driven-development-d16fd216d45c">Test Driven Development</a> by Jan Olbrich</li>
 <li><a href="https://hackernoon.com/test-driven-development-with-alexa-sdk-777f6b5e5486">Isn’t TDD twice the work? Why should you care?</a> by Navdeep Singh</li>
 </ul>
-<h1 id="preparation">Preparation</h1>
+<a class="anchor" href="#preparation">
+    <h1 id="preparation">
+        <span class="text">Preparation</span>
+        <span class="tag">#</span>
+    </h1>
+</a>
 <p>Here are a few thing you might want to have set up or installed before getting started:</p>
 <ul>
 <li><a href="https://aws.amazon.com/">Amazon Web Service</a> account (a free one will work just fine)</li>
 <li><a href="https://nodejs.org/en/">node.js</a> (personally though, I prefer installing and maintaining it through <a href="https://github.com/creationix/nvm">nvm</a>)</li>
 <li>Text editor of your choice</li>
 </ul>
-<h1 id="setting-up">Setting up</h1>
+<a class="anchor" href="#setting-up">
+    <h1 id="setting-up">
+        <span class="text">Setting up</span>
+        <span class="tag">#</span>
+    </h1>
+</a>
 <ol>
 <li>Create a new project folder (<code>mkdir project-name</code>)</li>
 <li>Navigate into that new folder (<code>cd project-name</code>)</li>
@@ -146,7 +171,12 @@ AMAZON.StopIntent
 </code></pre><p>In case where you are taking in variables through utterances, you can do something like this :</p>
 <pre tabindex="0"><code>DoSomething Input1=userInput1 Input2=userInput2
 </code></pre><p>To get a deeper understanding into using testflow, I recommend looking into its <a href="https://github.com/robm26/testflow/blob/master/tutorial/TUTORIAL.md">tutorial page</a> and the <a href="https://developer.amazon.com/blogs/alexa/post/35eb8ae8-2cd8-4de7-86c5-97a1abc239b9/testflow-simulate-conversations-with-your-alexa-skill-code-to-ease-debugging">blog post</a> by the author himself.</p>
-<h1 id="developing-the-skill">Developing the skill</h1>
+<a class="anchor" href="#developing-the-skill">
+    <h1 id="developing-the-skill">
+        <span class="text">Developing the skill</span>
+        <span class="tag">#</span>
+    </h1>
+</a>
 <p>To be honest, I don’t have too much to talk about on this topic. Here is some sample code of how a sample skill can look like. (Also remember to do <code>npm install --save alexa-sdk</code>.)</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -235,17 +265,42 @@ AMAZON.StopIntent
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>I recommend looking into the official <a href="https://github.com/alexa/alexa-cookbook">Alexa GitHub repository</a> that provides all kinds of sample skills that you can work on top of.</p>
-<h1 id="deployment">Deployment</h1>
-<h2 id="alexa-skill-kit">Alexa Skill Kit</h2>
+<a class="anchor" href="#deployment">
+    <h1 id="deployment">
+        <span class="text">Deployment</span>
+        <span class="tag">#</span>
+    </h1>
+</a>
+<a class="anchor" href="#alexa-skill-kit">
+    <h2 id="alexa-skill-kit">
+        <span class="text">Alexa Skill Kit</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>Go to <a href="https://developer.amazon.com/alexa/console/">this page</a> and select ‘Create Skill’. In there you should see options to ‘add intents’ and ‘custom slot types’. You should add the appropriate slot types and intents accordingly from above. After you are done with that, select ‘Endpoint’ from the side bar and select ‘AWS Lambda ARN’ as the skill’s service endpoint. Make a copy of the Skill ID as you will need it later.</p>
-<h2 id="aws-lambda">AWS Lambda</h2>
+<a class="anchor" href="#aws-lambda">
+    <h2 id="aws-lambda">
+        <span class="text">AWS Lambda</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>Create an AWS Lambda function selecting ‘from scratch’. After that, you should have an option to ‘add trigger’ where you would select ‘Alexa Skills Kit’. Now in the configuration dialog, you should put in the Skill ID you took a copy of previously then select ‘Add’.</p>
 <p>After this, select back to the box that labeled your project name. There should be a ‘Function code’ dialog box appeared below. While you can definitely copy and paste your code onto the online text editor, there might be chance where the packages you have installed and used in your code is included by default. It is also possible that you have more than 1 JavaScript files for the skill.</p>
 <p>In this case, you would select ‘Upload a .ZIP file’ under ‘Code entry type’. Locally, zip up all the JavaScript files along with the <code>node_modules</code> folder then upload the resulting zip file.</p>
-<h2 id="submission">Submission</h2>
+<a class="anchor" href="#submission">
+    <h2 id="submission">
+        <span class="text">Submission</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>When you are done, you can go back to the Alexa Skill Kit page, select the ‘Distribution’ tab and fill out the appropriate information before submitting your skill for review. Hopefully everything goes well and your skill gets published at the Alexa Skill Store!</p>
 <hr>
-<h2 id="credits">Credits</h2>
+<a class="anchor" href="#credits">
+    <h2 id="credits">
+        <span class="text">Credits</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <ul>
 <li><a href="https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html">Build Skills with the Alexa Skills Kit</a></li>
 <li><a href="https://developer.amazon.com/blogs/alexa/post/35eb8ae8-2cd8-4de7-86c5-97a1abc239b9/testflow-simulate-conversations-with-your-alexa-skill-code-to-ease-debugging">TestFlow: Simulate Conversations with Your Alexa Skill Code to Ease Debugging</a></li>

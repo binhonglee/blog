@@ -7,7 +7,12 @@
     <title>Functional and flexible shell scripting tricks - BinHong Lee&#39;s Blog</title>
     
     <meta name="description" content="Its 2019 now, who writes shell scripts anymore? Am I right? Well, apparently I do. ¯\_(ツ)_/¯
-Shell scripts vs python or perl
+
+    
+        Shell scripts vs python or perl
+        #
+    
+
 There are some good arguments for that here and here which mainly revolve around 2 things:
 
 Shell exists in all Unix systems and makes use of system default features.
@@ -17,7 +22,12 @@ Also, here&rsquo;s an additional relevant reading about the differences between 
     <meta property="og:type" content="article">
     <meta property="og:title" content="Functional and flexible shell scripting tricks">
     <meta property="og:description" content="Its 2019 now, who writes shell scripts anymore? Am I right? Well, apparently I do. ¯\_(ツ)_/¯
-Shell scripts vs python or perl
+
+    
+        Shell scripts vs python or perl
+        #
+    
+
 There are some good arguments for that here and here which mainly revolve around 2 things:
 
 Shell exists in all Unix systems and makes use of system default features.
@@ -25,7 +35,12 @@ Shell is an &ldquo;interactive command function&rdquo; designed to get user inpu
 
 Also, here&rsquo;s an additional relevant reading about the differences between sh and bash.">
     <meta name="twitter:description" content="Its 2019 now, who writes shell scripts anymore? Am I right? Well, apparently I do. ¯\_(ツ)_/¯
-Shell scripts vs python or perl
+
+    
+        Shell scripts vs python or perl
+        #
+    
+
 There are some good arguments for that here and here which mainly revolve around 2 things:
 
 Shell exists in all Unix systems and makes use of system default features.
@@ -92,14 +107,24 @@ Also, here&rsquo;s an additional relevant reading about the differences between 
             <p class="right">May 7, 2019</p>
           </div>
           <div class="post_content"><p>Its 2019 now, who writes shell scripts anymore? Am I right? Well, apparently I do. ¯\_(ツ)_/¯</p>
-<h2 id="shell-scripts-vs-python-or-perl">Shell scripts vs python or perl</h2>
+<a class="anchor" href="#shell-scripts-vs-python-or-perl">
+    <h2 id="shell-scripts-vs-python-or-perl">
+        <span class="text">Shell scripts vs python or perl</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>There are some good arguments for that <a href="https://stackoverflow.com/questions/796319/strengths-of-shell-scripting-compared-to-python#796343">here</a> and <a href="https://www.linuxquestions.org/questions/linux-newbie-8/what-is-the-difference-between-perl-and-shell-scripting-4175486499/">here</a> which mainly revolve around 2 things:</p>
 <ol>
 <li>Shell exists in all Unix systems and makes use of system default features.</li>
 <li>Shell is an &ldquo;interactive command function&rdquo; designed to get user inputs during the process of running them.</li>
 </ol>
 <p>Also, <a href="https://stackoverflow.com/questions/5725296/difference-between-sh-and-bash">here</a>&rsquo;s an additional relevant reading about the differences between <code>sh</code> and <code>bash</code>.</p>
-<h2 id="arguments">Arguments</h2>
+<a class="anchor" href="#arguments">
+    <h2 id="arguments">
+        <span class="text">Arguments</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>In some occasions, you will need to pass an argument (or expect one) into the script like how you might pass a param into a function. In that case, you will use something like <code>$1</code> for the first argument, <code>$2</code> for the second. Here&rsquo;s an example of how it would look like:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -157,7 +182,12 @@ Also, here&rsquo;s an additional relevant reading about the differences between 
 </span></span><span style="display:flex;"><span>go
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="functions">Functions</h2>
+</div><a class="anchor" href="#functions">
+    <h2 id="functions">
+        <span class="text">Functions</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>If you have done any sort of programming, you should be familiar with the concept of <em>functions</em>. It&rsquo;s basically a set of commands / operations that you will be repeating over and over again. Instead of repeating it multiple times in your code, you can put them into a function. Then just call the function which effectively reduces the lines of code that need to be written.</p>
 <p><em>Side note: If you don&rsquo;t know already, LOC is a horrible metric for any sort of measurement in terms of programming. Don&rsquo;t take this from me, take this from <a href="https://www.goodreads.com/quotes/536587-measuring-programming-progress-by-lines-of-code-is-like-measuring">Bill Gates</a>:</em></p>
 <blockquote>
@@ -184,7 +214,12 @@ Also, here&rsquo;s an additional relevant reading about the differences between 
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Pretty straightforward and easy to understand. Now, here&rsquo;s a few differences between functions in shell scripts and a normal programming language.</p>
-<h3 id="parameters">Parameters</h3>
+<a class="anchor" href="#parameters">
+    <h3 id="parameters">
+        <span class="text">Parameters</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
 <p>If you were to pass a parameter / use a parameter into a function in Java, you have to declare them in the function declaration. They look something like this.</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -227,7 +262,12 @@ Also, here&rsquo;s an additional relevant reading about the differences between 
 <li>Similar to above, if you want to take in everything, you will use <code>$@</code> instead of <code>$1</code> since <code>$1</code> would only use the first input (and <code>$2</code> for the second etc.).</li>
 <li>Functions need to be declared ahead of where they are being called. (Usually beginning of the file before any main operations.)</li>
 </ol>
-<h3 id="return">Return</h3>
+<a class="anchor" href="#return">
+    <h3 id="return">
+        <span class="text">Return</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
 <p>Let&rsquo;s say we create a script like below named <code>run_this.sh</code>:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -295,7 +335,12 @@ Also, here&rsquo;s an additional relevant reading about the differences between 
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>In this case, <code>return 0</code> means <code>true</code> while <code>return 1</code> meant <code>false</code> in a traditional <code>boolean</code> sense.</p>
-<h2 id="multi-line-echo">Multi-line echo</h2>
+<a class="anchor" href="#multi-line-echo">
+    <h2 id="multi-line-echo">
+        <span class="text">Multi-line echo</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>There are times when you need to print a multi-line message. There are a few ways to go around this. The easiest way is to use <code>echo</code> multiple times like this:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -348,7 +393,12 @@ Also, here&rsquo;s an additional relevant reading about the differences between 
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Realize that even the messages itself are aligned to the left. This is because if you leave them tabbed, the output message shown in the command line will also be tabbed. Also, if <code>EOF</code> is tabbed, shell would complain about it and usually ends the script there.</p>
-<h2 id="flags--options">Flags / Options</h2>
+<a class="anchor" href="#flags--options">
+    <h2 id="flags--options">
+        <span class="text">Flags / Options</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <p>You&rsquo;ve probably seen some of the scripts or commands that comes with an ability to add flags (and sometimes arguments for the specific flag). Something like <code>git commit -a -m &quot;Some commit message&quot;</code>.</p>
 <p>Here&rsquo;s a quick example of how it looks like (I&rsquo;ve tried to be as comprehensive as possible with the example.)</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
@@ -414,7 +464,12 @@ Invalid option: -x
 </code></pre><p>In the above example, the differences between option <code>-a</code> and <code>-c</code> is that in the <code>getopts</code> line, <code>c</code> has a colon (<code>:</code>) following it after therefore telling the program to expect a parameter for the option. Another thing to keep in mind is that the options need to be declared in an alphabetical way. If you declare something like <code>acb</code>, the <code>b</code> declaration would be ignored and using the <code>-b</code> flag would lead to the error message instead of the <code>b</code> case in the switch condition.</p>
 <p>Thanks for reading!</p>
 <hr>
-<h2 id="references">References</h2>
+<a class="anchor" href="#references">
+    <h2 id="references">
+        <span class="text">References</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
 <ul>
 <li><a href="http://wiki.bash-hackers.org/howto/getopts_tutorial">Small getopts tutorial</a></li>
 <li><a href="https://stackoverflow.com/questions/10969953/how-to-output-a-multiline-string-in-bash#10970616">How to output a multiline string in Bash</a></li>
