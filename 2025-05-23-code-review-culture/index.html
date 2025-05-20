@@ -6,8 +6,9 @@
     
     <title>Code Review Culture - BinHong Lee&#39;s Blog</title>
     
-    <meta name="description" content="Code review is a really subjective thing where each team or even individual run things very differently. However, bad code review process can lead to bad code smells and unnecessary tech debts (just ask all the vibe coders out there 🫣). I will try my best to share my rather opinionated takes while explaining the reasoning behind each of them.
-This is part of a series (The Opinionated Engineer) where I share my strong opinions on engineering practices.">
+    <meta name="description" content="
+Ask a programmer to review 10 lines of code, he&rsquo;ll find 10 issues. Ask him to do 500 lines and he&rsquo;ll say it looks good. - @girayozil
+Code review is a really subjective thing where each team or even individual run things very differently. However, bad code review process can lead to bad code smells and unnecessary tech debts (just ask all the vibe coders out there 🫣). I will try my best to share my rather opinionated takes while explaining the reasoning behind each of them.">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Code Review Culture">
     <meta property="og:description" content="Review today or debug tomorrow">
@@ -72,7 +73,9 @@ This is part of a series (The Opinionated Engineer) where I share my strong opin
             <p>BinHong Lee</p>
             <p class="right">May 23, 2025</p>
           </div>
-          <div class="post_content"><p>Code review is a really subjective thing where each team or even individual run things very differently. However, bad code review process can lead to bad code smells and unnecessary tech debts (just ask all the vibe coders out there 🫣). I will try my best to share my <em>rather opinionated</em> takes while explaining the reasoning behind each of them.</p>
+          <div class="post_content"><blockquote>
+<p>Ask a programmer to review 10 lines of code, he&rsquo;ll find 10 issues. Ask him to do 500 lines and he&rsquo;ll say it looks good. - <a href="https://x.com/girayozil/status/306836785739210752">@girayozil</a></p></blockquote>
+<p>Code review is a really subjective thing where each team or even individual run things very differently. However, bad code review process can lead to bad code smells and unnecessary tech debts (just ask all the vibe coders out there 🫣). I will try my best to share my <em>rather opinionated</em> takes while explaining the reasoning behind each of them.</p>
 <p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
 <a class="anchor" href="#overly-prescriptive-formatters">
     <h2 id="overly-prescriptive-formatters">
@@ -87,16 +90,16 @@ This is part of a series (The Opinionated Engineer) where I share my strong opin
         <span class="tag">#</span>
     </h2>
 </a>
-<p>There were some research that finds that when someone is new to the stack / team / industry, reviewers are stricter and more nitpicky against their code changes relative to a long timer or a more senior engineer. Personally, I see this as a feature instead of a bug. A long timer has earned their reputation (assuming that&rsquo;s how they are a long timer and not just a bad engineer successfully avoiding accountability at every turn) and can be afforded to be treated with more leniency in their code. A <em>newbie</em> however benefits from stricter code review feedback teaching them the style and tradeoffs the team values when it comes to coding patterns thus learning good practice along the way.</p>
-<p>In an ideal world, teams would have detailed style guide on how everything is written and every new person will be given ample time to read and understand them as part of onboarding. But the reality is that, this rarely happens between the outdated style guides and the lack of proper onboarding process, code review frequently became the first time a new person has the opportunity to learn about a team&rsquo;s style guide (aside from linters and formatters). Let&rsquo;s make sure to get it right so they don&rsquo;t develop the wrong practice.</p>
+<p>There were some research that finds that when someone is new to the stack / team / industry, reviewers tends to be stricter and more nitpicky against their code changes relative to a long timer or a more senior engineer. Personally, I see this as a feature instead of a bug. A long timer has earned their reputation (assuming that&rsquo;s how they are a long timer and not just a bad engineer successfully avoiding accountability at every turn) and can be afforded to be treated with more leniency in their code. A <em>newbie</em> however benefits from stricter code review feedback teaching them the style and tradeoffs the team values when it comes to coding patterns thus learning good practice along the way.</p>
+<p>In an ideal world, teams would have detailed style guide on how everything is written and every new person will be given ample time to read and understand them as part of onboarding. But the reality is that, this rarely happens between the outdated style guides and the lack of proper onboarding process, code review frequently became the first time a new person has the opportunity to learn about a team&rsquo;s style guide (aside from linters and formatters). Let&rsquo;s make sure to get it right so they don&rsquo;t develop the wrong habit.</p>
 <a class="anchor" href="#never-blindly-accept--accept-to-unblock">
     <h2 id="never-blindly-accept--accept-to-unblock">
         <span class="text">Never blindly accept / accept to unblock</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>These are generally two separate scenarios but their result is generally the same. A change that is otherwise not meeting the code review bar is getting accepted and pushed to production. Blind accept generally reflects more of a bad team culture where people either don&rsquo;t take code review seriously or they don&rsquo;t feel comfortable pushing back in code review, both of which are bad. &ldquo;Accept to unblock&rdquo; generally comes with good intention but doing so essentially voided the role of a reviewer. The most common reason for it&rsquo;s use is due to reviewers not comfortable blocking a change but do not wish to take responsibility if that ended up being the bad commit causing an outage.</p>
-<p>The <strong>only</strong> exception here would be when it&rsquo;s a <em>time sensitive</em> where &ldquo;it can&rsquo;t be worse than it is now&rdquo; <strong>and</strong> that the author is the <em>domain expert</em> of the change. Most common example being a code change attempting to mitigate on ongoing a production issue. (I&rsquo;ll write up an incident runbook at some point which will most likely include this.)</p>
+<p>These are generally two separate scenarios but their result is generally the same. A change that is otherwise not meeting the code review bar is getting accepted and pushed to production. Blind accept generally reflects more of a bad team culture where people either don&rsquo;t take code review seriously or they don&rsquo;t feel comfortable pushing back in code review, both of which are bad. &ldquo;Accept to unblock&rdquo; generally comes with good intention but doing so essentially voided the role of a reviewer. The most common reason for it&rsquo;s use is due to reviewers not feeling comfortable about blocking a change but do not wish to take responsibility if that ended up being the bad commit causing an outage.</p>
+<p>The <strong>only</strong> exception here would be when it&rsquo;s a <em>time sensitive</em> change where &ldquo;it can&rsquo;t be worse than it is now&rdquo; <strong>and</strong> that the author is the <em>domain expert</em> of the change. Most common example being a code change attempting to mitigate an ongoing production issue. (I&rsquo;ll write up an incident runbook at some point which will most likely include this.)</p>
 <a class="anchor" href="#ask-for-further-details">
     <h2 id="ask-for-further-details">
         <span class="text">Ask for further details</span>
@@ -111,7 +114,7 @@ This is part of a series (The Opinionated Engineer) where I share my strong opin
         <span class="tag">#</span>
     </h2>
 </a>
-<p>In some occasions, you might run into response in your review that they will &ldquo;fix it in a future change&rdquo;. (Generally, it&rsquo;s more common in scenarios where your work adopts the idea of <a href="https://graphite.dev/guides/stacked-diffs">&ldquo;stacked diffs&rdquo;</a>.) This is a bad pattern that should be avoided at large (unless <em>absolutely necessary</em>) mainly because this change now hinges on a separate future changes to be <strong>correct</strong>, and that the other change could be independently reverted - for any external reasons - without this change, thus causing this bad pattern to now persist in your code.</p>
+<p>In some occasions, you might run into response in your review that they will &ldquo;fix it in a future change&rdquo;. (Generally, it&rsquo;s more common in scenarios where your work adopts the idea of <a href="https://graphite.dev/guides/stacked-diffs">&ldquo;stacked diffs&rdquo;</a>.) This is a bad pattern that should be avoided at large (unless <em>absolutely necessary</em>) mainly because this change now hinges on a separate future changes to be <strong>correct</strong>, and that the other change could be independently reverted - for any external reasons - without this change, thus causing this bad pattern to now persist in your codebase.</p>
 <a class="anchor" href="#involve-the-subject-matter-expert">
     <h2 id="involve-the-subject-matter-expert">
         <span class="text">Involve the Subject Matter Expert</span>
