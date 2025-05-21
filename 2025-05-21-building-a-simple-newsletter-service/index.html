@@ -31,14 +31,14 @@
     <meta name="fediverse:creator" content="@bh@social.lol">
     <link href="https://social.lol/@bh" rel="me">
     
-    <link href="https://binhong.me/blog/style.css" rel="stylesheet">
-    <link href="https://binhong.me/fonts/fonts.css" rel="stylesheet">
+    <link href="https://binhong.me/blog/style.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
     <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
     
     
     <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
     
-    <meta name="generator" content="Hugo 0.147.3">
+    <meta name="generator" content="Hugo 0.147.4">
     
     </head>
   <body class="single">
@@ -93,7 +93,7 @@
         <span class="tag">#</span>
     </h2>
 </a>
-<p>The whole thing is written in Python (with some HTML templates) without using any third party library. I can&rsquo;t say this was fully intentional but I generally like to avoid external libraries unless absolutely necessary which in this case, it&rsquo;s not. As for &ldquo;why Python&rdquo;, it was an arbitrary decision as I&rsquo;ve been doing interviews with Python and sometimes feel like I probably should brush up on it&rsquo;s syntaxes lol. (Kept having to Google random things like &ldquo;split string in Python&rdquo;, &ldquo;define object in Python&rdquo; is uhh, not exactly ideal while in the middle of a coding interview session lol.) I did slightly regret on this because this can&rsquo;t be &ldquo;compiled into a binary&rdquo; where it can just be dump somewhere to run by itself forever with some config files and HTML files. Instead, it needs the server to have Python installed and run the actual Python code. I&rsquo;d prefer keeping and running only the binary on server but I digress.</p>
+<p>The whole thing is written in Python (with some HTML templates) without using any third party library. I can&rsquo;t say this was fully intentional but I generally like to avoid external libraries unless absolutely necessary which in this case, it&rsquo;s not. As for &ldquo;why Python&rdquo;, it was an arbitrary decision as I&rsquo;ve been doing interviews with Python and sometimes feel like I probably should brush up on it&rsquo;s syntaxes lol. (Kept having to Google random things like &ldquo;split string in Python&rdquo;, &ldquo;define object in Python&rdquo; is uhh, not exactly ideal while in the middle of a coding interview session lol.) I did slightly regret on this because this can&rsquo;t be &ldquo;compiled into a binary&rdquo; where it can just be dumped somewhere to run by itself forever with some config files and HTML files. Instead, it needs the server to have Python installed and run the actual Python code. I&rsquo;d prefer keeping and running only the binary on server but I digress.</p>
 <p>As for it being HTML / CSS only, it&rsquo;s mostly an extension from my personal site and blog being that way <a href="/blog/2022-01-31-rebuild-personal-site/">which I&rsquo;ve previously discussed about here</a>. My personal opinion is that our growing reliance on JavaScript to do things had made us forget how powerful raw HTML and CSS could be in general. But also, I&rsquo;ve been pleasantly surprised at how maintainable this has made my site ever since. No worries about vulnerabilities or chasing and rebuilding it on the next / new shiny framework.</p>
 <a class="anchor" href="#email-html-quirks">
     <h2 id="email-html-quirks">
@@ -125,6 +125,7 @@
           <h2>Subscribe to the newsletter today!</h2>
           <form action="https://binhong.me/newsletter/subscribe" method="post">
               <input type="email" name="email" placeholder="email@domain.com"/>
+              <input type="hidden" name="secret" value="123potato123"/>
               <button type="submit" name="submit" class="subscribe">Subscribe</button>
           </form>
         </div>
