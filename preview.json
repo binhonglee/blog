@@ -2,6 +2,9 @@
   "baseURL": "http://localhost:1313/blog",
   "destURLs": [
     {
+      "name": "no_blame_sev_culture",
+      "url": "2025-05-30-no-blame-sev-culture"
+    }, {
       "name": "code_review_culture",
       "url": "2025-05-23-code-review-culture"
     }, {

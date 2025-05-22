@@ -24,6 +24,8 @@ There was some research that finds that when someone is new to the stack / team 
 
 In an ideal world, teams would have detailed style guides on how everything is written and every new person will be given ample time to read and understand them as part of onboarding. But the reality is that this rarely happens between the outdated style guides and the lack of proper onboarding process, so code review frequently becomes the first time a new person has the opportunity to learn about a team's style guide (aside from linters and formatters). Let's make sure to get it right so they don't develop the wrong habits.
 
+That said, it's important to note that senior engineers should still hold themselves to a higher level in producing quality code as a way to lead by example. It will be rather unconvincing to a newbie if their reviewer writes _subpar code_ while holding others to a higher quality bar.
+
 ## Ask for further details
 
 Sometimes the change request itself is lacking details about the project or the reason behind such changes. Always ask for further details. In many occasions, it's just the author overlooking it or making an assumption that their reviewers share the same level of context the author has about the project. This is a bit of an extension from the previous section but if you are accepting without understanding _why_, you are in a sense "blindly accepting" the change (even if in this case, it's just _partially_ blind lol).
