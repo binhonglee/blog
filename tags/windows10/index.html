@@ -34,7 +34,7 @@
     
     <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
     
-    <meta name="generator" content="Hugo 0.147.4">
+    <meta name="generator" content="Hugo 0.147.5">
     
     <link rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/tags/windows10/index.xml" title="BinHong Lee's Blog" />
     </head>
@@ -61,6 +61,16 @@
 
     <main class="content_body article_body">
       <div class="primary_block projects">
+        <article class="block">
+          <a class="article_link active" href="https://binhong.me/blog/2025-05-23-code-review-culture/">
+            <h1 class="row title">Code Review Culture</h1>
+            <p class="row subtitle">Review today or debug tomorrow</p>
+            <p class="desc"> Ask a programmer to review 10 lines of code, he’ll find 10 issues. Ask him to do 500 lines and he’ll say it looks good. - @girayozil
+Code review is a really subjective thing where each team or even individual runs things very differently. However, a bad code review process can lead to bad code smells and unnecessary tech debt (just ask all the vibe coders out there 🫣). I will try my best to share my rather opinionated takes while explaining the reasoning behind each of them.
+...</p>
+            <p class="right">May 23, 2025</p>
+          </a>
+        </article>
         <article class="block">
           <a class="article_link active" href="https://binhong.me/blog/2025-05-21-building-a-simple-newsletter-service/">
             <h1 class="row title">Building a Simple Newsletter Service</h1>
@@ -147,15 +157,6 @@ That said, as Parcel v1 is no longer maintained (and with v2 supporting only Vue
             <p class="desc">While the defacto way of running postgres on Azure Pipeline according to this guide seems to be using the docker image, the MacOS image on Azure Pipeline does not have docker support due to some licensing issue. So instead, this has to be setup and handled manually. We’d use brew here since it comes installed in the OS image and is the easiest way to deal with it as far as I’m aware.
 ...</p>
             <p class="right">July 18, 2021</p>
-          </a>
-        </article>
-        <article class="block">
-          <a class="article_link active" href="https://binhong.me/blog/2021-05-22-ava-with-vue-typescript-and-nyc/">
-            <h1 class="row title">Ava with Vue (2.x) &#43; TypeScript (and NYC)</h1>
-            <p class="row subtitle">Component and Unit Testing with Test Coverage</p>
-            <p class="desc">When working on a project with Vue (TypeScript), I faced a lot of roadblocks trying to get code coverage to work. The issue is largely covered in this issue thread. Most solutions / workarounds for that seems to revolve around changing the bundling flow with webpack. Considering my lack of familiarity with webpack (on top of my use of scss and pug in Vue files), putting together a webpack config that works for me turns out to be extremely challenging. That somewhat prompted me to move the build and test process away from vue-cli while starting to experiment with different tools that could work. One thing to note is that, I’ll be using babel to handle TypeScript compiling / transpiling instead of ts-node as recommended from Ava’s guide.
-...</p>
-            <p class="right">May 22, 2021</p>
           </a>
         </article>
       </div>
