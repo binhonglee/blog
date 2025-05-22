@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>No Blame SEV (Incident) Culture - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="Every time there&rsquo;s a major outage at Meta, the first question I get from friends and family is usually &ldquo;did they fire the person who caused it?&rdquo; which is where I have to explain this concept of No Blame SEV Culture. Especially for an outage so big that a significant number of users are affected, the individual causing it likely does not have ill intent and there are likely multiple different processes and systems that failed along the way to get us here in the first place.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="No Blame SEV (Incident) Culture">
+    <meta property="og:description" content="Less finger-pointing, more preventions">
+    <meta name="twitter:description" content="Less finger-pointing, more preventions">
+    <meta name="twitter:title" content="No Blame SEV (Incident) Culture"><meta property="article:published_time" 2025-05-30T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-05-30T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/no_blame_sev_culture.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/no_blame_sev_culture.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/no_blame_sev_culture.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.147.5">
+    
+    </head>
+  <body class="single">
+    <details class="dark_mode_toggle" role="button" open>
+      <summary>
+        <div class="content">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+      </summary>
+    </details>
+    <div class="wrapper">
+      <div class="content dropdown">
+        <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu" id="dropdown_toggle">+</button>
+        <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+          <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">No Blame SEV (Incident) Culture</h1>
+          <p class="row subtitle">Less finger-pointing, more preventions</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">May 30, 2025</p>
+          </div>
+          <div class="post_content"><p>Every time there&rsquo;s a major outage at Meta, the first question I get from friends and family is usually <em>&ldquo;did they fire the person who caused it?&rdquo;</em> which is where I have to explain this concept of <strong>No Blame SEV Culture</strong>. Especially for an outage so big that a significant number of users are affected, the <em>individual</em> causing it likely does not have ill intent and there are likely multiple different processes and systems that failed along the way to get us here in the first place.</p>
+<p><em>This is part of a series <a href="https://claude.ai/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+<a class="anchor" href="#process-over-people">
+    <h2 id="process-over-people">
+        <span class="text">Process over People</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>When something goes wrong (especially something <em>really catastrophic</em>), it&rsquo;s usually a combination of both process and people problems. The difference here is that process is more deterministic compared to people. People have off-days, get tired, make mistakes etc. so it&rsquo;s important to have a process (or automated systems) in place to prevent that. This can mean anything from adding more test coverage, lint rules against bad code patterns, and / or more alerts. It is however important to note that they need to <strong>maintain a certain level of quality bar</strong>. As mentioned in <a href="https://claude.ai/blog/2025-05-04-push-fearlessly-with-automated-testing/#broken-tests">the previous article</a>, flaky / broken tests are tech debt, same goes for noisy lint rules and alerts. Too many noisy lint rules and alerts would lead to engineers disregarding them or adopting a &ldquo;wait-and-see&rdquo; mentality which is not ideal in preventing future outages.</p>
+<p>![[IMG_1791.jpeg]]</p>
+<a class="anchor" href="#expensive-lesson">
+    <h2 id="expensive-lesson">
+        <span class="text">Expensive Lesson</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>One of the more interesting quotes I&rsquo;ve read repeatedly (both within and outside of Meta) about people who caused outages is that they just learned an expensive lesson through that specific outage. Firing them (or letting them go) would mean that your company just paid that expensive price of such a lesson for an employee without actually benefiting from it. This employee will then bring this lesson with them to their next employer who would then benefit from such experience.</p>
+<a class="anchor" href="#fear">
+    <h2 id="fear">
+        <span class="text">Fear</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>One of the more significant downsides of <em>blame</em>, is that you now instill fear in making any sort of production changes (even calculated ones). Instead, it&rsquo;s important to keep in mind that as your product / infra grows, so should your process. Having strong fear in taking any responsibility for even attempting to improve or make fundamental changes breeds complacency. This can be fine in certain organizations and products (like government software, health tech etc.) where there&rsquo;s almost no tolerance for any sort of outages. That said, this is where you should have good chaos engineering and fail-safe practices to ensure the resiliency of your system.</p>
+<a class="anchor" href="#no-blame--no-responsibility">
+    <h2 id="no-blame--no-responsibility">
+        <span class="text">No Blame ≠ No Responsibility</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>This is a bit of an exception or outlier effect (and likely the most controversial part of this whole piece). Usually when you cause a really major outage (or multiple for that matter), it&rsquo;s really not your fault (or shouldn&rsquo;t be). But sometimes, smaller outages are understandably less &ldquo;well protected&rdquo; because we expect people to still <em>care</em> about the things they work on. If you <strong>continuously</strong> cause outages due to <strong>recklessness</strong> (&ldquo;lack of <em>care</em>&rdquo;) especially within a short period of time, you should still be held accountable for it. It&rsquo;s especially common when someone chases the topline metrics movement against a tight timeline (end of a performance review cycle). This does not mean that people should be finger-pointing during the incident review, as before, that should be used to focus on what could&rsquo;ve been better instead. However, it should be brought up separately as part of the performance conversation. It&rsquo;s important to note that this is a scenario where a <em>quantitative change leads to a qualitative change</em> since an increase in quantity (of incidents) leads to a change in narrative thus should not be used to penalize those who&rsquo;ve only caused one (or maybe two) incidents in a given period of time.</p>
+<p>Aside from that, if there isn&rsquo;t any runbook or recovery plan prepared ahead of time (especially for predictable issues - <em><em>subjective</em></em>), it demonstrates a lack of good planning and foresight into the feature. This is - frankly - a lack of competence and the project owner should take responsibility for the rather <em>incomplete</em> launch. However, the reality is that many individuals would launch buggy projects, claim credit for all the good it brings, while oncalls (spread across the team) pay for the lack of implementation quality. This is especially true when they immediately switch teams after project launches and no longer have to maintain or deal with the aftermath of their uninspiring launch.</p>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>No blame culture means that you aren&rsquo;t fully responsible just because you accidentally touched the house of cards causing it to collapse. Instead, we need better protection around it - like building a fence around it, using LEGO blocks instead of cards, etc - to make sure it doesn&rsquo;t break down easily again after someone accidentally touches it, or just prevent people from accidentally touching it altogether. This means we hold those who are responsible for ensuring the protection accountable instead of those who inevitably discovered the problem. It&rsquo;s like how we don&rsquo;t blame white hat hackers for discovering an exploit; we pay them bounties as a way to thank them for discovering them. We should thank those who found holes in our system&rsquo;s reliability instead of penalizing them for finding it.</p>
+</div>
+          
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <input type="hidden" name="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a> | <a href="https://github.com/binhonglee/blog" rel="noopener" target="_blank">Source (GitHub)</a> </p>
+          </div>
+          <div class="row">
+            <p>&copy; 2025 <a href="https://binhong.me">BinHong Lee</a></p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+  </body>
+</html>
+

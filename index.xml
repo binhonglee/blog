@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
-    <lastBuildDate>Fri, 23 May 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 May 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Code Review Culture</title>
       <link>https://binhong.me/blog/2025-05-23-code-review-culture/</link>
@@ -34,6 +34,7 @@
 &lt;/a&gt;
 &lt;p&gt;There was some research that finds that when someone is new to the stack / team / industry, reviewers tend to be stricter and more nitpicky against their code changes relative to a long-timer or a more senior engineer. Personally, I see this as a feature instead of a bug. A long-timer has earned their reputation (assuming that&amp;rsquo;s how they are a long-timer and not just a bad engineer successfully avoiding accountability at every turn) and can be afforded to be treated with more leniency in their code. A &lt;em&gt;newbie&lt;/em&gt; however benefits from stricter code review feedback teaching them the style and tradeoffs the team values when it comes to coding patterns, thus learning good practices along the way.&lt;/p&gt;
 &lt;p&gt;In an ideal world, teams would have detailed style guides on how everything is written and every new person will be given ample time to read and understand them as part of onboarding. But the reality is that this rarely happens between the outdated style guides and the lack of proper onboarding process, so code review frequently becomes the first time a new person has the opportunity to learn about a team&amp;rsquo;s style guide (aside from linters and formatters). Let&amp;rsquo;s make sure to get it right so they don&amp;rsquo;t develop the wrong habits.&lt;/p&gt;
+&lt;p&gt;That said, it&amp;rsquo;s important to note that senior engineers should still hold themselves to a higher level in producing quality code as a way to lead by example. It will be rather unconvincing to a newbie if their reviewer writes &lt;em&gt;subpar code&lt;/em&gt; while holding others to a higher quality bar.&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#ask-for-further-details&#34;&gt;
     &lt;h2 id=&#34;ask-for-further-details&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Ask for further details&lt;/span&gt;
