@@ -72,14 +72,14 @@
             <p class="right">May 30, 2025</p>
           </div>
           <div class="post_content"><p>Every time there&rsquo;s a major outage at Meta, the first question I get from friends and family is usually <em>&ldquo;did they fire the person who caused it?&rdquo;</em> which is where I have to explain this concept of <strong>No Blame SEV Culture</strong>. Especially for an outage so big that a significant number of users are affected, the <em>individual</em> causing it likely does not have ill intent and there are likely multiple different processes and systems that failed along the way to get us here in the first place.</p>
-<p><em>This is part of a series <a href="https://claude.ai/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+<p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
 <a class="anchor" href="#process-over-people">
     <h2 id="process-over-people">
         <span class="text">Process over People</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>When something goes wrong (especially something <em>really catastrophic</em>), it&rsquo;s usually a combination of both process and people problems. The difference here is that process is more deterministic compared to people. People have off-days, get tired, make mistakes etc. so it&rsquo;s important to have a process (or automated systems) in place to prevent that. This can mean anything from adding more test coverage, lint rules against bad code patterns, and / or more alerts. It is however important to note that they need to <strong>maintain a certain level of quality bar</strong>. As mentioned in <a href="https://claude.ai/blog/2025-05-04-push-fearlessly-with-automated-testing/#broken-tests">the previous article</a>, flaky / broken tests are tech debt, same goes for noisy lint rules and alerts. Too many noisy lint rules and alerts would lead to engineers disregarding them or adopting a &ldquo;wait-and-see&rdquo; mentality which is not ideal in preventing future outages.</p>
+<p>When something goes wrong (especially something <em>really catastrophic</em>), it&rsquo;s usually a combination of both process and people problems. The difference here is that process is more deterministic compared to people. People have off-days, get tired, make mistakes etc. so it&rsquo;s important to have a process (or automated systems) in place to prevent that. This can mean anything from adding more test coverage, lint rules against bad code patterns, and / or more alerts. It is however important to note that they need to <strong>maintain a certain level of quality bar</strong>. As mentioned in <a href="/blog/2025-05-04-push-fearlessly-with-automated-testing/#broken-tests">the previous article</a>, flaky / broken tests are tech debt, same goes for noisy lint rules and alerts. Too many noisy lint rules and alerts would lead to engineers disregarding them or adopting a &ldquo;wait-and-see&rdquo; mentality which is not ideal in preventing future outages.</p>
 <p><a href="/blog/img/sev_review_trifecta.jpeg" target="_blank">
     <img src="/blog/img/sev_review_trifecta.jpeg">
 </a>
