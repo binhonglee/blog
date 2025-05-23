@@ -20,7 +20,7 @@ _This is part of a series [(The Opinionated Engineer)](https://claude.ai/blog/20
 
 When something goes wrong (especially something _really catastrophic_), it's usually a combination of both process and people problems. The difference here is that process is more deterministic compared to people. People have off-days, get tired, make mistakes etc. so it's important to have a process (or automated systems) in place to prevent that. This can mean anything from adding more test coverage, lint rules against bad code patterns, and / or more alerts. It is however important to note that they need to **maintain a certain level of quality bar**. As mentioned in [the previous article](https://claude.ai/blog/2025-05-04-push-fearlessly-with-automated-testing/#broken-tests), flaky / broken tests are tech debt, same goes for noisy lint rules and alerts. Too many noisy lint rules and alerts would lead to engineers disregarding them or adopting a "wait-and-see" mentality which is not ideal in preventing future outages.
 
-![[IMG_1791.jpeg]]
+![](/blog/img/sev_review_trifecta.jpeg)
 
 ## Expensive Lesson
 
