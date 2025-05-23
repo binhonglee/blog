@@ -16,11 +16,12 @@ I have not fully planned out the entire series but here are a few topics I have 
 
 1. [Push Fearlessly with Automated Testing](/blog/2025-05-04-push-fearlessly-with-automated-testing/)
 2. [The Art of Posting](/blog/2025-05-15-art-of-posting/)
-3. Code Review Culture
-4. Understanding the Value of Dev Tools
-5. Disaster Recovery vs Disaster Prevention
-6. The Intangibles
-7. Biased Towards Overcommunicate
+3. [Code Review Culture](/blog/2025-05-23-code-review-culture/)
+4. No Blame SEV Culture
+5. Understanding the Value of Dev Tools
+6. Disaster Recovery vs Disaster Prevention
+7. The Intangibles
+8. Biased Towards Overcommunicate
 
 ## Where is this coming from?
 
