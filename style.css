@@ -116,6 +116,10 @@ h3 code {
   display: none;
 }
 
+.webring {
+  display: inline-block;
+}
+
 .projects a:hover {
   text-decoration: none;
 }
@@ -471,6 +475,30 @@ pre .custom-language {
   display: none;
 }
 
+.webring:hover .webring_links {
+  display: block;
+  border-style: solid;
+  border-color: #181a18;
+  border-width: 2px;
+}
+
+.webring .webring_links {
+  display: none;
+  position: absolute;
+  padding: 0 20px;
+  z-index: 1;
+  background-color: var(--default-background);
+}
+
+.webring .webring_links .link {
+  display: block;
+  margin: 10px 0;
+}
+
+.dark_mode_toggle[open] + div .webring .webring_links {
+  background-color: var(--dark-background);
+}
+
 @media screen and (max-width: 1000px) {
   .post_content img {
     max-width: 80%;
@@ -532,6 +560,23 @@ pre .custom-language {
   .dropdown:hover .header_links {
     display: block;
     margin-top: 50px;
+  }
+
+  .dropdown:hover .webring .webring_links {
+    display: block;
+    padding: 0
+  }
+
+  .webring .webring_links .link {
+    margin: 0;
+  }
+
+  .webring hr {
+    display: none;
+  }
+
+  .webring {
+    display: block;
   }
 }
 
