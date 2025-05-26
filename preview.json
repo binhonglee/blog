@@ -2,6 +2,12 @@
   "baseURL": "http://localhost:1313/blog",
   "destURLs": [
     {
+      "name": "growth_engineer",
+      "url": "2025-06-13-growth-engineer"
+    }, {
+      "name": "product_growth_opportunities",
+      "url": "2025-06-06-product-growth-opportunities"
+    }, {
       "name": "no_blame_sev_culture",
       "url": "2025-05-30-no-blame-sev-culture"
     }, {

@@ -18,10 +18,11 @@ I have not fully planned out the entire series but here are a few topics I have 
 2. [The Art of Posting](/blog/2025-05-15-art-of-posting/)
 3. [Code Review Culture](/blog/2025-05-23-code-review-culture/)
 4. No Blame SEV Culture
-5. Understanding the Value of Dev Tools
-6. Disaster Recovery vs Disaster Prevention
-7. The Intangibles
-8. Biased Towards Overcommunicate
+5. Growth Engineer
+6. Understanding the Value of Dev Tools
+7. Firefighting Heroes
+8. The Intangibles
+9. Biased Towards Overcommunicate
 
 ## Where is this coming from?
 
