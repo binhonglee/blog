@@ -478,8 +478,12 @@ pre .custom-language {
 .webring:hover .webring_links {
   display: block;
   border-style: solid;
-  border-color: #181a18;
+  border-color: var(--default-color);
   border-width: 2px;
+}
+
+.dark_mode_toggle[open] + div .webring:hover .webring_links {
+  border-color: var(--dark-color);
 }
 
 .webring .webring_links {
@@ -553,6 +557,10 @@ pre .custom-language {
     z-index: 1;
   }
 
+  .dark_mode_toggle[open] + div .header_links .link {
+    border-color: var(--dark-color);
+  }
+
   .dropdown:hover .dropdown_toggle {
     border: solid;
   }
@@ -564,7 +572,9 @@ pre .custom-language {
 
   .dropdown:hover .webring .webring_links {
     display: block;
-    padding: 0
+    margin-top: 5px;
+    padding: 0;
+    width: 120px;
   }
 
   .webring .webring_links .link {
