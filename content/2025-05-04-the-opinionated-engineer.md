@@ -17,7 +17,7 @@ I have not fully planned out the entire series but here are a few topics I have 
 1. [Push Fearlessly with Automated Testing](/blog/2025-05-04-push-fearlessly-with-automated-testing/)
 2. [The Art of Posting](/blog/2025-05-15-art-of-posting/)
 3. [Code Review Culture](/blog/2025-05-23-code-review-culture/)
-4. No Blame SEV Culture
+4. [No Blame SEV Culture](/blog/2025-05-30-no-blame-sev-culture/)
 5. Growth Engineer
 6. Understanding the Value of Dev Tools
 7. Firefighting Heroes

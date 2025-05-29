@@ -6,10 +6,6 @@ tags:
 ss: preview/no_blame_sev_culture.jpg
 aliases:
   - /no_blame_sev_culture/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 Every time there's a major outage at Meta, the first question I get from friends and family is usually _"did they fire the person who caused it?"_ which is where I have to explain this concept of **No Blame SEV Culture**. Especially for an outage so big that a significant number of users are affected, the _individual_ causing it likely does not have ill intent and there are likely multiple different processes and systems that failed along the way to get us here in the first place.
