@@ -10,6 +10,57 @@
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
     <lastBuildDate>Fri, 13 Jun 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>No Blame SEV (Incident) Culture</title>
+      <link>https://binhong.me/blog/2025-05-30-no-blame-sev-culture/</link>
+      <pubDate>Fri, 30 May 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-05-30-no-blame-sev-culture/</guid>
+      <description>&lt;p&gt;Every time there&amp;rsquo;s a major outage at Meta, the first question I get from friends and family is usually &lt;em&gt;&amp;ldquo;did they fire the person who caused it?&amp;rdquo;&lt;/em&gt; which is where I have to explain this concept of &lt;strong&gt;No Blame SEV Culture&lt;/strong&gt;. Especially for an outage so big that a significant number of users are affected, the &lt;em&gt;individual&lt;/em&gt; causing it likely does not have ill intent and there are likely multiple different processes and systems that failed along the way to get us here in the first place.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#process-over-people&#34;&gt;
+    &lt;h2 id=&#34;process-over-people&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Process over People&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;When something goes wrong (especially something &lt;em&gt;really catastrophic&lt;/em&gt;), it&amp;rsquo;s usually a combination of both process and people problems. The difference here is that process is more deterministic compared to people. People have off-days, get tired, make mistakes etc. so it&amp;rsquo;s important to have a process (or automated systems) in place to prevent that. This can mean anything from adding more test coverage, lint rules against bad code patterns, and / or more alerts. It is however important to note that they need to &lt;strong&gt;maintain a certain level of quality bar&lt;/strong&gt;. As mentioned in &lt;a href=&#34;https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/#broken-tests&#34;&gt;the previous article&lt;/a&gt;, flaky / broken tests are tech debt, same goes for noisy lint rules and alerts. Too many noisy lint rules and alerts would lead to engineers disregarding them or adopting a &amp;ldquo;wait-and-see&amp;rdquo; mentality which is not ideal in preventing future outages.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/sev_review_trifecta.jpeg&#34; target=&#34;_blank&#34;&gt;
+    &lt;img src=&#34;https://binhong.me/blog/2025-05-30-no-blame-sev-culture//blog/img/sev_review_trifecta.jpeg&#34;&gt;
+&lt;/a&gt;
+&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#expensive-lesson&#34;&gt;
+    &lt;h2 id=&#34;expensive-lesson&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Expensive Lesson&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;One of the more interesting quotes I&amp;rsquo;ve read repeatedly (both within and outside of Meta) about people who caused outages is that they just learned an expensive lesson through that specific outage. Firing them (or letting them go) would mean that your company just paid that expensive price of such a lesson for an employee without actually benefiting from it. This employee will then bring this lesson with them to their next employer who would then benefit from such experience.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#fear&#34;&gt;
+    &lt;h2 id=&#34;fear&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Fear&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;One of the more significant downsides of &lt;em&gt;blame&lt;/em&gt;, is that you now instill fear in making any sort of production changes (even calculated ones). Instead, it&amp;rsquo;s important to keep in mind that as your product / infra grows, so should your process. Having strong fear in taking any responsibility for even attempting to improve or make fundamental changes breeds complacency. This can be fine in certain organizations and products (like government software, health tech etc.) where there&amp;rsquo;s almost no tolerance for any sort of outages. That said, this is where you should have good chaos engineering and fail-safe practices to ensure the resiliency of your system.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#no-blame--no-responsibility&#34;&gt;
+    &lt;h2 id=&#34;no-blame--no-responsibility&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;No Blame ≠ No Responsibility&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;This is a bit of an exception or outlier effect (and likely the most controversial part of this whole piece). Usually when you cause a really major outage (or multiple for that matter), it&amp;rsquo;s really not your fault (or shouldn&amp;rsquo;t be). But sometimes, smaller outages are understandably less &amp;ldquo;well protected&amp;rdquo; because we expect people to still &lt;em&gt;care&lt;/em&gt; about the things they work on. If you &lt;strong&gt;continuously&lt;/strong&gt; cause outages due to &lt;strong&gt;recklessness&lt;/strong&gt; (&amp;ldquo;lack of &lt;em&gt;care&lt;/em&gt;&amp;rdquo;) especially within a short period of time, you should still be held accountable for it. It&amp;rsquo;s especially common when someone chases the topline metrics movement against a tight timeline (end of a performance review cycle). This does not mean that people should be finger-pointing during the incident review, as before, that should be used to focus on what could&amp;rsquo;ve been better instead. However, it should be brought up separately as part of the performance conversation. It&amp;rsquo;s important to note that this is a scenario where a &lt;em&gt;quantitative change leads to a qualitative change&lt;/em&gt; since an increase in quantity (of incidents) leads to a change in narrative thus should not be used to penalize those who&amp;rsquo;ve only caused one (or maybe two) incidents in a given period of time.&lt;/p&gt;
+&lt;p&gt;Aside from that, if there isn&amp;rsquo;t any runbook or recovery plan prepared ahead of time (especially for predictable issues - &lt;em&gt;*subjective*&lt;/em&gt;), it demonstrates a lack of good planning and foresight into the feature. This is - frankly - a lack of competence and the project owner should take responsibility for the rather &lt;em&gt;incomplete&lt;/em&gt; launch. However, the reality is that many individuals would launch buggy projects, claim credit for all the good it brings, while oncalls (spread across the team) pay for the lack of implementation quality. This is especially true when they immediately switch teams after project launches and no longer have to maintain or deal with the aftermath of their uninspiring launch.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;No blame culture means that you aren&amp;rsquo;t fully responsible just because you accidentally touched the house of cards causing it to collapse. Instead, we need better protection around it - like building a fence around it, using LEGO blocks instead of cards, etc - to make sure it doesn&amp;rsquo;t break down easily again after someone accidentally touches it, or just prevent people from accidentally touching it altogether. This means we hold those who are responsible for ensuring the protection accountable instead of those who inevitably discovered the problem. It&amp;rsquo;s like how we don&amp;rsquo;t blame white hat hackers for discovering an exploit; we pay them bounties as a way to thank them for discovering them. We should thank those who found holes in our system&amp;rsquo;s reliability instead of penalizing them for finding it.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Code Review Culture</title>
       <link>https://binhong.me/blog/2025-05-23-code-review-culture/</link>
       <pubDate>Fri, 23 May 2025 00:00:00 -0800</pubDate>
@@ -295,7 +346,7 @@
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/&#34;&gt;Push Fearlessly with Automated Testing&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-15-art-of-posting/&#34;&gt;The Art of Posting&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-23-code-review-culture/&#34;&gt;Code Review Culture&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;No Blame SEV Culture&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-30-no-blame-sev-culture/&#34;&gt;No Blame SEV Culture&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Growth Engineer&lt;/li&gt;
 &lt;li&gt;Understanding the Value of Dev Tools&lt;/li&gt;
 &lt;li&gt;Firefighting Heroes&lt;/li&gt;
