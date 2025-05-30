@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>A/B Testing - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="This is a basic introduction on how to run a good A/B test as a complementary piece to &ldquo;Growth Engineer&rdquo; (which will be released later as part of &ldquo;The Opinionated Engineer&rdquo; series) because I realized I needed to first explain how A/B testing works before getting into more &ldquo;advanced&rdquo; concepts. For any metric / data driven team, A/B testing serves as a critical tool in measuring success.
+
+    
+        Tooling
+        #
+    
+
+If your employer does not already have a working tool for experimentation, I&rsquo;d recommend adopting one of the existing tools / platforms (like Statsig, GrowthBook, LaunchDarkly etc.) specifically built with this in mind. On a basic level, they should provide a toggle that splits users into 2 (or more) groups for testing purposes. Their downstream metrics will then be logged (after first exposure) to measure if / how these changes might have affected the users. While it&rsquo;s possible to build your own A/B testing tool in-house, the build and maintenance cost is likely not worth it compared to just adopting ready-made ones.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="A/B Testing">
+    <meta property="og:description" content="Basic guide to running a good A/B test">
+    <meta name="twitter:description" content="Basic guide to running a good A/B test">
+    <meta name="twitter:title" content="A/B Testing"><meta property="article:published_time" 2025-06-06T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-06-06T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/a_b_testing.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/a_b_testing.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/a_b_testing.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1748302154" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.147.6">
+    
+    </head>
+  <body class="single">
+    <details class="dark_mode_toggle" role="button" open>
+      <summary>
+        <div class="content">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+      </summary>
+    </details>
+    <div class="wrapper">
+      <div class="content dropdown">
+        <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+        <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+          <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+          <p>|</p>
+          <div class="webring link" role="menuitem">
+            <a class="webring_toggle">Webring</a>
+            <div class="webring_links">
+              <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+              <hr />
+              <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">A/B Testing</h1>
+          <p class="row subtitle">Basic guide to running a good A/B test</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">June 6, 2025</p>
+          </div>
+          <div class="post_content"><p>This is a basic introduction on how to run a good A/B test as a complementary piece to &ldquo;Growth Engineer&rdquo; (which will be released later as part of &ldquo;The Opinionated Engineer&rdquo; series) because I realized I needed to first explain how A/B testing works before getting into more <em>&ldquo;advanced&rdquo;</em> concepts. For any metric / data driven team, A/B testing serves as a critical tool in measuring success.</p>
+<a class="anchor" href="#tooling">
+    <h2 id="tooling">
+        <span class="text">Tooling</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>If your employer does not already have a working tool for experimentation, I&rsquo;d recommend adopting one of the existing tools / platforms (like <a href="https://statsig.com/">Statsig</a>, <a href="https://www.growthbook.io/">GrowthBook</a>, <a href="https://launchdarkly.com/">LaunchDarkly</a> etc.) specifically built with this in mind. On a basic level, they should provide a toggle that splits users into 2 (or more) groups for testing purposes. Their downstream metrics will then be logged (after first exposure) to measure if / how these changes might have affected the users. While it&rsquo;s <em>possible</em> to build your own A/B testing tool in-house, the build and maintenance cost is likely not worth it compared to just adopting ready-made ones.</p>
+<a class="anchor" href="#goal--guardrail-metrics">
+    <h2 id="goal--guardrail-metrics">
+        <span class="text">Goal + Guardrail metrics</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<blockquote>
+<p>&ldquo;When a measure becomes a target, it ceases to be a good measure&rdquo; - Goodhart&rsquo;s Law</p></blockquote>
+<p>Goal metrics serve as a target, the specific thing you want to change or improve. While I largely agree with Goodhart&rsquo;s Law, I also believe that a sufficiently comprehensive <strong>set</strong> of metrics will help mitigate the downside (or at least minimize it) thus making it still <em>relatively</em> &ldquo;a good measure&rdquo;. This is where guardrail metrics come in to ensure we aren&rsquo;t just &ldquo;sacrificing x to boost y&rdquo; especially in an unsustainable manner.</p>
+<p>As an example, if you want to increase usage on your app, you can provide generous discounts (or even pay users to do so) but that&rsquo;s obviously very unsustainable so you should set a clear budget on how much you can spend on these promotions and / or cost per new active user acquired you allow for such a project to ship. Here your goal metric would be &ldquo;new active users acquired&rdquo; while your guardrail would be cost (lost revenue). They need to both look good from the experiment before you decide on shipping the product change.</p>
+<a class="anchor" href="#size-and-duration">
+    <h2 id="size-and-duration">
+        <span class="text">Size and Duration</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Generally, size and duration are the 2 main levers to help get your experiment sufficient exposure that allows you to make (statistically) informed decisions. If you don&rsquo;t have a large user base then many of your tests would need a large test group with long test duration to show any statistically significant movement. This unfortunately means that your new feature release cycle will be much slower as your experiments will be queued. In this scenario, you will need to smartly pair up different features that complement one another into the same experiment.</p>
+<a class="anchor" href="#holdout">
+    <h2 id="holdout">
+        <span class="text">Holdout</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>In order to accurately measure your team&rsquo;s impact over a certain period of time, you can create a team-wide holdout that keeps a small group of users without the new enhancements. From here, you can see the value of all your team&rsquo;s projects over that period of time (quarter / half) collectively. When you run experiments, you are only testing the impact of specific changes while here you are testing them collectively. Some changes conflict with each other while others complement each other. Ideally you catch them early and run variations of different combinations but you don&rsquo;t always catch them all so having a team wide holdout helps with tracking that.</p>
+<a class="anchor" href="#novelty-effect">
+    <h2 id="novelty-effect">
+        <span class="text">Novelty effect</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>When a new restaurant first opens in a popular area, it will be filled with people lining up to try it out. These people will then attract more people who also decide to check out the restaurant out of curiosity. However, the crowd will slowly wind down over time as it loses its <em>novelty</em> status. If it&rsquo;s any good, it would still remain popular but unlikely to be as popular as it first opened. This is called novelty effect. When you add a new button to the screen, the user&rsquo;s likelihood to click on it increases due to their curiosity on what it does. You don&rsquo;t want to measure that. Instead, you want to measure the actual traffic (and effect) of it <em>after</em> the novelty wears down. Just like how a good restaurant will still be popular long after its initial launch, you want your feature to be valuable / impactful even long after it&rsquo;s been launched and users clearly understand what it does.</p>
+<a class="anchor" href="#security">
+    <h2 id="security">
+        <span class="text">Security</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>When making a security related change (fix or enhancement), a lot of these concepts become a bit trickier especially for critical issues. Mainly because bad actors can figure out that you are doing an A/B test based on their account ID / device ID / IP address and do targeted exploits on the unprotected test group. This makes it rather a futile effort to understand whatever topline metric movement you want to study of this change on regular benign users but instead, becomes more like opening a new window for exploits.</p>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Running good A/B tests isn&rsquo;t just about having the right tools—it&rsquo;s about building the discipline to ask the right questions and measure what actually matters. The fundamentals covered here will prevent most common pitfalls that lead to misleading results or shipping changes that hurt your product. <strong>A/B testing is a means to an end.</strong> The best growth teams quickly kill bad ideas and double down on what&rsquo;s working. Start simple, get comfortable with the process, and don&rsquo;t let perfect be the enemy of good—a simple, well-run test is infinitely better than a complex experiment that sits in planning forever.</p>
+</div>
+          
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" id="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+              |
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-06-06-a-b-testing.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+

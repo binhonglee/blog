@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Product Growth Opportunities - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="This is a shorter issue which plays as a complementary piece to Growth Engineer (which will be released later as part of &ldquo;The Opinionated Engineer&rdquo; series). It&rsquo;s never easy to come up with new ideas that help with growth, but identifying the problem makes it easier. You&rsquo;ll notice that for the most part in this piece, I&rsquo;ll talk about &ldquo;where&rdquo; the opportunities are instead of &ldquo;what&rdquo; because that&rsquo;s usually very domain specific and highly depends on the type of problem you ended up needing to solve.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Product Growth Opportunities">
+    <meta property="og:description" content="Finding ideas that brings you from 1 -&gt; 100">
+    <meta name="twitter:description" content="Finding ideas that brings you from 1 -&gt; 100">
+    <meta name="twitter:title" content="Product Growth Opportunities"><meta property="article:published_time" 2025-06-13T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-06-13T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/product_growth_opportunities.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/product_growth_opportunities.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/product_growth_opportunities.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1748302154" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.147.6">
+    
+    </head>
+  <body class="single">
+    <details class="dark_mode_toggle" role="button" open>
+      <summary>
+        <div class="content">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+      </summary>
+    </details>
+    <div class="wrapper">
+      <div class="content dropdown">
+        <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+        <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+          <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+          <p>|</p>
+          <div class="webring link" role="menuitem">
+            <a class="webring_toggle">Webring</a>
+            <div class="webring_links">
+              <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+              <hr />
+              <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Product Growth Opportunities</h1>
+          <p class="row subtitle">Finding ideas that brings you from 1 -&gt; 100</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">June 13, 2025</p>
+          </div>
+          <div class="post_content"><p>This is a shorter issue which plays as a complementary piece to Growth Engineer (which will be released later as part of &ldquo;The Opinionated Engineer&rdquo; series). It&rsquo;s never easy to come up with new ideas that help with growth, but identifying the <em>problem</em> makes it easier. You&rsquo;ll notice that for the most part in this piece, I&rsquo;ll talk about <em>&ldquo;where&rdquo;</em> the opportunities are instead of <em>&ldquo;what&rdquo;</em> because that&rsquo;s usually very domain specific and highly depends on the type of problem you ended up needing to solve.</p>
+<a class="anchor" href="#funnel-analysis">
+    <h2 id="funnel-analysis">
+        <span class="text">Funnel analysis</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>The first thing you learn about identifying opportunities in growth is funnel analysis. Build a funnel logging to understand the user journey and go through it to see where you have the biggest drop. From there, you can take a deeper dive into the flow to understand <strong>why</strong> it is the way it is and see if it can be improved (or if there&rsquo;s any bugs to fix). Similarly, you can go through bug reports to find patterns on how users are being stuck on a specific part of your flow that might have contributed to the funnel losses.</p>
+<a class="anchor" href="#product-experience">
+    <h2 id="product-experience">
+        <span class="text">Product Experience</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Alternatively, you can go straight to the bug reports to see if there are any obvious blocking issues. From there, you can test the fix with an experiment and eventually ship them. Even when it doesn&rsquo;t yield material impact, the changes are generally safe to ship (unless it caused unexpected regressions) since they are largely considered &ldquo;bug fixes&rdquo;. Aside from that, there are other common issues like app performance, screen load time that have a diminishing return curve in user impact.</p>
+<p>My favorite example here was when Uber was working on an iOS rewrite, while everyone was debating about how cellular download limit matters (or not), <a href="https://x.com/StanTwinB/status/1336929240516710400">a data scientist pulled together an experiment to show its material impact</a> (full story <a href="https://threadreaderapp.com/thread/1336890442768547845.html">here</a> - which is one of my favorite software war stories). Similarly, your team should design and run experiments to understand how certain product experiences can have material user impact (instead of just theorizing over them).</p>
+<a class="anchor" href="#weve-tried-that-before">
+    <h2 id="weve-tried-that-before">
+        <span class="text">&ldquo;We&rsquo;ve tried that before&rdquo;</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Often times, new people will join and suggest <em>old</em> ideas as new. When that happens, it&rsquo;s easy to dismiss the idea by citing that something similar has been tried previously and didn&rsquo;t yield the expected result. The hard (and valuable) thing here, however, would be to understand why it failed previously and if anything has materially changed since then that might now allow this to be a viable idea to be re-attempted. You might still fail, but you will likely learn something new instead of learning the same old lesson again (which would be a waste of everyone&rsquo;s time and resources).</p>
+<a class="anchor" href="#studying-your-competitors">
+    <h2 id="studying-your-competitors">
+        <span class="text">Studying your competitors</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Sometimes you might find a specific step that has problems (where you&rsquo;re losing a lot more conversion than anywhere else) but you can&rsquo;t figure out how to fix it. Studying how your competition does it can help you see if there&rsquo;s a better way to do that. This doesn&rsquo;t mean their solution would perfectly fit your problem, but it might be worth testing to see if that solution is similarly applicable for you. Alternatively, they might also be struggling with the same issue and what you&rsquo;re both doing is (at least for now) the best solution that anyone has thought of so far. I listed this a lot lower intentionally because it&rsquo;s generally not been <em>that</em> valuable of an option compared to the other ways of identifying new opportunities above.</p>
+<a class="anchor" href="#survivorship-bias">
+    <h2 id="survivorship-bias">
+        <span class="text">Survivorship Bias</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>I wrote this section title with the &ldquo;WWII plane with red dots&rdquo; image in mind. In case you aren&rsquo;t familiar with it, <a href="https://claude.ai/share/7d06cfc9-95e7-4474-aae4-b56a6c6d3c99">here&rsquo;s Claude describing it</a>. In a similar sense, it can be very easy to fall into the trap of focusing on the demand of your existing users instead of building for new users you have yet to (and want to) acquire. Not to say that existing user feedback is unimportant (which I&rsquo;ve literally just said the opposite previously), but rather that it&rsquo;s important to understand and distinguish which feedback helps keep your existing users happy while which feedback is preventing more users from adopting your product.</p>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Finding growth opportunities isn&rsquo;t about hunting for silver bullets, but more about understanding where your product is bleeding users and why. Don&rsquo;t let growth pursuits distract from building something people actually want. The best growth <em>&ldquo;hack&rdquo;</em> is still making a good product that gets people what they want.</p>
+</div>
+          
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" id="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+              |
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-06-13-product-growth-opportunities.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+
