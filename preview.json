@@ -3,10 +3,13 @@
   "destURLs": [
     {
       "name": "growth_engineer",
-      "url": "2025-06-13-growth-engineer"
+      "url": "2025-06-20-growth-engineer"
     }, {
       "name": "product_growth_opportunities",
-      "url": "2025-06-06-product-growth-opportunities"
+      "url": "2025-06-13-product-growth-opportunities"
+    }, {
+      "name": "a_b_testing",
+      "url": "2025-06-06-a-b-testing"
     }, {
       "name": "no_blame_sev_culture",
       "url": "2025-05-30-no-blame-sev-culture"

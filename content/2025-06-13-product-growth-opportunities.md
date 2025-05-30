@@ -1,11 +1,12 @@
 ---
 title: Product Growth Opportunities
 subtitle: "Finding ideas that brings you from 1 -> 100"
-date: 2025-06-06 00:00:00 -0800 GMT
+date: 2025-06-13 00:00:00 -0800 GMT
 tags: []
 ss: "preview/product_growth_opportunities.jpg"
 aliases:
   - /product_growth_opportunities/
+  - /2025-06-06-product-growth-opportunities/
 build:
   list: never
   publishResources: true

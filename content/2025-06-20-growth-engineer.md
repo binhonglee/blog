@@ -1,11 +1,12 @@
 ---
 title: Growth Engineer
 subtitle: "Taking fine-tuning to the next level"
-date: 2025-06-13 00:00:00 -0800 GMT
+date: 2025-06-20 00:00:00 -0800 GMT
 tags: []
 ss: "preview/growth_engineer.jpg"
 aliases:
   - /growth_engineer/
+  - /2025-06-13-growth-engineer/
 build:
   list: never
   publishResources: true
