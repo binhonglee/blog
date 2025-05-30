@@ -21,7 +21,7 @@ _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opin
 
 When I say _everything_, I mean **everything**. Every button change, content change, margin change, slap an experiment on it. You need to be numbers obsessed and understand how anything moves the topline metric (the metric you / your team cares the most about). In that same sense, you might want to run experiments in chunks of small changes instead of a big chunk to better understand how each small change affects the user behavior. This would later help you in better understanding what is a good growth lever vs what isn't. Alternatively (depending on the type of changes), you can also have multiple variants with different mixes to achieve something similar.
 
-_For more on A/B testing, check out [this other post I wrote a few weeks ago here (TBD)]()._
+_For more on A/B testing, check out [this other post I wrote a few weeks ago here](/blog/2025-06-06-a-b-testing/)._
 
 ## Understanding Scale
 
@@ -29,7 +29,7 @@ Scale decides necessity and value. If you have no scale, then there's nothing at
 
 ## Identifying opportunities
 
-I wrote [a separate complementary piece on this a few weeks ago here](/blog/2025-06-06-product-growth-opportunities/) mainly because it ended up being so long that it probably deserves to be its own separate thing. This will be a core part of your job and in my opinion the biggest separation factor for a _"pure bred"_ (lol) growth engineer. Many engineers get stuck or move away from growth over time (especially around IC5 -> IC6 level) as they realize that they can no longer come up with new ideas and directions to continue growing the product sustainably.
+I wrote [a separate complementary piece on this a few weeks ago here](/blog/2025-06-13-product-growth-opportunities/) mainly because it ended up being so long that it probably deserves to be its own separate thing. This will be a core part of your job and in my opinion the biggest separation factor for a _"pure bred"_ (lol) growth engineer. Many engineers get stuck or move away from growth over time (especially around IC5 -> IC6 level) as they realize that they can no longer come up with new ideas and directions to continue growing the product sustainably.
 
 ## Cost analysis
 

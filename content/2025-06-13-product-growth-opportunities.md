@@ -13,7 +13,10 @@ build:
   render: always
 ---
 
-This is a shorter issue which plays as a complementary piece to Growth Engineer (which will be released later as part of "The Opinionated Engineer" series). It's never easy to come up with new ideas that help with growth, but identifying the _problem_ makes it easier. You'll notice that for the most part in this piece, I'll talk about _"where"_ the opportunities are instead of _"what"_ because that's usually very domain specific and highly depends on the type of problem you ended up needing to solve.
+It's never easy to come up with new ideas that help with growth, but identifying the _problem_ makes it easier. You'll notice that for the most part in this piece, I'll talk about _"where"_ the opportunities are instead of _"what"_ because that's usually very domain specific and highly depends on the type of problem you ended up needing to solve.
+
+_This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
+
 
 ## Funnel analysis
 

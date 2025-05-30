@@ -12,7 +12,9 @@ build:
   render: always
 ---
 
-This is a basic introduction on how to run a good A/B test as a complementary piece to "Growth Engineer" (which will be released later as part of "The Opinionated Engineer" series) because I realized I needed to first explain how A/B testing works before getting into more _"advanced"_ concepts. For any metric / data driven team, A/B testing serves as a critical tool in measuring success.
+This is a basic introduction on how to run a good A/B test. A/B testing is a method where your user pool is segmented into multiple groups, allowing you to test different product interactions and understand how these changes affect user behavior. For any metric / data driven team, A/B testing serves as a critical tool in measuring success.
+
+_This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
 ## Tooling
 

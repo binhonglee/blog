@@ -18,7 +18,11 @@ I have not fully planned out the entire series but here are a few topics I have 
 2. [The Art of Posting](/blog/2025-05-15-art-of-posting/)
 3. [Code Review Culture](/blog/2025-05-23-code-review-culture/)
 4. [No Blame SEV Culture](/blog/2025-05-30-no-blame-sev-culture/)
-5. Growth Engineer
+5. Growth
+    1. A/B Testing
+    2. Product Growth Opportunities
+    3. Growth Engineer
+    4. Growth Experiment Review Process
 6. Understanding the Value of Dev Tools
 7. Firefighting Heroes
 8. The Intangibles
