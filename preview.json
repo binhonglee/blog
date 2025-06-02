@@ -2,6 +2,9 @@
   "baseURL": "http://localhost:1313/blog",
   "destURLs": [
     {
+      "name": "internal_tooling_ideas",
+      "url": "2025-07-03-internal-tooling-ideas"
+    }, {
       "name": "growth_engineer",
       "url": "2025-06-20-growth-engineer"
     }, {
