@@ -15,18 +15,21 @@ Historically, my personal blog has been mostly about "how to do x", "guide on ma
 I have not fully planned out the entire series but here are a few topics I have in mind (or have released) so far...
 
 1. [Push Fearlessly with Automated Testing](/blog/2025-05-04-push-fearlessly-with-automated-testing/)
-2. [The Art of Posting](/blog/2025-05-15-art-of-posting/)
-3. [Code Review Culture](/blog/2025-05-23-code-review-culture/)
-4. [No Blame SEV Culture](/blog/2025-05-30-no-blame-sev-culture/)
-5. Growth
+2. Culture
+    1. [The Art of Posting](/blog/2025-05-15-art-of-posting/)
+    2. [Code Review Culture](/blog/2025-05-23-code-review-culture/)
+3. Incident Management
+    1. [No Blame SEV (Incident) Culture](/blog/2025-05-30-no-blame-sev-culture/)
+    2. Major Incident Runbook
+    3. Firefighting Heroes
+4. Product Growth
     1. A/B Testing
     2. Product Growth Opportunities
     3. Growth Engineer
-    4. Growth Experiment Review Process
-6. Understanding the Value of Dev Tools
-7. Firefighting Heroes
-8. The Intangibles
-9. Biased Towards Overcommunicate
+    4. Experiment Review Process
+5. Internal Tools
+    1. Internal Tooling Ideas
+    2. Understanding the Value of Dev Tools
 
 ## Where is this coming from?
 

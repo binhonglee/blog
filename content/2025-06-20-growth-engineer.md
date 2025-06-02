@@ -13,7 +13,7 @@ build:
   render: always
 ---
 
-While I've shipped a lot of growth wins (literally the first line on my resume), I'm actually very far from a prototypical growth engineer. In fact, I'm a bit more of a Fixer / Coding machine hybrid (which are 2 conflicting archetypes but that's a topic for another day) within a growth-oriented org. That said, in this piece, I want to explore a bit more into what it's like being a growth engineer and what makes you good at being one. Growth engineers are generally 1 -> 100 experts instead of 0 -> 1. They fine-tune every little detail by running a lot of experiments with marginal changes to understand the user problem and drive growth impact (_line goes up_).
+While I've shipped a lot of growth wins (literally the first line on my resume), I'm actually very far from a prototypical growth engineer. That said, in this piece, I want to explore a bit more into what it's like being a growth engineer and what makes you good at being one. Growth engineers are generally 1 -> 100 experts instead of 0 -> 1. They fine-tune every little detail by running a lot of experiments with marginal changes to understand the user problem and drive growth impact (_line goes up_).
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
