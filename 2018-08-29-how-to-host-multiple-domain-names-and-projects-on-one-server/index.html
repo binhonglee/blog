@@ -44,14 +44,16 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
     <meta name="fediverse:creator" content="@bh@social.lol">
     <link href="https://social.lol/@bh" rel="me">
     
-    <link href="https://binhong.me/blog/style.css?v=1748302154" rel="stylesheet">
+    <link href="https://binhong.me/blog/style.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1748746674" rel="stylesheet">
     <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
     <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
     
     
     <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
     
-    <meta name="generator" content="Hugo 0.147.6">
+    <meta name="generator" content="Hugo 0.147.7">
     
     </head>
   <body class="single">
@@ -128,18 +130,18 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
 </a>
 <p><em>Reference from <a href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-16-04">How To Install Nginx on Ubuntu 16.04</a></em></p>
 <p>Run the following commands through SSH-ing into the VPS. It will install NGINX, set firewall rules allowing it, and set NGINX to autostart on boot.</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo apt-get update
-</span></span><span style="display:flex;"><span>sudo apt-get install nginx
-</span></span><span style="display:flex;"><span>sudo ufw allow <span style="color:#f1fa8c">&#39;Nginx HTTP&#39;</span>
-</span></span><span style="display:flex;"><span>sudo systemctl <span style="color:#8be9fd;font-style:italic">enable</span> nginx
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo apt-get update
+</span></span><span class="line"><span class="cl">sudo apt-get install nginx
+</span></span><span class="line"><span class="cl">sudo ufw allow <span class="s1">&#39;Nginx HTTP&#39;</span>
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> nginx
 </span></span></code></pre></td></tr></table>
 </div>
 </div><a class="anchor" href="#configuration-setup">
@@ -150,68 +152,68 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
 </a>
 <p><em>Reference from <a href="https://geekflare.com/multiple-domains-on-one-server-with-apache-nginx/">Host Multiple Domains on One Server/IP with Apache or nginx</a></em></p>
 <p>The default virtual.conf location should be at /etc/nginx/conf.d/virtual.conf. I recommend backing up the default file before making any changes. (If it doesn’t exist, you can just create it.) Edit the file to look something like the following:</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-nginx" data-lang="nginx"><span style="display:flex;"><span><span style="color:#ff79c6">server</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">listen</span> <span style="color:#bd93f9">80</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">root</span> <span style="color:#f1fa8c">/opt/htdocs/binhong</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">index</span> <span style="color:#f1fa8c">index.html</span> <span style="color:#f1fa8c">index.htm</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">server_name</span> <span style="color:#f1fa8c">binhong.me</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> <span style="color:#f1fa8c">/</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">try_files</span> <span style="color:#8be9fd;font-style:italic">$uri</span> <span style="color:#8be9fd;font-style:italic">$uri/</span> =<span style="color:#bd93f9">404</span>;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">server</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">listen</span> <span style="color:#bd93f9">80</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">root</span> <span style="color:#f1fa8c">/opt/htdocs/breakups</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">index</span> <span style="color:#f1fa8c">index.html</span> <span style="color:#f1fa8c">index.htm</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">server_name</span> <span style="color:#f1fa8c">breakups.life</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> <span style="color:#f1fa8c">/</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">try_files</span> <span style="color:#8be9fd;font-style:italic">$uri</span> <span style="color:#8be9fd;font-style:italic">$uri/</span> =<span style="color:#bd93f9">404</span>;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">server</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">listen</span> <span style="color:#bd93f9">80</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">root</span> <span style="color:#f1fa8c">/opt/htdocs/breakupsAPI</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">index</span> <span style="color:#f1fa8c">index.html</span> <span style="color:#f1fa8c">index.htm</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">server_name</span> <span style="color:#f1fa8c">api.breakups.life</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">location</span> <span style="color:#f1fa8c">/</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">proxy_redirect</span> <span style="color:#f1fa8c">http://127.0.0.1:8080/</span>;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">root</span> <span class="s">/opt/htdocs/binhong</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">index</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">binhong.me</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">root</span> <span class="s">/opt/htdocs/breakups</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">index</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">breakups.life</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="nv">$uri/</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">root</span> <span class="s">/opt/htdocs/breakupsAPI</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">index</span> <span class="s">index.html</span> <span class="s">index.htm</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">server_name</span> <span class="s">api.breakups.life</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kn">proxy_redirect</span> <span class="s">http://127.0.0.1:8080/</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Here are a few things to look at:</p>
@@ -221,12 +223,12 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
 <li><em>server_name</em> — (sub)domain name(s) that should load these specific files.</li>
 <li><em>proxy_redirect</em> — in cases where you are redirecting a specific subdomain to an active server, you will want to add this and put the IP location after it. (For local servers, either <em>http://127.0.0.1:port</em> or <em>http://localhost:port</em> should work as intended.)</li>
 </ul>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo systemctl restart nginx
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo systemctl restart nginx
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>After you are done, restart the server so the new configurations will be loaded and applied.</p>
@@ -238,14 +240,14 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
 </a>
 <p>Now remember, since you have your directory pointing at /opt/htdocs/<em>websiteName</em>, your initial thought might be to clone your projects into these folders. This can work, but it’s not ideal since many operations in these folders require root access to really do anything.</p>
 <p>Instead, you can clone them into your user folder or anywhere else like you normally would, and then create a soft link to connect the path to your repository folder. Something like this:</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>git clone git@github.com:binhonglee/binhonglee.github.io ~/website
-</span></span><span style="display:flex;"><span>sudo ln -s ~/website /opt/htdocs/binhong
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">git clone git@github.com:binhonglee/binhonglee.github.io ~/website
+</span></span><span class="line"><span class="cl">sudo ln -s ~/website /opt/htdocs/binhong
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Of course, when you are cloning a Node.js static site folder (ReactJS, Angular or Vue.js), you will want to install (<code>npm install</code>) and build (<code>npm run-script build</code>) them. Then link the <em>./build</em> folder instead of the base level of the cloned repository. (Similarly for Jekyll sites, but use the <em>./_output</em> folder instead.) As for active servers, just make sure your server is running on the same port as it is listed in the configuration file.</p>
@@ -257,27 +259,27 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
 </a>
 <p>Thanks to Let’s Encrypt, you can now get free and easy HTTPS certificates. With the introduction of certbot, everything just got even easier!</p>
 <p><em>Reference from <a href="https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-16-04">How To Secure Nginx with Let’s Encrypt on Ubuntu 16.04</a></em></p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo add-apt-repository ppa:certbot/certbot
-</span></span><span style="display:flex;"><span>sudo apt-get update
-</span></span><span style="display:flex;"><span>sudo apt-get install python-certbot-nginx
-</span></span><span style="display:flex;"><span>sudo certbot --nginx -d binhong.me -d www.binhong.me -d api.breakups.life -d breakups.life -d www.breakups.life
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo add-apt-repository ppa:certbot/certbot
+</span></span><span class="line"><span class="cl">sudo apt-get update
+</span></span><span class="line"><span class="cl">sudo apt-get install python-certbot-nginx
+</span></span><span class="line"><span class="cl">sudo certbot --nginx -d binhong.me -d www.binhong.me -d api.breakups.life -d breakups.life -d www.breakups.life
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Just run the above for all your domain and subdomain names and certbot will take care of everything. If you were to renew the certs, you can run the following so the certbot will help you renew your SSL certificate.</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo certbot renew --dry-run
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">sudo certbot renew --dry-run
 </span></span></code></pre></td></tr></table>
 </div>
 </div><a class="anchor" href="#updating-everything">
@@ -288,80 +290,80 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
 </a>
 <p>Now that you have everything up and running, you might be thinking, well there seems to be an awful lot to remember if/when I need to update something. Unfortunately, that’s kinda true, but we can always make it easier by adding a script that does it for us.</p>
 <p>Here is how one would look:</p>
-<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">
-<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#6272a4"># Update SSL certificates</span>
-</span></span><span style="display:flex;"><span>sudo certbot renew
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>killall screen
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6272a4"># normal html websites</span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> websiteSource
-</span></span><span style="display:flex;"><span>git pull
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> ../
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6272a4"># node.js static site</span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> nodeProjectFolder
-</span></span><span style="display:flex;"><span>git pull
-</span></span><span style="display:flex;"><span>npm install
-</span></span><span style="display:flex;"><span>npm run-script build
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> ../
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6272a4"># ruby jekyll site</span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> jekyllFolder
-</span></span><span style="display:flex;"><span>git pull
-</span></span><span style="display:flex;"><span>bundle install
-</span></span><span style="display:flex;"><span>bundle <span style="color:#8be9fd;font-style:italic">exec</span> jekyll build
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> ../
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#6272a4"># node.js server</span>
-</span></span><span style="display:flex;"><span><span style="color:#6272a4"># make sure to stop the existing session before going ahead to start a new one</span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> nodeServer
-</span></span><span style="display:flex;"><span>git pull
-</span></span><span style="display:flex;"><span>screen -dmS nodeServer
-</span></span><span style="display:flex;"><span>npm install
-</span></span><span style="display:flex;"><span>screen -S nodeServer -X stuff <span style="color:#f1fa8c">&#34;cd ~/nodeServer
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;</span>
-</span></span><span style="display:flex;"><span>screen -S nodeServer -X stuff <span style="color:#f1fa8c">&#34;npm start
-</span></span></span><span style="display:flex;"><span><span style="color:#f1fa8c">&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">cd</span> ../
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># Update SSL certificates</span>
+</span></span><span class="line"><span class="cl">sudo certbot renew
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">killall screen
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># normal html websites</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> websiteSource
+</span></span><span class="line"><span class="cl">git pull
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ../
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># node.js static site</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> nodeProjectFolder
+</span></span><span class="line"><span class="cl">git pull
+</span></span><span class="line"><span class="cl">npm install
+</span></span><span class="line"><span class="cl">npm run-script build
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ../
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ruby jekyll site</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> jekyllFolder
+</span></span><span class="line"><span class="cl">git pull
+</span></span><span class="line"><span class="cl">bundle install
+</span></span><span class="line"><span class="cl">bundle <span class="nb">exec</span> jekyll build
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ../
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># node.js server</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># make sure to stop the existing session before going ahead to start a new one</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> nodeServer
+</span></span><span class="line"><span class="cl">git pull
+</span></span><span class="line"><span class="cl">screen -dmS nodeServer
+</span></span><span class="line"><span class="cl">npm install
+</span></span><span class="line"><span class="cl">screen -S nodeServer -X stuff <span class="s2">&#34;cd ~/nodeServer
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">screen -S nodeServer -X stuff <span class="s2">&#34;npm start
+</span></span></span><span class="line"><span class="cl"><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ../
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Thanks for reading! Let me know if you have any questions in the comments below.</p>
@@ -430,14 +432,19 @@ You’ll need a virtual server such as DigitalOcean or EC2 by AWS. Personally I 
           </div>
           <div class="row">
             <p>
-              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
             </p>
           </div>
           <div class="row">
             <p>
               &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
-              |
-              <a href="https://github.com/binhonglee/blog/blob/main/content/2018-08-29-how-to-host-multiple-domain-names-and-projects-on-one-server.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
             </p>
           </div>
         </div>

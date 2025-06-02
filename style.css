@@ -37,8 +37,11 @@ body {
   --dark-gray: #d3d3d3;
   --dark-footer-a: #ce9b35;
 
-  --dracula-background: #282a36;
-  --dracula-color: #f8f8f2;
+  --syntax-background: #eff1f5;
+  --syntax-foreground: #4c4f69;
+  
+  --dark-syntax-background: #1e1e2e;
+  --dark-syntax-foreground: #cdd6f4;
 }
 
 blockquote {
@@ -380,7 +383,8 @@ footer .row {
 
 pre {
   border-radius: 10px;
-  background-color: var(--dracula-background);
+  background-color: var(--syntax-background);
+  color: var(--syntax-foreground);
   padding-right: 10px;
   margin: 0;
 }
@@ -448,24 +452,19 @@ pre {
 
 code {
   font-family: VictorMono;
-  font-size: 21px;
+  font-size: 20px;
   padding: 0 8px;
-  background-color: white;
-  border-radius: 10px;
+  border-radius: 16px;
+  background-color: var(--syntax-background);
 }
 
 .dark_mode_toggle[open] + div code {
-  background-color: var(--dracula-background);
-}
-
-pre code {
-  background-color: var(--dracula-background);
-  color: var(--dark-color);
-  display: block;
+  background-color: var(--dark-syntax-background);
 }
 
 pre code,
 pre .custom-language {
+  display: block;
   font-family: VictorMono;
   font-size: 20px;
 }
@@ -604,7 +603,8 @@ pre .custom-language {
 /* Newsletter */
 
 .newsletter {
-  background-color: var(--dracula-color);
+  background-color: var(--syntax-background);
+  color: var(--syntax-foreground);
   border-radius: 16px;
   text-align: center;
   font-family: Vollkorn;
@@ -614,14 +614,15 @@ pre .custom-language {
 
 .newsletter h2 {
   padding-bottom: 16px;
-  color: var(--default-color);
+  color: var(--syntax-foreground);
 }
 
 .dark_mode_toggle[open] + div .newsletter {
-  background-color: var(--dracula-background);
+  background-color: var(--dark-syntax-background);
+  color: var(--dark-syntax-foreground);
 }
 .dark_mode_toggle[open] + div .newsletter h2 {
-  color: var(--dark-color);
+  color: var(--dark-syntax-foreground);
 }
 
 input {
@@ -629,9 +630,9 @@ input {
   border-radius: 12px;
   border-style: solid;
   border-width: 1px;
-  border-color: var(--default-color);
+  border-color: var(--syntax-color);
   background-color: var(--default-background);
-  color: var(--default-color);
+  color: var(--syntax-color);
   font-family: Vollkorn;
   font-size: 100%;
   padding: 12px;
@@ -645,8 +646,8 @@ input:hover, input:focus {
 
 .dark_mode_toggle[open] + div input {
   background-color: var(--dark-background);
-  border-color: var(--dark-color);
-  color: var(--dark-color);
+  border-color: var(--dark-syntax-color);
+  color: var(--dark-syntax-color);
 }
 
 button {
