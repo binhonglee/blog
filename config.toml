@@ -30,8 +30,8 @@ theme = "my_theme"
     twitter = "binhonglee"
 
 [markup.highlight]
-  guessSyntax = false
+  guessSyntax = true
   lineNoStart = 1
   lineNos = true
-  style = 'dracula'
+  noClasses = false
   tabWidth = 2

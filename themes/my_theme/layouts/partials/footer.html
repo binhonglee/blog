@@ -8,18 +8,23 @@
           </div>
           <div class="row">
             <p>
-              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
-            </p>
-          </div>
-          <div class="row">
-            <p>
-              &copy; {{ now.Year }} <a href="https://binhong.me">BinHong Lee</a>
-              |
               {{- if .File }}
               <a href="https://github.com/binhonglee/blog/blob/main/content/{{ .File.Path }}?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
               {{- else }}
               <a href="https://github.com/binhonglee/blog" rel="noopener noreferrer nofollow" target="_blank">Source</a>
               {{- end }}
+              |
+              <a rel="alternate" type="application/rss+xml" href="{{ "index.xml" | absURL }}" title="{{ $.Site.Title }}">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; {{ now.Year }} <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
             </p>
           </div>
         </div>
