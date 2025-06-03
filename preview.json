@@ -2,6 +2,9 @@
   "baseURL": "http://localhost:1313/blog",
   "destURLs": [
     {
+      "name": "value_of_dev_tools",
+      "url": "2025-07-11-understanding-value-of-dev-tools"
+    }, {
       "name": "internal_tooling_ideas",
       "url": "2025-07-03-internal-tooling-ideas"
     }, {

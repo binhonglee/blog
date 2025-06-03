@@ -34,7 +34,7 @@ This is somewhat similar to the manual hardcode situation mentioned above where 
 
 ## Chore
 
-This is more about employee satisfaction where working on a chore can be boring or frustrating to them. Having tools to automate such work allows them to explore more interesting / challenging work, thus improving employee satisfaction, even if it doesn't necessarily save a significant amount of time. The best "realistic" way to measure this would be a rating system where you count the number of employees using it and ask for their feedback (both positive and negative), then compile to show the value it provides.
+This is more about employee satisfaction when working on a repetitive task may be boring or frustrating. Having tools to automate such work allows them to explore more interesting / challenging work, thus improving employee satisfaction, even if it doesn't necessarily save a significant amount of time. The best "realistic" way to measure this would be a rating system where you count the number of employees using it and ask for their feedback (both positive and negative), then compile to show the value it provides.
 
 ## Wrap up
 
