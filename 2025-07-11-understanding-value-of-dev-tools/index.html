@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Understanding the Value of Dev Tools - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="I&rsquo;m largely approaching this from the perspective of building an internal dev tool (since this is mostly where my personal experiences are coming from), especially if you&rsquo;re someone who wants to build an internal tool but is having trouble framing it in a way where its value can be understood by the decision makers. I&rsquo;m also excluding situations where you &ldquo;have to&rdquo; build certain tools to track certain information in order to comply with a legal requirement, since I don&rsquo;t think that would be controversial to comply with. I&rsquo;d imagine the framework for using an external dev tool, while similar, also poses extra complexity on paying vs building.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Understanding the Value of Dev Tools">
+    <meta property="og:description" content="Making the business case for building dev tools">
+    <meta name="twitter:description" content="Making the business case for building dev tools">
+    <meta name="twitter:title" content="Understanding the Value of Dev Tools"><meta property="article:published_time" 2025-07-11T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-07-11T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/value_of_dev_tools.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/value_of_dev_tools.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/value_of_dev_tools.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.147.7">
+    
+    </head>
+  <body class="single">
+    <details class="dark_mode_toggle" role="button" open>
+      <summary>
+        <div class="content">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+      </summary>
+    </details>
+    <div class="wrapper">
+      <div class="content dropdown">
+        <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+        <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+          <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+          <p>|</p>
+          <div class="webring link" role="menuitem">
+            <a class="webring_toggle">Webring</a>
+            <div class="webring_links">
+              <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+              <hr />
+              <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Understanding the Value of Dev Tools</h1>
+          <p class="row subtitle">Making the business case for building dev tools</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">July 11, 2025</p>
+          </div>
+          <div class="post_content"><p>I&rsquo;m largely approaching this from the perspective of building an internal dev tool (since this is mostly where my personal experiences are coming from), especially if you&rsquo;re someone who wants to build an internal tool but is having trouble framing it in a way where its value can be understood by the decision makers. I&rsquo;m also excluding situations where you &ldquo;have to&rdquo; build certain tools to track certain information in order to comply with a legal requirement, since I don&rsquo;t think that would be controversial to comply with. I&rsquo;d imagine the framework for using an external dev tool, while similar, also poses extra complexity on paying vs building.</p>
+<p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+<a class="anchor" href="#cost-of-engineers">
+    <h2 id="cost-of-engineers">
+        <span class="text">Cost of engineers</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Generally, the simplest way would be to calculate how much time is saved for an employee, multiplied by the cost of hiring the employee. This directly shows how much money the organization is saving by just having this tool around. Pretty straightforward, not a lot of controversy.</p>
+<a class="anchor" href="#value-generated">
+    <h2 id="value-generated">
+        <span class="text">Value generated</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>In organizations where engineering is considered a profit center, and not a cost center, it might make more sense to calculate it with the value generated by the employee against the time saved. That said, this is usually much harder to measure compared to the above, thus more uncommon unless the tooling itself is a direct value generator.</p>
+<a class="anchor" href="#urgency-disaster-recovery">
+    <h2 id="urgency-disaster-recovery">
+        <span class="text">Urgency (Disaster Recovery)</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>In a disaster recovery situation, the time is significantly more valuable than the average &ldquo;engineering hours&rdquo; since it&rsquo;s directly affecting the bottom line of company profit or other top-line metrics (or even consumer trust of the product). Admittedly I&rsquo;ve never figured out the perfect framing around this, but I&rsquo;d reckon phrasing it as &ldquo;used to resolve x, y, z incidents&rdquo; (and if available, attach the severity level for each of the incidents to it) would suffice in clearly articulating this.</p>
+<a class="anchor" href="#employee-satisfaction">
+    <h2 id="employee-satisfaction">
+        <span class="text">Employee satisfaction</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>This is one of the more subjective measurements. While you can attempt to quantify it through things like survey responses, it&rsquo;s important to keep in mind that the improvement will automatically become the new baseline. For example, an 8/10 last year will become a 5/10 this year, so you need to improve it <em>even more</em> to get that same 8/10 again this year. On some occasions, additional improvement will hit the point of diminishing returns and have very little investment value. It&rsquo;s important to take notice and begin pivoting effort into better sustainability.</p>
+<a class="anchor" href="#one-off-use-case">
+    <h2 id="one-off-use-case">
+        <span class="text">One-off use case</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Depending on the level of effort, one-off use cases can be a bit of a dangerous misdirection / mismanagement of valuable resources (time). It&rsquo;s sometimes hard to notice, but if it takes you longer to build the tool than to just do the work without it, or the tool provides very minimal value compared to the amount of work needed to build (and maintain) the tool, building them makes no sense. Generally, this is usually a rare problem and only exists for top-down asks because leadership might not understand the day-to-day workflow for impacted employees. Instead, we generally see the opposite where even the most valuable / impactful tools take a lot of work to convince leadership that they&rsquo;re worth the investment.</p>
+<a class="anchor" href="#not-invented-here-syndrome">
+    <h2 id="not-invented-here-syndrome">
+        <span class="text">Not-Invented-Here Syndrome</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Another common trap in building internal tools is the Not-Invented-Here Syndrome. This is especially true for mission-critical tools (alert paging, traffic monitoring, authentication etc.) where it would make more sense (for most companies / orgs) both financially and expertise-wise to <em>outsource</em> them to dedicated product experts in the market, making &ldquo;buying&rdquo; a better option than &ldquo;building&rdquo;. &ldquo;Buying&rdquo; here doesn&rsquo;t necessarily mean monetary purchase either. For example, if your team begins scaling your code base and needs a large-scale cross-stack build tool, it would make more sense to adopt something like <a href="https://bazel.build/">Bazel</a> or <a href="https://buck.build/">Buck</a> instead of building your own new build tool from scratch.</p>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Understanding the value of dev tools requires matching your measurement approach to what resonates with your organization&rsquo;s priorities. The goal isn&rsquo;t just to justify building tools, but to build the right ones which can sometimes be as simple as buying an existing solution or accepting a manual process.</p>
+</div>
+          
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" id="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-07-11-understanding-value-of-dev-tools.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+
