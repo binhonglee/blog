@@ -20,16 +20,16 @@ I have not fully planned out the entire series but here are a few topics I have 
     2. [Code Review Culture](/blog/2025-05-23-code-review-culture/)
 3. Incident Management
     1. [No Blame SEV (Incident) Culture](/blog/2025-05-30-no-blame-sev-culture/)
-    2. Major Incident Runbook
-    3. Firefighting Heroes
+    2. Major Incident Runbook (TBW)
+    3. Firefighting Heroes (TBW)
 4. Product Growth
-    1. A/B Testing
-    2. Product Growth Opportunities
-    3. Growth Engineer
-    4. Experiment Review Process
+    1. [A/B Testing](/blog/2025-06-06-a-b-testing)
+    2. Product Growth Opportunities (Pending: Jun 13th)
+    3. Growth Engineer (Pending: Jun 20th)
+    4. Experiment Review Process (TBW)
 5. Internal Tools
-    1. Internal Tooling Ideas
-    2. Understanding the Value of Dev Tools
+    1. Internal Tooling Ideas (Pending: Jul 3rd)
+    2. Understanding the Value of Dev Tools (Pending: Jul 11th)
 
 ## Where is this coming from?
 

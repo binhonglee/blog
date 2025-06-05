@@ -6,10 +6,6 @@ tags: []
 ss: preview/a_b_testing.jpg
 aliases:
   - /a_b_testing/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 This is a basic introduction on how to run a good A/B test. A/B testing is a method where your user pool is segmented into multiple groups, allowing you to test different product interactions and understand how these changes affect user behavior. For any metric / data driven team, A/B testing serves as a critical tool in measuring success.
@@ -18,7 +14,7 @@ _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opin
 
 ## Tooling
 
-If your employer does not already have a working tool for experimentation, I'd recommend adopting one of the existing tools / platforms (like [Statsig](https://statsig.com/), [GrowthBook](https://www.growthbook.io/), [LaunchDarkly](https://launchdarkly.com/) etc.) specifically built with this in mind. On a basic level, they should provide a toggle that splits users into 2 (or more) groups for testing purposes. Their downstream metrics will then be logged (after first exposure) to measure if / how these changes might have affected the users. While it's _possible_ to build your own A/B testing tool in-house, the build and maintenance cost is likely not worth it compared to just adopting ready-made ones.
+If your employer does not already have a working tool for experimentation, I'd recommend adopting one of the existing tools / platforms (like [Statsig](https://statsig.com/), [GrowthBook](https://www.growthbook.io/), [LaunchDarkly](https://launchdarkly.com/) etc.) specifically built with this in mind. On a basic level, they should provide a toggle that splits users into 2 (or more) groups for testing purposes. Their downstream metrics (after first exposure) will then be used to measure if / how these changes might have affected the users. While it's _possible_ to build your own A/B testing tool in-house, the build and maintenance cost is likely not worth it compared to just adopting ready-made ones.
 
 ## Goal + Guardrail metrics
 
