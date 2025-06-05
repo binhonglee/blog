@@ -10,6 +10,69 @@
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
     <lastBuildDate>Fri, 11 Jul 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>A/B Testing</title>
+      <link>https://binhong.me/blog/2025-06-06-a-b-testing/</link>
+      <pubDate>Fri, 06 Jun 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-06-06-a-b-testing/</guid>
+      <description>&lt;p&gt;This is a basic introduction on how to run a good A/B test. A/B testing is a method where your user pool is segmented into multiple groups, allowing you to test different product interactions and understand how these changes affect user behavior. For any metric / data driven team, A/B testing serves as a critical tool in measuring success.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#tooling&#34;&gt;
+    &lt;h2 id=&#34;tooling&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Tooling&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;If your employer does not already have a working tool for experimentation, I&amp;rsquo;d recommend adopting one of the existing tools / platforms (like &lt;a href=&#34;https://statsig.com/&#34;&gt;Statsig&lt;/a&gt;, &lt;a href=&#34;https://www.growthbook.io/&#34;&gt;GrowthBook&lt;/a&gt;, &lt;a href=&#34;https://launchdarkly.com/&#34;&gt;LaunchDarkly&lt;/a&gt; etc.) specifically built with this in mind. On a basic level, they should provide a toggle that splits users into 2 (or more) groups for testing purposes. Their downstream metrics (after first exposure) will then be used to measure if / how these changes might have affected the users. While it&amp;rsquo;s &lt;em&gt;possible&lt;/em&gt; to build your own A/B testing tool in-house, the build and maintenance cost is likely not worth it compared to just adopting ready-made ones.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#goal--guardrail-metrics&#34;&gt;
+    &lt;h2 id=&#34;goal--guardrail-metrics&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Goal + Guardrail metrics&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;ldquo;When a measure becomes a target, it ceases to be a good measure&amp;rdquo; - Goodhart&amp;rsquo;s Law&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Goal metrics serve as a target, the specific thing you want to change or improve. While I largely agree with Goodhart&amp;rsquo;s Law, I also believe that a sufficiently comprehensive &lt;strong&gt;set&lt;/strong&gt; of metrics will help mitigate the downside (or at least minimize it) thus making it still &lt;em&gt;relatively&lt;/em&gt; &amp;ldquo;a good measure&amp;rdquo;. This is where guardrail metrics come in to ensure we aren&amp;rsquo;t just &amp;ldquo;sacrificing x to boost y&amp;rdquo; especially in an unsustainable manner.&lt;/p&gt;
+&lt;p&gt;As an example, if you want to increase usage on your app, you can provide generous discounts (or even pay users to do so) but that&amp;rsquo;s obviously very unsustainable so you should set a clear budget on how much you can spend on these promotions and / or cost per new active user acquired you allow for such a project to ship. Here your goal metric would be &amp;ldquo;new active users acquired&amp;rdquo; while your guardrail would be cost (lost revenue). They need to both look good from the experiment before you decide on shipping the product change.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#size-and-duration&#34;&gt;
+    &lt;h2 id=&#34;size-and-duration&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Size and Duration&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Generally, size and duration are the 2 main levers to help get your experiment sufficient exposure that allows you to make (statistically) informed decisions. If you don&amp;rsquo;t have a large user base then many of your tests would need a large test group with long test duration to show any statistically significant movement. This unfortunately means that your new feature release cycle will be much slower as your experiments will be queued. In this scenario, you will need to smartly pair up different features that complement one another into the same experiment.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#holdout&#34;&gt;
+    &lt;h2 id=&#34;holdout&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Holdout&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;In order to accurately measure your team&amp;rsquo;s impact over a certain period of time, you can create a team-wide holdout that keeps a small group of users without the new enhancements. From here, you can see the value of all your team&amp;rsquo;s projects over that period of time (quarter / half) collectively. When you run experiments, you are only testing the impact of specific changes while here you are testing them collectively. Some changes conflict with each other while others complement each other. Ideally you catch them early and run variations of different combinations but you don&amp;rsquo;t always catch them all so having a team wide holdout helps with tracking that.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#novelty-effect&#34;&gt;
+    &lt;h2 id=&#34;novelty-effect&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Novelty effect&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;When a new restaurant first opens in a popular area, it will be filled with people lining up to try it out. These people will then attract more people who also decide to check out the restaurant out of curiosity. However, the crowd will slowly wind down over time as it loses its &lt;em&gt;novelty&lt;/em&gt; status. If it&amp;rsquo;s any good, it would still remain popular but unlikely to be as popular as it first opened. This is called novelty effect. When you add a new button to the screen, the user&amp;rsquo;s likelihood to click on it increases due to their curiosity on what it does. You don&amp;rsquo;t want to measure that. Instead, you want to measure the actual traffic (and effect) of it &lt;em&gt;after&lt;/em&gt; the novelty wears down. Just like how a good restaurant will still be popular long after its initial launch, you want your feature to be valuable / impactful even long after it&amp;rsquo;s been launched and users clearly understand what it does.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#security&#34;&gt;
+    &lt;h2 id=&#34;security&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Security&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;When making a security related change (fix or enhancement), a lot of these concepts become a bit trickier especially for critical issues. Mainly because bad actors can figure out that you are doing an A/B test based on their account ID / device ID / IP address and do targeted exploits on the unprotected test group. This makes it rather a futile effort to understand whatever topline metric movement you want to study of this change on regular benign users but instead, becomes more like opening a new window for exploits.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Running good A/B tests isn&amp;rsquo;t just about having the right tools—it&amp;rsquo;s about building the discipline to ask the right questions and measure what actually matters. The fundamentals covered here will prevent most common pitfalls that lead to misleading results or shipping changes that hurt your product. &lt;strong&gt;A/B testing is a means to an end.&lt;/strong&gt; The best growth teams quickly kill bad ideas and double down on what&amp;rsquo;s working. Start simple, get comfortable with the process, and don&amp;rsquo;t let perfect be the enemy of good—a simple, well-run test is infinitely better than a complex experiment that sits in planning forever.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>No Blame SEV (Incident) Culture</title>
       <link>https://binhong.me/blog/2025-05-30-no-blame-sev-culture/</link>
       <pubDate>Fri, 30 May 2025 00:00:00 -0800</pubDate>
@@ -353,22 +416,22 @@
 &lt;li&gt;Incident Management
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-30-no-blame-sev-culture/&#34;&gt;No Blame SEV (Incident) Culture&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Major Incident Runbook&lt;/li&gt;
-&lt;li&gt;Firefighting Heroes&lt;/li&gt;
+&lt;li&gt;Major Incident Runbook (TBW)&lt;/li&gt;
+&lt;li&gt;Firefighting Heroes (TBW)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;li&gt;Product Growth
 &lt;ol&gt;
-&lt;li&gt;A/B Testing&lt;/li&gt;
-&lt;li&gt;Product Growth Opportunities&lt;/li&gt;
-&lt;li&gt;Growth Engineer&lt;/li&gt;
-&lt;li&gt;Experiment Review Process&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-06-a-b-testing&#34;&gt;A/B Testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Product Growth Opportunities (Pending: Jun 13th)&lt;/li&gt;
+&lt;li&gt;Growth Engineer (Pending: Jun 20th)&lt;/li&gt;
+&lt;li&gt;Experiment Review Process (TBW)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;li&gt;Internal Tools
 &lt;ol&gt;
-&lt;li&gt;Internal Tooling Ideas&lt;/li&gt;
-&lt;li&gt;Understanding the Value of Dev Tools&lt;/li&gt;
+&lt;li&gt;Internal Tooling Ideas (Pending: Jul 3rd)&lt;/li&gt;
+&lt;li&gt;Understanding the Value of Dev Tools (Pending: Jul 11th)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
