@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Experiment Review Process - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="Mature growth teams would organize a centralized experiment review meeting as a way to share learnings to a wider audience, consult for feedback / next step recommendations, while also holding engineers accountable for the changes they are attempting to ship. The review sessions should be open to anyone to sign up (presenting their experiments) or to participate in general. However, key decision makers (like senior growth engineers, product managers, designers, data scientists) should be required to attend so decisions to ship / not ship / iterate will be made with everyone&rsquo;s concerns addressed.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Experiment Review Process">
+    <meta property="og:description" content="Holding the quality bar for user experience">
+    <meta name="twitter:description" content="Holding the quality bar for user experience">
+    <meta name="twitter:title" content="Experiment Review Process"><meta property="article:published_time" 2025-06-27T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-06-27T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/experiment_review.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/experiment_review.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/experiment_review.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.147.7">
+    
+    </head>
+  <body class="single">
+    <details class="dark_mode_toggle" role="button" open>
+      <summary>
+        <div class="content">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+      </summary>
+    </details>
+    <div class="wrapper">
+      <div class="content dropdown">
+        <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+        <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+          <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+          <p>|</p>
+          <div class="webring link" role="menuitem">
+            <a class="webring_toggle">Webring</a>
+            <div class="webring_links">
+              <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+              <hr />
+              <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Experiment Review Process</h1>
+          <p class="row subtitle">Holding the quality bar for user experience</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">June 27, 2025</p>
+          </div>
+          <div class="post_content"><p>Mature growth teams would organize a centralized experiment review meeting as a way to share learnings to a wider audience, consult for feedback / next step recommendations, while also holding engineers accountable for the changes they are attempting to ship. The review sessions should be open to anyone to sign up (presenting their experiments) or to participate in general. However, key decision makers (like senior growth engineers, product managers, designers, data scientists) should be required to attend so decisions to ship / not ship / iterate will be made with everyone&rsquo;s concerns addressed.</p>
+<p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+<a class="anchor" href="#understanding-the-metric-shifts">
+    <h2 id="understanding-the-metric-shifts">
+        <span class="text">Understanding the metric shifts</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>When presenting (and reviewing) an experiment, not only do we look at metric shifts but we need to also make sense of them. Understanding them helps inform making better future changes and iterations while ensuring that this change is working as intended instead of some potential regressions on metric blind spots. This usually means that metric analysis for experiments would go beyond just top-line goal / guardrail metrics but also onto regular impression / click loggings to make sure any underlying funnel shifts make sense.</p>
+<p>As an example, when you add stories to the top of your app, you&rsquo;d see an increase in stories traffic. Make sure to also verify that users are actually clicking on the newly added stories component. At the same time, you might be sacrificing screen time on other parts of your app (especially the feature that used to occupy that screen real estate) so you should also see some drop on that end.</p>
+<a class="anchor" href="#atomic-changes">
+    <h2 id="atomic-changes">
+        <span class="text">Atomic changes</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>This is a bit of an extension from the previous point. It&rsquo;s not uncommon for someone inexperienced to test an overly complex change at one go instead of breaking it into a list of smaller incremental changes. In order to understand which change moved which metric, you need to properly isolate your changes into individual groups (or mix-and-match them with multiple test group setups). This allows you to not only understand what works and what doesn&rsquo;t, but also how each of these different changes might have affected one another. If someone brings in an experiment that&rsquo;s overly complex, you should feel comfortable asking &ldquo;why can&rsquo;t it be smaller (or be run with more test groups)?&rdquo;.</p>
+<a class="anchor" href="#conflict-of-interest">
+    <h2 id="conflict-of-interest">
+        <span class="text">Conflict of interest</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Last week in <a href="/blog/2025-06-20-growth-engineer/">Growth Engineer</a> we talked a little bit about how sometimes engineers would fall into the trap of looking solely at metrics, over-optimizing them. This is generally good for the engineers themselves (being able to boast larger numbers on their launch) but bad for the business (since they are unlikely to be sustainable long term and will probably regress over time). The role of an experiment review process is to ensure that underlying risks or concerns like this get called out and taken into consideration for ship decisions. In the next few paragraphs, we will explore a few examples of such conflict of interest.</p>
+<a class="anchor" href="#p-hacking">
+    <h2 id="p-hacking">
+        <span class="text">p hacking</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Usually intentional but sometimes oblivious to the underlying logic, an engineer might participate in p hacking that makes the experiment look better than it really is. One of the most obvious examples would be when someone picks a weirdly specific date range to pull their metrics instead of the more logical (like 1 / 2 week average) standard range. While most experimentation tools would do the statistical analysis and show you results with 95% / 99% / 99.9% confidence levels, there could still be variance (especially on the absolute value derived from its average). On a large change (or accumulation of a lot of smaller changes), this can amount to a rather significant amount.</p>
+<a class="anchor" href="#long-term-holdout">
+    <h2 id="long-term-holdout">
+        <span class="text">Long term holdout</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>On some occasions, the effect of a change (especially negative effects) can only be observed over a longer period of time thus making it important to set up a long-term holdout to better understand the longer-term impact of the change. This generally requires some level of product sense and experience to notice thus we would heavily rely on experienced members in the org to call this out. One common example would be &ldquo;user intent&rdquo; (which was previously discussed more in-depth <a href="/blog/2025-06-20-growth-engineer/#user-intent">here</a>) where long-term behavior of users will better reflect a user&rsquo;s intent as they adopt new habits towards the product change. The other important part of this (often overlooked) process is to follow up on how the long-term holdout performed. It&rsquo;s not uncommon for teams to launch with a holdout then completely forget about the existence of a holdout (especially if the team or product space ended up going through reorgs) leading to a group of poor users still stuck with the sub-optimal experience.</p>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>A strong experiment review process acts as both a learning forum and a quality gate, ensuring experiments are properly analyzed and potential conflicts of interest are surfaced before they impact users. The goal isn&rsquo;t to slow down shipping, but to ship smarter by using the collective experience in the room to catch blind spots that individuals might miss.</p>
+</div>
+          
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" id="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-06-27-experiment-review-process.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+
