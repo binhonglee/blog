@@ -10,6 +10,60 @@
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
     <lastBuildDate>Fri, 11 Jul 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Product Growth Opportunities</title>
+      <link>https://binhong.me/blog/2025-06-13-product-growth-opportunities/</link>
+      <pubDate>Fri, 13 Jun 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-06-13-product-growth-opportunities/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s never easy to come up with new ideas that help with growth, but identifying the &lt;em&gt;problem&lt;/em&gt; makes it easier. You&amp;rsquo;ll notice that for the most part in this piece, I&amp;rsquo;ll talk about &lt;em&gt;&amp;ldquo;where&amp;rdquo;&lt;/em&gt; the opportunities are instead of &lt;em&gt;&amp;ldquo;what&amp;rdquo;&lt;/em&gt; because that&amp;rsquo;s usually very domain specific and highly depends on the type of problem you ended up needing to solve.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#funnel-analysis&#34;&gt;
+    &lt;h2 id=&#34;funnel-analysis&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Funnel analysis&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;The first thing you learn about identifying opportunities in growth is funnel analysis. Build a funnel logging to understand the user journey and go through it to see where you have the biggest drop. From there, you can take a deeper dive into the flow to understand &lt;strong&gt;why&lt;/strong&gt; it is the way it is and see if it can be improved (or if there&amp;rsquo;s any bugs to fix). Similarly, you can go through bug reports to find patterns on how users are being stuck on a specific part of your flow that might have contributed to the funnel losses.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#product-experience&#34;&gt;
+    &lt;h2 id=&#34;product-experience&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Product Experience&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Alternatively, you can go straight to the bug reports to see if there are any obvious blocking issues. From there, you can test the fix with an experiment and eventually ship them. Even when it doesn&amp;rsquo;t yield material impact, the changes are generally safe to ship (unless it caused unexpected regressions) since they are largely considered &amp;ldquo;bug fixes&amp;rdquo;. Aside from that, there are other common issues like app performance, screen load time that have a diminishing return curve in user impact.&lt;/p&gt;
+&lt;p&gt;My favorite example here was when Uber was working on an iOS rewrite, while everyone was debating about how cellular download limit matters (or not), &lt;a href=&#34;https://x.com/StanTwinB/status/1336929240516710400&#34;&gt;a data scientist pulled together an experiment to show its material impact&lt;/a&gt; (full story &lt;a href=&#34;https://threadreaderapp.com/thread/1336890442768547845.html&#34;&gt;here&lt;/a&gt; - which is one of my favorite software war stories). Similarly, your team should design and run experiments to understand how certain product experiences can have material user impact (instead of just theorizing over them).&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#weve-tried-that-before&#34;&gt;
+    &lt;h2 id=&#34;weve-tried-that-before&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;&amp;ldquo;We&amp;rsquo;ve tried that before&amp;rdquo;&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Often times, new people will join and suggest &lt;em&gt;old&lt;/em&gt; ideas as new. When that happens, it&amp;rsquo;s easy to dismiss the idea by citing that something similar has been tried previously and didn&amp;rsquo;t yield the expected result. The hard (and valuable) thing here, however, would be to understand why it failed previously and if anything has materially changed since then that might now allow this to be a viable idea to be re-attempted. You might still fail, but you will likely learn something new instead of learning the same old lesson again (which would be a waste of everyone&amp;rsquo;s time and resources).&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#studying-your-competitors&#34;&gt;
+    &lt;h2 id=&#34;studying-your-competitors&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Studying your competitors&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Sometimes you might find a specific step that has problems (where you&amp;rsquo;re losing a lot more conversion than anywhere else) but you can&amp;rsquo;t figure out how to fix it. Studying how your competition does it can help you see if there&amp;rsquo;s a better way to do that. This doesn&amp;rsquo;t mean their solution would perfectly fit your problem, but it might be worth testing to see if that solution is similarly applicable for you. Alternatively, they might also be struggling with the same issue and what you&amp;rsquo;re both doing is (at least for now) the best solution that anyone has thought of so far. I listed this a lot lower intentionally because it&amp;rsquo;s generally not been &lt;em&gt;that&lt;/em&gt; valuable of an option compared to the other ways of identifying new opportunities above.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#survivorship-bias&#34;&gt;
+    &lt;h2 id=&#34;survivorship-bias&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Survivorship Bias&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;I wrote this section title with the &amp;ldquo;WWII plane with red dots&amp;rdquo; image in mind. In case you aren&amp;rsquo;t familiar with it, &lt;a href=&#34;https://claude.ai/share/7d06cfc9-95e7-4474-aae4-b56a6c6d3c99&#34;&gt;here&amp;rsquo;s Claude describing it&lt;/a&gt;. In a similar sense, it can be very easy to fall into the trap of focusing on the demand of your existing users instead of building for new users you have yet to (and want to) acquire. Not to say that existing user feedback is unimportant (which I&amp;rsquo;ve literally just said the opposite previously), but rather that it&amp;rsquo;s important to understand and distinguish which feedback helps keep your existing users happy while which feedback is preventing more users from adopting your product.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Finding growth opportunities isn&amp;rsquo;t about hunting for silver bullets, but more about understanding where your product is bleeding users and why. Don&amp;rsquo;t let growth pursuits distract from building something people actually want. The best growth &lt;em&gt;&amp;ldquo;hack&amp;rdquo;&lt;/em&gt; is still making a good product that gets people what they want.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>A/B Testing</title>
       <link>https://binhong.me/blog/2025-06-06-a-b-testing/</link>
       <pubDate>Fri, 06 Jun 2025 00:00:00 -0800</pubDate>
@@ -422,10 +476,10 @@
 &lt;/li&gt;
 &lt;li&gt;Product Growth
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-06-a-b-testing&#34;&gt;A/B Testing&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Product Growth Opportunities (Pending: Jun 13th)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-06-a-b-testing/&#34;&gt;A/B Testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-13-product-growth-opportunities/&#34;&gt;Product Growth Opportunities&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Growth Engineer (Pending: Jun 20th)&lt;/li&gt;
-&lt;li&gt;Experiment Review Process (TBW)&lt;/li&gt;
+&lt;li&gt;Experiment Review Process (Pending: Jun 27th)&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;li&gt;Internal Tools
