@@ -7,10 +7,6 @@ ss: "preview/product_growth_opportunities.jpg"
 aliases:
   - /product_growth_opportunities/
   - /2025-06-06-product-growth-opportunities/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 It's never easy to come up with new ideas that help with growth, but identifying the _problem_ makes it easier. You'll notice that for the most part in this piece, I'll talk about _"where"_ the opportunities are instead of _"what"_ because that's usually very domain specific and highly depends on the type of problem you ended up needing to solve.

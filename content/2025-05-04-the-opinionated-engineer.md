@@ -23,10 +23,10 @@ I have not fully planned out the entire series but here are a few topics I have 
     2. Major Incident Runbook (TBW)
     3. Firefighting Heroes (TBW)
 4. Product Growth
-    1. [A/B Testing](/blog/2025-06-06-a-b-testing)
-    2. Product Growth Opportunities (Pending: Jun 13th)
+    1. [A/B Testing](/blog/2025-06-06-a-b-testing/)
+    2. [Product Growth Opportunities](/blog/2025-06-13-product-growth-opportunities/)
     3. Growth Engineer (Pending: Jun 20th)
-    4. Experiment Review Process (TBW)
+    4. Experiment Review Process (Pending: Jun 27th)
 5. Internal Tools
     1. Internal Tooling Ideas (Pending: Jul 3rd)
     2. Understanding the Value of Dev Tools (Pending: Jul 11th)
