@@ -73,6 +73,15 @@
     <main class="content_body article_body">
       <div class="primary_block projects">
         <article class="block">
+          <a class="article_link active" href="https://binhong.me/blog/2018-08-20-hosting-your-own-git-server-with-gitea/">
+            <h1 class="row title">Hosting your own Git server with Gitea</h1>
+            <p class="row subtitle">Having additional backups are never a bad idea</p>
+            <p class="desc">Most people (including myself) host their personal projects on a third-party free Git hosting websites like GitHub, GitLab, Bitbucket etc. While that is sufficient for most people, it is also pretty fun to have your own Git service hosted on your own domain name of choice. While I trust my fellow engineers at these companies, I am using this as a personally backup to those services if anything goes wrong (like GitLab. Though to their credit, they were able to recover most of it).
+...</p>
+            <p class="right">August 20, 2018</p>
+          </a>
+        </article>
+        <article class="block">
           <a class="article_link active" href="https://binhong.me/blog/2018-06-02-building-a-side-project-over-the-weekend/">
             <h1 class="row title">Building a side project over the weekend</h1>
             <p class="row subtitle">Basically a solo hackathon</p>
@@ -136,13 +145,13 @@ As an international student, I have come across hundreds of guides on “how to 
           <h2>Subscribe to the newsletter today!</h2>
           <form action="https://binhong.me/newsletter/subscribe" method="post">
               <input type="email" name="email" placeholder="email@domain.com"/>
-              <input type="hidden" name="secret" id="secret" value="123potato123"/>
               <noscript>
                 <br />
                 <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
-                <input name="secret" id="secret" placeholder="secret"/>
+                <input name="secret" placeholder="secret"/>
                 <br />
               </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
               <button type="submit" name="submit" class="subscribe">Subscribe</button>
           </form>
         </div>

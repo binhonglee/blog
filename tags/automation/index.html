@@ -73,6 +73,15 @@
     <main class="content_body article_body">
       <div class="primary_block projects">
         <article class="block">
+          <a class="article_link active" href="https://binhong.me/blog/search-with-llm/">
+            <h1 class="row title">[Idea] Supercharge Social Media Search with LLM</h1>
+            <p class="row subtitle">Plug AI into Search but better!</p>
+            <p class="desc">If you’re on Facebook or Instagram, you’ve probably seen Meta AI being plugged as part of search. However, in my opinion, they’re not doing it correctly. They are making the LLM answer the prompt as if it were a generic question. Instead, they should make use of the LLM to find personalized answers based on content they can access. I know it sounds confusing, but I promise it will be worth your time. Let me explain.
+...</p>
+            <p class="right">June 15, 2025</p>
+          </a>
+        </article>
+        <article class="block">
           <a class="article_link active" href="https://binhong.me/blog/2025-06-13-product-growth-opportunities/">
             <h1 class="row title">Product Growth Opportunities</h1>
             <p class="row subtitle">Finding ideas that brings you from 1 -&gt; 100</p>
@@ -160,16 +169,6 @@ Just wanted to take a bit of time to acknowledge that it’s been almost 3 years
             <p class="right">April 25, 2025</p>
           </a>
         </article>
-        <article class="block">
-          <a class="article_link active" href="https://binhong.me/blog/2022-05-31-automated-link-preview-image/">
-            <h1 class="row title">Automated Link Preview Image Card</h1>
-            <p class="row subtitle">Taking screenshots with Playwright</p>
-            <p class="desc">A while ago, I saw this tweet thread from Simon Willison about how he added social media preview cards to his TILs. He detailed how he did this through a combination of Puppeteer, Vercel, SQLite, and some other stuff I didn’t understand 😅.
-At that time, I was manually taking these screenshots by hand to be included as part of the commit, which is to say it’s not very efficient. Anyway, this stayed on my backlog of “things to explore” for a really long time until recently during this long weekend (where I also took additional PTOs), I had some free time and decided to look into this. The goal is simple, automate creating the preview images for a list of given / defined urls.
-...</p>
-            <p class="right">May 31, 2022</p>
-          </a>
-        </article>
       </div>
       <nav class="navigation">
         <a class="right" href="/blog/tags/automation/page/2/">Older →</a>
@@ -177,13 +176,13 @@ At that time, I was manually taking these screenshots by hand to be included as 
           <h2>Subscribe to the newsletter today!</h2>
           <form action="https://binhong.me/newsletter/subscribe" method="post">
               <input type="email" name="email" placeholder="email@domain.com"/>
-              <input type="hidden" name="secret" id="secret" value="123potato123"/>
               <noscript>
                 <br />
                 <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
-                <input name="secret" id="secret" placeholder="secret"/>
+                <input name="secret" placeholder="secret"/>
                 <br />
               </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
               <button type="submit" name="submit" class="subscribe">Subscribe</button>
           </form>
         </div>
