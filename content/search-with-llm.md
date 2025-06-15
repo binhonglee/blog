@@ -14,12 +14,14 @@ _Disclaimer: I'll try to write this like a proposal but also in a blog post form
 
 ## Context
 
-> ![](/blog/img/ml_tweet.png)
-> Source: [@VishalMalvi_](https://x.com/VishalMalvi_/status/1645513685090140167)
+> ![](/blog/img/ai_commitstrip.jpg)
+> Source: [CommitStrip.com](https://www.commitstrip.com/en/2017/06/07/ai-inside/)
 
 This is not exactly a new idea. Back when I worked on search at Facebook (early-to-mid 2019 - specifically on Workplace Search), the Search team had a feature called "grammar search" where you could search with prompts like "photos of my friends" and it would show you photos of your friends. It's mostly a bunch of hardcoded rules with maybe a little ML on top for synonymous queries to match to an existing rule. Kind of like how Siri works where it's just a bunch of rule-based instructions. (This is a part of [graph search](https://engineering.fb.com/2013/04/29/web/under-the-hood-the-natural-language-interface-of-graph-search/) which had existed for much longer before that.)
 
 ## How?
+
+> Are we just gonna build a bunch of rule-based instructions again? **No.**
 
 Think of it like the Google Search vs ChatGPT model. ChatGPT compiles the open web content and returns the result in a digestible wall of text while Google Search returns you a list of links. Currently social media search behaves more like Google Search and doesn't understand language semantics. If you search for "followers in San Diego", it would show you results of content with the words "followers" and "San Diego" instead of a list of people who follow you that live in San Diego. This is the gap that LLM fills. In an ideal world, the _AI agent_ would know exactly what you can access and show you the specific content.
 
