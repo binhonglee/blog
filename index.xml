@@ -24,11 +24,11 @@
     &lt;/h2&gt;
 &lt;/a&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/ml_tweet.png&#34; target=&#34;_blank&#34;&gt;
-    &lt;img src=&#34;https://binhong.me/blog/search-with-llm//blog/img/ml_tweet.png&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/ai_commitstrip.jpg&#34; target=&#34;_blank&#34;&gt;
+    &lt;img src=&#34;https://binhong.me/blog/search-with-llm//blog/img/ai_commitstrip.jpg&#34;&gt;
 &lt;/a&gt;
 
-Source: &lt;a href=&#34;https://x.com/VishalMalvi_/status/1645513685090140167&#34;&gt;@VishalMalvi_&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+Source: &lt;a href=&#34;https://www.commitstrip.com/en/2017/06/07/ai-inside/&#34;&gt;CommitStrip.com&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;This is not exactly a new idea. Back when I worked on search at Facebook (early-to-mid 2019 - specifically on Workplace Search), the Search team had a feature called &amp;ldquo;grammar search&amp;rdquo; where you could search with prompts like &amp;ldquo;photos of my friends&amp;rdquo; and it would show you photos of your friends. It&amp;rsquo;s mostly a bunch of hardcoded rules with maybe a little ML on top for synonymous queries to match to an existing rule. Kind of like how Siri works where it&amp;rsquo;s just a bunch of rule-based instructions. (This is a part of &lt;a href=&#34;https://engineering.fb.com/2013/04/29/web/under-the-hood-the-natural-language-interface-of-graph-search/&#34;&gt;graph search&lt;/a&gt; which had existed for much longer before that.)&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#how&#34;&gt;
     &lt;h2 id=&#34;how&#34;&gt;
@@ -36,6 +36,8 @@ Source: &lt;a href=&#34;https://x.com/VishalMalvi_/status/1645513685090140167&#3
         &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
     &lt;/h2&gt;
 &lt;/a&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Are we just gonna build a bunch of rule-based instructions again? &lt;strong&gt;No.&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Think of it like the Google Search vs ChatGPT model. ChatGPT compiles the open web content and returns the result in a digestible wall of text while Google Search returns you a list of links. Currently social media search behaves more like Google Search and doesn&amp;rsquo;t understand language semantics. If you search for &amp;ldquo;followers in San Diego&amp;rdquo;, it would show you results of content with the words &amp;ldquo;followers&amp;rdquo; and &amp;ldquo;San Diego&amp;rdquo; instead of a list of people who follow you that live in San Diego. This is the gap that LLM fills. In an ideal world, the &lt;em&gt;AI agent&lt;/em&gt; would know exactly what you can access and show you the specific content.&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#opportunity&#34;&gt;
     &lt;h2 id=&#34;opportunity&#34;&gt;
