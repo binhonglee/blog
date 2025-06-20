@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Early takes on vibe-coding - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="I keep hearing about vibe-coding and I&rsquo;ve always written the majority of code myself. While at Meta, I got a chance to try out CodeCompose. It worked really well as an autocomplete but when it tried to do anything more than 5 lines at a time, it would - on many occasions - commit bugs that aren&rsquo;t immediately obvious at first sight. Generally, I&rsquo;ve caught them by looking at the generated code and wondering &ldquo;huh this isn&rsquo;t how I&rsquo;d do this, why?&rdquo;. That said, it definitely helped me code and ship faster especially on mundane tasks. Vibe-coding though, seems like taking it to a whole new level (using even less supervision and care on the code being committed).">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Early takes on vibe-coding">
+    <meta property="og:description" content="Is it a mid-level engineer yet?">
+    <meta name="twitter:description" content="Is it a mid-level engineer yet?">
+    <meta name="twitter:title" content="Early takes on vibe-coding"><meta property="article:published_time" 2025-07-03T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-07-03T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/early_vibe_coding.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/early_vibe_coding.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/early_vibe_coding.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.147.8">
+    
+    </head>
+  <body class="single">
+    <details class="dark_mode_toggle" role="button" open>
+      <summary>
+        <div class="content">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+      </summary>
+    </details>
+    <div class="wrapper">
+      <div class="content dropdown">
+        <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+        <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+          <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+          <p>|</p>
+          <div class="webring link" role="menuitem">
+            <a class="webring_toggle">Webring</a>
+            <div class="webring_links">
+              <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+              <hr />
+              <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Early takes on vibe-coding</h1>
+          <p class="row subtitle">Is it a mid-level engineer yet?</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">July 3, 2025</p>
+          </div>
+          <div class="post_content"><p>I keep hearing about vibe-coding and I&rsquo;ve always written the majority of code myself. While at Meta, I got a chance to try out CodeCompose. It worked really well as an autocomplete but when it tried to do anything more than 5 lines at a time, it would - on many occasions - commit bugs that aren&rsquo;t immediately obvious at first sight. Generally, I&rsquo;ve caught them by looking at the generated code and wondering &ldquo;huh this isn&rsquo;t how I&rsquo;d do this, why?&rdquo;. That said, it definitely helped me code and ship faster especially on mundane tasks. Vibe-coding though, seems like taking it to a whole new level (using even less supervision and care on the code being committed).</p>
+<p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+<a class="anchor" href="#perfect-for-small-isolated-problems">
+    <h2 id="perfect-for-small-isolated-problems">
+        <span class="text">Perfect for small, isolated problems</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>I started my attempt by making Claude code out a GitHub Action workflow file. I have a submodule setup (where a repo is shared and imported across multiple other repos) and wanted to have an automated way to tell how its changes will affect code on other repos while also creating PRs to keep them updated. Seems like a perfectly fine isolated problem to try this out on. I did run out of tokens a few times (being on a free plan) so I had to get creative but it largely worked. I&rsquo;d say it behaved like a normal engineer writing a first version (which isn&rsquo;t perfect) but can understand and work its way through debugging and resolving the issue slowly when given clear information on what went wrong.</p>
+<a class="anchor" href="#not-for-complex-changes-in-an-intern-size-project">
+    <h2 id="not-for-complex-changes-in-an-intern-size-project">
+        <span class="text">Not for complex changes in an <em>intern-size</em> project</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p><em>Note: Using the phrase &ldquo;intern-size&rdquo; here because back then, there was a weird rumor that interns were expected to ship 10k LoC as part of their internship to get return offers in FAANG lol. I don&rsquo;t think it was ever true but definitely a standard people worked towards.</em></p>
+<p>Now that I&rsquo;ve got it working on an isolated problem, I wanted to see how it might handle a complex change in a pre-existing project. I have an Android app codebase (for GlobeTrotte.com) with around 8k+ LoC so I decided to try it on there (using SWE-1 from Windsurf). This is the instruction I provided (admittedly a complex one):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">add new navhost to edittripactivity and make each of edit day and edit place a separate screen instead (so it push-and-pop for each small edit)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>PS: <code>edittripactivity</code> is a file name (technically <code>EditTripAcitivity.kt</code> but I think the LLM understood it), <code>navhost</code> is a concept of <a href="https://developer.android.com/develop/ui/compose/navigation#create-navhost">how screen navigation works in Jetpack Compose</a>.</em></p>
+<p>The LLM took 20+ minutes before running out of time which required me to make a <code>continue</code> call not just once but twice before telling me it was done. <em>It&rsquo;s all chaos from here on out.</em> It tells me that there are a bunch of errors so it tries to write more code (?) leading to more errors, so more code, then more errors etc. At some point, I mentioned that there were 88 errors and it figured to try compiling and reading the compiler error (instead of looking for them itself) but that barely cut down the number of errors. <strong>I just kept telling it that there were more errors and it just kept trying to code itself out of the mess by adding more code and thus more errors.</strong> I eventually gave up and ran <code>git checkout .</code> to clean everything up.</p>
+<a class="anchor" href="#losing-track-of-signatures">
+    <h2 id="losing-track-of-signatures">
+        <span class="text">Losing track of signatures</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>At some point, it started making up stuff that either existed with a different name, or something that it thought should exist but didn&rsquo;t (or it forgot to add the implementation for it, I can&rsquo;t tell). The first example is that it keeps calling <code>PlaceItem()</code> even though there&rsquo;s no object with that name (and all the <code>please fix error</code> prompts never saw it touching them). There is however, an object called <code>Place()</code> which I&rsquo;m assuming is what it was referring to. The second example is where it called <code>updateDay(delete = true)</code> despite the fact that <code>updateDay()</code> has a bunch of other required params while it also doesn&rsquo;t have <code>delete</code> as a param. I can only assume that it just inferred the functionality of the function without actually understanding if it worked as intended.</p>
+<a class="anchor" href="#ask-clarifying-questions">
+    <h2 id="ask-clarifying-questions">
+        <span class="text">Ask clarifying questions</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>The prompt I provided is a bit vague to be honest. It&rsquo;s asking to make a UX change without actually providing any design example but rather just describing it with words as if the other person would easily understand it. The LLM went to work immediately with that prompt without asking for more clarifying questions like how the screens get triggered, how the layout should work, how the UI should look etc. I think if LLMs can learn to ask clarifying questions, it can be invaluable for situations like this where the ask might be a little too vague to work off of.</p>
+<a class="anchor" href="#is-it-a-mid-level-engineer-yet">
+    <h2 id="is-it-a-mid-level-engineer-yet">
+        <span class="text">Is it a mid-level engineer yet?</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Short answer, no. Long answer, it depends. In terms of raw coding ability, I think it&rsquo;s meeting the mid-level engineer mark just fine (maybe even better due to its breadth generally uncommon among &ldquo;humans&rdquo; lol) but it&rsquo;s the <em>everything else</em> part that&rsquo;s an issue. For starters, I expect a mid-level engineer to ask for help instead of mindlessly trying to commit code (or send out PRs) over and over again that isn&rsquo;t compiling. I also don&rsquo;t (usually) have to nudge them that their code isn&rsquo;t compiling or failing tests. They can see it themselves and would go work on debugging and fixing them proactively. This is on top of all the issues mentioned above when working in a <em>not-even-that-large</em> of a codebase.</p>
+<p>For now though, it seems like it&rsquo;s still not good enough to take over even just the coding part of my job so I guess I&rsquo;m going back to implementing the new <code>navhost</code> for my Android app by myself.</p>
+</div>
+          
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          <br />
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-07-03-early-takes-on-vibe-coding.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+
