@@ -7,10 +7,6 @@ ss: "preview/growth_engineer.jpg"
 aliases:
   - /growth_engineer/
   - /2025-06-13-growth-engineer/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 While I've shipped a lot of growth wins (literally the first line on my resume), I'm actually very far from a prototypical growth engineer. That said, in this piece, I want to explore a bit more into what it's like being a growth engineer and what makes you good at being one. Growth engineers are generally 1 -> 100 experts instead of 0 -> 1. They fine-tune every little detail by running a lot of experiments with marginal changes to understand the user problem and drive growth impact (_line goes up_).

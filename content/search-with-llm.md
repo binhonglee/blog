@@ -6,6 +6,10 @@ tags: []
 ss: "preview/social_media_search_with_llm.jpg"
 aliases:
   - /social_media_search_with_llm/
+build:
+  list: never
+  publishResources: true
+  render: always
 ---
 
 If you're on Facebook or Instagram, you've probably seen Meta AI being plugged as part of search. However, in my opinion, they're not doing it correctly. They are making the LLM answer the prompt as if it were a generic question. Instead, they should make use of the LLM to find personalized answers based on content they can access. I know it sounds confusing, but I promise it will be worth your time. Let me explain.
