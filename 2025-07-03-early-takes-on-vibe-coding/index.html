@@ -98,16 +98,10 @@
     </h2>
 </a>
 <p><em>Note: Using the phrase &ldquo;intern-size&rdquo; here because back then, there was a weird rumor that interns were expected to ship 10k LoC as part of their internship to get return offers in FAANG lol. I don&rsquo;t think it was ever true but definitely a standard people worked towards.</em></p>
-<p>Now that I&rsquo;ve got it working on an isolated problem, I wanted to see how it might handle a complex change in a pre-existing project. I have an Android app codebase (for GlobeTrotte.com) with around 8k+ LoC so I decided to try it on there (using SWE-1 from Windsurf). This is the instruction I provided (admittedly a complex one):</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">add new navhost to edittripactivity and make each of edit day and edit place a separate screen instead (so it push-and-pop for each small edit)
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><em>PS: <code>edittripactivity</code> is a file name (technically <code>EditTripAcitivity.kt</code> but I think the LLM understood it), <code>navhost</code> is a concept of <a href="https://developer.android.com/develop/ui/compose/navigation#create-navhost">how screen navigation works in Jetpack Compose</a>.</em></p>
+<p>Now that I&rsquo;ve got it working on an isolated problem, I wanted to see how it might handle a complex change in a pre-existing project. I have an Android app codebase (for <a href="https://globetrotte.com">GlobeTrotte</a>) with around 8k+ LoC so I decided to try it on there (using SWE-1 from Windsurf). This is the instruction I provided (admittedly a complex one):</p>
+<blockquote>
+<p><code>add new navhost to edittripactivity and make each of edit day and edit place a separate screen instead (so it push-and-pop for each small edit)</code></p></blockquote>
+<p><em>PS: <code>edittripactivity</code> is a file name (technically <code>EditTripAcitivity.kt</code> but I think the LLM understood it), <code>navhost</code> is a concept of <a href="https://developer.android.com/develop/ui/compose/navigation#create-navhost">how screen navigation works in Jetpack Compose</a>.</em></p>
 <p>The LLM took 20+ minutes before running out of time which required me to make a <code>continue</code> call not just once but twice before telling me it was done. <em>It&rsquo;s all chaos from here on out.</em> It tells me that there are a bunch of errors so it tries to write more code (?) leading to more errors, so more code, then more errors etc. At some point, I mentioned that there were 88 errors and it figured to try compiling and reading the compiler error (instead of looking for them itself) but that barely cut down the number of errors. <strong>I just kept telling it that there were more errors and it just kept trying to code itself out of the mess by adding more code and thus more errors.</strong> I eventually gave up and ran <code>git checkout .</code> to clean everything up.</p>
 <a class="anchor" href="#losing-track-of-signatures">
     <h2 id="losing-track-of-signatures">
