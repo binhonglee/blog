@@ -26,7 +26,7 @@ I have not fully planned out the entire series but here are a few topics I have 
     1. [A/B Testing](/blog/2025-06-06-a-b-testing/)
     2. [Product Growth Opportunities](/blog/2025-06-13-product-growth-opportunities/)
     3. [Growth Engineer](/blog/2025-06-20-growth-engineer/)
-    4. Experiment Review Process (Pending: Jun 27th)
+    4. [Experiment Review Process](/blog/2025-06-27-experiment-review-process/)
 5. Dev Tools
     1. Early takes on vibe-coding (Pending: Jul 3rd)
     2. Internal Tooling Ideas (Pending: Jul 11th)

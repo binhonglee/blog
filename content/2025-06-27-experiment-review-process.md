@@ -6,10 +6,6 @@ tags: []
 ss: preview/experiment_review.jpg
 aliases:
   - /experiment_review/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 Mature growth teams would organize a centralized experiment review meeting as a way to share learnings to a wider audience, consult for feedback / next step recommendations, while also holding engineers accountable for the changes they are attempting to ship. The review sessions should be open to anyone to sign up (presenting their experiments) or to participate in general. However, key decision makers (like senior growth engineers, product managers, designers, data scientists) should be required to attend so decisions to ship / not ship / iterate will be made with everyone's concerns addressed.

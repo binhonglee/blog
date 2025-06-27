@@ -24,11 +24,9 @@ I started my attempt by making Claude code out a GitHub Action workflow file. I 
 
 _Note: Using the phrase "intern-size" here because back then, there was a weird rumor that interns were expected to ship 10k LoC as part of their internship to get return offers in FAANG lol. I don't think it was ever true but definitely a standard people worked towards._
 
-Now that I've got it working on an isolated problem, I wanted to see how it might handle a complex change in a pre-existing project. I have an Android app codebase (for GlobeTrotte.com) with around 8k+ LoC so I decided to try it on there (using SWE-1 from Windsurf). This is the instruction I provided (admittedly a complex one):
+Now that I've got it working on an isolated problem, I wanted to see how it might handle a complex change in a pre-existing project. I have an Android app codebase (for [GlobeTrotte](https://globetrotte.com)) with around 8k+ LoC so I decided to try it on there (using SWE-1 from Windsurf). This is the instruction I provided (admittedly a complex one):
 
-```text
-add new navhost to edittripactivity and make each of edit day and edit place a separate screen instead (so it push-and-pop for each small edit)
-```
+> `add new navhost to edittripactivity and make each of edit day and edit place a separate screen instead (so it push-and-pop for each small edit)`
 
 _PS: `edittripactivity` is a file name (technically `EditTripAcitivity.kt` but I think the LLM understood it), `navhost` is a concept of [how screen navigation works in Jetpack Compose](https://developer.android.com/develop/ui/compose/navigation#create-navhost)._
 
