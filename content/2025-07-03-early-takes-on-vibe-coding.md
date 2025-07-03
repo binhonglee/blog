@@ -6,10 +6,6 @@ tags: []
 ss: preview/early_vibe_coding.jpg
 aliases:
   - /early_vibe_coding/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 I keep hearing about vibe-coding and I've always written the majority of code myself. While at Meta, I got a chance to try out CodeCompose. It worked really well as an autocomplete but when it tried to do anything more than 5 lines at a time, it would - on many occasions - commit bugs that aren't immediately obvious at first sight. Generally, I've caught them by looking at the generated code and wondering "huh this isn't how I'd do this, why?". That said, it definitely helped me code and ship faster especially on mundane tasks. Vibe-coding though, seems like taking it to a whole new level (using even less supervision and care on the code being committed).
