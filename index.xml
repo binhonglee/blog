@@ -10,6 +10,65 @@
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
     <lastBuildDate>Fri, 11 Jul 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Early takes on vibe-coding</title>
+      <link>https://binhong.me/blog/2025-07-03-early-takes-on-vibe-coding/</link>
+      <pubDate>Thu, 03 Jul 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-07-03-early-takes-on-vibe-coding/</guid>
+      <description>&lt;p&gt;I keep hearing about vibe-coding and I&amp;rsquo;ve always written the majority of code myself. While at Meta, I got a chance to try out CodeCompose. It worked really well as an autocomplete but when it tried to do anything more than 5 lines at a time, it would - on many occasions - commit bugs that aren&amp;rsquo;t immediately obvious at first sight. Generally, I&amp;rsquo;ve caught them by looking at the generated code and wondering &amp;ldquo;huh this isn&amp;rsquo;t how I&amp;rsquo;d do this, why?&amp;rdquo;. That said, it definitely helped me code and ship faster especially on mundane tasks. Vibe-coding though, seems like taking it to a whole new level (using even less supervision and care on the code being committed).&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#perfect-for-small-isolated-problems&#34;&gt;
+    &lt;h2 id=&#34;perfect-for-small-isolated-problems&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Perfect for small, isolated problems&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;I started my attempt by making Claude code out a GitHub Action workflow file. I have a submodule setup (where a repo is shared and imported across multiple other repos) and wanted to have an automated way to tell how its changes will affect code on other repos while also creating PRs to keep them updated. Seems like a perfectly fine isolated problem to try this out on. I did run out of tokens a few times (being on a free plan) so I had to get creative but it largely worked. I&amp;rsquo;d say it behaved like a normal engineer writing a first version (which isn&amp;rsquo;t perfect) but can understand and work its way through debugging and resolving the issue slowly when given clear information on what went wrong.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#not-for-complex-changes-in-an-intern-size-project&#34;&gt;
+    &lt;h2 id=&#34;not-for-complex-changes-in-an-intern-size-project&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Not for complex changes in an &lt;em&gt;intern-size&lt;/em&gt; project&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;&lt;em&gt;Note: Using the phrase &amp;ldquo;intern-size&amp;rdquo; here because back then, there was a weird rumor that interns were expected to ship 10k LoC as part of their internship to get return offers in FAANG lol. I don&amp;rsquo;t think it was ever true but definitely a standard people worked towards.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Now that I&amp;rsquo;ve got it working on an isolated problem, I wanted to see how it might handle a complex change in a pre-existing project. I have an Android app codebase (for &lt;a href=&#34;https://globetrotte.com&#34;&gt;GlobeTrotte&lt;/a&gt;) with around 8k+ LoC so I decided to try it on there (using SWE-1 from Windsurf). This is the instruction I provided (admittedly a complex one):&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;add new navhost to edittripactivity and make each of edit day and edit place a separate screen instead (so it push-and-pop for each small edit)&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;PS: &lt;code&gt;edittripactivity&lt;/code&gt; is a file name (technically &lt;code&gt;EditTripAcitivity.kt&lt;/code&gt; but I think the LLM understood it), &lt;code&gt;navhost&lt;/code&gt; is a concept of &lt;a href=&#34;https://developer.android.com/develop/ui/compose/navigation#create-navhost&#34;&gt;how screen navigation works in Jetpack Compose&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The LLM took 20+ minutes before running out of time which required me to make a &lt;code&gt;continue&lt;/code&gt; call not just once but twice before telling me it was done. &lt;em&gt;It&amp;rsquo;s all chaos from here on out.&lt;/em&gt; It tells me that there are a bunch of errors so it tries to write more code (?) leading to more errors, so more code, then more errors etc. At some point, I mentioned that there were 88 errors and it figured to try compiling and reading the compiler error (instead of looking for them itself) but that barely cut down the number of errors. &lt;strong&gt;I just kept telling it that there were more errors and it just kept trying to code itself out of the mess by adding more code and thus more errors.&lt;/strong&gt; I eventually gave up and ran &lt;code&gt;git checkout .&lt;/code&gt; to clean everything up.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#losing-track-of-signatures&#34;&gt;
+    &lt;h2 id=&#34;losing-track-of-signatures&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Losing track of signatures&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;At some point, it started making up stuff that either existed with a different name, or something that it thought should exist but didn&amp;rsquo;t (or it forgot to add the implementation for it, I can&amp;rsquo;t tell). The first example is that it keeps calling &lt;code&gt;PlaceItem()&lt;/code&gt; even though there&amp;rsquo;s no object with that name (and all the &lt;code&gt;please fix error&lt;/code&gt; prompts never saw it touching them). There is however, an object called &lt;code&gt;Place()&lt;/code&gt; which I&amp;rsquo;m assuming is what it was referring to. The second example is where it called &lt;code&gt;updateDay(delete = true)&lt;/code&gt; despite the fact that &lt;code&gt;updateDay()&lt;/code&gt; has a bunch of other required params while it also doesn&amp;rsquo;t have &lt;code&gt;delete&lt;/code&gt; as a param. I can only assume that it just inferred the functionality of the function without actually understanding if it worked as intended.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#ask-clarifying-questions&#34;&gt;
+    &lt;h2 id=&#34;ask-clarifying-questions&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Ask clarifying questions&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;The prompt I provided is a bit vague to be honest. It&amp;rsquo;s asking to make a UX change without actually providing any design example but rather just describing it with words as if the other person would easily understand it. The LLM went to work immediately with that prompt without asking for more clarifying questions like how the screens get triggered, how the layout should work, how the UI should look etc. I think if LLMs can learn to ask clarifying questions, it can be invaluable for situations like this where the ask might be a little too vague to work off of.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#phenomenal-auto-complete-machine&#34;&gt;
+    &lt;h2 id=&#34;phenomenal-auto-complete-machine&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Phenomenal auto-complete machine&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;I&amp;rsquo;d be remissed if I didn&amp;rsquo;t mention the auto-complete capabilities of AI coding assistants. In short, they are consistently phenomenal especially when it comes to boilerplate code needing minor tweaks here and there. The AI would make the necessary tweaks automatically making it a breeze when going through the more mind-numbing part of the code base. This is a consistent experience both when I was at Meta (using CodeCompose) and now using Windsurf for my personal project.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#is-it-a-mid-level-engineer-yet&#34;&gt;
+    &lt;h2 id=&#34;is-it-a-mid-level-engineer-yet&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Is it a mid-level engineer yet?&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Short answer, no. Long answer, it depends. In terms of raw coding ability in an isolated environment, I think it&amp;rsquo;s meeting the mid-level engineer mark just fine (maybe even better due to its breadth generally uncommon among &amp;ldquo;humans&amp;rdquo; lol) but it&amp;rsquo;s the &lt;em&gt;everything else&lt;/em&gt; part that&amp;rsquo;s an issue. For starters, I expect a mid-level engineer to ask for help instead of mindlessly trying to commit code (or send out PRs) over and over again that isn&amp;rsquo;t compiling. I also don&amp;rsquo;t (usually) have to nudge them that their code isn&amp;rsquo;t compiling or failing tests. They can see it themselves and would go work on debugging and fixing them proactively. This is on top of all the issues mentioned above when working in a &lt;em&gt;not-even-that-large&lt;/em&gt; of a codebase.&lt;/p&gt;
+&lt;p&gt;For now though, it seems like it&amp;rsquo;s still not good enough to take over even just the coding part of my job so I guess I&amp;rsquo;m going back to implementing the new &lt;code&gt;navhost&lt;/code&gt; for my Android app by myself.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Experiment Review Process</title>
       <link>https://binhong.me/blog/2025-06-27-experiment-review-process/</link>
       <pubDate>Fri, 27 Jun 2025 00:00:00 -0800</pubDate>
