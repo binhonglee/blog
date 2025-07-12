@@ -1,15 +1,11 @@
 ---
 title: Internal Tooling Ideas
 subtitle: "When and what to build for internal tools?"
-date: 2025-07-03 00:00:00 -0800 GMT
+date: 2025-07-11 00:00:00 -0800 GMT
 tags: []
 ss: preview/internal_tooling_ideas.jpg
 aliases:
   - /internal_tooling_ideas/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 For years, I built and maintained the only logged-out accessible dev tool set / platform at Meta. That earned me some reputation (in a certain circle) of being "the idea guy on internal tools". Whenever I'm asked about how I keep coming up with good ideas for valuable tools to build, my go-to answer has been "I build tools when I get annoyed while doing my job". I'll try to expand that into more details below.
