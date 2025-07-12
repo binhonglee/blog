@@ -10,6 +10,59 @@
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
     <lastBuildDate>Fri, 11 Jul 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Internal Tooling Ideas</title>
+      <link>https://binhong.me/blog/2025-07-11-internal-tooling-ideas/</link>
+      <pubDate>Fri, 11 Jul 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-07-11-internal-tooling-ideas/</guid>
+      <description>&lt;p&gt;For years, I built and maintained the only logged-out accessible dev tool set / platform at Meta. That earned me some reputation (in a certain circle) of being &amp;ldquo;the idea guy on internal tools&amp;rdquo;. Whenever I&amp;rsquo;m asked about how I keep coming up with good ideas for valuable tools to build, my go-to answer has been &amp;ldquo;I build tools when I get annoyed while doing my job&amp;rdquo;. I&amp;rsquo;ll try to expand that into more details below.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#repetitive-typing&#34;&gt;
+    &lt;h2 id=&#34;repetitive-typing&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Repetitive Typing&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;The biggest value of having logged-out accessible dev tools is that you no longer have to log in to access dev tools. Login, while generally not too big of a friction for one-off situations, can be very bothersome if you have to type your credentials over and over again (for dev purposes) as you login (update config) → logout (test) → login (update config) → logout (test). If bypassing or removing the typing aspect is not possible, consider if it can be replaced with multiple choice button selection or just a single copy-paste friendly input.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#unnecessary-waiting--processing&#34;&gt;
+    &lt;h2 id=&#34;unnecessary-waiting--processing&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Unnecessary Waiting / Processing&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;There are generally 2 types of waiting problems. The first one is where the wait takes a really long time and can be done asynchronously. Either move the wait into an async manner and integrate a messaging system to notify the author when it&amp;rsquo;s completed, or pre-process them based on known patterns. For example, companies with large native app (iOS / Android) code bases have long build times. You can integrate build tools like &lt;a href=&#34;https://bazel.build/remote/caching&#34;&gt;Bazel with remote caching&lt;/a&gt; so clients don&amp;rsquo;t have to rebuild everything from scratch. Since an engineer will likely want to pull from remote &lt;code&gt;HEAD&lt;/code&gt; (or &lt;code&gt;stable&lt;/code&gt;) daily, you can have a cron job that pulls and builds daily in the morning before the engineer starts working, thus turning their wait block time into an &lt;em&gt;invisible&lt;/em&gt; operation done automagically while they are having their breakfast or morning coffee. The second type is where the wait is one part of the process and can&amp;rsquo;t be (deterministically) pre-processed ahead of time / asynchronously. In this case, consider if bypassing is an option (e.g., skips in &lt;code&gt;dev&lt;/code&gt; but runs in &lt;code&gt;prod&lt;/code&gt;). If not, you can also try making it non-blocking (move it off the main thread, batch processing, backfill etc.) as the user proceeds through the process. If all else fails, you can always turn that part of the process into an async step with an integration to a messaging system notifying the author once it&amp;rsquo;s ready to proceed to the next step.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#device-config--manual-hard-code&#34;&gt;
+    &lt;h2 id=&#34;device-config--manual-hard-code&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Device Config &amp;gt; Manual Hard-code&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;In many of these cases, you can probably do manual hard-coding to get the intended behavior. However, doing so increases the risk of accidentally committing such hard-coded changes into prod (if not caught during code review). On top of that, when working on a complex code base, the engineer might not be familiar with the code pointer for where the hard-code needs to go. For instance, if you want to bypass the rate-limit of your feature but the rate-limit logic is owned by a separate team in an unfamiliar code base. As an added bonus, this also allows non-technical members of your team (designers, PMs etc.) to do product audits, dogfooding, and in-depth testing independently without needing dedicated engineering support.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#non-deterministic-behaviors-ml-override&#34;&gt;
+    &lt;h2 id=&#34;non-deterministic-behaviors-ml-override&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Non-deterministic Behaviors (ML override)&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;This is somewhat similar to the manual hardcode situation mentioned above where you might want to override an ML decision to manually test out different decision combinations by the model. ML models (and AI) are relatively non-deterministic by design, but when building / testing a product, you want to make sure that you covered all the different possible scenarios. Having an override to switch between different potential responses allows for better coverage on both manual and automated testing, ensuring that your change behaves as intended.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#chore&#34;&gt;
+    &lt;h2 id=&#34;chore&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Chore&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;This is more about employee satisfaction when working on a repetitive task may be boring or frustrating. Having tools to automate such work allows them to explore more interesting / challenging work, thus improving employee satisfaction, even if it doesn&amp;rsquo;t necessarily save a significant amount of time. The best &amp;ldquo;realistic&amp;rdquo; way to measure this would be a rating system where you count the number of employees using it and ask for their feedback (both positive and negative), then compile to show the value it provides.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Building internal tools is about removing friction from your team&amp;rsquo;s daily workflow. The best tools emerge from genuine pain points you experience while doing your job. Start small and focus on the annoyances that happen most frequently. The key is to stay observant of your own frustrations and act on them. Every great internal tool started with someone saying &amp;ldquo;there has to be a better way to do this&amp;rdquo;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Early takes on vibe-coding</title>
       <link>https://binhong.me/blog/2025-07-03-early-takes-on-vibe-coding/</link>
       <pubDate>Thu, 03 Jul 2025 00:00:00 -0800</pubDate>
