@@ -28,9 +28,9 @@ I have not fully planned out the entire series but here are a few topics I have 
     3. [Growth Engineer](/blog/2025-06-20-growth-engineer/)
     4. [Experiment Review Process](/blog/2025-06-27-experiment-review-process/)
 5. Dev Tools
-    1. Early takes on vibe-coding (Pending: Jul 3rd)
-    2. Internal Tooling Ideas (Pending: Jul 11th)
-    3. Understanding the Value of Dev Tools (Pending: Jul 18th)
+    1. [Early takes on vibe-coding](/blog/2025-07-03-early-takes-on-vibe-coding/)
+    2. [Internal Tooling Ideas](/blog/2025-07-11-internal-tooling-ideas/)
+    3. [Understanding the Value of Dev Tools](/blog/2025-07-18-understanding-value-of-dev-tools/)
 
 ## Where is this coming from?
 
