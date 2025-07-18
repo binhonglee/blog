@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
-    <lastBuildDate>Fri, 11 Jul 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 01 Aug 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Internal Tooling Ideas</title>
       <link>https://binhong.me/blog/2025-07-11-internal-tooling-ideas/</link>
@@ -728,9 +728,9 @@
 &lt;/li&gt;
 &lt;li&gt;Dev Tools
 &lt;ol&gt;
-&lt;li&gt;Early takes on vibe-coding (Pending: Jul 3rd)&lt;/li&gt;
-&lt;li&gt;Internal Tooling Ideas (Pending: Jul 11th)&lt;/li&gt;
-&lt;li&gt;Understanding the Value of Dev Tools (Pending: Jul 18th)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-03-early-takes-on-vibe-coding/&#34;&gt;Early takes on vibe-coding&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-11-internal-tooling-ideas/&#34;&gt;Internal Tooling Ideas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-18-understanding-value-of-dev-tools/&#34;&gt;Understanding the Value of Dev Tools&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;/ol&gt;

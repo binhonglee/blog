@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Firefighting Heroes - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="We love celebrating heroes in general. So when a hero shows up to save the day, it&rsquo;s only natural that we make sure to recognize their contribution. While it might feel counterintuitive, we should strive to not need heroes entirely instead of hoping that next time when tragedy strikes, a hero will turn up once again. This is not to diminish the value of heroes. They still play a very important role in firefighting and are doing the right thing in an urgent situation. However, in a perfect world, they shouldn&rsquo;t be necessary at all and we should at least aspire to work towards building a system with that level of reliability.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Firefighting Heroes">
+    <meta property="og:description" content="Symptoms of an unhealthy reliability system">
+    <meta name="twitter:description" content="Symptoms of an unhealthy reliability system">
+    <meta name="twitter:title" content="Firefighting Heroes"><meta property="article:published_time" 2025-08-01T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-08-01T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/firefighting_heroes.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/firefighting_heroes.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/firefighting_heroes.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.148.1">
+    
+    </head>
+  <body class="single">
+    <details class="dark_mode_toggle" role="button" open>
+      <summary>
+        <div class="content">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+      </summary>
+    </details>
+    <div class="wrapper">
+      <div class="content dropdown">
+        <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+        <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+          <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+          <p>|</p>
+          <div class="webring link" role="menuitem">
+            <a class="webring_toggle">Webring</a>
+            <div class="webring_links">
+              <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+              <hr />
+              <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Firefighting Heroes</h1>
+          <p class="row subtitle">Symptoms of an unhealthy reliability system</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">August 1, 2025</p>
+          </div>
+          <div class="post_content"><p>We love celebrating heroes in general. So when a hero shows up to save the day, it&rsquo;s only natural that we make sure to recognize their contribution. While it might feel counterintuitive, we should strive to not need heroes entirely instead of hoping that next time when tragedy strikes, a hero will turn up once again. This is not to diminish the value of heroes. They still play a very important role in firefighting and are doing the right thing in an urgent situation. However, <em>in a perfect world</em>, they shouldn&rsquo;t be necessary at all and we should at least aspire to work towards building a system with that level of reliability.</p>
+<p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+<a class="anchor" href="#bian-que-and-his-brothers">
+    <h2 id="bian-que-and-his-brothers">
+        <span class="text">Bian Que and his brothers</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>If you&rsquo;ve never heard of the story about <em>Bian Que and his brothers</em>, here&rsquo;s a <a href="https://www.meta.ai/@binhonglee/prompt/iS2XuvsxNDq">Meta AI summary of it</a> with all the relevant details. I mention this because one time when I was complaining about all the fires happening in our org and how I keep getting looped into them to help put them out, my then tech lead cited this story to me (which is a little offensive 😡 but she&rsquo;s not wrong lol). I think in general, this is an accurate depiction of the <strong>misplaced prioritization and recognition</strong> where we consistently reward &ldquo;heroes&rdquo; solving issues rather than those who worked to prevent fires from happening to begin with simply due to visibility and measurability.</p>
+<a class="anchor" href="#automate-whenever-possible">
+    <h2 id="automate-whenever-possible">
+        <span class="text">Automate whenever possible</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>I remember once reading a Site Reliability Engineer write (verbatim), <em>&ldquo;my job is to automate myself out of my own job&rdquo;</em> which I thought was an interesting way to look at things but also an obvious starting point. To do away with the reliance on firefighting heroes, automate the things they do whenever possible. As an example, when something breaks and you find an automated test for that specific breakage, have a system that automatically runs bisect against said test to find the blame commit causing the breakage. Taking it a step further, the system can run all these automated tests every time before release and if anything is broken, bisect to find the blame commit and revert it, then run everything again until there&rsquo;s a good stable version that&rsquo;s ready for release.</p>
+<a class="anchor" href="#prevention--cure">
+    <h2 id="prevention--cure">
+        <span class="text">Prevention &gt; Cure</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>As the idiom says, <em>&ldquo;prevention is better than cure&rdquo;</em>. In a previous piece about <a href="https://binhong.me/blog/2025-05-30-no-blame-sev-culture/#process-over-people">Process over People</a>, I&rsquo;ve talked about the focus on building process as a preventative measure. This is a similar point where we should ideally focus more on <strong>preventing</strong> outages from even happening instead of just putting them out <strong>after</strong> they&rsquo;re already on fire. The hard part however is - yet again - that the visibility of good prevention work is never as prominent as good firefighting work. There is a two-fold solution to this (where ideally both need to happen). Firstly, if you (or you know someone) are doing important prevention work, ensure people are aware of their work. Secondly, leadership needs to prominently acknowledge the value of such work and reflect it as such in <em>whichever-way-they-usually-do-recognition</em> and in performance reviews.</p>
+<a class="anchor" href="#accountability-on-reliability">
+    <h2 id="accountability-on-reliability">
+        <span class="text">Accountability on reliability</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>One of the common pitfalls here is that, once something is shipped, the responsibility to keep it running falls on the team (whoever is on-call at the time of incident) instead of the individual who shipped an <em>incomplete</em> product. This is something I&rsquo;ve previously touched on <a href="https://binhong.me/blog/2025-05-30-no-blame-sev-culture/#no-blame--no-responsibility">here</a>. If someone is taking credit for the successful launch (and all its underlying <strong>impact</strong>), they should also be held accountable if the launch causes reliability issues (be it during or shortly after the launch). As to how <em>accountability</em> looks, it can range anywhere from taking ownership of resolving the issue long term, to being penalized in their performance review cycle for an incomplete launch. There&rsquo;s quite a bit of nuance here depending on factors like the scale of outages, any visible warning signs, how preventable the issue was, etc.</p>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>This is as much (if not more) of a culture problem as it is a technical problem. Building reliable systems isn&rsquo;t just about writing better code or implementing more monitoring. It requires fundamentally shifting how we think about and reward engineering work. We need to move away from the hero worship that celebrates last-minute saves and instead build cultures that value the unglamorous work of prevention, automation, and long-term system health. Heroes will always be needed in truly exceptional circumstances, but if your organization consistently relies on them to keep the lights on, it&rsquo;s a sign that your systems, processes, and culture need serious attention. The goal isn&rsquo;t to eliminate heroes entirely but to build systems so robust that heroic interventions become rare exceptions rather than regular occurrences.</p>
+</div>
+          
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          <br />
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-08-01-firefighting-heroes.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+
