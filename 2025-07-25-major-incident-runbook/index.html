@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Major Incident Runbook - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="I wrote a similar version of this internally at Meta a few years ago for my org after finding myself in the middle of a few SEV1s in a row &ndash; and being consulted / asked for support in other similar situations. I thought this might be something useful to share (as a public version) as well. This won&rsquo;t be perfectly fitting for all use cases, but having a runbook works as an anchor in the midst of chaos, helping to get you unstuck from &ldquo;what&rsquo;s next?&rdquo;. Admittedly, this is an incomplete runbook that serves more as a template for your team or company to complete with more specific tooling guides (using which tool to achieve what, etc.).">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Major Incident Runbook">
+    <meta property="og:description" content="Take a deep breath, you got this!">
+    <meta name="twitter:description" content="Take a deep breath, you got this!">
+    <meta name="twitter:title" content="Major Incident Runbook"><meta property="article:published_time" 2025-07-25T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-07-25T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/major_incident_runbook.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/major_incident_runbook.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/major_incident_runbook.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1748746674" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.148.1">
+    
+    </head>
+  <body class="single">
+    <details class="dark_mode_toggle" role="button" open>
+      <summary>
+        <div class="content">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+      </summary>
+    </details>
+    <div class="wrapper">
+      <div class="content dropdown">
+        <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+        <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+          <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+          <p>|</p>
+          <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+          <p>|</p>
+          <div class="webring link" role="menuitem">
+            <a class="webring_toggle">Webring</a>
+            <div class="webring_links">
+              <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+              <hr />
+              <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Major Incident Runbook</h1>
+          <p class="row subtitle">Take a deep breath, you got this!</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">July 25, 2025</p>
+          </div>
+          <div class="post_content"><p>I wrote a similar version of this internally at Meta a few years ago for my org after finding myself in the middle of a few SEV1s in a row &ndash; and being consulted / asked for support in other similar situations. I thought this might be something useful to share (as a public version) as well. This won&rsquo;t be perfectly fitting for all use cases, but having a runbook works as an anchor in the midst of chaos, helping to get you unstuck from &ldquo;what&rsquo;s next?&rdquo;. Admittedly, this is an incomplete runbook that serves more as a template for your team or company to complete with more specific tooling guides (using <em>which</em> tool to achieve <em>what</em>, etc.).</p>
+<p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+<a class="anchor" href="#stop-the-bleed">
+    <h2 id="stop-the-bleed">
+        <span class="text">Stop the Bleed!</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>The highest priority is to stop the bleeding immediately. <em>Flip a killswitch, roll back changes, apply server-side fixes, apply client-side fixes</em> - <strong>in that order</strong>. A killswitch generally propagates faster, thus is preferred over code changes, but even then, prioritize rolling back changes instead of forward fixing. Forward fixing adds more unknown factors into the mix (because that&rsquo;s more new code which could now cause new / different problems); rolling back, on the other hand, is more predictable. Server-side fixes over client-side fixes should be pretty obvious since you can guarantee the server version (as the service provider), but you can&rsquo;t always force a client to update (native apps), or there could be some caching involved (web).</p>
+<a class="anchor" href="#multiple-workstreams">
+    <h2 id="multiple-workstreams">
+        <span class="text">Multiple Workstreams</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>During a major incident, there are generally multiple things that can or need to happen in parallel. Break them down into clear workstreams and delegate a domain expert to run each of them. If more things are discovered down the line (or the situation changes), switch up the workstream and get different people (domain experts) involved to run different things. Since you&rsquo;re dealing with an incident (which are usually time sensitive), <strong>never hesitate to call people</strong>. This needs to be said a lot because people constantly hesitate about false positives or getting on others&rsquo; bad side for inaccurately calling them up. But you won&rsquo;t know what you don&rsquo;t know without getting the domain expert to show up and verify what you&rsquo;re seeing.</p>
+<a class="anchor" href="#chat-management">
+    <h2 id="chat-management">
+        <span class="text">Chat Management</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Alongside having separate workstreams, you should also set up separate chat threads for each workstream to keep the <em>main chat</em> low on noise. That said, make sure to announce the establishment and / or major milestones of each new workstream clearly within the main chat so everyone relevant is correctly included. You might be in a lot of different chats and things will be chaotic, so you will need to take extra care in ensuring that the right people are in the right chat to allow them to get their different tasks going. Everyone should still be in the main chat, but most discussion should happen in the workstream chat.</p>
+<a class="anchor" href="#sync-meetings">
+    <h2 id="sync-meetings">
+        <span class="text">Sync Meetings</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>There are generally 2 types of sync meetings. First is the &ldquo;everything just happened so we started a meeting to info dump and get everyone up to speed.&rdquo; This meeting will always be chaotic with a lot of people joining to figure out what&rsquo;s happening and what to do next. (There might also be people who only joined out of curiosity, but as long as they aren&rsquo;t interrupting, they are the least of your problems - unless Zoom is not scaling lol.) Set out a clear goal, a set of tasks, and an owner for each of those tasks. Finally, set a follow-up date and time (usually in a few hours) for everyone to regroup with new findings and progress to determine next steps.</p>
+<p>The second type is the follow-up and / or recurring meeting. This will feel more like your regular team standup meeting except with a lot more urgency. It&rsquo;s important to note that if there&rsquo;s any major breakthrough, people shouldn&rsquo;t wait until the next planned meeting time to report (because, well, this is an outage lol) but should instead share it with everyone immediately. This goes back to the previous point about chat management where you (as the incident manager) will need to monitor each workstream chat to catch something like this. After resolving the core issue, there might still be <em>important</em> cleanup work needed to be handled with a similar level of urgency to prevent the same outage from happening again in a very short time. In these long-running incident cleanups, you might opt to have daily (or even twice-a-day) sync meetings until the cleanup is complete.</p>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>As a whole, you will largely be more like a PM / TPM instead of a regular engineer when handling a lot of this <em>alignment</em> work. If you think someone else is better suited to handle this (another more senior engineer or your manager, etc.), ask for help while you focus on the thing that you do best (likely as the subject matter expert on investigation or remediation). Remember that incident management is a skill that improves with practice - don&rsquo;t expect to be perfect on your first few incidents, even experienced engineers can feel overwhelmed when everything is on fire. Don&rsquo;t forget to acknowledge the team&rsquo;s efforts since major incidents are stressful for everyone involved, and use this runbook as a starting point while adapting it based on your team&rsquo;s specific needs and continuously improving your processes with each incident.</p>
+</div>
+          
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          <br />
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-07-25-major-incident-runbook.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+
