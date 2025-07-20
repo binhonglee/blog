@@ -6,10 +6,6 @@ tags: []
 ss: "preview/value_of_dev_tools.jpg"
 aliases:
   - /value_of_dev_tools/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 I'm largely approaching this from the perspective of building an internal dev tool (since this is mostly where my personal experiences are coming from), especially if you're someone who wants to build an internal tool but is having trouble framing it in a way where its value can be understood by the decision makers. I'm also excluding situations where you "have to" build certain tools to track certain information in order to comply with a legal requirement, since I don't think that would be controversial to comply with. I'd imagine the framework for using an external dev tool, while similar, also poses extra complexity on paying vs building.
