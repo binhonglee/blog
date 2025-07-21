@@ -18,7 +18,19 @@ _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opin
 
 ## Bian Que and his brothers
 
-If you've never heard of the story about _Bian Que and his brothers_, here's a [Meta AI summary of it](https://www.meta.ai/@binhonglee/prompt/iS2XuvsxNDq) with all the relevant details. I mention this because one time when I was complaining about all the fires happening in our org and how I keep getting looped into them to help put them out, my then tech lead cited this story to me (which is a little offensive 😡 but she's not wrong lol). I think in general, this is an accurate depiction of the **misplaced prioritization and recognition** where we consistently reward "heroes" solving issues rather than those who worked to prevent fires from happening to begin with simply due to visibility and measurability.
+If you've never heard of the story about _Bian Que and his brothers_, here's a [Meta AI summary of it](https://www.meta.ai/@binhonglee/prompt/iS2XuvsxNDq) with all the relevant details:
+
+{{< long_quote >}}
+Bian Que was a renowned Chinese physician who lived during the Warring States period (475-221 BCE). According to legend, Bian Que and his two older brothers were all skilled in medicine.
+
+The story goes that the eldest brother treated illnesses before they became apparent, the second brother treated illnesses when they were still subtle, and Bian Que treated illnesses when they were severe and obvious.
+
+When people saw Bian Que's dramatic cures, they credited him with great skill. However, Bian Que said that his brothers were actually more skilled because they treated problems before they became serious.
+
+This story highlights the importance of preventive medicine and early intervention in Chinese medical philosophy.
+{{< /long_quote >}}
+
+I mention this because one time when I was complaining about all the fires happening in our org and how I keep getting looped into them to help put them out, my then tech lead cited this story to me (which is a little offensive 😡 but she's not wrong lol). I think in general, this is an accurate depiction of the **misplaced prioritization and recognition** where we consistently reward "heroes" solving issues rather than those who worked to prevent fires from happening to begin with simply due to visibility and measurability.
 
 ## Automate whenever possible
 
