@@ -485,6 +485,23 @@ pre .custom-language {
   color: var(--dark-links);
 }
 
+.long_quote {
+  border-radius: 0;
+  border-style: none;
+  text-align: left;
+  margin: 20px 0;
+  padding: 10px 25px;
+  background-color: var(--default-background);
+  color: var(--default-gray);
+  border-left: var(--default-active) solid 5px;
+}
+
+.dark_mode_toggle[open] + div .long_quote {
+  background-color: var(--dark-background);
+  border-left: var(--dark-active) solid 5px;
+  color: var(--dark-gray);
+}
+
 .webring:hover .webring_links {
   display: block;
   border-style: solid;
