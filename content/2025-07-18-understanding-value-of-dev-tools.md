@@ -2,7 +2,7 @@
 title: Understanding the Value of Dev Tools
 subtitle: "Making the business case for building dev tools"
 date: 2025-07-18 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer, Internal Tools]
 ss: "preview/value_of_dev_tools.jpg"
 aliases:
   - /value_of_dev_tools/

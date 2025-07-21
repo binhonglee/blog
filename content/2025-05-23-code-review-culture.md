@@ -2,7 +2,7 @@
 title: Code Review Culture
 subtitle: "Review today or debug tomorrow"
 date: 2025-05-23 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer, Culture]
 ss: "preview/code_review_culture.jpg"
 aliases:
   - /code_review_culture/

@@ -2,7 +2,7 @@
 title: Self-Hosted GitHub Actions Runners
 subtitle: "Turning your old laptops into GARs"
 date: 2025-04-25 00:00:00 -0800 GMT
-tags: []
+tags: [GitHub, Action Runners, Self Hosted, Continuous Integration]
 ss: "preview/self_hosted_github_runners.jpg"
 aliases:
     - /self_hosted_github_runners/

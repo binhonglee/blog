@@ -469,9 +469,20 @@ pre .custom-language {
   font-size: 20px;
 }
 
-/* Haven't figure out how to deal with tags */
-.content_body .links {
-  display: none;
+.content_body .tags {
+  padding: 10px 0;
+}
+
+.tags .tag {
+  padding: 0 10px;
+}
+
+.tags .tag:hover {
+  color: var(--default-links);
+}
+
+.dark_mode_toggle[open] + div .tags .tag:hover {
+  color: var(--dark-links);
 }
 
 .webring:hover .webring_links {

@@ -2,7 +2,7 @@
 title: Product Growth Opportunities
 subtitle: "Finding ideas that brings you from 1 -> 100"
 date: 2025-06-13 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer, Growth]
 ss: "preview/product_growth_opportunities.jpg"
 aliases:
   - /product_growth_opportunities/

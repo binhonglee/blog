@@ -2,7 +2,7 @@
 title: Internal Tooling Ideas
 subtitle: "When and what to build for internal tools?"
 date: 2025-07-11 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer, Internal Tools]
 ss: preview/internal_tooling_ideas.jpg
 aliases:
   - /internal_tooling_ideas/

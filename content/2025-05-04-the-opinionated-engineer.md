@@ -2,7 +2,7 @@
 title: The Opinionated Engineer
 subtitle: "Strong opinions about engineering practice"
 date: 2025-05-04 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer]
 ss: "preview/opinionated_engineer.jpg"
 aliases:
     - /opinionated_engineer/

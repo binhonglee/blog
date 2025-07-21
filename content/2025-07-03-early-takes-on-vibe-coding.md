@@ -2,7 +2,7 @@
 title: Early takes on vibe-coding
 subtitle: "Is it a mid-level engineer yet?"
 date: 2025-07-03 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer, Internal Tools]
 ss: preview/early_vibe_coding.jpg
 aliases:
   - /early_vibe_coding/

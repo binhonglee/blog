@@ -2,7 +2,7 @@
 title: Automated Link Preview Image Card
 subtitle: "Taking screenshots with Playwright"
 date: 2022-05-31 00:00:00 -0800 GMT
-tags: []
+tags: [Preview, Automation, TypeScript, Link]
 ss: "preview/automated_link_preview.jpg"
 aliases:
     - /automated_link_preview/

@@ -17,15 +17,14 @@
             <p class="right">{{- .Date.Format "January 2, 2006" -}}</p>
           </div>
           <div class="post_content">{{ .Content }}</div>
-          <!-- {{- if .Params.tags }}
-          <hr/>
-          <div class="links">
+          {{- if .Params.tags }}
+          <div class="tags">
             {{- range .Params.tags }}
             {{- $href := print (absURL "tags/") (urlize .) }}
-            <a class="link" href="{{ $href }}">{{ . }}</a>
+            <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="{{ $href }}">{{ . }}</a>
             {{- end }}
           </div>
-          {{- end }} -->
+          {{- end }}
         </div>
         {{- partial "newsletter.html" . }}
         <div class="bottom_buttons">

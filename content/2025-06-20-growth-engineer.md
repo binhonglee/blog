@@ -2,7 +2,7 @@
 title: Growth Engineer
 subtitle: "Taking fine-tuning to the next level"
 date: 2025-06-20 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer, Growth]
 ss: "preview/growth_engineer.jpg"
 aliases:
   - /growth_engineer/

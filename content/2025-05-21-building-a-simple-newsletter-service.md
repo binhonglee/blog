@@ -2,7 +2,7 @@
 title: Building a Simple Newsletter Service
 subtitle: "Just a DB with some HTMLs"
 date: 2025-05-21 00:00:00 -0800 GMT
-tags: []
+tags: [Self Hosted, Newsletter, Service, Email]
 ss: "preview/simple_newsletter_service.jpg"
 aliases:
   - /simple_newsletter_service/

@@ -2,7 +2,7 @@
 title: The Art of Posting
 subtitle: "It's both self-promotion and communication"
 date: 2025-05-16 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer, Culture]
 ss: "preview/art_of_posting.jpg"
 aliases:
     - /art_of_posting/

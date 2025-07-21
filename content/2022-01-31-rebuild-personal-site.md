@@ -2,7 +2,7 @@
 title: Rebuilding Personal Site from Scratch
 subtitle: "Only HTML + CSS with no frameworks"
 date: 2022-01-31 00:00:00 -0800 GMT
-tags: []
+tags: [Web, HTML, CSS]
 ss: "preview/rebuild_personal_site.jpg"
 aliases:
     - /rebuild_personal/

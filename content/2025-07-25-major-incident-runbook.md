@@ -2,7 +2,7 @@
 title: Major Incident Runbook
 subtitle: "Take a deep breath, you got this!"
 date: 2025-07-25 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer, Incident Management]
 ss: "preview/major_incident_runbook.jpg"
 aliases:
   - /major_incident_runbook/

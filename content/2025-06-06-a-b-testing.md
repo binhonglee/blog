@@ -2,7 +2,7 @@
 title: A/B Testing
 subtitle: "Basic guide to running a good A/B test"
 date: 2025-06-06 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer, Growth]
 ss: preview/a_b_testing.jpg
 aliases:
   - /a_b_testing/

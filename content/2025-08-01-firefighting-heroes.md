@@ -2,7 +2,7 @@
 title: Firefighting Heroes
 subtitle: "Symptoms of an unhealthy reliability system"
 date: 2025-08-01 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer, Incident Management]
 ss: preview/firefighting_heroes.jpg
 aliases:
   - /firefighting_heroes/

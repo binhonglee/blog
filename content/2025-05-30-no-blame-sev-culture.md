@@ -2,7 +2,7 @@
 title: No Blame SEV (Incident) Culture
 subtitle: "Less finger-pointing, more preventions"
 date: 2025-05-30 00:00:00 -0800 GMT
-tags: 
+tags: [The Opinionated Engineer, Incident Management]
 ss: preview/no_blame_sev_culture.jpg
 aliases:
   - /no_blame_sev_culture/

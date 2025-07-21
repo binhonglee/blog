@@ -2,7 +2,7 @@
 title: Push Fearlessly with Automated Testing
 subtitle: "Move faster by moving slower"
 date: 2025-05-04 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer, Automated Testing]
 ss: "preview/push_fearlessly_with_automated_testing.jpg"
 aliases:
     - /push_fearlessly_with_automated_testing/

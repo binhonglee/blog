@@ -3,6 +3,9 @@ languageCode = "en-us"
 title = "BinHong Lee's Blog"
 theme = "my_theme"
 
+[taxonomies]
+tag = "tags"
+
 [Menu]
   [[menu.main]]
     identifier = "about"

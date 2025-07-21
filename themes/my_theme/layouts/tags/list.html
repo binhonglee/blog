@@ -1,0 +1,37 @@
+{{- partial "header.html" . }}
+
+    <main class="content_body article_body">
+      <div class="primary_block projects">
+        {{- $scope := .Site }}
+        {{- $currentTag := .Data.Term }}
+        <p style="font-size: xxx-large;" class="desc">Tag: {{ $currentTag }}</p>
+        {{- $paginator := .Paginate (where $scope.RegularPages ".Params.tags" "intersect" (slice $currentTag))}}
+        {{- range $index, $page := $paginator.Pages }}
+        <article class="block">
+          <a class="article_link active" href="{{ .Permalink }}">
+            <h1 class="row title">{{ .Title }}</h1>
+            {{- if .Params.subtitle }}
+            <p class="row subtitle">{{ .Params.subtitle }}</p>
+            {{- end }}
+            <p class="desc">{{ .Summary | plainify | htmlUnescape }}...</p>
+            <p class="right">{{ .Date.Format "January 2, 2006" }}</p>
+          </a>
+        </article>
+        {{- end }}
+      </div>
+
+      {{- if gt $paginator.TotalPages 1 }}
+      <nav class="navigation">
+        {{- if $paginator.HasPrev }}
+        <a class="left" href="{{ $paginator.Prev.URL }}">← Newer</a>
+        {{- end }}
+        {{- if $paginator.HasNext }}
+        <a class="right" href="{{ $paginator.Next.URL }}">Older →</a>
+        {{- end }}
+      </nav>
+      {{- end }}
+
+      {{- partial "newsletter.html" . }}
+    </main>
+
+{{- partial "footer.html" . }}
