@@ -8,7 +8,74 @@
     <language>en-us</language>
     <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
-    <lastBuildDate>Sun, 18 Jul 2021 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/continuous-integration/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 25 Apr 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/continuous-integration/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Self-Hosted GitHub Actions Runners</title>
+      <link>https://binhong.me/blog/2025-04-25-self-hosted-github-runners/</link>
+      <pubDate>Fri, 25 Apr 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-04-25-self-hosted-github-runners/</guid>
+      <description>&lt;p&gt;This post will focus more on the &amp;ldquo;why&amp;rdquo; and some of the quirks around doing so instead of the &amp;ldquo;how&amp;rdquo; since GitHub already have &lt;a href=&#34;https://docs.github.com/en/actions/hosting-your-own-runners&#34;&gt;a very comprehensive guide&lt;/a&gt; around it.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Just wanted to take a bit of time to acknowledge that it&amp;rsquo;s been almost 3 years since I last wrote a blog post. It&amp;rsquo;s been a busy 3 years for sure but hopefully I&amp;rsquo;ll be writing more consistently moving forward. (I do have quite a few half-written drafts that I&amp;rsquo;ve never published which I can&amp;rsquo;t tell if it&amp;rsquo;s still relavant at this point.)&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#whats-a-github-actions-runner&#34;&gt;
+    &lt;h2 id=&#34;whats-a-github-actions-runner&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;What&amp;rsquo;s a GitHub Actions Runner?&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Basically instead of running GitHub Actions (GitHub&amp;rsquo;s own CI/CD) on GitHub&amp;rsquo;s machines, you can run them on your own devices. Running GitHub Actions on your self-hosted GARs would not count against your monthly Action minutes (since you are not using their machines) and can be an effective cost saving alternative.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#why-do-i-even-need-to-self-host-it&#34;&gt;
+    &lt;h2 id=&#34;why-do-i-even-need-to-self-host-it&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Why do I even need to self-host it?&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;The main use-cases is when you have private GitHub repositories so you only have 2000 included Actions minutes. While it might make sense for you to pay for GitHub Pro (which comes with more GitHub minutes), I didn&amp;rsquo;t find myself needing all other features that comes with it. On top of that, I happen to have a few old computers lying around so I figured I&amp;rsquo;d use them as ever-on GitHub runners. (So far, the electricity bill seems to be cheaper than paying for extra minutes or paying for any external equivalent CI service.)&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#why-not-gitea-runners-or-other-self-hosted-ci-services&#34;&gt;
+    &lt;h2 id=&#34;why-not-gitea-runners-or-other-self-hosted-ci-services&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Why not Gitea Runners (or other self-hosted CI services)?&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Personally, I already have GitHub Actions setup so migrating to a different CI service will take additional effort while still having similar limitations (for free plans). That said, Gitea actions mostly allows you to reuse GitHub action yamls (with a few minor exceptions like artifact upload / downloads). I stuck with using GitHub instead of fully migrating to self-hosted Gitea mainly due to the way dependabot and / or renovate-bot is already easily integrated without needing yet another action to trigger.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#linux-with-wsl&#34;&gt;
+    &lt;h2 id=&#34;linux-with-wsl&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Linux (with WSL)&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;I have a &lt;em&gt;somewhat&lt;/em&gt; old Windows laptop (almost 6 years old, but broken battery and built-in keyboard) which is still pretty powerful aside from the fact that it can no longer be used as a laptop. It really hasn&amp;rsquo;t been used in any meaningful way for a while now so I decided to do some cleanup then setup multiple instances of WSL (with the same distro for convenience sake). The one issue I did ran into was when we needed postgres running in the background. Generally, you&amp;rsquo;d use a docker image of it on GH action but you actually can&amp;rsquo;t have multiple copies of postgres running on the same device because it&amp;rsquo;d complain about port 5432 being in use. (I tried blocking port sharing between instances but it didn&amp;rsquo;t seem to resolve the issue.) Eventually, I just install postgres on every instance but they all just uses the service from the first instance (which occupies the 5432 port). So far, it has mostly been working as expected.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#macos-with-utm&#34;&gt;
+    &lt;h2 id=&#34;macos-with-utm&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;macOS (with UTM)&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;For the past few years, the only macOS device I own was a 2014 MacBook Air (which surprisingly still holds up&amp;hellip; to some extend). So when I decided to start building an iOS app for &lt;a href=&#34;https://globetrotte.com&#34;&gt;GlobeTrotte&lt;/a&gt;, I knew I needed to buy a new Mac device. I ended up getting a BNIB M4 Mac Mini from some dude on FB Marketplace (for like $500). That said, I slowly learnt the pain of an immobile dev device so I copped for a used M2 MacBook Air (also for around $500). With that, my Mac Mini is officially freed up to do whatever so I install UTM on it to replicate the WSL setup of having multiple VM running on a device. However, I quickly ran into storage limitation issue since I need at least ~50GB storage per instance in order to run iOS simulators with XCode on it. The main instance only have 256GB storage where more than half is already occupied with all sorts of things other stuff. So instead, I setup a HDD dock and tried running UTM images on them. For what it&amp;rsquo;s worth, it works but the experience wasn&amp;rsquo;t exactly great. The whole OS moves really slowly / laggy but I guess if it works, it works(?). I am contemplating on getting an external m.2 SSD to see if it&amp;rsquo;d do better. Will update this section of the post if I ended up doing so.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#pros&#34;&gt;
+    &lt;h2 id=&#34;pros&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Pros&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Aside from the obvious advantages of not having to pay for CI fees and repurposing your old tech devices, it&amp;rsquo;s also valuable to have a consistent device setup especially across dev and CI environment (so you know test failures aren&amp;rsquo;t due to some missing setups). That said, I don&amp;rsquo;t think anything else particularly stood out aside from the cost factor and the ease of use (and it being &lt;em&gt;quasi-industry-standard&lt;/em&gt;).&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#cons&#34;&gt;
+    &lt;h2 id=&#34;cons&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Cons&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;In my case, these are being ran on my personal devices at home so if my internet goes down, essentially my entire CI service goes down with it (which isn&amp;rsquo;t ideal). As mentioned above, I&amp;rsquo;ve also explored the option to host them on VPS but the cost (for a machine that can consistently run it) is really high. Lower tier VPS (like those available for $5/mo) generally have too little RAM causing it to freeze up a lot when running heavier operations (like e2e tests). Maybe I can bring an old computer to a friend&amp;rsquo;s / family&amp;rsquo;s house and run it on there but then you&amp;rsquo;d incur electricity bills at their place. (As far as I can tell, it&amp;rsquo;s not much but that&amp;rsquo;s generally not the way to treat people who trust you.)&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;I did this mainly to save money and hassle to figure out which plan I need or what CI service fits me best. I used to run my own CI service with &lt;a href=&#34;https://drone.io&#34;&gt;drone.io&lt;/a&gt; many years ago &lt;a href=&#34;https://binhong.me/blog/2018-08-20-hosting-your-own-git-server-with-gitea/#droneio&#34;&gt;(which you can read more about here)&lt;/a&gt; but ran into the exact issue on VPS having rather limited RAM. Hopefully this setup can stay around for a bit longer and facilitate GlobeTrotte on &lt;em&gt;moving fast&lt;/em&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>PostgreSQL on Azure Pipeline with OSX</title>
       <link>https://binhong.me/blog/2021-07-18-postgresql-on-azure/</link>

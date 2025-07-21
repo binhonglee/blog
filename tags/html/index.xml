@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTML on BinHong Lee&#39;s Blog</title>
+    <link>https://binhong.me/blog/tags/html/</link>
+    <description>Recent content in HTML on BinHong Lee&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
+    <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
+    <lastBuildDate>Mon, 31 Jan 2022 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/html/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rebuilding Personal Site from Scratch</title>
+      <link>https://binhong.me/blog/2022-01-31-rebuild-personal-site/</link>
+      <pubDate>Mon, 31 Jan 2022 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2022-01-31-rebuild-personal-site/</guid>
+      <description>&lt;p&gt;As time goes on in my journey of experimenting with different technologies on building a web interface, I figured it&amp;rsquo;s time for my personal site to return to the fundamentals. So I decided to build it with only HTML + CSS with one of the goals being that it should work perfectly fine with JavaScript disabled.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Before this, it&amp;rsquo;s built with Vue. You can still find the source &lt;a href=&#34;https://github.com/binhonglee/binhonglee.github.io/tree/old_dev&#34;&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#design&#34;&gt;
+    &lt;h1 id=&#34;design&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Design&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h1&gt;
+&lt;/a&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#inspiration&#34;&gt;
+    &lt;h2 id=&#34;inspiration&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Inspiration&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;&lt;em&gt;Skip this next paragraph if you&amp;rsquo;re not interested in my old site&amp;rsquo;s origin story.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;My old site is structured more like a resume than a personal self intro. It&amp;rsquo;s rather serious by nature since it was built at a time when I was looking my first job out of college. I stole the design from the personal site of a great friend of mine, Pat Pataranutaporn (just one out of the plethora of pages) and dulled it down a little. He rebuilt his entire personal site shortly after but I stick with it since I built it in a way that&amp;rsquo;s rather easy to maintain (as in adding and removing stuff overtime). It served me well during those times but at this point a redesign is rather long overdue.&lt;/p&gt;
+&lt;p&gt;I can&amp;rsquo;t really do design (unless I&amp;rsquo;m given a rigid component library then maybe 😅) so I looked up how some of the seasoned software engineers design their site and pick out the parts I like about them. Here are some of the websites I took inspiration from:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wongmjane.com/&#34;&gt;Jane Manchun Wong&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cassidoo.co/&#34;&gt;Cassidy Williams&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://joeprevite.com/&#34;&gt;Joe Previte&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#ideology&#34;&gt;
+    &lt;h2 id=&#34;ideology&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Ideology&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;One of the most obvious common traits among them is how minimal they are while still showing a lot of personality. The other being that 2 / 3 have a dark mode toggle while Jane&amp;rsquo;s site is dark mode only. I stick with these ideas and decided to be more playful with my text colors especially since I can&amp;rsquo;t draw.&lt;/p&gt;
+&lt;p&gt;One other takeaway I had was that I really liked the monospaced font used on Cassidy&amp;rsquo;s site. I tried Victor Mono initially since I really like it (and use it day-to-day on all my text editors) but I find it&amp;rsquo;s readability isn&amp;rsquo;t great for longer paragraphs. I decided to settle for Fira Code instead (first font that introduced me to ligatures for programming).&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note: Monospaced fonts in general aren&amp;rsquo;t meant for regular text reading anyway so this is something completely within expectation.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#implementation&#34;&gt;
+    &lt;h1 id=&#34;implementation&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Implementation&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h1&gt;
+&lt;/a&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#dark-mode&#34;&gt;
+    &lt;h2 id=&#34;dark-mode&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Dark mode&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Since I&amp;rsquo;m not using JavaScript, this is going to be tricky. That said, major credit to Shubham for pointing out the basic concept of its implementation in &lt;a href=&#34;https://twitter.com/4shub/status/1259298005368270849&#34;&gt;this tweet&lt;/a&gt;. On top of that, there&amp;rsquo;s just a lot of CSS gymnastics where I learn about the different selectors and what they each does in CSS (&lt;a href=&#34;https://www.w3schools.com/cssref/sel_element_pluss.asp&#34;&gt;+&lt;/a&gt;, &lt;a href=&#34;https://www.w3schools.com/cssref/sel_element_gt.asp&#34;&gt;&amp;gt;&lt;/a&gt;, &lt;a href=&#34;https://www.w3schools.com/cssref/sel_gen_sibling.asp&#34;&gt;~&lt;/a&gt;, &lt;a href=&#34;https://www.w3schools.com/cssref/sel_attribute.asp&#34;&gt;[]&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;One important thing of note is that, the toggle &amp;ldquo;button&amp;rdquo; (the &lt;code&gt;detail&lt;/code&gt; component) has to be at the same level as the top level of the rest of the components on the screen. I keep my toggle on the right which is sufficient to prevent colliding / blocked by other stuff on screen.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#smaller-screens&#34;&gt;
+    &lt;h2 id=&#34;smaller-screens&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Smaller Screens&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;I tried my best to make everything as modular as possible so it should properly reorganize itself dynamically based on the given screen size. However, there are always exceptions and this is where &lt;code&gt;@media screen and (max-width: 1000px)&lt;/code&gt; comes in handy for addressing these edge cases.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#dropdown-menu&#34;&gt;
+    &lt;h2 id=&#34;dropdown-menu&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Dropdown Menu&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;As I add a few more sections to my side, I started to realize that the link menu might not fit on certain display sizes. In general, it just follows &lt;a href=&#34;https://www.w3schools.com/Css/css_dropdowns.asp&#34;&gt;this w3c guide&lt;/a&gt;. I originally did one implementation that used the similar idea of the dark mode toggle above but I opted for &lt;code&gt;:hover&lt;/code&gt; instead of &lt;code&gt;[open]&lt;/code&gt; due to its interaction where I think it makes more sense to be dismissed when I tap on random places on the screen.&lt;/p&gt;
+&lt;p&gt;In order to make it more accessible, it is also important to add the appropriate aria labels. &lt;a href=&#34;https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html&#34;&gt;This page&lt;/a&gt; has a rather comprehensive guide on the proper labels to add for each fields.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#truncation-somewhat-unrelated&#34;&gt;
+    &lt;h2 id=&#34;truncation-somewhat-unrelated&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Truncation (somewhat unrelated)&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;This is more for the blog part of the site where I find the default truncation being too lenient thus generating some of the overly long (and not uniformed) summary text.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-css&#34; data-lang=&#34;css&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nc&#34;&gt;description&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;display&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kp&#34;&gt;-webkit-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;box&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;overflow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;hidden&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;k&#34;&gt;word-break&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;break-word&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kp&#34;&gt;-webkit-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;line-clamp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;kp&#34;&gt;-webkit-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;box-orient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;vertical&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; 
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;a class=&#34;anchor&#34; href=&#34;#takeaway&#34;&gt;
+    &lt;h1 id=&#34;takeaway&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Takeaway&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h1&gt;
+&lt;/a&gt;
+&lt;p&gt;Overall it&amp;rsquo;s been a great experience to relearn and understand what we can do even without any of the modern JavaScript frameworks. It also serves as a great reminder that web existed for quite a while before JavaScript came around. While they may not be as pretty and reactive as it is today, they still works and have a lot to offer (especially as HTML and CSS standards continues to evolve as well).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

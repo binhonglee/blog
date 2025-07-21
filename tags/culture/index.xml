@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Culture on BinHong Lee&#39;s Blog</title>
+    <link>https://binhong.me/blog/tags/culture/</link>
+    <description>Recent content in Culture on BinHong Lee&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
+    <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
+    <lastBuildDate>Fri, 23 May 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/culture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Code Review Culture</title>
+      <link>https://binhong.me/blog/2025-05-23-code-review-culture/</link>
+      <pubDate>Fri, 23 May 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-05-23-code-review-culture/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Ask a programmer to review 10 lines of code, he&amp;rsquo;ll find 10 issues. Ask him to do 500 lines and he&amp;rsquo;ll say it looks good. - &lt;a href=&#34;https://x.com/girayozil/status/306836785739210752&#34;&gt;@girayozil&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Code review is a really subjective thing where each team or even individual runs things very differently. However, a bad code review process can lead to bad code smells and unnecessary tech debt (just ask all the vibe coders out there 🫣). I will try my best to share my &lt;em&gt;rather opinionated&lt;/em&gt; takes while explaining the reasoning behind each of them.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#overly-prescriptive-formatters&#34;&gt;
+    &lt;h2 id=&#34;overly-prescriptive-formatters&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Overly prescriptive formatters&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;I&amp;rsquo;m highly supportive of having a preset of an overly prescriptive formatter. It doesn&amp;rsquo;t matter if it&amp;rsquo;s spaces vs tabs, 2 spaces vs 4 spaces, curly braces on the same line or newline; as long as you have a formatter that keeps it consistent. This cuts down on all the unnecessary time reviewing and fixing code formatting while still being easy to read and scan through. Make them as strict as possible, ideally 100% reproducible where every line of code only has one way it can be formatted. Again, it doesn&amp;rsquo;t matter which style you pick but just pick something and stick with it, it&amp;rsquo;s all about consistency here.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#bias-against-newbies&#34;&gt;
+    &lt;h2 id=&#34;bias-against-newbies&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Bias against newbies&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;There was some research that finds that when someone is new to the stack / team / industry, reviewers tend to be stricter and more nitpicky against their code changes relative to a long-timer or a more senior engineer. Personally, I see this as a feature instead of a bug. A long-timer has earned their reputation (assuming that&amp;rsquo;s how they are a long-timer and not just a bad engineer successfully avoiding accountability at every turn) and can be afforded to be treated with more leniency in their code. A &lt;em&gt;newbie&lt;/em&gt; however benefits from stricter code review feedback teaching them the style and tradeoffs the team values when it comes to coding patterns, thus learning good practices along the way.&lt;/p&gt;
+&lt;p&gt;In an ideal world, teams would have detailed style guides on how everything is written and every new person will be given ample time to read and understand them as part of onboarding. But the reality is that this rarely happens between the outdated style guides and the lack of proper onboarding process, so code review frequently becomes the first time a new person has the opportunity to learn about a team&amp;rsquo;s style guide (aside from linters and formatters). Let&amp;rsquo;s make sure to get it right so they don&amp;rsquo;t develop the wrong habits.&lt;/p&gt;
+&lt;p&gt;That said, it&amp;rsquo;s important to note that senior engineers should still hold themselves to a higher level in producing quality code as a way to lead by example. It will be rather unconvincing to a newbie if their reviewer writes &lt;em&gt;subpar code&lt;/em&gt; while holding others to a higher quality bar.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#ask-for-further-details&#34;&gt;
+    &lt;h2 id=&#34;ask-for-further-details&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Ask for further details&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Sometimes the change request itself is lacking details about the project or the reason behind such changes. Always ask for further details. In many occasions, it&amp;rsquo;s just the author overlooking it or making an assumption that their reviewers share the same level of context the author has about the project. This is a bit of an extension from the previous section but if you are accepting without understanding &lt;em&gt;why&lt;/em&gt;, you are in a sense &amp;ldquo;blindly accepting&amp;rdquo; the change (even if in this case, it&amp;rsquo;s just &lt;em&gt;partially&lt;/em&gt; blind lol).&lt;/p&gt;
+&lt;p&gt;Similarly, if the change is too complex (or if it&amp;rsquo;s bundling too many changes at once), ask for it to be broken down into atomic changes for better / easier review. Having smaller changes also allows for each change to be better reviewed by different domain experts instead of everyone crowding on the same change request. (I understand this is not always feasible so there will be exceptions but ideally, this is done whenever possible.)&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#never-blindly-accept--accept-to-unblock&#34;&gt;
+    &lt;h2 id=&#34;never-blindly-accept--accept-to-unblock&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Never blindly accept / accept to unblock&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;These are generally two separate scenarios but their result is generally the same. A change that is otherwise not meeting the code review bar is getting accepted and pushed to production. Blind acceptance generally reflects more of a bad team culture where people either don&amp;rsquo;t take code review seriously or they don&amp;rsquo;t feel comfortable pushing back in code review, both of which are bad. &amp;ldquo;Accept to unblock&amp;rdquo; generally comes with good intention but doing so essentially voids the role of a reviewer. The most common reason for its use is due to reviewers not feeling comfortable about blocking a change but not wishing to take responsibility if that ends up being the bad commit causing an outage.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;only&lt;/strong&gt; exception here would be when it&amp;rsquo;s a &lt;em&gt;time sensitive&lt;/em&gt; change where &amp;ldquo;it can&amp;rsquo;t be worse than it is now&amp;rdquo; &lt;strong&gt;and&lt;/strong&gt; that the author is the &lt;em&gt;domain expert&lt;/em&gt; of the change. The most common example being a code change attempting to mitigate an ongoing production issue. (I&amp;rsquo;ll write up an incident runbook at some point which will most likely include this.)&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#fix-now-not-later&#34;&gt;
+    &lt;h2 id=&#34;fix-now-not-later&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Fix &lt;strong&gt;now&lt;/strong&gt; not later&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;On some occasions, you might run into a response in your review that they will &amp;ldquo;fix it in a future change&amp;rdquo;. (Generally, it&amp;rsquo;s more common in scenarios where your work adopts the idea of &lt;a href=&#34;https://graphite.dev/guides/stacked-diffs&#34;&gt;&amp;ldquo;stacked diffs&amp;rdquo;&lt;/a&gt;.) This is a bad pattern that should be avoided at large (unless &lt;em&gt;absolutely necessary&lt;/em&gt;) mainly because this change now hinges on a separate future change to be &lt;strong&gt;correct&lt;/strong&gt;, and that the other change could be independently reverted - for any external reasons - without this change, thus causing this bad pattern to now persist in your codebase.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#involve-the-subject-matter-expert&#34;&gt;
+    &lt;h2 id=&#34;involve-the-subject-matter-expert&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Involve the Subject Matter Expert&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;If you&amp;rsquo;re tagged / asked to review a change but you think someone else should take a look too, tag them. Most people are very open to reviewing changes when approached directly (especially if they are the SME, the change likely affects them / their team directly too). I&amp;rsquo;ve lost count of the number of times where I wrote some code, pinged the SME, then learned that whatever I&amp;rsquo;m doing is an anti-pattern which &amp;ldquo;works fine now&amp;rdquo; but has no guarantee that it will continue working that way. Funnily, I&amp;rsquo;ve even had an experience where the framework team pulled me in to review changes because I was considered the SME for the use case another person was attempting. In general, it&amp;rsquo;s better to have these discussions &lt;em&gt;before&lt;/em&gt; a change is committed instead of &lt;em&gt;after&lt;/em&gt; (especially if it ends up causing unexpected incidents later on).&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#prototyping&#34;&gt;
+    &lt;h2 id=&#34;prototyping&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Prototyping&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Code changes that are meant to be prototypes (especially RFCs) should clearly indicate that in their title (or some obvious tags / flags). There are 2 types of prototype code, one which is more of an exploration that is never meant to be shipped; while the other is a recommendation for adoption. In both scenarios, there should be clear indication of which type of prototype code this is and what the intention behind the prototype is (what are you trying to achieve?). For the former - exploration that is never meant to be shipped, the change should also clearly mark that it should never be shipped (hidden / unpublished etc.) with little comments all over explaining each of the &amp;ldquo;mocks&amp;rdquo; or &amp;ldquo;overrides&amp;rdquo; done to achieve the exploration. For the latter - recommendation for adoption, the change should be reviewed as strictly as any regular changes (potentially stricter since it&amp;rsquo;s likely coming from a &lt;em&gt;newbie&lt;/em&gt; as defined above).&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#long-review-time&#34;&gt;
+    &lt;h2 id=&#34;long-review-time&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Long review time&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;This is more of a polarizing problem where your team either never heard of this problem, or it&amp;rsquo;s something your team is struggling immensely with. In some teams, the lack of proper &amp;ldquo;incentive&amp;rdquo; for doing code review has greatly reduced team velocity in shipping due to time taken for a code change sitting around waiting for it to be reviewed. While I&amp;rsquo;d usually chalk this up as an &amp;ldquo;incentive&amp;rdquo; problem, I personally believe this as a &amp;ldquo;lead by example&amp;rdquo; cultural shift. Usually teams / orgs better at this have more &lt;em&gt;technically driven&lt;/em&gt; high level ICs who do a lot of (strict?) code reviews themselves, thus fostering a good code review culture throughout their team / org. So in that sense, &amp;ldquo;be the change you want to see&amp;rdquo;.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;The culture of code review is something very intentional and will take effort to both cultivate and maintain. The value of good culture however, is usually not something directly measurable (will write a separate piece about intangibles in the future). Having bad culture generally isn&amp;rsquo;t something immediately obvious nor is it something that can be turned around overnight, but rather something that&amp;rsquo;s simmered over a long period of time until it&amp;rsquo;s boiling, by then it&amp;rsquo;s &lt;em&gt;too late&lt;/em&gt; and people are leaving in droves.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Art of Posting</title>
+      <link>https://binhong.me/blog/2025-05-16-art-of-posting/</link>
+      <pubDate>Fri, 16 May 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-05-16-art-of-posting/</guid>
+      <description>&lt;p&gt;This piece is specifically more about Meta&amp;rsquo;s &lt;em&gt;unique&lt;/em&gt; culture of &amp;ldquo;posting&amp;rdquo; about things but I imagine it can be a useful reference on communication in general. Many people loathe this process and complain about how it&amp;rsquo;s just a lot of &amp;ldquo;self-promotion&amp;rdquo; and while there&amp;rsquo;s definitely some truth to it, it&amp;rsquo;s also a valuable communication avenue that you can leverage to your advantage. As we will explore further below, &lt;em&gt;posting&lt;/em&gt; by itself is more of a bonus as the post will still require actual substance (which is &lt;em&gt;your work&lt;/em&gt; lol).&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#proposing-an-idea&#34;&gt;
+    &lt;h2 id=&#34;proposing-an-idea&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Proposing an idea&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;A common theme of complaints you might see in a work environment is how &lt;em&gt;someone else&lt;/em&gt; steals your idea. Making a post serves as a paper-trail on this being &lt;em&gt;your idea&lt;/em&gt; as the original author. It&amp;rsquo;s also a useful cross-referencing tool when you run into discussions where your (previously suggested) idea could be a solution, you can share a link instead of going through your idea all over again. By itself, it also serves as a valuable RFC where others are free to comment with their concerns and / or how they feel about things in general. From there, you could gather feedback or even retool your idea a little to eventually become a valuable proposal and contribution towards your team goal.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#tracking-progress&#34;&gt;
+    &lt;h2 id=&#34;tracking-progress&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Tracking progress&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;When working on a long running project (especially one involving many different people in different stages), posts serve as a good way to track and announce progress, signaling to others if / when they need to start getting involved or otherwise. It&amp;rsquo;s also a valuable communication tool where others can keep track of your project if it ended up affecting their own project (intentionally or otherwise). One of the more common &amp;ldquo;behavioral&amp;rdquo; gap issue for an E4 -&amp;gt; E5 promo is where an E4 can quietly work through the project and launch everything themselves while an E5 would communicate this clearly (outwardly) before even starting to ensure that their project does not end up conflicting with the timeline of other partner teams unintentionally.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrapping-up-a-project&#34;&gt;
+    &lt;h2 id=&#34;wrapping-up-a-project&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrapping up a project&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Often times (especially on a long running complex project) by the time it comes to &lt;em&gt;finally&lt;/em&gt; closing out the project, everyone is exhausted and you&amp;rsquo;re just glad that &amp;ldquo;it&amp;rsquo;s done&amp;rdquo; and you can finally move on to the next thing. This is frequently a missed opportunity to nicely wrap up the project and show your appreciation towards everyone who helped make it happen. It&amp;rsquo;s like you went through all the trouble picking the perfect gift, understanding which variant fits them best, finding where to get one, but didn&amp;rsquo;t bother to wrap the gift in a wrapper or a nice little gift bag. Nothing wrong with it, and the value of the gift is still good but having a nice wrapper or even just a little ribbon would&amp;rsquo;ve been a cherry on top of the perfect gift. Similarly, making a post wrapping up the launch and sending thanks to everyone who supported the launch goes a long way in terms of both visibility and relationship building.&lt;/p&gt;
+&lt;p&gt;Not all projects are straight up successful launches and / or without leftover cleanup work to do. In fact most projects have some level of cleanup work remaining after it&amp;rsquo;s launched. The wrap up post is the best time to clearly lay them out and at least ensure that they are tracked. Similarly, you might have learnings from the project &lt;em&gt;(especially for failed launches)&lt;/em&gt; which can be useful to share for future references if someone were to run into similar issues or to re-attempt this project again in the future.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#calling-out-potential-issues&#34;&gt;
+    &lt;h2 id=&#34;calling-out-potential-issues&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Calling out potential issues&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Honestly this section kinda feels like just spelling out &amp;ldquo;regular social interactions&amp;rdquo; but sometimes it just needs to be said. Both as an author or as a reader of a post, you should take the opportunity to raise any potential issue you might be concern about in the comment of the post. As an author, this allows you to essentially crowdsource potential solution to your concern (maybe someone else has a &amp;ldquo;solution looking for a problem&amp;rdquo; lol). As a reader, you might have different perspective that sees potential risks that the author might have missed, or they figured it out but made an assumption that others would know, your question allows them to clarify their thought process or solution to your question.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;There are some exception where if you think something is not suitable to be discussed in such an &lt;strong&gt;open&lt;/strong&gt; setting but that&amp;rsquo;s largely up to your own discretion.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#pre-read-from-subject-matter-experts&#34;&gt;
+    &lt;h2 id=&#34;pre-read-from-subject-matter-experts&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Pre-read from Subject Matter Experts&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Sometimes you have an idea on stuff you might not be super familiar with (or at least not something you&amp;rsquo;re seen as an expert) and that&amp;rsquo;s fine. But it can be valuable to leverage people around you for their expert opinion. It&amp;rsquo;s also a great way to build work relationship as people like to be seen as an expert. I&amp;rsquo;ve largely found most people to be helpful and open to help look at whatever you&amp;rsquo;ve written as long as you have some level of relationship with them (be it working on a previous project together or trauma bonding through SEVs). Having a SME review your post provides credibility to the things you&amp;rsquo;re writing / proposing and helps get your stuff attention from the correct stakeholders.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Admittedly, this is less of an opinion piece and more of a &amp;ldquo;how to&amp;rdquo; (or &amp;ldquo;how I do x&amp;rdquo;) piece. I don&amp;rsquo;t expect this to change minds entirely on your take about how this is just a lot of self-promotion theatrics but I hope to at least provide a framework on how to use this to your own advantage.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

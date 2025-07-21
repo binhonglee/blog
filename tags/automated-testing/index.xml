@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Automated Testing on BinHong Lee&#39;s Blog</title>
+    <link>https://binhong.me/blog/tags/automated-testing/</link>
+    <description>Recent content in Automated Testing on BinHong Lee&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
+    <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
+    <lastBuildDate>Sun, 04 May 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/automated-testing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Push Fearlessly with Automated Testing</title>
+      <link>https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/</link>
+      <pubDate>Sun, 04 May 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/</guid>
+      <description>&lt;p&gt;Conventional wisdom is that writing tests slows you down, because the alternative is that you don&amp;rsquo;t need to write tests. In fact, Meta (then Facebook) was famously lacking of automated test inline with it&amp;rsquo;s famous &amp;ldquo;move fast and break things&amp;rdquo; mantra. However, from what I&amp;rsquo;ve seen, I beg to differ.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#when-to-write-tests&#34;&gt;
+    &lt;h2 id=&#34;when-to-write-tests&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;When to write tests?&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you love something, put a &lt;del&gt;ring&lt;/del&gt; test on it.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;I find this quote as a good general guiding principle. You should definitely have tests for all the &amp;ldquo;core&amp;rdquo; features. For all the additional features (or edge case handling), you&amp;rsquo;d need to make a decision / tradeoff based on how critical it is for something to work, and how frequent you might be changing it.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#fearlessly&#34;&gt;
+    &lt;h2 id=&#34;fearlessly&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Fearlessly&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;The main goal of writing tests is to prevent regressions. Without automated tests, you&amp;rsquo;d have to rely on other (less reliable) ways to avoid regression. Having (non-flaky) tests makes it easy to consistently verify when / how a regression is introduced. With the right CI system setup, you can make sure that you don&amp;rsquo;t release new versions / feature that would accidentally break previously released features in an unexpected way.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#assumptions--prerequisite&#34;&gt;
+    &lt;h2 id=&#34;assumptions--prerequisite&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Assumptions / Prerequisite&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;The expectation here is that you already have a working CI/CD pipeline setup which comprehensively runs all your tests for each commit merges and deployments. Alternatively, if you have too big of a test suite to run (or too costly), you could instead only run relavant tests on each individual commits while running all tests for each deployment.  If there’s a test that failed before deployment, you could still bisect to find the blame commit that broke the test.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#what-about-manual-testing&#34;&gt;
+    &lt;h2 id=&#34;what-about-manual-testing&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;What about manual testing?&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;The main issue with manual testing is that you don&amp;rsquo;t know what you don&amp;rsquo;t know. You know your code change affects x and y so you test them both and they work as intended but what you didn&amp;rsquo;t realize was that it also breaks z entirely which you did not test because that was unexpected. Having an automated test means you&amp;rsquo;d just always run the test suite (within your CI/CD process) which would be able to catch the issue.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#what-about-qa-testing&#34;&gt;
+    &lt;h2 id=&#34;what-about-qa-testing&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;What about QA testing?&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;QA testing generally happens on a weekly or bi-weekly (either definition) cadence. At best, you can do them on a daily basis but depending on the scale or speed at which your team is executing, it might still be hard to narrow down the specific commit that is causing the regression. With automated tests, you can bisect through your commit history without having to worry about setup and cleanup steps (assuming your tests are properly written).&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#why-not-just-write-test-for-everything&#34;&gt;
+    &lt;h2 id=&#34;why-not-just-write-test-for-everything&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Why not just write test for everything?&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;In an ideal world where the cost to write test is 0, this would be a prescribed solution and everyone will be adopting TDD (Test Driven Development) but instead, we live in a real world where writing tests cost time and energy so it&amp;rsquo;s important to pick and choose things worth investing on vs things that aren&amp;rsquo;t. Such tradeoff is subjective to the criticality of said system and how often the system might be changed / updated.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#broken-tests&#34;&gt;
+    &lt;h2 id=&#34;broken-tests&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Broken Tests&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Broken tests are &lt;strong&gt;tech debts&lt;/strong&gt;. Either prioritize fixing them or delete them if they are no longer relavant. Keeping them around gives false impression on the state of the test coverage while potentially adds unnecessary operational cost in running these tests. Same applies to flaky tests. In fact, I&amp;rsquo;d go a step further by saying that flaky tests are worse than broken tests because at least broken tests are deterministic (which is one important characteristic of a quality test).&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;When you have working quality automated tests, you can push new changes fearlessly knowing that it won&amp;rsquo;t cause regressions on features protected by these tests. This allows you to move faster both in terms of thinking about and testing all the possible regressions your change might cause, while also saving time on root causing a regression (if / when it does happen).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

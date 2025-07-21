@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Service on BinHong Lee&#39;s Blog</title>
+    <link>https://binhong.me/blog/tags/service/</link>
+    <description>Recent content in Service on BinHong Lee&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
+    <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
+    <lastBuildDate>Wed, 21 May 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/service/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a Simple Newsletter Service</title>
+      <link>https://binhong.me/blog/2025-05-21-building-a-simple-newsletter-service/</link>
+      <pubDate>Wed, 21 May 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-05-21-building-a-simple-newsletter-service/</guid>
+      <description>&lt;p&gt;When I had the idea on the series about &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;The Opinionated Engineer&lt;/a&gt;, I figured maybe that&amp;rsquo;s something worth setting up a newsletter service over. That said, after some consideration, I just thought that I didn&amp;rsquo;t need anything too complex and decided to roll my own because &amp;ldquo;how hard could it be?&amp;rdquo;. As far as I can tell, I think it&amp;rsquo;s working fine so far(?) and took me around one whole day to put the whole thing together from my couch. You can find all of it&amp;rsquo;s source code &lt;a href=&#34;https://github.com/binhonglee/subscription&#34;&gt;here on GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#existing-newsletter-services&#34;&gt;
+    &lt;h2 id=&#34;existing-newsletter-services&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Existing newsletter services&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Aside from Substack, pretty much all other services provide it with a &amp;ldquo;freemium&amp;rdquo; model where you are charged based on the number of subscribers (regardless if they are paid). Admittedly, I doubt my newsletter would get to that point (I try to not take myself too seriously lol) but I also didn&amp;rsquo;t need most of the things those services are providing. Not to take anything away from them, they all seem really useful if someone is doing that for a living, but I mostly write for fun and as a way to do some knowledge preservation (future self-reference) with the sharing part mostly being a bonus.&lt;/p&gt;
+&lt;p&gt;As for Substack, I didn&amp;rsquo;t look too deep into things and while they don&amp;rsquo;t have the best of reputation, their product seems to fit my use case best where I won&amp;rsquo;t have to pay anything ever unless I started having paid subscribers. That said, I thought I didn&amp;rsquo;t need something as fancy but just something simple that goes with my personal blog.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#design&#34;&gt;
+    &lt;h2 id=&#34;design&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Design&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;It&amp;rsquo;s a pretty straightforward design with a DB storing the email, a key (used in place of the email as an identifier), and it&amp;rsquo;s confirmation status. When someone subscribes, they get sent an email to confirm their subscription, which they can pick to either &amp;ldquo;Confirm&amp;rdquo; (where we update the confirmation status) or &amp;ldquo;Unsubscribe&amp;rdquo; (where the entry is removed from the DB). First reason to use a key is so that we know the confirmation or unsubscribe click is coming from the users&amp;rsquo; email instead of just people manually typing the link with someone else&amp;rsquo;s email as the param. Secondly, it prevents unintentional leak of the user&amp;rsquo;s email in address bar / browser history. Not necessarily a big deal but just not the ideal privacy design. (You could argue that &lt;em&gt;exposing&lt;/em&gt; the key that way isn&amp;rsquo;t great either but I&amp;rsquo;d imagine being unintentionally unsubscribed from &lt;del&gt;a&lt;/del&gt; my newsletter is likely a non-issue for most people lol.)&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#python-core-library-only&#34;&gt;
+    &lt;h2 id=&#34;python-core-library-only&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Python core library only&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;The whole thing is written in Python (with some HTML templates) without using any third party library. I can&amp;rsquo;t say this was fully intentional but I generally like to avoid external libraries unless absolutely necessary which in this case, it&amp;rsquo;s not. As for &amp;ldquo;why Python&amp;rdquo;, it was an arbitrary decision as I&amp;rsquo;ve been doing interviews with Python and sometimes feel like I probably should brush up on it&amp;rsquo;s syntaxes lol. (Kept having to Google random things like &amp;ldquo;split string in Python&amp;rdquo;, &amp;ldquo;define object in Python&amp;rdquo; is uhh, not exactly ideal while in the middle of a coding interview session lol.) I did regret on this slightly because this can&amp;rsquo;t be &amp;ldquo;compiled into a binary&amp;rdquo; where it can just be dumped somewhere to run by itself forever with some config files and HTML files. Instead, it needs the server to have Python installed and run the actual Python code. I&amp;rsquo;d prefer keeping and running only the binary on server but I digress.&lt;/p&gt;
+&lt;p&gt;As for it being HTML / CSS only, it&amp;rsquo;s mostly an extension from my personal site and blog being that way &lt;a href=&#34;https://binhong.me/blog/2022-01-31-rebuild-personal-site/&#34;&gt;which I&amp;rsquo;ve previously discussed about here&lt;/a&gt;. My personal opinion is that our growing reliance on JavaScript to do things had made us forget how powerful raw HTML and CSS could be in general. But also, I&amp;rsquo;ve been pleasantly surprised at how maintainable this has made my site as a whole. No worries about vulnerabilities or chasing and rebuilding it on the next / new shiny framework.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#email-html-quirks&#34;&gt;
+    &lt;h2 id=&#34;email-html-quirks&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Email HTML quirks&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;For the most part, email HTML behaves mostly the same with regular page HTML but there&amp;rsquo;s a few things that didn&amp;rsquo;t work which I&amp;rsquo;d like to point out:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;button type=&amp;quot;submit&amp;quot; /&amp;gt;&lt;/code&gt; within a &lt;code&gt;&amp;lt;form method=&amp;quot;post&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;var()&lt;/code&gt; CSS params&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;html {}&lt;/code&gt;, &lt;code&gt;:root {}&lt;/code&gt;, &lt;code&gt;body {}&lt;/code&gt; selector in CSS&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;:hover&lt;/code&gt; - I read that some email provider supports them but most don&amp;rsquo;t&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;style /&amp;gt;&lt;/code&gt; block (Gmail client specific) - Despite &lt;a href=&#34;https://developers.google.com/workspace/gmail/design/css&#34;&gt;what Google says&lt;/a&gt;, only inline CSS is rendered on Gmail&amp;rsquo;s own clients*&lt;/li&gt;
+&lt;li&gt;JavaScript - expected to prevent XSS lol&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I also tried to include everything in the email itself and didn&amp;rsquo;t make any references to external files for CSS which I assume would likely be stripped off as well.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;*The content of the email do remain so if you use a 3rd party client (like Mail on iOS) it&amp;rsquo;d render just fine but Gmail apps or web client won&amp;rsquo;t render anything in &lt;code&gt;&amp;lt;style /&amp;gt;&lt;/code&gt; tag.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#credential-stuffing&#34;&gt;
+    &lt;h2 id=&#34;credential-stuffing&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Credential stuffing&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Shortly after I deployed it to the open internet (like within 48 hours), I started seeing weird traffic with &lt;a href=&#34;https://www.threads.com/@binhonglee/post/DJ4rP3FyZsn&#34;&gt;random emails signing up but never confirming their sign-ups&lt;/a&gt;. &lt;a href=&#34;http://shub.club/&#34;&gt;Shubham&lt;/a&gt; mentioned that this is a &amp;ldquo;stuffing attack&amp;rdquo;. I did some more digging and find that this is a common thing where bad actors would just randomly try (usually old hacked) credentials on your site to see if they work. In my case, my param is set as &lt;code&gt;email&lt;/code&gt; so it&amp;rsquo;s likely super obvious that it takes an email. To be quite honest, I haven&amp;rsquo;t figure this all out but I added some secret key and some extra logging to track bad ips. It&amp;rsquo;s not perfect but it seems to be doing it&amp;rsquo;s job so far (along the confirmation check) in blocking majority of the spam traffic from actually signing up. As to why this is bad, I woke up to multiple emails mentioning that my send attempt to certain emails were bounced 🙃, probably a bad reputation thing if my email continues to be bounced.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;This is a fun little experience and mostly a good opportunity to brush up my Python skill better. (Ironically, I ended up doing my next interview in TypeScript lol.) I&amp;rsquo;d imagine if I started having more, different, thematic series in the future, it might make sense to allow for segmented subscription / un-subscription but that&amp;rsquo;s work for another day. For now, I hope you enjoy reading this as much as I had fun building and writing this. Please subscribe below (or don&amp;rsquo;t lol).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
