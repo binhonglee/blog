@@ -83,6 +83,21 @@
             <p class="right">May 21, 2025</p>
           </div>
           <div class="post_content"><p>When I had the idea on the series about <a href="/blog/2025-05-04-the-opinionated-engineer/">The Opinionated Engineer</a>, I figured maybe that&rsquo;s something worth setting up a newsletter service over. That said, after some consideration, I just thought that I didn&rsquo;t need anything too complex and decided to roll my own because &ldquo;how hard could it be?&rdquo;. As far as I can tell, I think it&rsquo;s working fine so far(?) and took me around one whole day to put the whole thing together from my couch. You can find all of it&rsquo;s source code <a href="https://github.com/binhonglee/subscription">here on GitHub</a>.</p>
+        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
 <a class="anchor" href="#existing-newsletter-services">
     <h2 id="existing-newsletter-services">
         <span class="text">Existing newsletter services</span>
@@ -139,6 +154,7 @@
 <p>This is a fun little experience and mostly a good opportunity to brush up my Python skill better. (Ironically, I ended up doing my next interview in TypeScript lol.) I&rsquo;d imagine if I started having more, different, thematic series in the future, it might make sense to allow for segmented subscription / un-subscription but that&rsquo;s work for another day. For now, I hope you enjoy reading this as much as I had fun building and writing this. Please subscribe below (or don&rsquo;t lol).</p>
 </div>
           <div class="tags">
+            🔖
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/self-hosted">Self Hosted</a>
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/newsletter">Newsletter</a>
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/service">Service</a>
@@ -157,7 +173,6 @@
               <input type="hidden" name="secret" id="secret" value="123potato123"/>
               <button type="submit" name="submit" class="subscribe">Subscribe</button>
           </form>
-          <br />
           You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
         </div>
         <div class="bottom_buttons">

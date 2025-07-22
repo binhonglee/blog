@@ -16,6 +16,21 @@
       <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/2025-05-21-building-a-simple-newsletter-service/</guid>
       <description>&lt;p&gt;When I had the idea on the series about &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;The Opinionated Engineer&lt;/a&gt;, I figured maybe that&amp;rsquo;s something worth setting up a newsletter service over. That said, after some consideration, I just thought that I didn&amp;rsquo;t need anything too complex and decided to roll my own because &amp;ldquo;how hard could it be?&amp;rdquo;. As far as I can tell, I think it&amp;rsquo;s working fine so far(?) and took me around one whole day to put the whole thing together from my couch. You can find all of it&amp;rsquo;s source code &lt;a href=&#34;https://github.com/binhonglee/subscription&#34;&gt;here on GitHub&lt;/a&gt;.&lt;/p&gt;
+        &lt;div class=&#34;newsletter&#34;&gt;
+          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
+          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
+              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
+              &lt;noscript&gt;
+                &lt;br /&gt;
+                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
+                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
+                &lt;br /&gt;
+              &lt;/noscript&gt;
+              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
+              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
+          &lt;/form&gt;
+          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
+        &lt;/div&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#existing-newsletter-services&#34;&gt;
     &lt;h2 id=&#34;existing-newsletter-services&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Existing newsletter services&lt;/span&gt;

@@ -84,6 +84,21 @@
           </div>
           <div class="post_content"><p>I wrote a similar version of this internally at Meta a few years ago for my org after finding myself in the middle of a few SEV1s in a row &ndash; and being consulted / asked for support in other similar situations. I thought this might be something useful to share (as a public version) as well. This won&rsquo;t be perfectly fitting for all use cases, but having a runbook works as an anchor in the midst of chaos, helping to get you unstuck from &ldquo;what&rsquo;s next?&rdquo;. Admittedly, this is an incomplete runbook that serves more as a template for your team or company to complete with more specific tooling guides (using <em>which</em> tool to achieve <em>what</em>, etc.).</p>
 <p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
 <a class="anchor" href="#stop-the-bleed">
     <h2 id="stop-the-bleed">
         <span class="text">Stop the Bleed!</span>
@@ -122,6 +137,7 @@
 <p>As a whole, you will largely be more like a PM / TPM instead of a regular engineer when handling a lot of this <em>alignment</em> work. If you think someone else is better suited to handle this (another more senior engineer or your manager, etc.), ask for help while you focus on the thing that you do best (likely as the subject matter expert on investigation or remediation). Remember that incident management is a skill that improves with practice - don&rsquo;t expect to be perfect on your first few incidents, even experienced engineers can feel overwhelmed when everything is on fire. Don&rsquo;t forget to acknowledge the team&rsquo;s efforts since major incidents are stressful for everyone involved, and use this runbook as a starting point while adapting it based on your team&rsquo;s specific needs and continuously improving your processes with each incident.</p>
 </div>
           <div class="tags">
+            🔖
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/the-opinionated-engineer">The Opinionated Engineer</a>
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/incident-management">Incident Management</a>
           </div>
@@ -138,7 +154,6 @@
               <input type="hidden" name="secret" id="secret" value="123potato123"/>
               <button type="submit" name="submit" class="subscribe">Subscribe</button>
           </form>
-          <br />
           You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
         </div>
         <div class="bottom_buttons">

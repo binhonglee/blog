@@ -17,6 +17,21 @@
       <guid>https://binhong.me/blog/2025-05-30-no-blame-sev-culture/</guid>
       <description>&lt;p&gt;Every time there&amp;rsquo;s a major outage at Meta, the first question I get from friends and family is usually &lt;em&gt;&amp;ldquo;did they fire the person who caused it?&amp;rdquo;&lt;/em&gt; which is where I have to explain this concept of &lt;strong&gt;No Blame SEV Culture&lt;/strong&gt;. Especially for an outage so big that a significant number of users are affected, the &lt;em&gt;individual&lt;/em&gt; causing it likely does not have ill intent and there are likely multiple different processes and systems that failed along the way to get us here in the first place.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+        &lt;div class=&#34;newsletter&#34;&gt;
+          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
+          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
+              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
+              &lt;noscript&gt;
+                &lt;br /&gt;
+                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
+                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
+                &lt;br /&gt;
+              &lt;/noscript&gt;
+              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
+              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
+          &lt;/form&gt;
+          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
+        &lt;/div&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#process-over-people&#34;&gt;
     &lt;h2 id=&#34;process-over-people&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Process over People&lt;/span&gt;

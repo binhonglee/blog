@@ -8,6 +8,21 @@
     
     <meta name="description" content="Conventional wisdom is that writing tests slows you down, because the alternative is that you don&rsquo;t need to write tests. In fact, Meta (then Facebook) was famously lacking of automated test inline with it&rsquo;s famous &ldquo;move fast and break things&rdquo; mantra. However, from what I&rsquo;ve seen, I beg to differ.
 This is part of a series (The Opinionated Engineer) where I share my strong opinions on engineering practices.
+        
+          Subscribe to the newsletter today!
+          
+              
+              
+                
+                You will need to manually get this secret from here
+                
+                
+              
+              
+              Subscribe
+          
+          You can also checkout previous issues here before deciding.
+        
 
     
         When to write tests?
@@ -93,6 +108,21 @@ If you love something, put a ring test on it.">
           </div>
           <div class="post_content"><p>Conventional wisdom is that writing tests slows you down, because the alternative is that you don&rsquo;t need to write tests. In fact, Meta (then Facebook) was famously lacking of automated test inline with it&rsquo;s famous &ldquo;move fast and break things&rdquo; mantra. However, from what I&rsquo;ve seen, I beg to differ.</p>
 <p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
 <a class="anchor" href="#when-to-write-tests">
     <h2 id="when-to-write-tests">
         <span class="text">When to write tests?</span>
@@ -153,6 +183,7 @@ If you love something, put a ring test on it.">
 <p>When you have working quality automated tests, you can push new changes fearlessly knowing that it won&rsquo;t cause regressions on features protected by these tests. This allows you to move faster both in terms of thinking about and testing all the possible regressions your change might cause, while also saving time on root causing a regression (if / when it does happen).</p>
 </div>
           <div class="tags">
+            🔖
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/the-opinionated-engineer">The Opinionated Engineer</a>
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/automated-testing">Automated Testing</a>
           </div>
@@ -169,7 +200,6 @@ If you love something, put a ring test on it.">
               <input type="hidden" name="secret" id="secret" value="123potato123"/>
               <button type="submit" name="submit" class="subscribe">Subscribe</button>
           </form>
-          <br />
           You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
         </div>
         <div class="bottom_buttons">

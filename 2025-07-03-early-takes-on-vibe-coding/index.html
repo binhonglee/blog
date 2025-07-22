@@ -84,6 +84,21 @@
           </div>
           <div class="post_content"><p>I keep hearing about vibe-coding and I&rsquo;ve always written the majority of code myself. While at Meta, I got a chance to try out CodeCompose. It worked really well as an autocomplete but when it tried to do anything more than 5 lines at a time, it would - on many occasions - commit bugs that aren&rsquo;t immediately obvious at first sight. Generally, I&rsquo;ve caught them by looking at the generated code and wondering &ldquo;huh this isn&rsquo;t how I&rsquo;d do this, why?&rdquo;. That said, it definitely helped me code and ship faster especially on mundane tasks. Vibe-coding though, seems like taking it to a whole new level (using even less supervision and care on the code being committed).</p>
 <p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
 <a class="anchor" href="#perfect-for-small-isolated-problems">
     <h2 id="perfect-for-small-isolated-problems">
         <span class="text">Perfect for small, isolated problems</span>
@@ -134,6 +149,7 @@
 <p>For now though, it seems like it&rsquo;s still not good enough to take over even just the coding part of my job so I guess I&rsquo;m going back to implementing the new <code>navhost</code> for my Android app by myself.</p>
 </div>
           <div class="tags">
+            🔖
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/the-opinionated-engineer">The Opinionated Engineer</a>
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/internal-tools">Internal Tools</a>
           </div>
@@ -150,7 +166,6 @@
               <input type="hidden" name="secret" id="secret" value="123potato123"/>
               <button type="submit" name="submit" class="subscribe">Subscribe</button>
           </form>
-          <br />
           You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
         </div>
         <div class="bottom_buttons">

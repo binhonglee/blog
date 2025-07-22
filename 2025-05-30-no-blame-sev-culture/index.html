@@ -84,6 +84,21 @@
           </div>
           <div class="post_content"><p>Every time there&rsquo;s a major outage at Meta, the first question I get from friends and family is usually <em>&ldquo;did they fire the person who caused it?&rdquo;</em> which is where I have to explain this concept of <strong>No Blame SEV Culture</strong>. Especially for an outage so big that a significant number of users are affected, the <em>individual</em> causing it likely does not have ill intent and there are likely multiple different processes and systems that failed along the way to get us here in the first place.</p>
 <p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
 <a class="anchor" href="#process-over-people">
     <h2 id="process-over-people">
         <span class="text">Process over People</span>
@@ -126,6 +141,7 @@
 <p>No blame culture means that you aren&rsquo;t fully responsible just because you accidentally touched the house of cards causing it to collapse. Instead, we need better protection around it - like building a fence around it, using LEGO blocks instead of cards, etc - to make sure it doesn&rsquo;t break down easily again after someone accidentally touches it, or just prevent people from accidentally touching it altogether. This means we hold those who are responsible for ensuring the protection accountable instead of those who inevitably discovered the problem. It&rsquo;s like how we don&rsquo;t blame white hat hackers for discovering an exploit; we pay them bounties as a way to thank them for discovering them. We should thank those who found holes in our system&rsquo;s reliability instead of penalizing them for finding it.</p>
 </div>
           <div class="tags">
+            🔖
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/the-opinionated-engineer">The Opinionated Engineer</a>
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/incident-management">Incident Management</a>
           </div>
@@ -142,7 +158,6 @@
               <input type="hidden" name="secret" id="secret" value="123potato123"/>
               <button type="submit" name="submit" class="subscribe">Subscribe</button>
           </form>
-          <br />
           You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
         </div>
         <div class="bottom_buttons">

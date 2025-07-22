@@ -17,6 +17,21 @@
       <guid>https://binhong.me/blog/2025-07-18-understanding-value-of-dev-tools/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m largely approaching this from the perspective of building an internal dev tool (since this is mostly where my personal experiences are coming from), especially if you&amp;rsquo;re someone who wants to build an internal tool but is having trouble framing it in a way where its value can be understood by the decision makers. I&amp;rsquo;m also excluding situations where you &amp;ldquo;have to&amp;rdquo; build certain tools to track certain information in order to comply with a legal requirement, since I don&amp;rsquo;t think that would be controversial to comply with. I&amp;rsquo;d imagine the framework for using an external dev tool, while similar, also poses extra complexity on paying vs building.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+        &lt;div class=&#34;newsletter&#34;&gt;
+          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
+          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
+              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
+              &lt;noscript&gt;
+                &lt;br /&gt;
+                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
+                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
+                &lt;br /&gt;
+              &lt;/noscript&gt;
+              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
+              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
+          &lt;/form&gt;
+          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
+        &lt;/div&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#cost-of-engineers&#34;&gt;
     &lt;h2 id=&#34;cost-of-engineers&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Cost of engineers&lt;/span&gt;
@@ -77,6 +92,21 @@
       <guid>https://binhong.me/blog/2025-07-11-internal-tooling-ideas/</guid>
       <description>&lt;p&gt;For years, I built and maintained the only logged-out accessible dev tool set / platform at Meta. That earned me some reputation (in a certain circle) of being &amp;ldquo;the idea guy on internal tools&amp;rdquo;. Whenever I&amp;rsquo;m asked about how I keep coming up with good ideas for valuable tools to build, my go-to answer has been &amp;ldquo;I build tools when I get annoyed while doing my job&amp;rdquo;. I&amp;rsquo;ll try to expand that into more details below.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+        &lt;div class=&#34;newsletter&#34;&gt;
+          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
+          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
+              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
+              &lt;noscript&gt;
+                &lt;br /&gt;
+                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
+                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
+                &lt;br /&gt;
+              &lt;/noscript&gt;
+              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
+              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
+          &lt;/form&gt;
+          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
+        &lt;/div&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#repetitive-typing&#34;&gt;
     &lt;h2 id=&#34;repetitive-typing&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Repetitive Typing&lt;/span&gt;
@@ -130,6 +160,21 @@
       <guid>https://binhong.me/blog/2025-07-03-early-takes-on-vibe-coding/</guid>
       <description>&lt;p&gt;I keep hearing about vibe-coding and I&amp;rsquo;ve always written the majority of code myself. While at Meta, I got a chance to try out CodeCompose. It worked really well as an autocomplete but when it tried to do anything more than 5 lines at a time, it would - on many occasions - commit bugs that aren&amp;rsquo;t immediately obvious at first sight. Generally, I&amp;rsquo;ve caught them by looking at the generated code and wondering &amp;ldquo;huh this isn&amp;rsquo;t how I&amp;rsquo;d do this, why?&amp;rdquo;. That said, it definitely helped me code and ship faster especially on mundane tasks. Vibe-coding though, seems like taking it to a whole new level (using even less supervision and care on the code being committed).&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+        &lt;div class=&#34;newsletter&#34;&gt;
+          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
+          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
+              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
+              &lt;noscript&gt;
+                &lt;br /&gt;
+                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
+                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
+                &lt;br /&gt;
+              &lt;/noscript&gt;
+              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
+              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
+          &lt;/form&gt;
+          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
+        &lt;/div&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#perfect-for-small-isolated-problems&#34;&gt;
     &lt;h2 id=&#34;perfect-for-small-isolated-problems&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Perfect for small, isolated problems&lt;/span&gt;
