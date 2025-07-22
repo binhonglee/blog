@@ -12,6 +12,8 @@ Conventional wisdom is that writing tests slows you down, because the alternativ
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
+
 ## When to write tests?
 
 > If you love something, put a ~~ring~~ test on it.

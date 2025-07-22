@@ -12,6 +12,8 @@ I keep hearing about vibe-coding and I've always written the majority of code my
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
+
 ## Perfect for small, isolated problems
 
 I started my attempt by making Claude code out a GitHub Action workflow file. I have a submodule setup (where a repo is shared and imported across multiple other repos) and wanted to have an automated way to tell how its changes will affect code on other repos while also creating PRs to keep them updated. Seems like a perfectly fine isolated problem to try this out on. I did run out of tokens a few times (being on a free plan) so I had to get creative but it largely worked. I'd say it behaved like a normal engineer writing a first version (which isn't perfect) but can understand and work its way through debugging and resolving the issue slowly when given clear information on what went wrong.

@@ -13,6 +13,7 @@ It's never easy to come up with new ideas that help with growth, but identifying
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
 
 ## Funnel analysis
 

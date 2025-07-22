@@ -12,6 +12,8 @@ For years, I built and maintained the only logged-out accessible dev tool set / 
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
+
 ## Repetitive Typing
 
 The biggest value of having logged-out accessible dev tools is that you no longer have to log in to access dev tools. Login, while generally not too big of a friction for one-off situations, can be very bothersome if you have to type your credentials over and over again (for dev purposes) as you login (update config) → logout (test) → login (update config) → logout (test). If bypassing or removing the typing aspect is not possible, consider if it can be replaced with multiple choice button selection or just a single copy-paste friendly input.

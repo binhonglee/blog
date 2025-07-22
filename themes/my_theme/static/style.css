@@ -8,6 +8,11 @@ html {
   font-size: 130%;
 }
 
+.post_content .newsletter {
+  font-family: Vollkorn;
+  font-size: 77%;
+}
+
 .post_content img {
   max-width: 980px;
   padding: 10px;
@@ -637,11 +642,12 @@ pre .custom-language {
   text-align: center;
   font-family: Vollkorn;
   padding: 20px;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .newsletter h2 {
-  padding-bottom: 16px;
+  margin: 0;
+  padding-bottom: 8px;
   color: var(--syntax-foreground);
 }
 

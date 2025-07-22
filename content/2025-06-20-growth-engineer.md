@@ -13,6 +13,8 @@ While I've shipped a lot of growth wins (literally the first line on my resume),
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
+
 ## A/B Test Everything
 
 When I say _everything_, I mean **everything**. Every button change, content change, margin change, slap an experiment on it. You need to be numbers obsessed and understand how anything moves the topline metric (the metric you / your team cares the most about). In that same sense, you might want to run experiments in chunks of small changes instead of a big chunk to better understand how each small change affects the user behavior. This would later help you in better understanding what is a good growth lever vs what isn't. Alternatively (depending on the type of changes), you can also have multiple variants with different mixes to achieve something similar.

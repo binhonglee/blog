@@ -12,6 +12,8 @@ This is a basic introduction on how to run a good A/B test. A/B testing is a met
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
+
 ## Tooling
 
 If your employer does not already have a working tool for experimentation, I'd recommend adopting one of the existing tools / platforms (like [Statsig](https://statsig.com/), [GrowthBook](https://www.growthbook.io/), [LaunchDarkly](https://launchdarkly.com/) etc.) specifically built with this in mind. On a basic level, they should provide a toggle that splits users into 2 (or more) groups for testing purposes. Their downstream metrics (after first exposure) will then be used to measure if / how these changes might have affected the users. While it's _possible_ to build your own A/B testing tool in-house, the build and maintenance cost is likely not worth it compared to just adopting ready-made ones.

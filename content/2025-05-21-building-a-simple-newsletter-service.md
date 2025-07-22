@@ -10,6 +10,8 @@ aliases:
 
 When I had the idea on the series about [The Opinionated Engineer](/blog/2025-05-04-the-opinionated-engineer/), I figured maybe that's something worth setting up a newsletter service over. That said, after some consideration, I just thought that I didn't need anything too complex and decided to roll my own because "how hard could it be?". As far as I can tell, I think it's working fine so far(?) and took me around one whole day to put the whole thing together from my couch. You can find all of it's source code [here on GitHub](https://github.com/binhonglee/subscription).
 
+{{< newsletter >}}
+
 ## Existing newsletter services
 
 Aside from Substack, pretty much all other services provide it with a "freemium" model where you are charged based on the number of subscribers (regardless if they are paid). Admittedly, I doubt my newsletter would get to that point (I try to not take myself too seriously lol) but I also didn't need most of the things those services are providing. Not to take anything away from them, they all seem really useful if someone is doing that for a living, but I mostly write for fun and as a way to do some knowledge preservation (future self-reference) with the sharing part mostly being a bonus.

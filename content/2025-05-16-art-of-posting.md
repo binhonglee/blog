@@ -13,6 +13,8 @@ This piece is specifically more about Meta's _unique_ culture of "posting" about
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
+
 ## Proposing an idea
 
 A common theme of complaints you might see in a work environment is how _someone else_ steals your idea. Making a post serves as a paper-trail on this being _your idea_ as the original author. It's also a useful cross-referencing tool when you run into discussions where your (previously suggested) idea could be a solution, you can share a link instead of going through your idea all over again. By itself, it also serves as a valuable RFC where others are free to comment with their concerns and / or how they feel about things in general. From there, you could gather feedback or even retool your idea a little to eventually become a valuable proposal and contribution towards your team goal.

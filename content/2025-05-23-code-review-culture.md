@@ -14,6 +14,8 @@ Code review is a really subjective thing where each team or even individual runs
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
+
 ## Overly prescriptive formatters 
 
 I'm highly supportive of having a preset of an overly prescriptive formatter. It doesn't matter if it's spaces vs tabs, 2 spaces vs 4 spaces, curly braces on the same line or newline; as long as you have a formatter that keeps it consistent. This cuts down on all the unnecessary time reviewing and fixing code formatting while still being easy to read and scan through. Make them as strict as possible, ideally 100% reproducible where every line of code only has one way it can be formatted. Again, it doesn't matter which style you pick but just pick something and stick with it, it's all about consistency here.

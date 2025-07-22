@@ -12,6 +12,8 @@ Mature growth teams would organize a centralized experiment review meeting as a 
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
+
 ## Understanding the metric shifts
 
 When presenting (and reviewing) an experiment, not only do we look at metric shifts but we need to also make sense of them. Understanding them helps inform making better future changes and iterations while ensuring that this change is working as intended instead of some potential regressions on metric blind spots. This usually means that metric analysis for experiments would go beyond just top-line goal / guardrail metrics but also onto regular impression / click loggings to make sure any underlying funnel shifts make sense.

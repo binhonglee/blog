@@ -32,6 +32,8 @@ I have not fully planned out the entire series but here are a few topics I have 
     2. [Internal Tooling Ideas](/blog/2025-07-11-internal-tooling-ideas/)
     3. [Understanding the Value of Dev Tools](/blog/2025-07-18-understanding-value-of-dev-tools/)
 
+{{< newsletter >}}
+
 ## Where is this coming from?
 
 Back when I was working at Meta, I would generally build an idea proposal (on how / what to fix) around an opinionated piece like this. It largely serves like a RFC where I can gather other (both supporting or opposing) opinions and concerns before proceeding to make sure that I've considered everyone's perspective. The difference in this series however, I would focus more on exploring my personal opinions and why I feel strongly about them. It's up to you to decide whether it fits the bill for you.

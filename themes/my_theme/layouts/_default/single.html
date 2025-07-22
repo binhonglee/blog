@@ -19,6 +19,7 @@
           <div class="post_content">{{ .Content }}</div>
           {{- if .Params.tags }}
           <div class="tags">
+            🔖
             {{- range .Params.tags }}
             {{- $href := print (absURL "tags/") (urlize .) }}
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="{{ $href }}">{{ . }}</a>

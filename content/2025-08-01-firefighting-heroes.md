@@ -16,6 +16,8 @@ We love celebrating heroes in general. So when a hero shows up to save the day, 
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
+
 ## Bian Que and his brothers
 
 If you've never heard of the story about _Bian Que and his brothers_, here's a [Meta AI summary of it](https://www.meta.ai/@binhonglee/prompt/iS2XuvsxNDq) with all the relevant details:

@@ -16,6 +16,8 @@ I wrote a similar version of this internally at Meta a few years ago for my org 
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
+
 ## Stop the Bleed!
 
 The highest priority is to stop the bleeding immediately. _Flip a killswitch, roll back changes, apply server-side fixes, apply client-side fixes_ - **in that order**. A killswitch generally propagates faster, thus is preferred over code changes, but even then, prioritize rolling back changes instead of forward fixing. Forward fixing adds more unknown factors into the mix (because that's more new code which could now cause new / different problems); rolling back, on the other hand, is more predictable. Server-side fixes over client-side fixes should be pretty obvious since you can guarantee the server version (as the service provider), but you can't always force a client to update (native apps), or there could be some caching involved (web).

@@ -12,6 +12,8 @@ I'm largely approaching this from the perspective of building an internal dev to
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
+
 ## Cost of engineers
 
 Generally, the simplest way would be to calculate how much time is saved for an employee, multiplied by the cost of hiring the employee. This directly shows how much money the organization is saving by just having this tool around. Pretty straightforward, not a lot of controversy.
