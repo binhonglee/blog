@@ -20,7 +20,7 @@ I have not fully planned out the entire series but here are a few topics I have 
     2. [Code Review Culture](/blog/2025-05-23-code-review-culture/)
 3. Incident Management
     1. [No Blame SEV (Incident) Culture](/blog/2025-05-30-no-blame-sev-culture/)
-    2. Major Incident Runbook (Pending: July 25th)
+    2. [Major Incident Runbook](/blog/2025-07-25-major-incident-runbook/)
     3. Firefighting Heroes (Pending: Aug 1st)
 4. Product Growth
     1. [A/B Testing](/blog/2025-06-06-a-b-testing/)

@@ -6,10 +6,6 @@ tags: [The Opinionated Engineer, Incident Management]
 ss: "preview/major_incident_runbook.jpg"
 aliases:
   - /major_incident_runbook/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 I wrote a similar version of this internally at Meta a few years ago for my org after finding myself in the middle of a few SEV1s in a row -- and being consulted / asked for support in other similar situations. I thought this might be something useful to share (as a public version) as well. This won't be perfectly fitting for all use cases, but having a runbook works as an anchor in the midst of chaos, helping to get you unstuck from "what's next?". Admittedly, this is an incomplete runbook that serves more as a template for your team or company to complete with more specific tooling guides (using _which_ tool to achieve _what_, etc.).
