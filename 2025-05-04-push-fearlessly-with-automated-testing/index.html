@@ -64,7 +64,7 @@ If you love something, put a ring test on it.">
     
     <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
     
-    <meta name="generator" content="Hugo 0.148.1">
+    <meta name="generator" content="Hugo 0.148.2">
     
     </head>
   <body class="single">
@@ -145,7 +145,7 @@ If you love something, put a ring test on it.">
         <span class="tag">#</span>
     </h2>
 </a>
-<p>The expectation here is that you already have a working CI/CD pipeline setup which comprehensively runs all your tests for each commit merges and deployments. Alternatively, if you have too big of a test suite to run (or too costly), you could instead only run relavant tests on each individual commits while running all tests for each deployment.  If there’s a test that failed before deployment, you could still bisect to find the blame commit that broke the test.</p>
+<p>The expectation here is that you already have a working CI/CD pipeline setup which comprehensively runs all your tests for each commit merges and deployments. Alternatively, if you have too big of a test suite to run (or too costly), you could instead only run relevant tests on each individual commits while running all tests for each deployment.  If there’s a test that failed before deployment, you could still bisect to find the blame commit that broke the test.</p>
 <a class="anchor" href="#what-about-manual-testing">
     <h2 id="what-about-manual-testing">
         <span class="text">What about manual testing?</span>
@@ -173,7 +173,7 @@ If you love something, put a ring test on it.">
         <span class="tag">#</span>
     </h2>
 </a>
-<p>Broken tests are <strong>tech debts</strong>. Either prioritize fixing them or delete them if they are no longer relavant. Keeping them around gives false impression on the state of the test coverage while potentially adds unnecessary operational cost in running these tests. Same applies to flaky tests. In fact, I&rsquo;d go a step further by saying that flaky tests are worse than broken tests because at least broken tests are deterministic (which is one important characteristic of a quality test).</p>
+<p>Broken tests are <strong>tech debts</strong>. Either prioritize fixing them or delete them if they are no longer relevant. Keeping them around gives false impression on the state of the test coverage while potentially adds unnecessary operational cost in running these tests. Same applies to flaky tests. In fact, I&rsquo;d go a step further by saying that flaky tests are worse than broken tests because at least broken tests are deterministic (which is one important characteristic of a quality test).</p>
 <a class="anchor" href="#wrap-up">
     <h2 id="wrap-up">
         <span class="text">Wrap up</span>
