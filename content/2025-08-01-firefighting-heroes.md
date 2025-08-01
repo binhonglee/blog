@@ -6,10 +6,6 @@ tags: [The Opinionated Engineer, Incident Management]
 ss: preview/firefighting_heroes.jpg
 aliases:
   - /firefighting_heroes/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 We love celebrating heroes in general. So when a hero shows up to save the day, it's only natural that we make sure to recognize their contribution. While it might feel counterintuitive, we should strive to not need heroes entirely instead of hoping that next time when tragedy strikes, a hero will turn up once again. This is not to diminish the value of heroes. They still play a very important role in firefighting and are doing the right thing in an urgent situation. However, _in a perfect world_, they shouldn't be necessary at all and we should at least aspire to work towards building a system with that level of reliability.
