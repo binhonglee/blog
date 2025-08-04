@@ -5,6 +5,9 @@
       "name": "social_media_search_with_llm",
       "url": "search-with-llm"
     }, {
+      "name": "git_submodules_github_action",
+      "url": "2025-08-08-sync-git-submodules-github-action"
+    }, {
       "name": "firefighting_heroes",
       "url": "2025-08-01-firefighting-heroes"
     }, {
