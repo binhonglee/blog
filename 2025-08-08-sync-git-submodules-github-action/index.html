@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Sync git submodules with GitHub Action - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="I needed to share some object code across multiple repos (to ensure the consistency of the RESTful API JSON serialization and deserialization). So I created a dedicated repository where all the shared code lives, then imported it across other repos as a submodule. In this case, I used a library I made - wings - but usually you&rsquo;d probably use something like Thrift or Protocol Buffers. Another common use case would be to have a repository hosting shared cross-platform (iOS &#43; Android) low-level code.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Sync git submodules with GitHub Action">
+    <meta property="og:description" content="I needed to share some object code across multiple repos (to ensure the consistency of the RESTful API JSON serialization and deserialization). So I created a dedicated repository where all the shared code lives, then imported it across other repos as a submodule. In this case, I used a library I made - wings - but usually you&rsquo;d probably use something like Thrift or Protocol Buffers. Another common use case would be to have a repository hosting shared cross-platform (iOS &#43; Android) low-level code.">
+    <meta name="twitter:description" content="I needed to share some object code across multiple repos (to ensure the consistency of the RESTful API JSON serialization and deserialization). So I created a dedicated repository where all the shared code lives, then imported it across other repos as a submodule. In this case, I used a library I made - wings - but usually you&rsquo;d probably use something like Thrift or Protocol Buffers. Another common use case would be to have a repository hosting shared cross-platform (iOS &#43; Android) low-level code.">
+    <meta name="twitter:title" content="Sync git submodules with GitHub Action"><meta property="article:published_time" 2025-08-08T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-08-08T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/git_submodules_github_action.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/git_submodules_github_action.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/git_submodules_github_action.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/blog/darkMode.css?v=1754287594183" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.148.2">
+    
+    </head>
+  <body class="single">
+    <input class="dark_mode_toggle" type="checkbox" id="darkModeToggle">
+    <div class="wrapper">
+      <div class="content">
+        <div class="dropdown">
+          <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+          <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+            <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+            <p>|</p>
+            <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+            <p>|</p>
+            <div class="webring link" role="menuitem">
+              <a class="webring_toggle">Webring</a>
+              <div class="webring_links">
+                <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+                <hr />
+                <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page_of_title">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+        <div class="dark_mode_toggle_wrapper">
+          <div class="toggle-container">
+            <label for="darkModeToggle" class="toggle-label">
+              <div class="background-layer day-bg"></div>
+              <div class="background-layer night-bg"></div>
+              
+              <div class="toggle-slider">
+                <div class="sun-rays"></div>
+                <div class="moon-craters">
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                </div>
+              </div>
+              
+              <div class="cloud cloud1"></div>
+              <div class="cloud cloud2"></div>
+              <div class="cloud cloud3"></div>
+              <div class="cloud cloud4"></div>
+              <div class="cloud cloud5"></div>
+              
+              <div class="star star1"></div>
+              <div class="star star2"></div>
+              <div class="star star3"></div>
+              <div class="star star4"></div>
+              <div class="star star5"></div>
+              <div class="star star6"></div>
+              <div class="star star7"></div>
+              <div class="star star8"></div>
+              <div class="star star9"></div>
+              <div class="star star10"></div>
+              <div class="star star11"></div>
+              <div class="star star12"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Sync git submodules with GitHub Action</h1>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">August 8, 2025</p>
+          </div>
+          <div class="post_content"><p>I needed to share some object code across multiple repos (to ensure the consistency of the RESTful API JSON serialization and deserialization). So I created a dedicated repository where all the shared code lives, then imported it across other repos as a submodule. In this case, I used a library I made - <a href="https://wings.sh/">wings</a> - but usually you&rsquo;d probably use something like Thrift or Protocol Buffers. Another common use case would be to have a repository hosting shared cross-platform (iOS + Android) low-level code.</p>
+<p>It&rsquo;s a bit of a pain to manually update it across all the different repositories (and check if it causes any regressions) every time I make changes to it. So instead I wrote some tests, set up some GitHub Actions to run them, then have an automated GitHub Action that sends PRs to all the &ldquo;parent&rdquo; repos every time it receives a new commit, which will trigger the underlying CI tests so it&rsquo;d be obvious if it might break anything.</p>
+<a class="anchor" href="#setup-submodules">
+    <h2 id="setup-submodules">
+        <span class="text">Setup submodules</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>First, create the shared git repository. Then in the parent repositories, run <code>git submodule add &lt;path&gt; &lt;git_url&gt;</code>. Commit these changes and now you should see the directory shown as a ref link in GitHub like <code>{dir_name} @ {commit_hash}</code>. It&rsquo;s important to note that the folder won&rsquo;t be initialized automatically on clone, but instead you need to either clone with the <code>--recurse-submodules</code> argument or run <code>git submodule update --init --recursive</code> after cloning to get the submodules set up properly.</p>
+<a class="anchor" href="#granting-pats">
+    <h2 id="granting-pats">
+        <span class="text">Granting PATs</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>You mostly need 2 PATs here. One for all repositories importing the shared repo to be able to <em>read</em> both the hosting repo and the shared repo so its GitHub Actions can run <code>git submodule init &amp;&amp; git submodule update</code> as part of its &ldquo;checkout&rdquo; step. (They could be multiple separate PATs each with specific repo access, but in my case I just use the same PAT that allows read access across all repos in the GitHub organization.) The other one is for the shared repo (to be used later) to clone, branch, commit, and create pull requests on all the repos extending it.</p>
+<a class="anchor" href="#creating-github-action-for-updates">
+    <h2 id="creating-github-action-for-updates">
+        <span class="text">Creating GitHub Action for updates</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Here&rsquo;s something I vibe-coded with Claude for my own project (<a href="https://globetrotte.com/">GlobeTrotte</a>). The main thing that needs updating is the <code>SUBMODULE_PATH</code> and <code>DEFAULT_CONFIG</code> section to fit your use case. It is a bit more on the verbose side of things, but it does work as expected. One tricky callout I&rsquo;d say is that the PATs can be a little tricky if you need to both <em>read</em> from another repo (as you would to initialize the submodule) and <em>write</em> as you try to push changes to another branch (like &ldquo;deploy&rdquo; or &ldquo;gh-pages&rdquo; branch). You can instead split them into separate actions with proper dependency and use different PATs depending on the need.</p>
+<a class="anchor" href="#workflow-configuration-and-triggers">
+    <h3 id="workflow-configuration-and-triggers">
+        <span class="text">Workflow configuration and triggers</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
+<p>This sets up the basic workflow structure and defines which repositories should be updated:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Update Submodules and Create PR</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="l">push, pull_request ]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Static submodule path used across all configurations</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">SUBMODULE_PATH</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;src/wings&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Default configuration - can be overridden by workflow input</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">DEFAULT_CONFIG</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">    [
+</span></span></span><span class="line"><span class="cl"><span class="sd">      {
+</span></span></span><span class="line"><span class="cl"><span class="sd">        &#34;target_repo&#34;: &#34;repo-1&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">        &#34;prefix&#34;: &#34;./&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">        &#34;target_branch&#34;: &#34;main&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">        &#34;enabled&#34;: true
+</span></span></span><span class="line"><span class="cl"><span class="sd">      },
+</span></span></span><span class="line"><span class="cl"><span class="sd">      {
+</span></span></span><span class="line"><span class="cl"><span class="sd">        &#34;target_repo&#34;: &#34;repo-2&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">        &#34;prefix&#34;: &#34;./&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">        &#34;target_branch&#34;: &#34;main&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">        &#34;enabled&#34;: true
+</span></span></span><span class="line"><span class="cl"><span class="sd">      },
+</span></span></span><span class="line"><span class="cl"><span class="sd">      {
+</span></span></span><span class="line"><span class="cl"><span class="sd">        &#34;target_repo&#34;: &#34;repo-3&#34;, 
+</span></span></span><span class="line"><span class="cl"><span class="sd">        &#34;prefix&#34;: &#34;app/&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">        &#34;target_branch&#34;: &#34;main&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">        &#34;enabled&#34;: true
+</span></span></span><span class="line"><span class="cl"><span class="sd">      }
+</span></span></span><span class="line"><span class="cl"><span class="sd">    ]</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>The <code>DEFAULT_CONFIG</code> is a JSON array where each object represents a repository that uses your submodule. You can enable/disable repositories individually and specify different target branches per repo.</p>
+<a class="anchor" href="#setup-job-creating-the-execution-matrix">
+    <h3 id="setup-job-creating-the-execution-matrix">
+        <span class="text">Setup job: Creating the execution matrix</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
+<p>This job processes the configuration and creates a matrix for parallel execution across multiple repositories:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">setup</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">outputs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">matrix</span><span class="p">:</span><span class="w"> </span><span class="l">${{ steps.set-matrix.outputs.matrix }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Set up configuration matrix</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">set-matrix</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          if [ -n &#34;${{ github.event.inputs.config_override }}&#34; ]; then
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;Using override configuration&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">            CONFIG=&#39;${{ github.event.inputs.config_override }}&#39;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          else
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;Using default configuration&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">            CONFIG=&#39;${{ env.DEFAULT_CONFIG }}&#39;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          fi
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # Filter only enabled configurations and format for matrix
+</span></span></span><span class="line"><span class="cl"><span class="sd">          MATRIX=$(echo &#34;$CONFIG&#34; | jq -c &#39;[.[] | select(.enabled == true)]&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;matrix=$MATRIX&#34; &gt;&gt; $GITHUB_OUTPUT
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;Configuration matrix:&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;$MATRIX&#34; | jq .</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>This step filters out disabled repositories and creates a matrix that GitHub Actions can use to run the update job in parallel for each target repository.</p>
+<a class="anchor" href="#main-update-job-repository-checkout-and-setup">
+    <h3 id="main-update-job-repository-checkout-and-setup">
+        <span class="text">Main update job: Repository checkout and setup</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
+<p>The main job runs for each repository in the matrix. First, it checks out the target repository and sets up git configuration:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">  </span><span class="nt">update-submodules</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l">setup</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l">${{ fromJson(needs.setup.outputs.matrix)[0] != null }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">strategy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">matrix</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="l">${{ fromJson(needs.setup.outputs.matrix) }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">fail-fast</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Display current configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;🎯 Target Repository: ${{ matrix.config.target_repo }}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;📂 Submodule Path: ${{ env.SUBMODULE_PATH }}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;🌿 Target Branch: ${{ matrix.config.target_branch }}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # Construct full repo path
+</span></span></span><span class="line"><span class="cl"><span class="sd">          FULL_REPO_PATH=&#34;{org-name}/${{ matrix.config.target_repo }}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;FULL_REPO_PATH=$FULL_REPO_PATH&#34; &gt;&gt; $GITHUB_ENV</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Checkout external repository</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l">${{ env.FULL_REPO_PATH }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.UPDATE_SUBMODULE }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l">${{ matrix.config.target_branch }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l">${{ matrix.config.target_repo }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Configure Git</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          cd ${{ matrix.config.target_repo }}
+</span></span></span><span class="line"><span class="cl"><span class="sd">          git config user.name &#34;GitHub Actions Bot&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          git config user.email &#34;actions@github.com&#34;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Remember to replace <code>{org-name}</code> with your actual GitHub organization name.</p>
+<a class="anchor" href="#submodule-initialization-and-version-checking">
+    <h3 id="submodule-initialization-and-version-checking">
+        <span class="text">Submodule initialization and version checking</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
+<p>This is the core logic that handles submodule authentication, updates, and determines if changes are needed:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Initialize and update submodules</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          cd ${{ matrix.config.target_repo }}
+</span></span></span><span class="line"><span class="cl"><span class="sd">          git submodule init
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # Update submodule URLs to use PAT authentication
+</span></span></span><span class="line"><span class="cl"><span class="sd">          git config --list | grep &#34;submodule\.&#34; | grep &#34;\.url=&#34; | while read -r line; do
+</span></span></span><span class="line"><span class="cl"><span class="sd">            key=$(echo &#34;$line&#34; | cut -d&#39;=&#39; -f1)
+</span></span></span><span class="line"><span class="cl"><span class="sd">            url=$(echo &#34;$line&#34; | cut -d&#39;=&#39; -f2-)
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">            if echo &#34;$url&#34; | grep -q &#34;github.com&#34;; then
+</span></span></span><span class="line"><span class="cl"><span class="sd">              if echo &#34;$url&#34; | grep -q &#34;https://&#34;; then
+</span></span></span><span class="line"><span class="cl"><span class="sd">                new_url=$(echo &#34;$url&#34; | sed &#39;s|https://github.com/|https://x-access-token:${{ secrets.UPDATE_SUBMODULE }}@github.com/|&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">              else
+</span></span></span><span class="line"><span class="cl"><span class="sd">                new_url=$(echo &#34;$url&#34; | sed &#39;s|git@github.com:|https://x-access-token:${{ secrets.UPDATE_SUBMODULE }}@github.com/|&#39;)
+</span></span></span><span class="line"><span class="cl"><span class="sd">              fi
+</span></span></span><span class="line"><span class="cl"><span class="sd">              git config &#34;$key&#34; &#34;$new_url&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">            fi
+</span></span></span><span class="line"><span class="cl"><span class="sd">          done
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # Update submodules
+</span></span></span><span class="line"><span class="cl"><span class="sd">          git submodule update --init --recursive
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # Navigate to the specific submodule and get current commit
+</span></span></span><span class="line"><span class="cl"><span class="sd">          cd &#34;${{ env.SUBMODULE_PATH }}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          CURRENT_COMMIT=$(git rev-parse HEAD)
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;Current submodule commit: $CURRENT_COMMIT&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # Fetch latest changes from submodule&#39;s remote
+</span></span></span><span class="line"><span class="cl"><span class="sd">          git fetch origin
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # Get the latest commit on the default branch
+</span></span></span><span class="line"><span class="cl"><span class="sd">          LATEST_COMMIT=${{ github.sha }}
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;Latest submodule commit: $LATEST_COMMIT&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # Check if update is needed
+</span></span></span><span class="line"><span class="cl"><span class="sd">          if [ &#34;$CURRENT_COMMIT&#34; != &#34;$LATEST_COMMIT&#34; ]; then
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;UPDATE_NEEDED=true&#34; &gt;&gt; $GITHUB_ENV
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;CURRENT_COMMIT=$CURRENT_COMMIT&#34; &gt;&gt; $GITHUB_ENV
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;LATEST_COMMIT=$LATEST_COMMIT&#34; &gt;&gt; $GITHUB_ENV
+</span></span></span><span class="line"><span class="cl"><span class="sd">          else
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;UPDATE_NEEDED=false&#34; &gt;&gt; $GITHUB_ENV
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;✅ Submodule is already up to date&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          fi</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>This step converts SSH URLs to HTTPS with PAT authentication, then compares the current submodule commit with the latest commit to determine if an update is needed.</p>
+<a class="anchor" href="#updating-the-submodule-and-creating-branches">
+    <h3 id="updating-the-submodule-and-creating-branches">
+        <span class="text">Updating the submodule and creating branches</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
+<p>If an update is needed, these steps handle the actual submodule update and branch creation:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Update submodule to latest version</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l">env.UPDATE_NEEDED == &#39;true&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          cd ${{ matrix.config.target_repo }}
+</span></span></span><span class="line"><span class="cl"><span class="sd">          cd &#34;${{ env.SUBMODULE_PATH }}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # Checkout the latest commit
+</span></span></span><span class="line"><span class="cl"><span class="sd">          git checkout ${{ github.sha }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Print changes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l">env.UPDATE_NEEDED == &#39;true&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          cd ${{ matrix.config.target_repo }}
+</span></span></span><span class="line"><span class="cl"><span class="sd">          git diff</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Create feature branch and commit changes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l">${{ env.UPDATE_NEEDED == &#39;true&#39; &amp;&amp; github.ref == &#39;refs/heads/main&#39; }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          cd ${{ matrix.config.target_repo }}
+</span></span></span><span class="line"><span class="cl"><span class="sd">          git add .
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # Create a new branch for the update
+</span></span></span><span class="line"><span class="cl"><span class="sd">          SUBMODULE_NAME=&#34;${{ env.SUBMODULE_PATH }}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          BRANCH_NAME=&#34;update-${SUBMODULE_NAME}-$(date +%Y%m%d-%H%M%S)&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;BRANCH_NAME=$BRANCH_NAME&#34; &gt;&gt; $GITHUB_ENV
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          git checkout -b $BRANCH_NAME
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # Create detailed commit message
+</span></span></span><span class="line"><span class="cl"><span class="sd">          COMMIT_MSG=&#34;Update ${SUBMODULE_NAME} submodule
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          Updated ${{ env.SUBMODULE_PATH }} from ${{ env.CURRENT_COMMIT }} to ${{ env.LATEST_COMMIT }}
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          This automated update brings in the latest changes from the submodule.
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          Repository: ${{ matrix.config.target_repo }}
+</span></span></span><span class="line"><span class="cl"><span class="sd">          Branch: ${{ matrix.config.target_branch }}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          git commit -m &#34;$COMMIT_MSG&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          # Push the new branch
+</span></span></span><span class="line"><span class="cl"><span class="sd">          git push origin $BRANCH_NAME</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>This creates a timestamped branch name, commits the submodule update with a detailed message, and pushes the branch to the target repository.</p>
+<a class="anchor" href="#creating-pull-requests">
+    <h3 id="creating-pull-requests">
+        <span class="text">Creating pull requests</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
+<p>Finally, this step creates a pull request in the target repository with detailed information about the update:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Create Pull Request</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l">${{ env.UPDATE_NEEDED == &#39;true&#39; &amp;&amp; github.ref == &#39;refs/heads/main&#39; }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/github-script@v7</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">github-token</span><span class="p">:</span><span class="w"> </span><span class="l">${{ secrets.UPDATE_SUBMODULE }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">working-directory</span><span class="p">:</span><span class="w"> </span><span class="l">${{ matrix.config.target_repo }}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">            const submoduleName = &#39;${{ env.SUBMODULE_PATH }}&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="sd">            const repoOwner = &#39;GlobeTrotte-com&#39;; // Replace with actual owner
+</span></span></span><span class="line"><span class="cl"><span class="sd">            const repoName = &#39;${{ matrix.config.target_repo }}&#39;;
+</span></span></span><span class="line"><span class="cl"><span class="sd">            
+</span></span></span><span class="line"><span class="cl"><span class="sd">            const { data: pullRequest } = await github.rest.pulls.create({
+</span></span></span><span class="line"><span class="cl"><span class="sd">              owner: repoOwner,
+</span></span></span><span class="line"><span class="cl"><span class="sd">              repo: repoName,
+</span></span></span><span class="line"><span class="cl"><span class="sd">              title: `Update ${submoduleName} submodule`,
+</span></span></span><span class="line"><span class="cl"><span class="sd">              head: process.env.BRANCH_NAME,
+</span></span></span><span class="line"><span class="cl"><span class="sd">              base: &#39;${{ matrix.config.target_branch }}&#39;,
+</span></span></span><span class="line"><span class="cl"><span class="sd">              body: `## Submodule Update
+</span></span></span><span class="line"><span class="cl"><span class="sd">            
+</span></span></span><span class="line"><span class="cl"><span class="sd">              This PR updates the \`${{ env.SUBMODULE_PATH }}\` submodule to the latest version.
+</span></span></span><span class="line"><span class="cl"><span class="sd">            
+</span></span></span><span class="line"><span class="cl"><span class="sd">              ### Changes
+</span></span></span><span class="line"><span class="cl"><span class="sd">              - **From Commit:** \`${{ env.CURRENT_COMMIT }}\`
+</span></span></span><span class="line"><span class="cl"><span class="sd">              - **To Commit:** \`${{ env.LATEST_COMMIT }}\`
+</span></span></span><span class="line"><span class="cl"><span class="sd">            
+</span></span></span><span class="line"><span class="cl"><span class="sd">              ### Details
+</span></span></span><span class="line"><span class="cl"><span class="sd">              This automated update was triggered by a push to the main branch and brings in the latest changes from the submodule repository.
+</span></span></span><span class="line"><span class="cl"><span class="sd">            
+</span></span></span><span class="line"><span class="cl"><span class="sd">              Please review the changes in the submodule repository before merging this PR.
+</span></span></span><span class="line"><span class="cl"><span class="sd">            
+</span></span></span><span class="line"><span class="cl"><span class="sd">              ---
+</span></span></span><span class="line"><span class="cl"><span class="sd">              *This PR was created automatically by GitHub Actions*`,
+</span></span></span><span class="line"><span class="cl"><span class="sd">              draft: false
+</span></span></span><span class="line"><span class="cl"><span class="sd">            });
+</span></span></span><span class="line"><span class="cl"><span class="sd">            
+</span></span></span><span class="line"><span class="cl"><span class="sd">            console.log(`Pull request created: ${pullRequest.html_url}`);
+</span></span></span><span class="line"><span class="cl"><span class="sd">            
+</span></span></span><span class="line"><span class="cl"><span class="sd">            // Add labels if desired
+</span></span></span><span class="line"><span class="cl"><span class="sd">            try {
+</span></span></span><span class="line"><span class="cl"><span class="sd">              await github.rest.issues.addLabels({
+</span></span></span><span class="line"><span class="cl"><span class="sd">                owner: repoOwner,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                repo: repoName,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                issue_number: pullRequest.number,
+</span></span></span><span class="line"><span class="cl"><span class="sd">                labels: [&#39;dependencies&#39;, &#39;submodule-update&#39;, &#39;automated&#39;]
+</span></span></span><span class="line"><span class="cl"><span class="sd">              });
+</span></span></span><span class="line"><span class="cl"><span class="sd">            } catch (error) {
+</span></span></span><span class="line"><span class="cl"><span class="sd">              console.log(&#39;Note: Could not add labels (labels may not exist in target repo)&#39;);
+</span></span></span><span class="line"><span class="cl"><span class="sd">            }</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><a class="anchor" href="#summary-and-completion">
+    <h3 id="summary-and-completion">
+        <span class="text">Summary and completion</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
+<p>These final steps provide logging and status reporting:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Summary</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          if [ &#34;${{ env.UPDATE_NEEDED }}&#34; == &#34;true&#34; ]; then
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;✅ Submodule updated and PR created successfully!&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;Repository: ${{ matrix.config.target_repo }}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;Path: ${{ env.SUBMODULE_PATH }}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;Branch: ${{ env.BRANCH_NAME }}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          else
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;ℹ️ Submodule ${{ env.SUBMODULE_PATH }} in ${{ matrix.config.target_repo }} is already up to date.&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          fi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">final-summary</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="l">setup, update-submodules ]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l">always()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Workflow Summary</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;🎉 Submodule update workflow completed!&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          echo &#34;Processed repositories based on configuration matrix.&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          
+</span></span></span><span class="line"><span class="cl"><span class="sd">          if [ &#34;${{ needs.update-submodules.result }}&#34; == &#34;success&#34; ]; then
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;✅ All updates completed successfully&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          elif [ &#34;${{ needs.update-submodules.result }}&#34; == &#34;failure&#34; ]; then
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;❌ Some updates failed - check individual job results&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          else
+</span></span></span><span class="line"><span class="cl"><span class="sd">            echo &#34;ℹ️ Workflow completed with status: ${{ needs.update-submodules.result }}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="sd">          fi</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><a class="anchor" href="#bonus-auto-accept--merge-action">
+    <h2 id="bonus-auto-accept--merge-action">
+        <span class="text">[Bonus] Auto-accept + merge action</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>I&rsquo;m leaving this as an open recommendation (and homework lol) for you to implement. The assumption here is that the change is generally safe and so it should be auto-accepted + merged into the target repositories <strong>once it passes all the tests</strong>.</p>
+<a class="anchor" href="#wrapping-up">
+    <h2 id="wrapping-up">
+        <span class="text">Wrapping Up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>This automated submodule update workflow can save significant time and reduce the risk of human error when managing shared code across multiple repositories. While the initial setup requires some configuration and PAT management, the long-term benefits of having consistent, up-to-date shared code across your entire project ecosystem are substantial. The workflow provides clear visibility into what&rsquo;s being updated through detailed pull requests and commit messages, while still maintaining the safety net of requiring CI tests to pass before any changes are merged. Consider implementing the bonus auto-merge functionality only after you&rsquo;ve gained confidence in your test coverage and are comfortable with the automation&rsquo;s reliability.</p>
+</div>
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-08-08-sync-git-submodules-github-action.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/viewer.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+
