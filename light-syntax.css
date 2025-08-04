@@ -4,12 +4,14 @@
 .bg {
     color: var(--syntax-color);
     background-color: var(--syntax-background);
+    transition: background 0.8s ease;
 }
 
 /* PreWrapper */
 .chroma {
     color: var(--syntax-color);
     background-color: var(--syntax-background);
+    transition: background 0.8s ease;
 }
 
 /* Other */

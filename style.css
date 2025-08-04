@@ -52,6 +52,7 @@ body {
 blockquote {
   text-align: center;
   background-color: white;
+  transition: background 0.8s ease;
   border-radius: 20px;
   padding: 20px;
   margin: 25px;
@@ -166,6 +167,7 @@ p, li, .footer a {
 .dark_mode_toggle[open] blockquote,
 #darkModeToggle:checked~div blockquote {
   background-color: black;
+  transition: background 0.8s ease;
 }
 
 .dark_mode_toggle .content {
@@ -384,6 +386,7 @@ footer .row {
 pre {
   border-radius: 10px;
   background-color: var(--syntax-background);
+  transition: background 0.8s ease;
   color: var(--syntax-foreground);
   padding-right: 10px;
   margin: 0;
@@ -456,10 +459,12 @@ code {
   padding: 0 8px;
   border-radius: 16px;
   background-color: var(--syntax-background);
+  transition: background 0.8s ease;
 }
 
 #darkModeToggle:checked~div code {
   background-color: var(--dark-syntax-background);
+  transition: background 0.8s ease;
 }
 
 pre code,
@@ -491,13 +496,11 @@ pre .custom-language {
   text-align: left;
   margin: 20px 0;
   padding: 10px 25px;
-  background-color: var(--default-background);
   color: var(--default-gray);
   border-left: var(--default-active) solid 5px;
 }
 
 #darkModeToggle:checked~div .long_quote {
-  background-color: var(--dark-background);
   border-left: var(--dark-active) solid 5px;
   color: var(--dark-gray);
 }
@@ -632,6 +635,7 @@ pre .custom-language {
 
 .newsletter {
   background-color: var(--syntax-background);
+  transition: background 0.8s ease;
   color: var(--syntax-foreground);
   border-radius: 16px;
   text-align: center;
@@ -649,6 +653,7 @@ pre .custom-language {
 #darkModeToggle:checked~div .newsletter {
   background-color: var(--dark-syntax-background);
   color: var(--dark-syntax-foreground);
+  transition: background 0.8s ease;
 }
 #darkModeToggle:checked~div .newsletter h2 {
   color: var(--dark-syntax-foreground);
@@ -661,6 +666,7 @@ input {
   border-width: 1px;
   border-color: var(--syntax-color);
   background-color: var(--default-background);
+  transition: background 0.8s ease;
   color: var(--syntax-color);
   font-family: Vollkorn;
   font-size: 100%;
@@ -675,6 +681,7 @@ input:hover, input:focus {
 
 #darkModeToggle:checked~div input {
   background-color: var(--dark-background);
+  transition: background 0.8s ease;
   border-color: var(--dark-syntax-color);
   color: var(--dark-syntax-color);
 }
@@ -685,6 +692,7 @@ button {
   border-width: 1px;
   border-color: var(--default-links);
   background-color: var(--default-background);
+  transition: background 0.8s ease;
   color: var(--default-links);
   cursor: pointer;
   font-family: Vollkorn;
@@ -700,6 +708,7 @@ button:hover {
 #darkModeToggle:checked~div button {
   border-color: var(--dark-links);
   background-color: var(--dark-background);
+  transition: background 0.8s ease;
   color: var(--dark-links);
 }
 
