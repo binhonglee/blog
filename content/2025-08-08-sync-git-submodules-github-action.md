@@ -6,10 +6,6 @@ tags: []
 ss: preview/git_submodules_github_action.jpg
 aliases:
   - /git_submodules_github_action/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 I needed to share some object code across multiple repos (to ensure the consistency of the RESTful API JSON serialization and deserialization). So I created a dedicated repository where all the shared code lives, then imported it across other repos as a submodule. In this case, I used a library I made - [wings](https://wings.sh/) - but usually you'd probably use something like Thrift or Protocol Buffers. Another common use case would be to have a repository hosting shared cross-platform (iOS + Android) low-level code.
