@@ -109,6 +109,14 @@
     <main class="content_body article_body">
       <div class="primary_block projects">
         <article class="block">
+          <a class="article_link active" href="https://binhong.me/blog/2021-07-18-postgresql-on-azure/">
+            <h1 class="row title">PostgreSQL on Azure Pipeline with OSX</h1>
+            <p class="desc">While the defacto way of running postgres on Azure Pipeline according to this guide seems to be using the docker image, the MacOS image on Azure Pipeline does not have docker support due to some licensing issue. So instead, this has to be setup and handled manually. We’d use brew here since it comes installed in the OS image and is the easiest way to deal with it as far as I’m aware.
+...</p>
+            <p class="right">July 18, 2021</p>
+          </a>
+        </article>
+        <article class="block">
           <a class="article_link active" href="https://binhong.me/blog/2021-05-22-ava-with-vue-typescript-and-nyc/">
             <h1 class="row title">Ava with Vue (2.x) &#43; TypeScript (and NYC)</h1>
             <p class="row subtitle">Component and Unit Testing with Test Coverage</p>
@@ -193,16 +201,6 @@ Required Resources # Virtual Private Server (VPS) # You’ll need a virtual serv
 As for why is it important, it automates the whole testing modules. Ideally, you would still want to test your changes locally before pushing them to remote but in some occasion where you forgot or the program requires a lot more resources than your current machine can handle, CI comes in very handy. That aside, if your project happen to have people wanting to contribute code, a properly written test with CI will help you in reviewing the changes and ensuring that the contribution would not break the build.
 ...</p>
             <p class="right">April 22, 2018</p>
-          </a>
-        </article>
-        <article class="block">
-          <a class="article_link active" href="https://binhong.me/blog/2018-03-21-restful-api-with-spark-kotlin/">
-            <h1 class="row title">RESTful API with Spark Kotlin</h1>
-            <p class="row subtitle">The not-so-mainstream way of building an API</p>
-            <p class="desc">When speaking of building a backend API, the most common tools is either Spring Boot for Java or ExpressJS for JavaScript. Even for Kotlin, Spring Boot and JetBrain’s own ktor is the usual option to go with. But today I’ll explore into the less popular option of spark-kotlin.
-Disclaimer : I am not in anyway affiliated nor do I work at the project. I just simply stumbled upon it and started using it when working on a side project. (coming soon™)
-...</p>
-            <p class="right">March 21, 2018</p>
           </a>
         </article>
       </div>
