@@ -14,23 +14,24 @@ Historically, my personal blog has been mostly about "how to do x", "guide on ma
 
 I have not fully planned out the entire series but here are a few topics I have in mind (or have released) so far...
 
-1. [Push Fearlessly with Automated Testing](/blog/2025-05-04-push-fearlessly-with-automated-testing/)
-2. Culture
+1. Culture
     1. [The Art of Posting](/blog/2025-05-15-art-of-posting/)
     2. [Code Review Culture](/blog/2025-05-23-code-review-culture/)
-3. Incident Management
+    3. [Push Fearlessly with Automated Testing](/blog/2025-05-04-push-fearlessly-with-automated-testing/)
+2. Incident Management
     1. [No Blame SEV (Incident) Culture](/blog/2025-05-30-no-blame-sev-culture/)
     2. [Major Incident Runbook](/blog/2025-07-25-major-incident-runbook/)
-    3. Firefighting Heroes (Pending: Aug 1st)
-4. Product Growth
+    3. [Firefighting Heroes](/blog/2025-08-01-firefighting-heroes/)
+3. Product Growth
     1. [A/B Testing](/blog/2025-06-06-a-b-testing/)
     2. [Product Growth Opportunities](/blog/2025-06-13-product-growth-opportunities/)
     3. [Growth Engineer](/blog/2025-06-20-growth-engineer/)
     4. [Experiment Review Process](/blog/2025-06-27-experiment-review-process/)
-5. Dev Tools
+4. Dev Tools
     1. [Early takes on vibe-coding](/blog/2025-07-03-early-takes-on-vibe-coding/)
     2. [Internal Tooling Ideas](/blog/2025-07-11-internal-tooling-ideas/)
     3. [Understanding the Value of Dev Tools](/blog/2025-07-18-understanding-value-of-dev-tools/)
+5. [Hidden Privacy and Security Pitfalls](/blog/2025-08-23-hidden-privacy-and-security-pitfalls/)
 
 {{< newsletter >}}
 
