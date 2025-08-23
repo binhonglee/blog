@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Hidden Privacy / Security Pitfalls - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="Most software engineers think of this as &ldquo;someone else&rsquo;s problem&rdquo; (usually a privacy engineer or security engineer), but realistically, there&rsquo;s only so much stuff (bad code lol) they can catch. Especially if you work in some of the more sensitive areas, it&rsquo;s not realistic to have them do code audits for every change. This means that you as the code author (or reviewer) need to at least pick up some basic instincts about things that can pose risks.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Hidden Privacy / Security Pitfalls">
+    <meta property="og:description" content="Sometimes good coding practice isn&#39;t good enough">
+    <meta name="twitter:description" content="Sometimes good coding practice isn&#39;t good enough">
+    <meta name="twitter:title" content="Hidden Privacy / Security Pitfalls"><meta property="article:published_time" 2025-08-23T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-08-23T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/hidden_privacy_security_pitfalls.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/hidden_privacy_security_pitfalls.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/hidden_privacy_security_pitfalls.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/blog/darkMode.css?v=1754287594183" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.148.2">
+    
+    </head>
+  <body class="single">
+    <input class="dark_mode_toggle" type="checkbox" id="darkModeToggle">
+    <div class="wrapper">
+      <div class="content">
+        <div class="dropdown">
+          <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+          <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+            <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+            <p>|</p>
+            <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+            <p>|</p>
+            <div class="webring link" role="menuitem">
+              <a class="webring_toggle">Webring</a>
+              <div class="webring_links">
+                <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+                <hr />
+                <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page_of_title">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+        <div class="dark_mode_toggle_wrapper">
+          <div class="toggle-container">
+            <label for="darkModeToggle" class="toggle-label">
+              <div class="background-layer day-bg"></div>
+              <div class="background-layer night-bg"></div>
+              
+              <div class="toggle-slider">
+                <div class="sun-rays"></div>
+                <div class="moon-craters">
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                </div>
+              </div>
+              
+              <div class="cloud cloud1"></div>
+              <div class="cloud cloud2"></div>
+              <div class="cloud cloud3"></div>
+              <div class="cloud cloud4"></div>
+              <div class="cloud cloud5"></div>
+              
+              <div class="star star1"></div>
+              <div class="star star2"></div>
+              <div class="star star3"></div>
+              <div class="star star4"></div>
+              <div class="star star5"></div>
+              <div class="star star6"></div>
+              <div class="star star7"></div>
+              <div class="star star8"></div>
+              <div class="star star9"></div>
+              <div class="star star10"></div>
+              <div class="star star11"></div>
+              <div class="star star12"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Hidden Privacy / Security Pitfalls</h1>
+          <p class="row subtitle">Sometimes good coding practice isn&#39;t good enough</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">August 23, 2025</p>
+          </div>
+          <div class="post_content"><p>Most software engineers think of this as &ldquo;someone else&rsquo;s problem&rdquo; (usually a privacy engineer or security engineer), but realistically, there&rsquo;s only so much stuff (bad code lol) they can catch. Especially if you work in some of the more sensitive areas, it&rsquo;s not realistic to have them do code audits for every change. This means that you as the code author (or reviewer) need to at least pick up some basic instincts about things that can pose risks.</p>
+<p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+<p><em><strong>Disclaimer</strong>: I&rsquo;m neither a privacy engineer nor a security engineer (but a software engineer) so take this mostly as a way to raise awareness about considering some of these pitfalls while building instead of as an expert opinion on what to do.</em></p>
+<a class="anchor" href="#timing-attack">
+    <h2 id="timing-attack">
+        <span class="text">Timing attack</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Even if you return the same response every time, you might still be leaking data (or mostly inference) based on the timing it took the server to respond. As an example, a typical email + password login system probably looks like this:</p>
+<ol>
+<li>Hash password</li>
+<li>Email lookup</li>
+<li>Compare hash</li>
+</ol>
+<p>Now, considering that password hashing can take quite a bit of time and resources, we could rearrange the order to make it more efficient by making use of &ldquo;early returns.&rdquo; Something like this:</p>
+<ol>
+<li>Email lookup</li>
+<li>Hash password</li>
+<li>Compare hash</li>
+</ol>
+<p>With this new setup, you&rsquo;d only do password hashing when an email already exists in your record, thus saving time and processing power from unnecessary password hashing. However, you&rsquo;re also returning your network request much sooner. This becomes an unintentional leak where a bad actor can use it to tell if an email exists in your database or not by doing some timed response comparison. My favorite solution to this problem (when applicable) is to add a random response delay—not long enough to significantly affect user experience, but just long enough to throw an attacker off.</p>
+<a class="anchor" href="#scraping">
+    <h2 id="scraping">
+        <span class="text">Scraping</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Generally the <em>easy</em> solution here is to slap a rate limit on it and call it a day. The problem, however, is that you need to realize not all endpoints are created equal. Most evidently, you have an endpoint that returns info about a user when given an ID, while you also have an endpoint that returns info about <strong>a list of users</strong> when given a list of IDs. Both of these endpoints can&rsquo;t just share the same rate limiting because scraping the latter endpoint is <code>list_length</code>x more <em>efficient</em> than the former.</p>
+<a class="anchor" href="#credential-stuffing">
+    <h2 id="credential-stuffing">
+        <span class="text">Credential stuffing</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>This is usually the result of password reuse. While you can <em>technically</em> do credential stuffing with just randomly enumerated credentials, the cost is unlikely to be worth the outcome for the attacker (unless there are some specific exceptions). Since people reuse passwords and there have been many previous hacks (unfortunately containing plaintext passwords), your perfectly secure authentication system becomes vulnerable not because of your code, but because of breaches elsewhere. That said, these attacks are <em>usually</em> more obvious, coming from an <em>expected</em> set of IPs (all from the same location or same VPS provider, etc.).</p>
+<a class="anchor" href="#contactpoint-disclosure">
+    <h2 id="contactpoint-disclosure">
+        <span class="text">Contactpoint disclosure</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>A little different from the rest of the list, this is more of a <em>type</em> of disclosure than a <em>method</em> of disclosure. While many systems are more conservative and opt for the route of never even disclosing if a specific contactpoint (email / phone number) is even associated with the platform, some do allow for it. However, this will require a bit more care in handling such disclosure where we don&rsquo;t want to disclose <strong>other</strong> contactpoints being connected to a given contactpoint (even through inference). The main reason being that this risks leaking identities behind pseudonyms where people can <em>connect the dots</em>.</p>
+<a class="anchor" href="#rate-limiting">
+    <h2 id="rate-limiting">
+        <span class="text">Rate limiting</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Rate limiting is both a valuable tool and also a potential risk of exposure. Most evidently, rate limiting helps reduce (and hopefully prevent) scraping and credential stuffing attacks. However, in some systems, rate limits are set on a per-account basis, making it a risk of exposure as you can do targeted attacks with some reasonable correlation to get information out of it.</p>
+<p>Here&rsquo;s an example:</p>
+<p><em>Condition: email A and phone A are both owned by the same account while email B is not.</em></p>
+<ul>
+<li>try (and fail) login with email A -&gt; no rate limit</li>
+<li>try (and fail) login with email B -&gt; no rate limit</li>
+<li>try (and fail) login with phone A -&gt; no rate limit</li>
+<li>keep trying email A until it&rsquo;s rate limited</li>
+<li>try (and fail) login with email B -&gt; no rate limit (since different account)</li>
+<li>try (and fail) login with phone A -&gt; <strong>rate limited</strong></li>
+</ul>
+<p>There are many reasons (or other situations) where it&rsquo;s not immediately obvious how introducing an account-based rate limit can be a risk.</p>
+<a class="anchor" href="#phone-recycling">
+    <h2 id="phone-recycling">
+        <span class="text">Phone recycling</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Many platforms rely on phone number verification to authenticate your ownership of the account, but phone number ownership isn&rsquo;t exactly <em>immutable</em>. In fact, phone numbers commonly switch hands in most countries for a variety of reasons (especially as people move across countries). Unfortunately, this is a much trickier problem to tackle due to the wide variety of carriers spread across different countries having different processes and regulations around it.</p>
+<a class="anchor" href="#email-recycling">
+    <h2 id="email-recycling">
+        <span class="text">Email recycling</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>While email recycling isn&rsquo;t as common as phone recycling, it still persists (especially those with custom domains). In fact, many years ago one of the largest email service providers actually allowed anyone to register expired email addresses. This became a major attack vector on Facebook since many people back then set their emails to be shown publicly on their Facebook profiles, while also simultaneously stopping using those same email addresses - leaving them to expire. Thankfully, most email providers have learned of such attack vectors and no longer allow deactivated / deleted email addresses to be re-registered <em>ever</em>.</p>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>These pitfalls often emerge from well-intentioned optimizations that look perfectly reasonable in isolation. The key is developing a mental checklist of common attack patterns rather than becoming paranoid about every line of code. Security isn&rsquo;t just about preventing obvious attacks but instead, it&rsquo;s to think through the subtle ways your system behavior can be observed and / or exploited.</p>
+</div>
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+          <a href="/blog/2025-08-08-sync-git-submodules-github-action/">
+            <div class="bottom_button previous_post">
+              Previous →
+              <br />
+              <br />
+              <span class="button_title">Sync git submodules with GitHub Action</span>
+            </div>
+          </a>
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-08-23-hidden-privacy-and-security-pitfalls.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/viewer.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+
