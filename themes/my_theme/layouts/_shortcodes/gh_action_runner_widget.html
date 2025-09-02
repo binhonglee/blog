@@ -1,0 +1,228 @@
+<style>
+  .calculator-widget {
+    font-family: VictorMono;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid var(--default-gray);
+    border-radius: 12px;
+  }
+
+  #darkModeToggle:checked~div .calculator-widget {
+    border: 1px solid var(--dark-gray);
+  }
+
+  .inputs {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+  }
+
+  .input-group {
+    flex: 1;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .input-group input,
+  .input-group select {
+    width: 100%;
+  }
+
+  .free {
+    color: var(--default-links);
+  }
+
+  #darkModeToggle:checked~div .free {
+    color: var(--dark-links);
+  }
+
+  .speed-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+  }
+
+  .speed-toggle-switch input {
+    opacity: 0;
+  }
+
+  .speed-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--default-gray);
+    transition: .4s;
+    border-radius: 24px;
+  }
+
+  .speed-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--default-background);
+    transition: .4s;
+    border-radius: 50%;
+  }
+
+  .speed-toggle-switch input:checked + .speed-toggle-slider {
+    background-color: var(--default-active);
+  }
+
+  .speed-toggle-switch input:checked + .speed-toggle-slider:before {
+    transform: translateX(26px);
+  }
+
+  #darkModeToggle:checked~div .speed-toggle-switch input:checked + .speed-toggle-slider {
+    background-color: var(--dark-active);
+  }
+
+  #darkModeToggle:checked~div .speed-toggle-slider {
+    background-color: var(--dark-gray);
+  }
+
+  #darkModeToggle:checked~div .speed-toggle-slider:before {
+    background-color: var(--dark-background);
+  }
+
+  .speed-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 0 0 15px 2px;
+  }
+
+  @media (max-width: 750px) {
+    .inputs {
+      flex-direction: column;
+    }
+
+    .input-group {
+      width: 100%;
+    }
+  }
+</style>
+<div class="calculator-widget">
+  <div class="inputs">
+    <div class="input-group">
+      <label for="minutes">GitHub Action Minutes</label>
+      <input type="number" id="minutes" value="1000" min="0" step="100">
+    </div>
+    <div class="input-group">
+      <label for="platform">Platform</label>
+      <select id="platform">
+        <option value="linux">Linux (2 vCPU)</option>
+        <option value="macos">macOS</option>
+      </select>
+    </div>
+  </div>
+  <label for="ignoreSpeed" class="speed-toggle-label">
+    <div class="speed-toggle-switch">
+      <input type="checkbox" id="ignoreSpeed" checked>
+      <span class="speed-toggle-slider"></span>
+    </div>
+    Ignore Speed
+  </label>
+
+  <table class="results-table" id="results">
+    <thead>
+      <tr>
+        <th>Provider</th>
+        <th id="speed-header">Speed</th>
+        <th>Monthly Cost</th>
+      </tr>
+    </thead>
+    <tbody id="results-body">
+      <!-- Results populated here -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+  const providers = {
+    linux: [
+      { name: "Blacksmith", link: "https://www.blacksmith.sh/", freeMinutes: 3000, pricePerMinute: 0.004, speedMultiplier: 2.0 },
+      { name: "BuildJet", link: "https://buildjet.com/", freeMinutes: 0, pricePerMinute: 0.004, speedMultiplier: 2.0 },
+      { name: "CarbonRunner", link: "https://carbonrunner.io/", freeMinutes: 0, pricePerMinute: 0.006, speedMultiplier: 1.0 },
+      { name: "Cirrus Runners", link: "https://cirrus-runners.app/", freeMinutes: 0, pricePerMinute: 0, fixedCost: 150, speedMultiplier: 2.5 },
+      { name: "Depot", link: "http://depot.dev/", freeMinutes: 2000, fixedCost: 20, pricePerMinute: 0.004, speedMultiplier: 1.3 },
+      { name: "GitHub", freeMinutes: 2000, pricePerMinute: 0.008, speedMultiplier: 1.0 },
+      { name: "Namespace", link: "https://namespace.so/", freeMinutes: 0, pricePerMinute: 0.003, speedMultiplier: 1.8 },
+      { name: "puzl.cloud", link: "https://puzl.cloud/", freeMinutes: 400, pricePerMinute: 0.0008, speedMultiplier: 2.0 },
+      { name: "RunsOn", link: "https://runs-on.com/", freeMinutes: 0, pricePerMinute: 0.002, fixedCost: 25, speedMultiplier: 1.3 },
+      { name: "Ubicloud", link: "https://www.ubicloud.com/", freeMinutes: 1250, pricePerMinute: 0.0008, speedMultiplier: 1.3 },
+      { name: "WarpBuild", link: "https://www.warpbuild.com/", freeMinutes: 0, pricePerMinute: 0.004, speedMultiplier: 2.0 },
+    ],
+    macos: [
+      { name: "Cirrus Runners", link: "https://cirrus-runners.app/", freeMinutes: 0, pricePerMinute: 0, fixedCost: 150, speedMultiplier: 2.0 },
+      { name: "GitHub", freeMinutes: 0, pricePerMinute: 0.08, speedMultiplier: 1.0 },
+      { name: "Namespace", link: "https://namespace.so/", freeMinutes: 0, pricePerMinute: 0.09, speedMultiplier: 1.8 },
+      { name: "WarpBuild", link: "https://www.warpbuild.com/", freeMinutes: 0, pricePerMinute: 0.08, speedMultiplier: 1.25 },
+    ]
+  };
+
+  function calculateCosts() {
+    const minutes = parseInt(document.getElementById('minutes').value) || 0;
+    const platform = document.getElementById('platform').value;
+    const ignoreSpeed = document.getElementById('ignoreSpeed').checked;
+    const tbody = document.getElementById('results-body');
+    const speedHeader = document.getElementById('speed-header');
+
+    speedHeader.style.display = ignoreSpeed ? 'none' : '';
+
+    const platformProviders = providers[platform];
+
+    let results = platformProviders.map(provider => {
+      let cost = 0;
+      
+      const actualMinutes = ignoreSpeed ? minutes : minutes / provider.speedMultiplier;
+      
+      if (provider.fixedCost && provider.pricePerMinute === 0) {
+        cost = provider.fixedCost;
+      } else if (provider.fixedCost) {
+        const freeMinutes = provider.freeMinutes || 0;
+        cost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinute);
+      } else {
+        const freeMinutes = provider.freeMinutes || 0;
+        const billableMinutes = Math.max(0, actualMinutes - freeMinutes);
+        cost = billableMinutes * provider.pricePerMinute;
+      }
+      const isFree = cost === 0;
+
+      return { ...provider, cost, isFree };
+    });
+
+    results.sort((a, b) => a.cost - b.cost);
+
+    tbody.innerHTML = results.map(provider => {
+      const costDisplay = provider.isFree ? 'FREE' : `${provider.cost.toFixed(2)}`;
+      const costClass = provider.isFree ? 'free' : 'cost';
+      const providerName = provider.link ? `<a href="${provider.link}" noreferrer noopener>${provider.name}</a>` : `${provider.name}`;
+      const speedColumn = ignoreSpeed ? '' : `<td class="provider-speed">${provider.speedMultiplier}</td>`;
+
+      return `
+                    <tr>
+                        <td class="provider-name">${providerName}</td>
+                        ${speedColumn}
+                        <td class="${costClass}">${costDisplay}</td>
+                    </tr>
+                `;
+    }).join('');
+  }
+
+  document.getElementById('minutes').addEventListener('input', calculateCosts);
+  document.getElementById('platform').addEventListener('change', calculateCosts);
+  document.getElementById('ignoreSpeed').addEventListener('change', calculateCosts);
+
+  calculateCosts();
+</script>
