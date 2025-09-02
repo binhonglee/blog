@@ -120,6 +120,31 @@ h3 code {
   font-size: 0.75em;
 }
 
+table {
+  width: 100%;
+  background-color: var(--syntax-background);
+  border-radius: 12px;
+  padding: 0 10px;
+  border: 1px solid var(--default-gray);
+}
+
+#darkModeToggle:checked~div table {
+  background-color: var(--dark-syntax-background);
+  border: 1px solid var(--dark-gray);
+}
+
+table th {
+  padding: 10px;
+  text-align: left;
+  font-size: 80%;
+}
+
+table td {
+  padding: 8px;
+  border-top: 1px solid var(--default-gray);
+  font-size: 75%;
+}
+
 .dropdown_toggle {
   display: none;
   margin: 0;
@@ -659,7 +684,7 @@ pre .custom-language {
   color: var(--dark-syntax-foreground);
 }
 
-input {
+input, select {
   box-sizing: border-box;
   border-radius: 12px;
   border-style: solid;
@@ -675,11 +700,12 @@ input {
   margin-bottom: 12px;
 }
 
-input:hover, input:focus {
+input:hover, input:focus, select:hover, select:focus {
   border-width: 3px;
 }
 
-#darkModeToggle:checked~div input {
+#darkModeToggle:checked~div input,
+#darkModeToggle:checked~div select {
   background-color: var(--dark-background);
   transition: background 0.8s ease;
   border-color: var(--dark-syntax-color);

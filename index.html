@@ -27,7 +27,7 @@
     <meta name="fediverse:creator" content="@bh@social.lol">
     <link href="https://social.lol/@bh" rel="me">
     
-    <link href="https://binhong.me/blog/style.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/blog/style.css?v=1756722722324" rel="stylesheet">
     <link href="https://binhong.me/blog/darkMode.css?v=1754287594183" rel="stylesheet">
     <link href="https://binhong.me/blog/dark-syntax.css?v=1754290957202" rel="stylesheet">
     <link href="https://binhong.me/blog/light-syntax.css?v=1754290957202" rel="stylesheet">
@@ -37,7 +37,7 @@
     
     <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
     
-    <meta name="generator" content="Hugo 0.148.2">
+    <meta name="generator" content="Hugo 0.149.0">
     
     <link rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee's Blog" />
     </head>
@@ -108,6 +108,16 @@
 
     <main class="content_body article_body">
       <div class="primary_block projects">
+        <article class="block">
+          <a class="article_link active" href="https://binhong.me/blog/2025-09-02-github-action-runner-alternatives/">
+            <h1 class="row title">GitHub Action Runner Alternatives</h1>
+            <p class="row subtitle">Cheaper hosted 3rd party solutions</p>
+            <p class="desc">A few months ago, I wrote about my attempt and reasoning behind managing my own fleet of self-hosted GitHub Action Runners. I’ve since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub’s default runners. This article is just a quick summary of what I’ve found.
+Linux Runners Comparison # Provider Free Tier Paid Pricing (2vCPU) Performance Special Features Blacksmith 3,000 minutes/month $0.004/min (50% of GitHub) 2x faster builds, 4x faster cache Unlimited concurrency, gaming CPUs BuildJet $5 one-time credit $0.004/min (50% of GitHub) 2x faster (variable CPU models) 64 AMD &#43; 32 ARM concurrent vCPUs, 20GB cache CarbonRunner ❌ None $0.006/min (25% cheaper than GitHub) Standard performance 90% lower CO2 emissions, 42 regions Cirrus Runners ❌ None $150/month unlimited 2-3x faster performance Fixed pricing, no minute limits, limited concurrency Depot ❌ None $20 for 20,000 minutes, then $0.004/min 30% faster, 10x faster cache Docker-focused, per-second billing, unlimited cache GitHub 2,000 minutes/month $0.008/min Baseline Official support Namespace ❌ None $0.003 Fastest x64 performance 250GB storage, SSH access puzl.cloud 400 vCPU-minutes/month $0.0008/min (€0.000008/vCPU-sec) 2x faster, 5x cheaper Real-time per-second billing, 12vCPU per job Sprinters.sh ❌ None Per-job pricing (10x cheaper) Standard performance Self-hosted in AWS, per-job pricing RunsOn Free for non-commercial €300/year &#43; $0.001-0.003/min (AWS costs) 30% faster, 90% cheaper Self-hosted in AWS, GPUs, Windows Ubicloud 1,250 minutes (~$1 credit) $0.0008/min (10x cheaper) Newer CPUs, good performance Open source, Hetzner hardware WarpBuild ❌ None $0.004/min (50% of GitHub) 2x faster, 50% cheaper Snapshots, unlimited cache macOS Runners Comparison # Provider Pricing Hardware Performance Key Features Cirrus Runners $150/month unlimited M4 Pro (latest) 2x faster performance Fixed pricing, no minute limits, limited concurrency GitHub $0.08/min (10x multiplier) Intel Mac &#43; M2 Pro XL ($0.16/min) Baseline Official support Namespace $0.09 M4 Pro &#43; M2 Pro Fastest available SSH/VNC access, bleeding-edge images WarpBuild $0.04/min (50% cheaper) M2 Pro 25% faster, 50% cheaper Pay-per-use, macOS 13/14 support Widget # I don’t have a better place to put this but I built a very basic widget that takes into account of the “supposed” faster speed (leading to less action minutes) with each of their rates so you can find out which platform fits you best based on your usage (with GitHub’s Action Runner minutes as baseline).
+...</p>
+            <p class="right">September 2, 2025</p>
+          </a>
+        </article>
         <article class="block">
           <a class="article_link active" href="https://binhong.me/blog/2025-08-23-hidden-privacy-and-security-pitfalls/">
             <h1 class="row title">Hidden Privacy / Security Pitfalls</h1>
@@ -186,16 +196,6 @@
             <p class="desc">While I’ve shipped a lot of growth wins (literally the first line on my resume), I’m actually very far from a prototypical growth engineer. That said, in this piece, I want to explore a bit more into what it’s like being a growth engineer and what makes you good at being one. Growth engineers are generally 1 -&gt; 100 experts instead of 0 -&gt; 1. They fine-tune every little detail by running a lot of experiments with marginal changes to understand the user problem and drive growth impact (line goes up).
 ...</p>
             <p class="right">June 20, 2025</p>
-          </a>
-        </article>
-        <article class="block">
-          <a class="article_link active" href="https://binhong.me/blog/2025-06-13-product-growth-opportunities/">
-            <h1 class="row title">Product Growth Opportunities</h1>
-            <p class="row subtitle">Finding ideas that brings you from 1 -&gt; 100</p>
-            <p class="desc">It’s never easy to come up with new ideas that help with growth, but identifying the problem makes it easier. You’ll notice that for the most part in this piece, I’ll talk about “where” the opportunities are instead of “what” because that’s usually very domain specific and highly depends on the type of problem you ended up needing to solve.
-This is part of a series (The Opinionated Engineer) where I share my strong opinions on engineering practices.
-...</p>
-            <p class="right">June 13, 2025</p>
           </a>
         </article>
       </div>

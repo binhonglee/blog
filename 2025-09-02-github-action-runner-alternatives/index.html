@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>GitHub Action Runner Alternatives - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="A few months ago, I wrote about my attempt and reasoning behind managing my own fleet of self-hosted GitHub Action Runners. I&rsquo;ve since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub&rsquo;s default runners. This article is just a quick summary of what I&rsquo;ve found.
+
+    
+        Linux Runners Comparison
+        #
+    
+
+
+  
+    
+      
+          
+              Provider
+              Free Tier
+              Paid Pricing (2vCPU)
+              Performance
+              Special Features
+          
+      
+      
+          
+              Blacksmith
+              3,000 minutes/month
+              $0.004/min (50% of GitHub)
+              2x faster builds, 4x faster cache
+              Unlimited concurrency, gaming CPUs
+          
+          
+              BuildJet
+              $5 one-time credit
+              $0.004/min (50% of GitHub)
+              2x faster (variable CPU models)
+              64 AMD &#43; 32 ARM concurrent vCPUs, 20GB cache
+          
+          
+              CarbonRunner
+              ❌ None
+              $0.006/min (25% cheaper than GitHub)
+              Standard performance
+              90% lower CO2 emissions, 42 regions
+          
+          
+              Cirrus Runners
+              ❌ None
+              $150/month unlimited
+              2-3x faster performance
+              Fixed pricing, no minute limits, limited concurrency
+          
+          
+              Depot
+              ❌ None
+              $20 for 20,000 minutes, then $0.004/min
+              30% faster, 10x faster cache
+              Docker-focused, per-second billing, unlimited cache
+          
+          
+              GitHub
+              2,000 minutes/month
+              $0.008/min
+              Baseline
+              Official support
+          
+          
+              Namespace
+              ❌ None
+              $0.003
+              Fastest x64 performance
+              250GB storage, SSH access
+          
+          
+              puzl.cloud
+              400 vCPU-minutes/month
+              $0.0008/min (€0.000008/vCPU-sec)
+              2x faster, 5x cheaper
+              Real-time per-second billing, 12vCPU per job
+          
+          
+              Sprinters.sh
+              ❌ None
+              Per-job pricing (10x cheaper)
+              Standard performance
+              Self-hosted in AWS, per-job pricing
+          
+          
+              RunsOn
+              Free for non-commercial
+              €300/year &#43; $0.001-0.003/min (AWS costs)
+              30% faster, 90% cheaper
+              Self-hosted in AWS, GPUs, Windows
+          
+          
+              Ubicloud
+              1,250 minutes (~$1 credit)
+              $0.0008/min (10x cheaper)
+              Newer CPUs, good performance
+              Open source, Hetzner hardware
+          
+          
+              WarpBuild
+              ❌ None
+              $0.004/min (50% of GitHub)
+              2x faster, 50% cheaper
+              Snapshots, unlimited cache
+          
+      
+    
+  
+
+
+    
+        macOS Runners Comparison
+        #
+    
+
+
+  
+    
+      
+          
+              Provider
+              Pricing
+              Hardware
+              Performance
+              Key Features
+          
+      
+      
+          
+              Cirrus Runners
+              $150/month unlimited
+              M4 Pro (latest)
+              2x faster performance
+              Fixed pricing, no minute limits, limited concurrency
+          
+          
+              GitHub
+              $0.08/min (10x multiplier)
+              Intel Mac &#43; M2 Pro XL ($0.16/min)
+              Baseline
+              Official support
+          
+          
+              Namespace
+              $0.09
+              M4 Pro &#43; M2 Pro
+              Fastest available
+              SSH/VNC access, bleeding-edge images
+          
+          
+              WarpBuild
+              $0.04/min (50% cheaper)
+              M2 Pro
+              25% faster, 50% cheaper
+              Pay-per-use, macOS 13/14 support
+          
+      
+    
+  
+
+
+    
+        Widget
+        #
+    
+
+I don&rsquo;t have a better place to put this but I built a very basic widget that takes into account of the &ldquo;supposed&rdquo; faster speed (leading to less action minutes) with each of their rates so you can find out which platform fits you best based on your usage (with GitHub&rsquo;s Action Runner minutes as baseline).">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="GitHub Action Runner Alternatives">
+    <meta property="og:description" content="Cheaper hosted 3rd party solutions">
+    <meta name="twitter:description" content="Cheaper hosted 3rd party solutions">
+    <meta name="twitter:title" content="GitHub Action Runner Alternatives"><meta property="article:published_time" 2025-09-02T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-09-02T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/gh_action_runner_alt.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/gh_action_runner_alt.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/gh_action_runner_alt.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1756722722324" rel="stylesheet">
+    <link href="https://binhong.me/blog/darkMode.css?v=1754287594183" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.149.0">
+    
+    </head>
+  <body class="single">
+    <input class="dark_mode_toggle" type="checkbox" id="darkModeToggle">
+    <div class="wrapper">
+      <div class="content">
+        <div class="dropdown">
+          <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+          <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+            <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+            <p>|</p>
+            <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+            <p>|</p>
+            <div class="webring link" role="menuitem">
+              <a class="webring_toggle">Webring</a>
+              <div class="webring_links">
+                <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+                <hr />
+                <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page_of_title">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+        <div class="dark_mode_toggle_wrapper">
+          <div class="toggle-container">
+            <label for="darkModeToggle" class="toggle-label">
+              <div class="background-layer day-bg"></div>
+              <div class="background-layer night-bg"></div>
+              
+              <div class="toggle-slider">
+                <div class="sun-rays"></div>
+                <div class="moon-craters">
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                </div>
+              </div>
+              
+              <div class="cloud cloud1"></div>
+              <div class="cloud cloud2"></div>
+              <div class="cloud cloud3"></div>
+              <div class="cloud cloud4"></div>
+              <div class="cloud cloud5"></div>
+              
+              <div class="star star1"></div>
+              <div class="star star2"></div>
+              <div class="star star3"></div>
+              <div class="star star4"></div>
+              <div class="star star5"></div>
+              <div class="star star6"></div>
+              <div class="star star7"></div>
+              <div class="star star8"></div>
+              <div class="star star9"></div>
+              <div class="star star10"></div>
+              <div class="star star11"></div>
+              <div class="star star12"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">GitHub Action Runner Alternatives</h1>
+          <p class="row subtitle">Cheaper hosted 3rd party solutions</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">September 2, 2025</p>
+          </div>
+          <div class="post_content"><p>A few months ago, I wrote about my attempt and reasoning behind <a href="/blog/2025-04-25-self-hosted-github-runners/">managing my own fleet of self-hosted GitHub Action Runners</a>. I&rsquo;ve since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub&rsquo;s default runners. This article is just a quick summary of what I&rsquo;ve found.</p>
+<a class="anchor" href="#linux-runners-comparison">
+    <h2 id="linux-runners-comparison">
+        <span class="text">Linux Runners Comparison</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<div style="padding: 20px 0;">
+  <div style="overflow-x: auto;">
+    <table>
+      <thead>
+          <tr>
+              <th>Provider</th>
+              <th>Free Tier</th>
+              <th>Paid Pricing (2vCPU)</th>
+              <th>Performance</th>
+              <th>Special Features</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td><a href="https://www.blacksmith.sh/">Blacksmith</a></td>
+              <td>3,000 minutes/month</td>
+              <td>$0.004/min (50% of GitHub)</td>
+              <td>2x faster builds, 4x faster cache</td>
+              <td>Unlimited concurrency, gaming CPUs</td>
+          </tr>
+          <tr>
+              <td><a href="https://buildjet.com/">BuildJet</a></td>
+              <td>$5 one-time credit</td>
+              <td>$0.004/min (50% of GitHub)</td>
+              <td>2x faster (variable CPU models)</td>
+              <td>64 AMD + 32 ARM concurrent vCPUs, 20GB cache</td>
+          </tr>
+          <tr>
+              <td><a href="https://carbonrunner.io/">CarbonRunner</a></td>
+              <td>❌ None</td>
+              <td>$0.006/min (25% cheaper than GitHub)</td>
+              <td>Standard performance</td>
+              <td>90% lower CO2 emissions, 42 regions</td>
+          </tr>
+          <tr>
+              <td><a href="https://cirrus-runners.app/">Cirrus Runners</a></td>
+              <td>❌ None</td>
+              <td>$150/month unlimited</td>
+              <td>2-3x faster performance</td>
+              <td>Fixed pricing, no minute limits, limited concurrency</td>
+          </tr>
+          <tr>
+              <td><a href="http://depot.dev/">Depot</a></td>
+              <td>❌ None</td>
+              <td>$20 for 20,000 minutes, then $0.004/min</td>
+              <td>30% faster, 10x faster cache</td>
+              <td>Docker-focused, per-second billing, unlimited cache</td>
+          </tr>
+          <tr>
+              <td>GitHub</td>
+              <td>2,000 minutes/month</td>
+              <td>$0.008/min</td>
+              <td>Baseline</td>
+              <td>Official support</td>
+          </tr>
+          <tr>
+              <td><a href="https://namespace.so/">Namespace</a></td>
+              <td>❌ None</td>
+              <td>$0.003</td>
+              <td>Fastest x64 performance</td>
+              <td>250GB storage, SSH access</td>
+          </tr>
+          <tr>
+              <td><a href="https://puzl.cloud/">puzl.cloud</a></td>
+              <td>400 vCPU-minutes/month</td>
+              <td>$0.0008/min (€0.000008/vCPU-sec)</td>
+              <td>2x faster, 5x cheaper</td>
+              <td>Real-time per-second billing, 12vCPU per job</td>
+          </tr>
+          <tr>
+              <td><a href="https://sprinters.sh/">Sprinters.sh</a></td>
+              <td>❌ None</td>
+              <td>Per-job pricing (10x cheaper)</td>
+              <td>Standard performance</td>
+              <td>Self-hosted in AWS, per-job pricing</td>
+          </tr>
+          <tr>
+              <td><a href="https://runs-on.com/">RunsOn</a></td>
+              <td>Free for non-commercial</td>
+              <td>€300/year + $0.001-0.003/min (AWS costs)</td>
+              <td>30% faster, 90% cheaper</td>
+              <td>Self-hosted in AWS, GPUs, Windows</td>
+          </tr>
+          <tr>
+              <td><a href="https://www.ubicloud.com/">Ubicloud</a></td>
+              <td>1,250 minutes (~$1 credit)</td>
+              <td>$0.0008/min (10x cheaper)</td>
+              <td>Newer CPUs, good performance</td>
+              <td>Open source, Hetzner hardware</td>
+          </tr>
+          <tr>
+              <td><a href="https://www.warpbuild.com/">WarpBuild</a></td>
+              <td>❌ None</td>
+              <td>$0.004/min (50% of GitHub)</td>
+              <td>2x faster, 50% cheaper</td>
+              <td>Snapshots, unlimited cache</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<a class="anchor" href="#macos-runners-comparison">
+    <h2 id="macos-runners-comparison">
+        <span class="text">macOS Runners Comparison</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<div style="padding: 20px 0;">
+  <div style="overflow-x: auto;">
+    <table>
+      <thead>
+          <tr>
+              <th>Provider</th>
+              <th>Pricing</th>
+              <th>Hardware</th>
+              <th>Performance</th>
+              <th>Key Features</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td><a href="https://cirrus-runners.app/">Cirrus Runners</a></td>
+              <td>$150/month unlimited</td>
+              <td>M4 Pro (latest)</td>
+              <td>2x faster performance</td>
+              <td>Fixed pricing, no minute limits, limited concurrency</td>
+          </tr>
+          <tr>
+              <td>GitHub</td>
+              <td>$0.08/min (10x multiplier)</td>
+              <td>Intel Mac + M2 Pro XL ($0.16/min)</td>
+              <td>Baseline</td>
+              <td>Official support</td>
+          </tr>
+          <tr>
+              <td><a href="https://namespace.so/">Namespace</a></td>
+              <td>$0.09</td>
+              <td>M4 Pro + M2 Pro</td>
+              <td>Fastest available</td>
+              <td>SSH/VNC access, bleeding-edge images</td>
+          </tr>
+          <tr>
+              <td><a href="https://www.warpbuild.com/">WarpBuild</a></td>
+              <td>$0.04/min (50% cheaper)</td>
+              <td>M2 Pro</td>
+              <td>25% faster, 50% cheaper</td>
+              <td>Pay-per-use, macOS 13/14 support</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<a class="anchor" href="#widget">
+    <h2 id="widget">
+        <span class="text">Widget</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>I don&rsquo;t have a better place to put this but I built a very basic widget that takes into account of the &ldquo;supposed&rdquo; faster speed (leading to less action minutes) with each of their rates so you can find out which platform fits you best based on your usage (with GitHub&rsquo;s Action Runner minutes as baseline).</p>
+<style>
+  .calculator-widget {
+    font-family: VictorMono;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid var(--default-gray);
+    border-radius: 12px;
+  }
+
+  #darkModeToggle:checked~div .calculator-widget {
+    border: 1px solid var(--dark-gray);
+  }
+
+  .inputs {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+  }
+
+  .input-group {
+    flex: 1;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .input-group input,
+  .input-group select {
+    width: 100%;
+  }
+
+  .free {
+    color: var(--default-links);
+  }
+
+  #darkModeToggle:checked~div .free {
+    color: var(--dark-links);
+  }
+
+  .speed-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+  }
+
+  .speed-toggle-switch input {
+    opacity: 0;
+  }
+
+  .speed-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--default-gray);
+    transition: .4s;
+    border-radius: 24px;
+  }
+
+  .speed-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--default-background);
+    transition: .4s;
+    border-radius: 50%;
+  }
+
+  .speed-toggle-switch input:checked + .speed-toggle-slider {
+    background-color: var(--default-active);
+  }
+
+  .speed-toggle-switch input:checked + .speed-toggle-slider:before {
+    transform: translateX(26px);
+  }
+
+  #darkModeToggle:checked~div .speed-toggle-switch input:checked + .speed-toggle-slider {
+    background-color: var(--dark-active);
+  }
+
+  #darkModeToggle:checked~div .speed-toggle-slider {
+    background-color: var(--dark-gray);
+  }
+
+  #darkModeToggle:checked~div .speed-toggle-slider:before {
+    background-color: var(--dark-background);
+  }
+
+  .speed-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 0 0 15px 2px;
+  }
+
+  @media (max-width: 750px) {
+    .inputs {
+      flex-direction: column;
+    }
+
+    .input-group {
+      width: 100%;
+    }
+  }
+</style>
+<div class="calculator-widget">
+  <div class="inputs">
+    <div class="input-group">
+      <label for="minutes">GitHub Action Minutes</label>
+      <input type="number" id="minutes" value="1000" min="0" step="100">
+    </div>
+    <div class="input-group">
+      <label for="platform">Platform</label>
+      <select id="platform">
+        <option value="linux">Linux (2 vCPU)</option>
+        <option value="macos">macOS</option>
+      </select>
+    </div>
+  </div>
+  <label for="ignoreSpeed" class="speed-toggle-label">
+    <div class="speed-toggle-switch">
+      <input type="checkbox" id="ignoreSpeed" checked>
+      <span class="speed-toggle-slider"></span>
+    </div>
+    Ignore Speed
+  </label>
+
+  <table class="results-table" id="results">
+    <thead>
+      <tr>
+        <th>Provider</th>
+        <th id="speed-header">Speed</th>
+        <th>Monthly Cost</th>
+      </tr>
+    </thead>
+    <tbody id="results-body">
+      
+    </tbody>
+  </table>
+</div>
+
+<script>
+  const providers = {
+    linux: [
+      { name: "Blacksmith", link: "https://www.blacksmith.sh/", freeMinutes: 3000, pricePerMinute: 0.004, speedMultiplier: 2.0 },
+      { name: "BuildJet", link: "https://buildjet.com/", freeMinutes: 0, pricePerMinute: 0.004, speedMultiplier: 2.0 },
+      { name: "CarbonRunner", link: "https://carbonrunner.io/", freeMinutes: 0, pricePerMinute: 0.006, speedMultiplier: 1.0 },
+      { name: "Cirrus Runners", link: "https://cirrus-runners.app/", freeMinutes: 0, pricePerMinute: 0, fixedCost: 150, speedMultiplier: 2.5 },
+      { name: "Depot", link: "http://depot.dev/", freeMinutes: 2000, fixedCost: 20, pricePerMinute: 0.004, speedMultiplier: 1.3 },
+      { name: "GitHub", freeMinutes: 2000, pricePerMinute: 0.008, speedMultiplier: 1.0 },
+      { name: "Namespace", link: "https://namespace.so/", freeMinutes: 0, pricePerMinute: 0.003, speedMultiplier: 1.8 },
+      { name: "puzl.cloud", link: "https://puzl.cloud/", freeMinutes: 400, pricePerMinute: 0.0008, speedMultiplier: 2.0 },
+      { name: "RunsOn", link: "https://runs-on.com/", freeMinutes: 0, pricePerMinute: 0.002, fixedCost: 25, speedMultiplier: 1.3 },
+      { name: "Ubicloud", link: "https://www.ubicloud.com/", freeMinutes: 1250, pricePerMinute: 0.0008, speedMultiplier: 1.3 },
+      { name: "WarpBuild", link: "https://www.warpbuild.com/", freeMinutes: 0, pricePerMinute: 0.004, speedMultiplier: 2.0 },
+    ],
+    macos: [
+      { name: "Cirrus Runners", link: "https://cirrus-runners.app/", freeMinutes: 0, pricePerMinute: 0, fixedCost: 150, speedMultiplier: 2.0 },
+      { name: "GitHub", freeMinutes: 0, pricePerMinute: 0.08, speedMultiplier: 1.0 },
+      { name: "Namespace", link: "https://namespace.so/", freeMinutes: 0, pricePerMinute: 0.09, speedMultiplier: 1.8 },
+      { name: "WarpBuild", link: "https://www.warpbuild.com/", freeMinutes: 0, pricePerMinute: 0.08, speedMultiplier: 1.25 },
+    ]
+  };
+
+  function calculateCosts() {
+    const minutes = parseInt(document.getElementById('minutes').value) || 0;
+    const platform = document.getElementById('platform').value;
+    const ignoreSpeed = document.getElementById('ignoreSpeed').checked;
+    const tbody = document.getElementById('results-body');
+    const speedHeader = document.getElementById('speed-header');
+
+    speedHeader.style.display = ignoreSpeed ? 'none' : '';
+
+    const platformProviders = providers[platform];
+
+    let results = platformProviders.map(provider => {
+      let cost = 0;
+      
+      const actualMinutes = ignoreSpeed ? minutes : minutes / provider.speedMultiplier;
+      
+      if (provider.fixedCost && provider.pricePerMinute === 0) {
+        cost = provider.fixedCost;
+      } else if (provider.fixedCost) {
+        const freeMinutes = provider.freeMinutes || 0;
+        cost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinute);
+      } else {
+        const freeMinutes = provider.freeMinutes || 0;
+        const billableMinutes = Math.max(0, actualMinutes - freeMinutes);
+        cost = billableMinutes * provider.pricePerMinute;
+      }
+      const isFree = cost === 0;
+
+      return { ...provider, cost, isFree };
+    });
+
+    results.sort((a, b) => a.cost - b.cost);
+
+    tbody.innerHTML = results.map(provider => {
+      const costDisplay = provider.isFree ? 'FREE' : `${provider.cost.toFixed(2)}`;
+      const costClass = provider.isFree ? 'free' : 'cost';
+      const providerName = provider.link ? `<a href="${provider.link}" noreferrer noopener>${provider.name}</a>` : `${provider.name}`;
+      const speedColumn = ignoreSpeed ? '' : `<td class="provider-speed">${provider.speedMultiplier}</td>`;
+
+      return `
+                    <tr>
+                        <td class="provider-name">${providerName}</td>
+                        ${speedColumn}
+                        <td class="${costClass}">${costDisplay}</td>
+                    </tr>
+                `;
+    }).join('');
+  }
+
+  document.getElementById('minutes').addEventListener('input', calculateCosts);
+  document.getElementById('platform').addEventListener('change', calculateCosts);
+  document.getElementById('ignoreSpeed').addEventListener('change', calculateCosts);
+
+  calculateCosts();
+</script>
+<p><em>Note: Sprinters.sh is priced per job instead of per min (like everyone else) so I didn&rsquo;t include it in the comparison above.</em></p>
+<p><em>Note2: Cirrus Runners limits on concurrency instead of minutes so the experience might vary (depending on usage).</em></p>
+<p><em>Note3: &ldquo;Speed&rdquo; is loosely defined based on acclaimed performance but not verified in any way, shape, or form.</em></p>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Obviously this is a rather simplistic view of the cost comparison (as well as the <em>speed</em> factor being unverified) between different options available in the market. Personally, I opted for Blacksmith for all my linux needs while continue to host my own M4 mac mini at home as the macOS runner (since the electricity cost is still cheaper than any of the above options).</p>
+</div>
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+          <a href="/blog/2025-08-23-hidden-privacy-and-security-pitfalls/">
+            <div class="bottom_button previous_post">
+              Previous →
+              <br />
+              <br />
+              <span class="button_title">Hidden Privacy / Security Pitfalls</span>
+            </div>
+          </a>
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-09-02-github-action-runner-alternatives.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/viewer.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+
