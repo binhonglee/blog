@@ -2,7 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://binhong.me/blog/tags/behavioral/</loc>
+    <lastmod>2025-09-19T00:00:00-08:00</lastmod>
+  </url><url>
     <loc>https://binhong.me/blog/</loc>
+    <lastmod>2025-09-19T00:00:00-08:00</lastmod>
+  </url><url>
+    <loc>https://binhong.me/blog/2025-09-19-communicating-effectively/</loc>
+    <lastmod>2025-09-19T00:00:00-08:00</lastmod>
+  </url><url>
+    <loc>https://binhong.me/blog/tags/</loc>
+    <lastmod>2025-09-19T00:00:00-08:00</lastmod>
+  </url><url>
+    <loc>https://binhong.me/blog/tags/the-opinionated-engineer/</loc>
     <lastmod>2025-09-19T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/2025-09-02-github-action-runner-alternatives/</loc>
@@ -18,12 +30,6 @@
     <lastmod>2025-08-01T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/tags/incident-management/</loc>
-    <lastmod>2025-08-01T00:00:00-08:00</lastmod>
-  </url><url>
-    <loc>https://binhong.me/blog/tags/</loc>
-    <lastmod>2025-08-01T00:00:00-08:00</lastmod>
-  </url><url>
-    <loc>https://binhong.me/blog/tags/the-opinionated-engineer/</loc>
     <lastmod>2025-08-01T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/2025-07-25-major-incident-runbook/</loc>

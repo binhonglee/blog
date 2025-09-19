@@ -10,6 +10,53 @@
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
     <lastBuildDate>Fri, 19 Sep 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Communicating Effectively</title>
+      <link>https://binhong.me/blog/2025-09-19-communicating-effectively/</link>
+      <pubDate>Fri, 19 Sep 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-09-19-communicating-effectively/</guid>
+      <description>&lt;p&gt;It’s a common problem at work where you see a problem but you’re having a hard time trying to convince people to support your attempt at fixing it. Worse still, they might not even see it as a problem (or they don’t think it’s something that warrants any attention from anyone). I’m approaching this piece mostly from an &lt;em&gt;“I need my leadership / partners to understand what I do is important”&lt;/em&gt; perspective. But the ideology can similarly be used on other occasions like selling an idea to your peers etc. Ideally you start thinking about this as you try to get the green light to pursue your project instead of attempting to justify it &lt;em&gt;after&lt;/em&gt; you’ve already invested your time into it with little to show for it.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#understand-your-audience&#34;&gt;
+    &lt;h2 id=&#34;understand-your-audience&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Understand your audience&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Whoever you’re talking to, they have their own perspective and priorities. They care about certain things. Make sure to understand that and position your proposal from &lt;em&gt;their&lt;/em&gt; perspective. One common communication gap is where someone keeps trying to tell their leaders &lt;em&gt;“how hard they / the team has been working”&lt;/em&gt; - which is cool and all - but your leaders likely want to know more about &lt;em&gt;“what’s in it for me?”&lt;/em&gt;. For example, instead of telling your manager that “I put in 60 hours a week all of last month to make this happen,” it should be more like “I shipped x MAU which is x% of the team / org goal” or “I worked overtime to handle multiple unexpected surprises (have documentation for this) to ensure that we can ship / launch / test {org priority project} in a timely manner.” Changing the framing of your statement (by empathizing with your audience) makes it significantly more appealing to your target audience.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#strategic-positioning&#34;&gt;
+    &lt;h2 id=&#34;strategic-positioning&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Strategic positioning&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;When you pitch a project proposal, you need strong reasoning on why you think it will be worth the time investment. In most cases, you’d be making the case using some sort of metrics or goal that the project is expected to improve. However, that’s not always the case. If you have a goal metric to chase but this project doesn’t directly affect that, think of how it’s affected indirectly. In my previous piece on dev tool valuation, I mentioned &lt;a href=&#34;https://binhong.me/blog/2025-07-18-understanding-value-of-dev-tools/#cost-of-engineers&#34;&gt;engineering cost&lt;/a&gt; being the most straightforward measurement available.&lt;/p&gt;
+&lt;p&gt;On the other hand, if there’s a &lt;em&gt;larger org-priority project&lt;/em&gt;, think of how to align your project with it. You might need to make some small changes in the project pitch, but the idea is that you don’t have to build your case from scratch. Instead, you are just piggybacking on an established case by explaining how your project would &lt;em&gt;help&lt;/em&gt; with the goal of completing the larger project. This sort of positioning not only helps reduce the amount of foundational work needed to make people understand the &lt;em&gt;why&lt;/em&gt; but also ensures that your project will continue to receive attention as a side effect of now being associated with the larger project.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#reprioritization&#34;&gt;
+    &lt;h2 id=&#34;reprioritization&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Reprioritization&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Prioritization changes all the time. When there’s a top-down change in priority, make sure to ask clarifying questions to understand the reasoning behind the shift. From there, you have to then recalibrate your (team’s) projects to make sure they’re still aligned with the higher-level goals. On some occasions, this could also mean that you would have to recommend priority shifts on ongoing / planned projects depending on the leadership goal change. For example, you&amp;rsquo;re in the core infrastructure team and the company decides to pivot to &amp;ldquo;everything AI&amp;rdquo;. Make sure to understand &amp;ldquo;how AI&amp;rdquo; and potentially shift your prioritization around (like adding better GPU support, direct Ollama support etc.) to fit the leadership goal change.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#goal-setting&#34;&gt;
+    &lt;h2 id=&#34;goal-setting&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Goal setting&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Management (and shareholders) love &lt;em&gt;goals&lt;/em&gt;. They paint a picture of predictability and allow for an easy way to evaluate how you (or the team) are doing. The higher level you get (with bigger scope and projects), the goal would be closer to company-level goals. The hierarchy probably goes something like this: (company-level goal) make more money -&amp;gt; sell more ads -&amp;gt; get more users -&amp;gt; keep existing users returning (team-level goal) etc. You don’t have to set the goal on how to make the company more money, but you can set a goal on how to keep existing users returning which, by proxy, would have your impact cascaded up.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Admittedly, this is something even I sometimes forget or overlook when pitching a project. The key insight is that effective communication isn’t about having the best technical solution but rather, it&amp;rsquo;s about meeting people where they are and speaking their language. When you frame your ideas through your audience’s priorities and align with existing organizational momentum, you’re offering value in return of their support.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>GitHub Action Runner Alternatives</title>
       <link>https://binhong.me/blog/2025-09-02-github-action-runner-alternatives/</link>
       <pubDate>Tue, 02 Sep 2025 00:00:00 -0800</pubDate>
@@ -2209,16 +2256,23 @@
 &lt;/a&gt;
 &lt;p&gt;I have not fully planned out the entire series but here are a few topics I have in mind (or have released) so far&amp;hellip;&lt;/p&gt;
 &lt;ol&gt;
+&lt;li&gt;Behavioral
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-15-art-of-posting/&#34;&gt;The Art of Posting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-09-19-communicating-effectively/&#34;&gt;Communicating Effectively&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
 &lt;li&gt;Culture
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-23-code-review-culture/&#34;&gt;Code Review Culture&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/&#34;&gt;Push Fearlessly with Automated Testing&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
-&lt;li&gt;Behavioral
+&lt;li&gt;Dev Tools
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-15-art-of-posting/&#34;&gt;The Art of Posting&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-09-19-communicating-effectively/&#34;&gt;Communicating Effectively&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-03-early-takes-on-vibe-coding/&#34;&gt;Early takes on vibe-coding&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-11-internal-tooling-ideas/&#34;&gt;Internal Tooling Ideas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-18-understanding-value-of-dev-tools/&#34;&gt;Understanding the Value of Dev Tools&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;li&gt;Incident Management
@@ -2234,13 +2288,6 @@
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-13-product-growth-opportunities/&#34;&gt;Product Growth Opportunities&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-20-growth-engineer/&#34;&gt;Growth Engineer&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-27-experiment-review-process/&#34;&gt;Experiment Review Process&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;Dev Tools
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-03-early-takes-on-vibe-coding/&#34;&gt;Early takes on vibe-coding&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-11-internal-tooling-ideas/&#34;&gt;Internal Tooling Ideas&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-18-understanding-value-of-dev-tools/&#34;&gt;Understanding the Value of Dev Tools&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-08-23-hidden-privacy-and-security-pitfalls/&#34;&gt;Hidden Privacy and Security Pitfalls&lt;/a&gt;&lt;/li&gt;

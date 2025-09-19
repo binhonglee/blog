@@ -8,7 +8,145 @@
     <language>en-us</language>
     <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
-    <lastBuildDate>Fri, 01 Aug 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/the-opinionated-engineer/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Sep 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/the-opinionated-engineer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Communicating Effectively</title>
+      <link>https://binhong.me/blog/2025-09-19-communicating-effectively/</link>
+      <pubDate>Fri, 19 Sep 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-09-19-communicating-effectively/</guid>
+      <description>&lt;p&gt;It’s a common problem at work where you see a problem but you’re having a hard time trying to convince people to support your attempt at fixing it. Worse still, they might not even see it as a problem (or they don’t think it’s something that warrants any attention from anyone). I’m approaching this piece mostly from an &lt;em&gt;“I need my leadership / partners to understand what I do is important”&lt;/em&gt; perspective. But the ideology can similarly be used on other occasions like selling an idea to your peers etc. Ideally you start thinking about this as you try to get the green light to pursue your project instead of attempting to justify it &lt;em&gt;after&lt;/em&gt; you’ve already invested your time into it with little to show for it.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#understand-your-audience&#34;&gt;
+    &lt;h2 id=&#34;understand-your-audience&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Understand your audience&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Whoever you’re talking to, they have their own perspective and priorities. They care about certain things. Make sure to understand that and position your proposal from &lt;em&gt;their&lt;/em&gt; perspective. One common communication gap is where someone keeps trying to tell their leaders &lt;em&gt;“how hard they / the team has been working”&lt;/em&gt; - which is cool and all - but your leaders likely want to know more about &lt;em&gt;“what’s in it for me?”&lt;/em&gt;. For example, instead of telling your manager that “I put in 60 hours a week all of last month to make this happen,” it should be more like “I shipped x MAU which is x% of the team / org goal” or “I worked overtime to handle multiple unexpected surprises (have documentation for this) to ensure that we can ship / launch / test {org priority project} in a timely manner.” Changing the framing of your statement (by empathizing with your audience) makes it significantly more appealing to your target audience.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#strategic-positioning&#34;&gt;
+    &lt;h2 id=&#34;strategic-positioning&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Strategic positioning&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;When you pitch a project proposal, you need strong reasoning on why you think it will be worth the time investment. In most cases, you’d be making the case using some sort of metrics or goal that the project is expected to improve. However, that’s not always the case. If you have a goal metric to chase but this project doesn’t directly affect that, think of how it’s affected indirectly. In my previous piece on dev tool valuation, I mentioned &lt;a href=&#34;https://binhong.me/blog/2025-07-18-understanding-value-of-dev-tools/#cost-of-engineers&#34;&gt;engineering cost&lt;/a&gt; being the most straightforward measurement available.&lt;/p&gt;
+&lt;p&gt;On the other hand, if there’s a &lt;em&gt;larger org-priority project&lt;/em&gt;, think of how to align your project with it. You might need to make some small changes in the project pitch, but the idea is that you don’t have to build your case from scratch. Instead, you are just piggybacking on an established case by explaining how your project would &lt;em&gt;help&lt;/em&gt; with the goal of completing the larger project. This sort of positioning not only helps reduce the amount of foundational work needed to make people understand the &lt;em&gt;why&lt;/em&gt; but also ensures that your project will continue to receive attention as a side effect of now being associated with the larger project.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#reprioritization&#34;&gt;
+    &lt;h2 id=&#34;reprioritization&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Reprioritization&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Prioritization changes all the time. When there’s a top-down change in priority, make sure to ask clarifying questions to understand the reasoning behind the shift. From there, you have to then recalibrate your (team’s) projects to make sure they’re still aligned with the higher-level goals. On some occasions, this could also mean that you would have to recommend priority shifts on ongoing / planned projects depending on the leadership goal change. For example, you&amp;rsquo;re in the core infrastructure team and the company decides to pivot to &amp;ldquo;everything AI&amp;rdquo;. Make sure to understand &amp;ldquo;how AI&amp;rdquo; and potentially shift your prioritization around (like adding better GPU support, direct Ollama support etc.) to fit the leadership goal change.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#goal-setting&#34;&gt;
+    &lt;h2 id=&#34;goal-setting&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Goal setting&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Management (and shareholders) love &lt;em&gt;goals&lt;/em&gt;. They paint a picture of predictability and allow for an easy way to evaluate how you (or the team) are doing. The higher level you get (with bigger scope and projects), the goal would be closer to company-level goals. The hierarchy probably goes something like this: (company-level goal) make more money -&amp;gt; sell more ads -&amp;gt; get more users -&amp;gt; keep existing users returning (team-level goal) etc. You don’t have to set the goal on how to make the company more money, but you can set a goal on how to keep existing users returning which, by proxy, would have your impact cascaded up.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Admittedly, this is something even I sometimes forget or overlook when pitching a project. The key insight is that effective communication isn’t about having the best technical solution but rather, it&amp;rsquo;s about meeting people where they are and speaking their language. When you frame your ideas through your audience’s priorities and align with existing organizational momentum, you’re offering value in return of their support.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hidden Privacy / Security Pitfalls</title>
+      <link>https://binhong.me/blog/2025-08-23-hidden-privacy-and-security-pitfalls/</link>
+      <pubDate>Sat, 23 Aug 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-08-23-hidden-privacy-and-security-pitfalls/</guid>
+      <description>&lt;p&gt;Most software engineers think of this as &amp;ldquo;someone else&amp;rsquo;s problem&amp;rdquo; (usually a privacy engineer or security engineer), but realistically, there&amp;rsquo;s only so much stuff (bad code lol) they can catch. Especially if you work in some of the more sensitive areas, it&amp;rsquo;s not realistic to have them do code audits for every change. This means that you as the code author (or reviewer) need to at least pick up some basic instincts about things that can pose risks.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: I&amp;rsquo;m neither a privacy engineer nor a security engineer (but a software engineer) so take this mostly as a way to raise awareness about considering some of these pitfalls while building instead of as an expert opinion on what to do.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#timing-attack&#34;&gt;
+    &lt;h2 id=&#34;timing-attack&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Timing attack&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Even if you return the same response every time, you might still be leaking data (or mostly inference) based on the timing it took the server to respond. As an example, a typical email + password login system probably looks like this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Hash password&lt;/li&gt;
+&lt;li&gt;Email lookup&lt;/li&gt;
+&lt;li&gt;Compare hash&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now, considering that password hashing can take quite a bit of time and resources, we could rearrange the order to make it more efficient by making use of &amp;ldquo;early returns.&amp;rdquo; Something like this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Email lookup&lt;/li&gt;
+&lt;li&gt;Hash password&lt;/li&gt;
+&lt;li&gt;Compare hash&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;With this new setup, you&amp;rsquo;d only do password hashing when an email already exists in your record, thus saving time and processing power from unnecessary password hashing. However, you&amp;rsquo;re also returning your network request much sooner. This becomes an unintentional leak where a bad actor can use it to tell if an email exists in your database or not by doing some timed response comparison. My favorite solution to this problem (when applicable) is to add a random response delay—not long enough to significantly affect user experience, but just long enough to throw an attacker off.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#scraping&#34;&gt;
+    &lt;h2 id=&#34;scraping&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Scraping&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Generally the &lt;em&gt;easy&lt;/em&gt; solution here is to slap a rate limit on it and call it a day. The problem, however, is that you need to realize not all endpoints are created equal. Most evidently, you have an endpoint that returns info about a user when given an ID, while you also have an endpoint that returns info about &lt;strong&gt;a list of users&lt;/strong&gt; when given a list of IDs. Both of these endpoints can&amp;rsquo;t just share the same rate limiting because scraping the latter endpoint is &lt;code&gt;list_length&lt;/code&gt;x more &lt;em&gt;efficient&lt;/em&gt; than the former.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#credential-stuffing&#34;&gt;
+    &lt;h2 id=&#34;credential-stuffing&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Credential stuffing&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;This is usually the result of password reuse. While you can &lt;em&gt;technically&lt;/em&gt; do credential stuffing with just randomly enumerated credentials, the cost is unlikely to be worth the outcome for the attacker (unless there are some specific exceptions). Since people reuse passwords and there have been many previous hacks (unfortunately containing plaintext passwords), your perfectly secure authentication system becomes vulnerable not because of your code, but because of breaches elsewhere. That said, these attacks are &lt;em&gt;usually&lt;/em&gt; more obvious, coming from an &lt;em&gt;expected&lt;/em&gt; set of IPs (all from the same location or same VPS provider, etc.).&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#contactpoint-disclosure&#34;&gt;
+    &lt;h2 id=&#34;contactpoint-disclosure&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Contactpoint disclosure&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;A little different from the rest of the list, this is more of a &lt;em&gt;type&lt;/em&gt; of disclosure than a &lt;em&gt;method&lt;/em&gt; of disclosure. While many systems are more conservative and opt for the route of never even disclosing if a specific contactpoint (email / phone number) is even associated with the platform, some do allow for it. However, this will require a bit more care in handling such disclosure where we don&amp;rsquo;t want to disclose &lt;strong&gt;other&lt;/strong&gt; contactpoints being connected to a given contactpoint (even through inference). The main reason being that this risks leaking identities behind pseudonyms where people can &lt;em&gt;connect the dots&lt;/em&gt;.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#rate-limiting&#34;&gt;
+    &lt;h2 id=&#34;rate-limiting&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Rate limiting&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Rate limiting is both a valuable tool and also a potential risk of exposure. Most evidently, rate limiting helps reduce (and hopefully prevent) scraping and credential stuffing attacks. However, in some systems, rate limits are set on a per-account basis, making it a risk of exposure as you can do targeted attacks with some reasonable correlation to get information out of it.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s an example:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Condition: email A and phone A are both owned by the same account while email B is not.&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;try (and fail) login with email A -&amp;gt; no rate limit&lt;/li&gt;
+&lt;li&gt;try (and fail) login with email B -&amp;gt; no rate limit&lt;/li&gt;
+&lt;li&gt;try (and fail) login with phone A -&amp;gt; no rate limit&lt;/li&gt;
+&lt;li&gt;keep trying email A until it&amp;rsquo;s rate limited&lt;/li&gt;
+&lt;li&gt;try (and fail) login with email B -&amp;gt; no rate limit (since different account)&lt;/li&gt;
+&lt;li&gt;try (and fail) login with phone A -&amp;gt; &lt;strong&gt;rate limited&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are many reasons (or other situations) where it&amp;rsquo;s not immediately obvious how introducing an account-based rate limit can be a risk.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#phone-recycling&#34;&gt;
+    &lt;h2 id=&#34;phone-recycling&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Phone recycling&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Many platforms rely on phone number verification to authenticate your ownership of the account, but phone number ownership isn&amp;rsquo;t exactly &lt;em&gt;immutable&lt;/em&gt;. In fact, phone numbers commonly switch hands in most countries for a variety of reasons (especially as people move across countries). Unfortunately, this is a much trickier problem to tackle due to the wide variety of carriers spread across different countries having different processes and regulations around it.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#email-recycling&#34;&gt;
+    &lt;h2 id=&#34;email-recycling&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Email recycling&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;While email recycling isn&amp;rsquo;t as common as phone recycling, it still persists (especially those with custom domains). In fact, many years ago one of the largest email service providers actually allowed anyone to register expired email addresses. This became a major attack vector on Facebook since many people back then set their emails to be shown publicly on their Facebook profiles, while also simultaneously stopping using those same email addresses - leaving them to expire. Thankfully, most email providers have learned of such attack vectors and no longer allow deactivated / deleted email addresses to be re-registered &lt;em&gt;ever&lt;/em&gt;.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;These pitfalls often emerge from well-intentioned optimizations that look perfectly reasonable in isolation. The key is developing a mental checklist of common attack patterns rather than becoming paranoid about every line of code. Security isn&amp;rsquo;t just about preventing obvious attacks but instead, it&amp;rsquo;s to think through the subtle ways your system behavior can be observed and / or exploited.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Firefighting Heroes</title>
       <link>https://binhong.me/blog/2025-08-01-firefighting-heroes/</link>
@@ -996,16 +1134,23 @@
 &lt;/a&gt;
 &lt;p&gt;I have not fully planned out the entire series but here are a few topics I have in mind (or have released) so far&amp;hellip;&lt;/p&gt;
 &lt;ol&gt;
+&lt;li&gt;Behavioral
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-15-art-of-posting/&#34;&gt;The Art of Posting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-09-19-communicating-effectively/&#34;&gt;Communicating Effectively&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
 &lt;li&gt;Culture
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-23-code-review-culture/&#34;&gt;Code Review Culture&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/&#34;&gt;Push Fearlessly with Automated Testing&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
-&lt;li&gt;Behavioral
+&lt;li&gt;Dev Tools
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-15-art-of-posting/&#34;&gt;The Art of Posting&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-09-19-communicating-effectively/&#34;&gt;Communicating Effectively&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-03-early-takes-on-vibe-coding/&#34;&gt;Early takes on vibe-coding&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-11-internal-tooling-ideas/&#34;&gt;Internal Tooling Ideas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-18-understanding-value-of-dev-tools/&#34;&gt;Understanding the Value of Dev Tools&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;li&gt;Incident Management
@@ -1021,13 +1166,6 @@
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-13-product-growth-opportunities/&#34;&gt;Product Growth Opportunities&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-20-growth-engineer/&#34;&gt;Growth Engineer&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-27-experiment-review-process/&#34;&gt;Experiment Review Process&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;Dev Tools
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-03-early-takes-on-vibe-coding/&#34;&gt;Early takes on vibe-coding&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-11-internal-tooling-ideas/&#34;&gt;Internal Tooling Ideas&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-18-understanding-value-of-dev-tools/&#34;&gt;Understanding the Value of Dev Tools&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-08-23-hidden-privacy-and-security-pitfalls/&#34;&gt;Hidden Privacy and Security Pitfalls&lt;/a&gt;&lt;/li&gt;
