@@ -3,15 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://binhong.me/blog/</loc>
-    <lastmod>2025-10-17T00:00:00-08:00</lastmod>
+    <lastmod>2025-10-31T00:00:00-08:00</lastmod>
   </url><url>
-    <loc>https://binhong.me/blog/tags/growth/</loc>
-    <lastmod>2025-10-17T00:00:00-08:00</lastmod>
+    <loc>https://binhong.me/blog/tags/incident-management/</loc>
+    <lastmod>2025-10-31T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/tags/project-presentation/</loc>
-    <lastmod>2025-10-17T00:00:00-08:00</lastmod>
+    <lastmod>2025-10-31T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/tags/</loc>
+    <lastmod>2025-10-31T00:00:00-08:00</lastmod>
+  </url><url>
+    <loc>https://binhong.me/blog/tags/growth/</loc>
     <lastmod>2025-10-17T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/tags/the-opinionated-engineer/</loc>
@@ -33,9 +36,6 @@
     <lastmod>2025-08-08T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/2025-08-01-firefighting-heroes/</loc>
-    <lastmod>2025-08-01T00:00:00-08:00</lastmod>
-  </url><url>
-    <loc>https://binhong.me/blog/tags/incident-management/</loc>
     <lastmod>2025-08-01T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/2025-07-25-major-incident-runbook/</loc>
