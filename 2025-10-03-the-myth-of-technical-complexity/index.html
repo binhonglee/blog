@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>The Myth of Technical Complexity - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="I&rsquo;ve seen multiple different people fail their promotions due to &ldquo;lack of technical complexity&rdquo; in their work. While some of this rings true, more often than not, the underlying technical complexity of their work is not properly understood because - ironically - they cut through it smoothly as strong technical engineers. Unless you were doing code / design reviews for them, you wouldn&rsquo;t notice it. On the flip side, I&rsquo;ve had projects listed as my capstone &ldquo;technical complexity&rdquo; project of the year that imo wasn&rsquo;t very complex compared to some other stuff I needed to work on. Why is this happening and how do I make sure my work is properly valued?">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Myth of Technical Complexity">
+    <meta property="og:description" content="Why being skilled makes you look unskilled">
+    <meta name="twitter:description" content="Why being skilled makes you look unskilled">
+    <meta name="twitter:title" content="The Myth of Technical Complexity"><meta property="article:published_time" 2025-10-03T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-10-03T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/myth_of_tech_complexity.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/myth_of_tech_complexity.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/myth_of_tech_complexity.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1756722722324" rel="stylesheet">
+    <link href="https://binhong.me/blog/darkMode.css?v=1754287594183" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.150.0">
+    
+    </head>
+  <body class="single">
+    <input class="dark_mode_toggle" type="checkbox" id="darkModeToggle">
+    <div class="wrapper">
+      <div class="content">
+        <div class="dropdown">
+          <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+          <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+            <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+            <p>|</p>
+            <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+            <p>|</p>
+            <div class="webring link" role="menuitem">
+              <a class="webring_toggle">Webring</a>
+              <div class="webring_links">
+                <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+                <hr />
+                <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page_of_title">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+        <div class="dark_mode_toggle_wrapper">
+          <div class="toggle-container">
+            <label for="darkModeToggle" class="toggle-label">
+              <div class="background-layer day-bg"></div>
+              <div class="background-layer night-bg"></div>
+              
+              <div class="toggle-slider">
+                <div class="sun-rays"></div>
+                <div class="moon-craters">
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                </div>
+              </div>
+              
+              <div class="cloud cloud1"></div>
+              <div class="cloud cloud2"></div>
+              <div class="cloud cloud3"></div>
+              <div class="cloud cloud4"></div>
+              <div class="cloud cloud5"></div>
+              
+              <div class="star star1"></div>
+              <div class="star star2"></div>
+              <div class="star star3"></div>
+              <div class="star star4"></div>
+              <div class="star star5"></div>
+              <div class="star star6"></div>
+              <div class="star star7"></div>
+              <div class="star star8"></div>
+              <div class="star star9"></div>
+              <div class="star star10"></div>
+              <div class="star star11"></div>
+              <div class="star star12"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">The Myth of Technical Complexity</h1>
+          <p class="row subtitle">Why being skilled makes you look unskilled</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">October 3, 2025</p>
+          </div>
+          <div class="post_content"><p>I&rsquo;ve seen multiple different people fail their promotions due to &ldquo;lack of technical complexity&rdquo; in their work. While some of this rings true, more often than not, the underlying technical complexity of their work is not properly understood because - <em>ironically</em> - they cut through it smoothly as strong technical engineers. Unless you were doing code / design reviews for them, you wouldn&rsquo;t notice it. On the flip side, I&rsquo;ve had projects listed as my capstone &ldquo;technical complexity&rdquo; project of the year that <em>imo</em> wasn&rsquo;t very complex compared to some other stuff I needed to work on. Why is this happening and how do I make sure my work is properly valued?</p>
+<p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
+<a class="anchor" href="#the-problem">
+    <h2 id="the-problem">
+        <span class="text">The Problem</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>During your performance or promotion review, the audience generally includes your manager, their peers, org leaders, and <em>sometimes</em> a couple of very senior ICs in your org. Realistically, none of them have seen your code (though some might have seen your project design docs). So how could they <em>know</em> if something is technically complex? <strong>They don&rsquo;t.</strong> Instead, they mostly rely on their intuition (based on what they know of the project, or just the project name alone), or they hinge it on other calibrated agreements (more on this later). If your project name is &ldquo;Logging for X,&rdquo; it&rsquo;s very likely that it will be challenged for its technical complexity level for any senior engineer because &ldquo;how hard could logging be?&rdquo; (Turns out, not only can they be hard, but they could also be wrongly designed with long-term negative side effects, especially if your leaders can&rsquo;t get out of the sunk-cost fallacy. But that&rsquo;s a story for another day.)</p>
+<a class="anchor" href="#just-a-one-line-fix">
+    <h2 id="just-a-one-line-fix">
+        <span class="text">Just a one-line fix</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Sometimes a simple bug is masked by convoluted layers of abstractions, making it extremely hard to discover. We&rsquo;ve all had bugs like this where everyone was at a loss as to why it was broken, but it turned out to be a simple one-liner fix. If you look at the fix diff alone, it would look straightforward and you&rsquo;d wonder why no one noticed this earlier. These are technically complex to debug from a given stack trace (or sometimes just screenshots) to the actual root cause. In fact, this is the definition of work for a staff engineer archetype - <em>fixer</em>. Yet, this is also an example of technically complex work that&rsquo;s commonly overlooked due to how deceptively easy it looks.</p>
+<a class="anchor" href="#upfront-alignment">
+    <h2 id="upfront-alignment">
+        <span class="text">Upfront alignment</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>The easiest way to prevent later disagreement on the complexity nature of your work would be to align it upfront. Talk to your TL / EM to make sure they agree with your assessment of how complex the work really is. (Excluding PMs here because they generally don&rsquo;t have strong opinions / say on the technical complexity of your work.) Even if you end up disagreeing, you&rsquo;d know exactly what you&rsquo;re getting yourself into ahead of the project and decide accordingly (depending on options available to you). For most junior engineers and some early senior engineers, this is likely something that happened even prior to you knowing about the project. The senior engineer who assigned you the project likely aligned this upfront to make sure the project fits your growth path (meeting expectations / promo) your manager has in mind for you.</p>
+<a class="anchor" href="#similar-past-attempts">
+    <h2 id="similar-past-attempts">
+        <span class="text">Similar past attempts</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Another way you could demonstrate the technical complexity of a project is by citing previous failures at attempting this project. Generally, this requires a project to have been attempted previously (even if there are slight differences in details). It&rsquo;s important to keep in mind that you should always try to do things <em>only you can do</em> (maybe I&rsquo;ll write more about it in the future) and delegate everything else. Someone else failing previously is essentially a way to show that &lsquo;you&rsquo; were the key ingredient to making the project a success.</p>
+<p>If there&rsquo;s a similar project that was previously executed successfully, that&rsquo;s a slightly different story. It can still be complex, but the complexity level will likely be reduced by at least 1 level (if not more) depending on how similar they are. The idea is that you already have a good reference that helped scope out a lot of the <em>unknown unknowns</em>, making this simpler.</p>
+<a class="anchor" href="#borrowing-an-authority">
+    <h2 id="borrowing-an-authority">
+        <span class="text">Borrowing an authority</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Similar to what I previously wrote in <a href="/blog/2025-05-16-art-of-posting/#pre-read-from-subject-matter-experts">The Art of Posting</a> and what Mekka wrote <a href="https://mekka-tech.com/posts/2018-08-09-the-difficulty-anchor/">here about The Difficulty Anchor</a>, you can also borrow the authority of someone else more senior in your team or org to endorse your evaluation of the project. This is especially important in areas where you&rsquo;re not seen as an expert. While it&rsquo;s ideal to get this on the record early on (as mentioned in the <a href="#upfront-alignment">earlier section</a>), this can still be done post-hoc as well. This is especially important when you run into unexpected complexity as you work through the project. Having someone credible validate that &ldquo;yeah, this turned out to be way messier than we thought&rdquo; carries much more weight than you making that case yourself.</p>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>The cruel irony of engineering is that doing your job well often makes it invisible. When you smoothly navigate complex technical challenges, stakeholders see the outcome, not the expertise required to get there. Don&rsquo;t let your competence work against you. The technical complexity of your work needs to be communicated, not just demonstrated. Whether it&rsquo;s aligning expectations upfront, citing similar past failures, or borrowing authority from senior engineers, make sure the people evaluating you understand what they&rsquo;re really looking at.</p>
+</div>
+          <div class="tags">
+            🔖
+            <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/the-opinionated-engineer">The Opinionated Engineer</a>
+          </div>
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-10-03-the-myth-of-technical-complexity.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/viewer.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+
