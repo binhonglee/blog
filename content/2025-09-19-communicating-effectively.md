@@ -2,14 +2,10 @@
 title: Communicating Effectively
 subtitle: "Why empathy wins"
 date: 2025-09-19 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer, Behavioral]
 ss: preview/communicating_effectively.jpg
 aliases:
   - /communicating_effectively/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 It’s a common problem at work where you see a problem but you’re having a hard time trying to convince people to support your attempt at fixing it. Worse still, they might not even see it as a problem (or they don’t think it’s something that warrants any attention from anyone). I’m approaching this piece mostly from an _“I need my leadership / partners to understand what I do is important”_ perspective. But the ideology can similarly be used on other occasions like selling an idea to your peers etc. Ideally you start thinking about this as you try to get the green light to pursue your project instead of attempting to justify it _after_ you’ve already invested your time into it with little to show for it.

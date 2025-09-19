@@ -14,25 +14,25 @@ Historically, my personal blog has been mostly about "how to do x", "guide on ma
 
 I have not fully planned out the entire series but here are a few topics I have in mind (or have released) so far...
 
-1. Culture
-    1. [Code Review Culture](/blog/2025-05-23-code-review-culture/)
-    2. [Push Fearlessly with Automated Testing](/blog/2025-05-04-push-fearlessly-with-automated-testing/)
-2. Behavioral
+1. Behavioral
     1. [The Art of Posting](/blog/2025-05-15-art-of-posting/)
     2. [Communicating Effectively](/blog/2025-09-19-communicating-effectively/)
-3. Incident Management
+2. Culture
+    1. [Code Review Culture](/blog/2025-05-23-code-review-culture/)
+    2. [Push Fearlessly with Automated Testing](/blog/2025-05-04-push-fearlessly-with-automated-testing/)
+3. Dev Tools
+    1. [Early takes on vibe-coding](/blog/2025-07-03-early-takes-on-vibe-coding/)
+    2. [Internal Tooling Ideas](/blog/2025-07-11-internal-tooling-ideas/)
+    3. [Understanding the Value of Dev Tools](/blog/2025-07-18-understanding-value-of-dev-tools/)
+4. Incident Management
     1. [No Blame SEV (Incident) Culture](/blog/2025-05-30-no-blame-sev-culture/)
     2. [Major Incident Runbook](/blog/2025-07-25-major-incident-runbook/)
     3. [Firefighting Heroes](/blog/2025-08-01-firefighting-heroes/)
-4. Product Growth
+5. Product Growth
     1. [A/B Testing](/blog/2025-06-06-a-b-testing/)
     2. [Product Growth Opportunities](/blog/2025-06-13-product-growth-opportunities/)
     3. [Growth Engineer](/blog/2025-06-20-growth-engineer/)
     4. [Experiment Review Process](/blog/2025-06-27-experiment-review-process/)
-5. Dev Tools
-    1. [Early takes on vibe-coding](/blog/2025-07-03-early-takes-on-vibe-coding/)
-    2. [Internal Tooling Ideas](/blog/2025-07-11-internal-tooling-ideas/)
-    3. [Understanding the Value of Dev Tools](/blog/2025-07-18-understanding-value-of-dev-tools/)
 6. [Hidden Privacy and Security Pitfalls](/blog/2025-08-23-hidden-privacy-and-security-pitfalls/)
 
 {{< newsletter >}}

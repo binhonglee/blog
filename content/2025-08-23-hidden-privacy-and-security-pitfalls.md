@@ -2,7 +2,7 @@
 title: Hidden Privacy / Security Pitfalls
 subtitle: "Sometimes good coding practice isn't good enough"
 date: 2025-08-23 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer]
 ss: preview/hidden_privacy_security_pitfalls.jpg
 aliases:
   - /hidden_privacy_security_pitfalls/
