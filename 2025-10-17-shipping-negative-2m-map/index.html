@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Shipping a project with -2M MAP - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="There&rsquo;s a saying in Meta that &lsquo;Nothing is somebody else&rsquo;s problem&rsquo; but sometimes, it really is. At this point in time, I was working on a growth team whose top-line goal was to grow Facebook MAP (monthly active people). So naturally, it&rsquo;s surprising for me to have shipped something that directly regressed the very metric the team should be growing.
+This is part of a series (Project Presentation) where I share stories of my past projects.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Shipping a project with -2M MAP">
+    <meta property="og:description" content="Not everything is your problem">
+    <meta name="twitter:description" content="Not everything is your problem">
+    <meta name="twitter:title" content="Shipping a project with -2M MAP"><meta property="article:published_time" 2025-10-17T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-10-17T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/negative_2m_map.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/negative_2m_map.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/negative_2m_map.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1756722722324" rel="stylesheet">
+    <link href="https://binhong.me/blog/darkMode.css?v=1754287594183" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.150.0">
+    
+    </head>
+  <body class="single">
+    <input class="dark_mode_toggle" type="checkbox" id="darkModeToggle">
+    <div class="wrapper">
+      <div class="content">
+        <div class="dropdown">
+          <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+          <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+            <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+            <p>|</p>
+            <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+            <p>|</p>
+            <div class="webring link" role="menuitem">
+              <a class="webring_toggle">Webring</a>
+              <div class="webring_links">
+                <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+                <hr />
+                <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page_of_title">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+        <div class="dark_mode_toggle_wrapper">
+          <div class="toggle-container">
+            <label for="darkModeToggle" class="toggle-label">
+              <div class="background-layer day-bg"></div>
+              <div class="background-layer night-bg"></div>
+              
+              <div class="toggle-slider">
+                <div class="sun-rays"></div>
+                <div class="moon-craters">
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                </div>
+              </div>
+              
+              <div class="cloud cloud1"></div>
+              <div class="cloud cloud2"></div>
+              <div class="cloud cloud3"></div>
+              <div class="cloud cloud4"></div>
+              <div class="cloud cloud5"></div>
+              
+              <div class="star star1"></div>
+              <div class="star star2"></div>
+              <div class="star star3"></div>
+              <div class="star star4"></div>
+              <div class="star star5"></div>
+              <div class="star star6"></div>
+              <div class="star star7"></div>
+              <div class="star star8"></div>
+              <div class="star star9"></div>
+              <div class="star star10"></div>
+              <div class="star star11"></div>
+              <div class="star star12"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Shipping a project with -2M MAP</h1>
+          <p class="row subtitle">Not everything is your problem</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">October 17, 2025</p>
+          </div>
+          <div class="post_content"><p>There&rsquo;s a saying in Meta that &lsquo;Nothing is somebody else&rsquo;s problem&rsquo; but sometimes, it really is. At this point in time, I was working on a growth team whose top-line goal was to grow Facebook MAP (monthly active people). So naturally, it&rsquo;s surprising for me to have shipped something that directly regressed the very metric the team should be growing.</p>
+<p><em>This is part of a series <a href="/blog/project-presentation/">(Project Presentation)</a> where I share stories of my past projects.</em></p>
+        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+<a class="anchor" href="#background">
+    <h2 id="background">
+        <span class="text">Background</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>This was still within the first year of me joining the team. Unfortunately, up to this point, I hadn&rsquo;t had any successful (+MAP) launches, and I&rsquo;d been eager to prove myself. The most recent project I worked on before this was to show an educational screen to users right after they logged in (under a specific condition) before they got redirected to newsfeed. Once a user logs an impression on newsfeed, they are considered MAP.</p>
+<p><a href="/blog/img/negative_2m_map_1.png" target="_blank">
+    <img src="/blog/img/negative_2m_map_1.png">
+</a>
+</p>
+<p>My project failed because for some reason it logged a MAP increase on the very first day - which didn&rsquo;t make sense because users should be MAP on the first day regardless of whether they&rsquo;re in the test or control group. If anything, it could have had a slight drop if users dropped off on the interstitial before they reached newsfeed. At this point, my manager suggested that we move on to something else since no one really knew why. I was, however, adamant about figuring out what happened, so I started digging into it anyway. (<strong>major mistake</strong>)</p>
+<a class="anchor" href="#the-bug">
+    <h2 id="the-bug">
+        <span class="text">The Bug</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>I dug through the stacktrace step-by-step, the code line-by-line, until I saw a variable that caught my eye: <code>is_platform_login</code>. For some reason, when it was true, we ignored the <code>next</code> param in redirection. I didn&rsquo;t know what &ldquo;platform login&rdquo; was, so it was time to get some help. I asked my mentor / tech lead what &ldquo;platform login&rdquo; was and was told that it&rsquo;s third-party login (think &ldquo;Login with Facebook&rdquo; on other sites). It&rsquo;s something owned by a separate team, and I should go ask this specific person (Kevin) if I had more questions about it. So I decided to test how it worked. I opened up Spotify, clicked &ldquo;Login with Facebook,&rdquo; then logged in (through that specific condition), and thereafter I was redirected to FB Newsfeed instead of going back to Spotify to complete my login!</p>
+<a class="anchor" href="#discovering-the-scope">
+    <h2 id="discovering-the-scope">
+        <span class="text">Discovering the scope</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>First, I looked up the blame and just asked the person (on a sister team) why they explicitly excluded platform login from this redirection. They told me that&rsquo;s just how the team tests and ships new features in general. Fair, but I didn&rsquo;t think it made sense in this case. So I reached out to Kevin and asked if they were aware of the bug. They were surprised and agreed with my assessment that it should be fixed.</p>
+<p><a href="/blog/img/negative_2m_map_2.png" target="_blank">
+    <img src="/blog/img/negative_2m_map_2.png">
+</a>
+</p>
+<p>I merged the change and started an experiment for the fix. After a while, I pulled the metrics on the experiment and saw that it regressed MAP heavily, around 2M MAP. This wasn&rsquo;t exactly surprising, as you&rsquo;ve seen in the image above, since we were redirecting the users back to the third-party platform source, which no longer counted them as MAP. I went back to Kevin and asked what their team&rsquo;s goal metrics were and if they had a data scientist on their team willing to help with experiment analysis.</p>
+<a class="anchor" href="#justifying-the-ship">
+    <h2 id="justifying-the-ship">
+        <span class="text">Justifying the ship</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>We brought the experiment to be reviewed. (If you aren&rsquo;t familiar, <a href="/blog/2025-06-27-experiment-review-process/">here&rsquo;s a previous article on how experiment review works</a>.) Most people understood the reasoning behind the ship recommendation, but there were some questions around better understanding whether this was intended user behavior. After some back-and-forth, we agreed to ship this with a long-term holdout to study the potential long-term MAP effect.</p>
+<p>A few months later, we pulled the data for the long-term holdout and verified that the long-term MAP regression was closer to 20k. This meant that 90% of the users who were <em>forced</em> to newsfeed (caused by the <em>bug</em>) did not stay MAP for very long and eventually churned one way or another anyway. It&rsquo;s likely because these users did not intent to <em>actually use</em> Facebook to begin with, thus also unlikely to stick around when they were <em>wrongly</em> redirected.</p>
+<a class="anchor" href="#takeaway">
+    <h2 id="takeaway">
+        <span class="text">Takeaway</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>For one, I was penalized for essentially spending too much time on work that wasn&rsquo;t aligned with the team I was on. Realistically, I should have taken my manager&rsquo;s advice to move on to another project. Even after I&rsquo;d found the bug, I should have passed this off to Kevin and their team to run the experiment and provided support instead of trying to be the hero. The results from the long-term holdout also didn&rsquo;t materialize until the next performance review cycle, so that definitely didn&rsquo;t help.</p>
+<p>Finally, I still never actually figured out whether this was the bug that was causing my original project to fail. We suspect it might be related, but I never re-ran it and never got any sort of verification that it solved the issue. It was a lot of learning experience for me overall, but at least I delivered (imo) the ideal user experience and was able to justify the change <em>despite</em> the team&rsquo;s goal metrics.</p>
+</div>
+          <div class="tags">
+            🔖
+            <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/project-presentation">Project Presentation</a>
+            <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/growth">Growth</a>
+          </div>
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-10-17-shipping-negative-2m-map.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/viewer.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+
