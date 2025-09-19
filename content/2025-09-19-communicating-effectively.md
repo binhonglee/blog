@@ -12,6 +12,8 @@ It’s a common problem at work where you see a problem but you’re having a ha
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
+
 ## Understand your audience
 
 Whoever you’re talking to, they have their own perspective and priorities. They care about certain things. Make sure to understand that and position your proposal from _their_ perspective. One common communication gap is where someone keeps trying to tell their leaders _“how hard they / the team has been working”_ - which is cool and all - but your leaders likely want to know more about _“what’s in it for me?”_. For example, instead of telling your manager that “I put in 60 hours a week all of last month to make this happen,” it should be more like “I shipped x MAU which is x% of the team / org goal” or “I worked overtime to handle multiple unexpected surprises (have documentation for this) to ensure that we can ship / launch / test {org priority project} in a timely manner.” Changing the framing of your statement (by empathizing with your audience) makes it significantly more appealing to your target audience.

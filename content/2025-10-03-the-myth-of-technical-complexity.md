@@ -16,6 +16,8 @@ I've seen multiple different people fail their promotions due to "lack of techni
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
+{{< newsletter >}}
+
 ## The Problem
 
 During your performance or promotion review, the audience generally includes your manager, their peers, org leaders, and _sometimes_ a couple of very senior ICs in your org. Realistically, none of them have seen your code (though some might have seen your project design docs). So how could they _know_ if something is technically complex? **They don't.** Instead, they mostly rely on their intuition (based on what they know of the project, or just the project name alone), or they hinge it on other calibrated agreements (more on this later). If your project name is "Logging for X," it's very likely that it will be challenged for its technical complexity level for any senior engineer because "how hard could logging be?" (Turns out, not only can they be hard, but they could also be wrongly designed with long-term negative side effects, especially if your leaders can't get out of the sunk-cost fallacy. But that's a story for another day.)
