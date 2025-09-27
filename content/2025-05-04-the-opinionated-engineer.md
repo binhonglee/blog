@@ -17,6 +17,7 @@ I have not fully planned out the entire series but here are a few topics I have 
 1. Behavioral
     1. [The Art of Posting](/blog/2025-05-15-art-of-posting/)
     2. [Communicating Effectively](/blog/2025-09-19-communicating-effectively/)
+    3. [They Myth of Technical Complexity](/blog/2025-10-17-the-myth-of-technical-complexity/)
 2. Culture
     1. [Code Review Culture](/blog/2025-05-23-code-review-culture/)
     2. [Push Fearlessly with Automated Testing](/blog/2025-05-04-push-fearlessly-with-automated-testing/)

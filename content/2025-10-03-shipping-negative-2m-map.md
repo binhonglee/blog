@@ -1,7 +1,7 @@
 ---
 title: Shipping a project with -2M MAP
 subtitle: "Not everything is your problem"
-date: 2025-10-17 00:00:00 -0800 GMT
+date: 2025-10-03 00:00:00 -0800 GMT
 tags: [Project Presentation, Growth]
 ss: "preview/negative_2m_map.jpg"
 aliases:

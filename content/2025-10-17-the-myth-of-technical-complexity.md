@@ -1,7 +1,7 @@
 ---
 title: The Myth of Technical Complexity
 subtitle: "Why being skilled makes you look unskilled"
-date: 2025-10-03 00:00:00 -0800 GMT
+date: 2025-10-17 00:00:00 -0800 GMT
 tags: [The Opinionated Engineer]
 ss: "preview/myth_of_tech_complexity.jpg"
 aliases:
