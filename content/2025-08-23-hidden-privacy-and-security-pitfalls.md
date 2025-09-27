@@ -14,6 +14,8 @@ _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opin
 
 _**Disclaimer**: I'm neither a privacy engineer nor a security engineer (but a software engineer) so take this mostly as a way to raise awareness about considering some of these pitfalls while building instead of as an expert opinion on what to do._
 
+{{< newsletter >}}
+
 ## Timing attack
 
 Even if you return the same response every time, you might still be leaking data (or mostly inference) based on the timing it took the server to respond. As an example, a typical email + password login system probably looks like this:

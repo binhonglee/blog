@@ -16,6 +16,8 @@ It was Thanksgiving day and I was mostly chilling at home scrolling Threads whil
 
 _This is part of a series [(Project Presentation)](/blog/project-presentation/) where I share stories of my past projects._
 
+{{< newsletter >}}
+
 ## Notifying owners
 
 The user noted that this happens on mobile web which means they happened to land on a test group, since a sister team had just started public testing this new UI / flow on mobile web. I tried ringing up the oncall for their team (who also happened to be the owner of the public test) but I saw that they had actually marked themselves out-of-office for the whole weekend through the upcoming Monday. Well, that's not good (also weird that they were off while oncall❓).
