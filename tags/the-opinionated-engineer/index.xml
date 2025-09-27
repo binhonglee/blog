@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
-    <lastBuildDate>Fri, 03 Oct 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/the-opinionated-engineer/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Nov 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/the-opinionated-engineer/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Communicating Effectively</title>
       <link>https://binhong.me/blog/2025-09-19-communicating-effectively/</link>
@@ -80,6 +80,21 @@
       <description>&lt;p&gt;Most software engineers think of this as &amp;ldquo;someone else&amp;rsquo;s problem&amp;rdquo; (usually a privacy engineer or security engineer), but realistically, there&amp;rsquo;s only so much stuff (bad code lol) they can catch. Especially if you work in some of the more sensitive areas, it&amp;rsquo;s not realistic to have them do code audits for every change. This means that you as the code author (or reviewer) need to at least pick up some basic instincts about things that can pose risks.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: I&amp;rsquo;m neither a privacy engineer nor a security engineer (but a software engineer) so take this mostly as a way to raise awareness about considering some of these pitfalls while building instead of as an expert opinion on what to do.&lt;/em&gt;&lt;/p&gt;
+        &lt;div class=&#34;newsletter&#34;&gt;
+          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
+          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
+              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
+              &lt;noscript&gt;
+                &lt;br /&gt;
+                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
+                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
+                &lt;br /&gt;
+              &lt;/noscript&gt;
+              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
+              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
+          &lt;/form&gt;
+          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
+        &lt;/div&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#timing-attack&#34;&gt;
     &lt;h2 id=&#34;timing-attack&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Timing attack&lt;/span&gt;
@@ -1153,6 +1168,7 @@
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-15-art-of-posting/&#34;&gt;The Art of Posting&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-09-19-communicating-effectively/&#34;&gt;Communicating Effectively&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-10-17-the-myth-of-technical-complexity/&#34;&gt;They Myth of Technical Complexity&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
 &lt;li&gt;Culture

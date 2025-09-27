@@ -8,13 +8,22 @@
     <language>en-us</language>
     <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
-    <lastBuildDate>Fri, 31 Oct 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Nov 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Incident Management</title>
       <link>https://binhong.me/blog/tags/incident-management/</link>
-      <pubDate>Fri, 31 Oct 2025 00:00:00 -0800</pubDate>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 -0800</pubDate>
       <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/tags/incident-management/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The Opinionated Engineer</title>
+      <link>https://binhong.me/blog/tags/the-opinionated-engineer/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/tags/the-opinionated-engineer/</guid>
       <description></description>
     </item>
     
@@ -30,18 +39,9 @@
     <item>
       <title>Growth</title>
       <link>https://binhong.me/blog/tags/growth/</link>
-      <pubDate>Fri, 17 Oct 2025 00:00:00 -0800</pubDate>
-      <author>binhong@binhong.me (BinHong Lee)</author>
-      <guid>https://binhong.me/blog/tags/growth/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>The Opinionated Engineer</title>
-      <link>https://binhong.me/blog/tags/the-opinionated-engineer/</link>
       <pubDate>Fri, 03 Oct 2025 00:00:00 -0800</pubDate>
       <author>binhong@binhong.me (BinHong Lee)</author>
-      <guid>https://binhong.me/blog/tags/the-opinionated-engineer/</guid>
+      <guid>https://binhong.me/blog/tags/growth/</guid>
       <description></description>
     </item>
     

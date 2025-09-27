@@ -4,22 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=0.75">
     
-    <title>Internal Tooling Ideas - BinHong Lee&#39;s Blog</title>
+    <title>The Myth of Technical Complexity - BinHong Lee&#39;s Blog</title>
     
-    <meta name="description" content="For years, I built and maintained the only logged-out accessible dev tool set / platform at Meta. That earned me some reputation (in a certain circle) of being &ldquo;the idea guy on internal tools&rdquo;. Whenever I&rsquo;m asked about how I keep coming up with good ideas for valuable tools to build, my go-to answer has been &ldquo;I build tools when I get annoyed while doing my job&rdquo;. I&rsquo;ll try to expand that into more details below.">
+    <meta name="description" content="I&rsquo;ve seen multiple different people fail their promotions due to &ldquo;lack of technical complexity&rdquo; in their work. While some of this rings true, more often than not, the underlying technical complexity of their work is not properly understood because - ironically - they cut through it smoothly as strong technical engineers. Unless you were doing code / design reviews for them, you wouldn&rsquo;t notice it. On the flip side, I&rsquo;ve had projects listed as my capstone &ldquo;technical complexity&rdquo; project of the year that imo wasn&rsquo;t very complex compared to some other stuff I needed to work on. Why is this happening and how do I make sure my work is properly valued?">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Internal Tooling Ideas">
-    <meta property="og:description" content="When and what to build for internal tools?">
-    <meta name="twitter:description" content="When and what to build for internal tools?">
-    <meta name="twitter:title" content="Internal Tooling Ideas"><meta property="article:published_time" 2025-07-11T00:00:00-08:00 />
-    <meta property="article:modified_time" 2025-07-11T00:00:00-08:00 />
-    <meta property="og:image" content="https://binhong.me/blog/preview/internal_tooling_ideas.jpg">
+    <meta property="og:title" content="The Myth of Technical Complexity">
+    <meta property="og:description" content="Why being skilled makes you look unskilled">
+    <meta name="twitter:description" content="Why being skilled makes you look unskilled">
+    <meta name="twitter:title" content="The Myth of Technical Complexity"><meta property="article:published_time" 2025-10-17T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-10-17T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/myth_of_tech_complexity.jpg">
     <meta property="og:image:height" content="600">
     <meta property="og:image:width" content="1200">
-    <meta name="twitter:image" content="https://binhong.me/blog/preview/internal_tooling_ideas.jpg">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/myth_of_tech_complexity.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="robots" content="max-image-preview:large">
-    <meta name="image" content="https://binhong.me/blog/preview/internal_tooling_ideas.jpg" />
+    <meta name="image" content="https://binhong.me/blog/preview/myth_of_tech_complexity.jpg" />
     <meta name="twitter:site" content="@">
     <meta name="author" content="BinHong Lee">
     <meta property="og:profile:first_name" content="BinHong">
@@ -112,13 +112,13 @@
     <article class="content_body primary_block projects">
       <main class="article_body">
         <div class="active">
-          <h1 class="row title">Internal Tooling Ideas</h1>
-          <p class="row subtitle">When and what to build for internal tools?</p>
+          <h1 class="row title">The Myth of Technical Complexity</h1>
+          <p class="row subtitle">Why being skilled makes you look unskilled</p>
           <div class="row author">
             <p>BinHong Lee</p>
-            <p class="right">July 11, 2025</p>
+            <p class="right">October 17, 2025</p>
           </div>
-          <div class="post_content"><p>For years, I built and maintained the only logged-out accessible dev tool set / platform at Meta. That earned me some reputation (in a certain circle) of being &ldquo;the idea guy on internal tools&rdquo;. Whenever I&rsquo;m asked about how I keep coming up with good ideas for valuable tools to build, my go-to answer has been &ldquo;I build tools when I get annoyed while doing my job&rdquo;. I&rsquo;ll try to expand that into more details below.</p>
+          <div class="post_content"><p>I&rsquo;ve seen multiple different people fail their promotions due to &ldquo;lack of technical complexity&rdquo; in their work. While some of this rings true, more often than not, the underlying technical complexity of their work is not properly understood because - <em>ironically</em> - they cut through it smoothly as strong technical engineers. Unless you were doing code / design reviews for them, you wouldn&rsquo;t notice it. On the flip side, I&rsquo;ve had projects listed as my capstone &ldquo;technical complexity&rdquo; project of the year that <em>imo</em> wasn&rsquo;t very complex compared to some other stuff I needed to work on. Why is this happening and how do I make sure my work is properly valued?</p>
 <p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
         <div class="newsletter">
           <h2>Subscribe to the newsletter today!</h2>
@@ -135,53 +135,53 @@
           </form>
           You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
         </div>
-<a class="anchor" href="#repetitive-typing">
-    <h2 id="repetitive-typing">
-        <span class="text">Repetitive Typing</span>
+<a class="anchor" href="#the-problem">
+    <h2 id="the-problem">
+        <span class="text">The Problem</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>The biggest value of having logged-out accessible dev tools is that you no longer have to log in to access dev tools. Login, while generally not too big of a friction for one-off situations, can be very bothersome if you have to type your credentials over and over again (for dev purposes) as you login (update config) → logout (test) → login (update config) → logout (test). If bypassing or removing the typing aspect is not possible, consider if it can be replaced with multiple choice button selection or just a single copy-paste friendly input.</p>
-<a class="anchor" href="#unnecessary-waiting--processing">
-    <h2 id="unnecessary-waiting--processing">
-        <span class="text">Unnecessary Waiting / Processing</span>
+<p>During your performance or promotion review, the audience generally includes your manager, their peers, org leaders, and <em>sometimes</em> a couple of very senior ICs in your org. Realistically, none of them have seen your code (though some might have seen your project design docs). So how could they <em>know</em> if something is technically complex? <strong>They don&rsquo;t.</strong> Instead, they mostly rely on their intuition (based on what they know of the project, or just the project name alone), or they hinge it on other calibrated agreements (more on this later). If your project name is &ldquo;Logging for X,&rdquo; it&rsquo;s very likely that it will be challenged for its technical complexity level for any senior engineer because &ldquo;how hard could logging be?&rdquo; (Turns out, not only can they be hard, but they could also be wrongly designed with long-term negative side effects, especially if your leaders can&rsquo;t get out of the sunk-cost fallacy. But that&rsquo;s a story for another day.)</p>
+<a class="anchor" href="#just-a-one-line-fix">
+    <h2 id="just-a-one-line-fix">
+        <span class="text">Just a one-line fix</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>There are generally 2 types of waiting problems. The first one is where the wait takes a really long time and can be done asynchronously. Either move the wait into an async manner and integrate a messaging system to notify the author when it&rsquo;s completed, or pre-process them based on known patterns. For example, companies with large native app (iOS / Android) code bases have long build times. You can integrate build tools like <a href="https://bazel.build/remote/caching">Bazel with remote caching</a> so clients don&rsquo;t have to rebuild everything from scratch. Since an engineer will likely want to pull from remote <code>HEAD</code> (or <code>stable</code>) daily, you can have a cron job that pulls and builds daily in the morning before the engineer starts working, thus turning their wait block time into an <em>invisible</em> operation done automagically while they are having their breakfast or morning coffee. The second type is where the wait is one part of the process and can&rsquo;t be (deterministically) pre-processed ahead of time / asynchronously. In this case, consider if bypassing is an option (e.g., skips in <code>dev</code> but runs in <code>prod</code>). If not, you can also try making it non-blocking (move it off the main thread, batch processing, backfill etc.) as the user proceeds through the process. If all else fails, you can always turn that part of the process into an async step with an integration to a messaging system notifying the author once it&rsquo;s ready to proceed to the next step.</p>
-<a class="anchor" href="#device-config--manual-hard-code">
-    <h2 id="device-config--manual-hard-code">
-        <span class="text">Device Config &gt; Manual Hard-code</span>
+<p>Sometimes a simple bug is masked by convoluted layers of abstractions, making it extremely hard to discover. We&rsquo;ve all had bugs like this where everyone was at a loss as to why it was broken, but it turned out to be a simple one-liner fix. If you look at the fix diff alone, it would look straightforward and you&rsquo;d wonder why no one noticed this earlier. These are technically complex to debug from a given stack trace (or sometimes just screenshots) to the actual root cause. In fact, this is the definition of work for a staff engineer archetype - <em>fixer</em>. Yet, this is also an example of technically complex work that&rsquo;s commonly overlooked due to how deceptively easy it looks.</p>
+<a class="anchor" href="#upfront-alignment">
+    <h2 id="upfront-alignment">
+        <span class="text">Upfront alignment</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>In many of these cases, you can probably do manual hard-coding to get the intended behavior. However, doing so increases the risk of accidentally committing such hard-coded changes into prod (if not caught during code review). On top of that, when working on a complex code base, the engineer might not be familiar with the code pointer for where the hard-code needs to go. For instance, if you want to bypass the rate-limit of your feature but the rate-limit logic is owned by a separate team in an unfamiliar code base. As an added bonus, this also allows non-technical members of your team (designers, PMs etc.) to do product audits, dogfooding, and in-depth testing independently without needing dedicated engineering support.</p>
-<a class="anchor" href="#non-deterministic-behaviors-ml-override">
-    <h2 id="non-deterministic-behaviors-ml-override">
-        <span class="text">Non-deterministic Behaviors (ML override)</span>
+<p>The easiest way to prevent later disagreement on the complexity nature of your work would be to align it upfront. Talk to your TL / EM to make sure they agree with your assessment of how complex the work really is. (Excluding PMs here because they generally don&rsquo;t have strong opinions / say on the technical complexity of your work.) Even if you end up disagreeing, you&rsquo;d know exactly what you&rsquo;re getting yourself into ahead of the project and decide accordingly (depending on options available to you). For most junior engineers and some early senior engineers, this is likely something that happened even prior to you knowing about the project. The senior engineer who assigned you the project likely aligned this upfront to make sure the project fits your growth path (meeting expectations / promo) your manager has in mind for you.</p>
+<a class="anchor" href="#similar-past-attempts">
+    <h2 id="similar-past-attempts">
+        <span class="text">Similar past attempts</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>This is somewhat similar to the manual hardcode situation mentioned above where you might want to override an ML decision to manually test out different decision combinations by the model. ML models (and AI) are relatively non-deterministic by design, but when building / testing a product, you want to make sure that you covered all the different possible scenarios. Having an override to switch between different potential responses allows for better coverage on both manual and automated testing, ensuring that your change behaves as intended.</p>
-<a class="anchor" href="#chore">
-    <h2 id="chore">
-        <span class="text">Chore</span>
+<p>Another way you could demonstrate the technical complexity of a project is by citing previous failures at attempting this project. Generally, this requires a project to have been attempted previously (even if there are slight differences in details). It&rsquo;s important to keep in mind that you should always try to do things <em>only you can do</em> (maybe I&rsquo;ll write more about it in the future) and delegate everything else. Someone else failing previously is essentially a way to show that &lsquo;you&rsquo; were the key ingredient to making the project a success.</p>
+<p>If there&rsquo;s a similar project that was previously executed successfully, that&rsquo;s a slightly different story. It can still be complex, but the complexity level will likely be reduced by at least 1 level (if not more) depending on how similar they are. The idea is that you already have a good reference that helped scope out a lot of the <em>unknown unknowns</em>, making this simpler.</p>
+<a class="anchor" href="#borrowing-an-authority">
+    <h2 id="borrowing-an-authority">
+        <span class="text">Borrowing an authority</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>This is more about employee satisfaction when working on a repetitive task may be boring or frustrating. Having tools to automate such work allows them to explore more interesting / challenging work, thus improving employee satisfaction, even if it doesn&rsquo;t necessarily save a significant amount of time. The best &ldquo;realistic&rdquo; way to measure this would be a rating system where you count the number of employees using it and ask for their feedback (both positive and negative), then compile to show the value it provides.</p>
+<p>Similar to what I previously wrote in <a href="/blog/2025-05-16-art-of-posting/#pre-read-from-subject-matter-experts">The Art of Posting</a> and what Mekka wrote <a href="https://mekka-tech.com/posts/2018-08-09-the-difficulty-anchor/">here about The Difficulty Anchor</a>, you can also borrow the authority of someone else more senior in your team or org to endorse your evaluation of the project. This is especially important in areas where you&rsquo;re not seen as an expert. While it&rsquo;s ideal to get this on the record early on (as mentioned in the <a href="#upfront-alignment">earlier section</a>), this can still be done post-hoc as well. This is especially important when you run into unexpected complexity as you work through the project. Having someone credible validate that &ldquo;yeah, this turned out to be way messier than we thought&rdquo; carries much more weight than you making that case yourself.</p>
 <a class="anchor" href="#wrap-up">
     <h2 id="wrap-up">
         <span class="text">Wrap up</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>Building internal tools is about removing friction from your team&rsquo;s daily workflow. The best tools emerge from genuine pain points you experience while doing your job. Start small and focus on the annoyances that happen most frequently. The key is to stay observant of your own frustrations and act on them. Every great internal tool started with someone saying &ldquo;there has to be a better way to do this&rdquo;.</p>
+<p>The cruel irony of engineering is that doing your job well often makes it invisible. When you smoothly navigate complex technical challenges, stakeholders see the outcome, not the expertise required to get there. Don&rsquo;t let your competence work against you. The technical complexity of your work needs to be communicated, not just demonstrated. Whether it&rsquo;s aligning expectations upfront, citing similar past failures, or borrowing authority from senior engineers, make sure the people evaluating you understand what they&rsquo;re really looking at.</p>
 </div>
           <div class="tags">
             🔖
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/the-opinionated-engineer">The Opinionated Engineer</a>
-            <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/internal-tools">Internal Tools</a>
           </div>
         </div>        <div class="newsletter">
           <h2>Subscribe to the newsletter today!</h2>
@@ -202,25 +202,13 @@
           
           
           
-          <a href="/blog/2025-07-18-understanding-value-of-dev-tools/">
+          <a href="/blog">
             <div class="bottom_button">
-              ← Next
-              <br />
-              <br />
-              <span class="button_title">Understanding the Value of Dev Tools</span>
+              ← Back to menu
             </div>
           </a>
           
           
-          
-          <a href="/blog/2025-07-03-early-takes-on-vibe-coding/">
-            <div class="bottom_button previous_post">
-              Previous →
-              <br />
-              <br />
-              <span class="button_title">Early takes on vibe-coding</span>
-            </div>
-          </a>
           
         </div>
       </main>
@@ -234,7 +222,7 @@
           </div>
           <div class="row">
             <p>
-              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-07-11-internal-tooling-ideas.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-10-17-the-myth-of-technical-complexity.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
               |
               <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
             </p>

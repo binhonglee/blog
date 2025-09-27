@@ -4,22 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=0.75">
     
-    <title>The Myth of Technical Complexity - BinHong Lee&#39;s Blog</title>
+    <title>Incident Review Process - BinHong Lee&#39;s Blog</title>
     
-    <meta name="description" content="I&rsquo;ve seen multiple different people fail their promotions due to &ldquo;lack of technical complexity&rdquo; in their work. While some of this rings true, more often than not, the underlying technical complexity of their work is not properly understood because - ironically - they cut through it smoothly as strong technical engineers. Unless you were doing code / design reviews for them, you wouldn&rsquo;t notice it. On the flip side, I&rsquo;ve had projects listed as my capstone &ldquo;technical complexity&rdquo; project of the year that imo wasn&rsquo;t very complex compared to some other stuff I needed to work on. Why is this happening and how do I make sure my work is properly valued?">
+    <meta name="description" content="In the previous runbook, I mostly focused on things to do during an incident as it happens. This week, we will focus more on what to do after the incident is resolved. This is an opportunity to look back at what went well, what went wrong, and how we can best prepare ourselves or prevent something similar from happening again in the future.
+This is part of a series (The Opinionated Engineer) where I share my strong opinions on engineering practices.">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="The Myth of Technical Complexity">
-    <meta property="og:description" content="Why being skilled makes you look unskilled">
-    <meta name="twitter:description" content="Why being skilled makes you look unskilled">
-    <meta name="twitter:title" content="The Myth of Technical Complexity"><meta property="article:published_time" 2025-10-03T00:00:00-08:00 />
-    <meta property="article:modified_time" 2025-10-03T00:00:00-08:00 />
-    <meta property="og:image" content="https://binhong.me/blog/preview/myth_of_tech_complexity.jpg">
+    <meta property="og:title" content="Incident Review Process">
+    <meta property="og:description" content="Let&#39;s make sure it doesn&#39;t happen again">
+    <meta name="twitter:description" content="Let&#39;s make sure it doesn&#39;t happen again">
+    <meta name="twitter:title" content="Incident Review Process"><meta property="article:published_time" 2025-11-14T00:00:00-08:00 />
+    <meta property="article:modified_time" 2025-11-14T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/incident_review_process.jpg">
     <meta property="og:image:height" content="600">
     <meta property="og:image:width" content="1200">
-    <meta name="twitter:image" content="https://binhong.me/blog/preview/myth_of_tech_complexity.jpg">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/incident_review_process.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="robots" content="max-image-preview:large">
-    <meta name="image" content="https://binhong.me/blog/preview/myth_of_tech_complexity.jpg" />
+    <meta name="image" content="https://binhong.me/blog/preview/incident_review_process.jpg" />
     <meta name="twitter:site" content="@">
     <meta name="author" content="BinHong Lee">
     <meta property="og:profile:first_name" content="BinHong">
@@ -41,7 +42,7 @@
     
     <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
     
-    <meta name="generator" content="Hugo 0.150.0">
+    <meta name="generator" content="Hugo 0.150.1">
     
     </head>
   <body class="single">
@@ -112,13 +113,13 @@
     <article class="content_body primary_block projects">
       <main class="article_body">
         <div class="active">
-          <h1 class="row title">The Myth of Technical Complexity</h1>
-          <p class="row subtitle">Why being skilled makes you look unskilled</p>
+          <h1 class="row title">Incident Review Process</h1>
+          <p class="row subtitle">Let&#39;s make sure it doesn&#39;t happen again</p>
           <div class="row author">
             <p>BinHong Lee</p>
-            <p class="right">October 3, 2025</p>
+            <p class="right">November 14, 2025</p>
           </div>
-          <div class="post_content"><p>I&rsquo;ve seen multiple different people fail their promotions due to &ldquo;lack of technical complexity&rdquo; in their work. While some of this rings true, more often than not, the underlying technical complexity of their work is not properly understood because - <em>ironically</em> - they cut through it smoothly as strong technical engineers. Unless you were doing code / design reviews for them, you wouldn&rsquo;t notice it. On the flip side, I&rsquo;ve had projects listed as my capstone &ldquo;technical complexity&rdquo; project of the year that <em>imo</em> wasn&rsquo;t very complex compared to some other stuff I needed to work on. Why is this happening and how do I make sure my work is properly valued?</p>
+          <div class="post_content"><p>In the <a href="/blog/2025-07-25-major-incident-runbook/">previous runbook</a>, I mostly focused on things to do <em>during</em> an incident as it happens. This week, we will focus more on what to do <em>after</em> the incident is resolved. This is an opportunity to look back at what went well, what went wrong, and how we can best prepare ourselves or prevent something similar from happening again in the future.</p>
 <p><em>This is part of a series <a href="/blog/2025-05-04-the-opinionated-engineer/">(The Opinionated Engineer)</a> where I share my strong opinions on engineering practices.</em></p>
         <div class="newsletter">
           <h2>Subscribe to the newsletter today!</h2>
@@ -135,53 +136,61 @@
           </form>
           You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
         </div>
-<a class="anchor" href="#the-problem">
-    <h2 id="the-problem">
-        <span class="text">The Problem</span>
+<a class="anchor" href="#report">
+    <h2 id="report">
+        <span class="text">Report</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>During your performance or promotion review, the audience generally includes your manager, their peers, org leaders, and <em>sometimes</em> a couple of very senior ICs in your org. Realistically, none of them have seen your code (though some might have seen your project design docs). So how could they <em>know</em> if something is technically complex? <strong>They don&rsquo;t.</strong> Instead, they mostly rely on their intuition (based on what they know of the project, or just the project name alone), or they hinge it on other calibrated agreements (more on this later). If your project name is &ldquo;Logging for X,&rdquo; it&rsquo;s very likely that it will be challenged for its technical complexity level for any senior engineer because &ldquo;how hard could logging be?&rdquo; (Turns out, not only can they be hard, but they could also be wrongly designed with long-term negative side effects, especially if your leaders can&rsquo;t get out of the sunk-cost fallacy. But that&rsquo;s a story for another day.)</p>
-<a class="anchor" href="#just-a-one-line-fix">
-    <h2 id="just-a-one-line-fix">
-        <span class="text">Just a one-line fix</span>
+<p>After the incident, the incident owner should fill out an incident report detailing things like root cause, alerts, remediation, recovery, prevention, etc. Ideally this is made into a template and the author should go into detail about what actually happened vs what should have happened and how it could be improved. The report should be completed at least a day or two ahead of the review to allow for optional pre-reads.</p>
+<a class="anchor" href="#review">
+    <h2 id="review">
+        <span class="text">Review</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>Sometimes a simple bug is masked by convoluted layers of abstractions, making it extremely hard to discover. We&rsquo;ve all had bugs like this where everyone was at a loss as to why it was broken, but it turned out to be a simple one-liner fix. If you look at the fix diff alone, it would look straightforward and you&rsquo;d wonder why no one noticed this earlier. These are technically complex to debug from a given stack trace (or sometimes just screenshots) to the actual root cause. In fact, this is the definition of work for a staff engineer archetype - <em>fixer</em>. Yet, this is also an example of technically complex work that&rsquo;s commonly overlooked due to how deceptively easy it looks.</p>
-<a class="anchor" href="#upfront-alignment">
-    <h2 id="upfront-alignment">
-        <span class="text">Upfront alignment</span>
+<p>Usually you&rsquo;d need someone (or a group of people taking turns) to organize the review. Their job is to pick the set of incidents to review, make sure that incident owners fill out the report adequately, and that everyone relevant is invited and available to attend the review. It&rsquo;s not really a <em>hard</em> job per se but it requires some async communication and some level of familiarity with the org scope to ensure that all the right people involved in each incident will be there at the review.</p>
+<a class="anchor" href="#audience">
+    <h2 id="audience">
+        <span class="text">Audience</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>The easiest way to prevent later disagreement on the complexity nature of your work would be to align it upfront. Talk to your TL / EM to make sure they agree with your assessment of how complex the work really is. (Excluding PMs here because they generally don&rsquo;t have strong opinions / say on the technical complexity of your work.) Even if you end up disagreeing, you&rsquo;d know exactly what you&rsquo;re getting yourself into ahead of the project and decide accordingly (depending on options available to you). For most junior engineers and some early senior engineers, this is likely something that happened even prior to you knowing about the project. The senior engineer who assigned you the project likely aligned this upfront to make sure the project fits your growth path (meeting expectations / promo) your manager has in mind for you.</p>
-<a class="anchor" href="#similar-past-attempts">
-    <h2 id="similar-past-attempts">
-        <span class="text">Similar past attempts</span>
+<p>Aside from incident owners and people directly involved in said incidents, team EMs, senior engineers, and senior org leaders (Director / VP) are critical to have present in the review. EMs are there to ensure visibility and awareness of the importance of follow-up work from the incident review. Senior engineers are there to raise questions and/or provide recommendations especially surrounding detection and prevention strategies. Senior org leaders showing up - at the very least - solidify the importance of the review and enforce that planned follow-ups are actually worked on with allocated time instead of being set aside / deprioritized.</p>
+<a class="anchor" href="#follow-ups">
+    <h2 id="follow-ups">
+        <span class="text">Follow-ups</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>Another way you could demonstrate the technical complexity of a project is by citing previous failures at attempting this project. Generally, this requires a project to have been attempted previously (even if there are slight differences in details). It&rsquo;s important to keep in mind that you should always try to do things <em>only you can do</em> (maybe I&rsquo;ll write more about it in the future) and delegate everything else. Someone else failing previously is essentially a way to show that &lsquo;you&rsquo; were the key ingredient to making the project a success.</p>
-<p>If there&rsquo;s a similar project that was previously executed successfully, that&rsquo;s a slightly different story. It can still be complex, but the complexity level will likely be reduced by at least 1 level (if not more) depending on how similar they are. The idea is that you already have a good reference that helped scope out a lot of the <em>unknown unknowns</em>, making this simpler.</p>
-<a class="anchor" href="#borrowing-an-authority">
-    <h2 id="borrowing-an-authority">
-        <span class="text">Borrowing an authority</span>
+<p>After the review, there will likely be a laundry list of follow-up work to be done. Note them down in your task tracker (Jira, Asana etc.) and assign them to the right owners. By default, the incident owner would own it but it&rsquo;s very common to have it assigned to peers or even external teams, depending on how/what was broken. One of the more common failure modes here is the lack of tracking on these follow-up tasks. Make sure to have a proper process to (at least) have someone - <em>anyone</em> - review these tasks over time to ensure they are being worked on in a timely manner and actually completed or attempted in good faith. It&rsquo;d be a shame (with a lot of awkward conversation) if there ended up being another similar incident that could have been prevented by said follow-up task.</p>
+<a class="anchor" href="#pattern">
+    <h2 id="pattern">
+        <span class="text">Pattern</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>Similar to what I previously wrote in <a href="/blog/2025-05-16-art-of-posting/#pre-read-from-subject-matter-experts">The Art of Posting</a> and what Mekka wrote <a href="https://mekka-tech.com/posts/2018-08-09-the-difficulty-anchor/">here about The Difficulty Anchor</a>, you can also borrow the authority of someone else more senior in your team or org to endorse your evaluation of the project. This is especially important in areas where you&rsquo;re not seen as an expert. While it&rsquo;s ideal to get this on the record early on (as mentioned in the <a href="#upfront-alignment">earlier section</a>), this can still be done post-hoc as well. This is especially important when you run into unexpected complexity as you work through the project. Having someone credible validate that &ldquo;yeah, this turned out to be way messier than we thought&rdquo; carries much more weight than you making that case yourself.</p>
+<p>In some cases, frequent attendees might notice a pattern of incidents and propose wider improvements (instead of specifics to any incident). One example we ran into was how a lot of incidents could have been prevented by having automated tests. This wasn&rsquo;t because the team didn&rsquo;t make an effort to write them, but because there was a more underlying issue (outside of the team&rsquo;s direct purview) causing existing tests to become flaky. We ended up having an entire workstream focused on fixing all the automated test blockers found in the org. (I&rsquo;ll probably write about my experience working on it someday, under the <a href="/blog/project-presentation">project presentation</a> series.) Anyway, the point here is that having a consistent set of decision-making audience helps make sure patterns like these can be better discovered instead of overlooked.</p>
+<a class="anchor" href="#accountability">
+    <h2 id="accountability">
+        <span class="text">Accountability</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>I&rsquo;ve touched on this previously in <a href="/blog/2025-05-30-no-blame-sev-culture#no-blame--no-responsibility">No Blame SEV (Incident) Culture</a>. Generally, there shouldn&rsquo;t be any explicit <em>blaming</em> happening in the incident review meeting but as I&rsquo;ve seen others put it, there could still be <em>&ldquo;shame&rdquo;</em>. The way I&rsquo;ve understood how a lot of this works is that the worse the outage was, the less likely the incident is to be entirely the responsibility of an individual. If you took down the <em>entire</em> production tier of your company, there are likely a lot of things that need to go wrong for it to happen, so it shouldn&rsquo;t all be on you.</p>
+<p>Aside from all the &ldquo;who&rsquo;s wrong / who&rsquo;s to blame&rdquo; side of accountability, there&rsquo;s also the part where each responsible team needs to take on follow-up tasks to strengthen their end of reliability to prevent similar incidents from happening again. For example, if an internal framework or component library change breaks a bunch of stuff in the company, the most obvious thing would be for the framework/library team to improve their regression testing. But client teams might also want to consider adding stricter test coverage on critical paths so they can be more defensive and catch potential future breakages earlier.</p>
 <a class="anchor" href="#wrap-up">
     <h2 id="wrap-up">
         <span class="text">Wrap up</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>The cruel irony of engineering is that doing your job well often makes it invisible. When you smoothly navigate complex technical challenges, stakeholders see the outcome, not the expertise required to get there. Don&rsquo;t let your competence work against you. The technical complexity of your work needs to be communicated, not just demonstrated. Whether it&rsquo;s aligning expectations upfront, citing similar past failures, or borrowing authority from senior engineers, make sure the people evaluating you understand what they&rsquo;re really looking at.</p>
+<p>The incident review process is a critical part of your team&rsquo;s long-term reliability. It can be daunting to those presenting their first incidents so a proper report template helps make sure you always have quality content for the review. From there, getting the right people in the room regularly and actually tracking follow-up work helps make sure you don&rsquo;t fall for the same problem again. Even if you aren&rsquo;t sure where to start, putting together a rough process can help kickstart it as you re-evaluate and refine it as it goes. The goal isn&rsquo;t to eliminate all incidents, but to make sure you&rsquo;re learning from them and getting stronger as a result.</p>
 </div>
           <div class="tags">
             🔖
             <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/the-opinionated-engineer">The Opinionated Engineer</a>
+            <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/incident-management">Incident Management</a>
           </div>
         </div>        <div class="newsletter">
           <h2>Subscribe to the newsletter today!</h2>
@@ -222,7 +231,7 @@
           </div>
           <div class="row">
             <p>
-              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-10-03-the-myth-of-technical-complexity.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-11-14-incident-review-process.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
               |
               <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
             </p>
