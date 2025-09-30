@@ -6,10 +6,6 @@ tags: [Project Presentation, Growth]
 ss: "preview/negative_2m_map.jpg"
 aliases:
   - /negative_2m_map/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 There's a saying in Meta that 'Nothing is somebody else's problem' but sometimes, it really is. At this point in time, I was working on a growth team whose top-line goal was to grow Facebook MAP (monthly active people). So naturally, it's surprising for me to have shipped something that directly regressed the very metric the team should be growing.

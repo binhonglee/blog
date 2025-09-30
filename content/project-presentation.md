@@ -22,7 +22,7 @@ This series is my attempt at sharing past project stories as a way to help me or
 
 Here are some of the pieces that's been released (or planned) thus far:
 
-- Shipping a project with -2M MAP
+- [Shipping a project with -2M MAP](/blog/2025-10-03-shipping-negative-2m-map)
 - Leaked `FakeIncorrectPassword`
 - FB accounts created without Messenger
 - One liner increasing over 3M MAP
