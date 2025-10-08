@@ -771,7 +771,8 @@ button:hover {
   border: 1px solid var(--dark-color);
 }
 
-#darkModeToggle:checked~div .threads a {
+#darkModeToggle:checked~div .threads p,
+#darkModeToggle:checked~div .threads svg {
   color: var(--dark-color);
 }
 
