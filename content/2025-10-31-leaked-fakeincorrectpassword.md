@@ -12,7 +12,11 @@ build:
   render: always
 ---
 
-It was Thanksgiving day and I was mostly chilling at home scrolling Threads while watching YouTube. I then came across [this post](https://www.threads.com/@justinamphlett/post/DC7O6MHOXaX) and immediately recognized that the screenshot is bad. `FakeIncorrectPassword` is an internal error code used when the integrity system thinks you're a bad actor (bot, scraper, credential stuffer etc) and so we would show you an _Incorrect Password_ error message regardless of whether the password is correct. But as seen in the screenshot, we show the raw `FakeIncorrectPassword` string directly instead of the regular _Incorrect Password_ error.
+It was Thanksgiving day and I was mostly chilling at home scrolling Threads while watching YouTube. I then came across this post:
+
+{{< threads "https://www.threads.net/@justinamphlett/post/DC7O6MHOXaX" >}}
+
+I immediately recognized that the screenshot is bad. `FakeIncorrectPassword` is an internal error code used when the integrity system thinks you're a bad actor (bot, scraper, credential stuffer etc) and so we would show you an _Incorrect Password_ error message regardless of whether the password is correct. But as seen in the screenshot, we show the raw `FakeIncorrectPassword` string directly instead of the regular _Incorrect Password_ error.
 
 _This is part of a series [(Project Presentation)](/blog/project-presentation/) where I share stories of my past projects._
 
