@@ -17,21 +17,7 @@
       <guid>https://binhong.me/blog/2025-10-03-shipping-negative-2m-map/</guid>
       <description>&lt;p&gt;There&amp;rsquo;s a saying in Meta that &amp;lsquo;Nothing is somebody else&amp;rsquo;s problem&amp;rsquo; but sometimes, it really is. At this point in time, I was working on a growth team whose top-line goal was to grow Facebook MAP (monthly active people). So naturally, it&amp;rsquo;s surprising for me to have shipped something that directly regressed the very metric the team should be growing.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/project-presentation/&#34;&gt;(Project Presentation)&lt;/a&gt; where I share stories of my past projects.&lt;/em&gt;&lt;/p&gt;
-        &lt;div class=&#34;newsletter&#34;&gt;
-          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
-          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
-              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
-              &lt;noscript&gt;
-                &lt;br /&gt;
-                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
-                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
-                &lt;br /&gt;
-              &lt;/noscript&gt;
-              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
-              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
-          &lt;/form&gt;
-          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
-        &lt;/div&gt;
+        
 &lt;a class=&#34;anchor&#34; href=&#34;#background&#34;&gt;
     &lt;h2 id=&#34;background&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Background&lt;/span&gt;

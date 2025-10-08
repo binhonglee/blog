@@ -17,21 +17,7 @@
       <guid>https://binhong.me/blog/2025-08-01-firefighting-heroes/</guid>
       <description>&lt;p&gt;We love celebrating heroes in general. So when a hero shows up to save the day, it&amp;rsquo;s only natural that we make sure to recognize their contribution. While it might feel counterintuitive, we should strive to not need heroes entirely instead of hoping that next time when tragedy strikes, a hero will turn up once again. This is not to diminish the value of heroes. They still play a very important role in firefighting and are doing the right thing in an urgent situation. However, &lt;em&gt;in a perfect world&lt;/em&gt;, they shouldn&amp;rsquo;t be necessary at all and we should at least aspire to work towards building a system with that level of reliability.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
-        &lt;div class=&#34;newsletter&#34;&gt;
-          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
-          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
-              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
-              &lt;noscript&gt;
-                &lt;br /&gt;
-                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
-                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
-                &lt;br /&gt;
-              &lt;/noscript&gt;
-              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
-              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
-          &lt;/form&gt;
-          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
-        &lt;/div&gt;
+        
 &lt;a class=&#34;anchor&#34; href=&#34;#bian-que-and-his-brothers&#34;&gt;
     &lt;h2 id=&#34;bian-que-and-his-brothers&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Bian Que and his brothers&lt;/span&gt;
@@ -86,21 +72,7 @@
       <guid>https://binhong.me/blog/2025-07-25-major-incident-runbook/</guid>
       <description>&lt;p&gt;I wrote a similar version of this internally at Meta a few years ago for my org after finding myself in the middle of a few SEV1s in a row &amp;ndash; and being consulted / asked for support in other similar situations. I thought this might be something useful to share (as a public version) as well. This won&amp;rsquo;t be perfectly fitting for all use cases, but having a runbook works as an anchor in the midst of chaos, helping to get you unstuck from &amp;ldquo;what&amp;rsquo;s next?&amp;rdquo;. Admittedly, this is an incomplete runbook that serves more as a template for your team or company to complete with more specific tooling guides (using &lt;em&gt;which&lt;/em&gt; tool to achieve &lt;em&gt;what&lt;/em&gt;, etc.).&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
-        &lt;div class=&#34;newsletter&#34;&gt;
-          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
-          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
-              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
-              &lt;noscript&gt;
-                &lt;br /&gt;
-                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
-                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
-                &lt;br /&gt;
-              &lt;/noscript&gt;
-              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
-              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
-          &lt;/form&gt;
-          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
-        &lt;/div&gt;
+        
 &lt;a class=&#34;anchor&#34; href=&#34;#stop-the-bleed&#34;&gt;
     &lt;h2 id=&#34;stop-the-bleed&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Stop the Bleed!&lt;/span&gt;
@@ -148,21 +120,7 @@
       <guid>https://binhong.me/blog/2025-05-30-no-blame-sev-culture/</guid>
       <description>&lt;p&gt;Every time there&amp;rsquo;s a major outage at Meta, the first question I get from friends and family is usually &lt;em&gt;&amp;ldquo;did they fire the person who caused it?&amp;rdquo;&lt;/em&gt; which is where I have to explain this concept of &lt;strong&gt;No Blame SEV Culture&lt;/strong&gt;. Especially for an outage so big that a significant number of users are affected, the &lt;em&gt;individual&lt;/em&gt; causing it likely does not have ill intent and there are likely multiple different processes and systems that failed along the way to get us here in the first place.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
-        &lt;div class=&#34;newsletter&#34;&gt;
-          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
-          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
-              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
-              &lt;noscript&gt;
-                &lt;br /&gt;
-                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
-                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
-                &lt;br /&gt;
-              &lt;/noscript&gt;
-              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
-              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
-          &lt;/form&gt;
-          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
-        &lt;/div&gt;
+        
 &lt;a class=&#34;anchor&#34; href=&#34;#process-over-people&#34;&gt;
     &lt;h2 id=&#34;process-over-people&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Process over People&lt;/span&gt;

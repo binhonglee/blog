@@ -17,21 +17,7 @@
       <guid>https://binhong.me/blog/2025-10-03-shipping-negative-2m-map/</guid>
       <description>&lt;p&gt;There&amp;rsquo;s a saying in Meta that &amp;lsquo;Nothing is somebody else&amp;rsquo;s problem&amp;rsquo; but sometimes, it really is. At this point in time, I was working on a growth team whose top-line goal was to grow Facebook MAP (monthly active people). So naturally, it&amp;rsquo;s surprising for me to have shipped something that directly regressed the very metric the team should be growing.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/project-presentation/&#34;&gt;(Project Presentation)&lt;/a&gt; where I share stories of my past projects.&lt;/em&gt;&lt;/p&gt;
-        &lt;div class=&#34;newsletter&#34;&gt;
-          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
-          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
-              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
-              &lt;noscript&gt;
-                &lt;br /&gt;
-                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
-                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
-                &lt;br /&gt;
-              &lt;/noscript&gt;
-              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
-              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
-          &lt;/form&gt;
-          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
-        &lt;/div&gt;
+        
 &lt;a class=&#34;anchor&#34; href=&#34;#background&#34;&gt;
     &lt;h2 id=&#34;background&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Background&lt;/span&gt;
@@ -90,21 +76,7 @@
       <guid>https://binhong.me/blog/2025-06-27-experiment-review-process/</guid>
       <description>&lt;p&gt;Mature growth teams would organize a centralized experiment review meeting as a way to share learnings to a wider audience, consult for feedback / next step recommendations, while also holding engineers accountable for the changes they are attempting to ship. The review sessions should be open to anyone to sign up (presenting their experiments) or to participate in general. However, key decision makers (like senior growth engineers, product managers, designers, data scientists) should be required to attend so decisions to ship / not ship / iterate will be made with everyone&amp;rsquo;s concerns addressed.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
-        &lt;div class=&#34;newsletter&#34;&gt;
-          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
-          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
-              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
-              &lt;noscript&gt;
-                &lt;br /&gt;
-                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
-                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
-                &lt;br /&gt;
-              &lt;/noscript&gt;
-              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
-              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
-          &lt;/form&gt;
-          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
-        &lt;/div&gt;
+        
 &lt;a class=&#34;anchor&#34; href=&#34;#understanding-the-metric-shifts&#34;&gt;
     &lt;h2 id=&#34;understanding-the-metric-shifts&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Understanding the metric shifts&lt;/span&gt;
@@ -159,21 +131,7 @@
       <guid>https://binhong.me/blog/2025-06-20-growth-engineer/</guid>
       <description>&lt;p&gt;While I&amp;rsquo;ve shipped a lot of growth wins (literally the first line on my resume), I&amp;rsquo;m actually very far from a prototypical growth engineer. That said, in this piece, I want to explore a bit more into what it&amp;rsquo;s like being a growth engineer and what makes you good at being one. Growth engineers are generally 1 -&amp;gt; 100 experts instead of 0 -&amp;gt; 1. They fine-tune every little detail by running a lot of experiments with marginal changes to understand the user problem and drive growth impact (&lt;em&gt;line goes up&lt;/em&gt;).&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
-        &lt;div class=&#34;newsletter&#34;&gt;
-          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
-          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
-              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
-              &lt;noscript&gt;
-                &lt;br /&gt;
-                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
-                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
-                &lt;br /&gt;
-              &lt;/noscript&gt;
-              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
-              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
-          &lt;/form&gt;
-          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
-        &lt;/div&gt;
+        
 &lt;a class=&#34;anchor&#34; href=&#34;#ab-test-everything&#34;&gt;
     &lt;h2 id=&#34;ab-test-everything&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;A/B Test Everything&lt;/span&gt;
@@ -252,21 +210,7 @@
       <guid>https://binhong.me/blog/2025-06-13-product-growth-opportunities/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s never easy to come up with new ideas that help with growth, but identifying the &lt;em&gt;problem&lt;/em&gt; makes it easier. You&amp;rsquo;ll notice that for the most part in this piece, I&amp;rsquo;ll talk about &lt;em&gt;&amp;ldquo;where&amp;rdquo;&lt;/em&gt; the opportunities are instead of &lt;em&gt;&amp;ldquo;what&amp;rdquo;&lt;/em&gt; because that&amp;rsquo;s usually very domain specific and highly depends on the type of problem you ended up needing to solve.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
-        &lt;div class=&#34;newsletter&#34;&gt;
-          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
-          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
-              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
-              &lt;noscript&gt;
-                &lt;br /&gt;
-                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
-                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
-                &lt;br /&gt;
-              &lt;/noscript&gt;
-              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
-              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
-          &lt;/form&gt;
-          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
-        &lt;/div&gt;
+        
 &lt;a class=&#34;anchor&#34; href=&#34;#funnel-analysis&#34;&gt;
     &lt;h2 id=&#34;funnel-analysis&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Funnel analysis&lt;/span&gt;
@@ -321,21 +265,7 @@
       <guid>https://binhong.me/blog/2025-06-06-a-b-testing/</guid>
       <description>&lt;p&gt;This is a basic introduction on how to run a good A/B test. A/B testing is a method where your user pool is segmented into multiple groups, allowing you to test different product interactions and understand how these changes affect user behavior. For any metric / data driven team, A/B testing serves as a critical tool in measuring success.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
-        &lt;div class=&#34;newsletter&#34;&gt;
-          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
-          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
-              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
-              &lt;noscript&gt;
-                &lt;br /&gt;
-                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
-                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
-                &lt;br /&gt;
-              &lt;/noscript&gt;
-              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
-              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
-          &lt;/form&gt;
-          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
-        &lt;/div&gt;
+        
 &lt;a class=&#34;anchor&#34; href=&#34;#tooling&#34;&gt;
     &lt;h2 id=&#34;tooling&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Tooling&lt;/span&gt;

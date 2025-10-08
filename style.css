@@ -747,3 +747,65 @@ button:hover {
     margin: 12px 0;
   }
 }
+
+/* Threads */
+.threads_wrapper {
+  padding: 20px 0;
+}
+
+.threads {
+  border: 1px solid var(--default-color);
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 500px;
+  margin: auto;
+  display: block;
+}
+
+.threads p, .threads svg {
+  text-decoration: none;
+  color: var(--default-color);
+}
+
+#darkModeToggle:checked~div .threads {
+  border: 1px solid var(--dark-color);
+}
+
+#darkModeToggle:checked~div .threads a {
+  color: var(--dark-color);
+}
+
+.threads .handle {
+  padding: 0;
+  width: max-content;
+  display: inline-block;
+}
+
+.threads .logo {
+  width: 24px;
+  height: 24px;
+  padding-top: 5px;
+  float: right;
+}
+
+.threads .description {
+  margin: 12px 0;
+  font-size: 0.75em;
+}
+
+.threads .image img {
+  border: 1px solid var(--default-color);
+  max-width: 100%;
+  padding: 0;
+  display: block;
+}
+
+.threads .link {
+  display: block;
+  font-size: 0.75em;
+  padding-top: 20px;
+}
+
+#darkModeToggle:checked~div .threads .image img {
+  border: 1px solid var(--dark-color);
+}

@@ -17,21 +17,7 @@
       <guid>https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/</guid>
       <description>&lt;p&gt;Conventional wisdom is that writing tests slows you down, because the alternative is that you don&amp;rsquo;t need to write tests. In fact, Meta (then Facebook) was famously lacking of automated test inline with it&amp;rsquo;s famous &amp;ldquo;move fast and break things&amp;rdquo; mantra. However, from what I&amp;rsquo;ve seen, I beg to differ.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
-        &lt;div class=&#34;newsletter&#34;&gt;
-          &lt;h2&gt;Subscribe to the newsletter today!&lt;/h2&gt;
-          &lt;form action=&#34;https://binhong.me/newsletter/subscribe&#34; method=&#34;post&#34;&gt;
-              &lt;input type=&#34;email&#34; name=&#34;email&#34; placeholder=&#34;email@domain.com&#34;/&gt;
-              &lt;noscript&gt;
-                &lt;br /&gt;
-                &lt;label&gt;You will need to manually get this secret from &lt;a href=&#34;https://binhong.me/newsletter/secret&#34;&gt;here&lt;/a&gt;&lt;/label&gt;
-                &lt;input name=&#34;secret&#34; placeholder=&#34;secret&#34;/&gt;
-                &lt;br /&gt;
-              &lt;/noscript&gt;
-              &lt;input type=&#34;hidden&#34; name=&#34;secret&#34; id=&#34;secret&#34; value=&#34;123potato123&#34;/&gt;
-              &lt;button type=&#34;submit&#34; name=&#34;submit&#34; class=&#34;subscribe&#34;&gt;Subscribe&lt;/button&gt;
-          &lt;/form&gt;
-          You can also checkout previous issues &lt;a href=&#34;https://binhong.me/newsletter&#34; target=&#34;_blank&#34; style=&#34;text-decoration: underline;&#34;&gt;here&lt;/a&gt; before deciding.
-        &lt;/div&gt;
+        
 &lt;a class=&#34;anchor&#34; href=&#34;#when-to-write-tests&#34;&gt;
     &lt;h2 id=&#34;when-to-write-tests&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;When to write tests?&lt;/span&gt;
