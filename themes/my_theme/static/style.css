@@ -560,7 +560,8 @@ pre .custom-language {
 
 @media screen and (max-width: 1000px) {
   .post_content img {
-    max-width: 80%;
+    padding: 0;
+    max-width: 100%;
   }  
 }
 
@@ -736,6 +737,22 @@ button:hover {
   background-color: var(--dark-background);
   transition: background 0.8s ease;
   color: var(--dark-links);
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+figcaption {
+  font-size: 18px;
+  color: var(--default-gray);
+  padding-top: 8px;
+  text-align: center;
+}
+
+#darkModeToggle:checked~div figcaption {
+  color: var(--dark-gray);
 }
 
 @media screen and (max-width: 520px) {

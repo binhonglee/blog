@@ -1,6 +1,14 @@
 <a href="{{ .Destination | safeURL }}" target="_blank">
+    {{ if .Title }}
+    <figure>
+        <img src="{{ .Destination | safeURL }}"
+            {{- with .PlainText }} alt="{{ . }}"{{ end -}}
+        >
+        <figcaption>{{ .Title }}</figcaption>
+    </figure>
+    {{ else }}
     <img src="{{ .Destination | safeURL }}"
         {{- with .PlainText }} alt="{{ . }}"{{ end -}}
-        {{- with .Title }} title="{{ . }}"{{ end -}}
     >
+    {{ end }}
 </a>

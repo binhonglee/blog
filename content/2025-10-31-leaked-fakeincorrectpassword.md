@@ -26,9 +26,13 @@ _This is part of a series [(Project Presentation)](/blog/project-presentation/) 
 
 The user noted that this happens on mobile web which means they happened to land on a test group, since a sister team had just started public testing this new UI / flow on mobile web. I tried ringing up the oncall for their team (who also happened to be the owner of the public test) but I saw that they had actually marked themselves out-of-office for the whole weekend through the upcoming Monday. Well, that's not good (also weird that they were off while oncall❓).
 
+![](/blog/img/fakeincorrectpassword1.png "Comparison between old vs new login screen")
+
 ## Investigation
 
 Anyway, I had a few hours to kill before I needed to leave to join my friends' Thanksgiving party. I looked at the time and told myself _"I have time"_ so I decided to start debugging it myself. I'd worked tangentially with this stuff before so I knew a few other things (like 2FA) that also need special handling should be working as intended. My hunch told me that this was caused by the gap between the Python stack (IG server) throwing some error that wasn't properly consumed by the Hack server stack (that determines the UI). So I searched for `FakeIncorrectPassword` in the Python stack and found something like `TwoFactorError`. Then, I looked for `TwoFactorError` in the Hack stack to see how it works and eventually found the one that didn't handle the case for `FakeIncorrectPassword`. Simple enough, I just had to add more stuff (IIRC I added a few others as well as the aforementioned `FakeIncorrectPassword`) to the existing switch case.
+
+![](/blog/img/fakeincorrectpassword2.png "Simple diagram to show how the calls relate")
 
 ## Testing
 
