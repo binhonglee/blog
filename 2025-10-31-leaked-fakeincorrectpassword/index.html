@@ -135,7 +135,7 @@
     </svg><p class="description">
       Found a pretty horrific dark pattern with Instagram. If you try to log in on mobile web, it fails with ‘incorrect password’. I double check… it’s right, it’s just not working. Gave up, installed the app, password is fine. Tried again today just to see… this time I get the following error message. Looks like a translation key is missing and it’s serving me the backend name for it? FakeIncorrectPassword ?? Are you shitting me?
     </p><div class="image">
-      <img src="/blog/468513146_835635298542082_280700232251535875_n_2344215142448786196.jpg" alt="Post image" loading="lazy">
+      <img src="/blog/468513146_835635298542082_280700232251535875_n_11988817561529712897.jpg" alt="Post image" loading="lazy">
     </div></a>
 </div>
   
@@ -163,6 +163,15 @@
     </h2>
 </a>
 <p>The user noted that this happens on mobile web which means they happened to land on a test group, since a sister team had just started public testing this new UI / flow on mobile web. I tried ringing up the oncall for their team (who also happened to be the owner of the public test) but I saw that they had actually marked themselves out-of-office for the whole weekend through the upcoming Monday. Well, that&rsquo;s not good (also weird that they were off while oncall❓).</p>
+<p><a href="/blog/img/fakeincorrectpassword1.png" target="_blank">
+    
+    <figure>
+        <img src="/blog/img/fakeincorrectpassword1.png">
+        <figcaption>Comparison between old vs new login screen</figcaption>
+    </figure>
+    
+</a>
+</p>
 <a class="anchor" href="#investigation">
     <h2 id="investigation">
         <span class="text">Investigation</span>
@@ -170,6 +179,15 @@
     </h2>
 </a>
 <p>Anyway, I had a few hours to kill before I needed to leave to join my friends&rsquo; Thanksgiving party. I looked at the time and told myself <em>&ldquo;I have time&rdquo;</em> so I decided to start debugging it myself. I&rsquo;d worked tangentially with this stuff before so I knew a few other things (like 2FA) that also need special handling should be working as intended. My hunch told me that this was caused by the gap between the Python stack (IG server) throwing some error that wasn&rsquo;t properly consumed by the Hack server stack (that determines the UI). So I searched for <code>FakeIncorrectPassword</code> in the Python stack and found something like <code>TwoFactorError</code>. Then, I looked for <code>TwoFactorError</code> in the Hack stack to see how it works and eventually found the one that didn&rsquo;t handle the case for <code>FakeIncorrectPassword</code>. Simple enough, I just had to add more stuff (IIRC I added a few others as well as the aforementioned <code>FakeIncorrectPassword</code>) to the existing switch case.</p>
+<p><a href="/blog/img/fakeincorrectpassword2.png" target="_blank">
+    
+    <figure>
+        <img src="/blog/img/fakeincorrectpassword2.png">
+        <figcaption>Simple diagram to show how the calls relate</figcaption>
+    </figure>
+    
+</a>
+</p>
 <a class="anchor" href="#testing">
     <h2 id="testing">
         <span class="text">Testing</span>

@@ -144,7 +144,9 @@ This is part of a series (Project Presentation) where I share stories of my past
 </a>
 <p>This was still within the first year of me joining the team. Unfortunately, up to this point, I hadn&rsquo;t had any successful (+MAP) launches, and I&rsquo;d been eager to prove myself. The most recent project I worked on before this was to show an educational screen to users right after they logged in (under a specific condition) before they got redirected to newsfeed. Once a user logs an impression on newsfeed, they are considered MAP.</p>
 <p><a href="/blog/img/negative_2m_map_1.png" target="_blank">
+    
     <img src="/blog/img/negative_2m_map_1.png">
+    
 </a>
 </p>
 <p>My project failed because for some reason it logged a MAP increase on the very first day - which didn&rsquo;t make sense because users should be MAP on the first day regardless of whether they&rsquo;re in the test or control group. If anything, it could have had a slight drop if users dropped off on the interstitial before they reached newsfeed. At this point, my manager suggested that we move on to something else since no one really knew why. I was, however, adamant about figuring out what happened, so I started digging into it anyway. (<strong>major mistake</strong>)</p>
@@ -163,7 +165,9 @@ This is part of a series (Project Presentation) where I share stories of my past
 </a>
 <p>First, I looked up the blame and just asked the person (on a sister team) why they explicitly excluded platform login from this redirection. They told me that&rsquo;s just how the team tests and ships new features in general. Fair, but I didn&rsquo;t think it made sense in this case. So I reached out to Kevin and asked if they were aware of the bug. They were surprised and agreed with my assessment that it should be fixed.</p>
 <p><a href="/blog/img/negative_2m_map_2.png" target="_blank">
+    
     <img src="/blog/img/negative_2m_map_2.png">
+    
 </a>
 </p>
 <p>I merged the change and started an experiment for the fix. After a while, I pulled the metrics on the experiment and saw that it regressed MAP heavily, around 2M MAP. This wasn&rsquo;t exactly surprising, as you&rsquo;ve seen in the image above, since we were redirecting the users back to the third-party platform source, which no longer counted them as MAP. I went back to Kevin and asked what their team&rsquo;s goal metrics were and if they had a data scientist on their team willing to help with experiment analysis.</p>

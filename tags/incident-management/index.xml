@@ -129,7 +129,9 @@
 &lt;/a&gt;
 &lt;p&gt;When something goes wrong (especially something &lt;em&gt;really catastrophic&lt;/em&gt;), it&amp;rsquo;s usually a combination of both process and people problems. The difference here is that process is more deterministic compared to people. People have off-days, get tired, make mistakes etc. so it&amp;rsquo;s important to have a process (or automated systems) in place to prevent that. This can mean anything from adding more test coverage, lint rules against bad code patterns, and / or more alerts. It is however important to note that they need to &lt;strong&gt;maintain a certain level of quality bar&lt;/strong&gt;. As mentioned in &lt;a href=&#34;https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/#broken-tests&#34;&gt;the previous article&lt;/a&gt;, flaky / broken tests are tech debt, same goes for noisy lint rules and alerts. Too many noisy lint rules and alerts would lead to engineers disregarding them or adopting a &amp;ldquo;wait-and-see&amp;rdquo; mentality which is not ideal in preventing future outages.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/sev_review_trifecta.jpeg&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2025-05-30-no-blame-sev-culture//blog/img/sev_review_trifecta.jpeg&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#expensive-lesson&#34;&gt;

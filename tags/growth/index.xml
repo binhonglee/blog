@@ -26,7 +26,9 @@
 &lt;/a&gt;
 &lt;p&gt;This was still within the first year of me joining the team. Unfortunately, up to this point, I hadn&amp;rsquo;t had any successful (+MAP) launches, and I&amp;rsquo;d been eager to prove myself. The most recent project I worked on before this was to show an educational screen to users right after they logged in (under a specific condition) before they got redirected to newsfeed. Once a user logs an impression on newsfeed, they are considered MAP.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/negative_2m_map_1.png&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2025-10-03-shipping-negative-2m-map//blog/img/negative_2m_map_1.png&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;p&gt;My project failed because for some reason it logged a MAP increase on the very first day - which didn&amp;rsquo;t make sense because users should be MAP on the first day regardless of whether they&amp;rsquo;re in the test or control group. If anything, it could have had a slight drop if users dropped off on the interstitial before they reached newsfeed. At this point, my manager suggested that we move on to something else since no one really knew why. I was, however, adamant about figuring out what happened, so I started digging into it anyway. (&lt;strong&gt;major mistake&lt;/strong&gt;)&lt;/p&gt;
@@ -45,7 +47,9 @@
 &lt;/a&gt;
 &lt;p&gt;First, I looked up the blame and just asked the person (on a sister team) why they explicitly excluded platform login from this redirection. They told me that&amp;rsquo;s just how the team tests and ships new features in general. Fair, but I didn&amp;rsquo;t think it made sense in this case. So I reached out to Kevin and asked if they were aware of the bug. They were surprised and agreed with my assessment that it should be fixed.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/negative_2m_map_2.png&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2025-10-03-shipping-negative-2m-map//blog/img/negative_2m_map_2.png&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;p&gt;I merged the change and started an experiment for the fix. After a while, I pulled the metrics on the experiment and saw that it regressed MAP heavily, around 2M MAP. This wasn&amp;rsquo;t exactly surprising, as you&amp;rsquo;ve seen in the image above, since we were redirecting the users back to the third-party platform source, which no longer counted them as MAP. I went back to Kevin and asked what their team&amp;rsquo;s goal metrics were and if they had a data scientist on their team willing to help with experiment analysis.&lt;/p&gt;
@@ -162,7 +166,9 @@
 &lt;/a&gt;
 &lt;p&gt;On some occasions, there will be cost tradeoffs. Most commonly, by spending more money you can get more users (promotions, SMS cost, etc.) which makes it very important to define and understand how much spending is reasonable to earn how many users (cost per user). From there, you should only target to ship projects where it shows that the &lt;em&gt;cost per user&lt;/em&gt; is lower than the given guideline. Important to note that &lt;em&gt;cost&lt;/em&gt; here isn&amp;rsquo;t always directly money, but also valuable real estate (prominent position in the app) or attention (push notification, email, messages) which some could also have a hard-cap (on top of the aforementioned &lt;em&gt;cost per user&lt;/em&gt;).&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/growth.jpg&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2025-06-20-growth-engineer//blog/img/growth.jpg&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#user-intent&#34;&gt;

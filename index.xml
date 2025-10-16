@@ -26,7 +26,9 @@
 &lt;/a&gt;
 &lt;p&gt;This was still within the first year of me joining the team. Unfortunately, up to this point, I hadn&amp;rsquo;t had any successful (+MAP) launches, and I&amp;rsquo;d been eager to prove myself. The most recent project I worked on before this was to show an educational screen to users right after they logged in (under a specific condition) before they got redirected to newsfeed. Once a user logs an impression on newsfeed, they are considered MAP.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/negative_2m_map_1.png&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2025-10-03-shipping-negative-2m-map//blog/img/negative_2m_map_1.png&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;p&gt;My project failed because for some reason it logged a MAP increase on the very first day - which didn&amp;rsquo;t make sense because users should be MAP on the first day regardless of whether they&amp;rsquo;re in the test or control group. If anything, it could have had a slight drop if users dropped off on the interstitial before they reached newsfeed. At this point, my manager suggested that we move on to something else since no one really knew why. I was, however, adamant about figuring out what happened, so I started digging into it anyway. (&lt;strong&gt;major mistake&lt;/strong&gt;)&lt;/p&gt;
@@ -45,7 +47,9 @@
 &lt;/a&gt;
 &lt;p&gt;First, I looked up the blame and just asked the person (on a sister team) why they explicitly excluded platform login from this redirection. They told me that&amp;rsquo;s just how the team tests and ships new features in general. Fair, but I didn&amp;rsquo;t think it made sense in this case. So I reached out to Kevin and asked if they were aware of the bug. They were surprised and agreed with my assessment that it should be fixed.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/negative_2m_map_2.png&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2025-10-03-shipping-negative-2m-map//blog/img/negative_2m_map_2.png&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;p&gt;I merged the change and started an experiment for the fix. After a while, I pulled the metrics on the experiment and saw that it regressed MAP heavily, around 2M MAP. This wasn&amp;rsquo;t exactly surprising, as you&amp;rsquo;ve seen in the image above, since we were redirecting the users back to the third-party platform source, which no longer counted them as MAP. I went back to Kevin and asked what their team&amp;rsquo;s goal metrics were and if they had a data scientist on their team willing to help with experiment analysis.&lt;/p&gt;
@@ -1623,7 +1627,9 @@
 &lt;/a&gt;
 &lt;p&gt;On some occasions, there will be cost tradeoffs. Most commonly, by spending more money you can get more users (promotions, SMS cost, etc.) which makes it very important to define and understand how much spending is reasonable to earn how many users (cost per user). From there, you should only target to ship projects where it shows that the &lt;em&gt;cost per user&lt;/em&gt; is lower than the given guideline. Important to note that &lt;em&gt;cost&lt;/em&gt; here isn&amp;rsquo;t always directly money, but also valuable real estate (prominent position in the app) or attention (push notification, email, messages) which some could also have a hard-cap (on top of the aforementioned &lt;em&gt;cost per user&lt;/em&gt;).&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/growth.jpg&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2025-06-20-growth-engineer//blog/img/growth.jpg&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#user-intent&#34;&gt;
@@ -1799,7 +1805,9 @@
 &lt;/a&gt;
 &lt;p&gt;When something goes wrong (especially something &lt;em&gt;really catastrophic&lt;/em&gt;), it&amp;rsquo;s usually a combination of both process and people problems. The difference here is that process is more deterministic compared to people. People have off-days, get tired, make mistakes etc. so it&amp;rsquo;s important to have a process (or automated systems) in place to prevent that. This can mean anything from adding more test coverage, lint rules against bad code patterns, and / or more alerts. It is however important to note that they need to &lt;strong&gt;maintain a certain level of quality bar&lt;/strong&gt;. As mentioned in &lt;a href=&#34;https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/#broken-tests&#34;&gt;the previous article&lt;/a&gt;, flaky / broken tests are tech debt, same goes for noisy lint rules and alerts. Too many noisy lint rules and alerts would lead to engineers disregarding them or adopting a &amp;ldquo;wait-and-see&amp;rdquo; mentality which is not ideal in preventing future outages.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/sev_review_trifecta.jpeg&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2025-05-30-no-blame-sev-culture//blog/img/sev_review_trifecta.jpeg&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#expensive-lesson&#34;&gt;
@@ -5008,7 +5016,9 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;p&gt;Be realistic. You don’t want to end your weekend with an unfinished product that would cause you to lose focus of work / study during the week because you &lt;em&gt;“really need to go back and get it done with”&lt;/em&gt;. On the other hand, you also don’t want to just straight away give up in your first few hours because &lt;em&gt;“it’s impossible”&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;In cases where the thing you really wanted to build is huge and complicated, try breaking it down into smaller pieces and maybe span it over multiple weekends. The point being to have a realistic idea of what to expect at the end of the weekend and achieve it while not mounting yourself additional pressure (and distractions) to &lt;em&gt;‘complete’&lt;/em&gt; the other parts of it during your work / study week that would jeopardize what you are supposed to be doing during the day.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/sideProject2.jpg&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2018-06-02-building-a-side-project-over-the-weekend//blog/img/sideProject2.jpg&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#preparation&#34;&gt;
@@ -5034,7 +5044,9 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;p&gt;I think this is a major one. Figure out how you’re going to get food supplies over the weekend that will reduce the amount of time you spend not coding. If you usually cook for yourself, just make sure to look for meals that takes little time to prepare and prepare ahead of time too.&lt;/p&gt;
 &lt;p&gt;Also do you even Soylent? (Credit to &lt;a href=&#34;https://twitter.com/wongmjane&#34;&gt;Jane Manchun Wong&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/sideProject3.jpg&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2018-06-02-building-a-side-project-over-the-weekend//blog/img/sideProject3.jpg&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#process&#34;&gt;
@@ -5047,7 +5059,9 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;p&gt;Take it slow. The faster you go in the beginning, the faster you burn out. This happens a lot and everywhere. It can be overwhelming in the beginning so you slowly take your time to walk through things and watch some tutorials (YouTube is amazing) to get help on learning to build whatever you wanted to (especially with new technologies you never tried).&lt;/p&gt;
 &lt;p&gt;Take frequent breaks. I can’t stress how important it is to relax in between. You don’t get maximum efficiency by rushing things, you get them by being in between too comfortable and too overwhelmed. Personally, I would take a break and go out for a walk and fresh air every 30 mins or so. This highly differs among individuals so you have to figure out what works best for you.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/sideProject4.jpg&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2018-06-02-building-a-side-project-over-the-weekend//blog/img/sideProject4.jpg&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
@@ -5865,7 +5879,9 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;p&gt;Let’s face it, with all the hassle for potential visa sponsorship or even losing you due to the visa lottery program, you have got a lot more to prove of being worthy of that extra investment. If they can hire someone to do the same job without all that hassle for similar or even slightly more expensive prices, they would hop on that right away. It just doesn’t make sense financially to invest in you when you have a higher chance of deciding not to or not being able to continue working for them 3 years later (after training you from a raw talent to a solid engineer).&lt;/p&gt;
 &lt;p&gt;I have people around me who constantly complain about this. I do too sometimes but then I thought, I’m not ‘top of the class’ smart or ‘winner of multiple hackathons’ smart. Also, complaining about it won’t help your case. A job won’t fall from the sky randomly just because you complained hard enough. If you are just an average graduate (like myself), there is really very little incentive to think you are irreplaceable (technologically speaking) though that doesn’t mean you won’t be in 3 years time.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/bl1.jpeg&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2018-02-10-being-lucky//blog/img/bl1.jpeg&#34; alt=&#34;“Two books on a desk near a MacBook with lines of code on its screen” by Émile Perron on Unsplash&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#going-for-the-big-four&#34;&gt;
@@ -5894,7 +5910,9 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;/a&gt;
 &lt;p&gt;Don’t take this from me. Take this from almost every other person in the industry I’ve ever met. Get an internship whenever you can! Even if this means you might have to go back to your home country or work on some shitty project. If you are like me, only realizing the importance of this in your senior year, start working on side projects or open source projects. Develop niche, specific skills and people skills. Few months ago, I wouldn’t have known that my experience in developing an Alexa skill (because why not?) would helped me that much in my interview. If you know you won’t be able to impress recruiters with your experience, grades or anything, you’ll need to make it up with something else. Remember, you’ve got a lot more to prove, more than your peers with no visa issues.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/bl2.jpeg&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2018-02-10-being-lucky//blog/img/bl2.jpeg&#34; alt=&#34;Photo by Michał Parzuchowski on Unsplash&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#being-lucky&#34;&gt;
@@ -5933,7 +5951,9 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;/a&gt;
 &lt;p&gt;When I brought this up to some of my friends, their reactions were rather “Meh, I don’t have anything of worth anyway. Why would they wanna hack me?”. This is where you’re wrong. They don’t have to hack you, you’re ALREADY HACKED. As to what can they do with it? &lt;strong&gt;Identity theft&lt;/strong&gt;, basically THEY CAN BECOME YOU. With that, I mean they can apply for loans from banks on your behalf, register phone numbers (to run shady business) on your behalf, essentially enjoy all the benefits of being you without any of the drawbacks.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/icImage2.jpeg&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2017-11-20-i-could-become-you-tomorrow-and-no-one-would-find-out//blog/img/icImage2.jpeg&#34; alt=&#34;Information obtainable from SPR website&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;p&gt;When I first read about the breach, I thought, &amp;ldquo;it’s been 3 years now, as long as you’ve moved and changed phone number, they pretty much &amp;ldquo;only&amp;rdquo; have your IC no. It’s bad, but maybe not as severe as I initially might imagined”. Could I have been any more wrong. If you are a registered voter and your IC no is fallen into the wrong hands, whoever this is can easily pull up your full profile (full name, home address) from the SPR website. And while doing so, every single device that this set of data goes through (router, ISP, some surveillance services, or even a MIM attack) gets to see all of these information as well since the site is not encrypted. (It’s 2017 and TLS is free!)&lt;/p&gt;
@@ -5995,7 +6015,9 @@ In your choice of database, you should create a user (preferably only specifical
     &lt;/h2&gt;
 &lt;/a&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/utImage1.png&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style//blog/img/utImage1.png&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;p&gt;From the config file, look for the &lt;code&gt;shell: &#39;&#39;&lt;/code&gt;, option as seen from the screenshot above, change it to &lt;code&gt;shell: &#39;C:\\Windows\\System32\\bash.exe\&#39;&lt;/code&gt;, as suggested by the comment. In my personal experience so far, neither keeping nor removing ‘shellArgs’ make any changes to the bash shell. While you are at it, feel free to add any kind of plugins you want to it. Personally, I added &lt;code&gt;&#39;hyperterm-cobalt2-theme&#39;&lt;/code&gt; because I like the theme.&lt;/p&gt;
@@ -6088,7 +6110,9 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;/div&gt;&lt;p&gt;&lt;em&gt;*Note: If you happen use nano (like the given example), do note that &lt;code&gt;Ctrl+X&lt;/code&gt; will not exit the program. You can do &lt;code&gt;F2&lt;/code&gt; instead.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Save and restart Hyper (or refresh) and it should look something like this. Realize the missing characters which are supposed to be the arrows.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/utImage2.png&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style//blog/img/utImage2.png&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#fonts-for-powerline&#34;&gt;
@@ -6101,7 +6125,9 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;p&gt;Go to &lt;a href=&#34;https://github.com/powerline/fonts&#34;&gt;https://github.com/powerline/fonts&lt;/a&gt;, pick a font you like (I use monofur) or clone the repo and install all the fonts. Remember to install it as Windows, meaning you will be running the ps1 file (PowerShell) instead of the sh file. If it throws an error saying something along the lines of “running scripts is disabled”, follow the instructions &lt;a href=&#34;https://www.faqforge.com/windows/windows-powershell-running-scripts-is-disabled-on-this-system/&#34;&gt;here&lt;/a&gt; to enable it and run it again.&lt;/p&gt;
 &lt;p&gt;When you are done with the installation, remember to change the font through the config file, then reload Hyper. At this point, it should look something like the following screenshot.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/utImage3.png&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style//blog/img/utImage3.png&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#optional-installing-npm&#34;&gt;

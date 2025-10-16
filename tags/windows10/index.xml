@@ -35,7 +35,9 @@
     &lt;/h2&gt;
 &lt;/a&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/utImage1.png&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style//blog/img/utImage1.png&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;p&gt;From the config file, look for the &lt;code&gt;shell: &#39;&#39;&lt;/code&gt;, option as seen from the screenshot above, change it to &lt;code&gt;shell: &#39;C:\\Windows\\System32\\bash.exe\&#39;&lt;/code&gt;, as suggested by the comment. In my personal experience so far, neither keeping nor removing ‘shellArgs’ make any changes to the bash shell. While you are at it, feel free to add any kind of plugins you want to it. Personally, I added &lt;code&gt;&#39;hyperterm-cobalt2-theme&#39;&lt;/code&gt; because I like the theme.&lt;/p&gt;
@@ -128,7 +130,9 @@
 &lt;/div&gt;&lt;p&gt;&lt;em&gt;*Note: If you happen use nano (like the given example), do note that &lt;code&gt;Ctrl+X&lt;/code&gt; will not exit the program. You can do &lt;code&gt;F2&lt;/code&gt; instead.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Save and restart Hyper (or refresh) and it should look something like this. Realize the missing characters which are supposed to be the arrows.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/utImage2.png&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style//blog/img/utImage2.png&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#fonts-for-powerline&#34;&gt;
@@ -141,7 +145,9 @@
 &lt;p&gt;Go to &lt;a href=&#34;https://github.com/powerline/fonts&#34;&gt;https://github.com/powerline/fonts&lt;/a&gt;, pick a font you like (I use monofur) or clone the repo and install all the fonts. Remember to install it as Windows, meaning you will be running the ps1 file (PowerShell) instead of the sh file. If it throws an error saying something along the lines of “running scripts is disabled”, follow the instructions &lt;a href=&#34;https://www.faqforge.com/windows/windows-powershell-running-scripts-is-disabled-on-this-system/&#34;&gt;here&lt;/a&gt; to enable it and run it again.&lt;/p&gt;
 &lt;p&gt;When you are done with the installation, remember to change the font through the config file, then reload Hyper. At this point, it should look something like the following screenshot.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/utImage3.png&#34; target=&#34;_blank&#34;&gt;
+    
     &lt;img src=&#34;https://binhong.me/blog/2017-08-15-use-terminal-in-windows-with-style//blog/img/utImage3.png&#34;&gt;
+    
 &lt;/a&gt;
 &lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#optional-installing-npm&#34;&gt;
