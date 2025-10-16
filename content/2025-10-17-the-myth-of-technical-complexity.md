@@ -6,10 +6,6 @@ tags: [The Opinionated Engineer]
 ss: "preview/myth_of_tech_complexity.jpg"
 aliases:
   - /myth_of_tech_complexity/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 I've seen multiple different people fail their promotions due to "lack of technical complexity" in their work. While some of this rings true, more often than not, the underlying technical complexity of their work is not properly understood because - _ironically_ - they cut through it smoothly as strong technical engineers. Unless you were doing code / design reviews for them, you wouldn't notice it. On the flip side, I've had projects listed as my capstone "technical complexity" project of the year that _imo_ wasn't very complex compared to some other stuff I needed to work on. Why is this happening and how do I make sure my work is properly valued?
