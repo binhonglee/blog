@@ -237,7 +237,8 @@
 &lt;p&gt;Initially, I did this with &lt;a href=&#34;https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH&#34;&gt;zsh&lt;/a&gt; (since I personally uses &lt;a href=&#34;https://github.com/bhilburn/powerlevel9k&#34;&gt;Powerlevel9k&lt;/a&gt; on my Mac and I love it) but zsh doesn’t seems to play well with Hyper (specifically with the plugins) causing a lot of weird configuration behaviors. Even without Hyper, the alignments for Powerlevel9k specifically goes way off causing the input line to be on the next line instead. I speculate this is due to zsh not being built with Windows in mind and does not have such compatibility.&lt;/p&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/use-terminal-in-windows-with-style-45158e0c2f50&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/use-terminal-in-windows-with-style-45158e0c2f50&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     

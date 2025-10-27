@@ -178,7 +178,8 @@
     &lt;/h2&gt;
 &lt;/a&gt;
 &lt;blockquote&gt;
-&lt;p&gt;You can&amp;rsquo;t force someone to love you.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;You can&amp;rsquo;t force someone to love you.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;When someone (or a team) is metric chasing, the actual user (and their intent) can sometimes be neglected. It&amp;rsquo;s always important to keep them in mind and practice some empathy to better understand what the user actually wants and build around that. Even if you were able to &lt;em&gt;trick&lt;/em&gt; users into something they do not intend to do, the long-term effect of it is likely unsustainable.&lt;/p&gt;
 &lt;p&gt;I had a personal counter-example here where I once fixed a 3rd party login issue (after login success, instead of redirecting users back to the 3rd party, we would send them to news feed) resulting in a 2M MAU loss from our test. However, it made sense only because we count every person who sees feed as MAU even when (in this case) they did not intend to do so. We ran a separate long-term experiment and saw that the actual loss was significantly lower than that (like maybe only 5% of the original number) because these people were really just trying to login to a 3rd party app (Spotify, Tinder etc.) instead of wanting to browse news feed.&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#failed-tests&#34;&gt;
@@ -196,7 +197,8 @@
 &lt;/a&gt;
 &lt;p&gt;On one hand, everyone hated the idea of a long-term holdout (where a certain group of users will just have missing features for an extended period of time); on the other hand, you need a way to measure long-term impact of your changes. That said, due to lack of commonality in this practice, the accuracy of such measurement may not be as high as regular shorter-term tests.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Long term impact is a myth - some E6+ Growth Engineer&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Long term impact is a myth - some E6+ Growth Engineer&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;The timing makes things worse. By the time you see results from a long-term experiment, you&amp;rsquo;re usually in a different performance review cycle than when you built it. This makes it nearly impossible to properly reward thoughtful long-term thinking or penalize short-sighted decisions. What should be a performance measurement tool becomes just a way to look back and say &amp;lsquo;oh, that&amp;rsquo;s interesting&amp;rsquo; after it&amp;rsquo;s too late to matter.&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
     &lt;h2 id=&#34;wrap-up&#34;&gt;
@@ -286,7 +288,8 @@
     &lt;/h2&gt;
 &lt;/a&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;When a measure becomes a target, it ceases to be a good measure&amp;rdquo; - Goodhart&amp;rsquo;s Law&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;ldquo;When a measure becomes a target, it ceases to be a good measure&amp;rdquo; - Goodhart&amp;rsquo;s Law&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Goal metrics serve as a target, the specific thing you want to change or improve. While I largely agree with Goodhart&amp;rsquo;s Law, I also believe that a sufficiently comprehensive &lt;strong&gt;set&lt;/strong&gt; of metrics will help mitigate the downside (or at least minimize it) thus making it still &lt;em&gt;relatively&lt;/em&gt; &amp;ldquo;a good measure&amp;rdquo;. This is where guardrail metrics come in to ensure we aren&amp;rsquo;t just &amp;ldquo;sacrificing x to boost y&amp;rdquo; especially in an unsustainable manner.&lt;/p&gt;
 &lt;p&gt;As an example, if you want to increase usage on your app, you can provide generous discounts (or even pay users to do so) but that&amp;rsquo;s obviously very unsustainable so you should set a clear budget on how much you can spend on these promotions and / or cost per new active user acquired you allow for such a project to ship. Here your goal metric would be &amp;ldquo;new active users acquired&amp;rdquo; while your guardrail would be cost (lost revenue). They need to both look good from the experiment before you decide on shipping the product change.&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#size-and-duration&#34;&gt;

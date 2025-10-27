@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
-    <lastBuildDate>Fri, 14 Nov 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 28 Nov 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Myth of Technical Complexity</title>
       <link>https://binhong.me/blog/2025-10-17-the-myth-of-technical-complexity/</link>
@@ -1553,7 +1553,8 @@
 &lt;p&gt;&lt;em&gt;Note: Using the phrase &amp;ldquo;intern-size&amp;rdquo; here because back then, there was a weird rumor that interns were expected to ship 10k LoC as part of their internship to get return offers in FAANG lol. I don&amp;rsquo;t think it was ever true but definitely a standard people worked towards.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Now that I&amp;rsquo;ve got it working on an isolated problem, I wanted to see how it might handle a complex change in a pre-existing project. I have an Android app codebase (for &lt;a href=&#34;https://globetrotte.com&#34;&gt;GlobeTrotte&lt;/a&gt;) with around 8k+ LoC so I decided to try it on there (using SWE-1 from Windsurf). This is the instruction I provided (admittedly a complex one):&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;add new navhost to edittripactivity and make each of edit day and edit place a separate screen instead (so it push-and-pop for each small edit)&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;add new navhost to edittripactivity and make each of edit day and edit place a separate screen instead (so it push-and-pop for each small edit)&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;PS: &lt;code&gt;edittripactivity&lt;/code&gt; is a file name (technically &lt;code&gt;EditTripAcitivity.kt&lt;/code&gt; but I think the LLM understood it), &lt;code&gt;navhost&lt;/code&gt; is a concept of &lt;a href=&#34;https://developer.android.com/develop/ui/compose/navigation#create-navhost&#34;&gt;how screen navigation works in Jetpack Compose&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;The LLM took 20+ minutes before running out of time which required me to make a &lt;code&gt;continue&lt;/code&gt; call not just once but twice before telling me it was done. &lt;em&gt;It&amp;rsquo;s all chaos from here on out.&lt;/em&gt; It tells me that there are a bunch of errors so it tries to write more code (?) leading to more errors, so more code, then more errors etc. At some point, I mentioned that there were 88 errors and it figured to try compiling and reading the compiler error (instead of looking for them itself) but that barely cut down the number of errors. &lt;strong&gt;I just kept telling it that there were more errors and it just kept trying to code itself out of the mess by adding more code and thus more errors.&lt;/strong&gt; I eventually gave up and ran &lt;code&gt;git checkout .&lt;/code&gt; to clean everything up.&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#losing-track-of-signatures&#34;&gt;
@@ -1694,7 +1695,8 @@
     &lt;/h2&gt;
 &lt;/a&gt;
 &lt;blockquote&gt;
-&lt;p&gt;You can&amp;rsquo;t force someone to love you.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;You can&amp;rsquo;t force someone to love you.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;When someone (or a team) is metric chasing, the actual user (and their intent) can sometimes be neglected. It&amp;rsquo;s always important to keep them in mind and practice some empathy to better understand what the user actually wants and build around that. Even if you were able to &lt;em&gt;trick&lt;/em&gt; users into something they do not intend to do, the long-term effect of it is likely unsustainable.&lt;/p&gt;
 &lt;p&gt;I had a personal counter-example here where I once fixed a 3rd party login issue (after login success, instead of redirecting users back to the 3rd party, we would send them to news feed) resulting in a 2M MAU loss from our test. However, it made sense only because we count every person who sees feed as MAU even when (in this case) they did not intend to do so. We ran a separate long-term experiment and saw that the actual loss was significantly lower than that (like maybe only 5% of the original number) because these people were really just trying to login to a 3rd party app (Spotify, Tinder etc.) instead of wanting to browse news feed.&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#failed-tests&#34;&gt;
@@ -1712,7 +1714,8 @@
 &lt;/a&gt;
 &lt;p&gt;On one hand, everyone hated the idea of a long-term holdout (where a certain group of users will just have missing features for an extended period of time); on the other hand, you need a way to measure long-term impact of your changes. That said, due to lack of commonality in this practice, the accuracy of such measurement may not be as high as regular shorter-term tests.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Long term impact is a myth - some E6+ Growth Engineer&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Long term impact is a myth - some E6+ Growth Engineer&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;The timing makes things worse. By the time you see results from a long-term experiment, you&amp;rsquo;re usually in a different performance review cycle than when you built it. This makes it nearly impossible to properly reward thoughtful long-term thinking or penalize short-sighted decisions. What should be a performance measurement tool becomes just a way to look back and say &amp;lsquo;oh, that&amp;rsquo;s interesting&amp;rsquo; after it&amp;rsquo;s too late to matter.&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
     &lt;h2 id=&#34;wrap-up&#34;&gt;
@@ -1802,7 +1805,8 @@
     &lt;/h2&gt;
 &lt;/a&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&amp;ldquo;When a measure becomes a target, it ceases to be a good measure&amp;rdquo; - Goodhart&amp;rsquo;s Law&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;ldquo;When a measure becomes a target, it ceases to be a good measure&amp;rdquo; - Goodhart&amp;rsquo;s Law&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Goal metrics serve as a target, the specific thing you want to change or improve. While I largely agree with Goodhart&amp;rsquo;s Law, I also believe that a sufficiently comprehensive &lt;strong&gt;set&lt;/strong&gt; of metrics will help mitigate the downside (or at least minimize it) thus making it still &lt;em&gt;relatively&lt;/em&gt; &amp;ldquo;a good measure&amp;rdquo;. This is where guardrail metrics come in to ensure we aren&amp;rsquo;t just &amp;ldquo;sacrificing x to boost y&amp;rdquo; especially in an unsustainable manner.&lt;/p&gt;
 &lt;p&gt;As an example, if you want to increase usage on your app, you can provide generous discounts (or even pay users to do so) but that&amp;rsquo;s obviously very unsustainable so you should set a clear budget on how much you can spend on these promotions and / or cost per new active user acquired you allow for such a project to ship. Here your goal metric would be &amp;ldquo;new active users acquired&amp;rdquo; while your guardrail would be cost (lost revenue). They need to both look good from the experiment before you decide on shipping the product change.&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#size-and-duration&#34;&gt;
@@ -1904,7 +1908,8 @@
       <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/2025-05-23-code-review-culture/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;Ask a programmer to review 10 lines of code, he&amp;rsquo;ll find 10 issues. Ask him to do 500 lines and he&amp;rsquo;ll say it looks good. - &lt;a href=&#34;https://x.com/girayozil/status/306836785739210752&#34;&gt;@girayozil&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Ask a programmer to review 10 lines of code, he&amp;rsquo;ll find 10 issues. Ask him to do 500 lines and he&amp;rsquo;ll say it looks good. - &lt;a href=&#34;https://x.com/girayozil/status/306836785739210752&#34;&gt;@girayozil&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Code review is a really subjective thing where each team or even individual runs things very differently. However, a bad code review process can lead to bad code smells and unnecessary tech debt (just ask all the vibe coders out there 🫣). I will try my best to share my &lt;em&gt;rather opinionated&lt;/em&gt; takes while explaining the reasoning behind each of them.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
         
@@ -2115,7 +2120,8 @@
     &lt;/h2&gt;
 &lt;/a&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you love something, put a &lt;del&gt;ring&lt;/del&gt; test on it.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;If you love something, put a &lt;del&gt;ring&lt;/del&gt; test on it.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;I find this quote as a good general guiding principle. You should definitely have tests for all the &amp;ldquo;core&amp;rdquo; features. For all the additional features (or edge case handling), you&amp;rsquo;d need to make a decision / tradeoff based on how critical it is for something to work, and how frequent you might be changing it.&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#fearlessly&#34;&gt;
     &lt;h2 id=&#34;fearlessly&#34;&gt;
@@ -3737,7 +3743,8 @@
 &lt;p&gt;If you have done any sort of programming, you should be familiar with the concept of &lt;em&gt;functions&lt;/em&gt;. It&amp;rsquo;s basically a set of commands / operations that you will be repeating over and over again. Instead of repeating it multiple times in your code, you can put them into a function. Then just call the function which effectively reduces the lines of code that need to be written.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Side note: If you don&amp;rsquo;t know already, LOC is a horrible metric for any sort of measurement in terms of programming. Don&amp;rsquo;t take this from me, take this from &lt;a href=&#34;https://www.goodreads.com/quotes/536587-measuring-programming-progress-by-lines-of-code-is-like-measuring&#34;&gt;Bill Gates&lt;/a&gt;:&lt;/em&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;&amp;ldquo;Measuring programming progress by lines of code is like measuring aircraft building progress by weight.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;Measuring programming progress by lines of code is like measuring aircraft building progress by weight.&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Here&amp;rsquo;s how a normal function looks like:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -4045,7 +4052,8 @@
 &lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/10969953/how-to-output-a-multiline-string-in-bash#10970616&#34;&gt;How to output a multiline string in Bash&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://medium.freecodecamp.org/functional-and-flexible-shell-scripting-tricks-a2d693be2dd4&#34;&gt;freeCodeCamp&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://medium.freecodecamp.org/functional-and-flexible-shell-scripting-tricks-a2d693be2dd4&#34;&gt;freeCodeCamp&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
@@ -4310,7 +4318,8 @@ Shout out to &lt;a href=&#34;https://twitter.com/robmccauley&#34;&gt;robmccauley
 &lt;li&gt;&lt;a href=&#34;https://developer.amazon.com/blogs/alexa/post/35eb8ae8-2cd8-4de7-86c5-97a1abc239b9/testflow-simulate-conversations-with-your-alexa-skill-code-to-ease-debugging&#34;&gt;TestFlow: Simulate Conversations with Your Alexa Skill Code to Ease Debugging&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://hackernoon.com/test-driven-development-with-alexa-sdk-777f6b5e5486&#34;&gt;Hackernoon&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://hackernoon.com/test-driven-development-with-alexa-sdk-777f6b5e5486&#34;&gt;Hackernoon&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
@@ -4604,7 +4613,8 @@ Shout out to &lt;a href=&#34;https://twitter.com/robmccauley&#34;&gt;robmccauley
 &lt;li&gt;&lt;a href=&#34;https://superuser.com/questions/632205/continue-ssh-background-task-jobs-when-closing-ssh&#34;&gt;Continue SSH background task/jobs when closing SSH&lt;/a&gt; on &lt;a href=&#34;https://superuser.com/&#34;&gt;superuser&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://medium.freecodecamp.org/how-you-can-host-multiple-domain-names-and-projects-in-one-vps-7aed4f56e7a1&#34;&gt;freeCodeCamp Medium&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://medium.freecodecamp.org/how-you-can-host-multiple-domain-names-and-projects-in-one-vps-7aed4f56e7a1&#34;&gt;freeCodeCamp Medium&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
@@ -5051,7 +5061,8 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;li&gt;&lt;a href=&#34;https://www.slideshare.net/appleboy/introduction-to-gitea-with-drone&#34;&gt;Introduction to Gitea with Drone&lt;/a&gt; by &lt;a href=&#34;https://www.slideshare.net/appleboy&#34;&gt;Bo-Yi Wu&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://codeburst.io/hosting-your-own-git-server-with-gitea-fc3298aa15ce&#34;&gt;codeburst.io&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://codeburst.io/hosting-your-own-git-server-with-gitea-fc3298aa15ce&#34;&gt;codeburst.io&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
@@ -5128,7 +5139,8 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;p&gt;Don’t get too hung up on the project. I’m not saying you shouldn’t be proud of it but the skills you obtained in the process will very likely to be much more valuable than that. As mentioned, you don’t want to feel obligated to come back and ‘complete’ the project in the future when you’re procrastinating while you actually have other priorities like project deadlines, homeworks etc. so its important to wrap up your project properly in a way that its a minimal product presentable but also something you understand that you can always add onto whenever you feel like it.&lt;/p&gt;
 &lt;p&gt;Of course, in an off chance that it blows up, congrats! For starters, maybe you can start thinking about how to monetize it? I don’t know (this has not happened to me). Maybe some guys at &lt;a href=&#34;https://www.facebook.com/groups/1401833413216649&#34;&gt;I can handle the business side&lt;/a&gt; can help you with that. 😉😂 /j&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/building-a-side-project-over-the-weekend-8895e0cf02d7&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/building-a-side-project-over-the-weekend-8895e0cf02d7&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
@@ -5515,7 +5527,8 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;/a&gt;
 &lt;p&gt;If you are like me, the reason I was hooked up by this is because long time ago when I first got on GitHub, I saw plenty of repositories have the badge that shows if their build is &lt;code&gt;passing&lt;/code&gt; or &lt;code&gt;failing&lt;/code&gt;. I thought that was really fancy and wanted one of those so I started getting myself to learn what CI as a whole is about and how can I make use of it. Turns out, its a lot more useful than just being pretty!&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://codeburst.io/getting-started-with-travis-ci-f3223082f256&#34;&gt;codeburst.io&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://codeburst.io/getting-started-with-travis-ci-f3223082f256&#34;&gt;codeburst.io&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
@@ -5913,7 +5926,8 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;li&gt;&lt;a href=&#34;https://medium.com/@v.souhrada/build-rest-service-with-kotlin-spark-java-and-requery-part-1-1798844fdf04&#34;&gt;Build REST Service with Kotlin, Spark Java and Requery&lt;/a&gt; by Vaclav Souhrada&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://hackernoon.com/restful-api-with-spark-kotlin-f43bd57affc4&#34;&gt;Hacker Noon&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://hackernoon.com/restful-api-with-spark-kotlin-f43bd57affc4&#34;&gt;Hacker Noon&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
@@ -5980,7 +5994,8 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;p&gt;This is not just me. Almost every time I come across an international student getting an offer for a position at a tech giant for the first time, its always about ‘I was lucky’ somewhere down the story. When people hear that, they rule out that entire story as anecdotal but I think this is a consistent pattern worth exploring. Everyone gets lucky once in a while, but are you ready when your luck strikes? If you aren’t, no matter how many final round interviews magically fall onto your lap, you will fail all of them.&lt;/p&gt;
 &lt;p&gt;One could argue that if you are good enough, luck is irrelevant. That’s probably true. But then if you are that good, you are probably just sitting at home debating which offer to pick up instead of sitting here reading this piece of article from some random guy on the internet. It’s not just about being lucky, its also about being ready enough to fully utilize that moment of luck.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/being-lucky-ce014cafa627&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/being-lucky-ce014cafa627&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
@@ -6040,7 +6055,8 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;p&gt;Honestly, I’m widely upset by the of public’s reaction or lack thereof. Anyone who got their hands onto such information can just show up and ‘become you’ figuratively tomorrow but you couldn’t care less? I guess I’m going a little too far with my fear-mongering approach but I really think the public awareness of such danger is at little to none.&lt;/p&gt;
 &lt;p&gt;Much like the whole Equifax fiasco in the US, I sincerely think this is an important educational opportunity for both the public and the government officials to understand the importance of cybersecurity. I&amp;rsquo;m in no way an expert (not even a beginner so to say) in this realm but the ignorance over such topic is hurting the well-being of not just any individual but the trust in the country. With no punishment in place for organizations mishandling such damaging information (that allows impersonation), how am I ever going to trust anyone, any company, with any of my personal details anymore?&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/i-could-become-you-tomorrow-and-no-one-would-find-out-c9928e915c70&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/i-could-become-you-tomorrow-and-no-one-would-find-out-c9928e915c70&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     
@@ -6272,7 +6288,8 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;p&gt;Initially, I did this with &lt;a href=&#34;https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH&#34;&gt;zsh&lt;/a&gt; (since I personally uses &lt;a href=&#34;https://github.com/bhilburn/powerlevel9k&#34;&gt;Powerlevel9k&lt;/a&gt; on my Mac and I love it) but zsh doesn’t seems to play well with Hyper (specifically with the plugins) causing a lot of weird configuration behaviors. Even without Hyper, the alignments for Powerlevel9k specifically goes way off causing the input line to be on the next line instead. I speculate this is due to zsh not being built with Windows in mind and does not have such compatibility.&lt;/p&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/use-terminal-in-windows-with-style-45158e0c2f50&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;This article was originally published on &lt;a href=&#34;https://blog.binhong.me/use-terminal-in-windows-with-style-45158e0c2f50&#34;&gt;my personal Medium publication&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 </description>
     </item>
     

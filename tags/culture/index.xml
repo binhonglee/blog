@@ -16,7 +16,8 @@
       <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/2025-05-23-code-review-culture/</guid>
       <description>&lt;blockquote&gt;
-&lt;p&gt;Ask a programmer to review 10 lines of code, he&amp;rsquo;ll find 10 issues. Ask him to do 500 lines and he&amp;rsquo;ll say it looks good. - &lt;a href=&#34;https://x.com/girayozil/status/306836785739210752&#34;&gt;@girayozil&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Ask a programmer to review 10 lines of code, he&amp;rsquo;ll find 10 issues. Ask him to do 500 lines and he&amp;rsquo;ll say it looks good. - &lt;a href=&#34;https://x.com/girayozil/status/306836785739210752&#34;&gt;@girayozil&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;Code review is a really subjective thing where each team or even individual runs things very differently. However, a bad code review process can lead to bad code smells and unnecessary tech debt (just ask all the vibe coders out there 🫣). I will try my best to share my &lt;em&gt;rather opinionated&lt;/em&gt; takes while explaining the reasoning behind each of them.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
         

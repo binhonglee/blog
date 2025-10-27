@@ -35,13 +35,13 @@
     <link href="https://binhong.me/blog/darkMode.css?v=1754287594183" rel="stylesheet">
     <link href="https://binhong.me/blog/dark-syntax.css?v=1754290957202" rel="stylesheet">
     <link href="https://binhong.me/blog/light-syntax.css?v=1754290957202" rel="stylesheet">
-    <link href="https://binhong.me/fonts/fonts.css?v=1747738744" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1761449005615" rel="stylesheet">
     <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
     
     
     <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
     
-    <meta name="generator" content="Hugo 0.151.0">
+    <meta name="generator" content="Hugo 0.152.2">
     
     </head>
   <body class="single">
@@ -177,7 +177,8 @@
     </h2>
 </a>
 <blockquote>
-<p>You can&rsquo;t force someone to love you.</p></blockquote>
+<p>You can&rsquo;t force someone to love you.</p>
+</blockquote>
 <p>When someone (or a team) is metric chasing, the actual user (and their intent) can sometimes be neglected. It&rsquo;s always important to keep them in mind and practice some empathy to better understand what the user actually wants and build around that. Even if you were able to <em>trick</em> users into something they do not intend to do, the long-term effect of it is likely unsustainable.</p>
 <p>I had a personal counter-example here where I once fixed a 3rd party login issue (after login success, instead of redirecting users back to the 3rd party, we would send them to news feed) resulting in a 2M MAU loss from our test. However, it made sense only because we count every person who sees feed as MAU even when (in this case) they did not intend to do so. We ran a separate long-term experiment and saw that the actual loss was significantly lower than that (like maybe only 5% of the original number) because these people were really just trying to login to a 3rd party app (Spotify, Tinder etc.) instead of wanting to browse news feed.</p>
 <a class="anchor" href="#failed-tests">
@@ -195,7 +196,8 @@
 </a>
 <p>On one hand, everyone hated the idea of a long-term holdout (where a certain group of users will just have missing features for an extended period of time); on the other hand, you need a way to measure long-term impact of your changes. That said, due to lack of commonality in this practice, the accuracy of such measurement may not be as high as regular shorter-term tests.</p>
 <blockquote>
-<p>Long term impact is a myth - some E6+ Growth Engineer</p></blockquote>
+<p>Long term impact is a myth - some E6+ Growth Engineer</p>
+</blockquote>
 <p>The timing makes things worse. By the time you see results from a long-term experiment, you&rsquo;re usually in a different performance review cycle than when you built it. This makes it nearly impossible to properly reward thoughtful long-term thinking or penalize short-sighted decisions. What should be a performance measurement tool becomes just a way to look back and say &lsquo;oh, that&rsquo;s interesting&rsquo; after it&rsquo;s too late to matter.</p>
 <a class="anchor" href="#wrap-up">
     <h2 id="wrap-up">

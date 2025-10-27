@@ -25,7 +25,8 @@
     &lt;/h2&gt;
 &lt;/a&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you love something, put a &lt;del&gt;ring&lt;/del&gt; test on it.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;If you love something, put a &lt;del&gt;ring&lt;/del&gt; test on it.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;I find this quote as a good general guiding principle. You should definitely have tests for all the &amp;ldquo;core&amp;rdquo; features. For all the additional features (or edge case handling), you&amp;rsquo;d need to make a decision / tradeoff based on how critical it is for something to work, and how frequent you might be changing it.&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#fearlessly&#34;&gt;
     &lt;h2 id=&#34;fearlessly&#34;&gt;
