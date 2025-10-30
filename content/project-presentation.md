@@ -1,7 +1,6 @@
 ---
 title: Project Presentation
 subtitle: ""
-date: 2025-09-27 00:00:00 -0800 GMT
 tags: [Project Presentation]
 ss: "preview/project_presentation.jpg"
 aliases:
@@ -14,7 +13,7 @@ build:
 
 This series is my attempt at sharing past project stories as a way to help me organize my thoughts among them and maybe let (you) readers understand my perspective better. These projects won't be released in the right chronological order. The idea is that each of them should be understood as a standalone piece.
 
-**Important note: While I try to tell the stories with as much accuracy and transparency as possible, human memory is sometimes unreliable and I might have to omit certain info in the interest of other people involved in said projects (unless I receive explicit permission from them).**
+_**Important note**: While I try to tell the stories with as much accuracy and transparency as possible, human memory is sometimes unreliable and I might have to omit certain info in the interest of other people involved in said projects (unless I receive explicit permission from them)._
 
 {{< newsletter >}}
 
@@ -23,7 +22,7 @@ This series is my attempt at sharing past project stories as a way to help me or
 Here are some of the pieces that's been released (or planned) thus far:
 
 - [Shipping a project with -2M MAP](/blog/2025-10-03-shipping-negative-2m-map)
-- Leaked `FakeIncorrectPassword`
+- [Leaked `FakeIncorrectPassword`](/blog/2025-10-31-leaked-fakeincorrectpassword)
 - FB accounts created without Messenger
 - One liner increasing over 3M MAP
 - Logged Out Internal Settings
