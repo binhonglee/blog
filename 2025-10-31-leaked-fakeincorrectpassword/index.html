@@ -178,7 +178,7 @@
         <span class="tag">#</span>
     </h2>
 </a>
-<p>Anyway, I had a few hours to kill before I needed to leave to join my friends&rsquo; Thanksgiving party. I looked at the time and told myself <em>&ldquo;I have time&rdquo;</em> so I decided to start debugging it myself. I&rsquo;d worked tangentially with this stuff before so I knew a few other things (like 2FA) that also need special handling should be working as intended. My hunch told me that this was caused by the gap between the Python stack (IG server) throwing some error that wasn&rsquo;t properly consumed by the Hack server stack (that determines the UI). So I searched for <code>FakeIncorrectPassword</code> in the Python stack and found something like <code>TwoFactorError</code>. Then, I looked for <code>TwoFactorError</code> in the Hack stack to see how it works and eventually found the one that didn&rsquo;t handle the case for <code>FakeIncorrectPassword</code>. Simple enough, I just had to add more stuff (IIRC I added a few others as well as the aforementioned <code>FakeIncorrectPassword</code>) to the existing switch case.</p>
+<p>Anyway, I had a few hours to kill before I needed to leave to join my friends&rsquo; Thanksgiving party. I looked at the time and told myself <em>&ldquo;I have time&rdquo;</em> so I decided to start debugging it myself. I&rsquo;d worked tangentially with this stuff before so I knew a few other things (like 2FA) that also need special handling should be working as intended. My hunch told me that this was caused by the gap between the Python stack (IG server) throwing some error that wasn&rsquo;t properly consumed by the Hack server stack (that determines the UI). So I searched for <code>FakeIncorrectPassword</code> in the Python stack and found something like <code>TwoFactorError</code>. Then, I looked for <code>TwoFactorError</code> in the Hack stack to see how it works and eventually found the one that didn&rsquo;t handle the case for <code>FakeIncorrectPassword</code>. Simple enough, I just had to add more stuff (iirc I added a few others as well as the aforementioned <code>FakeIncorrectPassword</code>) to the existing switch case.</p>
 <p><a href="/blog/img/fakeincorrectpassword2.png" target="_blank">
     
     <figure>
@@ -241,6 +241,15 @@
           </a>
           
           
+          
+          <a href="/blog/2025-10-17-the-myth-of-technical-complexity/">
+            <div class="bottom_button previous_post">
+              Previous →
+              <br />
+              <br />
+              <span class="button_title">The Myth of Technical Complexity</span>
+            </div>
+          </a>
           
         </div>
       </main>
