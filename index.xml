@@ -8,7 +8,7 @@
     <language>en-us</language>
     <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
-    <lastBuildDate>Fri, 28 Nov 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Dec 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Leaked `FakeIncorrectPassword`</title>
       <link>https://binhong.me/blog/2025-10-31-leaked-fakeincorrectpassword/</link>
@@ -24,7 +24,7 @@
     &lt;/svg&gt;&lt;p class=&#34;description&#34;&gt;
       Found a pretty horrific dark pattern with Instagram. If you try to log in on mobile web, it fails with ‘incorrect password’. I double check… it’s right, it’s just not working. Gave up, installed the app, password is fine. Tried again today just to see… this time I get the following error message. Looks like a translation key is missing and it’s serving me the backend name for it? FakeIncorrectPassword ?? Are you shitting me?
     &lt;/p&gt;&lt;div class=&#34;image&#34;&gt;
-      &lt;img src=&#34;https://binhong.me/blog/2025-10-31-leaked-fakeincorrectpassword//blog/468513146_835635298542082_280700232251535875_n_5078384436995653656.jpg&#34; alt=&#34;Post image&#34; loading=&#34;lazy&#34;&gt;
+      &lt;img src=&#34;https://binhong.me/blog/2025-10-31-leaked-fakeincorrectpassword//blog/468513146_835635298542082_280700232251535875_n_2933809742582445889.jpg&#34; alt=&#34;Post image&#34; loading=&#34;lazy&#34;&gt;
     &lt;/div&gt;&lt;/a&gt;
 &lt;/div&gt;
   
@@ -2250,83 +2250,6 @@
     &lt;/h2&gt;
 &lt;/a&gt;
 &lt;p&gt;When you have working quality automated tests, you can push new changes fearlessly knowing that it won&amp;rsquo;t cause regressions on features protected by these tests. This allows you to move faster both in terms of thinking about and testing all the possible regressions your change might cause, while also saving time on root causing a regression (if / when it does happen).&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>The Opinionated Engineer</title>
-      <link>https://binhong.me/blog/2025-05-04-the-opinionated-engineer/</link>
-      <pubDate>Sun, 04 May 2025 00:00:00 -0800</pubDate>
-      <author>binhong@binhong.me (BinHong Lee)</author>
-      <guid>https://binhong.me/blog/2025-05-04-the-opinionated-engineer/</guid>
-      <description>&lt;p&gt;Historically, my personal blog has been mostly about &amp;ldquo;how to do x&amp;rdquo;, &amp;ldquo;guide on making y&amp;rdquo; but never about ideology or engineering practices. This new series intends to change that where I&amp;rsquo;ll explore the more opinionated side of myself especially around engineering practices instead of just the &lt;em&gt;pure&lt;/em&gt; technical stuff.&lt;/p&gt;
-&lt;a class=&#34;anchor&#34; href=&#34;#topics&#34;&gt;
-    &lt;h2 id=&#34;topics&#34;&gt;
-        &lt;span class=&#34;text&#34;&gt;Topics&lt;/span&gt;
-        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
-    &lt;/h2&gt;
-&lt;/a&gt;
-&lt;p&gt;I have not fully planned out the entire series but here are a few topics I have in mind (or have released) so far&amp;hellip;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Behavioral
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-15-art-of-posting/&#34;&gt;The Art of Posting&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-09-19-communicating-effectively/&#34;&gt;Communicating Effectively&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-10-17-the-myth-of-technical-complexity/&#34;&gt;They Myth of Technical Complexity&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;Culture
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-23-code-review-culture/&#34;&gt;Code Review Culture&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-04-push-fearlessly-with-automated-testing/&#34;&gt;Push Fearlessly with Automated Testing&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;Dev Tools
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-03-early-takes-on-vibe-coding/&#34;&gt;Early takes on vibe-coding&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-11-internal-tooling-ideas/&#34;&gt;Internal Tooling Ideas&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-18-understanding-value-of-dev-tools/&#34;&gt;Understanding the Value of Dev Tools&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;Incident Management
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-05-30-no-blame-sev-culture/&#34;&gt;No Blame SEV (Incident) Culture&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-07-25-major-incident-runbook/&#34;&gt;Major Incident Runbook&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-08-01-firefighting-heroes/&#34;&gt;Firefighting Heroes&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;Product Growth
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-06-a-b-testing/&#34;&gt;A/B Testing&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-13-product-growth-opportunities/&#34;&gt;Product Growth Opportunities&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-20-growth-engineer/&#34;&gt;Growth Engineer&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-06-27-experiment-review-process/&#34;&gt;Experiment Review Process&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://binhong.me/blog/2025-08-23-hidden-privacy-and-security-pitfalls/&#34;&gt;Hidden Privacy and Security Pitfalls&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-        
-&lt;a class=&#34;anchor&#34; href=&#34;#where-is-this-coming-from&#34;&gt;
-    &lt;h2 id=&#34;where-is-this-coming-from&#34;&gt;
-        &lt;span class=&#34;text&#34;&gt;Where is this coming from?&lt;/span&gt;
-        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
-    &lt;/h2&gt;
-&lt;/a&gt;
-&lt;p&gt;Back when I was working at Meta, I would generally build an idea proposal (on how / what to fix) around an opinionated piece like this. It largely serves like a RFC where I can gather other (both supporting or opposing) opinions and concerns before proceeding to make sure that I&amp;rsquo;ve considered everyone&amp;rsquo;s perspective. The difference in this series however, I would focus more on exploring my personal opinions and why I feel strongly about them. It&amp;rsquo;s up to you to decide whether it fits the bill for you.&lt;/p&gt;
-&lt;a class=&#34;anchor&#34; href=&#34;#what-should-i-do-with-this-information&#34;&gt;
-    &lt;h2 id=&#34;what-should-i-do-with-this-information&#34;&gt;
-        &lt;span class=&#34;text&#34;&gt;What should I do with this information?&lt;/span&gt;
-        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
-    &lt;/h2&gt;
-&lt;/a&gt;
-&lt;p&gt;These are not meant to be blind prescription (especially since your situation could very well be different from what I am / was going through) but rather as an extra perspective for consideration when deciding on relevant matters. As the title states, these are opinions with which you&amp;rsquo;re open to have opposing views.&lt;/p&gt;
-&lt;a class=&#34;anchor&#34; href=&#34;#feedback&#34;&gt;
-    &lt;h2 id=&#34;feedback&#34;&gt;
-        &lt;span class=&#34;text&#34;&gt;Feedback&lt;/span&gt;
-        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
-    &lt;/h2&gt;
-&lt;/a&gt;
-&lt;p&gt;Unfortunately I don&amp;rsquo;t have comment feature setup on here but feel free to respond and tag me on &lt;a href=&#34;https://threads.com/@binhonglee&#34;&gt;Threads&lt;/a&gt; or &lt;a href=&#34;https://social.lol/@bh&#34;&gt;Mastodon&lt;/a&gt;. I&amp;rsquo;m generally active and happy to engage in any discussions and / or learn more about any counter examples!&lt;/p&gt;
 </description>
     </item>
     

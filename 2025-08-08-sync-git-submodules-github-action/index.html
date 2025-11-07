@@ -115,8 +115,7 @@
           <h1 class="row title">Sync git submodules with GitHub Action</h1>
           <div class="row author">
             <p>BinHong Lee</p>
-            <p class="right">August 8, 2025</p>
-          </div>
+            <p class="right">August 8, 2025</p></div>
           <div class="post_content"><p>I needed to share some object code across multiple repos (to ensure the consistency of the RESTful API JSON serialization and deserialization). So I created a dedicated repository where all the shared code lives, then imported it across other repos as a submodule. In this case, I used a library I made - <a href="https://wings.sh/">wings</a> - but usually you&rsquo;d probably use something like Thrift or Protocol Buffers. Another common use case would be to have a repository hosting shared cross-platform (iOS + Android) low-level code.</p>
 <p>It&rsquo;s a bit of a pain to manually update it across all the different repositories (and check if it causes any regressions) every time I make changes to it. So instead I wrote some tests, set up some GitHub Actions to run them, then have an automated GitHub Action that sends PRs to all the &ldquo;parent&rdquo; repos every time it receives a new commit, which will trigger the underlying CI tests so it&rsquo;d be obvious if it might break anything.</p>
 <a class="anchor" href="#setup-submodules">

@@ -119,8 +119,7 @@
           <p class="row subtitle">I wrote code that writes code</p>
           <div class="row author">
             <p>BinHong Lee</p>
-            <p class="right">August 9, 2020</p>
-          </div>
+            <p class="right">August 9, 2020</p></div>
           <div class="post_content"><p>I was working on a side project where I had the backend and frontend setup to run on different programming languages. As I was working on it, it started to bug me a little that I have to write the same object / struct and enum for each language in use everytime I introduce a new enum or struct. It can also be confusing / dangerous if I updated one side and forget to update the other.</p>
 <p>At first, I just wrote some shell script to automate this but it quickly become unfeasible. (Clarification: it&rsquo;s still possible to do this, but without any sort of object oriented support, the code gets quite messy quickly and I didn&rsquo;t want to maintain that.) Now, at this point I should let you know that there are actually multiple existing solutions (Apache Thrift or Protobuf) that are way more matured, robust, and designed for use in a much larger scale. If you&rsquo;re working on an enterprise level solution (or looking to learn something that&rsquo;s more transferable into your future work), you might want to take look into them instead. I personally wanted something simpler and more flexible so I began working on <a href="https://wings.sh">wings</a>.</p>
 <a class="anchor" href="#installation">
