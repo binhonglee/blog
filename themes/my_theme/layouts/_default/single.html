@@ -14,7 +14,9 @@
           {{- end }}
           <div class="row author">
             <p>{{ .Site.Params.author.name }}</p>
+            {{- if not .Date.IsZero }}
             <p class="right">{{- .Date.Format "January 2, 2006" -}}</p>
+            {{- end -}}
           </div>
           <div class="post_content">{{ .Content }}</div>
           {{- if .Params.tags }}
