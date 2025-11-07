@@ -6,6 +6,7 @@ tags: [Preview, Automation, TypeScript, Link]
 ss: "preview/automated_link_preview.jpg"
 aliases:
     - /automated_link_preview/
+    - /automated-link-preview-image-card-583f86cfc982/
 ---
 
 A while ago, I saw [this tweet thread from Simon Willison](https://twitter.com/simonw/status/1300868423774212096) about how he added social media preview cards to his TILs. He detailed how he did this through a combination of Puppeteer, Vercel, SQLite, and some other stuff I didn't understand 😅.
