@@ -1,11 +1,15 @@
 ---
 title: The Opinionated Engineer
 subtitle: "Strong opinions about engineering practice"
-date: 2025-05-04 00:00:00 -0800 GMT
 tags: [The Opinionated Engineer]
 ss: "preview/opinionated_engineer.jpg"
 aliases:
     - /opinionated_engineer/
+    - /2025-05-04-the-opinionated-engineer/
+build:
+  list: never
+  publishResources: true
+  render: always
 ---
 
 Historically, my personal blog has been mostly about "how to do x", "guide on making y" but never about ideology or engineering practices. This new series intends to change that where I'll explore the more opinionated side of myself especially around engineering practices instead of just the _pure_ technical stuff.
