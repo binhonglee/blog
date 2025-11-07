@@ -827,3 +827,89 @@ figcaption {
 #darkModeToggle:checked~div .threads .image img {
   border: 1px solid var(--dark-color);
 }
+
+/* LinkedIn */
+.linkedin_wrapper {
+  padding: 20px 0;
+}
+
+.linkedin {
+  border: 1px solid var(--default-color);
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 800px;
+  margin: auto;
+  display: block;
+}
+
+.linkedin p, .linkedin svg {
+  text-decoration: none;
+  color: var(--default-color);
+  padding: 0;
+}
+
+#darkModeToggle:checked~div .linkedin {
+  border: 1px solid var(--dark-color);
+}
+
+#darkModeToggle:checked~div .linkedin p,
+#darkModeToggle:checked~div .linkedin svg {
+  color: var(--dark-color);
+}
+
+.linkedin .logo {
+  width: 20px;
+  height: 20px;
+  float: right;
+}
+
+.linkedin .author {
+  font-weight: bold;
+  font-size: 18px;
+  padding-bottom: 10px;
+  display: block;
+}
+
+.linkedin .text {
+  font-size: 20px;
+  display: block;
+}
+
+.linkedin .image img {
+  border: 1px solid var(--default-color);
+  max-width: 100%;
+  padding: 0;
+  display: block;
+  margin-top: 12px;
+}
+
+#darkModeToggle:checked~div .linkedin .image img {
+  border: 1px solid var(--dark-color);
+}
+
+.linkedin .linkedin-comment {
+  padding-left: 12px;
+  margin-left: 8px;
+  margin-top: 12px;
+  border-left: 1px solid var(--default-color);
+}
+
+.linkedin .linkedin-comment p {
+  font-size: 20px;
+  padding-top: 20px;
+}
+
+#darkModeToggle:checked~div .linkedin .linkedin-comment {
+  border-left: 1px solid var(--dark-color);
+}
+
+.linkedin .linkedin-comment .commenter-name {
+  font-weight: bold;
+  font-size: 18px;
+  padding: 0;
+}
+
+.linkedin .comment-text {
+  font-size: 18px;
+  font-style: italic;
+}
