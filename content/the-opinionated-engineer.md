@@ -33,6 +33,7 @@ I have not fully planned out the entire series but here are a few topics I have 
     1. [No Blame SEV (Incident) Culture](/blog/2025-05-30-no-blame-sev-culture/)
     2. [Major Incident Runbook](/blog/2025-07-25-major-incident-runbook/)
     3. [Firefighting Heroes](/blog/2025-08-01-firefighting-heroes/)
+    4. [Incident Review Process](/blog/2025-11-14-incident-review-process/)
 5. Product Growth
     1. [A/B Testing](/blog/2025-06-06-a-b-testing/)
     2. [Product Growth Opportunities](/blog/2025-06-13-product-growth-opportunities/)

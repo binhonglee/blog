@@ -6,10 +6,6 @@ tags: [The Opinionated Engineer, Incident Management]
 ss: "preview/incident_review_process.jpg"
 aliases:
   - /incident_review_process/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 In the [previous runbook](/blog/2025-07-25-major-incident-runbook/), I mostly focused on things to do _during_ an incident as it happens. This week, we will focus more on what to do _after_ the incident is resolved. This is an opportunity to look back at what went well, what went wrong, and how we can best prepare ourselves or prevent something similar from happening again in the future.

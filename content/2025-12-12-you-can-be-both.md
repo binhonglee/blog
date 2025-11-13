@@ -2,7 +2,7 @@
 title: You Can Be Both
 subtitle: "Great Engineers Learn to Play Politics"
 date: 2025-12-12 00:00:00 -0800 GMT
-tags: []
+tags: [The Opinionated Engineer, Behavioral]
 ss: "preview/you_can_be_both.jpg"
 aliases:
   - /you_can_be_both/
