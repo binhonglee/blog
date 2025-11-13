@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://binhong.me/blog/tags/behavioral/</loc>
+    <lastmod>2025-12-12T00:00:00-08:00</lastmod>
+  </url><url>
     <loc>https://binhong.me/blog/</loc>
+    <lastmod>2025-12-12T00:00:00-08:00</lastmod>
+  </url><url>
+    <loc>https://binhong.me/blog/tags/</loc>
+    <lastmod>2025-12-12T00:00:00-08:00</lastmod>
+  </url><url>
+    <loc>https://binhong.me/blog/tags/the-opinionated-engineer/</loc>
     <lastmod>2025-12-12T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/tags/project-presentation/</loc>
     <lastmod>2025-11-28T00:00:00-08:00</lastmod>
   </url><url>
-    <loc>https://binhong.me/blog/tags/</loc>
-    <lastmod>2025-11-28T00:00:00-08:00</lastmod>
-  </url><url>
     <loc>https://binhong.me/blog/tags/incident-management/</loc>
     <lastmod>2025-11-14T00:00:00-08:00</lastmod>
   </url><url>
-    <loc>https://binhong.me/blog/tags/the-opinionated-engineer/</loc>
+    <loc>https://binhong.me/blog/2025-11-14-incident-review-process/</loc>
     <lastmod>2025-11-14T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/2025-10-31-leaked-fakeincorrectpassword/</loc>
@@ -28,9 +34,6 @@
   </url><url>
     <loc>https://binhong.me/blog/2025-10-03-shipping-negative-2m-map/</loc>
     <lastmod>2025-10-03T00:00:00-08:00</lastmod>
-  </url><url>
-    <loc>https://binhong.me/blog/tags/behavioral/</loc>
-    <lastmod>2025-09-19T00:00:00-08:00</lastmod>
   </url><url>
     <loc>https://binhong.me/blog/2025-09-19-communicating-effectively/</loc>
     <lastmod>2025-09-19T00:00:00-08:00</lastmod>

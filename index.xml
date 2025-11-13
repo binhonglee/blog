@@ -10,6 +10,68 @@
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
     <lastBuildDate>Fri, 12 Dec 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Incident Review Process</title>
+      <link>https://binhong.me/blog/2025-11-14-incident-review-process/</link>
+      <pubDate>Fri, 14 Nov 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-11-14-incident-review-process/</guid>
+      <description>&lt;p&gt;In the &lt;a href=&#34;https://binhong.me/blog/2025-07-25-major-incident-runbook/&#34;&gt;previous runbook&lt;/a&gt;, I mostly focused on things to do &lt;em&gt;during&lt;/em&gt; an incident as it happens. This week, we will focus more on what to do &lt;em&gt;after&lt;/em&gt; the incident is resolved. This is an opportunity to look back at what went well, what went wrong, and how we can best prepare ourselves or prevent something similar from happening again in the future.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+        
+&lt;a class=&#34;anchor&#34; href=&#34;#report&#34;&gt;
+    &lt;h2 id=&#34;report&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Report&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;After the incident, the incident owner should fill out an incident report detailing things like root cause, alerts, remediation, recovery, prevention, etc. Ideally this is made into a template and the author should go into detail about what actually happened vs what should have happened and how it could be improved. The report should be completed at least a day or two ahead of the review to allow for optional pre-reads.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#review&#34;&gt;
+    &lt;h2 id=&#34;review&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Review&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Usually you&amp;rsquo;d need someone (or a group of people taking turns) to organize the review. Their job is to pick the set of incidents to review, make sure that incident owners fill out the report adequately, and that everyone relevant is invited and available to attend the review. It&amp;rsquo;s not really a &lt;em&gt;hard&lt;/em&gt; job per se but it requires some async communication and some level of familiarity with the org scope to ensure that all the right people involved in each incident will be there at the review.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#audience&#34;&gt;
+    &lt;h2 id=&#34;audience&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Audience&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Aside from incident owners and people directly involved in said incidents, team EMs, senior engineers, and senior org leaders (Director / VP) are critical to have present in the review. EMs are there to ensure visibility and awareness of the importance of follow-up work from the incident review. Senior engineers are there to raise questions and/or provide recommendations especially surrounding detection and prevention strategies. Senior org leaders showing up - at the very least - solidify the importance of the review and enforce that planned follow-ups are actually worked on with allocated time instead of being set aside / deprioritized.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#follow-ups&#34;&gt;
+    &lt;h2 id=&#34;follow-ups&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Follow-ups&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;After the review, there will likely be a laundry list of follow-up work to be done. Note them down in your task tracker (Jira, Asana etc.) and assign them to the right owners. By default, the incident owner would own it but it&amp;rsquo;s very common to have it assigned to peers or even external teams, depending on how/what was broken. One of the more common failure modes here is the lack of tracking on these follow-up tasks. Make sure to have a proper process to (at least) have someone - &lt;em&gt;anyone&lt;/em&gt; - review these tasks over time to ensure they are being worked on in a timely manner and actually completed or attempted in good faith. It&amp;rsquo;d be a shame (with a lot of awkward conversation) if there ended up being another similar incident that could have been prevented by said follow-up task.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#pattern&#34;&gt;
+    &lt;h2 id=&#34;pattern&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Pattern&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;In some cases, frequent attendees might notice a pattern of incidents and propose wider improvements (instead of specifics to any incident). One example we ran into was how a lot of incidents could have been prevented by having automated tests. This wasn&amp;rsquo;t because the team didn&amp;rsquo;t make an effort to write them, but because there was a more underlying issue (outside of the team&amp;rsquo;s direct purview) causing existing tests to become flaky. We ended up having an entire workstream focused on fixing all the automated test blockers found in the org. (I&amp;rsquo;ll probably write about my experience working on it someday, under the &lt;a href=&#34;https://binhong.me/blog/project-presentation&#34;&gt;project presentation&lt;/a&gt; series.) Anyway, the point here is that having a consistent set of decision-making audience helps make sure patterns like these can be better discovered instead of overlooked.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#accountability&#34;&gt;
+    &lt;h2 id=&#34;accountability&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Accountability&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;I&amp;rsquo;ve touched on this previously in &lt;a href=&#34;https://binhong.me/blog/2025-05-30-no-blame-sev-culture#no-blame--no-responsibility&#34;&gt;No Blame SEV (Incident) Culture&lt;/a&gt;. Generally, there shouldn&amp;rsquo;t be any explicit &lt;em&gt;blaming&lt;/em&gt; happening in the incident review meeting but as I&amp;rsquo;ve seen others put it, there could still be &lt;em&gt;&amp;ldquo;shame&amp;rdquo;&lt;/em&gt;. The way I&amp;rsquo;ve understood how a lot of this works is that the worse the outage was, the less likely the incident is to be entirely the responsibility of an individual. If you took down the &lt;em&gt;entire&lt;/em&gt; production tier of your company, there are likely a lot of things that need to go wrong for it to happen, so it shouldn&amp;rsquo;t all be on you.&lt;/p&gt;
+&lt;p&gt;Aside from all the &amp;ldquo;who&amp;rsquo;s wrong / who&amp;rsquo;s to blame&amp;rdquo; side of accountability, there&amp;rsquo;s also the part where each responsible team needs to take on follow-up tasks to strengthen their end of reliability to prevent similar incidents from happening again. For example, if an internal framework or component library change breaks a bunch of stuff in the company, the most obvious thing would be for the framework/library team to improve their regression testing. But client teams might also want to consider adding stricter test coverage on critical paths so they can be more defensive and catch potential future breakages earlier.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;The incident review process is a critical part of your team&amp;rsquo;s long-term reliability. It can be daunting to those presenting their first incidents so a proper report template helps make sure you always have quality content for the review. From there, getting the right people in the room regularly and actually tracking follow-up work helps make sure you don&amp;rsquo;t fall for the same problem again. Even if you aren&amp;rsquo;t sure where to start, putting together a rough process can help kickstart it as you re-evaluate and refine it as it goes. The goal isn&amp;rsquo;t to eliminate all incidents, but to make sure you&amp;rsquo;re learning from them and getting stronger as a result.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Leaked `FakeIncorrectPassword`</title>
       <link>https://binhong.me/blog/2025-10-31-leaked-fakeincorrectpassword/</link>
       <pubDate>Fri, 31 Oct 2025 00:00:00 -0800</pubDate>
