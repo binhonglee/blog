@@ -12,17 +12,7 @@ build:
   render: always
 ---
 
-I recently saw a post arguing that exceptional people are rare because they're so focused on their craft that they skip "bureaucratic bullshit" and "often left other skills to rot". I left a comment explaining that it's a 50/50 situation.
-
-{{< linkedin "https://www.linkedin.com/posts/matsherman_my-take-agree-disagree-would-love-your-activity-7361597201212448769-fQHP/" "BinHong Lee" >}}
-
-50/50. i think the type of person you're describing achieve success "in spite of" the limitation of their environment (and to some level, their own stubbornness). these people are great but "you" need to figure out where to place them in, in order to best fit their personal interest with yours. (and sometimes nothing aligns.)
-
-50% disagree because i feel like there are also many talented people i've met who quickly figure out and become good at whatever it's needed for them to achieve success at the time in that environment. they could also be good at non-bureaucratic stuff but they just learnt to be good at it because they recognize it's value. it's like NBA players learning to flop not because they like flopping but because that's how the referees are calling the game. they recognize the value it brings as they learn to flop. they are still NBA talent even without flopping but when you play the game, you play the game.
-
-{{< /linkedin >}}
-
-In this piece, I'll expand my take on this more in depth. Exceptional people comes in different shapes and forms. Pretending that someone can't be exceptional simply because they learned to deal with the "bureaucratic bullshit" feels like a weird stereotype. (If anything, this reads like the exact type of mentality that gave birth to the "10x engineer" meme lol.)
+I recently saw a post arguing that exceptional people are rare because they're so focused on their craft that they skip "bureaucratic bullshit" and "often left other skills to rot". [I left a comment explaining that it's a 50/50 situation.](https://www.linkedin.com/posts/matsherman_my-take-agree-disagree-would-love-your-activity-7361597201212448769-fQHP/) In this piece, I'll expand my take on this more in depth. Exceptional people comes in different shapes and forms. Pretending that someone can't be exceptional simply because they learned to deal with the "bureaucratic bullshit" feels like a weird stereotype. (If anything, this reads like the exact type of mentality that gave birth to the "10x engineer" meme lol.)
 
 _This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
@@ -34,7 +24,7 @@ There's this weird stigma that you're either a technically strong engineer or go
 
 **Being good at something doesn't mean you love doing it.** Many of these great engineers would absolutely prefer to just code and solve technical challenges all day rather than spend time in planning meetings, doing stakeholder alignment, or navigating organizational politics. If you gave them the choice, they'd pick the technical work every time. But they recognize that in most environments (especially as you grow in seniority), the non-coding work is the best way to _scale your impact_ so they quickly learned to get good at it.
 
-As I wrote in the comment above, it's like pundits complaining about modern NBA playing for the foul calls. These players are still some of the best in the world without it, but they learned that being good at it is critical to their success, so they adapt their game to it. Same thing 20 years ago with the kick-out jumper that Kobe Bryant and Ray Allen did.
+It's like pundits complaining about modern NBA playing for the foul calls. These players are still some of the best in the world without it, but they learned that being good at it is critical to their success, so they adapt their game to it. Same thing 20 years ago with the kick-out jumper that Kobe Bryant and Ray Allen did.
 
 ## What is "the game"?
 
