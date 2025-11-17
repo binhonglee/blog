@@ -828,6 +828,65 @@ figcaption {
   border: 1px solid var(--dark-color);
 }
 
+/* Comments */
+.comments_wrapper {
+  padding: 20px 0;
+}
+
+.comments {
+  border: 1px solid var(--default-color);
+  border-radius: 12px;
+  padding: 16px;
+  margin: auto;
+  display: block;
+}
+
+.comments p, .comments svg {
+  text-decoration: none;
+  color: var(--default-color);
+  padding: 0;
+}
+
+#darkModeToggle:checked~div .comments {
+  border: 1px solid var(--dark-color);
+}
+
+#darkModeToggle:checked~div .comments p,
+#darkModeToggle:checked~div .comments svg {
+  color: var(--dark-color);
+}
+
+.comments .logo {
+  width: 20px;
+  height: 20px;
+  padding-top: 5px;
+  float: right;
+}
+
+.comments .author {
+  font-weight: bold;
+  font-size: 18px;
+  padding-bottom: 10px;
+  display: block;
+}
+
+.comments .text {
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.comments .comment-reply {
+  margin: 16px 12px;
+  padding-left: 12px;
+  border-left: 1px solid var(--default-color);
+}
+
+#darkModeToggle:checked~div .comments .comment-reply {
+  border-left: 1px solid var(--dark-color);
+}
+
 /* LinkedIn */
 .linkedin_wrapper {
   padding: 20px 0;
