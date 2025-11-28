@@ -6,10 +6,6 @@ tags: [Project Presentation]
 ss: "preview/fb_accounts_without_messenger.jpg"
 aliases:
   - /fb_accounts_without_messenger/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 This was one of my first experience at causing a SEV. I've broken production before 🫣 but not bad enough for it to be a SEV. In this situation, millions of new FB accounts were created (over the duration of the outage) without proper messaging inbox thus unable to use Messenger. I'll dive more into how this happens below.
