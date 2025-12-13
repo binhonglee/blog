@@ -6,10 +6,6 @@ tags: [The Opinionated Engineer, Behavioral]
 ss: "preview/you_can_be_both.jpg"
 aliases:
   - /you_can_be_both/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 I recently saw a post arguing that exceptional people are rare because they're so focused on their craft that they skip "bureaucratic bullshit" and "often left other skills to rot". [I left a comment explaining that it's a 50/50 situation.](https://www.linkedin.com/posts/matsherman_my-take-agree-disagree-would-love-your-activity-7361597201212448769-fQHP/) In this piece, I'll expand my take on this more in depth. Exceptional people comes in different shapes and forms. Pretending that someone can't be exceptional simply because they learned to deal with the "bureaucratic bullshit" feels like a weird stereotype. (If anything, this reads like the exact type of mentality that gave birth to the "10x engineer" meme lol.)
