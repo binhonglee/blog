@@ -10,6 +10,50 @@
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
     <lastBuildDate>Fri, 12 Dec 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>You Can Be Both</title>
+      <link>https://binhong.me/blog/2025-12-12-you-can-be-both/</link>
+      <pubDate>Fri, 12 Dec 2025 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2025-12-12-you-can-be-both/</guid>
+      <description>&lt;p&gt;I recently saw a post arguing that exceptional people are rare because they&amp;rsquo;re so focused on their craft that they skip &amp;ldquo;bureaucratic bullshit&amp;rdquo; and &amp;ldquo;often left other skills to rot&amp;rdquo;. &lt;a href=&#34;https://www.linkedin.com/posts/matsherman_my-take-agree-disagree-would-love-your-activity-7361597201212448769-fQHP/&#34;&gt;I left a comment explaining that it&amp;rsquo;s a 50/50 situation.&lt;/a&gt; In this piece, I&amp;rsquo;ll expand my take on this more in depth. Exceptional people comes in different shapes and forms. Pretending that someone can&amp;rsquo;t be exceptional simply because they learned to deal with the &amp;ldquo;bureaucratic bullshit&amp;rdquo; feels like a weird stereotype. (If anything, this reads like the exact type of mentality that gave birth to the &amp;ldquo;10x engineer&amp;rdquo; meme lol.)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+        
+&lt;a class=&#34;anchor&#34; href=&#34;#understanding-the-game&#34;&gt;
+    &lt;h2 id=&#34;understanding-the-game&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Understanding &amp;ldquo;the game&amp;rdquo;&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;There&amp;rsquo;s this weird stigma that you&amp;rsquo;re either a technically strong engineer or good at &amp;ldquo;playing politics&amp;rdquo;. These aren&amp;rsquo;t mutually exclusive. In fact, some of the best engineers I&amp;rsquo;ve worked with are good at both because they quickly learned that &amp;ldquo;playing politics&amp;rdquo; is critical to their success so they get good at it while continue to back themselves up with strong technical depths.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Being good at something doesn&amp;rsquo;t mean you love doing it.&lt;/strong&gt; Many of these great engineers would absolutely prefer to just code and solve technical challenges all day rather than spend time in planning meetings, doing stakeholder alignment, or navigating organizational politics. If you gave them the choice, they&amp;rsquo;d pick the technical work every time. But they recognize that in most environments (especially as you grow in seniority), the non-coding work is the best way to &lt;em&gt;scale your impact&lt;/em&gt; so they quickly learned to get good at it.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s like pundits complaining about modern NBA playing for the foul calls. These players are still some of the best in the world without it, but they learned that being good at it is critical to their success, so they adapt their game to it. Same thing 20 years ago with the kick-out jumper that Kobe Bryant and Ray Allen did.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#what-is-the-game&#34;&gt;
+    &lt;h2 id=&#34;what-is-the-game&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;What is &amp;ldquo;the game&amp;rdquo;?&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;A lot of this comes down to understanding what your company / org is biased towards or against in their performance evaluations. Unfortunately, it&amp;rsquo;s not always what the org needs but mostly what it &lt;em&gt;thinks&lt;/em&gt; it wants. Different orgs has different priorities, speaking with a more senior engineer in the org (or observing more carefully) can show. As an example, certain orgs in Meta has very strong preference for engineers with strong technical skills so you need to be strong code reviewer and technical designer to get (a better chance) at promotion. Others prefer more tech leading skills so you need to show relevant ability - roadmap, plan, drive discussions, create scope - for a better shot at earning that promotion. Some places look for a floor raiser to help them build a 0 -&amp;gt; 1 project; others look for someone who can obsessively optimize mature products to extract maximum value. Generally, there are different archetypes that can earn you the promotion but knowing the &lt;em&gt;preferred archetype&lt;/em&gt; makes it easier for you to get it.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#play-to-your-strengths&#34;&gt;
+    &lt;h2 id=&#34;play-to-your-strengths&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Play to your strengths&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;It&amp;rsquo;s like if a team signs Messi and makes him play the center back position. I&amp;rsquo;m sure he can still do fine but the team is not getting the most value out of him. Then when it&amp;rsquo;s viewed in vacuum (without context), it&amp;rsquo;d look like he&amp;rsquo;s just an average player. That&amp;rsquo;s you during performance review. Your package is generally reviewed in a vacuum without the context of &amp;ldquo;trying new stuff&amp;rdquo; or &amp;ldquo;expanding into new roles&amp;rdquo; (with the exception of joining a new team). Not playing to your strengths hurt both you and the team because the team didn&amp;rsquo;t get the most out of you, while you look like a worse engineer than your capability.&lt;/p&gt;
+&lt;p&gt;If the org&amp;rsquo;s preferred &lt;em&gt;style&lt;/em&gt; is not something that matches your strength, you&amp;rsquo;d need to consider if putting in the extra work is worth it (maybe you enjoy the people + work enough), or if there are opportunities out there that suit you better. As mentioned before, what the org &lt;em&gt;needs&lt;/em&gt; isn&amp;rsquo;t necessarily what it &lt;em&gt;wants&lt;/em&gt;. You can make the case for it but it will take extra effort relative to the alternative. (That said, in many occasions, a successfully made case would allow for better &lt;em&gt;job security&lt;/em&gt; as being the &lt;em&gt;only / few&lt;/em&gt; people with such specialty.)&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;It&amp;rsquo;s not that you can&amp;rsquo;t be a good engineer if you don&amp;rsquo;t fit your company&amp;rsquo;s performance rubric but rather it&amp;rsquo;d require extra effort from either you or your manager (or both) to make your case. Some are one-offs (defining a new archetype), while others might be recurring (figuring out the right business reason to justify the time and effort on your projects). At some point, you might want to ask yourself if all these extra work is worth the time and effort.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s also another school of thought that view all these as unnecessary bloats in larger tech companies. I&amp;rsquo;m not here to argue for either (I know, not very opinionated 🫣) but to share what / how to get the most &lt;em&gt;juice&lt;/em&gt; out of your work. Most people like this prefer to stick to startups where performance review processes aren&amp;rsquo;t as rigid. That&amp;rsquo;s valid too. At the end of the day, that&amp;rsquo;s just a different game with different rules. The key is knowing which game you&amp;rsquo;re playing and whether you want to keep playing it.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>FB accounts created without Messenger</title>
       <link>https://binhong.me/blog/2025-11-28-fb-accounts-without-messenger/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 -0800</pubDate>
