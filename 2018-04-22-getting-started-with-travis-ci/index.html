@@ -48,7 +48,7 @@ As for why is it important, it automates the whole testing modules. Ideally, you
     
     <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
     
-    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Hugo 0.154.5">
     
     </head>
   <body class="single">
@@ -157,7 +157,7 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l">java</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># (or cpp, android, node_js etc.)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c"># (or cpp, android, node_js etc.)</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>Now, there’s also a possibility that running the test might require sudo access to the testing environment in which you would then add the following line above the <code>language</code> line.</p>
@@ -168,7 +168,7 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">sudo</span><span class="p">:</span><span class="w"> </span><span class="l">required</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l">cpp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="l">cpp</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><a class="anchor" href="#testing-environment">
@@ -404,11 +404,11 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">before_install</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">./beforeInstall.sh</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">install</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">install</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">./install.sh</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">before_script</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">before_script</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">./preTest.sh</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">script</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">script</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">./test.sh</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
@@ -457,7 +457,7 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">before_deploy</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">./before_deployment</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">deploy</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">heroku</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">api_key</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;YOUR_API_KEY&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">skip_cleanup</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
@@ -484,7 +484,7 @@ As for why is it important, it automates the whole testing modules. Ideally, you
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">pypi</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;username&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;password&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">after_deploy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">after_deploy</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">./post_deployment</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
@@ -573,7 +573,7 @@ As for why is it important, it automates the whole testing modules. Ideally, you
           </div>
           <div class="row">
             <p>
-              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+              &copy; 2026 <a href="https://binhong.me">BinHong Lee</a>
             </p>
           </div>
           <div class="row">

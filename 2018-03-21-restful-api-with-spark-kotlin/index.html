@@ -42,7 +42,7 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
     
     <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
     
-    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Hugo 0.154.5">
     
     </head>
   <body class="single">
@@ -252,7 +252,7 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">exist</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="n">String</span><span class="p">):</span> <span class="n">Boolean</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">//Some check to make sure given string exist
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>For POST request, they work as easily too! All you need to know is that the request body can be retrieved with <code>request.body()</code>.</p>
@@ -318,7 +318,7 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">exist</span><span class="p">(</span><span class="n">input</span><span class="p">:</span><span class="n">String</span><span class="p">):</span> <span class="n">Boolean</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">//Some check to make sure given string exist
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><a class="anchor" href="#instance-api">
@@ -353,7 +353,7 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span><span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">http</span> <span class="p">=</span> <span class="n">ignite</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">port</span> <span class="p">=</span> <span class="m">4567</span>
+</span></span><span class="line"><span class="cl">        <span class="n">port</span> <span class="p">=</span> <span class="mi">4567</span>
 </span></span><span class="line"><span class="cl">        <span class="n">ipAddress</span> <span class="p">=</span> <span class="s2">&#34;0.0.0.0&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
@@ -362,7 +362,7 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">http</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="s2">&#34;/404&#34;</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">status</span><span class="p">(</span><span class="m">404</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">status</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;Page does not exist.&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -400,13 +400,13 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">:</span><span class="n">Array</span><span class="p">&lt;</span><span class="n">String</span><span class="p">&gt;)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// Some codes
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="py">json</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s2">&#34;{</span><span class="se">\&#34;</span><span class="s2">id</span><span class="se">\&#34;</span><span class="s2">: 32151986,</span><span class="se">\&#34;</span><span class="s2">info</span><span class="se">\&#34;</span><span class="s2">: </span><span class="se">\&#34;</span><span class="s2">someWords</span><span class="se">\&#34;</span><span class="s2">}&#34;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">json</span><span class="p">:</span> <span class="n">String</span> <span class="p">=</span> <span class="s2">&#34;{</span><span class="se">\&#34;</span><span class="s2">id</span><span class="se">\&#34;</span><span class="s2">: 32151986,</span><span class="se">\&#34;</span><span class="s2">info</span><span class="se">\&#34;</span><span class="s2">: </span><span class="se">\&#34;</span><span class="s2">someWords</span><span class="se">\&#34;</span><span class="s2">}&#34;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// Creating the item from JSON
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">val</span> <span class="py">newItem</span><span class="p">:</span> <span class="n">Item</span> <span class="p">=</span> <span class="n">GsonBuilder</span><span class="p">().</span><span class="n">create</span><span class="p">().</span><span class="n">fromJson</span><span class="p">(</span><span class="n">json</span><span class="p">,</span> <span class="n">Item</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">val</span> <span class="py">newItem</span><span class="p">:</span> <span class="n">Item</span> <span class="p">=</span> <span class="n">GsonBuilder</span><span class="p">().</span><span class="n">create</span><span class="p">().</span><span class="n">fromJson</span><span class="p">(</span><span class="n">json</span><span class="p">,</span> <span class="n">Item</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// Creating JSON string from item
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">print</span><span class="p">(</span><span class="n">GsonBuilder</span><span class="p">().</span><span class="n">setPrettyPrinting</span><span class="p">().</span><span class="n">create</span><span class="p">().</span><span class="n">toJson</span><span class="p">(</span><span class="n">newItem</span><span class="p">))</span>
+</span></span></span><span class="line"><span class="cl">    <span class="n">print</span><span class="p">(</span><span class="n">GsonBuilder</span><span class="p">().</span><span class="n">setPrettyPrinting</span><span class="p">().</span><span class="n">create</span><span class="p">().</span><span class="n">toJson</span><span class="p">(</span><span class="n">newItem</span><span class="p">))</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">data</span> <span class="k">class</span> <span class="nc">Item</span> <span class="p">(</span><span class="k">val</span> <span class="py">id</span><span class="p">:</span> <span class="n">Long</span><span class="p">,</span> <span class="k">val</span> <span class="py">info</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span>
@@ -463,27 +463,27 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
 </span></span><span class="line"><span class="cl">        <span class="n">main</span><span class="p">(</span><span class="n">arrayOf</span><span class="p">())</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="k">var</span> <span class="py">testServer</span><span class="p">:</span> <span class="n">SparkServer</span><span class="p">&lt;</span><span class="n">YourTest</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">SparkServer</span><span class="p">(</span><span class="n">YourTest</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">,</span> <span class="m">4567</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">var</span> <span class="py">testServer</span><span class="p">:</span> <span class="n">SparkServer</span><span class="p">&lt;</span><span class="n">YourTest</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">SparkServer</span><span class="p">(</span><span class="n">YourTest</span><span class="o">::</span><span class="k">class</span><span class="p">.</span><span class="n">java</span><span class="p">,</span> <span class="mi">4567</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Tests</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
 </span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">getTest</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">var</span> <span class="py">get</span><span class="p">:</span> <span class="n">GetMethod</span> <span class="p">=</span> <span class="n">testServer</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="s2">&#34;/&#34;</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">var</span> <span class="py">httpResponse</span> <span class="p">=</span> <span class="n">testServer</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="k">get</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">assertEquals</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="n">code</span><span class="p">(),</span> <span class="m">200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">assertEquals</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="n">code</span><span class="p">(),</span> <span class="mi">200</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="n">assertEquals</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="n">body</span><span class="p">()),</span> <span class="s2">&#34;Welcome to website abc.&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">get</span> <span class="p">=</span> <span class="n">testServer</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="s2">&#34;/404&#34;</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="n">httpResponse</span> <span class="p">=</span> <span class="n">testServer</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="k">get</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">assertEquals</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="n">code</span><span class="p">(),</span> <span class="m">404</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">assertEquals</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="n">code</span><span class="p">(),</span> <span class="mi">404</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nd">@Test</span>
 </span></span><span class="line"><span class="cl">    <span class="k">fun</span> <span class="nf">checkExistTest</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">post</span><span class="p">:</span> <span class="n">PostMethod</span> <span class="p">=</span> <span class="n">testServer</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&#34;/checkExist&#34;</span><span class="p">,</span> <span class="s2">&#34;someInput&#34;</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="k">val</span> <span class="py">httpResponse</span> <span class="p">=</span> <span class="n">testServer</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">assertEquals</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="n">code</span><span class="p">(),</span> <span class="m">200</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">assertEquals</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="n">code</span><span class="p">(),</span> <span class="mi">200</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">        <span class="n">assertEquals</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="n">httpResponse</span><span class="p">.</span><span class="n">body</span><span class="p">()),</span> <span class="s2">&#34;Exist.&#34;</span><span class="p">)</span> <span class="c1">// or &#34;Does not exist.&#34;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="p">}</span>
+</span></span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -574,7 +574,7 @@ Disclaimer : I am not in anyway affiliated nor do I work at the project. I just 
           </div>
           <div class="row">
             <p>
-              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+              &copy; 2026 <a href="https://binhong.me">BinHong Lee</a>
             </p>
           </div>
           <div class="row">

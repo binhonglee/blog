@@ -41,7 +41,7 @@
     
     <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
     
-    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Hugo 0.154.5">
     
     </head>
   <body class="single">
@@ -134,10 +134,10 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l">brew install postgresql@13.1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l">brew install postgresql@13.1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l">Install PostgreSQL</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><a class="anchor" href="#multiple-versions-optional">
@@ -178,12 +178,12 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l">brew install postgresql@$PSQL_VERSION</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l">brew install postgresql@$PSQL_VERSION</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l">Install PostgreSQL</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">env</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">PSQL_VERSION</span><span class="p">:</span><span class="w"> </span><span class="l">$(psqlVersion)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><a class="anchor" href="#start-service">
@@ -203,10 +203,10 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l">brew services start postgresql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l">brew services start postgresql</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l">Start Postgres Service</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><a class="anchor" href="#set-up-db">
@@ -229,13 +229,13 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span></span></span><span class="line"><span class="cl"><span class="sd">    psql postgres -w -c &#34;CREATE DATABASE db_name;&#34;
 </span></span></span><span class="line"><span class="cl"><span class="sd">    psql postgres -w -c &#34;CREATE ROLE username WITH SUPERUSER CREATEDB LOGIN ENCRYPTED PASSWORD &#39;password&#39;;&#34;
 </span></span></span><span class="line"><span class="cl"><span class="sd">    psql postgres -w -c &#34;GRANT ALL PRIVILEGES ON DATABASE db_name TO username;&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Database</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><a class="anchor" href="#brew-optimization-optional">
@@ -275,11 +275,11 @@
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l">brew services start postgresql</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l">brew services start postgresql</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l">Start Postgres Service</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l">eq(variables[&#39;Agent.OS&#39;], &#39;Darwin&#39;)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">...</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">...</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><a class="anchor" href="#full-config">
@@ -326,26 +326,26 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">HOMEBREW_NO_INSTALL_CLEANUP</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">HOMEBREW_NO_AUTO_UPDATE</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">pool</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">pool</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="l">macos-latest</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">strategy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">strategy</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">matrix</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">postgresql-11-10</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">psqlVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;11.10&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">postgresql-13-1</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">psqlVersion</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;13.1&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">steps</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l">brew install postgresql@$(psqlVersion)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l">brew install postgresql@$(psqlVersion)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l">Install PostgreSQL</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l">eq(variables[&#39;Agent.OS&#39;], &#39;Darwin&#39;)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l">brew services start postgresql</span><span class="w">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l">brew services start postgresql</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l">Start Postgres Service</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l">eq(variables[&#39;Agent.OS&#39;], &#39;Darwin&#39;)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl">- <span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span></span></span><span class="line"><span class="cl"><span class="sd">    psql postgres -w -c &#34;CREATE DATABASE db_name;&#34;
 </span></span></span><span class="line"><span class="cl"><span class="sd">    psql postgres -w -c &#34;CREATE ROLE username WITH SUPERUSER CREATEDB LOGIN ENCRYPTED PASSWORD &#39;password&#39;;&#34;
 </span></span></span><span class="line"><span class="cl"><span class="sd">    psql postgres -w -c &#34;GRANT ALL PRIVILEGES ON DATABASE db_name TO username;&#34;</span><span class="w">
@@ -420,7 +420,7 @@
           </div>
           <div class="row">
             <p>
-              &copy; 2025 <a href="https://binhong.me">BinHong Lee</a>
+              &copy; 2026 <a href="https://binhong.me">BinHong Lee</a>
             </p>
           </div>
           <div class="row">
