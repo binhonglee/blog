@@ -6,10 +6,6 @@ tags: [The Opinionated Engineer, Behavioral]
 ss: "preview/peak_bias.jpg"
 aliases:
   - /peak_bias/
-build:
-  list: never
-  publishResources: true
-  render: always
 ---
 
 One of the most interesting examples is to look at any average person debating whether Jordan or LeBron is the GOAT. They will inevitably bring up Jordan's 6-0 finals record as if Jordan only played in the NBA for 6 years. LeBron's 4-8 record on the other hand is somehow worse than if he never made it to the finals at all (which frankly doesn't make sense lol). This isn't really about basketball though. It's about a fundamental bias in how humans evaluate performance where we disproportionately value peak moments over sustained consistency, even when the consistency represents equal or greater total value.
