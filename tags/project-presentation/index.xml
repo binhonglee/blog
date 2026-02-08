@@ -8,7 +8,124 @@
     <language>en-us</language>
     <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
-    <lastBuildDate>Fri, 28 Nov 2025 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/project-presentation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Feb 2026 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/project-presentation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Securing Logged Out Internal Settings</title>
+      <link>https://binhong.me/blog/2026-02-08-securing-logged-out-internal-settings/</link>
+      <pubDate>Sun, 08 Feb 2026 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2026-02-08-securing-logged-out-internal-settings/</guid>
+      <description>&lt;p&gt;I proposed, built, and maintained the only logged out accessible tooling suite in Meta - which I&amp;rsquo;ve conveniently called &amp;ldquo;Logged Out Internal Settings&amp;rdquo; (hereafter as LOIS). This toolset is still used daily today by employees though it&amp;rsquo;s no longer as well maintained since I left the company earlier last year.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/project-presentation/&#34;&gt;(Project Presentation)&lt;/a&gt; where I share stories of my past projects.&lt;/em&gt;&lt;/p&gt;
+        
+&lt;a class=&#34;anchor&#34; href=&#34;#background&#34;&gt;
+    &lt;h2 id=&#34;background&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Background&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;At this point, we were still building out &lt;a href=&#34;https://about.fb.com/news/2022/09/accounts-center-facebook-and-instagram/&#34;&gt;a brand new set of access flow that unifies the experience (for login, account recovery, registration) across Facebook, Instagram, and Messenger on both iOS and Android&lt;/a&gt;. Since the whole thing was internal anyway, people were littering internal-only information everywhere for easier debugging and faster development cycle. Between all that, I built a small tool on the landing page that let engineers quickly switch between different dev pods or prod, and another prototyping tool that lets you add any random UI for quick testing. As we got closer to release, I began thinking how to make this &amp;ldquo;launch safe&amp;rdquo;.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#problem&#34;&gt;
+    &lt;h2 id=&#34;problem&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Problem&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;On a basic level, I set up a simple gating where you can only access all the internal-only stuff if you&amp;rsquo;re already connected to a dev pod. It works fine from a security perspective since there are a bunch of different checks you need to pass before you can be connected to dev pods. But this severely limited the exposure of it since employees not &lt;em&gt;already&lt;/em&gt; connected to a dev pod can&amp;rsquo;t easily utilize the tool to switch into one.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Scenario&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Before&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;After&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;prod -&amp;gt; dev pod&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;✅&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;❌&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;switch dev pod&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;✅&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;✅&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;dev pod -&amp;gt; prod&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;✅&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;✅&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;I thought this wasn&amp;rsquo;t an ideal setup because:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;prod -&amp;gt; dev pod was one of the most popular use cases&lt;/li&gt;
+&lt;li&gt;dev pods are generally slower so other tools should ideally still work without it&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;But the main problem was that all these need to exist &lt;strong&gt;before you login to the app&lt;/strong&gt; so we can&amp;rsquo;t tell exactly if the user is an employee (or not).&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#ideation&#34;&gt;
+    &lt;h2 id=&#34;ideation&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Ideation&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;I started with a simple security layer idea like this. Not everything is &amp;ldquo;super sensitive&amp;rdquo; and requires the highest level of security check to be accessible. Something like &amp;ldquo;show debug info&amp;rdquo; that prints out information about the device / app isn&amp;rsquo;t exactly sensitive while still extremely valuable for debugging. (Keeping it away from showing to users prevents unnecessary confusion.) This also allows for progressive increments in security access pass to gain &lt;em&gt;more&lt;/em&gt; access. For eg. you need to be on corpnet / VPN to access the dev pod connector; once connected, you&amp;rsquo;re now &amp;ldquo;promoted&amp;rdquo; to dev pod access level.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/securing_lois_1.png&#34; target=&#34;_blank&#34;&gt;
+    
+    &lt;figure&gt;
+        &lt;img src=&#34;https://binhong.me/blog/2026-02-08-securing-logged-out-internal-settings//blog/img/securing_lois_1.png&#34;&gt;
+        &lt;figcaption&gt;Security layer design&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    
+&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;At this point, I started thinking of an alternative to &amp;ldquo;dev pods&amp;rdquo; for the highest level access. Some job functions (like QA, design) can benefit from this tool as well but they don&amp;rsquo;t usually have access to a dev pod. I quietly put together an idea for an access flow similar to how TOTP works. I call this the &amp;ldquo;Employee Authenticator&amp;rdquo;. More on this later.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#security&#34;&gt;
+    &lt;h2 id=&#34;security&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Security&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;I found an internal discussion group on general security stuff and asked a few clarifying questions surrounding how each of these checks can / should work and what potential risks it can carry. This helps me validate the idea while also learning about some weird past incidents. Apparently there was once an incident where a public coffee shop Wi-Fi below SF Meta office was falsely flagged as corpnet because some employee gave them the wrong router for setup.&lt;/p&gt;
+&lt;p&gt;Anyway, after gathering good context and information around it, I filed for a formal security review. The review went smoothly as we received the green light to proceed.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#opportunity&#34;&gt;
+    &lt;h2 id=&#34;opportunity&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Opportunity&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Our org decided to host its first (rolling?) hackathon where you can form teams and build things (that you wouldn&amp;rsquo;t otherwise work on) over a given week. I polished up my proposal doc for Employee Authenticator then recruited a few engineers around me to help build it.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s how it works:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://binhong.me/blog/img/securing_lois_2.png&#34; target=&#34;_blank&#34;&gt;
+    
+    &lt;figure&gt;
+        &lt;img src=&#34;https://binhong.me/blog/2026-02-08-securing-logged-out-internal-settings//blog/img/securing_lois_2.png&#34;&gt;
+        &lt;figcaption&gt;Employee Authenticator workflow&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    
+&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;While we didn&amp;rsquo;t win anything from the hackathon, it helped kickstart development of this tooling with the idea that LOIS isn&amp;rsquo;t just for devs, but also for non-devs. I had to later get it re-reviewed because some roles (like QA) are mostly filled by &amp;ldquo;Contingent Workers&amp;rdquo; who can&amp;rsquo;t be classified as employees legally(?) so I also had it renamed to &amp;ldquo;Internal Authenticator&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note: I never got through with this process entirely so if you&amp;rsquo;re a Meta employee looking at LOIS Authenticator, it&amp;rsquo;s likely all over the place since no one really took over ownership of LOIS after I left.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#follow-ups&#34;&gt;
+    &lt;h2 id=&#34;follow-ups&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Follow-ups&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;As I&amp;rsquo;ve mentioned at the beginning, some of these internal features already existed but they had no protection and we needed to secure them before we began testing the new flow publicly. One of the minor but important tweaks I made was to add a text label on the menu screen saying &amp;ldquo;connect to {corpnet / VPN | dev pod} to access more features&amp;rdquo;. Since engineers who&amp;rsquo;ve been working on this flow have been using these underlying features day-in-day-out, suddenly seeing them go missing can be a bit confusing. That small text saved countless hours of &amp;ldquo;Hey BinHong, I don&amp;rsquo;t see X feature anymore in LOIS.&amp;rdquo; while quickly nudging them towards the right direction to self-unblock.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#takeaways&#34;&gt;
+    &lt;h2 id=&#34;takeaways&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Takeaways&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;This is an example project where I should have advocated harder for myself to gain better visibility within my org (where my performance review is done). While security teams were happy with our collaborations and many engineers (both within and outside of the org) benefitted greatly from the continued existence of LOIS, I doubt many in the management rank understood the importance of the work and underlying value it provides to engineers. From the users&amp;rsquo; (employees&amp;rsquo;) perspective, I added some layer of friction to access the same tooling; while the value it adds was to ensure we can keep this set of tooling post-public-launch.&lt;/p&gt;
+&lt;p&gt;The other interesting side effect of the security layer was that it helped build a proper structure around the entire LOIS &lt;em&gt;system&lt;/em&gt;. This paved the way for an eventual &lt;em&gt;platformization&lt;/em&gt; allowing for each team to build customized toolings into LOIS.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>FB accounts created without Messenger</title>
       <link>https://binhong.me/blog/2025-11-28-fb-accounts-without-messenger/</link>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Securing Logged Out Internal Settings - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="I proposed, built, and maintained the only logged out accessible tooling suite in Meta - which I&rsquo;ve conveniently called &ldquo;Logged Out Internal Settings&rdquo; (hereafter as LOIS). This toolset is still used daily today by employees though it&rsquo;s no longer as well maintained since I left the company earlier last year.
+This is part of a series (Project Presentation) where I share stories of my past projects.
+        
+          Subscribe to the newsletter today!
+          
+              
+              
+                
+                You will need to manually get this secret from here
+                
+                
+              
+              
+              Subscribe
+          
+          You can also checkout previous issues here before deciding.
+        
+
+    
+        Background
+        #
+    
+
+At this point, we were still building out a brand new set of access flow that unifies the experience (for login, account recovery, registration) across Facebook, Instagram, and Messenger on both iOS and Android. Since the whole thing was internal anyway, people were littering internal-only information everywhere for easier debugging and faster development cycle. Between all that, I built a small tool on the landing page that let engineers quickly switch between different dev pods or prod, and another prototyping tool that lets you add any random UI for quick testing. As we got closer to release, I began thinking how to make this &ldquo;launch safe&rdquo;.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Securing Logged Out Internal Settings">
+    <meta property="og:description" content="Designing and building a security layer">
+    <meta name="twitter:description" content="Designing and building a security layer">
+    <meta name="twitter:title" content="Securing Logged Out Internal Settings"><meta property="article:published_time" 2026-02-08T00:00:00-08:00 />
+    <meta property="article:modified_time" 2026-02-08T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/securing_logged_out_internal_settings.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/securing_logged_out_internal_settings.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/securing_logged_out_internal_settings.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1759946748080" rel="stylesheet">
+    <link href="https://binhong.me/blog/darkMode.css?v=1754287594183" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1761449005615" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.155.2">
+    
+    </head>
+  <body class="single">
+    <input class="dark_mode_toggle" type="checkbox" id="darkModeToggle">
+    <div class="wrapper">
+      <div class="content">
+        <div class="dropdown">
+          <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+          <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+            <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+            <p>|</p>
+            <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+            <p>|</p>
+            <div class="webring link" role="menuitem">
+              <a class="webring_toggle">Webring</a>
+              <div class="webring_links">
+                <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+                <hr />
+                <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page_of_title">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+        <div class="dark_mode_toggle_wrapper">
+          <div class="toggle-container">
+            <label for="darkModeToggle" class="toggle-label">
+              <div class="background-layer day-bg"></div>
+              <div class="background-layer night-bg"></div>
+              
+              <div class="toggle-slider">
+                <div class="sun-rays"></div>
+                <div class="moon-craters">
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                </div>
+              </div>
+              
+              <div class="cloud cloud1"></div>
+              <div class="cloud cloud2"></div>
+              <div class="cloud cloud3"></div>
+              <div class="cloud cloud4"></div>
+              <div class="cloud cloud5"></div>
+              
+              <div class="star star1"></div>
+              <div class="star star2"></div>
+              <div class="star star3"></div>
+              <div class="star star4"></div>
+              <div class="star star5"></div>
+              <div class="star star6"></div>
+              <div class="star star7"></div>
+              <div class="star star8"></div>
+              <div class="star star9"></div>
+              <div class="star star10"></div>
+              <div class="star star11"></div>
+              <div class="star star12"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Securing Logged Out Internal Settings</h1>
+          <p class="row subtitle">Designing and building a security layer</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">February 8, 2026</p></div>
+          <div class="post_content"><p>I proposed, built, and maintained the only logged out accessible tooling suite in Meta - which I&rsquo;ve conveniently called &ldquo;Logged Out Internal Settings&rdquo; (hereafter as LOIS). This toolset is still used daily today by employees though it&rsquo;s no longer as well maintained since I left the company earlier last year.</p>
+<p><em>This is part of a series <a href="/blog/project-presentation/">(Project Presentation)</a> where I share stories of my past projects.</em></p>
+        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+<a class="anchor" href="#background">
+    <h2 id="background">
+        <span class="text">Background</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>At this point, we were still building out <a href="https://about.fb.com/news/2022/09/accounts-center-facebook-and-instagram/">a brand new set of access flow that unifies the experience (for login, account recovery, registration) across Facebook, Instagram, and Messenger on both iOS and Android</a>. Since the whole thing was internal anyway, people were littering internal-only information everywhere for easier debugging and faster development cycle. Between all that, I built a small tool on the landing page that let engineers quickly switch between different dev pods or prod, and another prototyping tool that lets you add any random UI for quick testing. As we got closer to release, I began thinking how to make this &ldquo;launch safe&rdquo;.</p>
+<a class="anchor" href="#problem">
+    <h2 id="problem">
+        <span class="text">Problem</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>On a basic level, I set up a simple gating where you can only access all the internal-only stuff if you&rsquo;re already connected to a dev pod. It works fine from a security perspective since there are a bunch of different checks you need to pass before you can be connected to dev pods. But this severely limited the exposure of it since employees not <em>already</em> connected to a dev pod can&rsquo;t easily utilize the tool to switch into one.</p>
+<div style="padding: 20px 0;">
+  <div style="overflow-x: auto;">
+    <table>
+      <thead>
+          <tr>
+              <th style="text-align: left">Scenario</th>
+              <th style="text-align: left">Before</th>
+              <th style="text-align: left">After</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td style="text-align: left">prod -&gt; dev pod</td>
+              <td style="text-align: left">✅</td>
+              <td style="text-align: left">❌</td>
+          </tr>
+          <tr>
+              <td style="text-align: left">switch dev pod</td>
+              <td style="text-align: left">✅</td>
+              <td style="text-align: left">✅</td>
+          </tr>
+          <tr>
+              <td style="text-align: left">dev pod -&gt; prod</td>
+              <td style="text-align: left">✅</td>
+              <td style="text-align: left">✅</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<p>I thought this wasn&rsquo;t an ideal setup because:</p>
+<ol>
+<li>prod -&gt; dev pod was one of the most popular use cases</li>
+<li>dev pods are generally slower so other tools should ideally still work without it</li>
+</ol>
+<p>But the main problem was that all these need to exist <strong>before you login to the app</strong> so we can&rsquo;t tell exactly if the user is an employee (or not).</p>
+<a class="anchor" href="#ideation">
+    <h2 id="ideation">
+        <span class="text">Ideation</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>I started with a simple security layer idea like this. Not everything is &ldquo;super sensitive&rdquo; and requires the highest level of security check to be accessible. Something like &ldquo;show debug info&rdquo; that prints out information about the device / app isn&rsquo;t exactly sensitive while still extremely valuable for debugging. (Keeping it away from showing to users prevents unnecessary confusion.) This also allows for progressive increments in security access pass to gain <em>more</em> access. For eg. you need to be on corpnet / VPN to access the dev pod connector; once connected, you&rsquo;re now &ldquo;promoted&rdquo; to dev pod access level.</p>
+<p><a href="/blog/img/securing_lois_1.png" target="_blank">
+    
+    <figure>
+        <img src="/blog/img/securing_lois_1.png">
+        <figcaption>Security layer design</figcaption>
+    </figure>
+    
+</a>
+</p>
+<p>At this point, I started thinking of an alternative to &ldquo;dev pods&rdquo; for the highest level access. Some job functions (like QA, design) can benefit from this tool as well but they don&rsquo;t usually have access to a dev pod. I quietly put together an idea for an access flow similar to how TOTP works. I call this the &ldquo;Employee Authenticator&rdquo;. More on this later.</p>
+<a class="anchor" href="#security">
+    <h2 id="security">
+        <span class="text">Security</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>I found an internal discussion group on general security stuff and asked a few clarifying questions surrounding how each of these checks can / should work and what potential risks it can carry. This helps me validate the idea while also learning about some weird past incidents. Apparently there was once an incident where a public coffee shop Wi-Fi below SF Meta office was falsely flagged as corpnet because some employee gave them the wrong router for setup.</p>
+<p>Anyway, after gathering good context and information around it, I filed for a formal security review. The review went smoothly as we received the green light to proceed.</p>
+<a class="anchor" href="#opportunity">
+    <h2 id="opportunity">
+        <span class="text">Opportunity</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Our org decided to host its first (rolling?) hackathon where you can form teams and build things (that you wouldn&rsquo;t otherwise work on) over a given week. I polished up my proposal doc for Employee Authenticator then recruited a few engineers around me to help build it.</p>
+<p>Here&rsquo;s how it works:</p>
+<p><a href="/blog/img/securing_lois_2.png" target="_blank">
+    
+    <figure>
+        <img src="/blog/img/securing_lois_2.png">
+        <figcaption>Employee Authenticator workflow</figcaption>
+    </figure>
+    
+</a>
+</p>
+<p>While we didn&rsquo;t win anything from the hackathon, it helped kickstart development of this tooling with the idea that LOIS isn&rsquo;t just for devs, but also for non-devs. I had to later get it re-reviewed because some roles (like QA) are mostly filled by &ldquo;Contingent Workers&rdquo; who can&rsquo;t be classified as employees legally(?) so I also had it renamed to &ldquo;Internal Authenticator&rdquo;.</p>
+<p><em>Note: I never got through with this process entirely so if you&rsquo;re a Meta employee looking at LOIS Authenticator, it&rsquo;s likely all over the place since no one really took over ownership of LOIS after I left.</em></p>
+<a class="anchor" href="#follow-ups">
+    <h2 id="follow-ups">
+        <span class="text">Follow-ups</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>As I&rsquo;ve mentioned at the beginning, some of these internal features already existed but they had no protection and we needed to secure them before we began testing the new flow publicly. One of the minor but important tweaks I made was to add a text label on the menu screen saying &ldquo;connect to {corpnet / VPN | dev pod} to access more features&rdquo;. Since engineers who&rsquo;ve been working on this flow have been using these underlying features day-in-day-out, suddenly seeing them go missing can be a bit confusing. That small text saved countless hours of &ldquo;Hey BinHong, I don&rsquo;t see X feature anymore in LOIS.&rdquo; while quickly nudging them towards the right direction to self-unblock.</p>
+<a class="anchor" href="#takeaways">
+    <h2 id="takeaways">
+        <span class="text">Takeaways</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>This is an example project where I should have advocated harder for myself to gain better visibility within my org (where my performance review is done). While security teams were happy with our collaborations and many engineers (both within and outside of the org) benefitted greatly from the continued existence of LOIS, I doubt many in the management rank understood the importance of the work and underlying value it provides to engineers. From the users&rsquo; (employees&rsquo;) perspective, I added some layer of friction to access the same tooling; while the value it adds was to ensure we can keep this set of tooling post-public-launch.</p>
+<p>The other interesting side effect of the security layer was that it helped build a proper structure around the entire LOIS <em>system</em>. This paved the way for an eventual <em>platformization</em> allowing for each team to build customized toolings into LOIS.</p>
+</div>
+          <div class="tags">
+            🔖
+            <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/project-presentation">Project Presentation</a>
+            <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/internal-tools">Internal Tools</a>
+          </div>
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+          <a href="/blog/2026-01-25-the-peak-bias/">
+            <div class="bottom_button previous_post">
+              Previous →
+              <br />
+              <br />
+              <span class="button_title">The Peak Bias</span>
+            </div>
+          </a>
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2026-02-08-securing-logged-out-internal-settings.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2026 <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/viewer.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+
