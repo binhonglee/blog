@@ -23,9 +23,9 @@ Here are some of the pieces that's been released (or planned) thus far:
 
 - [Shipping a project with -2M MAP](/blog/2025-10-03-shipping-negative-2m-map)
 - [Leaked `FakeIncorrectPassword`](/blog/2025-10-31-leaked-fakeincorrectpassword)
-- FB accounts created without Messenger
+- [FB accounts created without Messenger](/blog/2025-11-28-fb-accounts-without-messenger)
+- [Securing Logged Out Internal Settings](/blog/2026-02-08-securing-logged-out-internal-settings)
 - One liner increasing over 3M MAP
-- Logged Out Internal Settings
 - Threads Launch
 - Password Encryption Gap
 - Everyone, everything, logged out all at once
