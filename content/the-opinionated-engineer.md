@@ -26,6 +26,7 @@ I have not fully planned out the entire series but here are a few topics I have 
 2. Culture
     1. [Code Review Culture](/blog/2025-05-23-code-review-culture/)
     2. [Push Fearlessly with Automated Testing](/blog/2025-05-04-push-fearlessly-with-automated-testing/)
+    3. [Mentorship](/blog/2026-03-20-mentorship/)
 3. Dev Tools
     1. [Early takes on vibe-coding](/blog/2025-07-03-early-takes-on-vibe-coding/)
     2. [Internal Tooling Ideas](/blog/2025-07-11-internal-tooling-ideas/)
