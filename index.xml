@@ -8,7 +8,61 @@
     <language>en-us</language>
     <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
-    <lastBuildDate>Sun, 08 Feb 2026 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Mar 2026 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mentorship</title>
+      <link>https://binhong.me/blog/2026-03-20-mentorship/</link>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2026-03-20-mentorship/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve done quite a bit of mentorship from short term (one session) to long term (multi-year), from high school kids to university grads or even senior engineers, so I like to think I know a thing or two about mentorship. This piece is specifically geared more towards how one should approach a longer term mentorship as a mentor.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
+        
+&lt;a class=&#34;anchor&#34; href=&#34;#be-transparent&#34;&gt;
+    &lt;h2 id=&#34;be-transparent&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Be Transparent&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Putting this first because I personally think this is the most important. Be upfront and transparent about yourself and your advice. If you aren&amp;rsquo;t sure of something, be sure to make it clear to your mentees. Generally, you&amp;rsquo;re likely a person with authority, which is why you&amp;rsquo;re the mentor in the first place. Giving out half-baked advice would at best ruin the trust your mentees have toward you, at worst cause catastrophic career derailment to your mentees as they follow your half-baked advice. The easiest way to be transparent is to clearly share your reasoning behind arriving at the given conclusion, allowing them to raise questions or doubts if they have a differing perspective.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#understand-their-goals&#34;&gt;
+    &lt;h2 id=&#34;understand-their-goals&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Understand their goals&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;This should be pretty straightforward. Not everyone tries to optimize for the highest pay or climbing the career ladder; some try to maximize learning opportunities or better work life balance. Knowing this helps you preface the advice you can provide and to help them work towards their goals. It&amp;rsquo;s also important to explain the tradeoffs of your advice: &amp;ldquo;this is a great opportunity for you to learn more but there&amp;rsquo;s always risk in working on something you&amp;rsquo;re unfamiliar with and not meeting your work expectations&amp;rdquo;.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#everyones-a-little-different&#34;&gt;
+    &lt;h2 id=&#34;everyones-a-little-different&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Everyone&amp;rsquo;s a little different&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Tangential to the previous point, not everyone has to be like &amp;ldquo;you&amp;rdquo;. Generally, if they bring you a sticky situation, it can be useful to provide your perspective to help them come up with their resolution to it. But otherwise, you shouldn&amp;rsquo;t just prescribe the exact same thing to all your mentees because everyone&amp;rsquo;s a little different. The advice they receive should play to their strengths while matching their personal goals. Both of which are likely different from your own—tailor it to their needs.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#guest-lecture&#34;&gt;
+    &lt;h2 id=&#34;guest-lecture&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Guest Lecture&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;In university classes, your professor might sometimes invite different industry experts to be a guest lecturer. A similar idea applies here. Sometimes your mentee needs help in an area where you&amp;rsquo;re not an expert. You likely know someone who&amp;rsquo;s good at it. If your mentee knows them, recommend they reach out to them; if not, offer to introduce them. (This applies to yourself as well. If you need help in an area you know someone is an expert in, you should reach out to them for advice.)&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#optional-dig-for-details&#34;&gt;
+    &lt;h2 id=&#34;optional-dig-for-details&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;(Optional) Dig for details&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;I labeled this as optional because most people see it as the responsibility of the mentee rather than the mentor. (&amp;ldquo;I can only help those who want to be helped.&amp;rdquo;) I can see it both ways so it&amp;rsquo;s up to you to draw the line. Some mentees aren&amp;rsquo;t always very direct with their problems. They might even say that everything is going fine. But if you just poke a little, they would start sharing potential issues they foresee could materialize. Generally, this would be a pattern where they would consistently be like this, so you always need to probe a little to find out any underlying problems they might be thinking of.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Mentorship isn&amp;rsquo;t about molding someone into a younger version of yourself but rather to help someone become the best version of themselves. The advice that worked for you might not work for them, and that&amp;rsquo;s okay. Be transparent about what you know and don&amp;rsquo;t know, understand what they&amp;rsquo;re actually trying to achieve, and don&amp;rsquo;t be afraid to admit when someone else would be better suited to help them. At the end of the day, good mentorship is less about having all the answers and more about asking the right questions and connecting people to the right resources. Give them what they need, not what you have.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Securing Logged Out Internal Settings</title>
       <link>https://binhong.me/blog/2026-02-08-securing-logged-out-internal-settings/</link>
@@ -379,7 +433,7 @@
     &lt;/svg&gt;&lt;p class=&#34;description&#34;&gt;
       Found a pretty horrific dark pattern with Instagram. If you try to log in on mobile web, it fails with ‘incorrect password’. I double check… it’s right, it’s just not working. Gave up, installed the app, password is fine. Tried again today just to see… this time I get the following error message. Looks like a translation key is missing and it’s serving me the backend name for it? FakeIncorrectPassword ?? Are you shitting me?
     &lt;/p&gt;&lt;div class=&#34;image&#34;&gt;
-      &lt;img src=&#34;https://binhong.me/blog/2025-10-31-leaked-fakeincorrectpassword//blog/468513146_835635298542082_280700232251535875_n_18341875862846264688.jpg&#34; alt=&#34;Post image&#34; loading=&#34;lazy&#34;&gt;
+      &lt;img src=&#34;https://binhong.me/blog/2025-10-31-leaked-fakeincorrectpassword//blog/624099990_18059047814338384_6804582354372308281_n_2741826402075625002.jpg&#34; alt=&#34;Post image&#34; loading=&#34;lazy&#34;&gt;
     &lt;/div&gt;&lt;/a&gt;
 &lt;/div&gt;
   
