@@ -28,9 +28,8 @@ I have not fully planned out the entire series but here are a few topics I have 
     2. [Push Fearlessly with Automated Testing](/blog/2025-05-04-push-fearlessly-with-automated-testing/)
     3. [Mentorship](/blog/2026-03-20-mentorship/)
 3. Dev Tools
-    1. [Early takes on vibe-coding](/blog/2025-07-03-early-takes-on-vibe-coding/)
-    2. [Internal Tooling Ideas](/blog/2025-07-11-internal-tooling-ideas/)
-    3. [Understanding the Value of Dev Tools](/blog/2025-07-18-understanding-value-of-dev-tools/)
+    1. [Internal Tooling Ideas](/blog/2025-07-11-internal-tooling-ideas/)
+    2. [Understanding the Value of Dev Tools](/blog/2025-07-18-understanding-value-of-dev-tools/)
 4. Incident Management
     1. [No Blame SEV (Incident) Culture](/blog/2025-05-30-no-blame-sev-culture/)
     2. [Major Incident Runbook](/blog/2025-07-25-major-incident-runbook/)

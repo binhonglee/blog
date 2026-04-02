@@ -2,15 +2,13 @@
 title: Early takes on vibe-coding
 subtitle: "Is it a mid-level engineer yet?"
 date: 2025-07-03 00:00:00 -0800 GMT
-tags: [The Opinionated Engineer, Internal Tools]
+tags: [vibe-coding]
 ss: preview/early_vibe_coding.jpg
 aliases:
   - /early_vibe_coding/
 ---
 
 I keep hearing about vibe-coding and I've always written the majority of code myself. While at Meta, I got a chance to try out CodeCompose. It worked really well as an autocomplete but when it tried to do anything more than 5 lines at a time, it would - on many occasions - commit bugs that aren't immediately obvious at first sight. Generally, I've caught them by looking at the generated code and wondering "huh this isn't how I'd do this, why?". That said, it definitely helped me code and ship faster especially on mundane tasks. Vibe-coding though, seems like taking it to a whole new level (using even less supervision and care on the code being committed).
-
-_This is part of a series [(The Opinionated Engineer)](/blog/2025-05-04-the-opinionated-engineer/) where I share my strong opinions on engineering practices._
 
 {{< newsletter >}}
 
