@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Shifting from Code Writing to Reviewing - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="When I built GlobeTrotte last year, vibe-coding had just begun gaining traction but I was the &ldquo;weird guy&rdquo; who coded everything by hand. I spent a little over 4 weeks building the backend service (Go), iOS app (SwiftUI), Android app (Jetpack Compose), and web (TanStack) all by myself. I like to think that&rsquo;s pretty fast for an app of that level of complexity. The tradeoff here however, was that I have almost no time to &ldquo;handle the business side&rdquo;.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Shifting from Code Writing to Reviewing">
+    <meta property="og:description" content="Leaning onto AI coding workflow">
+    <meta name="twitter:description" content="Leaning onto AI coding workflow">
+    <meta name="twitter:title" content="Shifting from Code Writing to Reviewing"><meta property="article:published_time" 2026-04-02T00:00:00-08:00 />
+    <meta property="article:modified_time" 2026-04-02T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/shift_from_write_to_review.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/shift_from_write_to_review.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/shift_from_write_to_review.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1759946748080" rel="stylesheet">
+    <link href="https://binhong.me/blog/darkMode.css?v=1754287594183" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1761449005615" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.159.2">
+    
+    </head>
+  <body class="single">
+    <input class="dark_mode_toggle" type="checkbox" id="darkModeToggle">
+    <div class="wrapper">
+      <div class="content">
+        <div class="dropdown">
+          <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+          <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+            <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+            <p>|</p>
+            <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+            <p>|</p>
+            <div class="webring link" role="menuitem">
+              <a class="webring_toggle">Webring</a>
+              <div class="webring_links">
+                <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+                <hr />
+                <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page_of_title">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+        <div class="dark_mode_toggle_wrapper">
+          <div class="toggle-container">
+            <label for="darkModeToggle" class="toggle-label">
+              <div class="background-layer day-bg"></div>
+              <div class="background-layer night-bg"></div>
+              
+              <div class="toggle-slider">
+                <div class="sun-rays"></div>
+                <div class="moon-craters">
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                </div>
+              </div>
+              
+              <div class="cloud cloud1"></div>
+              <div class="cloud cloud2"></div>
+              <div class="cloud cloud3"></div>
+              <div class="cloud cloud4"></div>
+              <div class="cloud cloud5"></div>
+              
+              <div class="star star1"></div>
+              <div class="star star2"></div>
+              <div class="star star3"></div>
+              <div class="star star4"></div>
+              <div class="star star5"></div>
+              <div class="star star6"></div>
+              <div class="star star7"></div>
+              <div class="star star8"></div>
+              <div class="star star9"></div>
+              <div class="star star10"></div>
+              <div class="star star11"></div>
+              <div class="star star12"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Shifting from Code Writing to Reviewing</h1>
+          <p class="row subtitle">Leaning onto AI coding workflow</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">April 2, 2026</p></div>
+          <div class="post_content"><p>When I built GlobeTrotte last year, vibe-coding had just begun gaining traction but I was the &ldquo;weird guy&rdquo; who coded everything by hand. I spent a little over 4 weeks building the backend service (Go), iOS app (SwiftUI), Android app (Jetpack Compose), and web (TanStack) all by myself. I like to think that&rsquo;s pretty fast for an app of that level of complexity. The tradeoff here however, was that I have almost no time to &ldquo;handle the business side&rdquo;.</p>
+<p>I wrote about my early skepticism on AI coding <a href="/blog/2025-07-03-early-takes-on-vibe-coding/">back in July last year</a>. TLDR; I tried getting Windsurf&rsquo;s SWE-1 to refactor navigation on the Android app but ended up watching it spiral into compiler errors after compiler errors as it tried to &ldquo;code its way out&rdquo; by piling on even more code. At the time, I concluded that vibe-coding wasn&rsquo;t ready but one thing I missed was how much the model mattered.</p>
+        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+<a class="anchor" href="#the-inflection-point">
+    <h2 id="the-inflection-point">
+        <span class="text">The inflection point</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Building <a href="https://binhonglee.github.io/slogx">slogx</a> and <a href="https://gitnav.xyz">Git Navigator</a> was almost an entirely opposite experience. slogx was started because I was curious to explore the capabilities of Google&rsquo;s AI Studio. It definitely impressed me in terms of building good looking UI but its lack of support for <em>anything else</em> was a bottleneck that quickly prompted me to move away (especially to build the SDKs). Git Navigator was started because I wanted to see how well Google&rsquo;s Antigravity and Claude Sonnet perform. For pretty much an entire month, all my vibe-coding prompts were basically &ldquo;the graph rendered wrongly in this / that case&rdquo;. (I probably should&rsquo;ve intervened earlier but I was lazy and curious if it can eventually figure it out.) Neither could, but Claude Opus (4.5) managed to build an actual working version. I redid the algo anyway eventually with a much simpler / straightforward idea (just DFS lol), but the fact that it worked when others didn&rsquo;t, makes this an important inflection point to me.</p>
+<a class="anchor" href="#dev-velocity">
+    <h2 id="dev-velocity">
+        <span class="text">Dev Velocity</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>From here on out, most of the code for both slogx and Git Navigator was written by an LLM. I do review every single line of them but that doesn&rsquo;t always say much especially for areas which I&rsquo;m not already <em>an expert</em> of. It definitely <em>feels</em> like it&rsquo;d be faster than if I were to build it myself but I haven&rsquo;t done actual testing to know for sure. My suspicion is that it&rsquo;s faster in the first few days, maybe the first week. One month in, I can&rsquo;t tell if I&rsquo;m meaningfully ahead of where I&rsquo;d be otherwise. The LoC isn&rsquo;t dramatically higher than GlobeTrotte, but because I didn&rsquo;t write this code, I&rsquo;m significantly less familiar with my own codebase. That said, I can definitely see the development cycle being <em>significantly faster</em> if I don&rsquo;t actually do line-by-line code review and instead stick to just vibe-reviewing(?) it whenever I see something kinda sus.</p>
+<a class="anchor" href="#context-switching-tax">
+    <h2 id="context-switching-tax">
+        <span class="text">Context switching tax</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Another important shift I noticed is the nature of work itself. Before, you&rsquo;d be &ldquo;wired in&rdquo; while designing then coding where you would do deep focus work while holding the entire problem in your head. Now though, the prompting-and-waiting breaks the <em>chunk</em> where you either scroll social media while <em>waiting</em> or review and prompt a separate session in the meantime. However, this means that you&rsquo;re constantly context switching between 2 or more project / features and you&rsquo;re less of a <em>maker</em> but more of a <em>manager</em> making sure your &ldquo;subordinates&rdquo; complete their deliverables.</p>
+<a class="anchor" href="#visualizing-the-product-for-llm">
+    <h2 id="visualizing-the-product-for-llm">
+        <span class="text">Visualizing the product for LLM</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>One of the trickier things that took me too long to figure out was visualization. Like how humans need to look at the end result (print debugging, hot reload etc.) to easily self-correct and understand what went wrong, LLMs need something like this too. If you&rsquo;re building a webapp, some providers have a Chrome extension or a browser built-in for this purpose. Since I&rsquo;m building a VSCode extension, I actually didn&rsquo;t find much tooling around it (ironically lol). When I first made all the different coding agents build the graphing UI for Git Navigator, I spent a lot of time screenshotting and explaining what&rsquo;s right / wrong with it.</p>
+<p>Eventually, I figured out to make it write a script that it can run against a given folder / repo to see how the graph is sorted. Since the rendering code would order the commits (in TypeScript objects) before passing it to be rendered as UI, the script essentially just dumps the order output for easy viewing by the LLM. This cuts me out from needing to repeatedly screenshot it as LLMs can run the script, then read the output and identify if things are ordered correctly or if there&rsquo;s anything that needs fixing. I think this is probably one of my biggest lessons here, this is like an observability tool except your target audience are LLMs instead of human developers.</p>
+<a class="anchor" href="#catching-shortcuts">
+    <h2 id="catching-shortcuts">
+        <span class="text">Catching shortcuts</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>There&rsquo;s been a few times where I caught the model taking shortcuts that technically worked but were obviously wrong. One time, I asked for a complex git operation (some rebase gymnastic) and Opus 4.5 just used the TypeScript backend to create a temporary bash script and run that, instead of running it programmatically through the TypeScript backend. It worked fine locally on my machine (and any Unix based system I think) but it would break VS Code Remote scenarios where files aren&rsquo;t local, or on Windows because path separators are wrong. It&rsquo;s the kind of solution that passes every test you thought to write yet falls apart the moment a real user touches it. This is where review actually matters since LLMs <em>(largely)</em> optimize for &ldquo;does it work right now&rdquo; rather than &ldquo;is this the right solution&rdquo;. If you&rsquo;re not catching these, you&rsquo;re accumulating tech debt at LLM speed.</p>
+<a class="anchor" href="#catching-product-gaps">
+    <h2 id="catching-product-gaps">
+        <span class="text">Catching product gaps</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>There are also times where the feature exists and works, but the placement or interaction is off in a &ldquo;product sense&rdquo; kinda way. One example I had was asking Codex to implement line and hunk staging for Git Navigator. We had some good planning discussions about the tri-state checkboxes, &ldquo;include/exclude&rdquo; wording instead of git jargon, inline diff expansion but, it shipped the entire picker in the side panel. This makes for a weird <em>UX ergonomics</em> because users are looking at the uncommitted changes block when they&rsquo;re deciding what to commit. So burying the granular staging controls in a separate panel means most people likely wouldn&rsquo;t even notice that it exists. I had to ask for it to be moved into the uncommitted changes block itself. Here&rsquo;s another twist, when it did, the LLM&rsquo;s first instinct was to build a new diff renderer from scratch instead of reusing the existing one used for conflict resolution. I think this is probably the <em>bull case</em> for Product Managers being the beneficiaries of vibe-coding considering that this is likely their strong suit.</p>
+<a class="anchor" href="#delete-everything-and-try-again">
+    <h2 id="delete-everything-and-try-again">
+        <span class="text">Delete everything and try again</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Fortunately, I haven&rsquo;t had to rely on this strategy too much but it does happen. I think when building one of the stack features (on Git Navigator), Codex completely misunderstood what I meant and kinda just went off the rails despite being given clear specs to follow. I discarded all the changes (thanks git), started another new session, gave it the same spec, then just let it <em>try again</em>. Funnily enough, it worked perfectly on the second run, only needed some minor tweaks before the feature is ready to be committed. I haven&rsquo;t had to resort to this too much (and I don&rsquo;t keep good enough git hygiene to always rely on it 🫣) but it&rsquo;s definitely something to keep in mind if things go weirdly wrong.</p>
+<a class="anchor" href="#wrap-up">
+    <h2 id="wrap-up">
+        <span class="text">Wrap up</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>I don&rsquo;t think I&rsquo;m going back to handwriting all the code (for now). Not because I&rsquo;m convinced it&rsquo;s faster, but because it <em>feels</em> faster. I think it also comes with a level of detachment that makes me feel more comfortable for being ruthless with code I didn&rsquo;t write while nitpicking for the ideal product experience that I want. It makes it easier to throw things away, cherry-pick only what&rsquo;s good, and not get precious about any of it. Whether that&rsquo;s a healthier relationship with code or just a different kind of laziness, you tell me 🫠.</p>
+</div>
+          <div class="tags">
+            🔖
+            <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/vibe-coding">vibe-coding</a>
+          </div>
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+          <a href="/blog/2026-03-20-mentorship/">
+            <div class="bottom_button previous_post">
+              Previous →
+              <br />
+              <br />
+              <span class="button_title">Mentorship</span>
+            </div>
+          </a>
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2026-04-02-shifting-from-code-writing-to-reviewing.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2026 <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/viewer.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+

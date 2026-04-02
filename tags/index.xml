@@ -8,7 +8,16 @@
     <language>en-us</language>
     <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
-    <lastBuildDate>Sun, 08 Feb 2026 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Apr 2026 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vibe-Coding</title>
+      <link>https://binhong.me/blog/tags/vibe-coding/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/tags/vibe-coding/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Internal Tools</title>
       <link>https://binhong.me/blog/tags/internal-tools/</link>
@@ -307,7 +316,7 @@
     </item>
     
     <item>
-      <title>DevOps</title>
+      <title>Devops</title>
       <link>https://binhong.me/blog/tags/devops/</link>
       <pubDate>Wed, 07 Aug 2019 00:00:00 -0800</pubDate>
       <author>binhong@binhong.me (BinHong Lee)</author>

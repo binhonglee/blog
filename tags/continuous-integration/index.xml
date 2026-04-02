@@ -665,7 +665,7 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod +x gitea
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;em&gt;Optionally&lt;/em&gt;, you can also verify the GPG signature of the downloaded file with Gitea&amp;rsquo;s &lt;a href=&#34;https://pgp.mit.edu/pks/lookup?op=vindex&amp;amp;fingerprint=on&amp;amp;search=0x2D9AE806EC1592E2&#34;&gt;GPG key&lt;/a&gt; for security purposes before running it.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;em&gt;Optionally&lt;/em&gt;, you can also verify the GPG signature of the downloaded file with Gitea&amp;rsquo;s &lt;a href=&#34;https://pgp.mit.edu/pks/lookup?op=vindex&amp;amp;amp;fingerprint=on&amp;amp;amp;search=0x2D9AE806EC1592E2&#34;&gt;GPG key&lt;/a&gt; for security purposes before running it.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1

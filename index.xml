@@ -8,7 +8,76 @@
     <language>en-us</language>
     <managingEditor>binhong@binhong.me (BinHong Lee)</managingEditor>
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
-    <lastBuildDate>Fri, 20 Mar 2026 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Apr 2026 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shifting from Code Writing to Reviewing</title>
+      <link>https://binhong.me/blog/2026-04-02-shifting-from-code-writing-to-reviewing/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2026-04-02-shifting-from-code-writing-to-reviewing/</guid>
+      <description>&lt;p&gt;When I built GlobeTrotte last year, vibe-coding had just begun gaining traction but I was the &amp;ldquo;weird guy&amp;rdquo; who coded everything by hand. I spent a little over 4 weeks building the backend service (Go), iOS app (SwiftUI), Android app (Jetpack Compose), and web (TanStack) all by myself. I like to think that&amp;rsquo;s pretty fast for an app of that level of complexity. The tradeoff here however, was that I have almost no time to &amp;ldquo;handle the business side&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;I wrote about my early skepticism on AI coding &lt;a href=&#34;https://binhong.me/blog/2025-07-03-early-takes-on-vibe-coding/&#34;&gt;back in July last year&lt;/a&gt;. TLDR; I tried getting Windsurf&amp;rsquo;s SWE-1 to refactor navigation on the Android app but ended up watching it spiral into compiler errors after compiler errors as it tried to &amp;ldquo;code its way out&amp;rdquo; by piling on even more code. At the time, I concluded that vibe-coding wasn&amp;rsquo;t ready but one thing I missed was how much the model mattered.&lt;/p&gt;
+        
+&lt;a class=&#34;anchor&#34; href=&#34;#the-inflection-point&#34;&gt;
+    &lt;h2 id=&#34;the-inflection-point&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;The inflection point&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Building &lt;a href=&#34;https://binhonglee.github.io/slogx&#34;&gt;slogx&lt;/a&gt; and &lt;a href=&#34;https://gitnav.xyz&#34;&gt;Git Navigator&lt;/a&gt; was almost an entirely opposite experience. slogx was started because I was curious to explore the capabilities of Google&amp;rsquo;s AI Studio. It definitely impressed me in terms of building good looking UI but its lack of support for &lt;em&gt;anything else&lt;/em&gt; was a bottleneck that quickly prompted me to move away (especially to build the SDKs). Git Navigator was started because I wanted to see how well Google&amp;rsquo;s Antigravity and Claude Sonnet perform. For pretty much an entire month, all my vibe-coding prompts were basically &amp;ldquo;the graph rendered wrongly in this / that case&amp;rdquo;. (I probably should&amp;rsquo;ve intervened earlier but I was lazy and curious if it can eventually figure it out.) Neither could, but Claude Opus (4.5) managed to build an actual working version. I redid the algo anyway eventually with a much simpler / straightforward idea (just DFS lol), but the fact that it worked when others didn&amp;rsquo;t, makes this an important inflection point to me.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#dev-velocity&#34;&gt;
+    &lt;h2 id=&#34;dev-velocity&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Dev Velocity&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;From here on out, most of the code for both slogx and Git Navigator was written by an LLM. I do review every single line of them but that doesn&amp;rsquo;t always say much especially for areas which I&amp;rsquo;m not already &lt;em&gt;an expert&lt;/em&gt; of. It definitely &lt;em&gt;feels&lt;/em&gt; like it&amp;rsquo;d be faster than if I were to build it myself but I haven&amp;rsquo;t done actual testing to know for sure. My suspicion is that it&amp;rsquo;s faster in the first few days, maybe the first week. One month in, I can&amp;rsquo;t tell if I&amp;rsquo;m meaningfully ahead of where I&amp;rsquo;d be otherwise. The LoC isn&amp;rsquo;t dramatically higher than GlobeTrotte, but because I didn&amp;rsquo;t write this code, I&amp;rsquo;m significantly less familiar with my own codebase. That said, I can definitely see the development cycle being &lt;em&gt;significantly faster&lt;/em&gt; if I don&amp;rsquo;t actually do line-by-line code review and instead stick to just vibe-reviewing(?) it whenever I see something kinda sus.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#context-switching-tax&#34;&gt;
+    &lt;h2 id=&#34;context-switching-tax&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Context switching tax&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Another important shift I noticed is the nature of work itself. Before, you&amp;rsquo;d be &amp;ldquo;wired in&amp;rdquo; while designing then coding where you would do deep focus work while holding the entire problem in your head. Now though, the prompting-and-waiting breaks the &lt;em&gt;chunk&lt;/em&gt; where you either scroll social media while &lt;em&gt;waiting&lt;/em&gt; or review and prompt a separate session in the meantime. However, this means that you&amp;rsquo;re constantly context switching between 2 or more project / features and you&amp;rsquo;re less of a &lt;em&gt;maker&lt;/em&gt; but more of a &lt;em&gt;manager&lt;/em&gt; making sure your &amp;ldquo;subordinates&amp;rdquo; complete their deliverables.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#visualizing-the-product-for-llm&#34;&gt;
+    &lt;h2 id=&#34;visualizing-the-product-for-llm&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Visualizing the product for LLM&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;One of the trickier things that took me too long to figure out was visualization. Like how humans need to look at the end result (print debugging, hot reload etc.) to easily self-correct and understand what went wrong, LLMs need something like this too. If you&amp;rsquo;re building a webapp, some providers have a Chrome extension or a browser built-in for this purpose. Since I&amp;rsquo;m building a VSCode extension, I actually didn&amp;rsquo;t find much tooling around it (ironically lol). When I first made all the different coding agents build the graphing UI for Git Navigator, I spent a lot of time screenshotting and explaining what&amp;rsquo;s right / wrong with it.&lt;/p&gt;
+&lt;p&gt;Eventually, I figured out to make it write a script that it can run against a given folder / repo to see how the graph is sorted. Since the rendering code would order the commits (in TypeScript objects) before passing it to be rendered as UI, the script essentially just dumps the order output for easy viewing by the LLM. This cuts me out from needing to repeatedly screenshot it as LLMs can run the script, then read the output and identify if things are ordered correctly or if there&amp;rsquo;s anything that needs fixing. I think this is probably one of my biggest lessons here, this is like an observability tool except your target audience are LLMs instead of human developers.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#catching-shortcuts&#34;&gt;
+    &lt;h2 id=&#34;catching-shortcuts&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Catching shortcuts&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;There&amp;rsquo;s been a few times where I caught the model taking shortcuts that technically worked but were obviously wrong. One time, I asked for a complex git operation (some rebase gymnastic) and Opus 4.5 just used the TypeScript backend to create a temporary bash script and run that, instead of running it programmatically through the TypeScript backend. It worked fine locally on my machine (and any Unix based system I think) but it would break VS Code Remote scenarios where files aren&amp;rsquo;t local, or on Windows because path separators are wrong. It&amp;rsquo;s the kind of solution that passes every test you thought to write yet falls apart the moment a real user touches it. This is where review actually matters since LLMs &lt;em&gt;(largely)&lt;/em&gt; optimize for &amp;ldquo;does it work right now&amp;rdquo; rather than &amp;ldquo;is this the right solution&amp;rdquo;. If you&amp;rsquo;re not catching these, you&amp;rsquo;re accumulating tech debt at LLM speed.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#catching-product-gaps&#34;&gt;
+    &lt;h2 id=&#34;catching-product-gaps&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Catching product gaps&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;There are also times where the feature exists and works, but the placement or interaction is off in a &amp;ldquo;product sense&amp;rdquo; kinda way. One example I had was asking Codex to implement line and hunk staging for Git Navigator. We had some good planning discussions about the tri-state checkboxes, &amp;ldquo;include/exclude&amp;rdquo; wording instead of git jargon, inline diff expansion but, it shipped the entire picker in the side panel. This makes for a weird &lt;em&gt;UX ergonomics&lt;/em&gt; because users are looking at the uncommitted changes block when they&amp;rsquo;re deciding what to commit. So burying the granular staging controls in a separate panel means most people likely wouldn&amp;rsquo;t even notice that it exists. I had to ask for it to be moved into the uncommitted changes block itself. Here&amp;rsquo;s another twist, when it did, the LLM&amp;rsquo;s first instinct was to build a new diff renderer from scratch instead of reusing the existing one used for conflict resolution. I think this is probably the &lt;em&gt;bull case&lt;/em&gt; for Product Managers being the beneficiaries of vibe-coding considering that this is likely their strong suit.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#delete-everything-and-try-again&#34;&gt;
+    &lt;h2 id=&#34;delete-everything-and-try-again&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Delete everything and try again&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Fortunately, I haven&amp;rsquo;t had to rely on this strategy too much but it does happen. I think when building one of the stack features (on Git Navigator), Codex completely misunderstood what I meant and kinda just went off the rails despite being given clear specs to follow. I discarded all the changes (thanks git), started another new session, gave it the same spec, then just let it &lt;em&gt;try again&lt;/em&gt;. Funnily enough, it worked perfectly on the second run, only needed some minor tweaks before the feature is ready to be committed. I haven&amp;rsquo;t had to resort to this too much (and I don&amp;rsquo;t keep good enough git hygiene to always rely on it 🫣) but it&amp;rsquo;s definitely something to keep in mind if things go weirdly wrong.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
+    &lt;h2 id=&#34;wrap-up&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;I don&amp;rsquo;t think I&amp;rsquo;m going back to handwriting all the code (for now). Not because I&amp;rsquo;m convinced it&amp;rsquo;s faster, but because it &lt;em&gt;feels&lt;/em&gt; faster. I think it also comes with a level of detachment that makes me feel more comfortable for being ruthless with code I didn&amp;rsquo;t write while nitpicking for the ideal product experience that I want. It makes it easier to throw things away, cherry-pick only what&amp;rsquo;s good, and not get precious about any of it. Whether that&amp;rsquo;s a healthier relationship with code or just a different kind of laziness, you tell me 🫠.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Mentorship</title>
       <link>https://binhong.me/blog/2026-03-20-mentorship/</link>
@@ -433,7 +502,7 @@
     &lt;/svg&gt;&lt;p class=&#34;description&#34;&gt;
       Found a pretty horrific dark pattern with Instagram. If you try to log in on mobile web, it fails with ‘incorrect password’. I double check… it’s right, it’s just not working. Gave up, installed the app, password is fine. Tried again today just to see… this time I get the following error message. Looks like a translation key is missing and it’s serving me the backend name for it? FakeIncorrectPassword ?? Are you shitting me?
     &lt;/p&gt;&lt;div class=&#34;image&#34;&gt;
-      &lt;img src=&#34;https://binhong.me/blog/2025-10-31-leaked-fakeincorrectpassword//blog/624099990_18059047814338384_6804582354372308281_n_2741826402075625002.jpg&#34; alt=&#34;Post image&#34; loading=&#34;lazy&#34;&gt;
+      &lt;img src=&#34;https://binhong.me/blog/2025-10-31-leaked-fakeincorrectpassword//blog/624099990_18059047814338384_6804582354372308281_n_2407761658502399090.jpg&#34; alt=&#34;Post image&#34; loading=&#34;lazy&#34;&gt;
     &lt;/div&gt;&lt;/a&gt;
 &lt;/div&gt;
   
@@ -2022,7 +2091,6 @@
       <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/2025-07-03-early-takes-on-vibe-coding/</guid>
       <description>&lt;p&gt;I keep hearing about vibe-coding and I&amp;rsquo;ve always written the majority of code myself. While at Meta, I got a chance to try out CodeCompose. It worked really well as an autocomplete but when it tried to do anything more than 5 lines at a time, it would - on many occasions - commit bugs that aren&amp;rsquo;t immediately obvious at first sight. Generally, I&amp;rsquo;ve caught them by looking at the generated code and wondering &amp;ldquo;huh this isn&amp;rsquo;t how I&amp;rsquo;d do this, why?&amp;rdquo;. That said, it definitely helped me code and ship faster especially on mundane tasks. Vibe-coding though, seems like taking it to a whole new level (using even less supervision and care on the code being committed).&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/2025-05-04-the-opinionated-engineer/&#34;&gt;(The Opinionated Engineer)&lt;/a&gt; where I share my strong opinions on engineering practices.&lt;/em&gt;&lt;/p&gt;
         
 &lt;a class=&#34;anchor&#34; href=&#34;#perfect-for-small-isolated-problems&#34;&gt;
     &lt;h2 id=&#34;perfect-for-small-isolated-problems&#34;&gt;
@@ -5075,7 +5143,7 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chmod +x gitea
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;em&gt;Optionally&lt;/em&gt;, you can also verify the GPG signature of the downloaded file with Gitea&amp;rsquo;s &lt;a href=&#34;https://pgp.mit.edu/pks/lookup?op=vindex&amp;amp;fingerprint=on&amp;amp;search=0x2D9AE806EC1592E2&#34;&gt;GPG key&lt;/a&gt; for security purposes before running it.&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;em&gt;Optionally&lt;/em&gt;, you can also verify the GPG signature of the downloaded file with Gitea&amp;rsquo;s &lt;a href=&#34;https://pgp.mit.edu/pks/lookup?op=vindex&amp;amp;amp;fingerprint=on&amp;amp;amp;search=0x2D9AE806EC1592E2&#34;&gt;GPG key&lt;/a&gt; for security purposes before running it.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
