@@ -8,6 +8,9 @@
       "name": "project_presentation",
       "url": "project-presentation"
     }, {
+      "name": "dangerous_session_pattern",
+      "url": "2026-04-24-quick-fix-for-dangerous-session-pattern"
+    }, {
       "name": "shift_from_write_to_review",
       "url": "2026-04-02-shifting-from-code-writing-to-reviewing"
     }, {

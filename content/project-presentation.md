@@ -25,9 +25,9 @@ Here are some of the pieces that's been released (or planned) thus far:
 - [Leaked `FakeIncorrectPassword`](/blog/2025-10-31-leaked-fakeincorrectpassword)
 - [FB accounts created without Messenger](/blog/2025-11-28-fb-accounts-without-messenger)
 - [Securing Logged Out Internal Settings](/blog/2026-02-08-securing-logged-out-internal-settings)
+- [Quick Fix for a Dangerous Session Pattern](/blog/2026-04-24-quick-fix-for-dangerous-session-pattern)
 - One liner increasing over 3M MAP
 - Threads Launch
 - Password Encryption Gap
 - Everyone, everything, logged out all at once
 - 0-click account takeover
-- Quick Fix for a Dangerous Session Pattern (pending: project public launch lol)
