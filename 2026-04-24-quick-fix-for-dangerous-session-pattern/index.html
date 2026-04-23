@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=0.75">
+    
+    <title>Quick Fix for a Dangerous Session Pattern - BinHong Lee&#39;s Blog</title>
+    
+    <meta name="description" content="With the recent announcement of Meta Account, I wanted to share a small incident on how I helped mitigate one of the more glaring privacy issues that came up during development. As you might know, this is a brand new account type (different from the existing one), so internally there&rsquo;s a simple function (something like session.isNewAccountType()) attached to your session for easy reference when needed, like showing different UI for different account types. But what about before you log in?">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Quick Fix for a Dangerous Session Pattern">
+    <meta property="og:description" content="Preventing potential privacy leaks before they happen">
+    <meta name="twitter:description" content="Preventing potential privacy leaks before they happen">
+    <meta name="twitter:title" content="Quick Fix for a Dangerous Session Pattern"><meta property="article:published_time" 2026-04-24T00:00:00-08:00 />
+    <meta property="article:modified_time" 2026-04-24T00:00:00-08:00 />
+    <meta property="og:image" content="https://binhong.me/blog/preview/dangerous_session_pattern.jpg">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:width" content="1200">
+    <meta name="twitter:image" content="https://binhong.me/blog/preview/dangerous_session_pattern.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="max-image-preview:large">
+    <meta name="image" content="https://binhong.me/blog/preview/dangerous_session_pattern.jpg" />
+    <meta name="twitter:site" content="@">
+    <meta name="author" content="BinHong Lee">
+    <meta property="og:profile:first_name" content="BinHong">
+    <meta property="og:profile:last_name" content="Lee">
+    <meta property="og:username" content="binhong">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="BinHong Lee&#39;s Blog">
+    <meta name="twitter:site" content="@binhonglee">
+    <meta name="fediverse:creator" content="@bh@social.lol">
+    <link href="https://social.lol/@bh" rel="me">
+    
+    <link href="https://binhong.me/blog/style.css?v=1759946748080" rel="stylesheet">
+    <link href="https://binhong.me/blog/darkMode.css?v=1754287594183" rel="stylesheet">
+    <link href="https://binhong.me/blog/dark-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/blog/light-syntax.css?v=1754290957202" rel="stylesheet">
+    <link href="https://binhong.me/fonts/fonts.css?v=1761449005615" rel="stylesheet">
+    <link href="https://binhong.me/threads/threads.css" rel="stylesheet">
+    
+    
+    <link rel="icon" href="https://binhong.me/blog/img/profile.png" />
+    
+    <meta name="generator" content="Hugo 0.160.1">
+    
+    </head>
+  <body class="single">
+    <input class="dark_mode_toggle" type="checkbox" id="darkModeToggle">
+    <div class="wrapper">
+      <div class="content">
+        <div class="dropdown">
+          <button class="dropdown_toggle" aria-haspopup="true" aria-controls="dropdown_menu">+</button>
+          <div class="header_links" id="dropdown_menu" aria-labelledby="dropdown_toggle" role="menu">
+            <a class="link" href="https://binhong.me/" role="menuitem">About</a>
+            <p>|</p>
+            <a class="link" href="https://binhong.me/blog/" role="menuitem">Blog</a>
+            <p>|</p>
+            <div class="webring link" role="menuitem">
+              <a class="webring_toggle">Webring</a>
+              <div class="webring_links">
+                <a class="link" href="https://ringdt.rapid.workers.dev/prev?from=https://binhong.me">Prev</a>
+                <hr />
+                <a class="link" href="https://ringdt.rapid.workers.dev/next?from=https://binhong.me">Next</a>    
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page_of_title">
+          <div class="secondary_block">
+            <p class="name-title">Blog</p>
+          </div>
+        </div>
+        <div class="dark_mode_toggle_wrapper">
+          <div class="toggle-container">
+            <label for="darkModeToggle" class="toggle-label">
+              <div class="background-layer day-bg"></div>
+              <div class="background-layer night-bg"></div>
+              
+              <div class="toggle-slider">
+                <div class="sun-rays"></div>
+                <div class="moon-craters">
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                  <div class="crater"></div>
+                </div>
+              </div>
+              
+              <div class="cloud cloud1"></div>
+              <div class="cloud cloud2"></div>
+              <div class="cloud cloud3"></div>
+              <div class="cloud cloud4"></div>
+              <div class="cloud cloud5"></div>
+              
+              <div class="star star1"></div>
+              <div class="star star2"></div>
+              <div class="star star3"></div>
+              <div class="star star4"></div>
+              <div class="star star5"></div>
+              <div class="star star6"></div>
+              <div class="star star7"></div>
+              <div class="star star8"></div>
+              <div class="star star9"></div>
+              <div class="star star10"></div>
+              <div class="star star11"></div>
+              <div class="star star12"></div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+
+    <article class="content_body primary_block projects">
+      <main class="article_body">
+        <div class="active">
+          <h1 class="row title">Quick Fix for a Dangerous Session Pattern</h1>
+          <p class="row subtitle">Preventing potential privacy leaks before they happen</p>
+          <div class="row author">
+            <p>BinHong Lee</p>
+            <p class="right">April 24, 2026</p></div>
+          <div class="post_content"><p>With <a href="https://about.fb.com/news/2026/04/meta-account/">the recent announcement of Meta Account</a>, I wanted to share a small incident on how I helped mitigate one of the more glaring privacy issues that came up during development. As you might know, this is a brand new account type (different from the existing one), so internally there&rsquo;s a simple function (something like <code>session.isNewAccountType()</code>) attached to your session for easy reference when needed, like showing different UI for different account types. But what about before you log in?</p>
+<p><em>This is part of a series <a href="/blog/project-presentation/">(Project Presentation)</a> where I share stories of my past projects.</em></p>
+<a class="anchor" href="#background">
+    <h2 id="background">
+        <span class="text">Background</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>One random afternoon, the tech lead on the login team came to me (mainly because I was like the only other person in the office) and asked, &ldquo;Isn&rsquo;t it a bad practice to use this function <code>genSession_DO_NOT_USE_DANGEROUSLY_IMPERSONATE()</code>?&rdquo; And I was like, &ldquo;Uh yeah, that&rsquo;s why it&rsquo;s named that way.&rdquo; We asked the PR author why they decided to do this. Turns out, the team that built the <code>session.isNewAccountType()</code> function didn&rsquo;t build one for a logged-out session, so the only way to do the check is by creating a session impersonating that user, then calling it.</p>
+<p>Something like this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">session</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">genSession_DO_NOT_USE_DANGEROUSLY_IMPERSONATE</span><span class="p">(</span><span class="nx">uid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">session</span><span class="p">.</span><span class="nx">isNewAccountType</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* logic for new account type */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>Note: Most function and variable names are slightly altered and I&rsquo;m using JS instead of Hack for readability purposes, but it should be obvious what I&rsquo;m referring to if you&rsquo;ve worked on any product space in Meta (especially FB).</em></p>
+<p>This is a pretty dangerous pattern since you&rsquo;re leaving a dangerous <code>session</code> variable everywhere in the code that can be accidentally misused for other things, which could end up leaking privacy-sensitive information (since it&rsquo;s basically impersonating as if the user is logged in). Even if it&rsquo;s inlined, it could be unknowingly refactored in the future by people or bots (or AI) and has the same abuse problem.</p>
+<a class="anchor" href="#reaching-out">
+    <h2 id="reaching-out">
+        <span class="text">Reaching out</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>After figuring out the right owners, we set up a group chat with their team to understand why they decided to do this (or if it was just an oversight) and what level of effort they thought would be required to make this work. To my surprise, they didn&rsquo;t think this was a bad practice at all, so they opted to keep it the way it was. We scheduled a meeting to raise our concerns and align on what could or should be done here. During the meeting, they cited that a logged-out friendly version would take their team around 3 engineering weeks to build, which frankly was time they didn&rsquo;t have.</p>
+<a class="anchor" href="#discovery">
+    <h2 id="discovery">
+        <span class="text">Discovery</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>While I did join the meeting, I left most of the talking and discussing up to the tech lead and others. I focused mostly on digging into their codebase to understand how it works and why it would take 3 weeks to build (since it <em>looks</em> like it should be straightforward). I learned that the session infra is pretty convoluted (for good reason). Mainly because everything in there needs to support not just FB but also other Meta apps like IG, VR, etc. (and all their ID types). There&rsquo;s also a bunch of different abstraction layers for stuff that needs to be supported for different combinations of apps. That said, I was able to get a prototype working for FB (in limited use cases) by the end of the meeting, so I thought maybe I could build this myself in less than the aforementioned 3 weeks.</p>
+<p><em>Side note: I was between projects at the time (due to some project reprioritization) and would be going on leave for a whole month (recharge) in about 2 weeks, my manager and I decided not to start any new projects until after I returned. Since I had some free time with nothing scheduled on my timeline, I decided to take a poke at this problem myself.</em></p>
+<a class="anchor" href="#building-the-fix">
+    <h2 id="building-the-fix">
+        <span class="text">Building the fix</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>After the meeting ended, I showed my prototype to the few people in the meeting room. I told them I&rsquo;d continue to work on it and see where it goes. Anyway, about 3 or 4 days later, I got the thing working, but there were still a few things that needed cleanup. One major issue was some access token stuff that I had just randomly picked an existing token for my testing. I went back to the group chat with my working example and asked for recommendations on how to go about the access token issue. They commented on the PR and gave me some pointers on creating a new access token with limited permissions (to be used only for this purpose). After some trial and error and back-and-forth, I got a fully working fix!</p>
+<a class="anchor" href="#mitigated">
+    <h2 id="mitigated">
+        <span class="text">Mitigated</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>At this point, it had been around 1.5 weeks since the discussion on this issue started. After getting the PR approved and shipping it, the call becomes significantly cleaner and no longer bears the risk of using an impersonation session. Thereafter, I made an announcement post and specifically made sure to call this out to all the teams working in the logged-out space.</p>
+<p>The eventual version looks something like this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">session</span> <span class="o">=</span> <span class="kr">await</span> <span class="nx">genLoggedOutSession</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nx">session</span><span class="p">.</span><span class="nx">isNewAccountType</span><span class="p">(</span><span class="nx">uid</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="cm">/* logic for new account type */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><a class="anchor" href="#takeaway">
+    <h2 id="takeaway">
+        <span class="text">Takeaway</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Scary function names are there for a reason and we should definitely avoid using them whenever possible. That said, I had great peers who were able to take on the alignment discussions (especially during the meeting), which allowed me to focus on diving into their codebase during the meeting to better understand the work and complexity being discussed. I think this is probably an example of <em>code wins argument</em>, though admittedly, having free bandwidth definitely helped. While we disagreed with the owning team&rsquo;s assessment (that the original version was an acceptable practice), we didn&rsquo;t push to argue who was right since it didn&rsquo;t seem fruitful. Instead, we focused on aligning to get the right fix out. After all, the goal isn&rsquo;t to win arguments but to mitigate the potential privacy risk.</p>
+</div>
+          <div class="tags">
+            🔖
+            <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/project-presentation">Project Presentation</a>
+          </div>
+        </div>        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
+        <div class="bottom_buttons">
+          
+          
+          
+          <a href="/blog">
+            <div class="bottom_button">
+              ← Back to menu
+            </div>
+          </a>
+          
+          
+          
+        </div>
+      </main>
+    </article>
+      <footer class="content">
+        <div class="footer primary_block">
+          <div class="row">
+            <p>Fonts:</p>
+            <a href="http://vollkorn-typeface.com/" rel="noopener noreferrer nofollow" target="_blank" class="name">Vollkorn</a>,
+            <a href="https://rubjo.github.io/victor-mono/" rel="noopener noreferrer nofollow" target="_blank" class="name">Victor Mono</a>
+          </div>
+          <div class="row">
+            <p>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/2026-04-24-quick-fix-for-dangerous-session-pattern.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              |
+              <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              &copy; 2026 <a href="https://binhong.me">BinHong Lee</a>
+            </p>
+          </div>
+          <div class="row">
+            <p>
+              Powered by <a href="https://gohugo.io/" rel="noopener noreferrer nofollow" target="_blank">Hugo</a>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="https://binhong.me/darkMode.js"></script>
+    <script type="text/javascript" src="https://binhong.me/viewer.js"></script>
+    <script type="text/javascript" src="https://binhong.me/blog/secret.js"></script>
+  </body>
+</html>
+
