@@ -10,6 +10,92 @@
     <webMaster>binhong@binhong.me (BinHong Lee)</webMaster>
     <lastBuildDate>Fri, 24 Apr 2026 00:00:00 -0800</lastBuildDate><atom:link href="https://binhong.me/blog/tags/project-presentation/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Quick Fix for a Dangerous Session Pattern</title>
+      <link>https://binhong.me/blog/2026-04-24-quick-fix-for-dangerous-session-pattern/</link>
+      <pubDate>Fri, 24 Apr 2026 00:00:00 -0800</pubDate>
+      <author>binhong@binhong.me (BinHong Lee)</author>
+      <guid>https://binhong.me/blog/2026-04-24-quick-fix-for-dangerous-session-pattern/</guid>
+      <description>&lt;p&gt;With &lt;a href=&#34;https://about.fb.com/news/2026/04/meta-account/&#34;&gt;the recent announcement of Meta Account&lt;/a&gt;, I wanted to share a small incident on how I helped mitigate one of the more glaring privacy issues that came up during development. As you might know, this is a brand new account type (different from the existing one), so internally there&amp;rsquo;s a simple function (something like &lt;code&gt;session.isNewAccountType()&lt;/code&gt;) attached to your session for easy reference when needed, like showing different UI for different account types. But what about before you log in?&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/project-presentation/&#34;&gt;(Project Presentation)&lt;/a&gt; where I share stories of my past projects.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#background&#34;&gt;
+    &lt;h2 id=&#34;background&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Background&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;One random afternoon, the tech lead on the login team came to me (mainly because I was like the only other person in the office) and asked, &amp;ldquo;Isn&amp;rsquo;t it a bad practice to use this function &lt;code&gt;genSession_DO_NOT_USE_DANGEROUSLY_IMPERSONATE()&lt;/code&gt;?&amp;rdquo; And I was like, &amp;ldquo;Uh yeah, that&amp;rsquo;s why it&amp;rsquo;s named that way.&amp;rdquo; We asked the PR author why they decided to do this. Turns out, the team that built the &lt;code&gt;session.isNewAccountType()&lt;/code&gt; function didn&amp;rsquo;t build one for a logged-out session, so the only way to do the check is by creating a session impersonating that user, then calling it.&lt;/p&gt;
+&lt;p&gt;Something like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;session&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;genSession_DO_NOT_USE_DANGEROUSLY_IMPERSONATE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;uid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;session&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;isNewAccountType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;cm&#34;&gt;/* logic for new account type */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;em&gt;Note: Function names are slightly altered and I&amp;rsquo;m using JS instead of Hack for readability purposes, but it should be obvious what I&amp;rsquo;m referring to if you&amp;rsquo;ve worked on any product space in Meta (especially FB).&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is a pretty dangerous pattern since you&amp;rsquo;re leaving a dangerous &lt;code&gt;session&lt;/code&gt; variable everywhere in the code that can be accidentally misused for other things, which could end up leaking privacy-sensitive information (since it&amp;rsquo;s basically impersonating as if the user is logged in). Even if it&amp;rsquo;s inlined, it could be unknowingly refactored in the future by people or bots (or AI) and has the same abuse problem.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#reaching-out&#34;&gt;
+    &lt;h2 id=&#34;reaching-out&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Reaching out&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;After figuring out the right owners, we set up a group chat with their team to understand why they decided to do this (or if it was just an oversight) and what level of effort they thought would be required to make this work. To my surprise, they didn&amp;rsquo;t think this was a bad practice at all, so they opted to keep it the way it was. We scheduled a meeting to raise our concerns and align on what could or should be done here. During the meeting, they cited that a logged-out friendly version would take their team around 3 engineering weeks to build, which frankly was time they didn&amp;rsquo;t have.&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#discovery&#34;&gt;
+    &lt;h2 id=&#34;discovery&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Discovery&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;While I did join the meeting, I left most of the talking and discussing up to the tech lead and others. I focused mostly on digging into their codebase to understand how it works and why it would take 3 weeks to build (since it &lt;em&gt;looks&lt;/em&gt; like it should be straightforward). I learned that the session infra is pretty convoluted (for good reason). Mainly because everything in there needs to support not just FB but also other Meta apps like IG, VR, etc. (and all their ID types). There&amp;rsquo;s also a bunch of different abstraction layers for stuff that needs to be supported for different combinations of apps. That said, I was able to get a prototype working for FB (in limited use cases) by the end of the meeting, so I thought maybe I could build this myself in less than the aforementioned 3 weeks.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Side note: I was between projects at the time (due to some project reprioritization) and would be going on leave for a whole month (recharge) in about 2 weeks, my manager and I decided not to start any new projects until after I returned. Since I had some free time with nothing scheduled on my timeline, I decided to take a poke at this problem myself.&lt;/em&gt;&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#building-the-fix&#34;&gt;
+    &lt;h2 id=&#34;building-the-fix&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Building the fix&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;After the meeting ended, I showed my prototype to the few people in the meeting room. I told them I&amp;rsquo;d continue to work on it and see where it goes. Anyway, about 3 or 4 days later, I got the thing working, but there were still a few things that needed cleanup. One major issue was some access token stuff that I had just randomly picked an existing token for my testing. I went back to the group chat with my working example and asked for recommendations on how to go about the access token issue. They commented on the PR and gave me some pointers on creating a new access token with limited permissions (to be used only for this purpose). After some trial and error and back-and-forth, I got a fully working fix!&lt;/p&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#mitigated&#34;&gt;
+    &lt;h2 id=&#34;mitigated&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Mitigated&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;At this point, it had been around 1.5 weeks since the discussion on this issue started. After getting the PR approved and shipping it, the call becomes significantly cleaner and no longer bears the risk of using an impersonation session. Thereafter, I made an announcement post and specifically made sure to call this out to all the teams working in the logged-out space.&lt;/p&gt;
+&lt;p&gt;The eventual version looks something like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;session&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;kr&#34;&gt;await&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;genLoggedOutSession&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;session&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;isNewAccountType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;uid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;cm&#34;&gt;/* logic for new account type */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;a class=&#34;anchor&#34; href=&#34;#takeaway&#34;&gt;
+    &lt;h2 id=&#34;takeaway&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Takeaway&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h2&gt;
+&lt;/a&gt;
+&lt;p&gt;Scary function names are there for a reason and we should definitely avoid using them whenever possible. That said, I had great peers who were able to take on the alignment discussions (especially during the meeting), which allowed me to focus on diving into their codebase during the meeting to better understand the work and complexity being discussed. I think this is probably an example of &lt;em&gt;code wins argument&lt;/em&gt;, though admittedly, having free bandwidth definitely helped. While we disagreed with the owning team&amp;rsquo;s assessment (that the original version was an acceptable practice), we didn&amp;rsquo;t push to argue who was right since it didn&amp;rsquo;t seem fruitful. Instead, we focused on aligning to get the right fix out. After all, the goal isn&amp;rsquo;t to win arguments but to mitigate the potential privacy risk.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Securing Logged Out Internal Settings</title>
       <link>https://binhong.me/blog/2026-02-08-securing-logged-out-internal-settings/</link>
       <pubDate>Sun, 08 Feb 2026 00:00:00 -0800</pubDate>
