@@ -12,6 +12,8 @@ With [the recent announcement of Meta Account](https://about.fb.com/news/2026/04
 
 _This is part of a series [(Project Presentation)](/blog/project-presentation/) where I share stories of my past projects._
 
+{{< newsletter >}}
+
 ## Background
 
 One random afternoon, the tech lead on the login team came to me (mainly because I was like the only other person in the office) and asked, "Isn't it a bad practice to use this function `genSession_DO_NOT_USE_DANGEROUSLY_IMPERSONATE()`?" And I was like, "Uh yeah, that's why it's named that way." We asked the PR author why they decided to do this. Turns out, the team that built the `session.isNewAccountType()` function didn't build one for a logged-out session, so the only way to do the check is by creating a session impersonating that user, then calling it.
