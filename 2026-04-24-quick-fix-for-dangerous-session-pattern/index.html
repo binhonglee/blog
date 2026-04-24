@@ -119,6 +119,21 @@
             <p class="right">April 24, 2026</p></div>
           <div class="post_content"><p>With <a href="https://about.fb.com/news/2026/04/meta-account/">the recent announcement of Meta Account</a>, I wanted to share a small incident on how I helped mitigate one of the more glaring privacy issues that came up during development. As you might know, this is a brand new account type (different from the existing one), so internally there&rsquo;s a simple function (something like <code>session.isNewAccountType()</code>) attached to your session for easy reference when needed, like showing different UI for different account types. But what about before you log in?</p>
 <p><em>This is part of a series <a href="/blog/project-presentation/">(Project Presentation)</a> where I share stories of my past projects.</em></p>
+        <div class="newsletter">
+          <h2>Subscribe to the newsletter today!</h2>
+          <form action="https://binhong.me/newsletter/subscribe" method="post">
+              <input type="email" name="email" placeholder="email@domain.com"/>
+              <noscript>
+                <br />
+                <label>You will need to manually get this secret from <a href="https://binhong.me/newsletter/secret">here</a></label>
+                <input name="secret" placeholder="secret"/>
+                <br />
+              </noscript>
+              <input type="hidden" name="secret" id="secret" value="123potato123"/>
+              <button type="submit" name="submit" class="subscribe">Subscribe</button>
+          </form>
+          You can also checkout previous issues <a href="https://binhong.me/newsletter" target="_blank" style="text-decoration: underline;">here</a> before deciding.
+        </div>
 <a class="anchor" href="#background">
     <h2 id="background">
         <span class="text">Background</span>

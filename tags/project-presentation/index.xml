@@ -17,6 +17,7 @@
       <guid>https://binhong.me/blog/2026-04-24-quick-fix-for-dangerous-session-pattern/</guid>
       <description>&lt;p&gt;With &lt;a href=&#34;https://about.fb.com/news/2026/04/meta-account/&#34;&gt;the recent announcement of Meta Account&lt;/a&gt;, I wanted to share a small incident on how I helped mitigate one of the more glaring privacy issues that came up during development. As you might know, this is a brand new account type (different from the existing one), so internally there&amp;rsquo;s a simple function (something like &lt;code&gt;session.isNewAccountType()&lt;/code&gt;) attached to your session for easy reference when needed, like showing different UI for different account types. But what about before you log in?&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;This is part of a series &lt;a href=&#34;https://binhong.me/blog/project-presentation/&#34;&gt;(Project Presentation)&lt;/a&gt; where I share stories of my past projects.&lt;/em&gt;&lt;/p&gt;
+        
 &lt;a class=&#34;anchor&#34; href=&#34;#background&#34;&gt;
     &lt;h2 id=&#34;background&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Background&lt;/span&gt;
