@@ -6,8 +6,14 @@
     
     <title>GitHub Action Runner Alternatives - BinHong Lee&#39;s Blog</title>
     
-    <meta name="description" content="Update: This article is now outdated. Check out this newer article instead!
-A few months ago, I wrote about my attempt and reasoning behind managing my own fleet of self-hosted GitHub Action Runners. I&rsquo;ve since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub&rsquo;s default runners. This article is just a quick summary of what I&rsquo;ve found.
+    <meta name="description" content="Last Updated: Apr 24th 2026
+A while ago, I wrote about my attempt and reasoning behind managing my own fleet of self-hosted GitHub Action Runners. I&rsquo;ve since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub&rsquo;s default runners. This article is just a quick summary of what I&rsquo;ve found.
+
+    
+        Hosted Runners
+        #
+    
+
 
     
         Linux Runners Comparison
@@ -30,86 +36,65 @@ A few months ago, I wrote about my attempt and reasoning behind managing my own 
           
               Blacksmith
               3,000 minutes/month
-              $0.004/min (50% of GitHub)
+              $0.004/min
               2x faster builds, 4x faster cache
               Unlimited concurrency, gaming CPUs
           
           
-              BuildJet
-              $5 one-time credit
-              $0.004/min (50% of GitHub)
-              2x faster (variable CPU models)
-              64 AMD &#43; 32 ARM concurrent vCPUs, 20GB cache
-          
-          
-              CarbonRunner
-              ❌ None
-              $0.006/min (25% cheaper than GitHub)
-              Standard performance
-              90% lower CO2 emissions, 42 regions
-          
-          
-              Cirrus Runners
-              ❌ None
-              $150/month unlimited
-              2-3x faster performance
-              Fixed pricing, no minute limits, limited concurrency
-          
-          
               Depot
               ❌ None
-              $20 for 20,000 minutes, then $0.004/min
+              $20 for 2,000 minutes, then $0.004/min
               30% faster, 10x faster cache
-              Docker-focused, per-second billing, unlimited cache
+              Docker-focused
           
           
               GitHub
               2,000 minutes/month
-              $0.008/min
+              $0.006/min
               Baseline
               Official support
           
           
               Namespace
               ❌ None
-              $0.003
-              Fastest x64 performance
+              $0.003/min
+              2x-10x faster
               250GB storage, SSH access
           
           
               puzl.cloud
-              400 vCPU-minutes/month
-              $0.0008/min (€0.000008/vCPU-sec)
-              2x faster, 5x cheaper
-              Real-time per-second billing, 12vCPU per job
+              400 vCPU-minutes/month, 800 GB-minutes/month
+              €0.00002/vCPU second &#43; €0.000001/GB second
+              2x faster
+              Fine grained per vCPU per GB RAM usage billing
           
           
-              Sprinters.sh
-              ❌ None
-              Per-job pricing (10x cheaper)
-              Standard performance
-              Self-hosted in AWS, per-job pricing
+              Shipfox
+              3,000 minutes/month
+              $0.004/min
+              2x faster builds
+              Unlimited concurrency
           
           
-              RunsOn
-              Free for non-commercial
-              €300/year &#43; $0.001-0.003/min (AWS costs)
-              30% faster, 90% cheaper
-              Self-hosted in AWS, GPUs, Windows
+              Tenki
+              1,700 minutes/month
+              $0.003/min
+              30% faster
+              Bundled AI Code Reviewer service
           
           
               Ubicloud
-              1,250 minutes (~$1 credit)
-              $0.0008/min (10x cheaper)
+              ~1,250 minutes ($1 credit)
+              $0.0008/min
               Newer CPUs, good performance
               Open source, Hetzner hardware
           
           
               WarpBuild
               ❌ None
-              $0.004/min (50% of GitHub)
-              2x faster, 50% cheaper
-              Snapshots, unlimited cache
+              $0.004/min
+              2x faster
+              Snapshots
           
       
     
@@ -127,6 +112,7 @@ A few months ago, I wrote about my attempt and reasoning behind managing my own 
       
           
               Provider
+              Free tier
               Pricing
               Hardware
               Performance
@@ -135,31 +121,51 @@ A few months ago, I wrote about my attempt and reasoning behind managing my own 
       
       
           
-              Cirrus Runners
-              $150/month unlimited
-              M4 Pro (latest)
-              2x faster performance
-              Fixed pricing, no minute limits, limited concurrency
+              Blacksmith
+              ~98 minutes/month
+              $0.08/min
+              M4 Macs
+              2x faster builds, 4x faster cache
+              Unlimited concurrency
+          
+          
+              GetMac
+              100 minutes/month
+              ~$0.012/min
+              M4 Macs
+              3x faster builds
+              100% renewable energy
           
           
               GitHub
-              $0.08/min (10x multiplier)
-              Intel Mac &#43; M2 Pro XL ($0.16/min)
+              200 minutes/month
+              $0.062/min
+              Intel Mac &#43; M2 Pro XL ($0.102/min)
               Baseline
               Official support
           
           
               Namespace
+              ❌ None
               $0.09
               M4 Pro &#43; M2 Pro
-              Fastest available
+              Up to 3x faster
               SSH/VNC access, bleeding-edge images
           
           
+              Tenki
+              ❌ None
+              $0.05/min
+              M4 Pro
+              30% faster
+              Bundled AI Code Reviewer service
+          
+          
               WarpBuild
-              $0.04/min (50% cheaper)
-              M2 Pro
-              25% faster, 50% cheaper
+              ❌ None
+              $0.08/min
+              M4 Pro
+              25% faster
               Pay-per-use, macOS 13/14 support
           
       
@@ -168,17 +174,17 @@ A few months ago, I wrote about my attempt and reasoning behind managing my own 
 
 
     
-        Widget
+        Bring Your Own Cloud
         #
     
 
-I don&rsquo;t have a better place to put this but I built a very basic widget that takes into account of the &ldquo;supposed&rdquo; faster speed (leading to less action minutes) with each of their rates so you can find out which platform fits you best based on your usage (with GitHub&rsquo;s Action Runner minutes as baseline).">
+WIP: I&rsquo;m working on a new BYOC section that will re-add some removed services and a few other services onto this page. Please bear with me while I try to do my research (and math). Thanks!">
     <meta property="og:type" content="article">
     <meta property="og:title" content="GitHub Action Runner Alternatives">
     <meta property="og:description" content="Cheaper hosted 3rd party solutions">
     <meta name="twitter:description" content="Cheaper hosted 3rd party solutions">
-    <meta name="twitter:title" content="GitHub Action Runner Alternatives"><meta property="article:published_time" 2025-09-02T00:00:00-08:00 />
-    <meta property="article:modified_time" 2025-09-02T00:00:00-08:00 />
+    <meta name="twitter:title" content="GitHub Action Runner Alternatives"><meta property="article:published_time" 0001-01-01T00:00:00Z />
+    <meta property="article:modified_time" 0001-01-01T00:00:00Z />
     <meta property="og:image" content="https://binhong.me/blog/preview/gh_action_runner_alt.jpg">
     <meta property="og:image:height" content="600">
     <meta property="og:image:width" content="1200">
@@ -281,15 +287,20 @@ I don&rsquo;t have a better place to put this but I built a very basic widget th
           <h1 class="row title">GitHub Action Runner Alternatives</h1>
           <p class="row subtitle">Cheaper hosted 3rd party solutions</p>
           <div class="row author">
-            <p>BinHong Lee</p>
-            <p class="right">September 2, 2025</p></div>
-          <div class="post_content"><p><em>Update: This article is now outdated. Check out <a href="/blog/github-action-runner-alternatives">this newer article instead</a>!</em></p>
-<p>A few months ago, I wrote about my attempt and reasoning behind <a href="/blog/2025-04-25-self-hosted-github-runners/">managing my own fleet of self-hosted GitHub Action Runners</a>. I&rsquo;ve since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub&rsquo;s default runners. This article is just a quick summary of what I&rsquo;ve found.</p>
-<a class="anchor" href="#linux-runners-comparison">
-    <h2 id="linux-runners-comparison">
-        <span class="text">Linux Runners Comparison</span>
+            <p>BinHong Lee</p></div>
+          <div class="post_content"><p><em>Last Updated: Apr 24th 2026</em></p>
+<p>A while ago, I wrote about my attempt and reasoning behind <a href="/blog/2025-04-25-self-hosted-github-runners/">managing my own fleet of self-hosted GitHub Action Runners</a>. I&rsquo;ve since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub&rsquo;s default runners. This article is just a quick summary of what I&rsquo;ve found.</p>
+<a class="anchor" href="#hosted-runners">
+    <h2 id="hosted-runners">
+        <span class="text">Hosted Runners</span>
         <span class="tag">#</span>
     </h2>
+</a>
+<a class="anchor" href="#linux-runners-comparison">
+    <h3 id="linux-runners-comparison">
+        <span class="text">Linux Runners Comparison</span>
+        <span class="tag">#</span>
+    </h3>
 </a>
 <div style="padding: 20px 0;">
   <div style="overflow-x: auto;">
@@ -307,96 +318,75 @@ I don&rsquo;t have a better place to put this but I built a very basic widget th
           <tr>
               <td><a href="https://www.blacksmith.sh/">Blacksmith</a></td>
               <td>3,000 minutes/month</td>
-              <td>$0.004/min (50% of GitHub)</td>
+              <td>$0.004/min</td>
               <td>2x faster builds, 4x faster cache</td>
               <td>Unlimited concurrency, gaming CPUs</td>
           </tr>
           <tr>
-              <td><a href="https://buildjet.com/">BuildJet</a></td>
-              <td>$5 one-time credit</td>
-              <td>$0.004/min (50% of GitHub)</td>
-              <td>2x faster (variable CPU models)</td>
-              <td>64 AMD + 32 ARM concurrent vCPUs, 20GB cache</td>
-          </tr>
-          <tr>
-              <td><a href="https://carbonrunner.io/">CarbonRunner</a></td>
-              <td>❌ None</td>
-              <td>$0.006/min (25% cheaper than GitHub)</td>
-              <td>Standard performance</td>
-              <td>90% lower CO2 emissions, 42 regions</td>
-          </tr>
-          <tr>
-              <td><a href="https://cirrus-runners.app/">Cirrus Runners</a></td>
-              <td>❌ None</td>
-              <td>$150/month unlimited</td>
-              <td>2-3x faster performance</td>
-              <td>Fixed pricing, no minute limits, limited concurrency</td>
-          </tr>
-          <tr>
               <td><a href="http://depot.dev/">Depot</a></td>
               <td>❌ None</td>
-              <td>$20 for 20,000 minutes, then $0.004/min</td>
+              <td>$20 for 2,000 minutes, then $0.004/min</td>
               <td>30% faster, 10x faster cache</td>
-              <td>Docker-focused, per-second billing, unlimited cache</td>
+              <td>Docker-focused</td>
           </tr>
           <tr>
               <td>GitHub</td>
               <td>2,000 minutes/month</td>
-              <td>$0.008/min</td>
+              <td>$0.006/min</td>
               <td>Baseline</td>
               <td>Official support</td>
           </tr>
           <tr>
               <td><a href="https://namespace.so/">Namespace</a></td>
               <td>❌ None</td>
-              <td>$0.003</td>
-              <td>Fastest x64 performance</td>
+              <td>$0.003/min</td>
+              <td>2x-10x faster</td>
               <td>250GB storage, SSH access</td>
           </tr>
           <tr>
               <td><a href="https://puzl.cloud/">puzl.cloud</a></td>
-              <td>400 vCPU-minutes/month</td>
-              <td>$0.0008/min (€0.000008/vCPU-sec)</td>
-              <td>2x faster, 5x cheaper</td>
-              <td>Real-time per-second billing, 12vCPU per job</td>
+              <td>400 vCPU-minutes/month, 800 GB-minutes/month</td>
+              <td>€0.00002/vCPU second + €0.000001/GB second</td>
+              <td>2x faster</td>
+              <td>Fine grained per vCPU per GB RAM usage billing</td>
           </tr>
           <tr>
-              <td><a href="https://sprinters.sh/">Sprinters.sh</a></td>
-              <td>❌ None</td>
-              <td>Per-job pricing (10x cheaper)</td>
-              <td>Standard performance</td>
-              <td>Self-hosted in AWS, per-job pricing</td>
+              <td><a href="https://www.shipfox.io/">Shipfox</a></td>
+              <td>3,000 minutes/month</td>
+              <td>$0.004/min</td>
+              <td>2x faster builds</td>
+              <td>Unlimited concurrency</td>
           </tr>
           <tr>
-              <td><a href="https://runs-on.com/">RunsOn</a></td>
-              <td>Free for non-commercial</td>
-              <td>€300/year + $0.001-0.003/min (AWS costs)</td>
-              <td>30% faster, 90% cheaper</td>
-              <td>Self-hosted in AWS, GPUs, Windows</td>
+              <td><a href="https://tenki.cloud/">Tenki</a></td>
+              <td>1,700 minutes/month</td>
+              <td>$0.003/min</td>
+              <td>30% faster</td>
+              <td>Bundled AI Code Reviewer service</td>
           </tr>
           <tr>
               <td><a href="https://www.ubicloud.com/">Ubicloud</a></td>
-              <td>1,250 minutes (~$1 credit)</td>
-              <td>$0.0008/min (10x cheaper)</td>
+              <td>~1,250 minutes ($1 credit)</td>
+              <td>$0.0008/min</td>
               <td>Newer CPUs, good performance</td>
               <td>Open source, Hetzner hardware</td>
           </tr>
           <tr>
               <td><a href="https://www.warpbuild.com/">WarpBuild</a></td>
               <td>❌ None</td>
-              <td>$0.004/min (50% of GitHub)</td>
-              <td>2x faster, 50% cheaper</td>
-              <td>Snapshots, unlimited cache</td>
+              <td>$0.004/min</td>
+              <td>2x faster</td>
+              <td>Snapshots</td>
           </tr>
       </tbody>
     </table>
   </div>
 </div>
 <a class="anchor" href="#macos-runners-comparison">
-    <h2 id="macos-runners-comparison">
+    <h3 id="macos-runners-comparison">
         <span class="text">macOS Runners Comparison</span>
         <span class="tag">#</span>
-    </h2>
+    </h3>
 </a>
 <div style="padding: 20px 0;">
   <div style="overflow-x: auto;">
@@ -404,6 +394,7 @@ I don&rsquo;t have a better place to put this but I built a very basic widget th
       <thead>
           <tr>
               <th>Provider</th>
+              <th>Free tier</th>
               <th>Pricing</th>
               <th>Hardware</th>
               <th>Performance</th>
@@ -412,40 +403,67 @@ I don&rsquo;t have a better place to put this but I built a very basic widget th
       </thead>
       <tbody>
           <tr>
-              <td><a href="https://cirrus-runners.app/">Cirrus Runners</a></td>
-              <td>$150/month unlimited</td>
-              <td>M4 Pro (latest)</td>
-              <td>2x faster performance</td>
-              <td>Fixed pricing, no minute limits, limited concurrency</td>
+              <td><a href="https://www.blacksmith.sh/">Blacksmith</a></td>
+              <td>~98 minutes/month</td>
+              <td>$0.08/min</td>
+              <td>M4 Macs</td>
+              <td>2x faster builds, 4x faster cache</td>
+              <td>Unlimited concurrency</td>
+          </tr>
+          <tr>
+              <td><a href="https://getmac.io/">GetMac</a></td>
+              <td>100 minutes/month</td>
+              <td>~$0.012/min</td>
+              <td>M4 Macs</td>
+              <td>3x faster builds</td>
+              <td>100% renewable energy</td>
           </tr>
           <tr>
               <td>GitHub</td>
-              <td>$0.08/min (10x multiplier)</td>
-              <td>Intel Mac + M2 Pro XL ($0.16/min)</td>
+              <td>200 minutes/month</td>
+              <td>$0.062/min</td>
+              <td>Intel Mac + M2 Pro XL ($0.102/min)</td>
               <td>Baseline</td>
               <td>Official support</td>
           </tr>
           <tr>
               <td><a href="https://namespace.so/">Namespace</a></td>
+              <td>❌ None</td>
               <td>$0.09</td>
               <td>M4 Pro + M2 Pro</td>
-              <td>Fastest available</td>
+              <td>Up to 3x faster</td>
               <td>SSH/VNC access, bleeding-edge images</td>
           </tr>
           <tr>
+              <td><a href="https://tenki.cloud/">Tenki</a></td>
+              <td>❌ None</td>
+              <td>$0.05/min</td>
+              <td>M4 Pro</td>
+              <td>30% faster</td>
+              <td>Bundled AI Code Reviewer service</td>
+          </tr>
+          <tr>
               <td><a href="https://www.warpbuild.com/">WarpBuild</a></td>
-              <td>$0.04/min (50% cheaper)</td>
-              <td>M2 Pro</td>
-              <td>25% faster, 50% cheaper</td>
+              <td>❌ None</td>
+              <td>$0.08/min</td>
+              <td>M4 Pro</td>
+              <td>25% faster</td>
               <td>Pay-per-use, macOS 13/14 support</td>
           </tr>
       </tbody>
     </table>
   </div>
 </div>
-<a class="anchor" href="#widget">
-    <h2 id="widget">
-        <span class="text">Widget</span>
+<a class="anchor" href="#bring-your-own-cloud">
+    <h2 id="bring-your-own-cloud">
+        <span class="text">Bring Your Own Cloud</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p><em>WIP: I&rsquo;m working on a new BYOC section that will re-add some removed services and a few other services onto this page. Please bear with me while I try to do my research (and math). Thanks!</em></p>
+<a class="anchor" href="#widgets">
+    <h2 id="widgets">
+        <span class="text">Widgets</span>
         <span class="tag">#</span>
     </h2>
 </a>
@@ -682,9 +700,8 @@ I don&rsquo;t have a better place to put this but I built a very basic widget th
 
   calculateCosts();
 </script>
-<p><em>Note: Sprinters.sh is priced per job instead of per min (like everyone else) so I didn&rsquo;t include it in the comparison above.</em></p>
-<p><em>Note2: Cirrus Runners limits on concurrency instead of minutes so the experience might vary (depending on usage).</em></p>
-<p><em>Note3: &ldquo;Speed&rdquo; is loosely defined based on acclaimed performance but not verified in any way, shape, or form.</em></p>
+<p><em>Note (Speed): loosely defined based on acclaimed performance but not verified in any way, shape, or form.</em></p>
+<p><em>Note (puzl.cloud): puzl.cloud has a rather complex calculation that heavily depends on how your job was ran rather than a fix per machine per minutes cost so I&rsquo;m using best guess estimate (of around $0.0008 - $0.0025). Check out <a href="https://runmyjob.io/#Pricing">their pricing page</a> for more details.</em></p>
 <a class="anchor" href="#wrap-up">
     <h2 id="wrap-up">
         <span class="text">Wrap up</span>
@@ -692,7 +709,32 @@ I don&rsquo;t have a better place to put this but I built a very basic widget th
     </h2>
 </a>
 <p>Obviously this is a rather simplistic view of the cost comparison (as well as the <em>speed</em> factor being unverified) between different options available in the market. Personally, I opted for Blacksmith for all my linux needs while continue to host my own M4 mac mini at home as the macOS runner (since the electricity cost is still cheaper than any of the above options).</p>
+<hr>
+<p><em>Note: This was initially released on <strong>Sept 2nd 2025</strong> but has since gained a lot more traffic than I&rsquo;ve expected so I decided to try my best in keeping this article upated. (This changelog section details dates whenever I make an edit. Or you could just lookup the commit history of this on GitHub through the &ldquo;Source&rdquo; linked at the bottom.)</em></p>
+<a class="anchor" href="#changelog">
+    <h2 id="changelog">
+        <span class="text">Changelog</span>
+        <span class="tag">#</span>
+    </h2>
+</a>
+<p>Apr 24th 2026</p>
+<ul>
+<li>Removed BuildJet (<a href="https://buildjet.com/for-github-actions/blog/we-are-shutting-down">service shutdown 😢</a>)</li>
+<li>Removed CarbonRunner (<a href="https://carbonrunner.io/">service shutdown 😢</a>)</li>
+<li>Removed Cirrus Runners (<a href="https://cirruslabs.org/">service shutdown post OpenAI acquisition</a>)</li>
+<li>Added Blacksmith to macOS runner (<a href="https://www.blacksmith.sh/blog/how-we-shipped-mac-runners-in-3-weeks">newly added</a>)</li>
+<li>Added GetMac to macOS runner</li>
+<li>Added Shipfox to linux runner</li>
+<li>Added Tenki to both linux and macOS runner</li>
+<li>Removed Sprinters.sh (will readd later to BYOC section)</li>
+<li>Removed RunsOn (will readd later to BYOC section)</li>
+</ul>
+<hr>
 </div>
+          <div class="tags">
+            🔖
+            <a style="border-radius: 5px; border-style: solid; border-width: 1px;" class="tag" href="https://binhong.me/blog/tags/github-action-runner">GitHub Action Runner</a>
+          </div>
         </div>        <div class="newsletter">
           <h2>Subscribe to the newsletter today!</h2>
           <form action="https://binhong.me/newsletter/subscribe" method="post">
@@ -712,25 +754,16 @@ I don&rsquo;t have a better place to put this but I built a very basic widget th
           
           
           
-          <a href="/blog/2025-09-19-communicating-effectively/">
+          <a href="/blog/2017-08-15-use-terminal-in-windows-with-style/">
             <div class="bottom_button">
               ← Next
               <br />
               <br />
-              <span class="button_title">Communicating Effectively</span>
+              <span class="button_title">Use Terminal in Windows with Style</span>
             </div>
           </a>
           
           
-          
-          <a href="/blog/2025-08-23-hidden-privacy-and-security-pitfalls/">
-            <div class="bottom_button previous_post">
-              Previous →
-              <br />
-              <br />
-              <span class="button_title">Hidden Privacy / Security Pitfalls</span>
-            </div>
-          </a>
           
         </div>
       </main>
@@ -744,7 +777,7 @@ I don&rsquo;t have a better place to put this but I built a very basic widget th
           </div>
           <div class="row">
             <p>
-              <a href="https://github.com/binhonglee/blog/blob/main/content/2025-09-02-github-action-runner-alternatives.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
+              <a href="https://github.com/binhonglee/blog/blob/main/content/github-action-runner-alternatives.md?plain=1" rel="noopener noreferrer nofollow" target="_blank">Source</a>
               |
               <a rel="alternate" type="application/rss+xml" href="https://binhong.me/blog/index.xml" title="BinHong Lee&#39;s Blog">RSS</a>
             </p>
