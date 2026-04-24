@@ -5,8 +5,14 @@
       "name": "social_media_search_with_llm",
       "url": "search-with-llm"
     }, {
+      "name": "opinionated_engineer",
+      "url": "the-opinionated-engineer"
+    }, {
       "name": "project_presentation",
       "url": "project-presentation"
+    }, {
+      "name": "gh_action_runner_alt",
+      "url": "github-action-runner-alternatives"
     }, {
       "name": "dangerous_session_pattern",
       "url": "2026-04-24-quick-fix-for-dangerous-session-pattern"
@@ -43,9 +49,6 @@
     }, {
       "name": "communicating_effectively",
       "url": "2025-09-19-communicating-effectively"
-    }, {
-      "name": "gh_action_runner_alt",
-      "url": "2025-09-02-github-action-runner-alternatives"
     }, {
       "name": "hidden_privacy_security_pitfalls",
       "url": "2025-08-23-hidden-privacy-and-security-pitfalls"
@@ -94,9 +97,6 @@
     }, {
       "name": "push_fearlessly_with_automated_testing",
       "url": "2025-05-04-push-fearlessly-with-automated-testing"
-    }, {
-      "name": "opinionated_engineer",
-      "url": "2025-05-04-the-opinionated-engineer"
     }, {
       "name": "self_hosted_github_runners",
       "url": "2025-04-25-self-hosted-github-runners"

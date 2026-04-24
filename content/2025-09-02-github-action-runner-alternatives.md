@@ -4,9 +4,9 @@ subtitle: "Cheaper hosted 3rd party solutions"
 date: 2025-09-02 00:00:00 -0800 GMT
 tags: []
 ss: preview/gh_action_runner_alt.jpg
-aliases:
-  - /gh_action_runner_alt/
 ---
+
+_Update: This article is now outdated. Check out [this newer article instead](/blog/github-action-runner-alternatives)!_
 
 A few months ago, I wrote about my attempt and reasoning behind [managing my own fleet of self-hosted GitHub Action Runners](/blog/2025-04-25-self-hosted-github-runners/). I've since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub's default runners. This article is just a quick summary of what I've found.
 
