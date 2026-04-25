@@ -31,6 +31,13 @@
     width: 100%;
   }
 
+  .toggles {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+    flex-wrap: wrap;
+  }
+
   .free {
     color: var(--default-links);
   }
@@ -39,18 +46,21 @@
     color: var(--dark-links);
   }
 
-  .speed-toggle-switch {
+  .speed-toggle-switch,
+  .byoc-toggle-switch {
     position: relative;
     display: inline-block;
     width: 50px;
     height: 24px;
   }
 
-  .speed-toggle-switch input {
+  .speed-toggle-switch input,
+  .byoc-toggle-switch input {
     opacity: 0;
   }
 
-  .speed-toggle-slider {
+  .speed-toggle-slider,
+  .byoc-toggle-slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -62,7 +72,8 @@
     border-radius: 24px;
   }
 
-  .speed-toggle-slider:before {
+  .speed-toggle-slider:before,
+  .byoc-toggle-slider:before {
     position: absolute;
     content: "";
     height: 18px;
@@ -74,36 +85,54 @@
     border-radius: 50%;
   }
 
-  .speed-toggle-switch input:checked + .speed-toggle-slider {
+  .speed-toggle-switch input:checked + .speed-toggle-slider,
+  .byoc-toggle-switch input:checked + .byoc-toggle-slider {
     background-color: var(--default-active);
   }
 
-  .speed-toggle-switch input:checked + .speed-toggle-slider:before {
+  .speed-toggle-switch input:checked + .speed-toggle-slider:before,
+  .byoc-toggle-switch input:checked + .byoc-toggle-slider:before {
     transform: translateX(26px);
   }
 
-  #darkModeToggle:checked~div .speed-toggle-switch input:checked + .speed-toggle-slider {
+  #darkModeToggle:checked~div .speed-toggle-switch input:checked + .speed-toggle-slider,
+  #darkModeToggle:checked~div .byoc-toggle-switch input:checked + .byoc-toggle-slider {
     background-color: var(--dark-active);
   }
 
-  #darkModeToggle:checked~div .speed-toggle-slider {
+  #darkModeToggle:checked~div .speed-toggle-slider,
+  #darkModeToggle:checked~div .byoc-toggle-slider {
     background-color: var(--dark-gray);
   }
 
-  #darkModeToggle:checked~div .speed-toggle-slider:before {
+  #darkModeToggle:checked~div .speed-toggle-slider:before,
+  #darkModeToggle:checked~div .byoc-toggle-slider:before {
     background-color: var(--dark-background);
   }
 
-  .speed-toggle-label {
-    display: flex;
+  .speed-toggle-label, .byoc-toggle-label {
+    display: inline-flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
     padding: 0 0 15px 2px;
+    flex: 1;
+  }
+
+  .byoc-inputs {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+    margin-bottom: 15px;
+  }
+
+  .byoc-inputs.hidden {
+    display: none;
   }
 
   @media (max-width: 750px) {
-    .inputs {
+    .inputs,
+    .byoc-inputs {
       flex-direction: column;
     }
 
@@ -123,17 +152,36 @@
       <select id="platform">
         <option value="linux">Linux (2 vCPU)</option>
         <option value="macos">macOS</option>
+        <option value="windows">Windows</option>
       </select>
     </div>
   </div>
-  <label for="ignoreSpeed" class="speed-toggle-label">
-    <div class="speed-toggle-switch">
-      <input type="checkbox" id="ignoreSpeed" checked>
-      <span class="speed-toggle-slider"></span>
+  <div class="toggles">
+    <label for="ignoreSpeed" class="speed-toggle-label">
+      <div class="speed-toggle-switch">
+        <input type="checkbox" id="ignoreSpeed" checked>
+        <span class="speed-toggle-slider"></span>
+      </div>
+      Ignore Speed
+    </label>
+    <label for="byoc" class="byoc-toggle-label">
+      <div class="byoc-toggle-switch">
+        <input type="checkbox" id="byoc">
+        <span class="byoc-toggle-slider"></span>
+      </div>
+      BYOC
+    </label>
+  </div>
+  <div class="byoc-inputs hidden" id="byoc-inputs">
+    <div class="input-group">
+      <label for="jobs">Jobs per Month</label>
+      <input type="number" id="jobs" value="100" min="0" step="10">
     </div>
-    Ignore Speed
-  </label>
-
+    <div class="input-group">
+      <label for="privateRepos">Private Repositories</label>
+      <input type="number" id="privateRepos" value="1" min="1" step="1">
+    </div>
+  </div>
   <table class="results-table" id="results">
     <thead>
       <tr>
@@ -154,7 +202,7 @@
       { name: "Blacksmith", link: "https://www.blacksmith.sh/", freeMinutes: 3000, pricePerMinute: 0.004, speedMultiplier: 2.0 },
       { name: "Depot", link: "http://depot.dev/", freeMinutes: 2000, fixedCost: 20, pricePerMinute: 0.004, speedMultiplier: 1.3 },
       { name: "GitHub", freeMinutes: 2000, pricePerMinute: 0.006, speedMultiplier: 1.0 },
-      { name: "Namespace", link: "https://namespace.so/", freeMinutes: 0, pricePerMinute: 0.003, speedMultiplier: 1.8 },
+      { name: "Namespace", link: "https://namespace.so/", freeMinutes: 0, pricePerMinute: 0.004, speedMultiplier: 1.8 },
       { name: "puzl.cloud*", link: "https://puzl.cloud/", freeMinutes: 400, pricePerMinute: 0.0008, pricePerMinuteHigh: 0.0025, speedMultiplier: 1.0 },
       { name: "Shipfox", link: "https://www.shipfox.io/", freeMinutes: 3000, pricePerMinute: 0.004, speedMultiplier: 2.0 },
       { name: "Tenki", link: "https://tenki.cloud/", freeMinutes: 1700, pricePerMinute: 0.003, fixedCost: 0, speedMultiplier: 1.3 },
@@ -163,70 +211,171 @@
     ],
     macos: [
       { name: "Blacksmith", link: "https://www.blacksmith.sh/", freeMinutes: 98, pricePerMinute: 0.08, speedMultiplier: 2.0 },
+      { name: "Depot", link: "http://depot.dev/", freeMinutes: 100, fixedCost: 20, pricePerMinute: 0.08, speedMultiplier: 1.3 },
       { name: "GetMac", link: "https://getmac.io/", freeMinutes: 100, pricePerMinute: 0.012, speedMultiplier: 3.0 },
       { name: "GitHub", freeMinutes: 200, pricePerMinute: 0.062, speedMultiplier: 1.0 },
       { name: "Namespace", link: "https://namespace.so/", freeMinutes: 0, pricePerMinute: 0.09, speedMultiplier: 2.0 },
       { name: "Tenki", link: "https://tenki.cloud/", freeMinutes: 0, pricePerMinute: 0.05, fixedCost: 0, speedMultiplier: 1.3 },
       { name: "WarpBuild", link: "https://www.warpbuild.com/", freeMinutes: 0, pricePerMinute: 0.08, speedMultiplier: 1.25 },
+    ],
+    windows: [
+      { name: "Blacksmith", link: "https://www.blacksmith.sh/", freeMinutes: 1500, pricePerMinute: 0.008, speedMultiplier: 2.0 },
+      { name: "Depot", link: "http://depot.dev/", freeMinutes: 1000, fixedCost: 20, pricePerMinute: 0.008, speedMultiplier: 1.3 },
+      { name: "GitHub", freeMinutes: 1197, pricePerMinute: 0.01, speedMultiplier: 1.0 },
+      { name: "Namespace", link: "https://namespace.so/", freeMinutes: 50000, fixedCost: 100, pricePerMinute: 0.008, speedMultiplier: 2.0 },
+      { name: "WarpBuild", link: "https://www.warpbuild.com/", freeMinutes: 0, pricePerMinute: 0.008, speedMultiplier: 2.0 },
     ]
   };
+
+  const byocProviders = {
+    linux: [
+      { name: "Actuated", link: "https://actuated.com/", pricePerMinute: 0, pricePerMonth: 250, pricePerJob: 0, privateRepositoryPricingMap: {} },
+      { name: "Cirun", link: "https://cirun.io/", pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: "RunsOn", link: "https://runs-on.com/", pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
+      { name: "Sprinters.sh", link: "https://sprinters.sh/", pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0.01, privateRepositoryPricingMap: {} },
+      { name: "WarpBuild", link: "https://www.warpbuild.com/", pricePerMinute: 0.002, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: {} },
+    ],
+    macos: [
+      { name: "Cirun", link: "https://cirun.io/", pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: "RunsOn", link: "https://runs-on.com/", pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
+    ],
+    windows: [
+      { name: "Cirun", link: "https://cirun.io/", pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: "RunsOn", link: "https://runs-on.com/", pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
+      { name: "WarpBuild", link: "https://www.warpbuild.com/", pricePerMinute: 0.002, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: {} },
+    ]
+  };
+
+  function calculateByocCost(provider, minutes, jobs, privateRepos) {
+    let cost = provider.pricePerMonth;
+    cost += minutes * provider.pricePerMinute;
+    cost += jobs * provider.pricePerJob;
+
+    const pricingMap = provider.privateRepositoryPricingMap;
+    if (Object.keys(pricingMap).length > 0) {
+      const tiers = Object.keys(pricingMap).map(Number).sort((a, b) => a - b);
+
+      // Exceeds all tiers - custom pricing required
+      if (privateRepos > tiers[tiers.length - 1]) {
+        return { cost: null, isCustom: true };
+      }
+
+      for (const tier of tiers) {
+        if (privateRepos <= tier) {
+          cost += pricingMap[tier];
+          break;
+        }
+      }
+    }
+
+    return { cost, isCustom: false };
+  }
 
   function calculateCosts() {
     const minutes = parseInt(document.getElementById('minutes').value) || 0;
     const platform = document.getElementById('platform').value;
     const ignoreSpeed = document.getElementById('ignoreSpeed').checked;
+    const isByoc = document.getElementById('byoc').checked;
+    const jobs = parseInt(document.getElementById('jobs').value) || 0;
+    const privateRepos = parseInt(document.getElementById('privateRepos').value) || 1;
     const tbody = document.getElementById('results-body');
     const speedHeader = document.getElementById('speed-header');
 
-    speedHeader.style.display = ignoreSpeed ? 'none' : '';
+    // Hide speed column for BYOC or when ignoreSpeed is checked
+    speedHeader.style.display = (ignoreSpeed || isByoc) ? 'none' : '';
 
-    const platformProviders = providers[platform];
+    if (isByoc) {
+      const platformProviders = byocProviders[platform] || [];
 
-    let results = platformProviders.map(provider => {
-      let cost = 0;
-      let highCost = 0;
-      
-      const actualMinutes = ignoreSpeed ? minutes : minutes / provider.speedMultiplier;
-      
-      if (provider.fixedCost && provider.pricePerMinute === 0) {
-        cost = provider.fixedCost;
-      } else if (provider.fixedCost) {
-        const freeMinutes = provider.freeMinutes || 0;
-        cost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinute);
-        highCost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinuteHigh);
-      } else {
-        const freeMinutes = provider.freeMinutes || 0;
-        const billableMinutes = Math.max(0, actualMinutes - freeMinutes);
-        cost = billableMinutes * provider.pricePerMinute;
-        highCost = billableMinutes * provider.pricePerMinuteHigh;
-      }
-      const isFree = cost === 0;
+      let results = platformProviders.map(provider => {
+        const result = calculateByocCost(provider, minutes, jobs, privateRepos);
+        const isFree = result.cost === 0;
+        return { ...provider, cost: result.cost, isCustom: result.isCustom, isFree };
+      });
 
-      return { ...provider, cost, highCost, isFree };
-    });
+      // Sort with custom pricing at the end
+      results.sort((a, b) => {
+        if (a.isCustom && !b.isCustom) return 1;
+        if (!a.isCustom && b.isCustom) return -1;
+        return a.cost - b.cost;
+      });
 
-    results.sort((a, b) => a.cost - b.cost);
+      tbody.innerHTML = results.map(provider => {
+        let costDisplay;
+        if (provider.isCustom) {
+          costDisplay = 'CUSTOM';
+        } else if (provider.isFree) {
+          costDisplay = 'FREE';
+        } else {
+          costDisplay = `$${provider.cost.toFixed(2)}`;
+        }
+        const costClass = provider.isFree ? 'free' : 'cost';
+        const providerName = provider.link ? `<a href="${provider.link}" noreferrer noopener>${provider.name}</a>` : `${provider.name}`;
 
-    tbody.innerHTML = results.map(provider => {
-      const cost = provider.highCost > 0 ? `${provider.cost.toFixed(2)} - ${provider.highCost.toFixed(2)}` : provider.cost.toFixed(2);
-      const costDisplay = provider.isFree ? 'FREE' : `${cost}`;
-      const costClass = provider.isFree ? 'free' : 'cost';
-      const providerName = provider.link ? `<a href="${provider.link}" noreferrer noopener>${provider.name}</a>` : `${provider.name}`;
-      const speedColumn = ignoreSpeed ? '' : `<td class="provider-speed">${provider.speedMultiplier}</td>`;
+        return `
+          <tr>
+            <td class="provider-name">${providerName}</td>
+            <td class="${costClass}">${costDisplay}</td>
+          </tr>
+        `;
+      }).join('');
+    } else {
+      const platformProviders = providers[platform];
 
-      return `
-                    <tr>
-                        <td class="provider-name">${providerName}</td>
-                        ${speedColumn}
-                        <td class="${costClass}">${costDisplay}</td>
-                    </tr>
-                `;
-    }).join('');
+      let results = platformProviders.map(provider => {
+        let cost = 0;
+        let highCost = 0;
+
+        const actualMinutes = ignoreSpeed ? minutes : minutes / provider.speedMultiplier;
+
+        if (provider.fixedCost && provider.pricePerMinute === 0) {
+          cost = provider.fixedCost;
+        } else if (provider.fixedCost) {
+          const freeMinutes = provider.freeMinutes || 0;
+          cost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinute);
+          highCost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinuteHigh);
+        } else {
+          const freeMinutes = provider.freeMinutes || 0;
+          const billableMinutes = Math.max(0, actualMinutes - freeMinutes);
+          cost = billableMinutes * provider.pricePerMinute;
+          highCost = billableMinutes * provider.pricePerMinuteHigh;
+        }
+        const isFree = cost === 0;
+
+        return { ...provider, cost, highCost, isFree };
+      });
+
+      results.sort((a, b) => a.cost - b.cost);
+
+      tbody.innerHTML = results.map(provider => {
+        const cost = provider.highCost > 0 ? `${provider.cost.toFixed(2)} - ${provider.highCost.toFixed(2)}` : provider.cost.toFixed(2);
+        const costDisplay = provider.isFree ? 'FREE' : `${cost}`;
+        const costClass = provider.isFree ? 'free' : 'cost';
+        const providerName = provider.link ? `<a href="${provider.link}" noreferrer noopener>${provider.name}</a>` : `${provider.name}`;
+        const speedColumn = ignoreSpeed ? '' : `<td class="provider-speed">${provider.speedMultiplier}</td>`;
+
+        return `
+          <tr>
+            <td class="provider-name">${providerName}</td>
+            ${speedColumn}
+            <td class="${costClass}">${costDisplay}</td>
+          </tr>
+        `;
+      }).join('');
+    }
   }
 
   document.getElementById('minutes').addEventListener('input', calculateCosts);
   document.getElementById('platform').addEventListener('change', calculateCosts);
   document.getElementById('ignoreSpeed').addEventListener('change', calculateCosts);
+  document.getElementById('jobs').addEventListener('input', calculateCosts);
+  document.getElementById('privateRepos').addEventListener('input', calculateCosts);
+
+  document.getElementById('byoc').addEventListener('change', function() {
+    const isByoc = this.checked;
+    document.getElementById('byoc-inputs').classList.toggle('hidden', !isByoc);
+    calculateCosts();
+  });
 
   calculateCosts();
 </script>
