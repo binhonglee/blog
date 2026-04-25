@@ -1016,6 +1016,13 @@
     width: 100%;
   }
 
+  .toggles {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+    flex-wrap: wrap;
+  }
+
   .free {
     color: var(--default-links);
   }
@@ -1024,18 +1031,21 @@
     color: var(--dark-links);
   }
 
-  .speed-toggle-switch {
+  .speed-toggle-switch,
+  .byoc-toggle-switch {
     position: relative;
     display: inline-block;
     width: 50px;
     height: 24px;
   }
 
-  .speed-toggle-switch input {
+  .speed-toggle-switch input,
+  .byoc-toggle-switch input {
     opacity: 0;
   }
 
-  .speed-toggle-slider {
+  .speed-toggle-slider,
+  .byoc-toggle-slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -1047,7 +1057,8 @@
     border-radius: 24px;
   }
 
-  .speed-toggle-slider:before {
+  .speed-toggle-slider:before,
+  .byoc-toggle-slider:before {
     position: absolute;
     content: &#34;&#34;;
     height: 18px;
@@ -1059,36 +1070,54 @@
     border-radius: 50%;
   }
 
-  .speed-toggle-switch input:checked + .speed-toggle-slider {
+  .speed-toggle-switch input:checked + .speed-toggle-slider,
+  .byoc-toggle-switch input:checked + .byoc-toggle-slider {
     background-color: var(--default-active);
   }
 
-  .speed-toggle-switch input:checked + .speed-toggle-slider:before {
+  .speed-toggle-switch input:checked + .speed-toggle-slider:before,
+  .byoc-toggle-switch input:checked + .byoc-toggle-slider:before {
     transform: translateX(26px);
   }
 
-  #darkModeToggle:checked~div .speed-toggle-switch input:checked + .speed-toggle-slider {
+  #darkModeToggle:checked~div .speed-toggle-switch input:checked + .speed-toggle-slider,
+  #darkModeToggle:checked~div .byoc-toggle-switch input:checked + .byoc-toggle-slider {
     background-color: var(--dark-active);
   }
 
-  #darkModeToggle:checked~div .speed-toggle-slider {
+  #darkModeToggle:checked~div .speed-toggle-slider,
+  #darkModeToggle:checked~div .byoc-toggle-slider {
     background-color: var(--dark-gray);
   }
 
-  #darkModeToggle:checked~div .speed-toggle-slider:before {
+  #darkModeToggle:checked~div .speed-toggle-slider:before,
+  #darkModeToggle:checked~div .byoc-toggle-slider:before {
     background-color: var(--dark-background);
   }
 
-  .speed-toggle-label {
-    display: flex;
+  .speed-toggle-label, .byoc-toggle-label {
+    display: inline-flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
     padding: 0 0 15px 2px;
+    flex: 1;
+  }
+
+  .byoc-inputs {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+    margin-bottom: 15px;
+  }
+
+  .byoc-inputs.hidden {
+    display: none;
   }
 
   @media (max-width: 750px) {
-    .inputs {
+    .inputs,
+    .byoc-inputs {
       flex-direction: column;
     }
 
@@ -1108,17 +1137,36 @@
       &lt;select id=&#34;platform&#34;&gt;
         &lt;option value=&#34;linux&#34;&gt;Linux (2 vCPU)&lt;/option&gt;
         &lt;option value=&#34;macos&#34;&gt;macOS&lt;/option&gt;
+        &lt;option value=&#34;windows&#34;&gt;Windows&lt;/option&gt;
       &lt;/select&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;label for=&#34;ignoreSpeed&#34; class=&#34;speed-toggle-label&#34;&gt;
-    &lt;div class=&#34;speed-toggle-switch&#34;&gt;
-      &lt;input type=&#34;checkbox&#34; id=&#34;ignoreSpeed&#34; checked&gt;
-      &lt;span class=&#34;speed-toggle-slider&#34;&gt;&lt;/span&gt;
+  &lt;div class=&#34;toggles&#34;&gt;
+    &lt;label for=&#34;ignoreSpeed&#34; class=&#34;speed-toggle-label&#34;&gt;
+      &lt;div class=&#34;speed-toggle-switch&#34;&gt;
+        &lt;input type=&#34;checkbox&#34; id=&#34;ignoreSpeed&#34; checked&gt;
+        &lt;span class=&#34;speed-toggle-slider&#34;&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      Ignore Speed
+    &lt;/label&gt;
+    &lt;label for=&#34;byoc&#34; class=&#34;byoc-toggle-label&#34;&gt;
+      &lt;div class=&#34;byoc-toggle-switch&#34;&gt;
+        &lt;input type=&#34;checkbox&#34; id=&#34;byoc&#34;&gt;
+        &lt;span class=&#34;byoc-toggle-slider&#34;&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      BYOC
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;byoc-inputs hidden&#34; id=&#34;byoc-inputs&#34;&gt;
+    &lt;div class=&#34;input-group&#34;&gt;
+      &lt;label for=&#34;jobs&#34;&gt;Jobs per Month&lt;/label&gt;
+      &lt;input type=&#34;number&#34; id=&#34;jobs&#34; value=&#34;100&#34; min=&#34;0&#34; step=&#34;10&#34;&gt;
     &lt;/div&gt;
-    Ignore Speed
-  &lt;/label&gt;
-
+    &lt;div class=&#34;input-group&#34;&gt;
+      &lt;label for=&#34;privateRepos&#34;&gt;Private Repositories&lt;/label&gt;
+      &lt;input type=&#34;number&#34; id=&#34;privateRepos&#34; value=&#34;1&#34; min=&#34;1&#34; step=&#34;1&#34;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
   &lt;table class=&#34;results-table&#34; id=&#34;results&#34;&gt;
     &lt;thead&gt;
       &lt;tr&gt;
@@ -1139,7 +1187,7 @@
       { name: &#34;Blacksmith&#34;, link: &#34;https://www.blacksmith.sh/&#34;, freeMinutes: 3000, pricePerMinute: 0.004, speedMultiplier: 2.0 },
       { name: &#34;Depot&#34;, link: &#34;http://depot.dev/&#34;, freeMinutes: 2000, fixedCost: 20, pricePerMinute: 0.004, speedMultiplier: 1.3 },
       { name: &#34;GitHub&#34;, freeMinutes: 2000, pricePerMinute: 0.006, speedMultiplier: 1.0 },
-      { name: &#34;Namespace&#34;, link: &#34;https://namespace.so/&#34;, freeMinutes: 0, pricePerMinute: 0.003, speedMultiplier: 1.8 },
+      { name: &#34;Namespace&#34;, link: &#34;https://namespace.so/&#34;, freeMinutes: 0, pricePerMinute: 0.004, speedMultiplier: 1.8 },
       { name: &#34;puzl.cloud*&#34;, link: &#34;https://puzl.cloud/&#34;, freeMinutes: 400, pricePerMinute: 0.0008, pricePerMinuteHigh: 0.0025, speedMultiplier: 1.0 },
       { name: &#34;Shipfox&#34;, link: &#34;https://www.shipfox.io/&#34;, freeMinutes: 3000, pricePerMinute: 0.004, speedMultiplier: 2.0 },
       { name: &#34;Tenki&#34;, link: &#34;https://tenki.cloud/&#34;, freeMinutes: 1700, pricePerMinute: 0.003, fixedCost: 0, speedMultiplier: 1.3 },
@@ -1148,70 +1196,171 @@
     ],
     macos: [
       { name: &#34;Blacksmith&#34;, link: &#34;https://www.blacksmith.sh/&#34;, freeMinutes: 98, pricePerMinute: 0.08, speedMultiplier: 2.0 },
+      { name: &#34;Depot&#34;, link: &#34;http://depot.dev/&#34;, freeMinutes: 100, fixedCost: 20, pricePerMinute: 0.08, speedMultiplier: 1.3 },
       { name: &#34;GetMac&#34;, link: &#34;https://getmac.io/&#34;, freeMinutes: 100, pricePerMinute: 0.012, speedMultiplier: 3.0 },
       { name: &#34;GitHub&#34;, freeMinutes: 200, pricePerMinute: 0.062, speedMultiplier: 1.0 },
       { name: &#34;Namespace&#34;, link: &#34;https://namespace.so/&#34;, freeMinutes: 0, pricePerMinute: 0.09, speedMultiplier: 2.0 },
       { name: &#34;Tenki&#34;, link: &#34;https://tenki.cloud/&#34;, freeMinutes: 0, pricePerMinute: 0.05, fixedCost: 0, speedMultiplier: 1.3 },
       { name: &#34;WarpBuild&#34;, link: &#34;https://www.warpbuild.com/&#34;, freeMinutes: 0, pricePerMinute: 0.08, speedMultiplier: 1.25 },
+    ],
+    windows: [
+      { name: &#34;Blacksmith&#34;, link: &#34;https://www.blacksmith.sh/&#34;, freeMinutes: 1500, pricePerMinute: 0.008, speedMultiplier: 2.0 },
+      { name: &#34;Depot&#34;, link: &#34;http://depot.dev/&#34;, freeMinutes: 1000, fixedCost: 20, pricePerMinute: 0.008, speedMultiplier: 1.3 },
+      { name: &#34;GitHub&#34;, freeMinutes: 1197, pricePerMinute: 0.01, speedMultiplier: 1.0 },
+      { name: &#34;Namespace&#34;, link: &#34;https://namespace.so/&#34;, freeMinutes: 50000, fixedCost: 100, pricePerMinute: 0.008, speedMultiplier: 2.0 },
+      { name: &#34;WarpBuild&#34;, link: &#34;https://www.warpbuild.com/&#34;, freeMinutes: 0, pricePerMinute: 0.008, speedMultiplier: 2.0 },
     ]
   };
+
+  const byocProviders = {
+    linux: [
+      { name: &#34;Actuated&#34;, link: &#34;https://actuated.com/&#34;, pricePerMinute: 0, pricePerMonth: 250, pricePerJob: 0, privateRepositoryPricingMap: {} },
+      { name: &#34;Cirun&#34;, link: &#34;https://cirun.io/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: &#34;RunsOn&#34;, link: &#34;https://runs-on.com/&#34;, pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
+      { name: &#34;Sprinters.sh&#34;, link: &#34;https://sprinters.sh/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0.01, privateRepositoryPricingMap: {} },
+      { name: &#34;WarpBuild&#34;, link: &#34;https://www.warpbuild.com/&#34;, pricePerMinute: 0.002, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: {} },
+    ],
+    macos: [
+      { name: &#34;Cirun&#34;, link: &#34;https://cirun.io/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: &#34;RunsOn&#34;, link: &#34;https://runs-on.com/&#34;, pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
+    ],
+    windows: [
+      { name: &#34;Cirun&#34;, link: &#34;https://cirun.io/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: &#34;RunsOn&#34;, link: &#34;https://runs-on.com/&#34;, pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
+      { name: &#34;WarpBuild&#34;, link: &#34;https://www.warpbuild.com/&#34;, pricePerMinute: 0.002, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: {} },
+    ]
+  };
+
+  function calculateByocCost(provider, minutes, jobs, privateRepos) {
+    let cost = provider.pricePerMonth;
+    cost += minutes * provider.pricePerMinute;
+    cost += jobs * provider.pricePerJob;
+
+    const pricingMap = provider.privateRepositoryPricingMap;
+    if (Object.keys(pricingMap).length &gt; 0) {
+      const tiers = Object.keys(pricingMap).map(Number).sort((a, b) =&gt; a - b);
+
+      
+      if (privateRepos &gt; tiers[tiers.length - 1]) {
+        return { cost: null, isCustom: true };
+      }
+
+      for (const tier of tiers) {
+        if (privateRepos &lt;= tier) {
+          cost += pricingMap[tier];
+          break;
+        }
+      }
+    }
+
+    return { cost, isCustom: false };
+  }
 
   function calculateCosts() {
     const minutes = parseInt(document.getElementById(&#39;minutes&#39;).value) || 0;
     const platform = document.getElementById(&#39;platform&#39;).value;
     const ignoreSpeed = document.getElementById(&#39;ignoreSpeed&#39;).checked;
+    const isByoc = document.getElementById(&#39;byoc&#39;).checked;
+    const jobs = parseInt(document.getElementById(&#39;jobs&#39;).value) || 0;
+    const privateRepos = parseInt(document.getElementById(&#39;privateRepos&#39;).value) || 1;
     const tbody = document.getElementById(&#39;results-body&#39;);
     const speedHeader = document.getElementById(&#39;speed-header&#39;);
 
-    speedHeader.style.display = ignoreSpeed ? &#39;none&#39; : &#39;&#39;;
+    
+    speedHeader.style.display = (ignoreSpeed || isByoc) ? &#39;none&#39; : &#39;&#39;;
 
-    const platformProviders = providers[platform];
+    if (isByoc) {
+      const platformProviders = byocProviders[platform] || [];
 
-    let results = platformProviders.map(provider =&gt; {
-      let cost = 0;
-      let highCost = 0;
+      let results = platformProviders.map(provider =&gt; {
+        const result = calculateByocCost(provider, minutes, jobs, privateRepos);
+        const isFree = result.cost === 0;
+        return { ...provider, cost: result.cost, isCustom: result.isCustom, isFree };
+      });
+
       
-      const actualMinutes = ignoreSpeed ? minutes : minutes / provider.speedMultiplier;
-      
-      if (provider.fixedCost &amp;&amp; provider.pricePerMinute === 0) {
-        cost = provider.fixedCost;
-      } else if (provider.fixedCost) {
-        const freeMinutes = provider.freeMinutes || 0;
-        cost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinute);
-        highCost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinuteHigh);
-      } else {
-        const freeMinutes = provider.freeMinutes || 0;
-        const billableMinutes = Math.max(0, actualMinutes - freeMinutes);
-        cost = billableMinutes * provider.pricePerMinute;
-        highCost = billableMinutes * provider.pricePerMinuteHigh;
-      }
-      const isFree = cost === 0;
+      results.sort((a, b) =&gt; {
+        if (a.isCustom &amp;&amp; !b.isCustom) return 1;
+        if (!a.isCustom &amp;&amp; b.isCustom) return -1;
+        return a.cost - b.cost;
+      });
 
-      return { ...provider, cost, highCost, isFree };
-    });
+      tbody.innerHTML = results.map(provider =&gt; {
+        let costDisplay;
+        if (provider.isCustom) {
+          costDisplay = &#39;CUSTOM&#39;;
+        } else if (provider.isFree) {
+          costDisplay = &#39;FREE&#39;;
+        } else {
+          costDisplay = `$${provider.cost.toFixed(2)}`;
+        }
+        const costClass = provider.isFree ? &#39;free&#39; : &#39;cost&#39;;
+        const providerName = provider.link ? `&lt;a href=&#34;${provider.link}&#34; noreferrer noopener&gt;${provider.name}&lt;/a&gt;` : `${provider.name}`;
 
-    results.sort((a, b) =&gt; a.cost - b.cost);
+        return `
+          &lt;tr&gt;
+            &lt;td class=&#34;provider-name&#34;&gt;${providerName}&lt;/td&gt;
+            &lt;td class=&#34;${costClass}&#34;&gt;${costDisplay}&lt;/td&gt;
+          &lt;/tr&gt;
+        `;
+      }).join(&#39;&#39;);
+    } else {
+      const platformProviders = providers[platform];
 
-    tbody.innerHTML = results.map(provider =&gt; {
-      const cost = provider.highCost &gt; 0 ? `${provider.cost.toFixed(2)} - ${provider.highCost.toFixed(2)}` : provider.cost.toFixed(2);
-      const costDisplay = provider.isFree ? &#39;FREE&#39; : `${cost}`;
-      const costClass = provider.isFree ? &#39;free&#39; : &#39;cost&#39;;
-      const providerName = provider.link ? `&lt;a href=&#34;${provider.link}&#34; noreferrer noopener&gt;${provider.name}&lt;/a&gt;` : `${provider.name}`;
-      const speedColumn = ignoreSpeed ? &#39;&#39; : `&lt;td class=&#34;provider-speed&#34;&gt;${provider.speedMultiplier}&lt;/td&gt;`;
+      let results = platformProviders.map(provider =&gt; {
+        let cost = 0;
+        let highCost = 0;
 
-      return `
-                    &lt;tr&gt;
-                        &lt;td class=&#34;provider-name&#34;&gt;${providerName}&lt;/td&gt;
-                        ${speedColumn}
-                        &lt;td class=&#34;${costClass}&#34;&gt;${costDisplay}&lt;/td&gt;
-                    &lt;/tr&gt;
-                `;
-    }).join(&#39;&#39;);
+        const actualMinutes = ignoreSpeed ? minutes : minutes / provider.speedMultiplier;
+
+        if (provider.fixedCost &amp;&amp; provider.pricePerMinute === 0) {
+          cost = provider.fixedCost;
+        } else if (provider.fixedCost) {
+          const freeMinutes = provider.freeMinutes || 0;
+          cost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinute);
+          highCost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinuteHigh);
+        } else {
+          const freeMinutes = provider.freeMinutes || 0;
+          const billableMinutes = Math.max(0, actualMinutes - freeMinutes);
+          cost = billableMinutes * provider.pricePerMinute;
+          highCost = billableMinutes * provider.pricePerMinuteHigh;
+        }
+        const isFree = cost === 0;
+
+        return { ...provider, cost, highCost, isFree };
+      });
+
+      results.sort((a, b) =&gt; a.cost - b.cost);
+
+      tbody.innerHTML = results.map(provider =&gt; {
+        const cost = provider.highCost &gt; 0 ? `${provider.cost.toFixed(2)} - ${provider.highCost.toFixed(2)}` : provider.cost.toFixed(2);
+        const costDisplay = provider.isFree ? &#39;FREE&#39; : `${cost}`;
+        const costClass = provider.isFree ? &#39;free&#39; : &#39;cost&#39;;
+        const providerName = provider.link ? `&lt;a href=&#34;${provider.link}&#34; noreferrer noopener&gt;${provider.name}&lt;/a&gt;` : `${provider.name}`;
+        const speedColumn = ignoreSpeed ? &#39;&#39; : `&lt;td class=&#34;provider-speed&#34;&gt;${provider.speedMultiplier}&lt;/td&gt;`;
+
+        return `
+          &lt;tr&gt;
+            &lt;td class=&#34;provider-name&#34;&gt;${providerName}&lt;/td&gt;
+            ${speedColumn}
+            &lt;td class=&#34;${costClass}&#34;&gt;${costDisplay}&lt;/td&gt;
+          &lt;/tr&gt;
+        `;
+      }).join(&#39;&#39;);
+    }
   }
 
   document.getElementById(&#39;minutes&#39;).addEventListener(&#39;input&#39;, calculateCosts);
   document.getElementById(&#39;platform&#39;).addEventListener(&#39;change&#39;, calculateCosts);
   document.getElementById(&#39;ignoreSpeed&#39;).addEventListener(&#39;change&#39;, calculateCosts);
+  document.getElementById(&#39;jobs&#39;).addEventListener(&#39;input&#39;, calculateCosts);
+  document.getElementById(&#39;privateRepos&#39;).addEventListener(&#39;input&#39;, calculateCosts);
+
+  document.getElementById(&#39;byoc&#39;).addEventListener(&#39;change&#39;, function() {
+    const isByoc = this.checked;
+    document.getElementById(&#39;byoc-inputs&#39;).classList.toggle(&#39;hidden&#39;, !isByoc);
+    calculateCosts();
+  });
 
   calculateCosts();
 &lt;/script&gt;
@@ -6869,7 +7018,7 @@ In your choice of database, you should create a user (preferably only specifical
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/github-action-runner-alternatives/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Last Updated: Apr 24th 2026&lt;/em&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;em&gt;Last Updated: Apr 25th 2026&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;A while ago, I wrote about my attempt and reasoning behind &lt;a href=&#34;https://binhong.me/blog/2025-04-25-self-hosted-github-runners/&#34;&gt;managing my own fleet of self-hosted GitHub Action Runners&lt;/a&gt;. I&amp;rsquo;ve since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub&amp;rsquo;s default runners. This article is just a quick summary of what I&amp;rsquo;ve found.&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#hosted-runners&#34;&gt;
     &lt;h2 id=&#34;hosted-runners&#34;&gt;
@@ -6877,6 +7026,7 @@ In your choice of database, you should create a user (preferably only specifical
         &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
     &lt;/h2&gt;
 &lt;/a&gt;
+&lt;p&gt;These are essentially &amp;ldquo;full service&amp;rdquo; GitHub Action Runners. You don&amp;rsquo;t have to do anything else except to create an account, setup billing, then change the &lt;code&gt;runs-on&lt;/code&gt; label in your GitHub Action YAML file. It&amp;rsquo;s easy to adopt but you&amp;rsquo;re still essentially running on servers that are managed by the service providers. If you prefer to bring your own cloud services (AWS, Azure etc.), check out the &lt;a href=&#34;#bring-your-own-cloud-byoc&#34;&gt;BYOC section below&lt;/a&gt;!&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#linux-runners-comparison&#34;&gt;
     &lt;h3 id=&#34;linux-runners-comparison&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Linux Runners Comparison&lt;/span&gt;
@@ -6888,7 +7038,7 @@ In your choice of database, you should create a user (preferably only specifical
       &lt;tr&gt;
           &lt;th&gt;Provider&lt;/th&gt;
           &lt;th&gt;Free Tier&lt;/th&gt;
-          &lt;th&gt;Paid Pricing (2vCPU)&lt;/th&gt;
+          &lt;th&gt;Paid Pricing (2vCPU, 8GB)&lt;/th&gt;
           &lt;th&gt;Performance&lt;/th&gt;
           &lt;th&gt;Special Features&lt;/th&gt;
       &lt;/tr&gt;
@@ -6918,7 +7068,7 @@ In your choice of database, you should create a user (preferably only specifical
       &lt;tr&gt;
           &lt;td&gt;&lt;a href=&#34;https://namespace.so/&#34;&gt;Namespace&lt;/a&gt;&lt;/td&gt;
           &lt;td&gt;❌ None&lt;/td&gt;
-          &lt;td&gt;$0.003/min&lt;/td&gt;
+          &lt;td&gt;$0.004/min&lt;/td&gt;
           &lt;td&gt;2x-10x faster&lt;/td&gt;
           &lt;td&gt;250GB storage, SSH access&lt;/td&gt;
       &lt;/tr&gt;
@@ -6947,7 +7097,7 @@ In your choice of database, you should create a user (preferably only specifical
           &lt;td&gt;&lt;a href=&#34;https://www.ubicloud.com/&#34;&gt;Ubicloud&lt;/a&gt;&lt;/td&gt;
           &lt;td&gt;~1,250 minutes ($1 credit)&lt;/td&gt;
           &lt;td&gt;$0.0008/min&lt;/td&gt;
-          &lt;td&gt;Newer CPUs, good performance&lt;/td&gt;
+          &lt;td&gt;~30% faster&lt;/td&gt;
           &lt;td&gt;Open source, Hetzner hardware&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
@@ -6955,7 +7105,7 @@ In your choice of database, you should create a user (preferably only specifical
           &lt;td&gt;❌ None&lt;/td&gt;
           &lt;td&gt;$0.004/min&lt;/td&gt;
           &lt;td&gt;2x faster&lt;/td&gt;
-          &lt;td&gt;Snapshots&lt;/td&gt;
+          &lt;td&gt;Unlimited concurrency&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -6970,10 +7120,10 @@ In your choice of database, you should create a user (preferably only specifical
       &lt;tr&gt;
           &lt;th&gt;Provider&lt;/th&gt;
           &lt;th&gt;Free tier&lt;/th&gt;
-          &lt;th&gt;Pricing&lt;/th&gt;
+          &lt;th&gt;Paid Pricing&lt;/th&gt;
           &lt;th&gt;Hardware&lt;/th&gt;
           &lt;th&gt;Performance&lt;/th&gt;
-          &lt;th&gt;Key Features&lt;/th&gt;
+          &lt;th&gt;Special Features&lt;/th&gt;
       &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
@@ -6986,12 +7136,20 @@ In your choice of database, you should create a user (preferably only specifical
           &lt;td&gt;Unlimited concurrency&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;http://depot.dev/&#34;&gt;Depot&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;❌ None&lt;/td&gt;
+          &lt;td&gt;$20 for 100 minutes, then $0.08/min&lt;/td&gt;
+          &lt;td&gt;30% faster, 10x faster cache&lt;/td&gt;
+          &lt;td&gt;Docker-focused&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
           &lt;td&gt;&lt;a href=&#34;https://getmac.io/&#34;&gt;GetMac&lt;/a&gt;&lt;/td&gt;
           &lt;td&gt;100 minutes/month&lt;/td&gt;
           &lt;td&gt;~$0.012/min&lt;/td&gt;
           &lt;td&gt;M4 Macs&lt;/td&gt;
           &lt;td&gt;3x faster builds&lt;/td&gt;
-          &lt;td&gt;100% renewable energy&lt;/td&gt;
+          &lt;td&gt;SSH/VNC access, 100% renewable energy&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;GitHub&lt;/td&gt;
@@ -7007,7 +7165,7 @@ In your choice of database, you should create a user (preferably only specifical
           &lt;td&gt;$0.09&lt;/td&gt;
           &lt;td&gt;M4 Pro + M2 Pro&lt;/td&gt;
           &lt;td&gt;Up to 3x faster&lt;/td&gt;
-          &lt;td&gt;SSH/VNC access, bleeding-edge images&lt;/td&gt;
+          &lt;td&gt;SSH/VNC access&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
           &lt;td&gt;&lt;a href=&#34;https://tenki.cloud/&#34;&gt;Tenki&lt;/a&gt;&lt;/td&gt;
@@ -7023,24 +7181,132 @@ In your choice of database, you should create a user (preferably only specifical
           &lt;td&gt;$0.08/min&lt;/td&gt;
           &lt;td&gt;M4 Pro&lt;/td&gt;
           &lt;td&gt;25% faster&lt;/td&gt;
-          &lt;td&gt;Pay-per-use, macOS 13/14 support&lt;/td&gt;
+          &lt;td&gt;Unlimited concurrency&lt;/td&gt;
       &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;a class=&#34;anchor&#34; href=&#34;#bring-your-own-cloud&#34;&gt;
-    &lt;h2 id=&#34;bring-your-own-cloud&#34;&gt;
-        &lt;span class=&#34;text&#34;&gt;Bring Your Own Cloud&lt;/span&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#windows-runners-comparison&#34;&gt;
+    &lt;h3 id=&#34;windows-runners-comparison&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Windows Runners Comparison&lt;/span&gt;
+        &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
+    &lt;/h3&gt;
+&lt;/a&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Provider&lt;/th&gt;
+          &lt;th&gt;Free tier&lt;/th&gt;
+          &lt;th&gt;Paid Pricing&lt;/th&gt;
+          &lt;th&gt;Performance&lt;/th&gt;
+          &lt;th&gt;Special Features&lt;/th&gt;
+          &lt;th&gt;&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://www.blacksmith.sh/&#34;&gt;Blacksmith&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;1,500 minutes/month&lt;/td&gt;
+          &lt;td&gt;$0.008/min&lt;/td&gt;
+          &lt;td&gt;2x faster builds, 4x faster cache&lt;/td&gt;
+          &lt;td&gt;Unlimited concurrency&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;http://depot.dev/&#34;&gt;Depot&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;❌ None&lt;/td&gt;
+          &lt;td&gt;$20 for 1,000 minutes, then $0.008/min&lt;/td&gt;
+          &lt;td&gt;30% faster, 10x faster cache&lt;/td&gt;
+          &lt;td&gt;Docker-focused&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;GitHub&lt;/td&gt;
+          &lt;td&gt;~1197 minutes/month&lt;/td&gt;
+          &lt;td&gt;$0.01/min&lt;/td&gt;
+          &lt;td&gt;Baseline&lt;/td&gt;
+          &lt;td&gt;Official support&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://namespace.so/&#34;&gt;Namespace&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;❌ None&lt;/td&gt;
+          &lt;td&gt;$100 for 50,000 minutes, then $0.008/min&lt;/td&gt;
+          &lt;td&gt;2x-10x faster&lt;/td&gt;
+          &lt;td&gt;250GB storage, SSH/VNC access&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://www.warpbuild.com/&#34;&gt;WarpBuild&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;❌ None&lt;/td&gt;
+          &lt;td&gt;$0.008/min&lt;/td&gt;
+          &lt;td&gt;25% faster&lt;/td&gt;
+          &lt;td&gt;Unlimited concurrency&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#bring-your-own-cloud-byoc&#34;&gt;
+    &lt;h2 id=&#34;bring-your-own-cloud-byoc&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Bring Your Own Cloud (BYOC)&lt;/span&gt;
         &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
     &lt;/h2&gt;
 &lt;/a&gt;
-&lt;p&gt;&lt;em&gt;WIP: I&amp;rsquo;m working on a new BYOC section that will re-add some removed services and a few other services onto this page. Please bear with me while I try to do my research (and math). Thanks!&lt;/em&gt;&lt;/p&gt;
-&lt;a class=&#34;anchor&#34; href=&#34;#widgets&#34;&gt;
-    &lt;h2 id=&#34;widgets&#34;&gt;
-        &lt;span class=&#34;text&#34;&gt;Widgets&lt;/span&gt;
+&lt;p&gt;Unlike the full service hosted runners, BYOC is designed for users who are already using an existing cloud service (or have their own bare-metal hosts) would prefer to use that as the action runners instead of using the external party&amp;rsquo;s server.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Provider&lt;/th&gt;
+          &lt;th&gt;Free Tier&lt;/th&gt;
+          &lt;th&gt;Pricing&lt;/th&gt;
+          &lt;th&gt;Supported Cloud&lt;/th&gt;
+          &lt;th&gt;Supported Images&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://actuated.com/&#34;&gt;Actuated&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;❌ None&lt;/td&gt;
+          &lt;td&gt;$250/month&lt;/td&gt;
+          &lt;td&gt;Any bare-metal hosts and / or VM with nested virtualisation&lt;/td&gt;
+          &lt;td&gt;Ubuntu&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://cirun.io/&#34;&gt;Cirun&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Free for public repositories&lt;/td&gt;
+          &lt;td&gt;$29/month for 3 private repositories, $79/month for 10 private repositories&lt;/td&gt;
+          &lt;td&gt;All major cloud services and / or on-prem servers&lt;/td&gt;
+          &lt;td&gt;Ubuntu, Windows, macOS, Custom Images&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://runs-on.com/&#34;&gt;RunsOn&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;15 days free trial&lt;/td&gt;
+          &lt;td&gt;300€/year&lt;/td&gt;
+          &lt;td&gt;AWS&lt;/td&gt;
+          &lt;td&gt;Ubuntu, Windows, macOS, Custom Images&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://sprinters.sh/&#34;&gt;Sprinters.sh&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;Free for public repositories&lt;/td&gt;
+          &lt;td&gt;$0.01/job&lt;/td&gt;
+          &lt;td&gt;AWS&lt;/td&gt;
+          &lt;td&gt;Ubuntu&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;https://www.warpbuild.com/&#34;&gt;WarpBuild&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;❌ None&lt;/td&gt;
+          &lt;td&gt;$0.002/min&lt;/td&gt;
+          &lt;td&gt;AWS, GCP, Azure&lt;/td&gt;
+          &lt;td&gt;Linux, Windows&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;a class=&#34;anchor&#34; href=&#34;#widget&#34;&gt;
+    &lt;h2 id=&#34;widget&#34;&gt;
+        &lt;span class=&#34;text&#34;&gt;Widget&lt;/span&gt;
         &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
     &lt;/h2&gt;
 &lt;/a&gt;
-&lt;p&gt;I don&amp;rsquo;t have a better place to put this but I built a very basic widget that takes into account of the &amp;ldquo;supposed&amp;rdquo; faster speed (leading to less action minutes) with each of their rates so you can find out which platform fits you best based on your usage (with GitHub&amp;rsquo;s Action Runner minutes as baseline).&lt;/p&gt;
+&lt;p&gt;I built a very basic widget that &lt;em&gt;tries to&lt;/em&gt; take into account of the &amp;ldquo;supposed&amp;rdquo; faster speed (leading to less action minutes) with each of their rates so you can find out which platform fits you best based on your usage (with GitHub&amp;rsquo;s Action Runner minutes as baseline comparison).&lt;/p&gt;
 &lt;style&gt;
   .calculator-widget {
     font-family: VictorMono;
@@ -7074,6 +7340,13 @@ In your choice of database, you should create a user (preferably only specifical
     width: 100%;
   }
 
+  .toggles {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+    flex-wrap: wrap;
+  }
+
   .free {
     color: var(--default-links);
   }
@@ -7082,18 +7355,21 @@ In your choice of database, you should create a user (preferably only specifical
     color: var(--dark-links);
   }
 
-  .speed-toggle-switch {
+  .speed-toggle-switch,
+  .byoc-toggle-switch {
     position: relative;
     display: inline-block;
     width: 50px;
     height: 24px;
   }
 
-  .speed-toggle-switch input {
+  .speed-toggle-switch input,
+  .byoc-toggle-switch input {
     opacity: 0;
   }
 
-  .speed-toggle-slider {
+  .speed-toggle-slider,
+  .byoc-toggle-slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -7105,7 +7381,8 @@ In your choice of database, you should create a user (preferably only specifical
     border-radius: 24px;
   }
 
-  .speed-toggle-slider:before {
+  .speed-toggle-slider:before,
+  .byoc-toggle-slider:before {
     position: absolute;
     content: &#34;&#34;;
     height: 18px;
@@ -7117,36 +7394,54 @@ In your choice of database, you should create a user (preferably only specifical
     border-radius: 50%;
   }
 
-  .speed-toggle-switch input:checked + .speed-toggle-slider {
+  .speed-toggle-switch input:checked + .speed-toggle-slider,
+  .byoc-toggle-switch input:checked + .byoc-toggle-slider {
     background-color: var(--default-active);
   }
 
-  .speed-toggle-switch input:checked + .speed-toggle-slider:before {
+  .speed-toggle-switch input:checked + .speed-toggle-slider:before,
+  .byoc-toggle-switch input:checked + .byoc-toggle-slider:before {
     transform: translateX(26px);
   }
 
-  #darkModeToggle:checked~div .speed-toggle-switch input:checked + .speed-toggle-slider {
+  #darkModeToggle:checked~div .speed-toggle-switch input:checked + .speed-toggle-slider,
+  #darkModeToggle:checked~div .byoc-toggle-switch input:checked + .byoc-toggle-slider {
     background-color: var(--dark-active);
   }
 
-  #darkModeToggle:checked~div .speed-toggle-slider {
+  #darkModeToggle:checked~div .speed-toggle-slider,
+  #darkModeToggle:checked~div .byoc-toggle-slider {
     background-color: var(--dark-gray);
   }
 
-  #darkModeToggle:checked~div .speed-toggle-slider:before {
+  #darkModeToggle:checked~div .speed-toggle-slider:before,
+  #darkModeToggle:checked~div .byoc-toggle-slider:before {
     background-color: var(--dark-background);
   }
 
-  .speed-toggle-label {
-    display: flex;
+  .speed-toggle-label, .byoc-toggle-label {
+    display: inline-flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
     padding: 0 0 15px 2px;
+    flex: 1;
+  }
+
+  .byoc-inputs {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+    margin-bottom: 15px;
+  }
+
+  .byoc-inputs.hidden {
+    display: none;
   }
 
   @media (max-width: 750px) {
-    .inputs {
+    .inputs,
+    .byoc-inputs {
       flex-direction: column;
     }
 
@@ -7166,17 +7461,36 @@ In your choice of database, you should create a user (preferably only specifical
       &lt;select id=&#34;platform&#34;&gt;
         &lt;option value=&#34;linux&#34;&gt;Linux (2 vCPU)&lt;/option&gt;
         &lt;option value=&#34;macos&#34;&gt;macOS&lt;/option&gt;
+        &lt;option value=&#34;windows&#34;&gt;Windows&lt;/option&gt;
       &lt;/select&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;label for=&#34;ignoreSpeed&#34; class=&#34;speed-toggle-label&#34;&gt;
-    &lt;div class=&#34;speed-toggle-switch&#34;&gt;
-      &lt;input type=&#34;checkbox&#34; id=&#34;ignoreSpeed&#34; checked&gt;
-      &lt;span class=&#34;speed-toggle-slider&#34;&gt;&lt;/span&gt;
+  &lt;div class=&#34;toggles&#34;&gt;
+    &lt;label for=&#34;ignoreSpeed&#34; class=&#34;speed-toggle-label&#34;&gt;
+      &lt;div class=&#34;speed-toggle-switch&#34;&gt;
+        &lt;input type=&#34;checkbox&#34; id=&#34;ignoreSpeed&#34; checked&gt;
+        &lt;span class=&#34;speed-toggle-slider&#34;&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      Ignore Speed
+    &lt;/label&gt;
+    &lt;label for=&#34;byoc&#34; class=&#34;byoc-toggle-label&#34;&gt;
+      &lt;div class=&#34;byoc-toggle-switch&#34;&gt;
+        &lt;input type=&#34;checkbox&#34; id=&#34;byoc&#34;&gt;
+        &lt;span class=&#34;byoc-toggle-slider&#34;&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      BYOC
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;byoc-inputs hidden&#34; id=&#34;byoc-inputs&#34;&gt;
+    &lt;div class=&#34;input-group&#34;&gt;
+      &lt;label for=&#34;jobs&#34;&gt;Jobs per Month&lt;/label&gt;
+      &lt;input type=&#34;number&#34; id=&#34;jobs&#34; value=&#34;100&#34; min=&#34;0&#34; step=&#34;10&#34;&gt;
     &lt;/div&gt;
-    Ignore Speed
-  &lt;/label&gt;
-
+    &lt;div class=&#34;input-group&#34;&gt;
+      &lt;label for=&#34;privateRepos&#34;&gt;Private Repositories&lt;/label&gt;
+      &lt;input type=&#34;number&#34; id=&#34;privateRepos&#34; value=&#34;1&#34; min=&#34;1&#34; step=&#34;1&#34;&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
   &lt;table class=&#34;results-table&#34; id=&#34;results&#34;&gt;
     &lt;thead&gt;
       &lt;tr&gt;
@@ -7197,7 +7511,7 @@ In your choice of database, you should create a user (preferably only specifical
       { name: &#34;Blacksmith&#34;, link: &#34;https://www.blacksmith.sh/&#34;, freeMinutes: 3000, pricePerMinute: 0.004, speedMultiplier: 2.0 },
       { name: &#34;Depot&#34;, link: &#34;http://depot.dev/&#34;, freeMinutes: 2000, fixedCost: 20, pricePerMinute: 0.004, speedMultiplier: 1.3 },
       { name: &#34;GitHub&#34;, freeMinutes: 2000, pricePerMinute: 0.006, speedMultiplier: 1.0 },
-      { name: &#34;Namespace&#34;, link: &#34;https://namespace.so/&#34;, freeMinutes: 0, pricePerMinute: 0.003, speedMultiplier: 1.8 },
+      { name: &#34;Namespace&#34;, link: &#34;https://namespace.so/&#34;, freeMinutes: 0, pricePerMinute: 0.004, speedMultiplier: 1.8 },
       { name: &#34;puzl.cloud*&#34;, link: &#34;https://puzl.cloud/&#34;, freeMinutes: 400, pricePerMinute: 0.0008, pricePerMinuteHigh: 0.0025, speedMultiplier: 1.0 },
       { name: &#34;Shipfox&#34;, link: &#34;https://www.shipfox.io/&#34;, freeMinutes: 3000, pricePerMinute: 0.004, speedMultiplier: 2.0 },
       { name: &#34;Tenki&#34;, link: &#34;https://tenki.cloud/&#34;, freeMinutes: 1700, pricePerMinute: 0.003, fixedCost: 0, speedMultiplier: 1.3 },
@@ -7206,70 +7520,171 @@ In your choice of database, you should create a user (preferably only specifical
     ],
     macos: [
       { name: &#34;Blacksmith&#34;, link: &#34;https://www.blacksmith.sh/&#34;, freeMinutes: 98, pricePerMinute: 0.08, speedMultiplier: 2.0 },
+      { name: &#34;Depot&#34;, link: &#34;http://depot.dev/&#34;, freeMinutes: 100, fixedCost: 20, pricePerMinute: 0.08, speedMultiplier: 1.3 },
       { name: &#34;GetMac&#34;, link: &#34;https://getmac.io/&#34;, freeMinutes: 100, pricePerMinute: 0.012, speedMultiplier: 3.0 },
       { name: &#34;GitHub&#34;, freeMinutes: 200, pricePerMinute: 0.062, speedMultiplier: 1.0 },
       { name: &#34;Namespace&#34;, link: &#34;https://namespace.so/&#34;, freeMinutes: 0, pricePerMinute: 0.09, speedMultiplier: 2.0 },
       { name: &#34;Tenki&#34;, link: &#34;https://tenki.cloud/&#34;, freeMinutes: 0, pricePerMinute: 0.05, fixedCost: 0, speedMultiplier: 1.3 },
       { name: &#34;WarpBuild&#34;, link: &#34;https://www.warpbuild.com/&#34;, freeMinutes: 0, pricePerMinute: 0.08, speedMultiplier: 1.25 },
+    ],
+    windows: [
+      { name: &#34;Blacksmith&#34;, link: &#34;https://www.blacksmith.sh/&#34;, freeMinutes: 1500, pricePerMinute: 0.008, speedMultiplier: 2.0 },
+      { name: &#34;Depot&#34;, link: &#34;http://depot.dev/&#34;, freeMinutes: 1000, fixedCost: 20, pricePerMinute: 0.008, speedMultiplier: 1.3 },
+      { name: &#34;GitHub&#34;, freeMinutes: 1197, pricePerMinute: 0.01, speedMultiplier: 1.0 },
+      { name: &#34;Namespace&#34;, link: &#34;https://namespace.so/&#34;, freeMinutes: 50000, fixedCost: 100, pricePerMinute: 0.008, speedMultiplier: 2.0 },
+      { name: &#34;WarpBuild&#34;, link: &#34;https://www.warpbuild.com/&#34;, freeMinutes: 0, pricePerMinute: 0.008, speedMultiplier: 2.0 },
     ]
   };
+
+  const byocProviders = {
+    linux: [
+      { name: &#34;Actuated&#34;, link: &#34;https://actuated.com/&#34;, pricePerMinute: 0, pricePerMonth: 250, pricePerJob: 0, privateRepositoryPricingMap: {} },
+      { name: &#34;Cirun&#34;, link: &#34;https://cirun.io/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: &#34;RunsOn&#34;, link: &#34;https://runs-on.com/&#34;, pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
+      { name: &#34;Sprinters.sh&#34;, link: &#34;https://sprinters.sh/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0.01, privateRepositoryPricingMap: {} },
+      { name: &#34;WarpBuild&#34;, link: &#34;https://www.warpbuild.com/&#34;, pricePerMinute: 0.002, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: {} },
+    ],
+    macos: [
+      { name: &#34;Cirun&#34;, link: &#34;https://cirun.io/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: &#34;RunsOn&#34;, link: &#34;https://runs-on.com/&#34;, pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
+    ],
+    windows: [
+      { name: &#34;Cirun&#34;, link: &#34;https://cirun.io/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: &#34;RunsOn&#34;, link: &#34;https://runs-on.com/&#34;, pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
+      { name: &#34;WarpBuild&#34;, link: &#34;https://www.warpbuild.com/&#34;, pricePerMinute: 0.002, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: {} },
+    ]
+  };
+
+  function calculateByocCost(provider, minutes, jobs, privateRepos) {
+    let cost = provider.pricePerMonth;
+    cost += minutes * provider.pricePerMinute;
+    cost += jobs * provider.pricePerJob;
+
+    const pricingMap = provider.privateRepositoryPricingMap;
+    if (Object.keys(pricingMap).length &gt; 0) {
+      const tiers = Object.keys(pricingMap).map(Number).sort((a, b) =&gt; a - b);
+
+      
+      if (privateRepos &gt; tiers[tiers.length - 1]) {
+        return { cost: null, isCustom: true };
+      }
+
+      for (const tier of tiers) {
+        if (privateRepos &lt;= tier) {
+          cost += pricingMap[tier];
+          break;
+        }
+      }
+    }
+
+    return { cost, isCustom: false };
+  }
 
   function calculateCosts() {
     const minutes = parseInt(document.getElementById(&#39;minutes&#39;).value) || 0;
     const platform = document.getElementById(&#39;platform&#39;).value;
     const ignoreSpeed = document.getElementById(&#39;ignoreSpeed&#39;).checked;
+    const isByoc = document.getElementById(&#39;byoc&#39;).checked;
+    const jobs = parseInt(document.getElementById(&#39;jobs&#39;).value) || 0;
+    const privateRepos = parseInt(document.getElementById(&#39;privateRepos&#39;).value) || 1;
     const tbody = document.getElementById(&#39;results-body&#39;);
     const speedHeader = document.getElementById(&#39;speed-header&#39;);
 
-    speedHeader.style.display = ignoreSpeed ? &#39;none&#39; : &#39;&#39;;
+    
+    speedHeader.style.display = (ignoreSpeed || isByoc) ? &#39;none&#39; : &#39;&#39;;
 
-    const platformProviders = providers[platform];
+    if (isByoc) {
+      const platformProviders = byocProviders[platform] || [];
 
-    let results = platformProviders.map(provider =&gt; {
-      let cost = 0;
-      let highCost = 0;
+      let results = platformProviders.map(provider =&gt; {
+        const result = calculateByocCost(provider, minutes, jobs, privateRepos);
+        const isFree = result.cost === 0;
+        return { ...provider, cost: result.cost, isCustom: result.isCustom, isFree };
+      });
+
       
-      const actualMinutes = ignoreSpeed ? minutes : minutes / provider.speedMultiplier;
-      
-      if (provider.fixedCost &amp;&amp; provider.pricePerMinute === 0) {
-        cost = provider.fixedCost;
-      } else if (provider.fixedCost) {
-        const freeMinutes = provider.freeMinutes || 0;
-        cost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinute);
-        highCost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinuteHigh);
-      } else {
-        const freeMinutes = provider.freeMinutes || 0;
-        const billableMinutes = Math.max(0, actualMinutes - freeMinutes);
-        cost = billableMinutes * provider.pricePerMinute;
-        highCost = billableMinutes * provider.pricePerMinuteHigh;
-      }
-      const isFree = cost === 0;
+      results.sort((a, b) =&gt; {
+        if (a.isCustom &amp;&amp; !b.isCustom) return 1;
+        if (!a.isCustom &amp;&amp; b.isCustom) return -1;
+        return a.cost - b.cost;
+      });
 
-      return { ...provider, cost, highCost, isFree };
-    });
+      tbody.innerHTML = results.map(provider =&gt; {
+        let costDisplay;
+        if (provider.isCustom) {
+          costDisplay = &#39;CUSTOM&#39;;
+        } else if (provider.isFree) {
+          costDisplay = &#39;FREE&#39;;
+        } else {
+          costDisplay = `$${provider.cost.toFixed(2)}`;
+        }
+        const costClass = provider.isFree ? &#39;free&#39; : &#39;cost&#39;;
+        const providerName = provider.link ? `&lt;a href=&#34;${provider.link}&#34; noreferrer noopener&gt;${provider.name}&lt;/a&gt;` : `${provider.name}`;
 
-    results.sort((a, b) =&gt; a.cost - b.cost);
+        return `
+          &lt;tr&gt;
+            &lt;td class=&#34;provider-name&#34;&gt;${providerName}&lt;/td&gt;
+            &lt;td class=&#34;${costClass}&#34;&gt;${costDisplay}&lt;/td&gt;
+          &lt;/tr&gt;
+        `;
+      }).join(&#39;&#39;);
+    } else {
+      const platformProviders = providers[platform];
 
-    tbody.innerHTML = results.map(provider =&gt; {
-      const cost = provider.highCost &gt; 0 ? `${provider.cost.toFixed(2)} - ${provider.highCost.toFixed(2)}` : provider.cost.toFixed(2);
-      const costDisplay = provider.isFree ? &#39;FREE&#39; : `${cost}`;
-      const costClass = provider.isFree ? &#39;free&#39; : &#39;cost&#39;;
-      const providerName = provider.link ? `&lt;a href=&#34;${provider.link}&#34; noreferrer noopener&gt;${provider.name}&lt;/a&gt;` : `${provider.name}`;
-      const speedColumn = ignoreSpeed ? &#39;&#39; : `&lt;td class=&#34;provider-speed&#34;&gt;${provider.speedMultiplier}&lt;/td&gt;`;
+      let results = platformProviders.map(provider =&gt; {
+        let cost = 0;
+        let highCost = 0;
 
-      return `
-                    &lt;tr&gt;
-                        &lt;td class=&#34;provider-name&#34;&gt;${providerName}&lt;/td&gt;
-                        ${speedColumn}
-                        &lt;td class=&#34;${costClass}&#34;&gt;${costDisplay}&lt;/td&gt;
-                    &lt;/tr&gt;
-                `;
-    }).join(&#39;&#39;);
+        const actualMinutes = ignoreSpeed ? minutes : minutes / provider.speedMultiplier;
+
+        if (provider.fixedCost &amp;&amp; provider.pricePerMinute === 0) {
+          cost = provider.fixedCost;
+        } else if (provider.fixedCost) {
+          const freeMinutes = provider.freeMinutes || 0;
+          cost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinute);
+          highCost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinuteHigh);
+        } else {
+          const freeMinutes = provider.freeMinutes || 0;
+          const billableMinutes = Math.max(0, actualMinutes - freeMinutes);
+          cost = billableMinutes * provider.pricePerMinute;
+          highCost = billableMinutes * provider.pricePerMinuteHigh;
+        }
+        const isFree = cost === 0;
+
+        return { ...provider, cost, highCost, isFree };
+      });
+
+      results.sort((a, b) =&gt; a.cost - b.cost);
+
+      tbody.innerHTML = results.map(provider =&gt; {
+        const cost = provider.highCost &gt; 0 ? `${provider.cost.toFixed(2)} - ${provider.highCost.toFixed(2)}` : provider.cost.toFixed(2);
+        const costDisplay = provider.isFree ? &#39;FREE&#39; : `${cost}`;
+        const costClass = provider.isFree ? &#39;free&#39; : &#39;cost&#39;;
+        const providerName = provider.link ? `&lt;a href=&#34;${provider.link}&#34; noreferrer noopener&gt;${provider.name}&lt;/a&gt;` : `${provider.name}`;
+        const speedColumn = ignoreSpeed ? &#39;&#39; : `&lt;td class=&#34;provider-speed&#34;&gt;${provider.speedMultiplier}&lt;/td&gt;`;
+
+        return `
+          &lt;tr&gt;
+            &lt;td class=&#34;provider-name&#34;&gt;${providerName}&lt;/td&gt;
+            ${speedColumn}
+            &lt;td class=&#34;${costClass}&#34;&gt;${costDisplay}&lt;/td&gt;
+          &lt;/tr&gt;
+        `;
+      }).join(&#39;&#39;);
+    }
   }
 
   document.getElementById(&#39;minutes&#39;).addEventListener(&#39;input&#39;, calculateCosts);
   document.getElementById(&#39;platform&#39;).addEventListener(&#39;change&#39;, calculateCosts);
   document.getElementById(&#39;ignoreSpeed&#39;).addEventListener(&#39;change&#39;, calculateCosts);
+  document.getElementById(&#39;jobs&#39;).addEventListener(&#39;input&#39;, calculateCosts);
+  document.getElementById(&#39;privateRepos&#39;).addEventListener(&#39;input&#39;, calculateCosts);
+
+  document.getElementById(&#39;byoc&#39;).addEventListener(&#39;change&#39;, function() {
+    const isByoc = this.checked;
+    document.getElementById(&#39;byoc-inputs&#39;).classList.toggle(&#39;hidden&#39;, !isByoc);
+    calculateCosts();
+  });
 
   calculateCosts();
 &lt;/script&gt;
@@ -7281,7 +7696,7 @@ In your choice of database, you should create a user (preferably only specifical
         &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
     &lt;/h2&gt;
 &lt;/a&gt;
-&lt;p&gt;Obviously this is a rather simplistic view of the cost comparison (as well as the &lt;em&gt;speed&lt;/em&gt; factor being unverified) between different options available in the market. Personally, I opted for Blacksmith for all my linux needs while continue to host my own M4 mac mini at home as the macOS runner (since the electricity cost is still cheaper than any of the above options).&lt;/p&gt;
+&lt;p&gt;Obviously this is a rather simplistic view of the cost comparison (as well as the &lt;em&gt;speed&lt;/em&gt; factor being unverified) between different options available in the market. Personally, I opted for Blacksmith for all my linux needs &lt;del&gt;while continue to host my own M4 mac mini at home as the macOS runner (since the electricity cost is still cheaper than any of the above options)&lt;/del&gt; moved my macOS runs to use GetMac as I was moving countries and can&amp;rsquo;t self-host reliably.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;em&gt;Note: This was initially released on &lt;strong&gt;Sept 2nd 2025&lt;/strong&gt; but has since gained a lot more traffic than I&amp;rsquo;ve expected so I decided to try my best in keeping this article upated. (This changelog section details dates whenever I make an edit. Or you could just lookup the commit history of this on GitHub through the &amp;ldquo;Source&amp;rdquo; linked at the bottom.)&lt;/em&gt;&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#changelog&#34;&gt;
@@ -7290,6 +7705,19 @@ In your choice of database, you should create a user (preferably only specifical
         &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
     &lt;/h2&gt;
 &lt;/a&gt;
+&lt;p&gt;Apr 25th 2026&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;New BYOC section
+&lt;ul&gt;
+&lt;li&gt;Re-added Sprinters.sh&lt;/li&gt;
+&lt;li&gt;Re-added RunsOn&lt;/li&gt;
+&lt;li&gt;Added Actuated&lt;/li&gt;
+&lt;li&gt;Added Cirun&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Integrate BYOC into the widget&lt;/li&gt;
+&lt;li&gt;Added a Windows section under hosted runners&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Apr 24th 2026&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Removed BuildJet (&lt;a href=&#34;https://buildjet.com/for-github-actions/blog/we-are-shutting-down&#34;&gt;service shutdown 😢&lt;/a&gt;)&lt;/li&gt;

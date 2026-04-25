@@ -6,7 +6,7 @@
     
     <title>GitHub Action Runner Alternatives - BinHong Lee&#39;s Blog</title>
     
-    <meta name="description" content="Last Updated: Apr 24th 2026
+    <meta name="description" content="Last Updated: Apr 25th 2026
 A while ago, I wrote about my attempt and reasoning behind managing my own fleet of self-hosted GitHub Action Runners. I&rsquo;ve since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub&rsquo;s default runners. This article is just a quick summary of what I&rsquo;ve found.
 
     
@@ -14,171 +14,7 @@ A while ago, I wrote about my attempt and reasoning behind managing my own fleet
         #
     
 
-
-    
-        Linux Runners Comparison
-        #
-    
-
-
-  
-    
-      
-          
-              Provider
-              Free Tier
-              Paid Pricing (2vCPU)
-              Performance
-              Special Features
-          
-      
-      
-          
-              Blacksmith
-              3,000 minutes/month
-              $0.004/min
-              2x faster builds, 4x faster cache
-              Unlimited concurrency, gaming CPUs
-          
-          
-              Depot
-              ❌ None
-              $20 for 2,000 minutes, then $0.004/min
-              30% faster, 10x faster cache
-              Docker-focused
-          
-          
-              GitHub
-              2,000 minutes/month
-              $0.006/min
-              Baseline
-              Official support
-          
-          
-              Namespace
-              ❌ None
-              $0.003/min
-              2x-10x faster
-              250GB storage, SSH access
-          
-          
-              puzl.cloud
-              400 vCPU-minutes/month, 800 GB-minutes/month
-              €0.00002/vCPU second &#43; €0.000001/GB second
-              2x faster
-              Fine grained per vCPU per GB RAM usage billing
-          
-          
-              Shipfox
-              3,000 minutes/month
-              $0.004/min
-              2x faster builds
-              Unlimited concurrency
-          
-          
-              Tenki
-              1,700 minutes/month
-              $0.003/min
-              30% faster
-              Bundled AI Code Reviewer service
-          
-          
-              Ubicloud
-              ~1,250 minutes ($1 credit)
-              $0.0008/min
-              Newer CPUs, good performance
-              Open source, Hetzner hardware
-          
-          
-              WarpBuild
-              ❌ None
-              $0.004/min
-              2x faster
-              Snapshots
-          
-      
-    
-  
-
-
-    
-        macOS Runners Comparison
-        #
-    
-
-
-  
-    
-      
-          
-              Provider
-              Free tier
-              Pricing
-              Hardware
-              Performance
-              Key Features
-          
-      
-      
-          
-              Blacksmith
-              ~98 minutes/month
-              $0.08/min
-              M4 Macs
-              2x faster builds, 4x faster cache
-              Unlimited concurrency
-          
-          
-              GetMac
-              100 minutes/month
-              ~$0.012/min
-              M4 Macs
-              3x faster builds
-              100% renewable energy
-          
-          
-              GitHub
-              200 minutes/month
-              $0.062/min
-              Intel Mac &#43; M2 Pro XL ($0.102/min)
-              Baseline
-              Official support
-          
-          
-              Namespace
-              ❌ None
-              $0.09
-              M4 Pro &#43; M2 Pro
-              Up to 3x faster
-              SSH/VNC access, bleeding-edge images
-          
-          
-              Tenki
-              ❌ None
-              $0.05/min
-              M4 Pro
-              30% faster
-              Bundled AI Code Reviewer service
-          
-          
-              WarpBuild
-              ❌ None
-              $0.08/min
-              M4 Pro
-              25% faster
-              Pay-per-use, macOS 13/14 support
-          
-      
-    
-  
-
-
-    
-        Bring Your Own Cloud
-        #
-    
-
-WIP: I&rsquo;m working on a new BYOC section that will re-add some removed services and a few other services onto this page. Please bear with me while I try to do my research (and math). Thanks!">
+These are essentially &ldquo;full service&rdquo; GitHub Action Runners. You don&rsquo;t have to do anything else except to create an account, setup billing, then change the runs-on label in your GitHub Action YAML file. It&rsquo;s easy to adopt but you&rsquo;re still essentially running on servers that are managed by the service providers. If you prefer to bring your own cloud services (AWS, Azure etc.), check out the BYOC section below!">
     <meta property="og:type" content="article">
     <meta property="og:title" content="GitHub Action Runner Alternatives">
     <meta property="og:description" content="Cheaper hosted 3rd party solutions">
@@ -288,7 +124,7 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
           <p class="row subtitle">Cheaper hosted 3rd party solutions</p>
           <div class="row author">
             <p>BinHong Lee</p></div>
-          <div class="post_content"><p><em>Last Updated: Apr 24th 2026</em></p>
+          <div class="post_content"><p><em>Last Updated: Apr 25th 2026</em></p>
 <p>A while ago, I wrote about my attempt and reasoning behind <a href="/blog/2025-04-25-self-hosted-github-runners/">managing my own fleet of self-hosted GitHub Action Runners</a>. I&rsquo;ve since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub&rsquo;s default runners. This article is just a quick summary of what I&rsquo;ve found.</p>
 <a class="anchor" href="#hosted-runners">
     <h2 id="hosted-runners">
@@ -296,6 +132,7 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
         <span class="tag">#</span>
     </h2>
 </a>
+<p>These are essentially &ldquo;full service&rdquo; GitHub Action Runners. You don&rsquo;t have to do anything else except to create an account, setup billing, then change the <code>runs-on</code> label in your GitHub Action YAML file. It&rsquo;s easy to adopt but you&rsquo;re still essentially running on servers that are managed by the service providers. If you prefer to bring your own cloud services (AWS, Azure etc.), check out the <a href="#bring-your-own-cloud-byoc">BYOC section below</a>!</p>
 <a class="anchor" href="#linux-runners-comparison">
     <h3 id="linux-runners-comparison">
         <span class="text">Linux Runners Comparison</span>
@@ -309,7 +146,7 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
           <tr>
               <th>Provider</th>
               <th>Free Tier</th>
-              <th>Paid Pricing (2vCPU)</th>
+              <th>Paid Pricing (2vCPU, 8GB)</th>
               <th>Performance</th>
               <th>Special Features</th>
           </tr>
@@ -339,7 +176,7 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
           <tr>
               <td><a href="https://namespace.so/">Namespace</a></td>
               <td>❌ None</td>
-              <td>$0.003/min</td>
+              <td>$0.004/min</td>
               <td>2x-10x faster</td>
               <td>250GB storage, SSH access</td>
           </tr>
@@ -368,7 +205,7 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
               <td><a href="https://www.ubicloud.com/">Ubicloud</a></td>
               <td>~1,250 minutes ($1 credit)</td>
               <td>$0.0008/min</td>
-              <td>Newer CPUs, good performance</td>
+              <td>~30% faster</td>
               <td>Open source, Hetzner hardware</td>
           </tr>
           <tr>
@@ -376,7 +213,7 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
               <td>❌ None</td>
               <td>$0.004/min</td>
               <td>2x faster</td>
-              <td>Snapshots</td>
+              <td>Unlimited concurrency</td>
           </tr>
       </tbody>
     </table>
@@ -395,10 +232,10 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
           <tr>
               <th>Provider</th>
               <th>Free tier</th>
-              <th>Pricing</th>
+              <th>Paid Pricing</th>
               <th>Hardware</th>
               <th>Performance</th>
-              <th>Key Features</th>
+              <th>Special Features</th>
           </tr>
       </thead>
       <tbody>
@@ -411,12 +248,20 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
               <td>Unlimited concurrency</td>
           </tr>
           <tr>
+              <td><a href="http://depot.dev/">Depot</a></td>
+              <td>❌ None</td>
+              <td>$20 for 100 minutes, then $0.08/min</td>
+              <td>30% faster, 10x faster cache</td>
+              <td>Docker-focused</td>
+              <td></td>
+          </tr>
+          <tr>
               <td><a href="https://getmac.io/">GetMac</a></td>
               <td>100 minutes/month</td>
               <td>~$0.012/min</td>
               <td>M4 Macs</td>
               <td>3x faster builds</td>
-              <td>100% renewable energy</td>
+              <td>SSH/VNC access, 100% renewable energy</td>
           </tr>
           <tr>
               <td>GitHub</td>
@@ -432,7 +277,7 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
               <td>$0.09</td>
               <td>M4 Pro + M2 Pro</td>
               <td>Up to 3x faster</td>
-              <td>SSH/VNC access, bleeding-edge images</td>
+              <td>SSH/VNC access</td>
           </tr>
           <tr>
               <td><a href="https://tenki.cloud/">Tenki</a></td>
@@ -448,26 +293,142 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
               <td>$0.08/min</td>
               <td>M4 Pro</td>
               <td>25% faster</td>
-              <td>Pay-per-use, macOS 13/14 support</td>
+              <td>Unlimited concurrency</td>
           </tr>
       </tbody>
     </table>
   </div>
 </div>
-<a class="anchor" href="#bring-your-own-cloud">
-    <h2 id="bring-your-own-cloud">
-        <span class="text">Bring Your Own Cloud</span>
+<a class="anchor" href="#windows-runners-comparison">
+    <h3 id="windows-runners-comparison">
+        <span class="text">Windows Runners Comparison</span>
+        <span class="tag">#</span>
+    </h3>
+</a>
+<div style="padding: 20px 0;">
+  <div style="overflow-x: auto;">
+    <table>
+      <thead>
+          <tr>
+              <th>Provider</th>
+              <th>Free tier</th>
+              <th>Paid Pricing</th>
+              <th>Performance</th>
+              <th>Special Features</th>
+              <th></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td><a href="https://www.blacksmith.sh/">Blacksmith</a></td>
+              <td>1,500 minutes/month</td>
+              <td>$0.008/min</td>
+              <td>2x faster builds, 4x faster cache</td>
+              <td>Unlimited concurrency</td>
+              <td></td>
+          </tr>
+          <tr>
+              <td><a href="http://depot.dev/">Depot</a></td>
+              <td>❌ None</td>
+              <td>$20 for 1,000 minutes, then $0.008/min</td>
+              <td>30% faster, 10x faster cache</td>
+              <td>Docker-focused</td>
+              <td></td>
+          </tr>
+          <tr>
+              <td>GitHub</td>
+              <td>~1197 minutes/month</td>
+              <td>$0.01/min</td>
+              <td>Baseline</td>
+              <td>Official support</td>
+              <td></td>
+          </tr>
+          <tr>
+              <td><a href="https://namespace.so/">Namespace</a></td>
+              <td>❌ None</td>
+              <td>$100 for 50,000 minutes, then $0.008/min</td>
+              <td>2x-10x faster</td>
+              <td>250GB storage, SSH/VNC access</td>
+              <td></td>
+          </tr>
+          <tr>
+              <td><a href="https://www.warpbuild.com/">WarpBuild</a></td>
+              <td>❌ None</td>
+              <td>$0.008/min</td>
+              <td>25% faster</td>
+              <td>Unlimited concurrency</td>
+              <td></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<a class="anchor" href="#bring-your-own-cloud-byoc">
+    <h2 id="bring-your-own-cloud-byoc">
+        <span class="text">Bring Your Own Cloud (BYOC)</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p><em>WIP: I&rsquo;m working on a new BYOC section that will re-add some removed services and a few other services onto this page. Please bear with me while I try to do my research (and math). Thanks!</em></p>
-<a class="anchor" href="#widgets">
-    <h2 id="widgets">
-        <span class="text">Widgets</span>
+<p>Unlike the full service hosted runners, BYOC is designed for users who are already using an existing cloud service (or have their own bare-metal hosts) would prefer to use that as the action runners instead of using the external party&rsquo;s server.</p>
+<div style="padding: 20px 0;">
+  <div style="overflow-x: auto;">
+    <table>
+      <thead>
+          <tr>
+              <th>Provider</th>
+              <th>Free Tier</th>
+              <th>Pricing</th>
+              <th>Supported Cloud</th>
+              <th>Supported Images</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td><a href="https://actuated.com/">Actuated</a></td>
+              <td>❌ None</td>
+              <td>$250/month</td>
+              <td>Any bare-metal hosts and / or VM with nested virtualisation</td>
+              <td>Ubuntu</td>
+          </tr>
+          <tr>
+              <td><a href="https://cirun.io/">Cirun</a></td>
+              <td>Free for public repositories</td>
+              <td>$29/month for 3 private repositories, $79/month for 10 private repositories</td>
+              <td>All major cloud services and / or on-prem servers</td>
+              <td>Ubuntu, Windows, macOS, Custom Images</td>
+          </tr>
+          <tr>
+              <td><a href="https://runs-on.com/">RunsOn</a></td>
+              <td>15 days free trial</td>
+              <td>300€/year</td>
+              <td>AWS</td>
+              <td>Ubuntu, Windows, macOS, Custom Images</td>
+          </tr>
+          <tr>
+              <td><a href="https://sprinters.sh/">Sprinters.sh</a></td>
+              <td>Free for public repositories</td>
+              <td>$0.01/job</td>
+              <td>AWS</td>
+              <td>Ubuntu</td>
+          </tr>
+          <tr>
+              <td><a href="https://www.warpbuild.com/">WarpBuild</a></td>
+              <td>❌ None</td>
+              <td>$0.002/min</td>
+              <td>AWS, GCP, Azure</td>
+              <td>Linux, Windows</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<a class="anchor" href="#widget">
+    <h2 id="widget">
+        <span class="text">Widget</span>
         <span class="tag">#</span>
     </h2>
 </a>
-<p>I don&rsquo;t have a better place to put this but I built a very basic widget that takes into account of the &ldquo;supposed&rdquo; faster speed (leading to less action minutes) with each of their rates so you can find out which platform fits you best based on your usage (with GitHub&rsquo;s Action Runner minutes as baseline).</p>
+<p>I built a very basic widget that <em>tries to</em> take into account of the &ldquo;supposed&rdquo; faster speed (leading to less action minutes) with each of their rates so you can find out which platform fits you best based on your usage (with GitHub&rsquo;s Action Runner minutes as baseline comparison).</p>
 <style>
   .calculator-widget {
     font-family: VictorMono;
@@ -501,6 +462,13 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
     width: 100%;
   }
 
+  .toggles {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+    flex-wrap: wrap;
+  }
+
   .free {
     color: var(--default-links);
   }
@@ -509,18 +477,21 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
     color: var(--dark-links);
   }
 
-  .speed-toggle-switch {
+  .speed-toggle-switch,
+  .byoc-toggle-switch {
     position: relative;
     display: inline-block;
     width: 50px;
     height: 24px;
   }
 
-  .speed-toggle-switch input {
+  .speed-toggle-switch input,
+  .byoc-toggle-switch input {
     opacity: 0;
   }
 
-  .speed-toggle-slider {
+  .speed-toggle-slider,
+  .byoc-toggle-slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -532,7 +503,8 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
     border-radius: 24px;
   }
 
-  .speed-toggle-slider:before {
+  .speed-toggle-slider:before,
+  .byoc-toggle-slider:before {
     position: absolute;
     content: "";
     height: 18px;
@@ -544,36 +516,54 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
     border-radius: 50%;
   }
 
-  .speed-toggle-switch input:checked + .speed-toggle-slider {
+  .speed-toggle-switch input:checked + .speed-toggle-slider,
+  .byoc-toggle-switch input:checked + .byoc-toggle-slider {
     background-color: var(--default-active);
   }
 
-  .speed-toggle-switch input:checked + .speed-toggle-slider:before {
+  .speed-toggle-switch input:checked + .speed-toggle-slider:before,
+  .byoc-toggle-switch input:checked + .byoc-toggle-slider:before {
     transform: translateX(26px);
   }
 
-  #darkModeToggle:checked~div .speed-toggle-switch input:checked + .speed-toggle-slider {
+  #darkModeToggle:checked~div .speed-toggle-switch input:checked + .speed-toggle-slider,
+  #darkModeToggle:checked~div .byoc-toggle-switch input:checked + .byoc-toggle-slider {
     background-color: var(--dark-active);
   }
 
-  #darkModeToggle:checked~div .speed-toggle-slider {
+  #darkModeToggle:checked~div .speed-toggle-slider,
+  #darkModeToggle:checked~div .byoc-toggle-slider {
     background-color: var(--dark-gray);
   }
 
-  #darkModeToggle:checked~div .speed-toggle-slider:before {
+  #darkModeToggle:checked~div .speed-toggle-slider:before,
+  #darkModeToggle:checked~div .byoc-toggle-slider:before {
     background-color: var(--dark-background);
   }
 
-  .speed-toggle-label {
-    display: flex;
+  .speed-toggle-label, .byoc-toggle-label {
+    display: inline-flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
     padding: 0 0 15px 2px;
+    flex: 1;
+  }
+
+  .byoc-inputs {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+    margin-bottom: 15px;
+  }
+
+  .byoc-inputs.hidden {
+    display: none;
   }
 
   @media (max-width: 750px) {
-    .inputs {
+    .inputs,
+    .byoc-inputs {
       flex-direction: column;
     }
 
@@ -593,17 +583,36 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
       <select id="platform">
         <option value="linux">Linux (2 vCPU)</option>
         <option value="macos">macOS</option>
+        <option value="windows">Windows</option>
       </select>
     </div>
   </div>
-  <label for="ignoreSpeed" class="speed-toggle-label">
-    <div class="speed-toggle-switch">
-      <input type="checkbox" id="ignoreSpeed" checked>
-      <span class="speed-toggle-slider"></span>
+  <div class="toggles">
+    <label for="ignoreSpeed" class="speed-toggle-label">
+      <div class="speed-toggle-switch">
+        <input type="checkbox" id="ignoreSpeed" checked>
+        <span class="speed-toggle-slider"></span>
+      </div>
+      Ignore Speed
+    </label>
+    <label for="byoc" class="byoc-toggle-label">
+      <div class="byoc-toggle-switch">
+        <input type="checkbox" id="byoc">
+        <span class="byoc-toggle-slider"></span>
+      </div>
+      BYOC
+    </label>
+  </div>
+  <div class="byoc-inputs hidden" id="byoc-inputs">
+    <div class="input-group">
+      <label for="jobs">Jobs per Month</label>
+      <input type="number" id="jobs" value="100" min="0" step="10">
     </div>
-    Ignore Speed
-  </label>
-
+    <div class="input-group">
+      <label for="privateRepos">Private Repositories</label>
+      <input type="number" id="privateRepos" value="1" min="1" step="1">
+    </div>
+  </div>
   <table class="results-table" id="results">
     <thead>
       <tr>
@@ -624,7 +633,7 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
       { name: "Blacksmith", link: "https://www.blacksmith.sh/", freeMinutes: 3000, pricePerMinute: 0.004, speedMultiplier: 2.0 },
       { name: "Depot", link: "http://depot.dev/", freeMinutes: 2000, fixedCost: 20, pricePerMinute: 0.004, speedMultiplier: 1.3 },
       { name: "GitHub", freeMinutes: 2000, pricePerMinute: 0.006, speedMultiplier: 1.0 },
-      { name: "Namespace", link: "https://namespace.so/", freeMinutes: 0, pricePerMinute: 0.003, speedMultiplier: 1.8 },
+      { name: "Namespace", link: "https://namespace.so/", freeMinutes: 0, pricePerMinute: 0.004, speedMultiplier: 1.8 },
       { name: "puzl.cloud*", link: "https://puzl.cloud/", freeMinutes: 400, pricePerMinute: 0.0008, pricePerMinuteHigh: 0.0025, speedMultiplier: 1.0 },
       { name: "Shipfox", link: "https://www.shipfox.io/", freeMinutes: 3000, pricePerMinute: 0.004, speedMultiplier: 2.0 },
       { name: "Tenki", link: "https://tenki.cloud/", freeMinutes: 1700, pricePerMinute: 0.003, fixedCost: 0, speedMultiplier: 1.3 },
@@ -633,70 +642,171 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
     ],
     macos: [
       { name: "Blacksmith", link: "https://www.blacksmith.sh/", freeMinutes: 98, pricePerMinute: 0.08, speedMultiplier: 2.0 },
+      { name: "Depot", link: "http://depot.dev/", freeMinutes: 100, fixedCost: 20, pricePerMinute: 0.08, speedMultiplier: 1.3 },
       { name: "GetMac", link: "https://getmac.io/", freeMinutes: 100, pricePerMinute: 0.012, speedMultiplier: 3.0 },
       { name: "GitHub", freeMinutes: 200, pricePerMinute: 0.062, speedMultiplier: 1.0 },
       { name: "Namespace", link: "https://namespace.so/", freeMinutes: 0, pricePerMinute: 0.09, speedMultiplier: 2.0 },
       { name: "Tenki", link: "https://tenki.cloud/", freeMinutes: 0, pricePerMinute: 0.05, fixedCost: 0, speedMultiplier: 1.3 },
       { name: "WarpBuild", link: "https://www.warpbuild.com/", freeMinutes: 0, pricePerMinute: 0.08, speedMultiplier: 1.25 },
+    ],
+    windows: [
+      { name: "Blacksmith", link: "https://www.blacksmith.sh/", freeMinutes: 1500, pricePerMinute: 0.008, speedMultiplier: 2.0 },
+      { name: "Depot", link: "http://depot.dev/", freeMinutes: 1000, fixedCost: 20, pricePerMinute: 0.008, speedMultiplier: 1.3 },
+      { name: "GitHub", freeMinutes: 1197, pricePerMinute: 0.01, speedMultiplier: 1.0 },
+      { name: "Namespace", link: "https://namespace.so/", freeMinutes: 50000, fixedCost: 100, pricePerMinute: 0.008, speedMultiplier: 2.0 },
+      { name: "WarpBuild", link: "https://www.warpbuild.com/", freeMinutes: 0, pricePerMinute: 0.008, speedMultiplier: 2.0 },
     ]
   };
+
+  const byocProviders = {
+    linux: [
+      { name: "Actuated", link: "https://actuated.com/", pricePerMinute: 0, pricePerMonth: 250, pricePerJob: 0, privateRepositoryPricingMap: {} },
+      { name: "Cirun", link: "https://cirun.io/", pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: "RunsOn", link: "https://runs-on.com/", pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
+      { name: "Sprinters.sh", link: "https://sprinters.sh/", pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0.01, privateRepositoryPricingMap: {} },
+      { name: "WarpBuild", link: "https://www.warpbuild.com/", pricePerMinute: 0.002, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: {} },
+    ],
+    macos: [
+      { name: "Cirun", link: "https://cirun.io/", pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: "RunsOn", link: "https://runs-on.com/", pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
+    ],
+    windows: [
+      { name: "Cirun", link: "https://cirun.io/", pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: "RunsOn", link: "https://runs-on.com/", pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
+      { name: "WarpBuild", link: "https://www.warpbuild.com/", pricePerMinute: 0.002, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: {} },
+    ]
+  };
+
+  function calculateByocCost(provider, minutes, jobs, privateRepos) {
+    let cost = provider.pricePerMonth;
+    cost += minutes * provider.pricePerMinute;
+    cost += jobs * provider.pricePerJob;
+
+    const pricingMap = provider.privateRepositoryPricingMap;
+    if (Object.keys(pricingMap).length > 0) {
+      const tiers = Object.keys(pricingMap).map(Number).sort((a, b) => a - b);
+
+      
+      if (privateRepos > tiers[tiers.length - 1]) {
+        return { cost: null, isCustom: true };
+      }
+
+      for (const tier of tiers) {
+        if (privateRepos <= tier) {
+          cost += pricingMap[tier];
+          break;
+        }
+      }
+    }
+
+    return { cost, isCustom: false };
+  }
 
   function calculateCosts() {
     const minutes = parseInt(document.getElementById('minutes').value) || 0;
     const platform = document.getElementById('platform').value;
     const ignoreSpeed = document.getElementById('ignoreSpeed').checked;
+    const isByoc = document.getElementById('byoc').checked;
+    const jobs = parseInt(document.getElementById('jobs').value) || 0;
+    const privateRepos = parseInt(document.getElementById('privateRepos').value) || 1;
     const tbody = document.getElementById('results-body');
     const speedHeader = document.getElementById('speed-header');
 
-    speedHeader.style.display = ignoreSpeed ? 'none' : '';
+    
+    speedHeader.style.display = (ignoreSpeed || isByoc) ? 'none' : '';
 
-    const platformProviders = providers[platform];
+    if (isByoc) {
+      const platformProviders = byocProviders[platform] || [];
 
-    let results = platformProviders.map(provider => {
-      let cost = 0;
-      let highCost = 0;
+      let results = platformProviders.map(provider => {
+        const result = calculateByocCost(provider, minutes, jobs, privateRepos);
+        const isFree = result.cost === 0;
+        return { ...provider, cost: result.cost, isCustom: result.isCustom, isFree };
+      });
+
       
-      const actualMinutes = ignoreSpeed ? minutes : minutes / provider.speedMultiplier;
-      
-      if (provider.fixedCost && provider.pricePerMinute === 0) {
-        cost = provider.fixedCost;
-      } else if (provider.fixedCost) {
-        const freeMinutes = provider.freeMinutes || 0;
-        cost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinute);
-        highCost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinuteHigh);
-      } else {
-        const freeMinutes = provider.freeMinutes || 0;
-        const billableMinutes = Math.max(0, actualMinutes - freeMinutes);
-        cost = billableMinutes * provider.pricePerMinute;
-        highCost = billableMinutes * provider.pricePerMinuteHigh;
-      }
-      const isFree = cost === 0;
+      results.sort((a, b) => {
+        if (a.isCustom && !b.isCustom) return 1;
+        if (!a.isCustom && b.isCustom) return -1;
+        return a.cost - b.cost;
+      });
 
-      return { ...provider, cost, highCost, isFree };
-    });
+      tbody.innerHTML = results.map(provider => {
+        let costDisplay;
+        if (provider.isCustom) {
+          costDisplay = 'CUSTOM';
+        } else if (provider.isFree) {
+          costDisplay = 'FREE';
+        } else {
+          costDisplay = `$${provider.cost.toFixed(2)}`;
+        }
+        const costClass = provider.isFree ? 'free' : 'cost';
+        const providerName = provider.link ? `<a href="${provider.link}" noreferrer noopener>${provider.name}</a>` : `${provider.name}`;
 
-    results.sort((a, b) => a.cost - b.cost);
+        return `
+          <tr>
+            <td class="provider-name">${providerName}</td>
+            <td class="${costClass}">${costDisplay}</td>
+          </tr>
+        `;
+      }).join('');
+    } else {
+      const platformProviders = providers[platform];
 
-    tbody.innerHTML = results.map(provider => {
-      const cost = provider.highCost > 0 ? `${provider.cost.toFixed(2)} - ${provider.highCost.toFixed(2)}` : provider.cost.toFixed(2);
-      const costDisplay = provider.isFree ? 'FREE' : `${cost}`;
-      const costClass = provider.isFree ? 'free' : 'cost';
-      const providerName = provider.link ? `<a href="${provider.link}" noreferrer noopener>${provider.name}</a>` : `${provider.name}`;
-      const speedColumn = ignoreSpeed ? '' : `<td class="provider-speed">${provider.speedMultiplier}</td>`;
+      let results = platformProviders.map(provider => {
+        let cost = 0;
+        let highCost = 0;
 
-      return `
-                    <tr>
-                        <td class="provider-name">${providerName}</td>
-                        ${speedColumn}
-                        <td class="${costClass}">${costDisplay}</td>
-                    </tr>
-                `;
-    }).join('');
+        const actualMinutes = ignoreSpeed ? minutes : minutes / provider.speedMultiplier;
+
+        if (provider.fixedCost && provider.pricePerMinute === 0) {
+          cost = provider.fixedCost;
+        } else if (provider.fixedCost) {
+          const freeMinutes = provider.freeMinutes || 0;
+          cost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinute);
+          highCost = provider.fixedCost + (Math.max(0, actualMinutes - freeMinutes) * provider.pricePerMinuteHigh);
+        } else {
+          const freeMinutes = provider.freeMinutes || 0;
+          const billableMinutes = Math.max(0, actualMinutes - freeMinutes);
+          cost = billableMinutes * provider.pricePerMinute;
+          highCost = billableMinutes * provider.pricePerMinuteHigh;
+        }
+        const isFree = cost === 0;
+
+        return { ...provider, cost, highCost, isFree };
+      });
+
+      results.sort((a, b) => a.cost - b.cost);
+
+      tbody.innerHTML = results.map(provider => {
+        const cost = provider.highCost > 0 ? `${provider.cost.toFixed(2)} - ${provider.highCost.toFixed(2)}` : provider.cost.toFixed(2);
+        const costDisplay = provider.isFree ? 'FREE' : `${cost}`;
+        const costClass = provider.isFree ? 'free' : 'cost';
+        const providerName = provider.link ? `<a href="${provider.link}" noreferrer noopener>${provider.name}</a>` : `${provider.name}`;
+        const speedColumn = ignoreSpeed ? '' : `<td class="provider-speed">${provider.speedMultiplier}</td>`;
+
+        return `
+          <tr>
+            <td class="provider-name">${providerName}</td>
+            ${speedColumn}
+            <td class="${costClass}">${costDisplay}</td>
+          </tr>
+        `;
+      }).join('');
+    }
   }
 
   document.getElementById('minutes').addEventListener('input', calculateCosts);
   document.getElementById('platform').addEventListener('change', calculateCosts);
   document.getElementById('ignoreSpeed').addEventListener('change', calculateCosts);
+  document.getElementById('jobs').addEventListener('input', calculateCosts);
+  document.getElementById('privateRepos').addEventListener('input', calculateCosts);
+
+  document.getElementById('byoc').addEventListener('change', function() {
+    const isByoc = this.checked;
+    document.getElementById('byoc-inputs').classList.toggle('hidden', !isByoc);
+    calculateCosts();
+  });
 
   calculateCosts();
 </script>
@@ -708,7 +818,7 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
         <span class="tag">#</span>
     </h2>
 </a>
-<p>Obviously this is a rather simplistic view of the cost comparison (as well as the <em>speed</em> factor being unverified) between different options available in the market. Personally, I opted for Blacksmith for all my linux needs while continue to host my own M4 mac mini at home as the macOS runner (since the electricity cost is still cheaper than any of the above options).</p>
+<p>Obviously this is a rather simplistic view of the cost comparison (as well as the <em>speed</em> factor being unverified) between different options available in the market. Personally, I opted for Blacksmith for all my linux needs <del>while continue to host my own M4 mac mini at home as the macOS runner (since the electricity cost is still cheaper than any of the above options)</del> moved my macOS runs to use GetMac as I was moving countries and can&rsquo;t self-host reliably.</p>
 <hr>
 <p><em>Note: This was initially released on <strong>Sept 2nd 2025</strong> but has since gained a lot more traffic than I&rsquo;ve expected so I decided to try my best in keeping this article upated. (This changelog section details dates whenever I make an edit. Or you could just lookup the commit history of this on GitHub through the &ldquo;Source&rdquo; linked at the bottom.)</em></p>
 <a class="anchor" href="#changelog">
@@ -717,6 +827,19 @@ WIP: I&rsquo;m working on a new BYOC section that will re-add some removed servi
         <span class="tag">#</span>
     </h2>
 </a>
+<p>Apr 25th 2026</p>
+<ul>
+<li>New BYOC section
+<ul>
+<li>Re-added Sprinters.sh</li>
+<li>Re-added RunsOn</li>
+<li>Added Actuated</li>
+<li>Added Cirun</li>
+</ul>
+</li>
+<li>Integrate BYOC into the widget</li>
+<li>Added a Windows section under hosted runners</li>
+</ul>
 <p>Apr 24th 2026</p>
 <ul>
 <li>Removed BuildJet (<a href="https://buildjet.com/for-github-actions/blog/we-are-shutting-down">service shutdown 😢</a>)</li>
