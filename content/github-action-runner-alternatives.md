@@ -25,6 +25,7 @@ These are essentially "full service" GitHub Action Runners. You don't have to do
 | [Namespace](https://namespace.so/) | ❌ None | $0.004/min | 2x-10x faster | 250GB storage, SSH access |
 | [puzl.cloud](https://puzl.cloud/) | 400 vCPU-minutes/month, 800 GB-minutes/month | €0.00002/vCPU second + €0.000001/GB second | 2x faster | Fine grained per vCPU per GB RAM usage billing |
 | [Shipfox](https://www.shipfox.io/) | 3,000 minutes/month | $0.004/min | 2x faster builds | Unlimited concurrency |
+| [Skipbox](https://skipbox.dev/) | 7-day trial or 3,000 minutes, no card | $39/month flat (4vCPU, 8GB), unlimited minutes | Docker layers and package caches kept between jobs | Dedicated VM per account, fork PRs on a fresh VM |
 | [Tenki](https://tenki.cloud/) | 1,700 minutes/month | $0.003/min | 30% faster | Bundled AI Code Reviewer service |
 | [Ubicloud](https://www.ubicloud.com/) | ~1,250 minutes ($1 credit) | $0.0008/min | ~30% faster | Open source, Hetzner hardware |
 | [WarpBuild](https://www.warpbuild.com/) | ❌ None | $0.004/min | 2x faster | Unlimited concurrency |
