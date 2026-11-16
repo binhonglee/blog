@@ -93,8 +93,8 @@
           &lt;/tr&gt;
           &lt;tr&gt;
               &lt;td&gt;&lt;a href=&#34;https://tenki.cloud/&#34;&gt;Tenki&lt;/a&gt;&lt;/td&gt;
-              &lt;td&gt;1,700 minutes/month&lt;/td&gt;
-              &lt;td&gt;$0.003/min&lt;/td&gt;
+              &lt;td&gt;$100 one-time credit&lt;/td&gt;
+              &lt;td&gt;$0.008/min*&lt;/td&gt;
               &lt;td&gt;30% faster&lt;/td&gt;
               &lt;td&gt;Bundled AI Code Reviewer service&lt;/td&gt;
           &lt;/tr&gt;
@@ -116,6 +116,7 @@
     &lt;/table&gt;
   &lt;/div&gt;
 &lt;/div&gt;
+&lt;p&gt;&lt;em&gt;* Tenki&amp;rsquo;s 2vCPU runner only comes with 4GB RAM, so this is the price of their 4vCPU, 8GB runner.&lt;/em&gt;&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#macos-runners-comparison&#34;&gt;
     &lt;h3 id=&#34;macos-runners-comparison&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;macOS Runners Comparison&lt;/span&gt;
@@ -186,8 +187,8 @@
           &lt;/tr&gt;
           &lt;tr&gt;
               &lt;td&gt;&lt;a href=&#34;https://tenki.cloud/&#34;&gt;Tenki&lt;/a&gt;&lt;/td&gt;
-              &lt;td&gt;❌ None&lt;/td&gt;
-              &lt;td&gt;$0.05/min&lt;/td&gt;
+              &lt;td&gt;$100 one-time credit&lt;/td&gt;
+              &lt;td&gt;$0.12/min*&lt;/td&gt;
               &lt;td&gt;M4 Pro&lt;/td&gt;
               &lt;td&gt;30% faster&lt;/td&gt;
               &lt;td&gt;Bundled AI Code Reviewer service&lt;/td&gt;
@@ -204,6 +205,7 @@
     &lt;/table&gt;
   &lt;/div&gt;
 &lt;/div&gt;
+&lt;p&gt;&lt;em&gt;* Tenki prices macOS per vCPU, so this is their 6vCPU, 16GB runner, the closest match to what the others here offer at their listed price.&lt;/em&gt;&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#windows-runners-comparison&#34;&gt;
     &lt;h3 id=&#34;windows-runners-comparison&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Windows Runners Comparison&lt;/span&gt;
@@ -557,7 +559,7 @@
       { name: &#34;Namespace&#34;, link: &#34;https://namespace.so/&#34;, freeMinutes: 0, pricePerMinute: 0.004, speedMultiplier: 1.8 },
       { name: &#34;puzl.cloud*&#34;, link: &#34;https://puzl.cloud/&#34;, freeMinutes: 400, pricePerMinute: 0.0008, pricePerMinuteHigh: 0.0025, speedMultiplier: 1.0 },
       { name: &#34;Sengi&#34;, link: &#34;https://sengi.run/&#34;, freeMinutes: 3000, pricePerMinute: 0.001, speedMultiplier: 1.0 },
-      { name: &#34;Tenki&#34;, link: &#34;https://tenki.cloud/&#34;, freeMinutes: 1700, pricePerMinute: 0.003, fixedCost: 0, speedMultiplier: 1.3 },
+      { name: &#34;Tenki*&#34;, link: &#34;https://tenki.cloud/&#34;, freeMinutes: 0, pricePerMinute: 0.008, fixedCost: 0, speedMultiplier: 1.3 },
       { name: &#34;Ubicloud&#34;, link: &#34;https://www.ubicloud.com/&#34;, freeMinutes: 1250, pricePerMinute: 0.0008, speedMultiplier: 1.3 },
       { name: &#34;WarpBuild&#34;, link: &#34;https://www.warpbuild.com/&#34;, freeMinutes: 0, pricePerMinute: 0.004, speedMultiplier: 2.0 },
     ],
@@ -568,7 +570,7 @@
       { name: &#34;GetMac&#34;, link: &#34;https://getmac.io/&#34;, freeMinutes: 100, pricePerMinute: 0.012, speedMultiplier: 3.0 },
       { name: &#34;GitHub&#34;, freeMinutes: 200, pricePerMinute: 0.062, speedMultiplier: 1.0 },
       { name: &#34;Namespace&#34;, link: &#34;https://namespace.so/&#34;, freeMinutes: 0, pricePerMinute: 0.09, speedMultiplier: 2.0 },
-      { name: &#34;Tenki&#34;, link: &#34;https://tenki.cloud/&#34;, freeMinutes: 0, pricePerMinute: 0.05, fixedCost: 0, speedMultiplier: 1.3 },
+      { name: &#34;Tenki*&#34;, link: &#34;https://tenki.cloud/&#34;, freeMinutes: 0, pricePerMinute: 0.12, fixedCost: 0, speedMultiplier: 1.3 },
       { name: &#34;WarpBuild&#34;, link: &#34;https://www.warpbuild.com/&#34;, freeMinutes: 0, pricePerMinute: 0.08, speedMultiplier: 1.25 },
     ],
     windows: [
@@ -737,6 +739,7 @@
 &lt;/script&gt;
 &lt;p&gt;&lt;em&gt;Note (Speed): loosely defined based on acclaimed performance but not verified in any way, shape, or form.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Note (puzl.cloud): puzl.cloud has a rather complex calculation that heavily depends on how your job was ran rather than a fix per machine per minutes cost so I&amp;rsquo;m using best guess estimate (of around $0.0008 - $0.0025). Check out &lt;a href=&#34;https://runmyjob.io/#Pricing&#34;&gt;their pricing page&lt;/a&gt; for more details.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note (Tenki): Tenki prices by vCPU, so the calculator uses their 4vCPU, 8GB runner on Linux and their 6vCPU, 16GB runner on macOS to match the size of the other providers.&lt;/em&gt;&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
     &lt;h2 id=&#34;wrap-up&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
@@ -754,6 +757,7 @@
 &lt;/a&gt;
 &lt;p&gt;Nov 15th 2026&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;Updated Tenki pricing (now billed per vCPU with a $100 one-time credit)&lt;/li&gt;
 &lt;li&gt;Removed Shipfox (now an AI agent workflow platform rather than a GitHub Actions runner)&lt;/li&gt;
 &lt;li&gt;Added Avrea to linux, macOS and windows runners&lt;/li&gt;
 &lt;li&gt;Added Sengi to linux runner&lt;/li&gt;
