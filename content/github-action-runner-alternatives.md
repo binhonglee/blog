@@ -81,6 +81,8 @@ _Note (Speed): loosely defined based on acclaimed performance but not verified i
 
 _Note (puzl.cloud): puzl.cloud has a rather complex calculation that heavily depends on how your job was ran rather than a fix per machine per minutes cost so I'm using best guess estimate (of around $0.0008 - $0.0025). Check out [their pricing page](https://runmyjob.io/#Pricing) for more details._
 
+_Note (Tenki): Tenki prices by vCPU, so the calculator uses their 4vCPU, 8GB runner on Linux and their 6vCPU, 16GB runner on macOS to match the size of the other providers._
+
 ## Wrap up
 
 Obviously this is a rather simplistic view of the cost comparison (as well as the _speed_ factor being unverified) between different options available in the market. Personally, I opted for Blacksmith for all my linux needs ~~while continue to host my own M4 mac mini at home as the macOS runner (since the electricity cost is still cheaper than any of the above options)~~ moved my macOS runs to use GetMac as I was moving countries and can't self-host reliably.
