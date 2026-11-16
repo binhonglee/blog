@@ -7,7 +7,7 @@ aliases:
   - /gh_action_runner_alt/
 ---
 
-_Last Updated: Apr 25th 2026_
+_Last Updated: Nov 15th 2026_
 
 A while ago, I wrote about my attempt and reasoning behind [managing my own fleet of self-hosted GitHub Action Runners](/blog/2025-04-25-self-hosted-github-runners/). I've since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub's default runners. This article is just a quick summary of what I've found.
 
@@ -85,6 +85,9 @@ Obviously this is a rather simplistic view of the cost comparison (as well as th
 _Note: This was initially released on **Sept 2nd 2025** but has since gained a lot more traffic than I've expected so I decided to try my best in keeping this article upated. (This changelog section details dates whenever I make an edit. Or you could just lookup the commit history of this on GitHub through the "Source" linked at the bottom.)_
 
 ## Changelog
+
+Nov 15th 2026
+- Added Avrea to linux, macOS and windows runners
 
 Apr 25th 2026
 - New BYOC section
