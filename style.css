@@ -176,10 +176,6 @@ p, li, .footer a {
   font-size: 25px;
 }
 
-ul {
-  margin: 0;
-}
-
 .wrapper {
   min-height: 100vh;
   background-color: var(--default-background);
