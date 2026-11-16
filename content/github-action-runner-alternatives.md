@@ -20,7 +20,7 @@ These are essentially "full service" GitHub Action Runners. You don't have to do
 | Provider | Free Tier | Paid Pricing (2vCPU, 8GB) | Performance | Special Features |
 |----------|-----------|----------------------|-------------|------------------|
 | [Avrea](https://avrea.com/) | 3,000 minutes/month ($12 credit) | $0.004/min | 2x faster builds, 10x with cache hits | Bare-metal AMD EPYC, SSH access |
-| [Bitrise](https://bitrise.io/) | 14-day trial | $15/month for 2,400 minutes, then $0.00625/min via higher tiers | None claimed | Build Hub; one budget shared across Linux and macOS |
+| [Bitrise](https://bitrise.io/) | 14-day trial | $15/month for 2,400 minutes, then $0.00625/min via higher tiers | None claimed | Mobile CI focused |
 | [Blacksmith](https://www.blacksmith.sh/) | 3,000 minutes/month | $0.004/min | 2x faster builds, 4x faster cache | Unlimited concurrency, gaming CPUs |
 | [Depot](http://depot.dev/) | ❌ None | $20 for 2,000 minutes, then $0.004/min | 30% faster, 10x faster cache | Docker-focused |
 | GitHub | 2,000 minutes/month | $0.006/min | Baseline | Official support |
@@ -38,7 +38,7 @@ _\* Tenki's 2vCPU runner only comes with 4GB RAM, so this is the price of their 
 | Provider | Free tier | Paid Pricing | Hardware | Performance | Special Features |
 |----------|-----------|--------------|----------|-------------|------------------|
 | [Avrea](https://avrea.com/) | 150 minutes/month ($12 credit) | $0.08/min | M5 Max | 2x faster builds, 10x with cache hits | SSH access, Xcode build caching |
-| [Bitrise](https://bitrise.io/) | 14-day trial | $15/month for 500 minutes, then $0.03/min via higher tiers | M4 (5 vCPU, 14GB) | None claimed | Build Hub; one budget shared across Linux and macOS |
+| [Bitrise](https://bitrise.io/) | 14-day trial | $15/month for 500 minutes, then $0.03/min via higher tiers | M4 (5 vCPU, 14GB) | None claimed | Mobile CI focused |
 | [Blacksmith](https://www.blacksmith.sh/) | ~98 minutes/month | $0.08/min | M4 Macs | 2x faster builds, 4x faster cache | Unlimited concurrency |
 | [Depot](http://depot.dev/) | ❌ None | $20 for 100 minutes, then $0.08/min | 30% faster, 10x faster cache | Docker-focused |
 | [GetMac](https://getmac.io/) | 100 minutes/month | ~$0.012/min | M4 Macs | 3x faster builds | SSH/VNC access, 100% renewable energy |
