@@ -92,6 +92,13 @@
               &lt;td&gt;Premium tier on Ryzen 9 7950X3D, caches included&lt;/td&gt;
           &lt;/tr&gt;
           &lt;tr&gt;
+              &lt;td&gt;&lt;a href=&#34;https://skipbox.dev/&#34;&gt;Skipbox&lt;/a&gt;&lt;/td&gt;
+              &lt;td&gt;One-time trial: 7 days or 3,000 minutes, no card&lt;/td&gt;
+              &lt;td&gt;$39/month flat (4vCPU, 16GB), unlimited minutes&lt;/td&gt;
+              &lt;td&gt;Docker layers and package caches kept between jobs&lt;/td&gt;
+              &lt;td&gt;Dedicated VM per account, fork PRs on a fresh VM&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
               &lt;td&gt;&lt;a href=&#34;https://tenki.cloud/&#34;&gt;Tenki&lt;/a&gt;&lt;/td&gt;
               &lt;td&gt;$100 one-time credit&lt;/td&gt;
               &lt;td&gt;$0.008/min*&lt;/td&gt;
@@ -740,6 +747,7 @@
 &lt;p&gt;&lt;em&gt;Note (Speed): loosely defined based on acclaimed performance but not verified in any way, shape, or form.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Note (puzl.cloud): puzl.cloud has a rather complex calculation that heavily depends on how your job was ran rather than a fix per machine per minutes cost so I&amp;rsquo;m using best guess estimate (of around $0.0008 - $0.0025). Check out &lt;a href=&#34;https://runmyjob.io/#Pricing&#34;&gt;their pricing page&lt;/a&gt; for more details.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Note (Tenki): Tenki prices by vCPU, so the calculator uses their 4vCPU, 8GB runner on Linux and their 6vCPU, 16GB runner on macOS to match the size of the other providers.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note (Skipbox): Skipbox is not included in the widget as it uses flat monthly pricing ($39/month for plan S with unlimited minutes, 1 concurrent job) instead of per-minute billing. It gets cheaper the more minutes you run, so check out &lt;a href=&#34;https://skipbox.dev/pricing&#34;&gt;their pricing page&lt;/a&gt; to see where it breaks even for your usage.&lt;/em&gt;&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#wrap-up&#34;&gt;
     &lt;h2 id=&#34;wrap-up&#34;&gt;
         &lt;span class=&#34;text&#34;&gt;Wrap up&lt;/span&gt;
@@ -761,7 +769,8 @@
 &lt;li&gt;Removed Shipfox (now an AI agent workflow platform rather than a GitHub Actions runner)&lt;/li&gt;
 &lt;li&gt;Added Avrea to linux, macOS and windows runners&lt;/li&gt;
 &lt;li&gt;Added Sengi to linux runner&lt;/li&gt;
-&lt;li&gt;Added Codemany to BYOC (&lt;a href=&#34;https://github.com/binhonglee/blog/issues/8&#34;&gt;#8&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Added Codemany to BYOC&lt;/li&gt;
+&lt;li&gt;Added Skipbox to linux runner&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Apr 25th 2026&lt;/p&gt;
 &lt;ul&gt;
