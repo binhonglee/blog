@@ -26,6 +26,7 @@ These are essentially "full service" GitHub Action Runners. You don't have to do
 | [Namespace](https://namespace.so/) | ❌ None | $0.004/min | 2x-10x faster | 250GB storage, SSH access |
 | [puzl.cloud](https://puzl.cloud/) | 400 vCPU-minutes/month, 800 GB-minutes/month | €0.00002/vCPU second + €0.000001/GB second | 2x faster | Fine grained per vCPU per GB RAM usage billing |
 | [Sengi](https://sengi.run/) | 3,000 minutes/month, no card | $0.001/min (Basic) | Basic: none claimed; Premium ($0.003/min) ~2x faster | Premium tier on Ryzen 9 7950X3D, caches included |
+| [Skipbox](https://skipbox.dev/) | One-time trial: 7 days or 3,000 minutes, no card | $39/month flat (4vCPU, 16GB), unlimited minutes | Docker layers and package caches kept between jobs | Dedicated VM per account, fork PRs on a fresh VM |
 | [Tenki](https://tenki.cloud/) | $100 one-time credit | $0.008/min\* | 30% faster | Bundled AI Code Reviewer service |
 | [Ubicloud](https://www.ubicloud.com/) | ~1,250 minutes ($1 credit) | $0.0008/min | ~30% faster | Open source, Hetzner hardware |
 | [WarpBuild](https://www.warpbuild.com/) | ❌ None | $0.004/min | 2x faster | Unlimited concurrency |
@@ -83,6 +84,8 @@ _Note (puzl.cloud): puzl.cloud has a rather complex calculation that heavily dep
 
 _Note (Tenki): Tenki prices by vCPU, so the calculator uses their 4vCPU, 8GB runner on Linux and their 6vCPU, 16GB runner on macOS to match the size of the other providers._
 
+_Note (Skipbox): Skipbox is not included in the widget as it uses flat monthly pricing ($39/month for plan S with unlimited minutes, 1 concurrent job) instead of per-minute billing. It gets cheaper the more minutes you run, so check out [their pricing page](https://skipbox.dev/pricing) to see where it breaks even for your usage._
+
 ## Wrap up
 
 Obviously this is a rather simplistic view of the cost comparison (as well as the _speed_ factor being unverified) between different options available in the market. Personally, I opted for Blacksmith for all my linux needs ~~while continue to host my own M4 mac mini at home as the macOS runner (since the electricity cost is still cheaper than any of the above options)~~ moved my macOS runs to use GetMac as I was moving countries and can't self-host reliably.
@@ -98,7 +101,8 @@ Nov 15th 2026
 - Removed Shipfox (now an AI agent workflow platform rather than a GitHub Actions runner)
 - Added Avrea to linux, macOS and windows runners
 - Added Sengi to linux runner
-- Added Codemany to BYOC ([#8](https://github.com/binhonglee/blog/issues/8))
+- Added Codemany to BYOC
+- Added Skipbox to linux runner
 
 Apr 25th 2026
 - New BYOC section
