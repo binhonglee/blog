@@ -63,6 +63,7 @@ Unlike the full service hosted runners, BYOC is designed for users who are alrea
 |----------|-----------|---------|-----------------|------------------|
 | [Actuated](https://actuated.com/) | ❌ None | $250/month | Any bare-metal hosts and / or VM with nested virtualisation | Ubuntu |
 | [Cirun](https://cirun.io/) | Free for public repositories | $29/month for 3 private repositories, $79/month for 10 private repositories | All major cloud services and / or on-prem servers | Ubuntu, Windows, macOS, Custom Images |
+| [Codemany](https://codemany.com/) | 14 days free trial | $20/month for 2 machines, +$10/month per extra machine | Your own Apple silicon Macs and Linux machines (systemd) | macOS, Linux (optional VM per job) |
 | [RunsOn](https://runs-on.com/) | 15 days free trial | 300€/year | AWS | Ubuntu, Windows, macOS, Custom Images |
 | [Sprinters.sh](https://sprinters.sh/) | Free for public repositories | $0.01/job | AWS | Ubuntu |
 | [WarpBuild](https://www.warpbuild.com/) | ❌ None | $0.002/min | AWS, GCP, Azure | Linux, Windows |
@@ -90,6 +91,7 @@ _Note: This was initially released on **Sept 2nd 2025** but has since gained a l
 Nov 15th 2026
 - Added Avrea to linux, macOS and windows runners
 - Added Sengi to linux runner
+- Added Codemany to BYOC ([#8](https://github.com/binhonglee/blog/issues/8))
 
 Apr 25th 2026
 - New BYOC section
