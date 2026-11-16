@@ -92,13 +92,6 @@
               &lt;td&gt;Premium tier on Ryzen 9 7950X3D, caches included&lt;/td&gt;
           &lt;/tr&gt;
           &lt;tr&gt;
-              &lt;td&gt;&lt;a href=&#34;https://www.shipfox.io/&#34;&gt;Shipfox&lt;/a&gt;&lt;/td&gt;
-              &lt;td&gt;3,000 minutes/month&lt;/td&gt;
-              &lt;td&gt;$0.004/min&lt;/td&gt;
-              &lt;td&gt;2x faster builds&lt;/td&gt;
-              &lt;td&gt;Unlimited concurrency&lt;/td&gt;
-          &lt;/tr&gt;
-          &lt;tr&gt;
               &lt;td&gt;&lt;a href=&#34;https://tenki.cloud/&#34;&gt;Tenki&lt;/a&gt;&lt;/td&gt;
               &lt;td&gt;1,700 minutes/month&lt;/td&gt;
               &lt;td&gt;$0.003/min&lt;/td&gt;
@@ -564,7 +557,6 @@
       { name: &#34;Namespace&#34;, link: &#34;https://namespace.so/&#34;, freeMinutes: 0, pricePerMinute: 0.004, speedMultiplier: 1.8 },
       { name: &#34;puzl.cloud*&#34;, link: &#34;https://puzl.cloud/&#34;, freeMinutes: 400, pricePerMinute: 0.0008, pricePerMinuteHigh: 0.0025, speedMultiplier: 1.0 },
       { name: &#34;Sengi&#34;, link: &#34;https://sengi.run/&#34;, freeMinutes: 3000, pricePerMinute: 0.001, speedMultiplier: 1.0 },
-      { name: &#34;Shipfox&#34;, link: &#34;https://www.shipfox.io/&#34;, freeMinutes: 3000, pricePerMinute: 0.004, speedMultiplier: 2.0 },
       { name: &#34;Tenki&#34;, link: &#34;https://tenki.cloud/&#34;, freeMinutes: 1700, pricePerMinute: 0.003, fixedCost: 0, speedMultiplier: 1.3 },
       { name: &#34;Ubicloud&#34;, link: &#34;https://www.ubicloud.com/&#34;, freeMinutes: 1250, pricePerMinute: 0.0008, speedMultiplier: 1.3 },
       { name: &#34;WarpBuild&#34;, link: &#34;https://www.warpbuild.com/&#34;, freeMinutes: 0, pricePerMinute: 0.004, speedMultiplier: 2.0 },
@@ -762,6 +754,7 @@
 &lt;/a&gt;
 &lt;p&gt;Nov 15th 2026&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;Removed Shipfox (now an AI agent workflow platform rather than a GitHub Actions runner)&lt;/li&gt;
 &lt;li&gt;Added Avrea to linux, macOS and windows runners&lt;/li&gt;
 &lt;li&gt;Added Sengi to linux runner&lt;/li&gt;
 &lt;li&gt;Added Codemany to BYOC (&lt;a href=&#34;https://github.com/binhonglee/blog/issues/8&#34;&gt;#8&lt;/a&gt;)&lt;/li&gt;
