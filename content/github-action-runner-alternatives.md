@@ -26,7 +26,6 @@ These are essentially "full service" GitHub Action Runners. You don't have to do
 | [Namespace](https://namespace.so/) | ❌ None | $0.004/min | 2x-10x faster | 250GB storage, SSH access |
 | [puzl.cloud](https://puzl.cloud/) | 400 vCPU-minutes/month, 800 GB-minutes/month | €0.00002/vCPU second + €0.000001/GB second | 2x faster | Fine grained per vCPU per GB RAM usage billing |
 | [Sengi](https://sengi.run/) | 3,000 minutes/month, no card | $0.001/min (Basic) | Basic: none claimed; Premium ($0.003/min) ~2x faster | Premium tier on Ryzen 9 7950X3D, caches included |
-| [Shipfox](https://www.shipfox.io/) | 3,000 minutes/month | $0.004/min | 2x faster builds | Unlimited concurrency |
 | [Tenki](https://tenki.cloud/) | 1,700 minutes/month | $0.003/min | 30% faster | Bundled AI Code Reviewer service |
 | [Ubicloud](https://www.ubicloud.com/) | ~1,250 minutes ($1 credit) | $0.0008/min | ~30% faster | Open source, Hetzner hardware |
 | [WarpBuild](https://www.warpbuild.com/) | ❌ None | $0.004/min | 2x faster | Unlimited concurrency |
@@ -88,6 +87,7 @@ _Note: This was initially released on **Sept 2nd 2025** but has since gained a l
 ## Changelog
 
 Nov 15th 2026
+- Removed Shipfox (now an AI agent workflow platform rather than a GitHub Actions runner)
 - Added Avrea to linux, macOS and windows runners
 - Added Sengi to linux runner
 
