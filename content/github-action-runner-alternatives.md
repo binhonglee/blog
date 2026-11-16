@@ -7,7 +7,7 @@ aliases:
   - /gh_action_runner_alt/
 ---
 
-_Last Updated: Nov 6th 2026_
+_Last Updated: Nov 15th 2026_
 
 A while ago, I wrote about my attempt and reasoning behind [managing my own fleet of self-hosted GitHub Action Runners](/blog/2025-04-25-self-hosted-github-runners/). I've since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub's default runners. This article is just a quick summary of what I've found.
 
@@ -19,6 +19,7 @@ These are essentially "full service" GitHub Action Runners. You don't have to do
 
 | Provider | Free Tier | Paid Pricing (2vCPU, 8GB) | Performance | Special Features |
 |----------|-----------|----------------------|-------------|------------------|
+| [Avrea](https://avrea.com/) | 3,000 minutes/month ($12 credit) | $0.004/min | 2x faster builds, 10x with cache hits | Bare-metal AMD EPYC, SSH access |
 | [Blacksmith](https://www.blacksmith.sh/) | 3,000 minutes/month | $0.004/min | 2x faster builds, 4x faster cache | Unlimited concurrency, gaming CPUs |
 | [Depot](http://depot.dev/) | ❌ None | $20 for 2,000 minutes, then $0.004/min | 30% faster, 10x faster cache | Docker-focused |
 | GitHub | 2,000 minutes/month | $0.006/min | Baseline | Official support |
@@ -34,6 +35,7 @@ These are essentially "full service" GitHub Action Runners. You don't have to do
 
 | Provider | Free tier | Paid Pricing | Hardware | Performance | Special Features |
 |----------|-----------|--------------|----------|-------------|------------------|
+| [Avrea](https://avrea.com/) | 150 minutes/month ($12 credit) | $0.08/min | M5 Max | 2x faster builds, 10x with cache hits | SSH access, Xcode build caching |
 | [Blacksmith](https://www.blacksmith.sh/) | ~98 minutes/month | $0.08/min | M4 Macs | 2x faster builds, 4x faster cache | Unlimited concurrency |
 | [Depot](http://depot.dev/) | ❌ None | $20 for 100 minutes, then $0.08/min | 30% faster, 10x faster cache | Docker-focused |
 | [GetMac](https://getmac.io/) | 100 minutes/month | ~$0.012/min | M4 Macs | 3x faster builds | SSH/VNC access, 100% renewable energy |
@@ -46,6 +48,7 @@ These are essentially "full service" GitHub Action Runners. You don't have to do
 
 | Provider | Free tier | Paid Pricing | Performance | Special Features |
 |----------|-----------|--------------|----------|-------------|------------------|
+| [Avrea](https://avrea.com/) | 1,500 minutes/month ($12 credit) | $0.008/min | 2x faster builds, 10x with cache hits | Bare-metal AMD EPYC, SSH access |
 | [Blacksmith](https://www.blacksmith.sh/) | 1,500 minutes/month | $0.008/min | 2x faster builds, 4x faster cache | Unlimited concurrency |
 | [Depot](http://depot.dev/) | ❌ None | $20 for 1,000 minutes, then $0.008/min | 30% faster, 10x faster cache | Docker-focused |
 | GitHub | ~1197 minutes/month | $0.01/min | Baseline | Official support |
@@ -84,7 +87,8 @@ _Note: This was initially released on **Sept 2nd 2025** but has since gained a l
 
 ## Changelog
 
-Nov 6th 2026
+Nov 15th 2026
+- Added Avrea to linux, macOS and windows runners
 - Added Sengi to linux runner
 
 Apr 25th 2026
