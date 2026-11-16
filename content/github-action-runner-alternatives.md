@@ -26,9 +26,11 @@ These are essentially "full service" GitHub Action Runners. You don't have to do
 | [Namespace](https://namespace.so/) | ❌ None | $0.004/min | 2x-10x faster | 250GB storage, SSH access |
 | [puzl.cloud](https://puzl.cloud/) | 400 vCPU-minutes/month, 800 GB-minutes/month | €0.00002/vCPU second + €0.000001/GB second | 2x faster | Fine grained per vCPU per GB RAM usage billing |
 | [Sengi](https://sengi.run/) | 3,000 minutes/month, no card | $0.001/min (Basic) | Basic: none claimed; Premium ($0.003/min) ~2x faster | Premium tier on Ryzen 9 7950X3D, caches included |
-| [Tenki](https://tenki.cloud/) | 1,700 minutes/month | $0.003/min | 30% faster | Bundled AI Code Reviewer service |
+| [Tenki](https://tenki.cloud/) | $100 one-time credit | $0.008/min\* | 30% faster | Bundled AI Code Reviewer service |
 | [Ubicloud](https://www.ubicloud.com/) | ~1,250 minutes ($1 credit) | $0.0008/min | ~30% faster | Open source, Hetzner hardware |
 | [WarpBuild](https://www.warpbuild.com/) | ❌ None | $0.004/min | 2x faster | Unlimited concurrency |
+
+_\* Tenki's 2vCPU runner only comes with 4GB RAM, so this is the price of their 4vCPU, 8GB runner._
 
 ### macOS Runners Comparison
 
@@ -40,8 +42,10 @@ These are essentially "full service" GitHub Action Runners. You don't have to do
 | [GetMac](https://getmac.io/) | 100 minutes/month | ~$0.012/min | M4 Macs | 3x faster builds | SSH/VNC access, 100% renewable energy |
 | GitHub | 200 minutes/month | $0.062/min | Intel Mac + M2 Pro XL ($0.102/min) | Baseline | Official support |
 | [Namespace](https://namespace.so/) | ❌ None | $0.09 | M4 Pro + M2 Pro | Up to 3x faster | SSH/VNC access |
-| [Tenki](https://tenki.cloud/) | ❌ None | $0.05/min | M4 Pro | 30% faster | Bundled AI Code Reviewer service |
+| [Tenki](https://tenki.cloud/) | $100 one-time credit | $0.12/min\* | M4 Pro | 30% faster | Bundled AI Code Reviewer service |
 | [WarpBuild](https://www.warpbuild.com/) | ❌ None | $0.08/min | M4 Pro | 25% faster | Unlimited concurrency |
+
+_\* Tenki prices macOS per vCPU, so this is their 6vCPU, 16GB runner, the closest match to what the others here offer at their listed price._
 
 ### Windows Runners Comparison
 
@@ -77,6 +81,8 @@ _Note (Speed): loosely defined based on acclaimed performance but not verified i
 
 _Note (puzl.cloud): puzl.cloud has a rather complex calculation that heavily depends on how your job was ran rather than a fix per machine per minutes cost so I'm using best guess estimate (of around $0.0008 - $0.0025). Check out [their pricing page](https://runmyjob.io/#Pricing) for more details._
 
+_Note (Tenki): Tenki prices by vCPU, so the calculator uses their 4vCPU, 8GB runner on Linux and their 6vCPU, 16GB runner on macOS to match the size of the other providers._
+
 ## Wrap up
 
 Obviously this is a rather simplistic view of the cost comparison (as well as the _speed_ factor being unverified) between different options available in the market. Personally, I opted for Blacksmith for all my linux needs ~~while continue to host my own M4 mac mini at home as the macOS runner (since the electricity cost is still cheaper than any of the above options)~~ moved my macOS runs to use GetMac as I was moving countries and can't self-host reliably.
@@ -88,6 +94,7 @@ _Note: This was initially released on **Sept 2nd 2025** but has since gained a l
 ## Changelog
 
 Nov 15th 2026
+- Updated Tenki pricing (now billed per vCPU with a $100 one-time credit)
 - Removed Shipfox (now an AI agent workflow platform rather than a GitHub Actions runner)
 - Added Avrea to linux, macOS and windows runners
 - Added Sengi to linux runner
