@@ -1232,12 +1232,14 @@
     linux: [
       { name: &#34;Actuated&#34;, link: &#34;https://actuated.com/&#34;, pricePerMinute: 0, pricePerMonth: 250, pricePerJob: 0, privateRepositoryPricingMap: {} },
       { name: &#34;Cirun&#34;, link: &#34;https://cirun.io/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: &#34;Codemany&#34;, link: &#34;https://codemany.com/&#34;, pricePerMinute: 0, pricePerMonth: 20, pricePerJob: 0, privateRepositoryPricingMap: {} },
       { name: &#34;RunsOn&#34;, link: &#34;https://runs-on.com/&#34;, pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
       { name: &#34;Sprinters.sh&#34;, link: &#34;https://sprinters.sh/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0.01, privateRepositoryPricingMap: {} },
       { name: &#34;WarpBuild&#34;, link: &#34;https://www.warpbuild.com/&#34;, pricePerMinute: 0.002, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: {} },
     ],
     macos: [
       { name: &#34;Cirun&#34;, link: &#34;https://cirun.io/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: &#34;Codemany&#34;, link: &#34;https://codemany.com/&#34;, pricePerMinute: 0, pricePerMonth: 20, pricePerJob: 0, privateRepositoryPricingMap: {} },
       { name: &#34;RunsOn&#34;, link: &#34;https://runs-on.com/&#34;, pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
     ],
     windows: [
@@ -7338,6 +7340,13 @@ In your choice of database, you should create a user (preferably only specifical
               &lt;td&gt;Ubuntu, Windows, macOS, Custom Images&lt;/td&gt;
           &lt;/tr&gt;
           &lt;tr&gt;
+              &lt;td&gt;&lt;a href=&#34;https://codemany.com/&#34;&gt;Codemany&lt;/a&gt;&lt;/td&gt;
+              &lt;td&gt;14 days free trial&lt;/td&gt;
+              &lt;td&gt;$20/month for 2 machines, +$10/month per extra machine&lt;/td&gt;
+              &lt;td&gt;Your own Apple silicon Macs and Linux machines (systemd)&lt;/td&gt;
+              &lt;td&gt;macOS, Linux (optional VM per job)&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
               &lt;td&gt;&lt;a href=&#34;https://runs-on.com/&#34;&gt;RunsOn&lt;/a&gt;&lt;/td&gt;
               &lt;td&gt;15 days free trial&lt;/td&gt;
               &lt;td&gt;300€/year&lt;/td&gt;
@@ -7606,12 +7615,14 @@ In your choice of database, you should create a user (preferably only specifical
     linux: [
       { name: &#34;Actuated&#34;, link: &#34;https://actuated.com/&#34;, pricePerMinute: 0, pricePerMonth: 250, pricePerJob: 0, privateRepositoryPricingMap: {} },
       { name: &#34;Cirun&#34;, link: &#34;https://cirun.io/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: &#34;Codemany&#34;, link: &#34;https://codemany.com/&#34;, pricePerMinute: 0, pricePerMonth: 20, pricePerJob: 0, privateRepositoryPricingMap: {} },
       { name: &#34;RunsOn&#34;, link: &#34;https://runs-on.com/&#34;, pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
       { name: &#34;Sprinters.sh&#34;, link: &#34;https://sprinters.sh/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0.01, privateRepositoryPricingMap: {} },
       { name: &#34;WarpBuild&#34;, link: &#34;https://www.warpbuild.com/&#34;, pricePerMinute: 0.002, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: {} },
     ],
     macos: [
       { name: &#34;Cirun&#34;, link: &#34;https://cirun.io/&#34;, pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: &#34;Codemany&#34;, link: &#34;https://codemany.com/&#34;, pricePerMinute: 0, pricePerMonth: 20, pricePerJob: 0, privateRepositoryPricingMap: {} },
       { name: &#34;RunsOn&#34;, link: &#34;https://runs-on.com/&#34;, pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
     ],
     windows: [
@@ -7775,6 +7786,7 @@ In your choice of database, you should create a user (preferably only specifical
 &lt;ul&gt;
 &lt;li&gt;Added Avrea to linux, macOS and windows runners&lt;/li&gt;
 &lt;li&gt;Added Sengi to linux runner&lt;/li&gt;
+&lt;li&gt;Added Codemany to BYOC (&lt;a href=&#34;https://github.com/binhonglee/blog/issues/8&#34;&gt;#8&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Apr 25th 2026&lt;/p&gt;
 &lt;ul&gt;

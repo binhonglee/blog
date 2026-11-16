@@ -428,6 +428,13 @@ These are essentially &ldquo;full service&rdquo; GitHub Action Runners. You don&
               <td>Ubuntu, Windows, macOS, Custom Images</td>
           </tr>
           <tr>
+              <td><a href="https://codemany.com/">Codemany</a></td>
+              <td>14 days free trial</td>
+              <td>$20/month for 2 machines, +$10/month per extra machine</td>
+              <td>Your own Apple silicon Macs and Linux machines (systemd)</td>
+              <td>macOS, Linux (optional VM per job)</td>
+          </tr>
+          <tr>
               <td><a href="https://runs-on.com/">RunsOn</a></td>
               <td>15 days free trial</td>
               <td>300€/year</td>
@@ -696,12 +703,14 @@ These are essentially &ldquo;full service&rdquo; GitHub Action Runners. You don&
     linux: [
       { name: "Actuated", link: "https://actuated.com/", pricePerMinute: 0, pricePerMonth: 250, pricePerJob: 0, privateRepositoryPricingMap: {} },
       { name: "Cirun", link: "https://cirun.io/", pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: "Codemany", link: "https://codemany.com/", pricePerMinute: 0, pricePerMonth: 20, pricePerJob: 0, privateRepositoryPricingMap: {} },
       { name: "RunsOn", link: "https://runs-on.com/", pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
       { name: "Sprinters.sh", link: "https://sprinters.sh/", pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0.01, privateRepositoryPricingMap: {} },
       { name: "WarpBuild", link: "https://www.warpbuild.com/", pricePerMinute: 0.002, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: {} },
     ],
     macos: [
       { name: "Cirun", link: "https://cirun.io/", pricePerMinute: 0, pricePerMonth: 0, pricePerJob: 0, privateRepositoryPricingMap: { 3: 29, 10: 79 } },
+      { name: "Codemany", link: "https://codemany.com/", pricePerMinute: 0, pricePerMonth: 20, pricePerJob: 0, privateRepositoryPricingMap: {} },
       { name: "RunsOn", link: "https://runs-on.com/", pricePerMinute: 0, pricePerMonth: 30, pricePerJob: 0, privateRepositoryPricingMap: {} },
     ],
     windows: [
@@ -865,6 +874,7 @@ These are essentially &ldquo;full service&rdquo; GitHub Action Runners. You don&
 <ul>
 <li>Added Avrea to linux, macOS and windows runners</li>
 <li>Added Sengi to linux runner</li>
+<li>Added Codemany to BYOC (<a href="https://github.com/binhonglee/blog/issues/8">#8</a>)</li>
 </ul>
 <p>Apr 25th 2026</p>
 <ul>
