@@ -593,7 +593,7 @@
     &lt;/svg&gt;&lt;p class=&#34;description&#34;&gt;
       Found a pretty horrific dark pattern with Instagram. If you try to log in on mobile web, it fails with ‘incorrect password’. I double check… it’s right, it’s just not working. Gave up, installed the app, password is fine. Tried again today just to see… this time I get the following error message. Looks like a translation key is missing and it’s serving me the backend name for it? FakeIncorrectPassword ?? Are you shitting me?
     &lt;/p&gt;&lt;div class=&#34;image&#34;&gt;
-      &lt;img src=&#34;https://binhong.me/blog/2025-10-31-leaked-fakeincorrectpassword//blog/624099990_18059047814338384_6804582354372308281_n_12788380814251803679.jpg&#34; alt=&#34;Post image&#34; loading=&#34;lazy&#34;&gt;
+      &lt;img src=&#34;https://binhong.me/blog/2025-10-31-leaked-fakeincorrectpassword//blog/624099990_18059047814338384_6804582354372308281_n_11972129501374563967.jpg&#34; alt=&#34;Post image&#34; loading=&#34;lazy&#34;&gt;
     &lt;/div&gt;&lt;/a&gt;
 &lt;/div&gt;
   
@@ -7033,7 +7033,7 @@ In your choice of database, you should create a user (preferably only specifical
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>binhong@binhong.me (BinHong Lee)</author>
       <guid>https://binhong.me/blog/github-action-runner-alternatives/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Last Updated: Nov 15th 2026&lt;/em&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;em&gt;Last Updated: Apr 25th 2026&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;A while ago, I wrote about my attempt and reasoning behind &lt;a href=&#34;https://binhong.me/blog/2025-04-25-self-hosted-github-runners/&#34;&gt;managing my own fleet of self-hosted GitHub Action Runners&lt;/a&gt;. I&amp;rsquo;ve since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub&amp;rsquo;s default runners. This article is just a quick summary of what I&amp;rsquo;ve found.&lt;/p&gt;
 &lt;a class=&#34;anchor&#34; href=&#34;#hosted-runners&#34;&gt;
     &lt;h2 id=&#34;hosted-runners&#34;&gt;
@@ -7762,10 +7762,6 @@ In your choice of database, you should create a user (preferably only specifical
         &lt;span class=&#34;tag&#34;&gt;#&lt;/span&gt;
     &lt;/h2&gt;
 &lt;/a&gt;
-&lt;p&gt;Nov 15th 2026&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Added Avrea to linux, macOS and windows runners&lt;/li&gt;
-&lt;/ul&gt;
 &lt;p&gt;Apr 25th 2026&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;New BYOC section
