@@ -195,6 +195,13 @@ These are essentially &ldquo;full service&rdquo; GitHub Action Runners. You don&
               <td>Fine grained per vCPU per GB RAM usage billing</td>
           </tr>
           <tr>
+              <td><a href="https://sengi.run/">Sengi</a></td>
+              <td>3,000 minutes/month, no card</td>
+              <td>$0.001/min (Basic)</td>
+              <td>Basic: none claimed; Premium ($0.003/min) ~2x faster</td>
+              <td>Premium tier on Ryzen 9 7950X3D, caches included</td>
+          </tr>
+          <tr>
               <td><a href="https://www.shipfox.io/">Shipfox</a></td>
               <td>3,000 minutes/month</td>
               <td>$0.004/min</td>
@@ -659,6 +666,7 @@ These are essentially &ldquo;full service&rdquo; GitHub Action Runners. You don&
       { name: "GitHub", freeMinutes: 2000, pricePerMinute: 0.006, speedMultiplier: 1.0 },
       { name: "Namespace", link: "https://namespace.so/", freeMinutes: 0, pricePerMinute: 0.004, speedMultiplier: 1.8 },
       { name: "puzl.cloud*", link: "https://puzl.cloud/", freeMinutes: 400, pricePerMinute: 0.0008, pricePerMinuteHigh: 0.0025, speedMultiplier: 1.0 },
+      { name: "Sengi", link: "https://sengi.run/", freeMinutes: 3000, pricePerMinute: 0.001, speedMultiplier: 1.0 },
       { name: "Shipfox", link: "https://www.shipfox.io/", freeMinutes: 3000, pricePerMinute: 0.004, speedMultiplier: 2.0 },
       { name: "Tenki", link: "https://tenki.cloud/", freeMinutes: 1700, pricePerMinute: 0.003, fixedCost: 0, speedMultiplier: 1.3 },
       { name: "Ubicloud", link: "https://www.ubicloud.com/", freeMinutes: 1250, pricePerMinute: 0.0008, speedMultiplier: 1.3 },
@@ -856,6 +864,7 @@ These are essentially &ldquo;full service&rdquo; GitHub Action Runners. You don&
 <p>Nov 15th 2026</p>
 <ul>
 <li>Added Avrea to linux, macOS and windows runners</li>
+<li>Added Sengi to linux runner</li>
 </ul>
 <p>Apr 25th 2026</p>
 <ul>
