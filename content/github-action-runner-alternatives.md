@@ -7,7 +7,7 @@ aliases:
   - /gh_action_runner_alt/
 ---
 
-_Last Updated: Nov 15th 2026_
+_Last Updated: Nov 21st 2026_
 
 A while ago, I wrote about my attempt and reasoning behind [managing my own fleet of self-hosted GitHub Action Runners](/blog/2025-04-25-self-hosted-github-runners/). I've since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub's default runners. This article is just a quick summary of what I've found.
 
@@ -22,6 +22,7 @@ These are essentially "full service" GitHub Action Runners. You don't have to do
 | [Avrea](https://avrea.com/) | 3,000 minutes/month ($12 credit) | $0.004/min | 2x faster builds, 10x with cache hits | Bare-metal AMD EPYC, SSH access |
 | [Bitrise](https://bitrise.io/) | 14-day trial | $15/month for 2,400 minutes, then $0.00625/min via higher tiers | None claimed | Mobile CI focused |
 | [Blacksmith](https://www.blacksmith.sh/) | 3,000 minutes/month | $0.004/min | 2x faster builds, 4x faster cache | Unlimited concurrency, gaming CPUs |
+| [CRACI](https://craci.com/) | €10 one-time credit, no card | €0.004/min (~$0.0046)\*\* | 2x faster | Per-job VM, build-time SBOMs, egress policy, EU data, ARM64 at same price |
 | [Depot](http://depot.dev/) | ❌ None | $20 for 2,000 minutes, then $0.004/min | 30% faster, 10x faster cache | Docker-focused |
 | GitHub | 2,000 minutes/month | $0.006/min | Baseline | Official support |
 | [Namespace](https://namespace.so/) | ❌ None | $0.004/min | 2x-10x faster | 250GB storage, SSH access |
@@ -33,6 +34,8 @@ These are essentially "full service" GitHub Action Runners. You don't have to do
 | [WarpBuild](https://www.warpbuild.com/) | ❌ None | $0.004/min | 2x faster | Unlimited concurrency |
 
 _\* Tenki's 2vCPU runner only comes with 4GB RAM, so this is the price of their 4vCPU, 8GB runner._
+
+_\*\* CRACI's 2vCPU runner comes with 6GB RAM (3GB per vCPU), so there's no 2vCPU, 8GB option._
 
 ### macOS Runners Comparison
 
@@ -97,6 +100,9 @@ Obviously this is a rather simplistic view of the cost comparison (as well as th
 _Note: This was initially released on **Sept 2nd 2025** but has since gained a lot more traffic than I've expected so I decided to try my best in keeping this article upated. (This changelog section details dates whenever I make an edit. Or you could just lookup the commit history of this on GitHub through the "Source" linked at the bottom.)_
 
 ## Changelog
+
+Nov 21st 2026
+- Added CRACI to linux runner
 
 Nov 15th 2026
 - Added Bitrise (Build Hub) to linux and macOS runners
