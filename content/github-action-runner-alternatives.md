@@ -89,6 +89,8 @@ _Note (puzl.cloud): puzl.cloud has a rather complex calculation that heavily dep
 
 _Note (Tenki): Tenki prices by vCPU, so the calculator uses their 4vCPU, 8GB runner on Linux and their 6vCPU, 16GB runner on macOS to match the size of the other providers._
 
+_Note (CRACI): CRACI's 2vCPU runner only comes with 6GB RAM, and the calculator uses its USD price ($0.0046/min). The €10 one-time credit isn't counted as free minutes._
+
 _Note (Skipbox): Skipbox is not included in the widget as it uses flat monthly pricing ($39/month for plan S with unlimited minutes, 1 concurrent job) instead of per-minute billing. It gets cheaper the more minutes you run, so check out [their pricing page](https://skipbox.dev/pricing) to see where it breaks even for your usage._
 
 ## Wrap up
