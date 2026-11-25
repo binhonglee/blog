@@ -22,6 +22,7 @@ These are essentially "full service" GitHub Action Runners. You don't have to do
 | [Avrea](https://avrea.com/) | 3,000 minutes/month ($12 credit) | $0.004/min | 2x faster builds, 10x with cache hits | Bare-metal AMD EPYC, SSH access |
 | [Bitrise](https://bitrise.io/) | 14-day trial | $15/month for 2,400 minutes, then $0.00625/min via higher tiers | None claimed | Mobile CI focused |
 | [Blacksmith](https://www.blacksmith.sh/) | 3,000 minutes/month | $0.004/min | 2x faster builds, 4x faster cache | Unlimited concurrency, gaming CPUs |
+| [BuildPulse](https://buildpulse.io/products/runners) | 3,000 minutes/month, no card | $0.004/min | 2x faster | ARM64 at $0.0025/min, also runs CircleCI and Semaphore jobs, fixed egress IPs and cache storage included |
 | [CRACI](https://craci.com/) | €10 one-time credit, no card | €0.004/min (~$0.0046)\*\* | 2x faster | Per-job VM, build-time SBOMs, egress policy, EU data, ARM64 at same price |
 | [Depot](http://depot.dev/) | ❌ None | $20 for 2,000 minutes, then $0.004/min | 30% faster, 10x faster cache | Docker-focused |
 | GitHub | 2,000 minutes/month | $0.006/min | Baseline | Official support |
@@ -102,6 +103,9 @@ Obviously this is a rather simplistic view of the cost comparison (as well as th
 _Note: This was initially released on **Sept 2nd 2025** but has since gained a lot more traffic than I've expected so I decided to try my best in keeping this article upated. (This changelog section details dates whenever I make an edit. Or you could just lookup the commit history of this on GitHub through the "Source" linked at the bottom.)_
 
 ## Changelog
+
+Nov 25th 2026
+- Added BuildPulse to linux runner
 
 Nov 21st 2026
 - Added CRACI to linux runner
