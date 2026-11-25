@@ -28,7 +28,7 @@ These are essentially "full service" GitHub Action Runners. You don't have to do
 | [Namespace](https://namespace.so/) | ❌ None | $0.004/min | 2x-10x faster | 250GB storage, SSH access |
 | [puzl.cloud](https://puzl.cloud/) | 400 vCPU-minutes/month, 800 GB-minutes/month | €0.00002/vCPU second + €0.000001/GB second | 2x faster | Fine grained per vCPU per GB RAM usage billing |
 | [Sengi](https://sengi.run/) | 3,000 minutes/month, no card | $0.001/min (Basic) | Basic: none claimed; Premium ($0.003/min) ~2x faster | Premium tier on Ryzen 9 7950X3D, caches included |
-| [Skipbox](https://skipbox.dev/) | One-time trial: 7 days or 3,000 minutes, no card | $39/month flat (4vCPU, 16GB), unlimited minutes | Docker layers and package caches kept between jobs | Dedicated VM per account, fork PRs on a fresh VM |
+| [Skipbox](https://skipbox.dev/) | 7-day trial, card required, no minute cap | $39/month flat (4vCPU, 16GB), unlimited minutes | Docker layers and package caches kept between jobs | Dedicated VM per account, fork PRs on a fresh VM |
 | [Tenki](https://tenki.cloud/) | $100 one-time credit | $0.008/min\* | 30% faster | Bundled AI Code Reviewer service |
 | [Ubicloud](https://www.ubicloud.com/) | ~1,250 minutes ($1 credit) | $0.0008/min | ~30% faster | Open source, Hetzner hardware |
 | [WarpBuild](https://www.warpbuild.com/) | ❌ None | $0.004/min | 2x faster | Unlimited concurrency |
@@ -91,7 +91,7 @@ _Note (Tenki): Tenki prices by vCPU, so the calculator uses their 4vCPU, 8GB run
 
 _Note (CRACI): CRACI's 2vCPU runner only comes with 6GB RAM, and the calculator uses its USD price ($0.0046/min). The €10 one-time credit isn't counted as free minutes._
 
-_Note (Skipbox): Skipbox is not included in the widget as it uses flat monthly pricing ($39/month for plan S with unlimited minutes, 1 concurrent job) instead of per-minute billing. It gets cheaper the more minutes you run, so check out [their pricing page](https://skipbox.dev/pricing) to see where it breaks even for your usage._
+_Note (Skipbox): Skipbox is not included in the widget as it uses flat monthly pricing ($39/month for plan S with unlimited minutes, up to 8 jobs at once) instead of per-minute billing. It gets cheaper the more minutes you run, so check out [their pricing page](https://skipbox.dev/pricing) to see where it breaks even for your usage._
 
 ## Wrap up
 
