@@ -7,7 +7,7 @@ aliases:
   - /gh_action_runner_alt/
 ---
 
-_Last Updated: Nov 21st 2026_
+_Last Updated: Nov 27th 2026_
 
 A while ago, I wrote about my attempt and reasoning behind [managing my own fleet of self-hosted GitHub Action Runners](/blog/2025-04-25-self-hosted-github-runners/). I've since learnt that there are quite a few hosted alternative runners that are both faster and cheaper than GitHub's default runners. This article is just a quick summary of what I've found.
 
@@ -62,7 +62,9 @@ _\* Tenki prices macOS per vCPU, so this is their 6vCPU, 16GB runner, the closes
 | [Depot](http://depot.dev/) | ❌ None | $20 for 1,000 minutes, then $0.008/min | 30% faster, 10x faster cache | Docker-focused |
 | GitHub | ~1197 minutes/month | $0.01/min | Baseline | Official support |
 | [Namespace](https://namespace.so/) | ❌ None | $100 for 50,000 minutes, then $0.008/min | 2x-10x faster | 250GB storage, SSH/VNC access |
-| [WarpBuild](https://www.warpbuild.com/) | ❌ None | $0.008/min | 25% faster | Unlimited concurrency |
+| [WarpBuild](https://www.warpbuild.com/) | ❌ None | $0.016/min\* | 3x faster | Unlimited concurrency |
+
+_\* WarpBuild no longer offers a 2vCPU Windows runner, so this is the price of their smallest one, 4vCPU with 16GB RAM._
 
 ## Bring Your Own Cloud (BYOC)
 
@@ -89,6 +91,8 @@ _Note (puzl.cloud): puzl.cloud has a rather complex calculation that heavily dep
 
 _Note (Tenki): Tenki prices by vCPU, so the calculator uses their 4vCPU, 8GB runner on Linux and their 6vCPU, 16GB runner on macOS to match the size of the other providers._
 
+_Note (WarpBuild): WarpBuild's smallest Windows runner is 4vCPU, 16GB, so the calculator uses that on Windows._
+
 _Note (CRACI): CRACI's 2vCPU runner only comes with 6GB RAM, and the calculator uses its USD price ($0.0046/min). The €10 one-time credit isn't counted as free minutes._
 
 _Note (Skipbox): Skipbox is not included in the widget as it uses flat monthly pricing ($39/month for plan S with unlimited minutes, 1 concurrent job) instead of per-minute billing. It gets cheaper the more minutes you run, so check out [their pricing page](https://skipbox.dev/pricing) to see where it breaks even for your usage._
@@ -102,6 +106,9 @@ Obviously this is a rather simplistic view of the cost comparison (as well as th
 _Note: This was initially released on **Sept 2nd 2025** but has since gained a lot more traffic than I've expected so I decided to try my best in keeping this article upated. (This changelog section details dates whenever I make an edit. Or you could just lookup the commit history of this on GitHub through the "Source" linked at the bottom.)_
 
 ## Changelog
+
+Nov 27th 2026
+- Updated WarpBuild Windows pricing (2vCPU runner discontinued, now 4vCPU at $0.016/min) and speed to 3x
 
 Nov 21st 2026
 - Added CRACI to linux runner
